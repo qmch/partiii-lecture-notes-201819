@@ -1,6 +1,4 @@
-\begin{quote}\textit{Here is some filler text until I actually take the class.}\end{quote}
-
-Symmetry as a principle has led physicists all the way to our current model of physics. This course's content will be almost exclusively mathematical, yet more pragmatic about introducing the necessary tools to apply symmetries to the physical systems we're interested in.
+Today we'll outline the content of this course and motivate it with a few examples. To begin with, symmetry as a principle has led physicists all the way to our current model of physics. This course's content will be almost exclusively mathematical, yet more pragmatic about introducing the necessary tools to apply symmetries to the physical systems we're interested in.
 
 \subsection*{Resources}
 \begin{itemize}
@@ -13,16 +11,16 @@ Symmetry as a principle has led physicists all the way to our current model of p
     \item Books: ``Symmetries, Lie Algebras and Representations'', Fuchs \& Schweigert Ch. 1-7.
 \end{itemize}
 
-\subsection*{I. Introduction}
+\subsection*{Introduction}
 \begin{defn}
-\term{Symmetry} -- a transformation of dynamical variables that leaves form of physical laws invariant.
+We define a \term{symmetry} as a transformation of dynamical variables that leaves the form of physical laws invariant.
 \end{defn}
 \begin{exm}
-A rotation is a transformation, e.g. on $\vec{x}\in \RR^3$ such that $\vec{x}'=M\cdot \vec{x} \in \RR^3$. There are \term{orthogonal} matrices which satisfy $MM^T = 1_3$ and also \term{special} matrices whcih satisfy $\det M = 1$.
+A rotation is a transformation, e.g. on $\vec{x}\in \RR^3$ such that $\vec{x}'=M\cdot \vec{x} \in \RR^3$. There are \term{orthogonal} matrices which satisfy $MM^T = 1_3$ and also \term{special} matrices which satisfy $\det M = 1$.
 \end{exm}
 
-\subsection*{Mathematical Formulation}
-It's also useful for us to define the notion of a group (familiar from an intro course on abstract algebra or mathematical methods).
+%\subsection*{Mathematical Formulation}
+It's also useful for us to define the notion of a group (likely familiar from an intro course on abstract algebra or mathematical methods).
 
 \begin{defn}
 A \term{group} $G$ is a set equipped with a multiplication law (binary operation) obeying
@@ -37,9 +35,9 @@ A \term{group} $G$ is a set equipped with a multiplication law (binary operation
  For rotations $G=SO(3)$, the group of 3-dimensional special orthogonal matrices, check that the group axioms apply (SO(3) forms a group).
 \end{ex}
 
-We also remark that the set may be finite or infinite\footnote{For example, cyclic groups (i.e. addition in modular arithmetic) vs. most matrix groups.}. A group $G$ is called \term{abelian} if the multiplication law is commutative ($\forall g_1,g_2\in G, g_1g_2=g_2g_1$). Otherwise, it is called non-abelian.
+We also remark that the set may be finite or infinite\footnote{For example, cyclic groups $\ZZ_n$ (i.e. addition in modular arithmetic) vs. most matrix groups like $GL_n$.}. A group $G$ is called \term{abelian} if the multiplication law is commutative ($\forall g_1,g_2\in G, g_1g_2=g_2g_1$). Otherwise, it is called non-abelian.
 
-Let's notice that a rotation in $\RR^3$ depends continuously on 3 parameters: $\hat n\in S^2, \theta \in[0,\pi]$ (with $\hat n$ the axis of rotation, $\theta$ the angle of rotation). This leads us to introduce the idea of a Lie group.
+We notice that a rotation in $\RR^3$ depends continuously on 3 parameters: $\hat n\in S^2, \theta \in[0,\pi]$ (with $\hat n$ the axis of rotation, $\theta$ the angle of rotation). This leads us to introduce the idea of a Lie group.
 \begin{defn}
 A \term{Lie group} $G$ is a group which is also a smooth manifold. It's key that the group and manifold structures must be compatible, and so $G$ is (almost) completely determined by the behavior ``near'' $e$, i.e. by infinitesimal transformations in a small neighborhood of the identity element $e$. These correspond to the \term{tangent vectors} to $G$ at $e$.
 \end{defn}
@@ -49,8 +47,8 @@ The tangent vectors are local objects which span the tangent space to the manifo
 The tangent space at the identity equipped with the Lie bracket defines a \term{Lie algebra} $\mathcal{L}(G).$
 \end{defn}
 
-\subsection*{Cartan classification}
-\emph{All} finite-dimensional semi-simple Lie algebras (over $\CC$) can be classified into four infinite families $A_n, B_n, C_n,D_n$ with $n\in \NN$, plus five \term{exceptional cases} $E_6,E_7,E_8,G_2,F_4$.\footnote{The exceptional groups have not yet come up in physical phenomena, but they seem to have a mysterious connection to the absence of anomalies in string theory.}
+%\subsection*{Cartan classification}
+It's a remarkable fact that \emph{all} finite-dimensional semi-simple Lie algebras (over $\CC$) can be classified into four infinite families $A_n, B_n, C_n,D_n$ with $n\in \NN$, plus five \term{exceptional cases} $E_6,E_7,E_8,G_2,F_4$.\footnote{The exceptional groups have not yet come up in physical phenomena, but they seem to have a mysterious connection to the absence of anomalies in string theory.} We call this the \term{Cartan classification.}
 
 \subsection*{Symmetries in physics}
 In classical physics, (continuous) symmetries give rise to conserved quantities. This is the conclusion of Noether's theorem.
@@ -66,7 +64,7 @@ We recall from previous courses in QM that operators which commute with the Hami
 
 In fact, we recall that the angular momentum operators are associated to a Lie bracket: $[\hat L_i, \hat L_j]=i \epsilon_{ijk} \hat L_k$. But this is exactly the $\mathcal{L}(SO(3))$ Lie algebra. 
 
-Our angular momentum operators often act on finite-dimensional vector spaces, e.g \emph{electron spin}.
+Our angular momentum operators often act on finite-dimensional vector spaces, e.g. \emph{electron spin}.
 $$\ket{\uparrow}\equiv \begin{pmatrix}1\\0\end{pmatrix},\ket{\downarrow}\equiv \begin{pmatrix}0\\1\end{pmatrix}$$
 This corresponds to a two-dimensional \term{representation} of $\mathcal{L}(SO(3)$, i.e. a set of $2\times 2$ matrices $\Sigma_i, i=1,2,3$ satisfying the same Lie algebra,
 $$[\Sigma_i,\Sigma_J]=i\varepsilon_{ijk}\Sigma_k,$$
@@ -78,6 +76,6 @@ Now suppose we have a rotational symmetry in a quantum system, $$[\hat H, \hat L
 
 \begin{exm}
 We have an approximate $SU(3)$ symmetry for the strong force, with
-$$G=SU(3)\equiv \{3\times 3 \text{complex matrices} M \text{with} M M^\dagger = 1_3 and \det M = 1.\}$$
-The spectrum of mesons and baryons are thus defined by the representation theory of the Lie algebra $\mathcal{L}(SU(3))$. See also the ``eightfold way,'' due to Murray Gell-Mann, who showed that plotting the various mesons and baryons with respect to certain quantum numbers (isospin and hypercharge) gives rise to a very nice picture corresponding to the 8-dimensional representation of the Lie algebra $\mathcal{L}(SU(3)).$ %
+$$G=SU(3)\equiv \{3\times 3 \text{ complex matrices } M \text{ with } M M^\dagger = I_3 \text{ and } \det M = 1.\}$$
+The spectrum of mesons and baryons are thus defined by the representation of the Lie algebra $\mathcal{L}(SU(3))$. See also the ``eightfold way,'' due to Murray Gell-Mann, who showed that plotting the various mesons and baryons with respect to certain quantum numbers (isospin and hypercharge) gives rise to a very nice picture corresponding to the 8-dimensional representation of the Lie algebra $\mathcal{L}(SU(3)).$ %
 \end{exm}
