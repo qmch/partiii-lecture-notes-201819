@@ -33,16 +33,16 @@ The de Broglie wavelength of a particle is given by $\lambda=\hbar/(mc)$. An ele
 
 If a quantity $x$ has dimension $(mass)^d$, we write $[x]=d$, e.g. $$G=\frac{\hbar c}{M_p^2}\implies [G]=-2.$$  $M_p \approx 10^{19}$ GeV corresponds to the Planck scale, $\lambda_p \sim 10^{-33}$cm, the length/energy scales where we expect quantum gravitational effects to become relevant. We note that the problems associated with relativising the Schr\"odinger equation are fixed in QFT by particle creation.
 
-Before we do QFT, let's review classical field theory. In classical particle mechanics, we have a finite number of generalized coordinates $q_a(t)$ (where $a$ is a label telling you which coordinate you're talking about) and in general they are a function of time $t$. But recall that in field theory, we instead have $\phi_a(x,t)$ where $a$ labels the field in question and $x$ is no longer a coordinate but a label like $a$. (See for instance Anthony Zee's \textit{QFT in a Nutshell} to see a more detailed description of how we go from discrete to continuous systems.)
+Before we do QFT, let's review classical field theory. In classical particle mechanics, we have a finite number of generalized coordinates $q_a(t)$ (where $a$ is a label telling you which coordinate you're talking about) and in general they are a function of time $t$. But in field theory, we instead have $\phi_a(x,t)$ where $a$ labels the field in question and $x$ is no longer a coordinate but a label like $a$.\footnote{See for instance Anthony Zee's \textit{QFT in a Nutshell} to see a more detailed description of how we go from discrete to continuous systems.}
 
 In our classical field theory, there are now an infinite number of d.o.f., at least one for each $x$, so position has been demoted from a dynamical variable to a mere label.
 
 \begin{exm}
-The classical electromagnetic field is a vector field with components $E_i(x,t), B_i(x,t)$ such that $i,j,k\in \{1,2,3\}$ label spatial directions. In fact, these six fields are derived from 4 fields, the four-potential $A_\mu(x,t)=(\phi,A)$ where $\mu\in\{0,1,2,3\}$.
+The classical electromagnetic field is a vector field with components $E_i(x,t), B_i(x,t)$ such that $i,j,k\in \{1,2,3\}$ label spatial directions. In fact, these six fields are derived from four fields (or rather four field components), the four-potential $A_\mu(x,t)=(\phi,\vec{A})$ where $\mu\in\{0,1,2,3\}$.
 
 Then the classical fields are simply related to the four-potential by
-$$E_i=\P{A_i}{t}-\P{A_0}{x_i} \text{and} B_i=\frac{1}{2}\epsilon_{ijk} \P{A_k}{x_j}$$
-with $\epsilon_{ijk}$ the usual Levi-Civita tensor, and where we have used the Einstein summation convention (repeated indices are summed over).
+$$E_i=\P{A_i}{t}-\P{A_0}{x_i} \text{ and } B_i=\frac{1}{2}\epsilon_{ijk} \P{A_k}{x_j}$$
+with $\epsilon_{ijk}$ the usual \href{https://en.wikipedia.org/wiki/Levi-Civita_symbol}{Levi-Civita symbol}, and where we have used the Einstein summation convention (repeated indices are summed over).
 \end{exm}
 
 The dynamics of a field are given by a \term{Lagrangian} $L$, which is simply a function of $\phi_a(x,t), \dot \phi_a(x,t),$ and $\grad \phi_a(x,t)$. 
@@ -68,8 +68,8 @@ $$\p_\mu\P{\mathcal{L}}{(\p_\mu\phi_a)}-\P{\mathcal{L}}{\phi_a}=0.$$
 \begin{exm}
 Consider the Klein-Gordon field $\phi$, defined
 $$\mathcal{L}=\frac{1}{2} \eta^{\mu\nu}\p_\mu \phi \p_\nu \phi -\frac{1}{2}m^2 \phi^2.$$
-Here $\eta^{\mu\nu}$ is the standard Minkowski metric (we use the mostly minus convention here, but honestly the sign conventions are all arbitrary and relativity uses the other one where time gets the minus sign).
+Here $\eta^{\mu\nu}$ is the standard Minkowski metric\footnote{We use the mostly minus convention here, but honestly the sign conventions are all arbitrary and relativity often uses the other one where time gets the minus sign.}.
 
 To compute the Euler-Lagrange equation for this field theory, we see that $$\P{L}{\phi}=-m^2\phi \text{ and } \P{L}{(\p_\mu \phi)}=\p^\mu \phi.$$
-The E-L equations tell us that $\p_\mu \p^\mu \phi+m^2\phi = 0,$ which we call the Klein-Gordon equation. It has wave-like solutions $\phi=e^{-ipx}$ with $(-p^2+m^2)\phi=0$ (so that $p^2=m^2$, which is what we expect in units where $c=1$).
+The Euler-Lagrange equations then tell us that $$\p_\mu \p^\mu \phi+m^2\phi = 0,$$ which we call the \emph{Klein-Gordon equation}. It has wave-like solutions $\phi=e^{-ipx}$ with $(-p^2+m^2)\phi=0$ (so that $p^2=m^2$, which is what we expect in units where $c=1$).
 \end{exm}
