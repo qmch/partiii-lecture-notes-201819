@@ -28,10 +28,10 @@ Free theories are generally not realistic but they are important, as interacting
 \subsection*{Units in QFT} In QFT, we usually set $c=\hbar=1$. Since $[c]=[L][T]^{-1}, [\hbar]=[L]^2[M][T]^{-1},$ we find that in natural units, $$[L]=[T]=[M]^{-1}=[E]^{-1}$$ (where the last equality follows from $E=mc^2$ with $c=1$). We often just pick one unit, e.g. an energy scale like eV, and describe everything else in terms of powers of that unit. To convert back to metres or seconds, just reinsert the relevant powers of $c$ and $\hbar$.
 
 \begin{exm}
-The de Broglie wavelength of a particle is given by $\lambda=\hbar/(mc)$. An electron has mass $m_e\simeq 10^6$ eV, so $\lambda_e = 2\times 10^{-12}$m.
+The de Broglie wavelength of a particle is given by $\lambda=\hbar/(mc)$. An electron has mass $m_e\simeq \SI{e6}{\electronvolt}$, so $\lambda_e = \SI{2e-12}{\meter}$.
 \end{exm}
 
-If a quantity $x$ has dimension $(mass)^d$, we write $[x]=d$, e.g. $$G=\frac{\hbar c}{M_p^2}\implies [G]=-2.$$  $M_p \approx 10^{19}$ GeV corresponds to the Planck scale, $\lambda_p \sim 10^{-33}$cm, the length/energy scales where we expect quantum gravitational effects to become relevant. We note that the problems associated with relativising the Schr\"odinger equation are fixed in QFT by particle creation.
+If a quantity $x$ has dimension $(mass)^d$, we write $[x]=d$, e.g. $$G=\frac{\hbar c}{M_p^2}\implies [G]=-2.$$  $M_p \approx \SI{e19}{\giga\electronvolt}$ corresponds to the Planck scale, $\lambda_p \sim \SI{e-33}{\centi\meter}$, the length/energy scales where we expect quantum gravitational effects to become relevant. We note that the problems associated with relativising the Schr\"odinger equation are fixed in QFT by particle creation.
 
 Before we do QFT, let's review classical field theory. In classical particle mechanics, we have a finite number of generalized coordinates $q_a(t)$ (where $a$ is a label telling you which coordinate you're talking about) and in general they are a function of time $t$. But in field theory, we instead have $\phi_a(x,t)$ where $a$ labels the field in question and $x$ is no longer a coordinate but a label like $a$.\footnote{See for instance Anthony Zee's \textit{QFT in a Nutshell} to see a more detailed description of how we go from discrete to continuous systems.}
 

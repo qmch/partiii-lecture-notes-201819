@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  4 OCT 2018 22:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  4 OCT 2018 22:55
 entering extended mode
 **./qft-notes-partiii.tex
 (qft-notes-partiii.tex
@@ -1794,18 +1794,22 @@ Package rerunfilecheck Info: File `qft-notes-partiii.out' has not changed.
 (rerunfilecheck)             Checksum: AE6B88C96BCD35CCA31674B28359251D;61.
 
 
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 2.26395pt have occurred.
+
+
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 15.
  ) 
 Here is how much of TeX's memory you used:
- 33774 strings out of 493352
- 635623 string characters out of 3139718
- 745025 words of memory out of 3000000
- 36337 multiletter control sequences out of 15000+200000
- 606534 words of font info for 305 fonts, out of 3000000 for 9000
+ 33858 strings out of 493352
+ 637572 string characters out of 3139718
+ 746025 words of memory out of 3000000
+ 36421 multiletter control sequences out of 15000+200000
+ 617943 words of font info for 334 fonts, out of 3000000 for 9000
  1289 hyphenation exceptions out of 8191
- 57i,12n,67p,10402b,742s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,12n,67p,10402b,844s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Ian\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ec
 tt1000.pk>{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc} <C:\Users\I
 an\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt0900.pk><C:/
@@ -1818,9 +1822,9 @@ mathpazo/fplmri.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/fpl/fplrc8a
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Progr
 am Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on qft-notes-partiii.pdf (3 pages, 152481 bytes).
+Output written on qft-notes-partiii.pdf (3 pages, 152460 bytes).
 PDF statistics:
  173 PDF objects out of 1000 (max. 8388607)
  15 named destinations out of 1000 (max. 500000)
- 68213 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 72821 words of extra memory for PDF output out of 74296 (max. 10000000)
 
