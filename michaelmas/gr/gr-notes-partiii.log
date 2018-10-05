@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  4 OCT 2018 23:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  5 OCT 2018 09:52
 entering extended mode
-**./qft-notes-partiii.tex
-(qft-notes-partiii.tex
+**./gr-notes-partiii.tex
+(gr-notes-partiii.tex
 LaTeX2e <2017-04-15>
 Babel <3.13> and hyphenation patterns for 72 language(s) loaded.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsart.cls"
@@ -1260,233 +1260,58 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip71
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\siunitx\siunitx.sty"
-Package: siunitx 2017/08/02 v2.7j A comprehensive (SI) units package
+Package hyperref Info: Option `colorlinks' set `true' on input line 26.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
-Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
-\col@sep=\dimen306
-\extrarowheight=\dimen307
-\NC@list=\toks49
-\extratabsurround=\skip72
-\backup@length=\skip73
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\l3packages\l3keys2e\l3keys2e.sty"
-Package: l3keys2e 2017/09/18 LaTeX2e option processing using LaTeX3 keys
-)
-\l__siunitx_tmp_box=\box60
-\l__siunitx_tmp_dim=\dimen308
-\l__siunitx_tmp_int=\count303
-\l__siunitx_number_mantissa_length_int=\count304
-\l__siunitx_number_uncert_length_int=\count305
-\l__siunitx_round_int=\count306
-\l__siunitx_process_decimal_int=\count307
-\l__siunitx_process_uncertainty_int=\count308
-\l__siunitx_process_fixed_int=\count309
-\l__siunitx_process_integer_min_int=\count310
-\l__siunitx_process_precision_int=\count311
-\l__siunitx_group_min_int=\count312
-\l__siunitx_angle_marker_box=\box61
-\l__siunitx_angle_unit_box=\box62
-\l__siunitx_angle_marker_dim=\dimen309
-\l__siunitx_angle_unit_dim=\dimen310
-\l__siunitx_unit_int=\count313
-\l__siunitx_unit_denominator_int=\count314
-\l__siunitx_unit_numerator_int=\count315
-\l__siunitx_unit_prefix_int=\count316
-\l__siunitx_unit_prefix_base_int=\count317
-\l__siunitx_unit_prefix_gram_int=\count318
-\l__siunitx_number_product_int=\count319
-\c__siunitx_one_fill_skip=\skip74
-\l__siunitx_table_unit_align_skip=\skip75
-\l__siunitx_table_exponent_dim=\dimen311
-\l__siunitx_table_integer_dim=\dimen312
-\l__siunitx_table_mantissa_dim=\dimen313
-\l__siunitx_table_marker_dim=\dimen314
-\l__siunitx_table_result_dim=\dimen315
-\l__siunitx_table_uncert_dim=\dimen316
-\l__siunitx_table_fill_pre_dim=\dimen317
-\l__siunitx_table_fill_post_dim=\dimen318
-\l__siunitx_table_fill_mid_dim=\dimen319
-\l__siunitx_table_pre_box=\box63
-\l__siunitx_table_post_box=\box64
-\l__siunitx_table_mantissa_box=\box65
-\l__siunitx_table_result_box=\box66
-\l__siunitx_table_number_align_skip=\skip76
-\l__siunitx_table_text_align_skip=\skip77
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \DeclareBinaryPrefix with sig. 'mmm' on line 7247.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \DeclareSIPostPower with sig. 'mm' on line 7250.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \DeclareSIPrefix with sig. 'mmm' on line 7253.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \DeclareSIPrePower with sig. 'mm' on line 7256.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \DeclareSIQualifier with sig. 'mm' on line 7259.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \DeclareSIUnit with sig. 'O{}mm' on line 7262.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \DeclareSIUnitWithOptions with sig. 'mmm' on line 7265.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \ang with sig. 'o>{\SplitArgument {2}{;}}m' on line 7280.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \num with sig. 'om' on line 7289.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \numlist with sig. 'o>{\SplitList {;}}m' on line 7298.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \numrange with sig. 'omm' on line 7307.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SIlist with sig. 'o>{\SplitList {;}}mm' on line 7319.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SIrange with sig. 'ommm' on line 7331.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SI with sig. 'omom' on line 7343.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \sisetup with sig. 'm' on line 7346.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \tablenum with sig. 'om' on line 7361.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \si with sig. 'om' on line 7373.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \numInBookmark with sig. 'om' on line 7420.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \numrangeInBookmark with sig. 'omm' on line 7422.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SIInBookmark with sig. 'omom' on line 7424.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SIlistInBookmark with sig. 'omm' on line 7426.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SIrangeInBookmark with sig. 'ommm' on line 7428.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \siInBookmark with sig. 'om' on line 7429.
-.................................................
-\g__file_internal_ior=\read3
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\translator.sty"
-Package: translator 2010/06/12 ver 1.10
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\translator-language-m
-appings.tex")))
-Package hyperref Info: Option `colorlinks' set `true' on input line 27.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\hypcap.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\hypcap.sty"
 Package: hypcap 2016/05/16 v1.12 Adjusting the anchors of captions (HO)
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\titlesec\titlesec.sty"
 Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
-\ttl@box=\box67
-\beforetitleunit=\skip78
-\aftertitleunit=\skip79
-\ttl@plus=\dimen320
-\ttl@minus=\dimen321
-\ttl@toksa=\toks50
-\titlewidth=\dimen322
-\titlewidthlast=\dimen323
-\titlewidthfirst=\dimen324
+\ttl@box=\box60
+\beforetitleunit=\skip72
+\aftertitleunit=\skip73
+\ttl@plus=\dimen306
+\ttl@minus=\dimen307
+\ttl@toksa=\toks49
+\titlewidth=\dimen308
+\titlewidthlast=\dimen309
+\titlewidthfirst=\dimen310
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\titlesec\frame.tss"
 File: frame.tss 2016/03/15
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\titlesec\titletoc.sty"
 Package: titletoc 2011/12/15 v1.6 TOC entries
-\ttl@leftsep=\dimen325
+\ttl@leftsep=\dimen311
 )
 .................................................
 . LaTeX info: "xparse/define-environment"
 . 
-. Defining environment 'comp' with sig. 'mm' on line 74.
+. Defining environment 'comp' with sig. 'mm' on line 73.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \shortexact with sig. 'O{} O{} mmmm' on line 84.
+. Defining command \shortexact with sig. 'O{} O{} mmmm' on line 83.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \leftexact with sig. 'O{} O{} mmmm' on line 89.
+. Defining command \leftexact with sig. 'O{} O{} mmmm' on line 88.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \rightexact with sig. 'O{} O{} mmmm' on line 94.
+. Defining command \rightexact with sig. 'O{} O{} mmmm' on line 93.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \dblarrow with sig. 'O{} O{} O{}' on line 105.
+. Defining command \dblarrow with sig. 'O{} O{} O{}' on line 104.
 .................................................
 )
-(qft-notes-partiii.aux)
-\openout1 = `qft-notes-partiii.aux'.
+(gr-notes-partiii.aux)
+\openout1 = `gr-notes-partiii.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
@@ -1581,17 +1406,17 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count320
-\scratchdimen=\dimen326
-\scratchbox=\box68
-\nofMPsegments=\count321
-\nofMParguments=\count322
-\everyMPshowfont=\toks51
-\MPscratchCnt=\count323
-\MPscratchDim=\dimen327
-\MPnumerator=\count324
-\makeMPintoPDFobject=\count325
-\everyMPtoPDFconversion=\toks52
+\scratchcounter=\count303
+\scratchdimen=\dimen312
+\scratchbox=\box61
+\nofMPsegments=\count304
+\nofMParguments=\count305
+\everyMPshowfont=\toks50
+\MPscratchCnt=\count306
+\MPscratchDim=\dimen313
+\MPnumerator=\count307
+\makeMPintoPDFobject=\count308
+\everyMPtoPDFconversion=\toks51
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1641,7 +1466,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package xypdf Info: Line width: 0.4pt on input line 3.
-\AtBeginShipoutBox=\box69
+\AtBeginShipoutBox=\box62
 Package hyperref Info: Link coloring ON on input line 3.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
@@ -1650,108 +1475,16 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count326
+\c@section@level=\count309
 )
 LaTeX Info: Redefining \ref on input line 3.
 LaTeX Info: Redefining \pageref on input line 3.
 LaTeX Info: Redefining \nameref on input line 3.
 
-(qft-notes-partiii.out) (qft-notes-partiii.out)
+(gr-notes-partiii.out) (gr-notes-partiii.out)
 \@outlinefile=\write5
-\openout5 = `qft-notes-partiii.out'.
+\openout5 = `gr-notes-partiii.out'.
 
-Now handling font encoding TS1 ...
-... processing UTF-8 mapping file for font encoding TS1
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.dfu"
-File: ts1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
-   defining Unicode char U+00A2 (decimal 162)
-   defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00A4 (decimal 164)
-   defining Unicode char U+00A5 (decimal 165)
-   defining Unicode char U+00A6 (decimal 166)
-   defining Unicode char U+00A7 (decimal 167)
-   defining Unicode char U+00A8 (decimal 168)
-   defining Unicode char U+00A9 (decimal 169)
-   defining Unicode char U+00AA (decimal 170)
-   defining Unicode char U+00AC (decimal 172)
-   defining Unicode char U+00AE (decimal 174)
-   defining Unicode char U+00AF (decimal 175)
-   defining Unicode char U+00B0 (decimal 176)
-   defining Unicode char U+00B1 (decimal 177)
-   defining Unicode char U+00B2 (decimal 178)
-   defining Unicode char U+00B3 (decimal 179)
-   defining Unicode char U+00B4 (decimal 180)
-   defining Unicode char U+00B5 (decimal 181)
-   defining Unicode char U+00B6 (decimal 182)
-   defining Unicode char U+00B7 (decimal 183)
-   defining Unicode char U+00B9 (decimal 185)
-   defining Unicode char U+00BA (decimal 186)
-   defining Unicode char U+00BC (decimal 188)
-   defining Unicode char U+00BD (decimal 189)
-   defining Unicode char U+00BE (decimal 190)
-   defining Unicode char U+00D7 (decimal 215)
-   defining Unicode char U+00F7 (decimal 247)
-   defining Unicode char U+0192 (decimal 402)
-   defining Unicode char U+02C7 (decimal 711)
-   defining Unicode char U+02D8 (decimal 728)
-   defining Unicode char U+02DD (decimal 733)
-   defining Unicode char U+0E3F (decimal 3647)
-   defining Unicode char U+2016 (decimal 8214)
-   defining Unicode char U+2020 (decimal 8224)
-   defining Unicode char U+2021 (decimal 8225)
-   defining Unicode char U+2022 (decimal 8226)
-   defining Unicode char U+2030 (decimal 8240)
-   defining Unicode char U+2031 (decimal 8241)
-   defining Unicode char U+203B (decimal 8251)
-   defining Unicode char U+203D (decimal 8253)
-   defining Unicode char U+2044 (decimal 8260)
-   defining Unicode char U+204E (decimal 8270)
-   defining Unicode char U+2052 (decimal 8274)
-   defining Unicode char U+20A1 (decimal 8353)
-   defining Unicode char U+20A4 (decimal 8356)
-   defining Unicode char U+20A6 (decimal 8358)
-   defining Unicode char U+20A9 (decimal 8361)
-   defining Unicode char U+20AB (decimal 8363)
-   defining Unicode char U+20AC (decimal 8364)
-   defining Unicode char U+20B1 (decimal 8369)
-   defining Unicode char U+2103 (decimal 8451)
-   defining Unicode char U+2116 (decimal 8470)
-   defining Unicode char U+2117 (decimal 8471)
-   defining Unicode char U+211E (decimal 8478)
-   defining Unicode char U+2120 (decimal 8480)
-   defining Unicode char U+2122 (decimal 8482)
-   defining Unicode char U+2126 (decimal 8486)
-   defining Unicode char U+2127 (decimal 8487)
-   defining Unicode char U+212E (decimal 8494)
-   defining Unicode char U+2190 (decimal 8592)
-   defining Unicode char U+2191 (decimal 8593)
-   defining Unicode char U+2192 (decimal 8594)
-   defining Unicode char U+2193 (decimal 8595)
-   defining Unicode char U+2329 (decimal 9001)
-   defining Unicode char U+232A (decimal 9002)
-   defining Unicode char U+2422 (decimal 9250)
-   defining Unicode char U+25E6 (decimal 9702)
-   defining Unicode char U+25EF (decimal 9711)
-   defining Unicode char U+266A (decimal 9834)
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-basi
-c-dictionary\translator-basic-dictionary-English.dict"
-Dictionary: translator-basic-dictionary, Language: English 
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\siunitx\siunitx-abbreviations.cfg"
-File: siunitx-abbreviations.cfg 2017/08/02 v2.7j siunitx: Abbreviated units
-)
-\c__siunitx_mathsf_int=\count327
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmss' (encoding: OT1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-\c__siunitx_mathtt_int=\count328
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmtt' (encoding: OT1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <10> not available
 (Font)              Font shape `T1/pplx/b/n' tried instead on input line 7.
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 8.
@@ -1774,57 +1507,53 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/pplx/m/sc/10'.
 (microtype)             Ignoring protrusion settings for this character.
- (qft-notes-partiii.toc)
+ (gr-notes-partiii.toc)
 \tf@toc=\write6
-\openout6 = `qft-notes-partiii.toc'.
+\openout6 = `gr-notes-partiii.toc'.
 
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <12> not available
 (Font)              Font shape `T1/pplx/b/n' tried instead on input line 13.
- (2018/10/20181004.tex [1{C:/Users/Ian/AppData/Local/MiKTeX/2.9/pdftex/config/p
-dftex.map}]
+(2018/10/20181005.tex [1{C:/Users/Ian/AppData/Local/MiKTeX/2.9/pdftex/config/pd
+ftex.map}])
 LaTeX Font Info:    Font shape `T1/pplx/m/sl' in size <9> not available
-(Font)              Font shape `T1/pplx/m/it' tried instead on input line 63.
- [2]) [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 15.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 15.
- (qft-notes-partiii.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 15.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 15.
-Package rerunfilecheck Info: File `qft-notes-partiii.out' has not changed.
-(rerunfilecheck)             Checksum: AE6B88C96BCD35CCA31674B28359251D;61.
-
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 2.26395pt have occurred.
+(Font)              Font shape `T1/pplx/m/it' tried instead on input line 16.
+ [2]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 16.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 16.
+ (gr-notes-partiii.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 16.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 16.
+Package rerunfilecheck Info: File `gr-notes-partiii.out' has not changed.
+(rerunfilecheck)             Checksum: 1849DE1189979FFEA471FEC2FC313550;59.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 15.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 16.
  ) 
 Here is how much of TeX's memory you used:
- 33858 strings out of 493352
- 637572 string characters out of 3139718
- 746025 words of memory out of 3000000
- 36421 multiletter control sequences out of 15000+200000
- 617943 words of font info for 334 fonts, out of 3000000 for 9000
+ 31301 strings out of 493352
+ 568400 string characters out of 3139718
+ 695140 words of memory out of 3000000
+ 33933 multiletter control sequences out of 15000+200000
+ 596273 words of font info for 268 fonts, out of 3000000 for 9000
  1289 hyphenation exceptions out of 8191
- 57i,12n,67p,10402b,844s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\Ian\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ec
-tt1000.pk>{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc} <C:\Users\I
-an\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt0900.pk><C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/mathpazo/fplmr.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-mathpazo/fplmri.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/fpl/fplrc8a
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on qft-notes-partiii.pdf (3 pages, 152460 bytes).
+ 57i,11n,67p,10401b,350s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc} <C:\Users\Ian\AppDa
+ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt0900.pk><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/mathpazo/fplmr.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/mathpazo/
+fplmri.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/fpl/fplrc8a.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/urw/palatino/uplri8a.pfb>
+Output written on gr-notes-partiii.pdf (2 pages, 132632 bytes).
 PDF statistics:
- 173 PDF objects out of 1000 (max. 8388607)
- 15 named destinations out of 1000 (max. 500000)
- 72821 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 132 PDF objects out of 1000 (max. 8388607)
+ 10 named destinations out of 1000 (max. 500000)
+ 49781 words of extra memory for PDF output out of 51595 (max. 10000000)
 

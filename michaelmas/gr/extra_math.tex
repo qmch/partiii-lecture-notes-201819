@@ -1,0 +1,117 @@
+% Additional math macros that I want in both my notes and my psets
+\usepackage[sc, noBBpl]{mathpazo}
+\usepackage{mathrsfs}
+\usepackage[T1]{fontenc}
+\usepackage{calligra}
+\usepackage{microtype}
+\usepackage[all]{xy}
+\newcommand{\A}{\mathbb A}
+\newcommand{\cat}{\mathsf}
+\newcommand{\sC}{\cat C}
+\newcommand{\sD}{\cat D}
+\newcommand{\sS}{\cat S}
+\newcommand{\sA}{\mathscr A}
+\newcommand{\sF}{\mathscr F}
+\newcommand{\sG}{\mathscr G}
+\renewcommand{\P}{\mathbb P}
+\newcommand{\cO}{\mathscr O}
+\newcommand{\sI}{\mathscr I}
+\DeclareMathOperator{\coker}{coker}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\pt}{\mathrm{pt}}
+\DeclareMathOperator{\Hom}{Hom}
+\newcommand{\op}{^{\mathsf{op}}}
+\newcommand{\Id}{\mathrm{Id}}
+\DeclareMathOperator{\Mat}{Mat}
+\newcommand{\m}{\mathfrak m}
+%\newcommand{\p}{\mathfrak p}
+\newcommand{\q}{\mathfrak q}
+\DeclareMathOperator{\MSpec}{MSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\newcommand{\Top}{\cat{Top}}
+\newcommand{\Ring}{\cat{Ring}}
+\newcommand{\Mod}{\cat{Mod}}
+\DeclareMathOperator{\res}{res}
+\newcommand{\Alg}{\cat{Alg}}
+\newcommand{\Fun}{\cat{Fun}}
+\newcommand{\AffSch}{\cat{AffSch}}
+\newcommand{\Ab}{\cat{Ab}}
+\DeclareMathOperator{\bl}{--}
+\DeclareMathOperator{\Free}{Free}
+\DeclareMathOperator{\For}{For}
+\newcommand{\Set}{\cat{Set}}
+\newcommand{\LocRing}{\cat{LocRing}}
+\newcommand{\Grp}{\cat{Grp}}
+\newcommand{\Sch}{\cat{Sch}}
+\newcommand{\inHom}{\operatorname{\underline{\Hom}}}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Nil}{Nil}
+\newcommand{\pre}{\sC^{\text{pre}}}
+\newcommand{\sh}{_{\text{sh}}}
+\newcommand{\G}{\mathbb G}
+\DeclareMathOperator{\Proj}{Proj}
+\newcommand{\sM}{\mathscr M}
+\newcommand{\sV}{\mathscr V}
+\newcommand{\fU}{\mathfrak U}
+\newcommand{\GL}{\mathrm{GL}}
+\DeclareMathOperator{\Sym}{Sym}
+% http://tex.stackexchange.com/questions/141434/how-to-type-sheaf-hom
+\DeclareMathOperator{\shom}{\mathscr{H}\text{\kern -4pt {\calligra\large om}}\,}
+\newcommand{\sL}{\mathscr L}
+\DeclareMathOperator{\QC}{QC}
+\DeclareMathOperator{\Supp}{Supp}
+\newcommand{\sN}{\mathscr N}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Der}{Der}
+\newcommand{\ctcpx}[1]{(#1)^{\text{der}}}
+\newcommand{\Dist}{\mathsf{Dist}}
+\newcommand{\shdi}{\operatorname{Sh}_{\Dist}}
+\DeclareMathOperator{\Sh}{Sh}
+\newcommand{\shz}{\mathsf{Sh}_{\text{\rm Zar}}}
+\DeclareMathOperator{\Gr}{Gr}
+% Source: http://tug.org/pipermail/xy-pic/2001-July/000015.html
+\newcommand{\pullbackcorner}[1][dr]{\save*!/#1+1.2pc/#1:(1,-1)@^{|-}\restore}
+\newcommand{\pushoutcorner}[1][dr]{\save*!/#1-1.2pc/#1:(-1,1)@^{|-}\restore}
+\newcommand{\TDel}{\mathrm{2\Delta}}
+\DeclareMathOperator{\Bl}{B\ell}
+\newcommand{\cR}{\mathcal R}
+\newcommand{\cL}{\mathcal L}
+\newcommand{\refR}{\reflectbox{\(\cR\)}}
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+%\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\g}{\gamma}
+\newcommand{\s}{\sigma}
+\newcommand{\z}{\zeta}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\f}{\frac}
+\newcommand{\p}{\partial}
+\renewcommand{\P}[3][]{\f{\partial^{#1} #2}{\partial #3 ^{#1}}}
+%\newcommand{\avg}[1]{\langle #1 \rangle}
+\newcommand{\avg}[1]{\left< #1 \right>}
+\newcommand{\?}{\overset{?}{=}}
+\newcommand{\Int}{\int_{-\infty}^\infty}
+\newcommand{\ket}[1]{\left| #1 \right>} % for Dirac bras
+\newcommand{\bra}[1]{\left< #1 \right|} % for Dirac kets
+\newcommand{\braket}[2]{\left< #1 \vphantom{#2} \right|
+ \left. #2 \vphantom{#1} \right>} % for Dirac brackets
+
+\newcommand{\grad}[1]{\gv{\nabla} #1} % for gradient
+\let\divsymb=\div % rename builtin command \div to \divsymb
+\renewcommand{\div}[1]{\gv{\nabla} \cdot #1} % for divergence
+\newcommand{\curl}[1]{\gv{\nabla} \times #1} % for curl
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\let\vaccent=\v % rename builtin command \v{} to \vaccent{}
+\renewcommand{\v}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand{\uv}[1]{\ensuremath{\mathbf{\hat{#1}}}} % for unit vector
+\newcommand{\gv}[1]{\ensuremath{\mbox{\boldmath$ #1 $}}} 
+% for vectors of Greek letters
