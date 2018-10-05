@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  5 OCT 2018 09:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  5 OCT 2018 12:41
 entering extended mode
 **./gr-notes-partiii.tex
 (gr-notes-partiii.tex
@@ -1514,10 +1514,10 @@ Package microtype Info: Character `029' is missing
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <12> not available
 (Font)              Font shape `T1/pplx/b/n' tried instead on input line 13.
 (2018/10/20181005.tex [1{C:/Users/Ian/AppData/Local/MiKTeX/2.9/pdftex/config/pd
-ftex.map}])
+ftex.map}]
 LaTeX Font Info:    Font shape `T1/pplx/m/sl' in size <9> not available
-(Font)              Font shape `T1/pplx/m/it' tried instead on input line 16.
- [2]
+(Font)              Font shape `T1/pplx/m/it' tried instead on input line 69.
+ [2]) [3]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 16.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 16.
  (gr-notes-partiii.aux)
@@ -1532,13 +1532,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 16.
  ) 
 Here is how much of TeX's memory you used:
- 31301 strings out of 493352
- 568400 string characters out of 3139718
+ 31311 strings out of 493352
+ 568487 string characters out of 3139718
  695140 words of memory out of 3000000
  33933 multiletter control sequences out of 15000+200000
- 596273 words of font info for 268 fonts, out of 3000000 for 9000
+ 596689 words of font info for 273 fonts, out of 3000000 for 9000
  1289 hyphenation exceptions out of 8191
- 57i,11n,67p,10401b,350s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,11n,67p,10401b,430s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc} <C:\Users\Ian\AppDa
 ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt0900.pk><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/Mi
@@ -1551,9 +1551,9 @@ Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/
 type1/urw/palatino/uplri8a.pfb>
-Output written on gr-notes-partiii.pdf (2 pages, 132632 bytes).
+Output written on gr-notes-partiii.pdf (3 pages, 135311 bytes).
 PDF statistics:
- 132 PDF objects out of 1000 (max. 8388607)
- 10 named destinations out of 1000 (max. 500000)
+ 137 PDF objects out of 1000 (max. 8388607)
+ 12 named destinations out of 1000 (max. 500000)
  49781 words of extra memory for PDF output out of 51595 (max. 10000000)
 
