@@ -1,0 +1,134 @@
+So far, we have discussed global symmetries.
+\begin{itemize}
+\item Spacetime symmetries:
+\begin{itemize}
+\item Rotation, $SO(3)$.
+\item Lorentz transformations, $SO(3,1)$. (Rotations in $\RR^3$ plus boosts.)
+\item The Poincar\'e group (not a simple Lie group, so does not fit Cartan classifications)
+\item Supersymmetry? (i.e. a symmetry between fermions and bosons, described by ``super'' Lie algebra)
+\end{itemize}
+\item Internal symmetries:
+\begin{itemize}
+\item Electric charge
+\item Flavor, $SU(3)$ in hadrons
+\item Baryon number
+\end{itemize}
+\end{itemize}
+But we also have gauge symmetry.
+\begin{defn}
+A \term{gauge symmetry} is a redundancy in our mathematical description of physics. For instance, the phase of the wavefunction in quantum mechanics has no physical meaning:
+\begin{equation}
+\psi\to e^{i\delta}\psi
+\end{equation}
+leaves all the physics unchanged ($\delta\in \RR$).\footnote{However, differences in phase can have significant effects-- see for instance the \href{https://en.wikipedia.org/wiki/Aharonov\%E2\%80\%93Bohm_effect}{Aharanov-Bohm effect}.}
+\end{defn}
+
+\begin{exm}
+Another gauge symmetry familiar to us is the gauge transformation in electrodynamics,
+$$\vec{A}(\vec{x})\to \vec{A}(\vec{x})+\grad \chi(\vec{x}).$$
+By adding the gradient of some scalar function $\chi$ of $\vec{x}$, this leaves $\vec{B}=\curl \vec{A}$ unchanged (since $\curl{\grad F}=0$) and so the fields corresponding to the vector potential produce the same physics. Gauge invariance turns out to be key to our ability to quantize the spin-1 field corresponding to the photon.
+\end{exm}
+\begin{exm}
+Another example (maybe less familiar in the exact details) is the Standard Model of particle physics.\footnote{We'll unpack the Standard Model more in next term's Standard Model class.} The Standard Model is a non-abelian gauge theory based on the Lie group
+$$G_{SM}=SU(3)\times SU(2)\times U(1).$$
+\end{exm}
+
+We started to describe Lie groups last time. Let us repeat the definition here: a Lie group $G$ is a group which is also a (smooth) manifold. Informally, a manifold is a space which locally looks like $\RR^n$-- for every point on the manifold, there is a smooth map from an open set of $\RR^n$ to the manifold (that patch ``looks flat''), and these maps are compatible. For cute wordplay reasons, the collection of such maps is known as an atlas.
+
+Sometimes it is useful to consider a manifold as embedded in an ambient space, e.g. $S^2$ embedded in $\RR^3$: $\vec{x}(x,y,z)\in \RR^3$ such that $x^2+y^2+z^2=r^2, r>0$.
+
+\begin{defn}
+We may define $\vec{x}=(x_1,x_2,\ldots,x_{n+m})\in \RR^{n+m}$, such that for a continuous, differentiable function $F^\alpha(\vec{x}): \RR^{n+m}\to \RR, \alpha=1,\ldots,m$, a space $M$ is defined by all such $\vec{x}$ satisfying $F^\alpha(\vec{x})=0,\a=,1\ldots,m$.
+\end{defn}
+
+\begin{thm}\label{manifoldcondition}
+$M$ is a smooth manifold of dimension $n$ if the Jacobian matrix $J$ has rank $m$, with the Jacobian defined
+$$J^\alpha_i =\P{F^\alpha}{x_i}.$$
+In words, all this says is that $M$ is a manifold if $F^\alpha$ imposes a nice independent set of $m$ constraints on our $n+m$ variables, leaving us with a manifold of dimension $n$.
+\end{thm}
+
+\begin{exm}
+For the sphere $S^2$, we have $m=1,n=2$ and we have the constraint $F^1(\vec{x})=x^2+y^2+z^2-r^2$ for some $r$. Then the Jacobian is simply $J=(\P{F^1}{x},\P{F^1}{y},\P{F^1}{z})=2(x,y,z)$, and this matrix indeed has rank $1$ unless $x=y=z=0$.
+\end{exm}
+
+Group operations (multiplication, inverses) define smooth maps on the manifold. The \term{dimension} of $G$, denoted $\dim(G)$, is the dimension of the group manifold $M(G)$. We may introduce coordinates $\{\theta^i\}, i=1,\ldots, D=\dim(G)$ in some local coordinate patch $P$ containing the identity $e\in G$. Then the group elements depend continuously on $\{\theta^i\}$, such that $g=g(\theta)\in G$ (the manifold structure is compatible with group elements). Set $g(0)=e$. 
+
+Thus if we choose two points $\theta,\theta'$ on the manifold $M$, group multiplication,
+$$g(\theta)g(\theta')=g(\phi)\in G,$$
+corresponds to (induces) a smooth map $\phi: G\times G \to G$
+which can be expressed in coordinates
+$$\phi^i=\phi^i(\theta,\theta'), i=1,\ldots,D$$
+such that $g(0)=e \implies$
+$$\phi^i(\theta,0)=\theta^i, \phi^i(0,\theta')={\theta'}^i.$$
+We ought to be a little careful that our group multiplication doesn't take us out of the coordinate patch we've defined our cooridnates on, but in practice this shouldn't cause us too many problems.
+
+Similarly, group inversion defines a smooth map, $G\to G$. This map can be written as follows:
+$$\forall g(\theta)\in G, \exists g^{-1}(\theta)=g(\tilde \theta)\in G$$
+such that $$g(\theta)g(\tilde\theta)=g(\tilde\theta)g(\theta)=e.$$
+In coordinates, the map
+$$\tilde \theta^i = \tilde\theta^i(\theta), i =1,\ldots, D$$
+is continuous and differentiable.
+
+\begin{exm}
+Take the Lie group $G=(\RR^D,+)$ (Euclidean $D$-dimensional space with addition as the group operation). Then the map defined by group multiplication is simply
+$$\vec{x}''=\vec{x}+\vec{x}' \forall \vec{x},\vec{x}'\in \RR^D$$
+and similarly the map defined by group inversion is
+$$\vec{x}^{-1}=-\vec{x} \forall \vec{x}\in \RR^D.$$
+This is a bit boring since the group multiplication law is commutative, so we'll next look at some important non-abelian groups-- namely, the matrix groups.
+\end{exm}
+
+\subsection*{Matrix groups} Let $\text{Mat}_n(F)$ denote the set of $n\times n$ matrices with entries in a field $F=\RR$ or $\CC$. These satisfy some of the group axioms-- matrix multiplication is closed and associative, and there is an obvious unit element, $e=I_n \in \text{Mat}_n(F)$ (with $I_n$ the $n\times n$ unit matrix). However, $\text{Mat}_n(F)$ is not a (multiplicative) group because not all matrices are invertible (e.g. with $\det M=0$). (Since it is not a group, it is also not a Lie group, though it does have a manifold structure, that of $\RR^{n^2}$.) Thus, we define the \term{general linear groups.}
+\begin{defn}
+The general linear group $GL(n,F)$ is the set of matrices defined by
+\begin{equation}
+GL(n,F)\equiv \set{M\in \text{Mat}_n(F): \det M \neq 0}.
+\end{equation}
+\end{defn}
+
+\begin{defn}
+We also define the \term{special linear groups} $SL(n,F)$ as follows:
+\begin{equation}
+SL(n,F)\equiv \set{M\in GL(n,F): \det M = 1.}
+\end{equation}
+Here, closure follows from the fact that determinants multiply nicely, $\forall M_1,M_2\in GL(n,F),\det(M_1M_2)=\det(M_1)\det(M_2)=\pm 1$ ($=1$ for $SL(n,F)$), and existence of inverses follows from the defining condition that $\det M\neq 0$.
+\end{defn}
+
+It's less obvious that $GL(n,F)$ and $SL(n,F)$ are also Lie groups. In fact, our theorem (Thm. \ref{manifoldcondition}) applies here: the condition that $\det M=\pm 1$ corresponds to a nice $F(\vec{x})=\det M -1, \vec{x}\in \RR^{n^2}$, which is sufficently nice as to define a manifold. The same is true for $SL(n,F)$, so these are indeed Lie groups. Note the dimensions of these sets are as follows.
+\begin{center}
+\begin{tabular}{c c}
+$\dim(GL(n,\RR))=n^2$ & $\dim(GL(n,\CC))=2n^2$\\
+$\dim(GL(n,\RR))=n^2-1$ & $\dim(SL(n,\CC))=2n^2-2$
+\end{tabular}
+\end{center}
+Let me unpack this a little. In $\text{Mat}_n(F)$, we have our free choice of any numbers we like in $F$ for the $n^2$ elements of our matrix. It turns out that imposing $\det M\neq 0$ is not too strong a constraint-- it eliminates a set of zero measure from the space of possible $n\times n$ matrices, so we have our choice of $n^2$ real numbers in $GL(n,\RR)$ and $n^2$ complex numbers, so $2n^2$ real numbers, in $GL(n,\CC)$. Imposing the restriction that $\det M =1$ is now a stronger algebraic condition-- it reduces our choice of values by 1, since if we have picked $n^2-1$ values of the matrix, the last value is completely determined by $\det M=1$. Thus the dimension of $SL(n,\RR)$ is $n^2-1$. Since we get to pick $n^2-1$ complex numbers in $SL(n,\CC)$ (equivalently there are two real constraints, one on the real components and one on the imaginary ones), that amounts to $2(n^2-1)=2n^2-2$ real numbers. Hence, dimension $2n^2-2$.
+
+\begin{defn}
+A \term{subgroup} $H$ of a group $G$ is a subset ($H\subseteq G$) which is also a group. We write it as $H\leq G$. If $H$ is also a smooth submanifold of $G$, we call $H$ a \term{Lie subgroup} of $G$.
+\end{defn}
+
+This is where we ended for today. //
+
+We'll next discuss some important subgroups of $GL(n,\RR)$. First, the \term{orthogonal groups.}
+\begin{defn}
+Orthogonal groups $O(n)$ are the matrix groups which preserve the Euclidean inner product,
+\begin{equation}
+O(n)=\set{M\in GL(n,\RR): M^T M = I_N}.
+\end{equation}
+Their elements correspond to orthogonal transformations, so that for $\vec{v}\in \RR^n$, an orthogonal matrix $M$ acts on $\vec{v}$ by matrix multiplication,
+$$\vec{v}'=M\cdot \vec{v}$$
+and so in particular
+$$|\vec{v}'|^2={\vec{v}'}^T \cdot \vec{v}' = \vec{v}^T \cdot M^T M \cdot \vec{v}= \vec{v}^T \cdot \vec{v}=|\vec{v}|^2.$$
+It also follows that $\forall M\in O(n), \det(M^TM)=\det(M)^2 = \det(I_n) = 1 \implies \det M =\pm 1$.
+\end{defn}
+The orthogonal group $O(n)$ has two connected components.
+\begin{defn}
+The \term{special orthogonal groups} $SO(n)$ are the subset of orthogonal groups which also preserve orientation (i.e. no reflections).
+$$SO(n)\equiv \set{M\in O(n): \det M = 1}.$$
+That is, elements of $SO(n)$ preserve the sign of the volume element in $\RR^n$,
+$$\Omega= \epsilon^{i_1 i_2 \ldots i_n} v_1^{i_1}v_2^{i_2}\ldots v_n^{i_n}.$$
+\end{defn}
+
+\begin{ex}
+Check the group axioms for $SO(n)$.\footnote{As usual, we need to check closure and inverses. The identity matrix $I$ satisfies $I^TI=I$ and $\det I=1$, and associativity follows from standard matrix multiplication. Inverses: if $M\in SO(n)$, then $M^{-1}$ is defined by $MM^{-1}=I$. But $\det(MM^{-1})=\det(M)\det(M^{-1})=(1)\det(M^{-1})=\det I = 1$, so $\det(M^{-1})=1$. Closure: $\forall M,N \in SO(n), \det(MN)=\det(M)\det(N)=(1)(1)=1$, so $MN\in SO(n)$. \qed} %we also need to check the transpose property, that these are also orthogonal
+Show that $\dim(O(n))=\dim(SO(n))=\frac{1}{2} n(n-1)$.
+\end{ex}
