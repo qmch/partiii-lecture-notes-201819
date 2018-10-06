@@ -1,0 +1,61 @@
+Having introduced the matrix groups, we'll next discuss some important subgroups of $GL(n,\RR)$. First, the \term{orthogonal groups.}
+\begin{defn}
+Orthogonal groups $O(n)$ are the matrix groups which preserve the Euclidean inner product,
+\begin{equation}
+O(n)=\set{M\in GL(n,\RR): M^T M = I_N}.
+\end{equation}
+Their elements correspond to orthogonal transformations, so that for $\vec{v}\in \RR^n$, an orthogonal matrix $M$ acts on $\vec{v}$ by matrix multiplication,
+$$\vec{v}'=M\cdot \vec{v}$$
+and so in particular
+$$|\vec{v}'|^2={\vec{v}'}^T \cdot \vec{v}' = \vec{v}^T \cdot M^T M \cdot \vec{v}= \vec{v}^T \cdot \vec{v}=|\vec{v}|^2.$$
+It also follows that $\forall M\in O(n), \det(M^TM)=\det(M)^2 = \det(I_n) = 1 \implies \det M =\pm 1$.
+\end{defn}
+The orthogonal group $O(n)$ has two connected components.
+\begin{defn}
+The \term{special orthogonal groups} $SO(n)$ are the subset of orthogonal groups which also preserve orientation (i.e. no reflections).
+$$SO(n)\equiv \set{M\in O(n): \det M = 1}.$$
+That is, elements of $SO(n)$ preserve the sign of the volume element in $\RR^n$,
+$$\Omega= \epsilon^{i_1 i_2 \ldots i_n} v_1^{i_1}v_2^{i_2}\ldots v_n^{i_n}.$$
+\end{defn}
+
+\begin{ex}\label{groupaxiomsson}
+Check the group axioms for $SO(n)$.\footnote{As usual, we need to check closure and inverses. The identity matrix $I$ satisfies $I^TI=I$ and $\det I=1$, and associativity follows from standard matrix multiplication. Inverses: if $M\in SO(n)$, then $M^{-1}$ is defined by $MM^{-1}=I$. But $\det(MM^{-1})=\det(M)\det(M^{-1})=(1)\det(M^{-1})=\det I = 1$, so $\det(M^{-1})=1$. We also check that the inverse of an orthogonal matrix is also orthogonal: $M M^{-1}=I$, so $(M^{-1})^T (M^T)= (M^{-1})^T M^{-1} =I^T = I$. Closure: $\forall M,N \in SO(n), \det(MN)=\det(M)\det(N)=(1)(1)=1$ and $(MN)^T(MN)=N^TM^T M N= I$, so $MN\in SO(n)$. \qed}
+Show that $\dim(O(n))=\dim(SO(n))=\frac{1}{2} n(n-1)$.\footnote{This can be seen by writing a matrix $M\in SO(n)$ as a row of $n$ column vectors $(\vec{x_1},\vec{x_2},\ldots,\vec{x_n})$. Then the condition that $M^T M = 1$ is equivalent to
+$\begin{pmatrix}
+\vec{x_1}\cdot \vec{x_1} & \vec{x_1}\cdot \vec{x_2} & \ldots &\vec{x_1}\cdot \vec{x_n}\\
+\vec{x_2}\cdot \vec{x_1} & \vec{x_2}\cdot \vec{x_2} & \ldots &\vec{x_2}\cdot \vec{x_n}\\
+\vdots\\
+\vec{x_n}\cdot \vec{x_1}& \ldots & \ldots & \vec{x_n} \cdot \vec{x_n}
+\end{pmatrix}= I_n.$
+We see that by the symmetry of the explicit form of $M^T M$, we get $1+2+3+\ldots+n = n(n+1)/2$ independent constraints on the $n^2$ entries of $M$. Applying our theorem, we find that the resulting manifold has dimension $n^2-n(n+1)/2=n(n-1)/2$.
+} 
+\end{ex}
+
+Orthogonal matrices have some nice properties. Let $M \in O(n)$ be an orthogonal matrix and suppose that $\vec{v}_\lambda$ is an eigenvector of $M$ with eigenvalue $\lambda.$ Then the following is true:
+\begin{enumerate}
+\item If $\lambda$ is an eigenvalue, then $\lambda^*$ is also an eigenvalue (eigenvalues of $M$ come in complex conjugate pairs).
+\item $|\lambda|^2=1$.
+\end{enumerate}
+The proof is as follows:
+\begin{enumerate}
+\item $M\cdot \vec{v}_\lambda = \lambda \vec{v}_\lambda \implies M\cdot \vec{v}_\lambda^* = \lambda^* \vec{v}_\lambda^*$ (since $M$ is a real matrix).\footnote{This is generally true of real matrices with complex eigenvalues-- it's not specific to orthogonal matrices.}
+\item For any complex vector $\vec{v}$, we have
+$$(M\cdot \vec{v}^*)^T \cdot M \cdot \vec{v} = \vec{v}^\dagger \cdot M^T M \cdot \vec{v} = \vec{v}^\dagger \cdot \vec{v}.$$ Now if $\vec{v}=\vec{v}_\lambda$, then
+$$(M\cdot \vec{v}_\lambda^*)^T \cdot M \cdot \vec{v}_\lambda=(\lambda^* \vec{v}^*_\lambda)^T \cdot (\lambda \vec{v}_\lambda)=|\lambda|^2 \vec{v}^\dagger \cdot \vec{v}.$$
+By comparison to the earlier expression we see that $|\lambda|^2=1$. \qed
+\end{enumerate}
+
+\begin{exm}
+For the group $G=SO(2)$, $M\in SO(2)\implies M$ has eigenvalues
+$$\lambda=e^{i\theta},e^{-i\theta}$$ for some $\theta\in\RR,\theta \sim \theta+2\pi$ (identified up to a phase of $2\pi$). A group element may be written explicitly as
+$$M=M(\theta)=\begin{pmatrix}
+\cos\theta & -\sin\theta\\
+\sin\theta & \cos\theta
+\end{pmatrix},$$
+which is uniquely specified by a rotation angle $\theta$. Therefore the group manifold of $SO(2)$ is $M(SO(2)\cong S^1$, the circle.
+\end{exm}
+\begin{exm}
+For the group $G=SO(3)$, we have instead $M\in SO(3)\implies M$ has eigenvalues
+$$\lambda=e^{i\theta},e^{-i\theta},1$$ for $\theta\in \RR,\theta \sim \theta+2\pi$.
+The normalized eigenvector for $\lambda=1$, $\uv n \in \RR^3$, specifies the axis of rotation.
+\end{exm}

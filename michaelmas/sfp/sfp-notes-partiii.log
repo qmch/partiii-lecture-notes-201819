@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  6 OCT 2018 12:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  6 OCT 2018 23:22
 entering extended mode
 **./sfp-notes-partiii.tex
 (sfp-notes-partiii.tex
@@ -1515,38 +1515,39 @@ LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <12> not available
 (Font)              Font shape `T1/pplx/b/n' tried instead on input line 13.
  (2018/10/20181004.tex [1{C:/Users/Ian/AppData/Local/MiKTeX/2.9/pdftex/config/p
 dftex.map}]
-<2018/10/20181004_baryonoctet.png, id=68, 642.4pt x 462.72874pt>
+LaTeX Font Info:    Font shape `T1/pplx/m/sl' in size <9> not available
+(Font)              Font shape `T1/pplx/m/it' tried instead on input line 81.
+ [2]
+<2018/10/20181004_baryonoctet.png, id=90, 642.4pt x 462.72874pt>
 File: 2018/10/20181004_baryonoctet.png Graphic file (type png)
 <use 2018/10/20181004_baryonoctet.png>
 Package pdftex.def Info: 2018/10/20181004_baryonoctet.png  used on input line 8
 4. on input line 84.
 Package pdftex.def Info: Requested size: 256.95544pt x 185.08821pt on input lin
 e 84.
-) (2018/10/20181006.tex
-LaTeX Font Info:    Font shape `T1/pplx/m/sl' in size <9> not available
-(Font)              Font shape `T1/pplx/m/it' tried instead on input line 3.
- [2] [3 <./2018/10/20181004_baryonoctet.png>] [4] [5]) [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 18.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 18.
+) (2018/10/20181006.tex [3 <./2018/10/20181004_baryonoctet.png>] [4]) (2018/10/
+20181009.tex [5] [6]) [7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 20.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 20.
  (sfp-notes-partiii.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 18.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 18.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 20.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 20.
 Package rerunfilecheck Info: File `sfp-notes-partiii.out' has not changed.
-(rerunfilecheck)             Checksum: 77124CF1D141479E80E51B866A9A024E;122.
+(rerunfilecheck)             Checksum: 4F01F651EE59A75CF94FC5583318F2C2;182.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 18.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 20.
  ) 
 Here is how much of TeX's memory you used:
- 31456 strings out of 493352
- 570242 string characters out of 3139718
- 698167 words of memory out of 3000000
- 33968 multiletter control sequences out of 15000+200000
- 607898 words of font info for 342 fonts, out of 3000000 for 9000
+ 31538 strings out of 493352
+ 571100 string characters out of 3139718
+ 700195 words of memory out of 3000000
+ 33986 multiletter control sequences out of 15000+200000
+ 616593 words of font info for 390 fonts, out of 3000000 for 9000
  1289 hyphenation exceptions out of 8191
- 57i,11n,67p,10402b,430s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,14n,67p,10402b,432s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc} <C:\Users\Ian\AppDa
 ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt0900.pk><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Program Files/M
@@ -1561,9 +1562,9 @@ les/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Program Files
 /MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Files/MiKTeX 2.9/fo
 nts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/
 palatino/uplri8a.pfb>
-Output written on sfp-notes-partiii.pdf (6 pages, 220613 bytes).
+Output written on sfp-notes-partiii.pdf (7 pages, 231398 bytes).
 PDF statistics:
- 208 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
- 53378 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 235 PDF objects out of 1000 (max. 8388607)
+ 52 named destinations out of 1000 (max. 500000)
+ 55434 words of extra memory for PDF output out of 61914 (max. 10000000)
 

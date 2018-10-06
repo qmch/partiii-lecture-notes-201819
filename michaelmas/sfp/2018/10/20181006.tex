@@ -37,9 +37,10 @@ We started to describe Lie groups last time. Let us repeat the definition here: 
 
 Sometimes it is useful to consider a manifold as embedded in an ambient space, e.g. $S^2$ embedded in $\RR^3$: $\vec{x}(x,y,z)\in \RR^3$ such that $x^2+y^2+z^2=r^2, r>0$.
 
-\begin{defn}
-We may define $\vec{x}=(x_1,x_2,\ldots,x_{n+m})\in \RR^{n+m}$, such that for a continuous, differentiable function $F^\alpha(\vec{x}): \RR^{n+m}\to \RR, \alpha=1,\ldots,m$, a space $M$ is defined by all such $\vec{x}$ satisfying $F^\alpha(\vec{x})=0,\a=,1\ldots,m$.
-\end{defn}
+More generally, we can take the set of all $\vec{x}=(x_1,x_2,\ldots,x_{n+m})\in \RR^{n+m}$ such that for a continuous, differentiable set of functions $F^\alpha(\vec{x}): \RR^{n+m}\to \RR, \alpha=1,\ldots,m$, a space $M$ is defined by all such $\vec{x}$ satisfying $F^\alpha(\vec{x})=0,\a=,1\ldots,m$. That is,
+\begin{equation}
+M=\set{\vec{x} \in \RR^{n+m} : F^\alpha(\vec{x})=0,\a=,1\ldots,m}
+\end{equation} Then the following theorem holds.
 
 \begin{thm}\label{manifoldcondition}
 $M$ is a smooth manifold of dimension $n$ if the Jacobian matrix $J$ has rank $m$, with the Jacobian defined
@@ -48,7 +49,7 @@ In words, all this says is that $M$ is a manifold if $F^\alpha$ imposes a nice i
 \end{thm}
 
 \begin{exm}
-For the sphere $S^2$, we have $m=1,n=2$ and we have the constraint $F^1(\vec{x})=x^2+y^2+z^2-r^2$ for some $r$. Then the Jacobian is simply $J=(\P{F^1}{x},\P{F^1}{y},\P{F^1}{z})=2(x,y,z)$, and this matrix indeed has rank $1$ unless $x=y=z=0$.
+For the sphere $S^2$, we have $m=1,n=2$ and we have the constraint $F^1(\vec{x})=x^2+y^2+z^2-r^2$ for some $r$. Then the Jacobian is simply $$J=(\P{F^1}{x},\P{F^1}{y},\P{F^1}{z})=2(x,y,z),$$ and this matrix indeed has rank $1$ unless $x=y=z=0$. Therefore we can represent $S^2$ as a manifold of dimension $2$ embedded in $\RR^3$.
 \end{exm}
 
 Group operations (multiplication, inverses) define smooth maps on the manifold. The \term{dimension} of $G$, denoted $\dim(G)$, is the dimension of the group manifold $M(G)$. We may introduce coordinates $\{\theta^i\}, i=1,\ldots, D=\dim(G)$ in some local coordinate patch $P$ containing the identity $e\in G$. Then the group elements depend continuously on $\{\theta^i\}$, such that $g=g(\theta)\in G$ (the manifold structure is compatible with group elements). Set $g(0)=e$. 
@@ -60,7 +61,7 @@ which can be expressed in coordinates
 $$\phi^i=\phi^i(\theta,\theta'), i=1,\ldots,D$$
 such that $g(0)=e \implies$
 $$\phi^i(\theta,0)=\theta^i, \phi^i(0,\theta')={\theta'}^i.$$
-We ought to be a little careful that our group multiplication doesn't take us out of the coordinate patch we've defined our cooridnates on, but in practice this shouldn't cause us too many problems.
+We ought to be a little careful that our group multiplication doesn't take us out of the coordinate patch we've defined our coordinates on, but in practice this shouldn't cause us too many problems.
 
 Similarly, group inversion defines a smooth map, $G\to G$. This map can be written as follows:
 $$\forall g(\theta)\in G, \exists g^{-1}(\theta)=g(\tilde \theta)\in G$$
@@ -90,7 +91,7 @@ We also define the \term{special linear groups} $SL(n,F)$ as follows:
 \begin{equation}
 SL(n,F)\equiv \set{M\in GL(n,F): \det M = 1.}
 \end{equation}
-Here, closure follows from the fact that determinants multiply nicely, $\forall M_1,M_2\in GL(n,F),\det(M_1M_2)=\det(M_1)\det(M_2)=\pm 1$ ($=1$ for $SL(n,F)$), and existence of inverses follows from the defining condition that $\det M\neq 0$.
+Here, closure follows from the fact that determinants multiply nicely, $\forall M_1,M_2\in GL(n,F),\det(M_1M_2)=\det(M_1)\det(M_2)= 1$ for $SL(n,F)$ (is nonzero for $GL(n,F)$), and existence of inverses follows from the defining condition that $\det M\neq 0$.
 \end{defn}
 
 It's less obvious that $GL(n,F)$ and $SL(n,F)$ are also Lie groups. In fact, our theorem (Thm. \ref{manifoldcondition}) applies here: the condition that $\det M=\pm 1$ corresponds to a nice $F(\vec{x})=\det M -1, \vec{x}\in \RR^{n^2}$, which is sufficently nice as to define a manifold. The same is true for $SL(n,F)$, so these are indeed Lie groups. Note the dimensions of these sets are as follows.
@@ -100,35 +101,10 @@ $\dim(GL(n,\RR))=n^2$ & $\dim(GL(n,\CC))=2n^2$\\
 $\dim(GL(n,\RR))=n^2-1$ & $\dim(SL(n,\CC))=2n^2-2$
 \end{tabular}
 \end{center}
-Let me unpack this a little. In $\text{Mat}_n(F)$, we have our free choice of any numbers we like in $F$ for the $n^2$ elements of our matrix. It turns out that imposing $\det M\neq 0$ is not too strong a constraint-- it eliminates a set of zero measure from the space of possible $n\times n$ matrices, so we have our choice of $n^2$ real numbers in $GL(n,\RR)$ and $n^2$ complex numbers, so $2n^2$ real numbers, in $GL(n,\CC)$. Imposing the restriction that $\det M =1$ is now a stronger algebraic condition-- it reduces our choice of values by 1, since if we have picked $n^2-1$ values of the matrix, the last value is completely determined by $\det M=1$. Thus the dimension of $SL(n,\RR)$ is $n^2-1$. Since we get to pick $n^2-1$ complex numbers in $SL(n,\CC)$ (equivalently there are two real constraints, one on the real components and one on the imaginary ones), that amounts to $2(n^2-1)=2n^2-2$ real numbers. Hence, dimension $2n^2-2$.
+And now, a bit of extra detail on the dimensions and manifold properties of these Lie groups. In $\text{Mat}_n(F)$, we have our free choice of any numbers we like in $F$ for the $n^2$ elements of our matrix. It turns out that imposing $\det M\neq 0$ is not too strong a constraint-- it eliminates a set of zero measure from the space of possible $n\times n$ matrices, so we have our choice of $n^2$ real numbers in $GL(n,\RR)$ and $n^2$ complex numbers (so $2n^2$ real numbers) in $GL(n,\CC)$. Requiring that $\det M \neq 0$ means we can equivalently view $GL(n,\RR)$ as the preimage of an open set in $\RR$ (since $\det M: \RR^{n^2}\to \RR$) under a continuous (and smooth!) map, which is therefore an open set in $\RR^{n^2}$. It turns out that any open set in $\RR^{n^2}$ is itself a manifold (really, any open subset of a manifold), so $GL(n,\RR)$ is indeed a manifold. 
+
+Note that the situation is easier in $SL(n,F)$, since our theorem then applies with $F=\det M - 1$. The corresponding Jacobian has rank 1 unless all the matrix elements vanish identically, so $SL(n,F)$ is a manifold Imposing the restriction that $\det M =1$ is now a stronger algebraic condition-- it reduces our choice of values by 1, since if we have picked $n^2-1$ values of the matrix, the last value is completely determined by $\det M=1$. Thus the dimension of $SL(n,\RR)$ is $n^2-1$. Since we get to pick $n^2-1$ complex numbers in $SL(n,\CC)$ (equivalently there are two real constraints, one on the real components and one on the imaginary ones), that amounts to $2(n^2-1)=2n^2-2$ real numbers. Hence, dimension $2n^2-2$.
 
 \begin{defn}
 A \term{subgroup} $H$ of a group $G$ is a subset ($H\subseteq G$) which is also a group. We write it as $H\leq G$. If $H$ is also a smooth submanifold of $G$, we call $H$ a \term{Lie subgroup} of $G$.
 \end{defn}
-
-This is where we ended for today. //
-
-We'll next discuss some important subgroups of $GL(n,\RR)$. First, the \term{orthogonal groups.}
-\begin{defn}
-Orthogonal groups $O(n)$ are the matrix groups which preserve the Euclidean inner product,
-\begin{equation}
-O(n)=\set{M\in GL(n,\RR): M^T M = I_N}.
-\end{equation}
-Their elements correspond to orthogonal transformations, so that for $\vec{v}\in \RR^n$, an orthogonal matrix $M$ acts on $\vec{v}$ by matrix multiplication,
-$$\vec{v}'=M\cdot \vec{v}$$
-and so in particular
-$$|\vec{v}'|^2={\vec{v}'}^T \cdot \vec{v}' = \vec{v}^T \cdot M^T M \cdot \vec{v}= \vec{v}^T \cdot \vec{v}=|\vec{v}|^2.$$
-It also follows that $\forall M\in O(n), \det(M^TM)=\det(M)^2 = \det(I_n) = 1 \implies \det M =\pm 1$.
-\end{defn}
-The orthogonal group $O(n)$ has two connected components.
-\begin{defn}
-The \term{special orthogonal groups} $SO(n)$ are the subset of orthogonal groups which also preserve orientation (i.e. no reflections).
-$$SO(n)\equiv \set{M\in O(n): \det M = 1}.$$
-That is, elements of $SO(n)$ preserve the sign of the volume element in $\RR^n$,
-$$\Omega= \epsilon^{i_1 i_2 \ldots i_n} v_1^{i_1}v_2^{i_2}\ldots v_n^{i_n}.$$
-\end{defn}
-
-\begin{ex}
-Check the group axioms for $SO(n)$.\footnote{As usual, we need to check closure and inverses. The identity matrix $I$ satisfies $I^TI=I$ and $\det I=1$, and associativity follows from standard matrix multiplication. Inverses: if $M\in SO(n)$, then $M^{-1}$ is defined by $MM^{-1}=I$. But $\det(MM^{-1})=\det(M)\det(M^{-1})=(1)\det(M^{-1})=\det I = 1$, so $\det(M^{-1})=1$. Closure: $\forall M,N \in SO(n), \det(MN)=\det(M)\det(N)=(1)(1)=1$, so $MN\in SO(n)$. \qed} %we also need to check the transpose property, that these are also orthogonal
-Show that $\dim(O(n))=\dim(SO(n))=\frac{1}{2} n(n-1)$.
-\end{ex}
