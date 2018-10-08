@@ -1,2 +1,3 @@
-\contentsline {section}{\numberline {1}Friday, October 5, 2018}{1}{section.1}
+\contentsline {section}{\numberline {1}Friday, October 5, 2018}{2}{section.1}
+\contentsline {section}{\numberline {2}Monday, October 8, 2018}{4}{section.2}
 \contentsfinish 

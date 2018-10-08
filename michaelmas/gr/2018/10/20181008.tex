@@ -1,0 +1,61 @@
+Today, we'll start by remarking that Maxwell's equations can be written compactly in 4-vector format. Recall from a good course on electrodynamics that we define the electromagnetic field strength tensor $F^{\mu\nu}$ as
+$$F^{\mu\nu}=\begin{pmatrix}
+0& E_x & E_y & E_z\\
+-E_x & 0 & B_z & - B_y\\
+-E_y & -B_z & 0 & B_x\\
+-E_z & B_y & -B_x & 0
+\end{pmatrix}.$$
+$F^{\mu\nu}$ is a totally antisymmetric rank two tensor. Defining the four-current $j^\mu \equiv(\rho, \vec{j})$ with $\vec{j}$ the ordinary current density and $\rho$ the charge density, we see that
+$$\p_a F_{bc} +\p_b F_{ca} +\p_c F_{ab}=0$$
+and
+$$\p_a F^{ab}=-j^b.$$
+
+But there's something strange about this-- these equations in their current form hold for cartesian coordinates only. Of course, the laws of physics (i.e. as expressed through observable results in experiments) cannot depend on the coordinate system used. 
+\begin{exm}
+The Minkowski metric takes the Cartesian form
+$$ds^2=-dt^2+dx^2+dy^2+dz^2$$
+but if we pass to spherical coordinates, the metric now takes the form 
+$$ds^2=-dt^2+dr^2+r^2d\theta^2 +r^2 \sin^2 \theta d\phi^2=g_{ab}dx^a dx^b.$$
+\end{exm}
+
+General relativity is thus motivated by a desire to understand how the laws of physics are invariant not just under Lorentz transformations but general coordinate transformations. It is also motivated by the \term{weak equivalence principle}, which states that inertial mass and gravitational mass are the same thing-- the $m$ in $F=ma$ and the $m$ in $F=-\frac{GMm }{r^2}$ are the same mass! This is closely related to the \term{Einstein equivalence principle}, which states that in a freely falling frame, the laws of physics are those of special relativity. One cannot distinguish between being in freefall under a gravitational field and simply being at rest in no gravitational field.
+
+We consider spacetime to be a 4-dimensional system ($3+1$ dimensions, if you like) and in particular it has a manifold structure. We may make an explicit choice of $x^a$ some coordinates that label points in $M$, but it would be nice to define vectors in a way that is independent of the coordinates. This will lead us to revisit vectors and covectors.
+
+Consider a curve $\lambda(\tau):\RR\to M$ a parametrized curve sitting in $M$. Now take $f=f(x^a)$ a differentiable function of the coordinates, and define an operator that maps $f$ into $df/dt$: by applying the chain rule, we have
+$$df/dt=\P{x^a}{t}\left(\P{}{x^a}f\right).$$
+Thus a vector is a differential operator that acts on $f$: explicitly, it is $\P{x^a}{t}\P{}{x^a}$, where the $\P{x^a}{t}$ are the components of the vector.
+
+A general vector may therefore be written in its components in some basis $x^a$ as
+$$V= V^a \P{}{x^a}.$$
+
+Thinking back to our curve $\lambda(\tau)$, we may expand our coordinates locally as $x^a(\tau)=x^a (\tau_0)+V^a (\tau-\tau_0)+O((\tau-\tau_0)^2)$, where $V$ is the tangent vector to some curve through the point $\tau_0$. (Okay, we're being a bit careless with notation here-- the instructor has written $\lambda(t)$, but sometimes $t$ is a coordinate on the manifold.)
+
+Vectors (somewhat obviously) form a vector space. If $W, Y$ are vectors, $\alpha,\beta$ real numbers, then $\alpha W + \beta Y$ is another vector with components
+$$(\alpha W^a+\beta Y^a)\P{}{x^a}.$$
+
+As (multi)linear differential operators, vectors obey the Leibniz rule
+$$V^a \P{}{x^a}(fg)= V^a \P{f}{x^a} g+ f V^a \P{g}{x^a}.$$
+So they form a vector space (check the vector space axioms again).
+
+The space of tangent vectors at a point $p$ is called $T_p(M)$. Recall that we defined our tangent vectors with respect to its components in some basis $x^a$. But if we now change to $\tilde x^b = \tilde x^b(x^a)$, then by the chain rule our basis vectors $\P{}{x^a}$ transform as
+%$$\P{}{x^a}=\P{\tilde x^{b}}{x^a}\P{}{{\tilde x}^b}.$$
+But $V$ as an operator is invariant-- it does not depend on our choice of coordinates, so only its decomposition into basis vectors can change. This means that
+%$$V=V^a \P{}{x^a}=\tilde V^a \P{}{\tilde x^a} = V^a \P{\tilde x^b}{x^a}\P{}{\tilde x^b},$$
+so by comparison the components of $V$ transform as
+%$$V^a\to \tilde V^{a'} = \P{\tilde x^{a'}}{\p x^a} V^a.$$
+In other words, tangent vectors transform as contravariant vectors, which is a generalization of the formula in special relativity where $\Lambda^{a'}_{a} = \P{\tilde x^{a'}}{x^a}$
+
+\begin{defn}
+We may also define one-forms, which are covariant vectors at some point $p$. Thus the innter product $\langle \omega, V\rangle$ is a real number, with $\omega$ a 1-form and $V$ a vector. We remark that the inner product is bilinear:
+if $V=\alpha Y + \beta W,$ then
+$$\langle \omega, \alpha Y + \beta W\rangle = \alpha\langle \omega, Y\rangle +\beta \langle \omega, W\rangle$$
+and similarly for the first argument, if $\omega = \alpha \eta+\beta \xi$
+$$\ang{\alpha \eta +\beta\xi, V} = \alpha \ang{\eta, V} +\beta \ang{\xi, V}.$$
+\end{defn}
+
+Let us write $V=V^a E_a$ with $E_a$ some set of basis vectors. Then $\omega= \omega_a E^a$ has components in some basis of one forms $E^a$. We have that $\ang{E^a, E_b}=\delta^a_b$, where $E^a$ forms a basis of 1-forms which is dual to the ordinary basis vectors. As the components of a 1-form are real numbers (and the same is true of vectors) we may compute
+\begin{eqnarray*}
+\ang{\omega,V}&=&\ang{\omega_a E^a, V^b E_b}\\
+&=&
+\end{eqnarray*}
