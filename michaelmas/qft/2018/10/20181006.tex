@@ -8,9 +8,9 @@ Consider the Maxwell Lagrangian,
 \begin{equation}
 \mathcal{L}=-\frac{1}{2}(\p_\mu A_\nu)(\p^\mu A^\nu)+\frac{1}{2}(\p_\mu A^\mu)^2.
 \end{equation}
-Plugging into the E-L equations, we find that $\P{L}{A_\nu}=0$ and
+Plugging into the E-L equations, we find that $\P{\cL}{A_\nu}=0$ and
 \begin{equation}
-\P{L}{\p_\mu A_\nu}=\p^\mu A^\nu +\eta^{-\mu\nu}\p_\rho A^\rho.
+\P{\cL}{(\p_\mu A_\nu)}=\p^\mu A^\nu +\eta^{-\mu\nu}\p_\rho A^\rho.
 \end{equation}
 Thus E-L tells us that
 \begin{equation}
@@ -39,19 +39,19 @@ where $U(\phi)$ is some potential density. $U\to U'(x) \equiv U(\phi'(x))= U(x')
 $$\p_\mu \phi' =\P{}{{x^\mu}}\phi(x')=\P{{{x'}^\sigma}}{{x^\mu}} \p_\sigma' \phi(x')= (\Lambda^{-1})^\sigma_\mu \p_\sigma' \phi(x')$$
 where $\p_\sigma' \equiv \P{}{{{x'}^\sigma}}$.
 Thus the kinetic term transforms as
-$$L_{kin} \to L_{kin}'=\eta^{\mu\nu}\p_\mu \phi' \p_\nu \phi' =\eta^{\mu\nu}(\Lambda^{-1})^\sigma_\mu (\Lambda^{-1})^\tau_\nu \p_\sigma' \phi(x') \p_\tau' \phi(x')=\eta^{\sigma\tau} \p_\sigma' \phi(x')\p_\tau' \phi(x') = L_{kin}(x).$$
+$$\cL_{kin} \to \cL_{kin}'=\eta^{\mu\nu}\p_\mu \phi' \p_\nu \phi' =\eta^{\mu\nu}(\Lambda^{-1})^\sigma_\mu (\Lambda^{-1})^\tau_\nu \p_\sigma' \phi(x') \p_\tau' \phi(x')=\eta^{\sigma\tau} \p_\sigma' \phi(x')\p_\tau' \phi(x') = L_{kin}(x).$$
 
 Thus we see that the action overall transforms as
-$$S\to S' = \int d^4 xL(x')=\int d^4 x L(\Lambda^{-1}x).$$
+$$S\to S' = \int d^4 x \cL(x')=\int d^4 x \cL(\Lambda^{-1}x).$$
 Under a change of variables $u \equiv \Lambda^{-1} x$, we see that $\det(\Lambda^{-1})=1$ (from group theory) so the volume element is the same, $d^4y=d^4x$ and therefore
-$$S'=\int d^4 y L(y)=S.$$
+$$S'=\int d^4 y \cL(y)=S.$$
 We conclude that $S$ is invariant under Lorentz transformations.
 
 We also remark that under a LT, a vector field $A_\mu$ transforms like $\p_\mu \phi$, so $$A_\mu'(x) = (\Lambda^{-1})^\sigma_\mu A_\sigma (\Lambda^{-1}x).$$
 This is enough to attempt Q1 from example sheet 1.\footnote{Copied here for quick reference: Show directly that if $\phi(x)$ satisfies the Klein-Gordon equation, then $\phi(\Lambda^{-1} x)$ also satisfies this equation for any Lorentz transformation $\Lambda.$}
 
 \begin{thm}
-Every continuous symmetry of $L$ gives rise to a current $J^\mu$ which is conserved, $\p_\mu j^\mu=0$. Each $j^\mu$ has a conserved charge $Q=\int_{\RR^3} j^0 d^3x$.
+Every continuous symmetry of $\cL$ gives rise to a current $J^\mu$ which is conserved, $\p_\mu j^\mu=0$. Each $j^\mu$ has a conserved charge $Q=\int_{\RR^3} j^0 d^3x$.
 
 This conserved charge appears because $\frac{dQ}{dt}=\int_{\RR^3} d^3x \p_0 j^0  = -\int_{\RR^3} d^3 x \div {\vec{j}} =0$ by the divergence theorem, assuming $|\vec{j}|\to 0$ as $|\vec{x}|\to \infty$.
 \end{thm}
@@ -62,16 +62,16 @@ with $\alpha$ an infinitesimal change. If $S$ is invariant, we call this a \term
 
 Since $S$ is invariant up to adding a total 4-divergence (a total derivative $\p_\mu$) to the Lagrangian, our symmetry doesn't affect the Euler-Lagrange equations. $L$ transforms as
 \begin{equation}\label{lagrangeinfinitesimal}
-L(x)\to L(x)+\alpha \p_\mu X^\mu(x),
+\cL(x)\to \cL(x)+\alpha \p_\mu X^\mu(x),
 \end{equation}
 and expanding to leading order in $\alpha$ we have
 \begin{equation}
-L\to L(x)+\alpha \P{L}{\phi}\Delta \phi +\alpha \P{L}{(\p_\mu\phi)}\p_\mu(\Delta\phi)+O(\alpha^2).
+\cL\to \cL(x)+\alpha \P{\cL}{\phi}\Delta \phi +\alpha \P{\cL}{(\p_\mu\phi)}\p_\mu(\Delta\phi)+O(\alpha^2).
 \end{equation}
-We can rewrite this in terms of a total derivative $\p_\mu\left(\P{L}{(\p_\mu\phi)}\Delta \phi\right)$
+We can rewrite this in terms of a total derivative $\p_\mu\left(\P{\cL}{(\p_\mu\phi)}\Delta \phi\right)$
 so that
 \begin{equation}
-L'=L(x)+\alpha \p_\mu\left(\P{L}{(\p_\mu\phi)}\Delta \phi\right) +\alpha \left(\P{L}{\phi}-\p_\mu \P{L}{(\p_\mu\phi)}\right)\Delta \phi.
+\cL'=\cL(x)+\alpha \p_\mu\left(\P{\cL}{(\p_\mu\phi)}\Delta \phi\right) +\alpha \left(\P{\cL}{\phi}-\p_\mu \P{\cL}{(\p_\mu\phi)}\right)\Delta \phi.
 \end{equation}
 By Euler-Lagrange, the second term in parentheses vanishes, so we identify the first term in parentheses as none other than $\alpha \p_\mu X^\mu(x)$ from Eqn. \ref{lagrangeinfinitesimal} (in other words, $\p_\mu\left(\P{L}{(\p_\mu\phi)}\Delta \phi\right) =\p_\mu X^\mu$) and recognize 
 \begin{equation}
@@ -88,16 +88,16 @@ $$j^\mu = i\set{ \psi \p_\mu \psi^* - \psi^* \p_\mu \psi}.$$
 \end{exm}
 This is enough to do questions 2 and 3 on the example sheet.
 \begin{exm}
-Under infinitesimal translation $x^\mu \to x^\mu -\alpha \epsilon^\mu$, we have $\phi(x)\to \phi(x)+\alpha \epsilon^\mu \p_\mu \phi(x)$ by Taylor expansion (similar for $\p_\mu\phi$). If the Lagrangian doesn't depend explicitly on $x$, then $L(x)\to L(x) +\alpha \epsilon^\mu \p_\mu L(x)$.
+Under infinitesimal translation $x^\mu \to x^\mu -\alpha \epsilon^\mu$, we have $\phi(x)\to \phi(x)+\alpha \epsilon^\mu \p_\mu \phi(x)$ by Taylor expansion (similar for $\p_\mu\phi$). If the Lagrangian doesn't depend explicitly on $x$, then $\cL(x)\to \cL(x) +\alpha \epsilon^\mu \p_\mu \cL(x)$.
 
-Rewriting to match the form $L+\a \p_\mu X^\mu$, we see that our new Lagrangian takes the form
+Rewriting to match the form $\cL+\a \p_\mu X^\mu$, we see that our new Lagrangian takes the form
 $L(x)+\alpha \epsilon^\nu \p_\mu (\delta^\mu_\nu L)$. We get one conserved current for each component of $\epsilon^\nu$, so that
-$$(j^\mu)_\nu = \P{L}{(\p_\mu \phi)}\p_\nu \phi - \delta^\mu_\nu L$$ with $\p_\mu(j^\mu)_\nu=0$.
+$$(j^\mu)_\nu = \P{\cL}{(\p_\mu \phi)}\p_\nu \phi - \delta^\mu_\nu \cL$$ with $\p_\mu(j^\mu)_\nu=0$.
 We write this as $j^\mu_\nu \equiv T^\mu_\nu$, the energy-momentum tensor. 
 
 \begin{defn}
 The \term{energy-momentum tensor} (sometimes \term{stress-energy tensor})is the conserved current corresponding to translations in time and space. It takes the form 
-$$T^{\mu\nu} \equiv \P{L}{(\p_\mu \phi)}\p^\nu \phi - \eta^{\mu\nu} L,$$
-where we have raised an index with the Minkowski metric as is conventional. The conserved charges from integrating $\int d^3x j^{0\nu}$ end up being the total energy $E=\int d^3x T^{00}$ and the three components of momentum $P^i=\int d^3x T^{0i}$.
+$$T^{\mu\nu} \equiv \P{\cL}{(\p_\mu \phi)}\p^\nu \phi - \eta^{\mu\nu} \cL,$$
+where we have raised an index with the Minkowski metric as is conventional. The conserved charges from integrating $\int d^3x T^{0\nu}$ end up being the total energy $E=\int d^3x T^{00}$ and the three components of momentum $P^i=\int d^3x T^{0i}$.
 \end{defn}
 \end{exm}

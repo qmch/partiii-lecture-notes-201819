@@ -70,6 +70,19 @@ Consider the Klein-Gordon field $\phi$, defined
 $$\mathcal{L}=\frac{1}{2} \eta^{\mu\nu}\p_\mu \phi \p_\nu \phi -\frac{1}{2}m^2 \phi^2.$$
 Here $\eta^{\mu\nu}$ is the standard Minkowski metric\footnote{We use the mostly minus convention here, but honestly the sign conventions are all arbitrary and relativity often uses the other one where time gets the minus sign.}.
 
-To compute the Euler-Lagrange equation for this field theory, we see that $$\P{L}{\phi}=-m^2\phi \text{ and } \P{L}{(\p_\mu \phi)}=\p^\mu \phi.$$
+To compute the Euler-Lagrange equation for this field theory,
+ we see that $$\P{\cL}{\phi}=-m^2\phi \text{ and } \P{\cL}{(\p_\mu \phi)}=\p^\mu \phi.$$
 The Euler-Lagrange equations then tell us that $$\p_\mu \p^\mu \phi+m^2\phi = 0,$$ which we call the \emph{Klein-Gordon equation}. It has wave-like solutions $\phi=e^{-ipx}$ with $(-p^2+m^2)\phi=0$ (so that $p^2=m^2$, which is what we expect in units where $c=1$).
 \end{exm}
+
+\subsection*{A non-lectured aside on functional derivatives} If you're like me, you get a little anxious about taking complicated functional derivatives. The easiest way to manage these is to rewrite the Lagrangian so that all terms precisely match the form of the quantity you are taking the derivative with respect to, and remember that matching indices produce delta functions. 
+
+Here's a quick example. To compute $\P{}{(\p_\alpha \phi)}\left[ \p_\mu \phi \p^\mu \phi\right]$, rewrite the term in the brackets as $\eta^{\mu\nu}\p_\mu \phi \p_\nu \phi$ (since we are deriving with respect to a function of the form $\p_\alpha \phi$) and make sure to take the derivative with respect to a new index not already in the expression, e.g. $\p_\alpha \phi$. Then 
+\begin{eqnarray*}
+\P{}{(\p_\alpha \phi)}\left[ \p_\mu \phi \p^\mu \phi\right]&=&\P{}{(\p_\alpha \phi)}\eta^{\mu\nu}\p_\mu \phi \p_\nu \phi\\
+&=& \eta^{\mu\nu} (\delta^\alpha_\mu)\p_\nu \phi + \eta^{\mu\nu} \p_\mu \phi (\delta _\nu^\alpha)\\
+&=&2\p^\alpha \phi,
+\end{eqnarray*}
+where we have raised the index with $\eta^{\mu\nu}$ and written the final expression in terms of $\alpha$ using the delta function. The functional derivative effectively finds all appearances of the denominator exactly as written, including indices up or down, and replaces them with delta functions so the actual indices match. This is especially important in computing the Euler-Lagrange equations for something like Maxwell theory, where one may have to derive by $\p_\mu A_\nu$ and both those indices must match exactly to their corresponding appearances in the Lagrangian.
+
+No one ever taught me exactly how to approach such variational problems, so I wanted to record my strategy here for posterity. It may take a little longer than just recognizing that $\P{}{(\p_\mu \phi)} \frac{1}{2}\p_\nu \phi \p^\nu \phi = \p^\mu \phi$, but this approach always works and it has the benefit of helping avoid careless mistakes like forgetting the factor of $2$ in the example above.
