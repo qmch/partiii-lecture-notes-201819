@@ -73,12 +73,15 @@ so that
 \begin{equation}
 L'=L(x)+\alpha \p_\mu\left(\P{L}{(\p_\mu\phi)}\Delta \phi\right) +\alpha \left(\P{L}{\phi}-\p_\mu \P{L}{(\p_\mu\phi)}\right)\Delta \phi.
 \end{equation}
-By Euler-Lagrange, the second term in parentheses vanishes, so we identify the first term in parentheses as none other than $\alpha \p_\mu X^\mu(x)$ from Eqn. \ref{lagrangeinfinitesimal} (in other words, $\P{L}{(\p_\mu\phi)}\Delta \phi =X^\mu$) and recognize $$j^\mu\equiv\P{L}{(\p_\mu \phi)}\Delta \phi -X^\mu$$ as our conserved current.
+By Euler-Lagrange, the second term in parentheses vanishes, so we identify the first term in parentheses as none other than $\alpha \p_\mu X^\mu(x)$ from Eqn. \ref{lagrangeinfinitesimal} (in other words, $\p_\mu\left(\P{L}{(\p_\mu\phi)}\Delta \phi\right) =\p_\mu X^\mu$) and recognize 
+\begin{equation}
+j^\mu\equiv\P{L}{(\p_\mu \phi)}\Delta \phi -X^\mu
+\end{equation} as our conserved current (that is, $\p_\mu j^\mu =0$).
 
 \begin{exm}
 Take a complex scalar field $\psi(x)=\frac{1}{\sqrt{2}}(\phi_1(x)+i\phi_2(x)).$ We can then trea $\psi, \psi^*$ as independent variables and write a Lagrangian
 $$L=\p_\mu \psi^* \p^\mu \psi - V(|\psi|^2).$$
-Then we observe that under $\psi\to e^{i\beta}\psi, \psi^* \to e^{-i\beta}\psi^*,$ the Lagrangian is invariant. The differential changes are $\Delta \psi = i \psi$ (think of expanding $\psi\ \to e^{i\beta}\psi$ to leading order) and similarly $\Delta \psi^*=-i\psi^*$ (here, $X^\mu=0$.
+Then we observe that under $\psi\to e^{i\beta}\psi, \psi^* \to e^{-i\beta}\psi^*,$ the Lagrangian is invariant. The differential changes are $\Delta \psi = i \psi$ (think of expanding $\psi\ \to e^{i\beta}\psi$ to leading order) and similarly $\Delta \psi^*=-i\psi^*$ (here we find that $X^\mu=0$).
 
 We add the currents from $\psi, \psi^*$ to find
 $$j^\mu = i\set{ \psi \p_\mu \psi^* - \psi^* \p_\mu \psi}.$$
@@ -89,6 +92,12 @@ Under infinitesimal translation $x^\mu \to x^\mu -\alpha \epsilon^\mu$, we have 
 
 Rewriting to match the form $L+\a \p_\mu X^\mu$, we see that our new Lagrangian takes the form
 $L(x)+\alpha \epsilon^\nu \p_\mu (\delta^\mu_\nu L)$. We get one conserved current for each component of $\epsilon^\nu$, so that
-$$(j^\mu)_\nu = \P{L}{(\p_\mu \phi)}\p_\mu \phi - \delta^\mu_\nu L$$ with $\p_\mu(j^\mu)_\nu=0$.
-We write this as $j^\mu_\nu \equiv T^\mu_\nu$, the energy-momentum tensor. The conserved charges end up being the total energy $E=\int d^3x T^{00}$ and the total momentum $P^i=\int d^3x T^{0i}$.
+$$(j^\mu)_\nu = \P{L}{(\p_\mu \phi)}\p_\nu \phi - \delta^\mu_\nu L$$ with $\p_\mu(j^\mu)_\nu=0$.
+We write this as $j^\mu_\nu \equiv T^\mu_\nu$, the energy-momentum tensor. 
+
+\begin{defn}
+The \term{energy-momentum tensor} (sometimes \term{stress-energy tensor})is the conserved current corresponding to translations in time and space. It takes the form 
+$$T^{\mu\nu} \equiv \P{L}{(\p_\mu \phi)}\p^\nu \phi - \eta^{\mu\nu} L,$$
+where we have raised an index with the Minkowski metric as is conventional. The conserved charges from integrating $\int d^3x j^{0\nu}$ end up being the total energy $E=\int d^3x T^{00}$ and the three components of momentum $P^i=\int d^3x T^{0i}$.
+\end{defn}
 \end{exm}
