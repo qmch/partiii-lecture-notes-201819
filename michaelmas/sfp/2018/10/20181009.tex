@@ -73,8 +73,13 @@ $$\vec{w}\equiv\theta \uv n$$ which lives in the region
 $$B_3=\set{\vec{w}\in \RR^3: |\vec w|\leq \pi} \subset \RR^3$$
 with boundary
 $$\partial B_3 = \set{\vec{w}\in \RR^3: |\vec{w}|=\pi} \cong S^2.$$
-We say that the group manifold $M(SO(3))$ then comes from identifying antipodal points on $\p B_3$ ($\vec{w} \sim -\vec{w} \forall \vec{w} \in \p B_3$).
+We say that the group manifold $M(SO(3))$ then comes from identifying antipodal points on $\p B_3$ ($\vec{w} \sim -\vec{w} \forall \vec{w} \in \p B_3$). See Fig. \ref{so3manifold} for an illustration.
 \end{exm}
+
+\begin{figure}\label{so3manifold}
+\includegraphics[scale=0.7]{2018/10/20181009_img1}
+\caption{The group manifold $M(SO(3))$ is isomorphic to the 3-ball $B^3$ with antipodal points on the boundary identified, $\vec{w} \sim -\vec{w} \forall \vec{w} \in \p B_3$.}
+\end{figure}
 
 \begin{defn}
 A \term{compact} set is any bounded, closed set in $\RR^n$ with $n\geq 0$.\footnote{This is a sufficient condition but avoids the song and dance about unions of closed sets, etc.} For instance, the $2$-sphere $S^2$ is clearly bounded in $\RR^3$. But the hyperboloid $H^2$ (embedded in $\RR^3$ as $x^2+y^2-z^2 =r^2$) is not bounded, since for any distance $r_0$ one can construct a point $\vec{x}$ on $H^2$ which has $|\vec{x}|>r_0$.
@@ -84,4 +89,9 @@ Let us note some properties of the group manifold $M(SO(3))$. It is compact and 
 \begin{defn}
 A space is \term{simply connected} if all loops on the space are contractible (in the language of algebraic topology, its fundamental group $\pi_0$ is trivial).
 \end{defn}
-A bit of intuition for why $M(SO(3))$ is topologically non-trivial: draw a path to the boundary, come out on the antipodal side, and go back to the origin. (Pictures to follow.) As it turns out, this is different from $S^1$ or the torus $T^2$: whereas these have the full $\ZZ$ as (part of) their fundamental groups ($T^2$ is simply $S^1\times S^1$), if we go around twice in $SO(3)$ we find that this new loop is actually a trivial loop (see diagram). Therefore the fundamental group of $SO(3)$ is not infinite but the cyclic group $\ZZ_2$ (i.e. the set $\set{0,1}$ under the group operation $+\mod 2$).
+A bit of intuition for why $M(SO(3))$ is topologically non-trivial: draw a path to the boundary, come out on the antipodal side, and go back to the origin. As it turns out, this is different from $S^1$ or the torus $T^2$: whereas these have the full $\ZZ$ as (part of) their fundamental groups ($T^2$ is simply $S^1\times S^1$), if we go around twice in $SO(3)$ we find that this new loop is actually a trivial loop (see Fig. \ref{z2inso3}). Therefore the fundamental group of $SO(3)$ is not infinite but the cyclic group $\ZZ_2$ (i.e. the set $\set{0,1}$ under the group operation $+\mod 2$).
+
+\begin{figure}\label{z2inso3}
+\includegraphics[scale=0.6]{2018/10/20181009_img2}
+\caption{A sketch of why the loop which goes through the boundary $\p B_3$ twice is homotopic to (can be continuously deformed into) the trivial loop. For simplicity, consider a circular cross-section of $B_3$ and suppose the loop passes through the boundary at points $A$ ($\sim A'$) and $B$ ($\sim B'$). As we continuously move the point $B$ to $A'$, $B'$ must also move towards $A$, as we see in the second image. We then pull the bit of loop from $A'$ to $B$ through the boundary and find that the resulting loop is trivial (sketch 3). Solid black lines indicate the actual loop path, red dashed arrows indicate the effect of identifying antipodal points, and purple arrows suggest the direction of loop deformation between each drawing.}
+\end{figure}

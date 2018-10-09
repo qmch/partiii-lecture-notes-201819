@@ -1,0 +1,75 @@
+Last time, we used Noether's theorem to find the stress-energy tensor
+$$T^{\mu\nu}=\P{L}{(\p_\mu\phi)}\p^\nu \phi - \eta^{\mu\nu} L.$$
+We may ask, what is $T^{\mu\nu}$ for free scalar field theory? Recall the Lagrangian is
+$$L+\frac{1}{2}\p_\mu \phi \p^\mu \phi - \frac{1}{2} m^2 \phi^2.$$
+Then the stress-energy tensor is
+$$T^{\mu\nu}=\p^\mu \phi \p^\nu \phi - \eta^{\mu\nu} L.$$
+The energy is given by 
+$$E=\int d^3 x \left[\frac{1}{2} \dot \phi^2 +\frac{1}{2}(\grad \phi)^2 +\frac{1}{2}m^2 \phi^2 \right]$$
+(from integrating the $T^{00}$ component) and the conserved momentum components are (from $T^{0i}$)
+$$p^i= \int d^3x \dot \phi (\p^i \phi).$$
+
+We'll note that $T^{\mu\nu}$ is symmetric in $\mu,\nu$ but a priori it doesn't have to be. If $T^{\mu\nu}$ is not symmetric initially, we can massage it into a symmetric form by adding $\p_\rho \Gamma^{\rho\mu\nu}$ where $\Gamma^{\mu\rho\nu}=-\Gamma^{\rho\mu\nu}$ (antisymmetric in the first two indices). Then $\p_\mu \left(\p_\rho \Gamma^{\rho\mu\nu}\right)=0$, which means that adding this term will not affect the conservation of $T^{\mu\nu}$. This is sufficient to attempt questions 1-6 of the first examples sheet.
+
+\subsection*{Canonical quantization} Here, we'll follow Dirac's lead and attempt to quantize our field theories. Recall that the Hamiltonian formalism also accommodates field theories (as well as our garden-variety QM). 
+\begin{defn}
+We define the \term{conjugate momentum}
+$$\pi(x)\equiv \P{L}{\dot \phi}$$
+and the \term{Hamiltonian density} corresponding to a Lagrangian $L$ is then
+$$H=\pi(x) \dot \phi(x) - L(x).$$
+As in classical mechanics, we eliminate $\dot\phi$ in favor of $\pi$ everywhere in $H$.
+\end{defn}
+
+\begin{exm}
+For $L=\frac{1}{2}\dot \phi^2 -\frac{1}{2}(\grad \phi)^2 - V(\phi)$ (and writing in terms of $\pi(x)=\dot \phi(x)$) we get
+$$H=\frac{1}{2}\pi^2 +\frac{1}{2}(\grad \phi)^2+ V(\phi).$$
+I've been a little careless with notation here writing just $H$: the Hamiltonian density is $\mathcal{H}$ and the Hamiltonian is $H=\int d^3 x \mathcal{H}$. Hamlton's equations then yield the equations of motion:
+$$\dot \phi = \P{H}{\pi}, \dot \pi = -\P{H}{\phi}.$$
+Working these out explicitly for the free theory will give us back the Klein-Gordon equation. Let's also note that $H$ agrees with the total field energy $E$ that we computed above.
+\end{exm}
+
+There's a slight snag in working in the Hamiltonian formalism-- because $t$ is special in our equations, the theory is not manifestly Lorentz invariant (compare to the $\p_\mu$s and variations with respect to $\delta \p_\mu \phi$ in the Lagrangian formalism). Our original theory was LI, so our new theory is still LI-- it just doesn't look LI.
+
+Now let's recall that in quantum mechanics, canonical quantization takes the coordinates $q_a$ and momenta $p_a$ and promotes them to operators. We also replace the Poisson bracket $\set{,}$ with commutators $[,]$. In QM, we had
+$$[q_a,p^b]= i \delta_a^b (\hbar=1).$$
+We'll do the same for our fields $\phi_a$ and the conjugate momenta $\pi_b$.
+
+\begin{defn}
+A \term{quantum field} is an operator-valued function of space obeying the commutation relations
+\begin{eqnarray*}
+[\phi_a(\vec{x}),\phi_b(\vec{y})]&=&0
+%[\pi_a(\vec{x}),\pi_b(\vec{y})]&=&0
+%[\phi_a(\vec{x}),\pi^b (\vec{y})]&=&i \delta^3(\vec{x}-\vec{y}) \delta_a^b.
+\end{eqnarray*}
+%%fix this later
+\end{defn}
+
+Note that $\phi_a(x), \pi^b(x)$ don't depend on $t$, since we are in the Schr\"odinger picture. All the $t$ dependence sits in the states which evolve by the usual time-dependent Schr\"odinger equation
+$$i\frac{d}{dt} \ket{\psi}=H\ket{\psi}.$$
+We have an infinite number of degrees of freedom, at least one for each $x$ in space. For some theories (free theories), the coordinates evolve independently. Free field theories have $L$ quadratic in $\phi_a$ (plus derivatives thereof), which implies linear equations of motion.
+
+We saw that the simplest free theory leads to the classical Klein-Gordon equation for a real scalar field $\phi(\vec{x},t)$, i.e. $\p_\mu \p^\mu \phi+m^2\phi=0$. To see why this is free, take the Fourier tranform
+$$\phi(\vec{x},t)=\int \frac{d^3 p}{(2\pi)^3} e^{i \vec{p}\cdot \vec{x}}\phi (\vec{p},t).$$
+Then we get the equation of motion
+$$\left[\P[2]{}{t}+(|\vec{p}|^2+m^2)\right] \phi(\vec{p},t)=0.$$
+We see that the solution is a harmonic oscillator with frequency $\omega_{\vec p} = \sqrt{\vec{p}^2 +m^2}$, so the general solution is a superposition of simple harmonic oscillators each vibrating at different frequencies $\omega_{\vec{p}}$. To quantize our field $\phi(\vec{x},t)$, we have to quantize these harmonic oscillators.
+
+\subsection*{Review of 1D harmonic oscillators} Recall that the Hamiltonian for the simple harmonic oscillator is
+$$H=\frac{1}{2} p^2 +\frac{1}{2} \omega^2 q^2,$$
+subject to the quantization condition $$[q,p]=i.$$ It's certainly possible to solve this system by the series method, but the algebraic method is much more elegant by far. Our approach is as follows-- we'd like to factor the Hamiltonian, but we know that it doesn't quite work because $p$ and $q$ do not commute. Therefore, we define the following operators:
+\begin{itemize}
+\item The creation or raising operator, $a^\dagger \equiv -\frac{i}{\sqrt{2\omega}} p +\sqrt{\frac{\omega}{2}}q$
+\item The annihilation or lowering operator, $a \equiv +\frac{i}{\sqrt{2\omega}} p +\sqrt{\frac{\omega}{2}}q$.
+\end{itemize}
+Note that we can equivalently solve for $p$ and $q$, $q=\frac{1}{\sqrt{2\omega}}(a+a^\dagger)$ and $p=-i \sqrt{\frac{\omega}{2}}(a-a^\dagger)$. Substituting $p$ and $q$ into the quantization condition yields the commutator of $a,a^\dagger$,
+$$[a,a^\dagger]=1.$$
+A little more algebra allows us to rewrite the Hamiltonian as
+$$H=\frac{1}{2}\omega (a a^\dagger+ a^\dagger a)=\omega (a^\dagger a +\frac{1}{2}).$$
+Computing the commutators $[H,a]$ and $[H,a^\dagger]$ reveals that
+$$[H,a^\dagger]=\omega a^\dagger, [H,a]=-\omega a,$$
+which tells us that $a,a^\dagger$ take us between energy eigenstates. More specifically, they take us up and down a ladder of equally spaced energy eigenstates so that if we have one eigenstate with energy $E$, then we can reach a whole set of eigenstates with energy $\ldots E+2\omega, E+\omega, E, E-\omega, E-2\omega, \ldots$.
+
+If we further postulate that the energy is bounded from below, this implies the existence of a ground state $\ket{0}$ such that the lowering operator acting on $\ket{0}$ kills the state: $a\ket{0}= 0$. In our original Hamiltonian, this ground state has energy given by
+$$H \ket{0}=\omega (a^\dagger a +\frac{1}{2})\ket{0} = \frac{\omega}{2}\ket{0},$$ so the ground state energy (or \term{zero point energy}) of the system is $\omega/2$. For our quantum theory it's really differences in energy which matter more than their absolute values,\footnote{Remark: gravity is different! Gravity couples directly to energy, not to differences in energy. But in a simple theory like the 1D harmonic oscillator, all we care about is the spacing of the energy levels.} so we can just as easily write an equivalent Hamiltonian $H=\omega a^\dagger a$ and set the ground state energy to $0$.
+
+We only need one state to construct our full ladder of energy eigenstates, and we can do so by passing our equation back to $q$-space (real coordinates) and further writing $p=i \P{}{q}$. If we plug these back into the Hamiltonian, knowing that $H\ket{0}=0$ now, we can solve for the ground state, finding that it is a Gaussian with some appropriate variance and normalization. Then we simply need to apply $a^\dagger$ to get all the other states, labeling them as $\ket{n}=(a^\dagger)^n \ket{0}$ with $H \ket{n}=n\omega \ket{n}$.
