@@ -1,6 +1,8 @@
 # partiii-lecture-notes-201819
 
-If you're reading this, you've found my lecture notes for the Part III Mathematical Tripos course taught at the University of Cambridge for the academic year 2018-2019! They are based primarily on lectured material but may also draw on class handouts, example sheets, and other provided notes, as well as including hyperlinks to interesting non-course material. I will try to relegate to footnotes all non-lectured material for ease of studying later, but some (hopefully) fun tidbits may creep in.
+If you're reading this, you've found my lecture notes for the Part III Mathematical Tripos course taught at the University of Cambridge for the academic year 2018-2019! They are based primarily on lectured material but may also draw on class handouts, example sheets, and other provided notes, as well as including hyperlinks to interesting non-course material. I will try to relegate to footnotes all non-lectured material for ease of studying later, but some (hopefully) fun tidbits may creep in. 
+
+I am primarily a physics student, so these notes will focus on the various theoretical physics courses offered in the areas of Particle Physics, Quantum Fields and Strings and also Relativity and Gravitation.
 
 These lecture notes are prepared firstly for my own reference; I make no guarantees about their completeness or utility as a study guide for people who are not me. That said, I find it useful to unpack ideas which a lecturer may explain quickly or leave as an exercise, so I have included solutions to some exercises and worked through the details of calculations outlined in lecture. I also try to rephrase mathematical ideas in plain language wherever possible, though I will try to make obvious when a bit of precision is sacrificed for clarity of expression.
 
