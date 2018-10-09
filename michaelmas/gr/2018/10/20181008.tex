@@ -39,9 +39,9 @@ $$V^a \P{}{x^a}(fg)= V^a \P{f}{x^a} g+ f V^a \P{g}{x^a}.$$
 So they form a vector space (check the vector space axioms again).
 
 The space of tangent vectors at a point $p$ is called $T_p(M)$. Recall that we defined our tangent vectors with respect to its components in some basis $x^a$. But if we now change to $\tilde x^b = \tilde x^b(x^a)$, then by the chain rule our basis vectors $\P{}{x^a}$ transform as
-%$$\P{}{x^a}=\P{\tilde x^{b}}{x^a}\P{}{{\tilde x}^b}.$$
+$$\P{}{x^a}=\P{\tilde x^{b}}{x^a}\frac{\partial}{\partial \tilde x^b}.$$
 But $V$ as an operator is invariant-- it does not depend on our choice of coordinates, so only its decomposition into basis vectors can change. This means that
-%$$V=V^a \P{}{x^a}=\tilde V^a \P{}{\tilde x^a} = V^a \P{\tilde x^b}{x^a}\P{}{\tilde x^b},$$
+$$V=V^a \P{}{x^a}=\tilde V^a \frac{\p}{\p\tilde x^a} = V^a \P{\tilde x^b}{x^a}\frac{\p}{\p\tilde x^b},$$
 so by comparison the components of $V$ transform as
 %$$V^a\to \tilde V^{a'} = \P{\tilde x^{a'}}{\p x^a} V^a.$$
 In other words, tangent vectors transform as contravariant vectors, which is a generalization of the formula in special relativity where $\Lambda^{a'}_{a} = \P{\tilde x^{a'}}{x^a}$

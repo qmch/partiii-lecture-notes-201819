@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  8 OCT 2018 09:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  8 OCT 2018 10:03
 entering extended mode
 **./gr-notes-partiii.tex
 (gr-notes-partiii.tex
@@ -1543,11 +1543,11 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 19.
  ) 
 Here is how much of TeX's memory you used:
- 31495 strings out of 493352
- 570414 string characters out of 3139718
+ 31499 strings out of 493352
+ 570445 string characters out of 3139718
  697138 words of memory out of 3000000
  33963 multiletter control sequences out of 15000+200000
- 610052 words of font info for 386 fonts, out of 3000000 for 9000
+ 610252 words of font info for 389 fonts, out of 3000000 for 9000
  1289 hyphenation exceptions out of 8191
  57i,12n,67p,10401b,440s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc} <C:\Users\Ian\AppDa
@@ -1562,7 +1562,7 @@ Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/
 type1/urw/palatino/uplri8a.pfb>
-Output written on gr-notes-partiii.pdf (6 pages, 217878 bytes).
+Output written on gr-notes-partiii.pdf (6 pages, 219120 bytes).
 PDF statistics:
  175 PDF objects out of 1000 (max. 8388607)
  25 named destinations out of 1000 (max. 500000)
