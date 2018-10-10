@@ -1,0 +1,93 @@
+\subsection*{A quick admin note} There is no lecture Monday 15 October. In addition, office hours will be Tuesdays at 4 PM in B1.26. Moving on.
+
+Let us recall that we have a multiplication law on one-forms and vectors, 
+$$\langle \omega, X\rangle = \omega_a X^a$$
+for $\omega$ any one-form, $X$ any vector. That is, we can write this product in terms of the components of $\omega$ and $X$. 
+
+\begin{defn}
+With this in mind, we define the \term{differential} of a function $f:M\to \RR$ to be the one-form $df$, such that
+$$\langle df, X \rangle = Xf$$
+(that is, $X$ as a differential operator acting on $f$).
+\end{defn}
+\begin{exm}
+Non-lectured example: consider the function $f=x+y$ in $\RR^3$ and let $X= \P{}{y}$. (We have chosen a coordinate basis to make the computation clearer.) Then $df=dx+dy$ (a one-form) and now
+$$\langle df, X \rangle = Xf = \P{}{y}(x+y)=1.$$
+\end{exm}
+
+Recall we have a basis of 1-forms $E^a$ and a basis of vectors $E_b$ with $\langle E^a, E_b \rangle = \delta^a_b$. In a coordinate basis, the basis vectors take the form
+$$E_a = \P{}{x^a}\text{ and }E^b= dx^b.$$
+Thus
+$$\langle dx^a, \P{}{{x^b}}\rangle = \delta^a_b.$$
+\begin{defn}
+A one-form is \term{exact} if it can be written as $df$ for some scalar $f$. For instance, $dt$ and $dr$ are exact because they are the differentials of $t$ and $r$, but $rd\theta$ is not exact. However, the one-form $r dr$ is exact, since it can be written $d(r^2 /2).$
+\end{defn}
+In Minkowski space with Cartesian coordinates, the natural basis of one-forms $dt,dx,dy,dz$ forms a coordinate basis since each of these is exact, and the basis of vectors dual to this is $\P{}{t},\P{}{x},\P{}{y},\P{}{z}$. 
+
+However, in spherical coordinates the Minkowski metric looks different. It takes the form
+$$ds^2=-dt^2 +dr^2+r^2d\theta^2 +r^2 \sin^2\theta d\phi^2.$$
+The basis of one-forms here, 
+$$dt, dr, rd\theta, r\sin\theta d\phi$$
+is not a coordinate basis because these are not all of the form $df$.
+The basis vectors dual to the one-forms in spherical coordinates is also kind of bad. They take the form 
+$$\P{}{t},\P{}{r},\frac{1}{r}\P{}{\theta},\frac{1}{r\sin\theta}\P{}{\phi},$$ and these are not a coordinate basis because they are not of the form $\P{}{{x^a}}$ (equivalently, they are not dual to exact one-forms).
+
+However, we remark that our defining equation for the product of a one-form and vector produces an ordinary scalar, which must be invariant under coordinate transformations:
+$$\langle \omega, X\rangle = \omega_a X^a\text{ in any basis.}$$
+This determines how the components of a one-form $\omega_a$ change under coordinate transformations.
+In a coordinate basis, we know that the components of a vector transform like coordinate functions:
+$$X^a\to \tilde X^{a'}=\frac{\p \tilde x^{a'}}{\p x^a} X^a.$$
+Therefore in a coordinate basis, the components of a one-form must transform in the inverse way,
+$$\omega_a \to \tilde \omega_{a'} = \frac{\p x^a}{\p \tilde x^{a'}} \omega_a.$$
+Note where the primed indices lie and which coordinates are the new coordinates $\tilde x$ versus the old coordinates $x$. The factor here $\frac{\p x^a}{\p \tilde x^{a'}}$ is analogous to how the Lorentz transformation acts (as the Lorentz transformation is a particular coordinate transformation satisfying certain constraints).
+
+Suppose that $\langle df ,X\rangle = 0$ for some $df$. If one is working in $n$ dimensions, this gives one constraint equation on the $n$ components of $X$. Thus, there are $(n-1)$ different linearly independent choices of $X$ which solve this equation and therefore span an $n-1$-dimensional space. We have put one constraint specified by $f$ on our space of all possible $X$ such that $df$ is the normal to the surface $f=$ constant.
+
+\begin{exm}
+Again, a non-lectured concrete example. Let us again work in $\RR^3$ and set $f=x.$ Then a general $X$ can be written as $X^a \P{}{x^a}$ and the condition that $\ang{df,X}=0$ can be computed explicitly as
+$$\ang{df,X}=\paren{X^1 \P{}{x}+X^2 \P{}{y}+X^3 \P{}{z}}(x)=X^1(1)=0.$$
+Therefore our surface is defined by $X^1=0$ but we may choose $X^2$ and $X^3$ freely ($n-1=2$ free choices). Indeed, we see that $df=dx$ is normal to the surface $f=x=$ constant.
+\end{exm}
+
+A tensor of type $(r,s)$ in a basis of $1$-forms $E^a$ and vectors $E_a$ takes the form
+$$T=T^{a_1\ldots a_r}_{b_1\ldots b_s} E_{a_1}\otimes E_{a_2}\otimes\ldots \otimes E_{a_r} \otimes E^{b_a}\otimes \ldots \otimes E^{b_s},$$
+where $\otimes$ is the tensor product (not just a direct product!).\footnote{Tensor products are more complicated than direct products because their addition structure is multilinear, i.e. linear in each argument individually but not all simultaneously. Where it might make sense to add $(2,1)+(1,2)=(3,3)$ in $\RR\times \RR$, the equivalent tensor product in $\RR \otimes \RR$ would have $2 \otimes 1 + 1\otimes 2 = 2\otimes 1 + 2 \otimes 1= (2+2)\otimes 1 = 4 \otimes 1$. So this is quite a different beast. More info on tensor products and tensors as mathematical constructions can be found at \url{https://jeremykun.com/2014/01/17/how-to-conquer-tensorphobia/}.}
+
+$T$ is coordinate invariant, so in a coordinate basis the components of $T$ transform as
+$${\tilde T^{a_1'\ldots a_r'}}_{b_1'\ldots b_s'}=\frac{\p \tilde x^{a_1'}}{\p x^{a_1}} \ldots \frac{\p \tilde x^{a_r'}}{\p x^{a_r}} \frac{\p x^{b_1}}{\tilde x^{b_1'}} \ldots \frac{\p x^{b_s}}{\tilde x^{b_s'}} {T^{a_1\ldots a_n}}_{b_1\ldots b_s}.$$
+In a non-coordinate basis, these $\frac{\p \tilde x^{a'}}{\p x^a}$ are replaced by some general functions $\Phi ^{a'}_a$ where $\tilde x^{a'}=\Phi^{a'}_a x^a$.
+
+We can perform the symmetrization operation, denoted by putting indices to be symmetrized in parentheses:
+$$X_{(a_1 \ldots a_r)}\equiv \frac{1}{r!}\left[\text{sum of all permutations of }a_1\ldots a_r\right].$$
+For example, $X_{(ab)}=\frac{1}{2}\left[X_{ab}+X_{ba}\right]$. Similarly we have the antisymmetrization operation, denoted by putting indices to be antisymmetrized in square brackets:
+$$X_{[a_1\ldots a_r]}=\frac{1}{r!}\left[\text{sum over all even permutations } - \text { sum of all odd permutations}\right].$$
+For example, $X_{[ab]}=\frac{1}{2}[X_{ab}-X_{ba}].$ Having defined symmetrization and antisymmetrization, we now consider a special class of tensor-- the totally antisymmetric $(0,p)$ tensor.
+
+\begin{defn}
+A \term{differential $p$-form} is a tensor of type $(0,p)$ which is antisymmetric on all indices, i.e. $A_{a_1\ldots a_p}=A_{[a_1 \ldots a_p]}$. Some familiar $p$-forms include the $2$-form $F_{\mu\nu}$ from electromagnetism and the Levi-Civita symbol $\epsilon_{ijk}$.
+\end{defn}
+We can describe $A$ in terms of basis vectors $E^a$ using a construction called the wedge product.
+\begin{defn}
+The \term{wedge product} is a special kind of antisymmetrizing multiplication of a $p$-form and a $q$-form. For a $p$-form $A=A_{a_1\ldots a_p}$ and a $q$-form $B=B_{b_1\ldots b_q}$, the wedge product $A\wedge B$ is given by
+$$(A\wedge B)_{a_1\ldots a_p b_1 \ldots b_q}\equiv A_{[a_1\ldots a_p}B_{b_1\ldots b_q]}.$$
+For instance $A\wedge B = (-1)^{pq}B \wedge A$ (this is easy to prove-- we simply switch the $q$ indices of $B$ past the $p$ indices of $A$ and pick up the appropriate $pq$ sign flips along the way).
+\end{defn}
+As an invariant object, the $p$-form $A$ can be written as $$A=A_{a_1\ldots a_p} E^{a_1}\wedge \ldots \wedge E^{a_p},$$ where $A_{a_1\ldots a_p}$ are now the components of the $p$-form $A$.
+
+\begin{defn}
+We also define the exterior derivative, a generalization of the usual derivative $\p_\mu$:
+$$(dA)_{ba_1 \ldots a_p} \equiv \P{}{{x^{[b}}} A_{a_1 \ldots a_p]}=\p_{[b}A_{a_1 \ldots a_p]}$$
+defines a $p+1$-form, as it is by definition antisymmetric in its $p+1$ indices.
+The exterior derivative of a product follows a variation of the Leibniz rule:
+$$d(A\wedge B)=dA\wedge B +(-1)^p A\wedge dB.$$
+Note that $ddA=0$, so $d$ is nilpotent (it kills all exact differentials).\footnote{Suppose we compute $ddA$: then we will have two derivatives in our expression $\p_{[\mu} \p_\nu A_{a_1\ldots a_p]}$. But derivatives commute, so to every $\p_\alpha \p_\beta$ term in the antisymmetrization sum there will be a corresponding $-\p_\beta \p_\alpha$ term. These terms cancel no matter what $A$ is, so $ddA=0$ identically.}
+\end{defn}
+
+The gradient is a simple example of an exterior derivative of a 0-form (AKA a scalar):
+$$(d\phi)_\mu=\p_\mu \phi.$$
+
+From prior experiences with special (or general) relativity, we might have an intuition that the metric has something to do with gravitation. The line element $ds$ (defined by $ds^2 = g_{ab}dx^a dx^b$) is invariant and is therefore a (symmetric) tensor. In a freely falling frame, the metric of Minkowski space is $$\tilde \eta_{a'b'} = \frac{\p x^a}{\p\tilde x^{a'}}\frac{\p x^b}{\p \tilde x^{b'} }g_{ab}.$$ Do such $\frac{\p x^a}{\p\tilde x^{a'}}$ always exist? The answer turns out to be yes-- $g_{ab}$ is not degenerate, so one may diagonalize it and then rescale the eigenvalues. Sylevester's theorem states that if $g$ has $r$ positive eigenvalues, $s$ negative eigenvalues, then diagonalizing preserves this.%it's super unclear how this all applies, TBH. 
+
+Therefore given $g_{ab}$ that is non-degenerate, the inverse metric $g^{ab}$ can be define with $g^{ab}g_{bc}=\delta^a_c$ the Kronecker delta. One may use the metric to raise and lower indices:
+$V_b=g_{bc}V^c$ and $V^a = g^{ab}V_b$.
+
+\textit{``There are more unknowns than there are knowns.''} A brief summary of this course.
