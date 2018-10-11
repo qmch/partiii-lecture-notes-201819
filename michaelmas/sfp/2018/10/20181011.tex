@@ -1,0 +1,113 @@
+Last time, we discussed $SO(3)$ which was a compact submanifold of $GL(n, \RR)$. But there are also non-compact subgroups we should consider. We introduced the orthogonal group of matrices $M\in O(n)$ which preserve the Euclidean metric on $\RR^n$, i.e.
+$$g=\text{diag}\set{+1,+1,\ldots +1}, M^T g M = g.$$
+But we may also generalize almost immediately to a metric with a different signature.
+\begin{defn}
+$O(p,q)$ transformations preserve the metric of signature $(p,q)$ on $\RR^{p,q}$, where
+$$\eta=\begin{pmatrix}
+I_p & 0\\
+0 & -I_q
+\end{pmatrix}.$$
+Then $O(p,q)$ is defined by 
+$$O(p,q)=\set{M\in GL(p+q,\RR) : M^T \eta M = \eta}.$$
+$SO(p,q)$ is defined equivalently as
+$$SO(p,q)=\set{M\in O(p,q) : \det M =1}.$$
+\end{defn}
+
+\begin{exm}
+The (full) Lorentz group $O(3,1)$ preserves the Minkowski metric. We could consider $SO(1,1)$, which takes the form
+$$M=\begin{pmatrix}
+\cosh \phi & \sinh \phi\\
+\sinh\phi & \cosh \phi
+\end{pmatrix}$$
+with $\phi \in \RR$ the rapidity. This is just a Lorentz boost in one direction, parametrized by the rapidity.
+\end{exm}
+
+It's also useful to discuss subgroups of $GL(n,\CC)$ (matrices with complex entries).
+\begin{defn}
+We introduce the \term{unitary transformations}, defined by
+$$U(n)=\set{ U \in GL(N, \CC) : U U^\dagger = I_n}.$$
+Such transformations therefore preserve the inner product of complex vectors $\vec{v}\in \CC^n$, with $|\vec{v}|^2= \vec{v}^\dagger \cdot \vec{v}$.
+These also form a Lie group (we need to look at the constraints imposed by the $UU^\dagger$ condition and apply our implicit function theorem to confirm that this is really a manifold).
+\end{defn}
+
+The unitary transformations have the condition that since $U\in U(n)\implies U^\dagger U = I_n \implies |\det U|^2 = 1$. Thus $\det U = e^{i\delta}, \delta \in \RR$. Whereas in $O(n)$ we had two discrete possibilities for $\det M$ leading to two connected components, we see that in $U(n)$ we can parametrize our matrices by a continuous $\delta$ and so we expect $O(n)$ as a manifold to be connected.
+
+\begin{defn}
+We may also define the special unitary group, $SU(N)$.
+$$SU(n)=\set{U\in  U(n) : \det U = 1}.$$
+\end{defn}
+
+How big is $U(n)$? A priori we get $2n^2$ choices of real numbers. But the matrix equation $UU^\dagger=I$ is constrained since $U U^\dagger$ is Hermitian, and so we get $2\times \frac{1}{2}n(n-1)$ constraints from the entries above the diagonal $+n$ constraints since the elements on the diagonal are real. Therefore we get $N^2-n+n=n^2$ constraints, and
+$$\dim(U(n))=2n^2-n^2 = n^2.$$
+What about for $SU(n)$? Normally $\det U =1$ would give two constraints for a general complex number, but we know that $\det U = e^{i\delta}$ for $U\in U(n)$, so we only get one constraint out of this condition (effectively setting our parameter $\delta$ to $1$). Thus
+$$\dim(SU(n))=n^2 -1.$$
+
+\begin{exm}
+$SU(1)$ would have dimension $1-1=0$, which is not interesting, so the first interesting subgroup of $GL(n,\CC)$ is then $U(1)$, with dimension $1$:
+$$U(1)=\set{z\in \CC : |z|=1}.$$
+This has the group manifold structure of a circle, but we've seen another group with the same manifold structure: $SO(2)$! In light of this, we would like to have some notion that two groups are really ``the same,'' motivating the following definition.
+\end{exm}
+\begin{defn}
+A \term{group homomorphism} is a function $J:G\to G'$ such that
+$$\forall g_1, g_2 \in G, J(g_1g_2)=J(g_1)J(g_2).$$
+In other words, the group structure is preserved and group multiplication commutes with applying the homomorphism.
+\end{defn}
+\begin{defn}
+An \term{isomorphism} is a group homomorphism which is a one-to-one smooth map $G\leftrightarrow G'$. We say that two Lie groups $G,G'$ are isomorphic if there exists an isomorphism between them.
+\end{defn}
+
+\begin{exm}
+Take a general element $z=e^{i\theta}\in G= U(1, \theta \in \RR$. Thus define
+$$M(\theta)=\begin{pmatrix}
+\cos\theta& - \sin\theta\\
+\sin\theta & \cos\theta
+\end{pmatrix} \in G'=SO(2).$$
+Then our group homomorphism is 
+$$J:z(\theta)= e^{i\theta} \to M(\theta) \in SO(2).$$
+It's straightforward to check that
+\begin{eqnarray*}
+J(z(\theta_1)z(\theta_2)) &=& M(\theta_1+\theta_2)\\
+&=&M(\theta_1)M(\theta_2)\\
+&=&J(z(\theta_1))J(z(\theta_2))\\
+&\implies& U(1) \simeq SO(2).
+\end{eqnarray*}
+\end{exm}
+
+\begin{exm}
+Now consider $G=SU(2)$. $\dim(SU(2)=2^1-1=3$, and we can write elements of $SU(2)$ as
+$$U=a_0 I_2 + i \vec{a}\cdot \gv{\sigma},$$
+where $\gv{\sigma}=(\sigma_1, \sigma_2, \sigma_3)$ are the Pauli matrices, $a_0 \in \RR, \vec{a}\in \RR^3$, and
+$$a_0^2+|\vec{a}|^2=1.$$
+We've seen another group of the same dimension, $SO(3)$, but we remark that these are \emph{not} isomorphic to each other. From our parametrization of $SU(2)$, we see that $M(SU(2)=S^3$ the three-sphere, but $$\pi_1(S_3)=\emptyset, \pi_1(M(SO(3))=\ZZ_2,$$
+so they cannot be isomorphic.
+\end{exm}
+
+\subsection*{Lie algebras} 
+\begin{defn}
+A \term{Lie algebra} $\mathfrak{g}$ is a vector space (over a field $F=\RR$ or $\CC$) equipped with a \term{bracket}. A \term{bracket} is an operation
+$$[,]:\mathfrak{g} \times \fg \to \fg$$
+which has the following properties:
+\begin{enumerate}
+\item antisymmetry, $\forall X,Y \in \fg, [X,Y]=-[Y,X]$
+\item linearity, $[\alpha X+\beta Y, Z] = \alpha [X,Z]+\beta [Y, Z] \forall \alpha,\beta \in F, \forall X,Y,Z \in \fg$
+\item the Jacobi identity, $\forall X,Y,Z\in \fg, [X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$.
+\end{enumerate}
+Note that if a vector space $V$ has an associative multiplication law $*:V\times V \to V$ (that is, $(X*Y)*Z=X*(Y*Z)$), we can make a Lie algebra by simply defining the bracket as
+$$[,]=X * Y - Y* X \forall X,Y\in V.$$
+This is pretty easy to prove and we will do so on an example sheet. The most obvious choice is $V$ a vector space of matrices and $*$ ordinary matrix multiplication.
+\end{defn}
+The dimension of $\fg$ is the same as the dimension of the underlying vector space $V$ (since we have just equipped $V$ with some extra structure).
+
+Note that we could choose a basis
+$$B=\set{T^a, a=1,\ldots,n=\dim(\fg)}$$ such that
+$$\forall X\in \fg, X = X_a T^a \equiv \sum_{a=1}^n X_a T^a, X_a \in F.$$
+That is, we can decompose a general element of $\fg$ into its components $X_a$. Then we observe that for $X,Y\in \fg$, we can always compute
+$$[X,Y]=X_aY_b [T^a, T^b]$$
+in this basis $T^a$. 
+\begin{defn}
+We therefore see that a general Lie bracket is defined by the \term{structure constants} $f^{ab}_c$, given by
+$$[T^a,T^b]=f^{ab}_c T^c.$$
+Once we compute these with respect to a basis, we know how to compute any Lie bracket of two general elements. Since the structure constants come from a Lie bracket, they obey antisymmetry in the upper indices, $$f^{ab}_c= -f^{ab}_c,$$
+and also (exercise) a variation of the Jacobi identity,
+$$f^{ab}_c f^{cd}_e +f^{da}_c f^{cb}_e+f^{bd}_c f^{ca}_e =0.$$
+\end{defn}

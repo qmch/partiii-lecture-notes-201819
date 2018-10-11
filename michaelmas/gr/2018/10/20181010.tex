@@ -28,7 +28,7 @@ $$ds^2=-dt^2 +dr^2+r^2d\theta^2 +r^2 \sin^2\theta d\phi^2.$$
 The basis of one-forms here, 
 $$dt, dr, rd\theta, r\sin\theta d\phi$$
 is not a coordinate basis because these are not all of the form $df$.
-The basis vectors dual to the one-forms in spherical coordinates is also kind of bad. They take the form 
+The set of basis vectors dual to the one-forms in spherical coordinates is also kind of bad. They take the form 
 $$\P{}{t},\P{}{r},\frac{1}{r}\P{}{\theta},\frac{1}{r\sin\theta}\P{}{\phi},$$ and these are not a coordinate basis because they are not of the form $\P{}{{x^a}}$ (equivalently, they are not dual to exact one-forms).
 
 However, we remark that our defining equation for the product of a one-form and vector produces an ordinary scalar, which must be invariant under coordinate transformations:
@@ -49,11 +49,11 @@ Therefore our surface is defined by $X^1=0$ but we may choose $X^2$ and $X^3$ fr
 \end{exm}
 
 A tensor of type $(r,s)$ in a basis of $1$-forms $E^a$ and vectors $E_a$ takes the form
-$$T=T^{a_1\ldots a_r}_{b_1\ldots b_s} E_{a_1}\otimes E_{a_2}\otimes\ldots \otimes E_{a_r} \otimes E^{b_a}\otimes \ldots \otimes E^{b_s},$$
+$$T={T^{a_1\ldots a_r}}_{b_1\ldots b_s} E_{a_1}\otimes E_{a_2}\otimes\ldots \otimes E_{a_r} \otimes E^{b_a}\otimes \ldots \otimes E^{b_s},$$
 where $\otimes$ is the tensor product (not just a direct product!).\footnote{Tensor products are more complicated than direct products because their addition structure is multilinear, i.e. linear in each argument individually but not all simultaneously. Where it might make sense to add $(2,1)+(1,2)=(3,3)$ in $\RR\times \RR$, the equivalent tensor product in $\RR \otimes \RR$ would have $2 \otimes 1 + 1\otimes 2 = 2\otimes 1 + 2 \otimes 1= (2+2)\otimes 1 = 4 \otimes 1$. So this is quite a different beast. More info on tensor products and tensors as mathematical constructions can be found at \url{https://jeremykun.com/2014/01/17/how-to-conquer-tensorphobia/}.}
 
 $T$ is coordinate invariant, so in a coordinate basis the components of $T$ transform as
-$${\tilde T^{a_1'\ldots a_r'}}_{b_1'\ldots b_s'}=\frac{\p \tilde x^{a_1'}}{\p x^{a_1}} \ldots \frac{\p \tilde x^{a_r'}}{\p x^{a_r}} \frac{\p x^{b_1}}{\tilde x^{b_1'}} \ldots \frac{\p x^{b_s}}{\tilde x^{b_s'}} {T^{a_1\ldots a_n}}_{b_1\ldots b_s}.$$
+$${{\tilde T}^{a_1'\ldots a_r'}}_{b_1'\ldots b_s'}=\frac{\p \tilde x^{a_1'}}{\p x^{a_1}} \ldots \frac{\p \tilde x^{a_r'}}{\p x^{a_r}} \frac{\p x^{b_1}}{\tilde x^{b_1'}} \ldots \frac{\p x^{b_s}}{\tilde x^{b_s'}} {T^{a_1\ldots a_n}}_{b_1\ldots b_s}.$$
 In a non-coordinate basis, these $\frac{\p \tilde x^{a'}}{\p x^a}$ are replaced by some general functions $\Phi ^{a'}_a$ where $\tilde x^{a'}=\Phi^{a'}_a x^a$.
 
 We can perform the symmetrization operation, denoted by putting indices to be symmetrized in parentheses:
