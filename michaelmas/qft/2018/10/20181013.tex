@@ -1,0 +1,82 @@
+We previously found that we could write the field momentum operator (not the conjugate momentum!) as
+$$\vec{P}=-\int \pi(x) \grad \phi(\vec{x}) d^3x = \int \frac{d^3p}{(2\pi)^3} \vec{ p} a_{\vec p}^\dagger a_{\vec p}.$$
+We could also act with the angular momentum operator $J^i$, and what we find is that 
+$$J^i\ket{\vec{p}}=0,$$
+so the scalar field theory represents a spin $0$ (scalar) boson.
+
+In general we could imagine cooking up the multi-particle state
+$$\ket{\pv_1,\pv_2,\ldots,\pv_n}=a_{\pv_1}^\dagger a_{\pv_2}^\dagger \ldots a_{\pv_n}^\dagger \ket{0}.$$
+But it follows that
+$$\ket{\pv, \vec{q}}=\ket{\vec{q},\vec p},$$
+so our states are symmetric under interchange $\implies$ these particles are bosons. The full Hilbert space is spanned by
+$$\ket{0},a_{\pv}^\dagger \ket{0}, a_{\pv_1}^\dagger a_{\pv_2}^\dagger\ket{0}, \ldots$$
+and this is called Fock space.
+
+If we use the number operator
+$$N\equiv \int \frac{d^3p}{(2\pi)^3} a_{\pv}^\dagger a_{\pv}$$
+which counts the number of particles in a state, we find
+$$N\ket{\pv_1, \ldots ,\pv_n}=n \ket{\pv_1, \ldots ,\pv_n}.$$
+But it's easy to check that (and you should check this using the commutation relations) $$[N,H]=0,$$
+which means that the number of particles is conserved in the free theory (this is not true once we add interactions).
+
+Let's also note that our momentum eigenstates are \emph{not} localized in space. We can describe a localized state by a Fourier transform,
+$$\ket{\vec x} = \int \frac{d^3 p}{(2\pi)^3} e^{-i \vec p \cdot \vec x} \ket{\vec p}.$$
+More generally we describe a wavepacket partially localized in position and momentum space, e.g. by 
+$$\ket{\psi} = \int\frac{d^3p}{(2\pi)^3} e^{-i\vec p \cdot \vec x} \psi(\vec p)\ket{\pv}.$$
+Note that neither $\ket{\vec x}$ nor $\ket{\psi}$ are eigenstates of the Hamiltonian like in QM.
+
+We consider now relativistic normalization. We define the vacuum such that $\braket{0}{0}=1$, which certainly must be Lorentz invariant ($1$ is just a number). So in general 
+$$\braket{\vec p}{\vec q}=\bra{0}[a_{\pv},a_{\vec q}^\dagger] \ket{0}=(2\pi)^3 \delta^3(\vec p - \vec q).$$
+Is this Lorentz invariant? Under the Lorentz transformation, we have $$p^\mu \to \Lambda^\mu_\nu p^\nu \equiv {p'}^\mu.$$
+We want the two states to be related by a unitary transformation so that the inner product $\braket{\vec p}{\vec q}$ is Lorentz invariant (i.e. $\braket{\vec p}{\vec q}\to \braket{\vec p'}{\vec q'}=\bra{\pv}U(\Lambda)^\dagger U(\Lambda)\ket{\vec q})=\braket{\vec p}{\vec q}$ by unitarity).
+
+To figure this out, we'll need to look at a Lorentz invariant object, e.g. the identity operator on 1-particle states.
+$$1=\int \frac{d^3p}{(2\pi)^3} \ket{\pv}\bra{\pv}.$$
+Either half of this (the $d^3p$ and the $\bra{\pv}\ket{\pv}$ parts) is not LI, but somehow the whole thing is (since it's equal to $1$).
+
+We start by claiming that
+$$\int \frac{d^3p}{2E_{\pv}}$$ is Lorentz invariant. This follows because $\int d^4p$ is LI, since $\Lambda \in SO(1,3)$ (with $\det \Lambda=1$ so $\int d^4p = \int d^4 p'$. It's also true that $p_0^2= \vec{p}^2+m^2$ is Lorentz invariant (length of a four-vector). The solutions for $p_0$ have two branches, positive and negative:
+$$p_0 = \pm \sqrt{\pv^2+m^2}.$$
+But our choice of branch is also Lorentz invariant (we can't go from the positive to negative solutions). Therefore combining the last few facts we get
+$$\int d^4 p \delta(p_0^2-\pv^2-m^2)|_{p^0 >0} = \int \frac{d^3 p}{2p_0|_{p_0=E_p}},$$
+where we have used the fact that $$\delta(g(x))=\sum_{x_i\text{ roots of g}} \frac{\delta(x-x_i)}{|g'(x_i)|}.$$
+(To see why this is true, consider Taylor expanding $\delta(g(x))$ around its roots to leading order.)
+
+We make the next claim: $2E_p \delta^3(\pv - \vec q)$ is the Lorentz invariant version of a $\delta$-function. The proof is as follows:
+$$\int \frac{d^3 p}{2E_p} 2E_p \delta^3(\pv - \vec q)=1.$$
+But we showed that $\int d^3p/2E_p$ was Lorentz invariant and 1 is certainly Lorentz invariant, so it follows that $2E_p\delta^3(\pv-\vec q)$ is also Lorentz invariant.
+
+We therfore learn that the correctly normalized states are
+$$\ket{p}\equiv \sqrt{2E_p}\ket{\pv} = \sqrt{2 E_p}a_{\pv}^\dagger \ket{0},$$
+(where $p$ is now the four-vector $p$) with the inner product
+$$\braket{p}{q}=(2\pi)^3 2\sqrt{E_p E_q} \delta^3(\pv - \vec q).$$
+We can then rewrite the 1-particle identity operator as an integral over the normalized states,
+$$1=\int \frac{d^3p}{2E_p(2\pi)^3} \ket{p}\bra{p}.$$
+(To see this is the identity, try acting on the normalized $\ket{q}$.)
+
+We could also look at the free complex scalar field $\psi$, with
+$$\cL = \p_\mu \psi^* \p^\mu \psi - \mu^2 \psi^* \psi.$$
+We can compute the Euler-Lagrange equations varying $\psi,\psi^*$ separately to find
+$$\p_\mu \p^\mu \psi + \mu^2 \psi=0,\p_\mu \p^\mu \psi^*+\mu^2 \psi^*=0$$
+(the second is simply the complex conjugate of the first).
+Now we ought to write our field as a sum of two (in general different) creation and annihilation operators:
+$$\psi=\int \frac{d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}} (b_{\pv} e^{i \pv \cdot \vec x} + c_{\pv}^\dagger e^{-i \pv \cdot x}$$
+and similarly
+$$\psi^\dagger=\int \frac{d^3p}{(2\pi)^3} \frac{1}{\sqrt{2E_p}} (b_{\pv}^\dagger e^{-i \pv \cdot \vec x} + c_{\pv} e^{+i \pv \cdot x})$$
+so that
+$$\pi(x)=\int \frac{d^3p}{(2\pi)^3} \sqrt{\frac{E_p}{2}} (b_{\pv}^\dagger e^{-i \pv \cdot \vec x}-c_{\pv} e^{i \pv \cdot \vec x}).$$
+The conjugate momentum to $\psi^\dagger$ is equivalently $\pi^\dagger$. The commutation relations are then (exercise)
+$$[\psi(\vec x), \pi(\vec y)]=i\delta^3(\vec x - \vec y)$$
+$$\implies [b_{\pv},b_{\vec q}^\dagger]=(2\pi)^3 \delta^3 (\pv - \vec q)=[c_{\pv},c_{\vec q}^\dagger].$$
+The interpretation is that different types of particle are created by the $b_{\pv}^\dagger$ and $c_{\pv}^\dagger$ operators. They are both spin $0$ and of mass $\mu$, so we should interpret them as a particle-antiparticle pair. This doesn't work for electrons, which have spin $1/2$, but it would describe something like a charged pion.
+
+Indeed, if we compute the conserved charges in this theory by applying Noether's theorem, we get a conserved charge of the form
+$Q=i\int d^3 x \dot \psi^* \psi - \psi^* \dot \psi$ or equivalently in terms of the conjugate momentum (since $\pi = \P{\cL}{\dot \psi}=\dot \psi^*$)
+$$Q=i\int d^3 x [\pi \psi - \psi^\dagger \pi^\dagger].$$
+After normal order (exercise) one can write
+$$Q=\int \frac{d^3 p}{(2\pi)^3} (c_{\pv}^\dagger c_{\pv}- b_{\pv}^\dagger b_{\pv})=N_c-N_b,$$
+which shows that our conserved quantity has the interpretation of particle number (counting antiparticles as $-1$).
+
+Since there are two real scalar fields in this theory, the Hamiltonian for this theory takes the form
+$$H=\int \frac{d^3p}{(2\pi)^3} E_p(b_{\pv}^\dagger b_{\pv}+c_{\pv}^\dagger c_{\pv}).$$
+As an exercise one can check that $[Q,H]=0$ using the commutation relations, and therefore $Q$ is conserved. This is also true in the interacting theory. $N_c,N_b$ are individually conserved in the free theory, but in the interacting theory they aren't-- they can be created and destroyed in particle-antiparticle pairs.

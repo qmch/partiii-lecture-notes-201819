@@ -1,0 +1,95 @@
+Last time, we defined a Lie algera as a vector space with some extra structure, the Lie bracket $[,]$.
+\begin{defn}
+Two Lie algebras $\fg,\fg'$ are isomorphic if $\exists$ a one-to-one linear map $f:\fg\to \fg'$ such that
+$$[f(X),f(Y)]=f([X,Y]\forall X,Y\in \fg.$$
+Therefore the isomorphism respects the Lie bracket structure (with the bracket being taken in $\fg$ or $\fg'$ as appropriate).
+\end{defn}
+\begin{defn}
+A subalgebra $\mathfrak{h}\subseteq \fg$ is a subset which is also a Lie algebra. This is equivalent to a subgroup in group theory.
+\end{defn}
+\begin{defn}
+An ideal of $\fg$ is a subalgebra $\mathfrak{h}$ of $\fg$ such that
+$$[X,Y]\in \mathfrak{h}\forall X \in \fg, Y \in \mathfrak{h}.$$
+This is the equivalent to a normal subgroup in group theory.
+\end{defn}
+
+\begin{exm}
+Every $\fg$ has two trivial ideals:
+$$\mathfrak{h}=\set{0}, \mathfrak{h}=\fg.$$
+\end{exm}
+Every $\fg$ also has the following two ideals:
+\begin{exm}
+The derived algebra, all elements $i$ such that
+$$i=\set{[X,Y]: X,Y\in \fg}.$$
+\end{exm}
+\begin{exm}
+The centre (center) of $\fg$, $\xi(\fg)$:
+$$\xi(\fg)=\set{X\in g: [X,Y]=0 \forall Y\in \fg.}$$
+\end{exm}
+
+\begin{defn}
+An abelian Lie algebra $\fg$ is then one for which $[X,Y]=0\forall X, Y \in \fg$ (i.e. $\xi(\fg)=\fg$, the center of the group is the whole group).
+\end{defn}
+\begin{defn}
+$\fg$ is simple if it is non-abelian and has no non-trivial ideals. This is equivalent to saying that
+$$i(\fg)=\fg.$$
+\end{defn}
+Simple Lie algebras are important in physics because they admit a non-degenerate inner product (related to Killing forms). These ideas will also lead us to classify all complex simple Lie algebras of finite dimension.
+
+\subsection*{Lie algebras from Lie groups} The names of these structures makes it seem that they ought to be related in some way. Let's see now what the connection is. Let $M$ be a smooth manifold of dimension $D$ and take $p\in M$ a point on the manifold. Since $M$ is a manifold, we may introduce coordinates in some open set containing $p$. 
+
+Let us call the coordinates $$\set{x_i},i=1,\ldots,D$$ and set $p$ to lie at the origin, $x^i=0$. Now we will denote the tangent space to $M$ at $p$ by $\mathcal{T}_p(M)$, and define the tangent space as the vector space of dimension $D$ spanned by
+$$\set{\P{}{x_i}},i=1,\ldots, D.$$
+A general tangent vector $V$ is then a linear combination of the basis elements, given by components $V^i$:
+$$V=V^i \P{}{{x^i}}\in \mathcal{T}_p(M), V^i \in \RR.$$
+Tangent vectors then act on functions of the coordinates $f(x)$ by
+$$V f = v^i \P{f(x)}{{x^i}}|_{x=0}$$
+(they are local objects, so they only live at the point $x=0$).
+Consider now a smooth curve
+$$C:I\subset \RR \to M$$ (if we like, one can normalize $I$ to a unit interval) passing through the point $p$. In coordinates,
+$$C:t\in I \mapsto x^i(t) \in \RR, i=1,\ldots,D.$$
+This curve is smooth if the $\set{x^i(t)}$ are continuous and differentiable.
+
+The tangent vector to the curve $C$ at point $p$ is then
+$$V_C\equiv\dot x^i(0)\P{}{{x^i}}\in \mathcal{T}_p(M)$$
+where $\dot x^i(t)=\frac{dx^i(t)}{dt}$. This is simply the directional derivative from multivariable calculus. When we act with this tangent vector on a function $f$, we then get
+$$V_c f= \dot x^{i}(0) \P{f(x)}{{x^i}}|_{x=0}.$$
+
+Now to compute the Lie algebra $L(G)$ of a Lie group $G$, let $G$ be a Lie group of dimension $D$. Introduce coordinates $\set{\theta^i}, i=1,\ldots,D$ in some region around the identity element $e\in G$. Now we can look at the tangent space near the identity,
+$$\mathcal{T}_e(G).$$
+Note that $\mathcal{T}_e(G)$ is a real vector space of dimension $D$, and we can define a bracket
+$$[,]: \mathcal{T}_e(G)\times \mathcal{T}_e(G) \to \mathcal{T}_e(G)$$
+such that
+$$(\mathcal{T}_e(G),[,])$$ defines a Lie algebra.
+
+\begin{exm}
+The easiest case is matrix Lie groups. For instance,
+$$G\subset \text{Mat}_n(F)$$
+for $n\in \NN, F= \RR \text{ or } \CC$. We can turn the map from tangent vectors to matrices:
+$$\rho: V^i \P{}{{\theta^i}} \in \mathcal{T}_e(G) \mapsto V^i \P{g(\theta)}{{\theta^i}} |_{\theta=0}$$
+such that $g(\theta)\in G \subset \text{Mat}_n(F)$. We will identify $\mathcal{T}_e(G)$ with the span of
+$$\set{\P{g(\theta)}{{\theta^i}}|_{\theta=0}},i=1,\ldots D.$$
+Effectively, we've parametrized elements of our group (e.g. by our local coordinate system) and then identified the tangent space with the span of the $D$ tangent vectors which describe how our parametrized group elements change with respect to the $D$ coordinates.
+
+Now we have a candidate for the bracket. Let's choose
+$$[X,Y]\equiv XY-YX \forall X,Y \in \mathcal{T}_e(G)$$
+where $XY$ indicates matrix multiplication. That is, the ``bracket'' here is really just the matrix commutator. This is clearly antisymmetric and linear, and with a little bit of algebra one can show it also obeys the Jacobi identity. But there's one other condition-- the algebra must be closed under the bracket operation. It's not immediately obvious that this is true, so we'll prove it explicitly.
+
+Let $C$ be a smooth curve in $G$ passing through $e$,
+$$C:t\mapsto g(t) \in G, g(0)= I_n.$$
+We require that $g(t)$ is at least $C^1$ smooth, $G(t)\in C^1(M), t\geq 0.$ (It has at least a first derivative.) Now consider the derivative
+$$\frac{dg(t)}{dt}=\frac{d\theta^i(t)}{dt}\P{g(\theta)}{{\theta^i}}.$$
+It follows that
+$$\dot g(0)=\frac{dg(t)}{dt}|_{t=0}=\dot \theta^i(0)\P{g(\theta)}{{\theta^i}}|_{\theta=0}\in \mathcal{T}_e(G).$$
+This is a tangent vector to $C$ at the point $e$. $\dot g(0)\in \text{Mat}_n(F)$, but more generally this element of the tangent space need not be in the group. %We'll see that the bracket of two elements in the tangent space is also in the tangent space.
+
+Near $t=0$ we have
+$$g(t)=I_n+X t+ O(t^2), X= \dot g(0)\in L(G).$$
+We expand our curve to first order in $t$ near $t=0$. For two general elements $X_1,X_2\in L(G)$, we find curves
+$$C_1:t\mapsto g_1(t)\in G, C_2: t\mapsto g_2(t)\in G$$
+such that $$g_1(0)=g_2(0)=I_n$$ and $$ \dot g_1(0)= X_1, \dot g_2(0)=X_2.$$
+Then the maps $g_1,g_2$ can also be expanded to order $t^2$ near $t=0$,
+$$g_1(t)=I_n+X_1 t+W_1 t^2+\ldots,g_2(t)=I_n+X_2 t+W_2 t^2+\ldots$$
+for some $W_1,W_2\in \text{Mat}_n(F)$. Next time, we'll show that the bracket gives
+$$W(t)=g_1^{-1}(t) g_2^{-1}(t)g_1(t) g_2(t).$$
+\end{exm}

@@ -1,0 +1,81 @@
+Recall that for a free scalar field $$\phi(\vec{x},t)=\int \frac{d^3 \vec{p}}{(2\pi)^3} e^{i \vec{p}\cdot \vec{x}}\phi(\vec{p},t),$$ where
+$$\left[\P[2]{}{t}+(\vec{p}^2 +m^2)\right]\phi(\vec{p},t)=0.$$
+We also defined $\omega_{\vec{p}}^2\equiv \vec{p}^2 +m^2$.
+Our theory has plane wave solutions. 
+Let's apply the simple harmonic oscillator quantization process to free fields now, defining
+$$\phi(\vec{x})=\int \frac{d^3 \vec{p}}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec p}}}(a_{\vec p}e^{i\vec{p} \cdot \vec x}+a^\dagger_{\vec p}e^{-i\vec{p} \cdot \vec x}).$$
+We also have the related conjugate momentum to the field,
+$$\pi(\vec{x})=\int \frac{d^3 \vec{p}}{(2\pi)^3}(-i)\sqrt{\frac{\omega_{\vec p}}{2}}(a_{\vec p}e^{i\vec{p} \cdot \vec x}-a^\dagger_{\vec p}e^{-i\vec{p} \cdot \vec x}).$$
+
+In the \term{second quantization} process, we've written our infinite number of harmonic oscillators in momentum space. We want to impose the equivalent of $$[a_{\vec p},a_{\vec q}]=[a^\dagger_{\vec p}, a^\dagger_{\vec q}]=0$$ and $$[a_{\vec p}, a_{\vec q}^\dagger]=(2\pi)^3 \delta^3(\vec p -\vec q).$$
+
+Thus in the field theory context we have instead
+$$[\phi(\vec x), \phi(\vec y)]= [\pi (\vec x), \pi (\vec y)]=0$$
+and
+$$[\phi(\vec x), \pi (\vec y)]=i\delta^3 (\vec x - \vec y).$$
+
+It's a good exercise to check this, but we can for instance check this one way: assume the $a, a^\dagger$ commutation relations:
+$$[\phi(\vec x),\pi(\vec y)]=\int \frac{d^3 \vec p}{(2\pi)^3} \frac{d^3 \vec q}{(2\pi)^3} \frac{(-1)}{2}\sqrt{\frac{\omega_{\vec q}}{\omega_{\vec p}}}\set{ -[a_{\vec p}, a_{\vec q}^\dagger] e^{i\vec p \cdot \vec x - i\vec q \cdot \vec y}+[a_{\vec p}^\dagger, a_{\vec q}] e^{-i\vec p \cdot \vec x + i\vec q \cdot \vec y}}.$$
+Using these commutation relations, we can rewrite and do the integral over $\vec q$ to get a delta function setting $\vec p = \vec q$,
+$$\int \frac{d^3 \vec p}{(2\pi)^3}\left(\frac{-i}{2}\right)\set{-e^{i\vec p \cdot (\vec x - \vec y)}-e^{-i\vec p \cdot (\vec x - \vec y)}=i \delta^3 (\vec x - \vec y)}$$
+since $\delta^3(\vec x)= \int \frac{d^3 \vec p}{(2\pi)^3} e^{i \vec p \cdot \vec x}$.
+
+Now we compute $H$ in terms of $a_{\vec p} a_{\vec p}^\dagger$ to find (after some work with $\delta$ functions which you should check) that
+\begin{eqnarray*}
+H&=&\frac{1}{2}\int d^3 x \left( \pi^2+(\grad \phi)^2+m^2\phi^2\right)\\
+&=& \frac{1}{2}\int d^3x \frac{d^3 \vec p}{(2\pi)^3} \frac{d^3 \vec q}{(2\pi)^3} \set{ \frac{-\sqrt{\omega_{\vec p}\omega_{\vec q}}}{2}(a_{\vec p} e^{i\vec p \cdot \vec x}-a^\dagger_{\vec p} e^{-i \vec p \cdot \vec x})(a_q e^{iq \cdot x}-a_q^\dagger e^{-i q\cdot x})+\frac{1}{2\sqrt{\omega_{\vec p}\omega_{\vec q}}}(ip a_p e^{ip\cdot x}-ip a_p^\dagger e^{-i p\cdot x}) 
+}
+\end{eqnarray*}
+
+There's a lot of algebraic manipulation (details in David Tong's notes) but the net result is that
+$$H=\frac{1}{2} \int \frac{d^3p}{(2\pi)^3} \omega_{\vec p}(a_{\vec p} a_{\vec p}^\dagger + a_{\vec p}^\dagger a_{\vec p}).$$
+This is simply the Hamiltonian for an infinite number of uncoupled simple harmonic oscillators with frequency $\omega_p$, just as expected.
+
+Now we can define a vacuum state $\ket{0}$ as the state which is annihilated by all $a_{\vec p}$: 
+$$a_{\vec p}\ket{0}=0 \forall \vec p.$$
+Then computing the vacuum state energy $H\ket{0}$ yields
+\begin{eqnarray*}
+H\ket{0}&=&\int \frac{d^3p}{(2\pi)^3}\omega_p (a_p^\dagger a_p + \frac{1}{2}[a_p, a_p^\dagger])\ket{0}\\
+&=&\frac{1}{2}\int \frac{d^3 p}{(2\pi)^3}\omega_p [a_p, a^\dagger p] \ket{0}\\
+&=& \int d^3 p \omega_p \delta^3 (\vec{0})\ket{0},
+\end{eqnarray*}
+which is infinite. Oh no!
+
+What's happened is that $\int d^3p \omega_p$ is the sum of ground state energies for each harmonic oscillator, but $\omega_p =\sqrt{|\vec p|^2 + m^2} \to \infty$ as $|\vec p|\to \infty$, so we call this a high-frequency or ``ultraviolet divergence.'' That is, at very high frequencies/short distances, our theory breaks down and our theory should cut off at high momentum. Of course, there's another way to handle this divergence in our theory-- just redefine the Hamiltonian to set the ground state energy to zero. ``We're not interested in gravity, only energy differences, so we can just subtract $\infty.$''
+
+Thus, we redefine the Hamiltonian for our free scalar field theory to be
+$$H=\int \frac{d^3 p}{(2\pi)^3} \omega_p a_p^\dagger a_p,$$
+such that $H\ket{0}=0$. Nice. Subtractin' infinities. Because we're physicists.
+
+More formally, the difference between the old and new Hamiltonians can be seen as due to an ordering ambiguity in moving from the classical theory to the quantum one. We could have written the classical Hamiltonian as
+$$H=\frac{1}{2}(\omega q-ip)(\omega q+ ip)$$
+which is classically the same as the original simple harmonic oscillator but becomes
+$$\omega a^\dagger a$$ when we quantize.
+
+\begin{defn}
+We define a \term{normal ordered} string of operators $\phi_1(\vec x_1)\phi_2 (\vec x_2)\ldots \phi_n (\vec x_n)$ as follows:
+with the notation
+$$:(\phi_1(\vec x_1)\phi_2 (\vec x_2)\ldots \phi_n (\vec x_n):,$$
+we simply move all annihilation operators to the righthand side of the expression (so all the creation operators are on the left). Note that we totally ignore commutation relations in normal ordering! Just move the operators around (well, there are sign flip subtleties when we come to working with fermions).
+
+\end{defn}
+\begin{exm}
+For our Hamiltonian,
+\begin{eqnarray*}
+:H:&=& \frac{1}{2} \int \frac{d^3p}{(2\pi)^3} \omega_p :(a_p a_p^\dagger + a_p^\dagger a_p):\\
+&=&\int \frac{d^3p}{(2\pi)^3} \omega_p a_p^\dagger a_p.
+\end{eqnarray*}
+\end{exm}
+
+We'd like to recover particles from this theory. Recall that $\forall p, a_p\ket{0}=0$, so $H\ket{0}=0$ (where now $H$ means the normal-ordered version of the Hamiltonian). It's easy to verify (exercise) that
+$$[H,a_p^\dagger] =\omega_p a_p^\dagger$$
+and similarly
+$$[H,a_p]=-\omega_p a_p.$$
+Let $\ket{p'}=a^\dagger_{p'}\ket{0}$. Then
+$$H\ket{p'}=\int \frac{d^3 p}{(2\pi)^3} \omega_p a_p^\dagger [a_p, a_{p'}^\dagger]\ket{0}=\omega_{p'}\ket{p'}.$$
+Therefore the energy is given by $\omega_{p'}=\sqrt{{p'}^2+m^2}$ , the relativistic dispersion relation for a particle of mass $m$ and momentum $p'$. We may thus interpret $\ket{p}$ as a momentum eigenstate of a single particle of mass $m$ and momentum $p$. Recognizing $\omega_p$ as the energy, we'll write $E_p$ instead of $\omega_p$.
+
+We can also write the momentum operator $P$ such that
+$$\vec P\ket{\vec p}=\vec p\ket{\vec p}.$$
+$\vec P$ is simply the quantized version of the momentum operator from the stress-energy tensor:
+$$\vec P =-\int \pi(x) \grad \phi(\vec x)d^3 x=\int \frac{d^3 \vec p}{(2\pi)^3} \vec p a^\dagger_{\vec p}a _{\vec p}.$$
