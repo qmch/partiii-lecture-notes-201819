@@ -1,0 +1,38 @@
+Today, we'll finish the proof that the tangent space of a Lie group $G$ at the origin, $T_e(G)$, equipped with the bracket operation $[X,Y]=XY-YX$ for $X,Y\in T_e(G)$ forms a Lie algebra. The game plan is as follows. We want to show that for two elements $X,Y\in T_e(G)$, their Lie bracket $[X,Y]$ is also in the tangent space. Therefore we will explicitly construct a curve in $G$ out of other elements we know are in $G$ such that our new curve has exactly the Lie bracket $[X,Y]$ as its tangent vector near $t=0$.
+
+Recall that last time, we considered two elements $X_1,X_2$ in the Lie algebra $L(G)$ and defined two curves $C_1: t\mapsto g_1(t) \in G$ and $C_2: t\mapsto g_2(t)\in G$. These curves had the properties that at $t=0$, $$g_1(0)=g_2(0)=I_n$$ with $I_n$ the identity matrix, and $$\dot g_1(0)=X_1,\dot g_2(0)=X_2.$$ We proceeded to expand them to order $t^2$, writing
+$$g_1(t)=I_n+X_1 t+W_1 t^2+O(t^3)\text{ and }g_2(t)=I_n+X_2 t+W_2 t^2+O(t^3).$$
+Now define the element
+$$W(t)\equiv g_1^{-1}(t) g_2^{-1}(t) g_1(t) g_2(t).$$
+Under an appropriate reparametrization, this will be the curve we want. We can rewrite this equation as
+$$g_1(t) g_2(t)= g_2(t) g_1(t)W(t).$$
+Plugging in our expansions of $g_1,g_2$ we find that
+$$g_1(t)g_2(t)= I_n+t(X_1+X_2)+t^2(X_1X_2 +W_1+W_2)+O(t^3)$$
+and similarly
+$$g_1(t)g_2(t)= I_n+t(X_1+X_2)+t^2(X_2X_1 +W_1+W_2)+O(t^3).$$
+If we now expand $$W(t)=I_n+w_1 t+ w_2 t^2+O(t^3),$$
+we find that\footnote{It's straightforward, so I'll do it here. Explicitly, if we expand to order $t$ we get $g_2g_1 W(t)=I+(X_1+X_2+w_1)t$. But by comparison to the expression for $g_1g_2$ we see that $w_1=0$. So we have to go to order $t^2$: $g_2g_1 W(t)=I+(X_1+X_2)t+(w_2+W_1+W_2+X_2X_1).$ Now comparing again we find that $w_2+X_2X_1=X_1X_2$, or equivalently $w_2=X_1X_2-X_2X_1=[X_1,X_2]$.}
+$$w_1=0, w_2= X_1X_2-X_2X_1=[X_1,X_2].$$
+
+Now let us define a new curve,
+$$C_3:s\mapsto g_3(s)=W(\sqrt{s})\in G$$ parametrized by some $s\in \RR$. Near $s=0$, we have
+$$g_3(s)=I_n+s[X_1,X_2]+O(s^{3/2}) \implies \dot g_3(0)= \frac{g_3(s)}{ds}|_{s=0}=[X_1,X_2]\in L(G).$$
+So indeed the bracket operation $[X_1,X_2]$ corresponds to another element in the tangent space. All is well and thus $L(G)=(T_e(G),[,])$ is a real Lie algebra of dimension $D$. \qed
+
+\begin{exm}
+Let $G=SO(2)$. Then 
+$$\fg(t)=M(\theta(t))=\begin{pmatrix}
+\cos\theta(t)&-\sin\theta(t)\\
+\sin\theta(t)&\cos\theta(t)
+\end{pmatrix}$$
+with $\theta(0)=0$. So the tangent space is spanned by elements of the form
+$$\dot g(0)=\begin{pmatrix}
+0&-1\\
++1&0
+\end{pmatrix} \dot\theta(0)$$
+and therefore
+$$L(SO(2))=\left\{\begin{pmatrix}
+0&-c\\
+c&0
+\end{pmatrix}, c\in \RR\right\}$$
+\end{exm}

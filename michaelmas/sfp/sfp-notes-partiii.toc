@@ -3,4 +3,5 @@
 \contentsline {section}{\numberline {3}Here Comes the $SO(n)$: Tuesday, October 9, 2018}{6}{section.3}
 \contentsline {section}{\numberline {4}Thursday, October 11, 2018}{8}{section.4}
 \contentsline {section}{\numberline {5}Saturday, October 13, 2018}{11}{section.5}
+\contentsline {section}{\numberline {6}Tuesday, October 16, 2018}{13}{section.6}
 \contentsfinish 
