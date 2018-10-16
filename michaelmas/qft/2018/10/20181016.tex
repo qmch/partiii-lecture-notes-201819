@@ -1,17 +1,17 @@
-We've been working in the Schr\"odinger picture where the states evolve in time, but now it will be useful to pass to the Heisenberg picture, where the states are fixed and the operators evolve in time.
+We've been working in the Schr\"odinger picture where the states evolve in time, but now it will be useful to pass to the Heisenberg picture, where the states are fixed and the \emph{operators} evolve in time.
 
-In the Schr\"odinger picture, it's not obvious how our theory is Lorentz invariant. We seem to have picked out time as a special dimension when we write things down (even though we started with a Lorentz invariant theory, so our final theory is still Lorentz invariant). The operators $\phi(\vec x)$ don't depend on $t$, but the states evolve as
+In the Schr\"odinger picture, it's not obvious how our theory is Lorentz invariant. We seem to have picked out time as a special dimension when we write things down (even though we started with a Lorentz invariant theory, so our final theory should still be Lorentz invariant). The operators $\phi(\vec x)$ don't depend on $t$, but the states evolve as
 $$i \frac{d\ket{p}}{dt}=H\ket{p} = E_p\ket{p} \implies \ket{p(t)}= e^{-i E_pt} \ket{p(0)}.$$
 In the Heisenberg picture, things are a bit better-- time dependence is moved into the operators. Denoting Heisenberg picture operators as $O_H$ and Schr\"odinger picture operators as $O_S$, we have\footnote{Here, the exponential of an operator is simply defined in terms of the power expansion of $e$, e.g. $e^{iHt}=\sum_{n=0}^\infty \frac{(iHt)^n}{n!}$.}
 $$O_H(t) \equiv e^{iHt}O_S e^{-iHt}.$$
-Taking the time derivative of each side, one finds that
+Taking the time derivative of each side, one finds that\footnote{Explicitly, $\frac{d O_H(t)}{dt}= iH e^{iHt} O_S e^{-iHt}+e^{iHt}O_S (-iH) e^{-iHt} = i e^{iHt} [H,O_S] e^{-iHt} = i[H,O_H]$ since $e^{iHt}H e^{-iHt}=H$. We also see from this that it doesn't matter to the Hamiltonian itself what picture we're in, since $H_S=H_H$.}
 $$\frac{dO_H}{dt}=i[H,O_H].$$
-It's clear that $O_H(t=0)=O_S$, so our operators agree at $t=0$ (but in general nowhere else).\footnote{It doesn't matter for the Hamiltonian itself what picture we're in, since $e^{iHt}H e^{-iHt}=H$. So $H_S=H_H$.} The field commutators then become \emph{equal time commutation relations}:
+This is the general time evolution of operators in the Heisenberg picture. It's clear that $O_H(t=0)=O_S$, so our operators agree at $t=0$ (but in general nowhere else). The field commutators then become \emph{equal time commutation relations}:
 $$[\phi(\vec x,t),\phi(\vec y, t)]=[\pi(\vec x, t), \pi(\vec y,t)]=0$$
 and
 $$[\phi(\vec x, t), \pi (\vec y, t)]=i \delta^3(\vec x-\vec y).$$
 
-\begin{ex}
+\begin{ex}\label{heisenbergkleingordon}
 One should check (exercise) that $\frac{d\phi}{dt}=i[H,\phi]$ now means that the Heisenberg picture operator $\phi_H$ satisfies the Klein-Gordon equation, $\p_\mu \p^\mu \phi+ m^2 \phi=0$.
 \end{ex}
 We now write the Fourier transform of $\phi(x)$ (where $x$ is now a four-vector) by deriving
@@ -67,3 +67,57 @@ $$\Delta_F =\int \frac{d^4p}{(2\pi)^4}\frac{i}{p^2-m^2}e^{-ip\cdot (x-y)}.$$
 Note that this is Lorentz invariant-- the volume element is certainly Lorentz invariant, and everything else is scalars. But there's an issue-- this integral has a pole whenver $p^2=m^2$, or equivalently for each value of $\pv$, $p^2-m^2=(p^0)^2-\pv^2-m^2=0$ when $p^0= \pm E_{\pv}=\pm \sqrt{ \pv^2+m^2}$. We would like to integrate over $p^0$ to recover the earlier form of the propagator, so we can either deform the contour or push the poles of the real $p^0$ axis with an \term{$i\epsilon$ prescription}.
 
 We'll finish the proof next time, but by analytically continuing $p^0$ to the complex plane, making this $i\epsilon$ prescription, and closing the contour appropriately we can do the $p^0$ integral and find that what we get is exactly the Feynman propagator as defined earlier in terms of time ordering.
+
+\subsection*{Proof of Exercise \ref{heisenbergkleingordon}}
+Let's find the equation of motion for $\phi.$ Recall that $[\phi(\vec x),\phi(\vec y)]=0$. We can also show that $\grad \phi(y)$ and $\phi(x)$ commute: 
+$$
+\grad \phi(\vec y)\phi(\vec x) = \grad_y (\phi(\vec y) \phi (\vec x)) = \grad_y (\phi(\vec x) \phi(\vec y)) = \phi (\vec x) \grad \phi (\vec y)$$
+so the only term in the Hamiltonian we need to worry about is the $\pi^2$ term.
+\begin{eqnarray*}
+\dot \phi &=& i[H,\phi]\\
+&=&\frac{i}{2} \int d^3 y \left[\pi^2(y)+(\nabla \phi(y))^2 + m^2\phi(y)^2, \phi(x)\right]\\
+&=&\frac{i}{2} \int d^3 y (\pi^2(y) \phi(x) - \phi(x) \pi^2(y))\\
+&=&\frac{i}{2} \int d^3 y (\pi(y) (-[\phi(x),\pi(y)]+\phi(x) \pi(y))-\phi(x) \pi^2(y))\\
+&=&\frac{i}{2} \int d^3 y (-i\delta^3(x-y) \pi(y)+ \pi(y) \phi(x) \pi(y) - \phi(x) \pi^2(y)\\
+&=&\frac{i}{2} \int d^3 y (-2i \delta^3(x-y) \pi(y))\\
+&=& \pi(x).
+\end{eqnarray*}
+We can also compute the time evolution for $\pi$. Here, we do have to worry about the $\grad\phi$ terms as well as the $\phi$ terms.
+\begin{eqnarray*}
+\dot \pi &=& i[H,\pi]\\
+&=&\frac{i}{2} \int d^3 y \left[\pi^2(y)+(\nabla \phi(y))^2 + m^2\phi(y)^2, \pi(x)\right]\\
+&=&\frac{i}{2} \int d^3 y \nabla \phi(y) \nabla_y (\phi(y) \pi(x))- \nabla_y (\pi(x) \phi(y)) \nabla \phi(y)+2i m^2 \delta^3(x-y) \phi(y)\\
+&=& \frac{i}{2} \int d^3 y \nabla \phi(y) \nabla_y([ \phi(y),\pi(x)]) - \nabla_y(-[\phi(y),\pi(x)]) \nabla \phi(y)+2i m^2 \delta^3(x-y) \phi(y)\\
+&=&\frac{i}{2} \int d^3 y \nabla \phi(y) \nabla_y(i\delta^3(y-x)) + \nabla_y(i\delta^3(y-x)) \nabla \phi(y)+2i m^2 \delta^3(x-y) \phi(y)\\
+&=& \frac{i}{2} \int d^3 y \left(-2i \delta^3(x-y) \nabla^2 \phi(y) + 2i m^2 \delta^3(x-y) \phi(y) \right)\\
+&=& \nabla^2 \phi-m^2 \phi.
+\end{eqnarray*}
+(where we have integrated by parts to move the $\nabla$ from the delta function to $\phi$). Thus $\phi$ obeys the equation
+$$\ddot \phi = \dot \pi = \nabla^2 \phi - m^2 \phi$$
+or equivalently
+$$\ddot \phi - \nabla^2 \phi + m^2 = \p_\mu \p^\mu \phi +m^2=0.$$
+Therefore $\phi$ satisfies the Klein-Gordon equation. (This is also in David Tong's notes.) \qed
+
+We'll also make note of a potentially useful identity which can be proved by induction: if $[a,b]=\alpha,$ then $[a^n,b]=n\alpha a^{n-1}.$
+
+\subsection*{Proof of Heisenberg picture $a_p,a_p^\dagger$}
+Here, we'll show that
+$$e^{iHt}a_p e^{-iHt}= e^{-iE_pt} a_p$$
+using the commutation relation $[H,a_p]=-E_p a_p.$
+First, I'll claim that 
+$$H^n a_p =a (-E_p + H)^n.$$
+Let's prove it by induction: for the base case, $n=1$ and
+$$H a_p = [H,a_p]+ a_p H = -E_p a_p + a_p H = a_p (-E_p+H).$$
+Now the inductive step: suppose the hypothesis holds for $n$. Then
+$$H^{n+1} a_p = H (H^n a_p)= Ha_p (-E_p+H)^n = a_p (-E_p+H)^{n+1}.$$
+
+Therefore we can use this in the expansion of $e^{iHt}$.
+\begin{eqnarray*}
+e^{iHt}a_p e^{-iHt}&=& \sum_{n=0}^\infty \frac{(iHt)^n}{n!} a_p e^{-iHt}\\
+&=& a_p \sum_{n=0}^\infty \frac{ (it(-E_p +H))^n}{n!} e^{-iHt}\\
+&=& a_p e^{-iE_p t} e^{iHt} e^{-iHt}\\
+&=& a_p e^{-iE_pt}.
+\end{eqnarray*}
+Rather than repeating this whole calculation, we can simply take the hermitian conjugate of each side (since $H$ is hermitian) to get
+$$e^{iHt} a_p^\dagger e^{-iHt} = e^{+iE_p t} a_p^\dagger.$$
+Note that the sign flip in the exponent of $e^{\pm iHt}$ and the reversing of order from taking the hermitian conjugate cancel out. So the operators $a,a^\dagger$ do evolve in a nice way that allows us to write $\phi$ in terms of a four-vector product in the exponent, $p\cdot x$, and in turn this helps us to see that our theory has a sensible causal structure under Lorentz transformations. \qed
