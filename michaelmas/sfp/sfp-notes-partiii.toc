@@ -1,7 +1,7 @@
 \contentsline {section}{\numberline {1}Symmetries, Fields, and Start-icles: Thursday, October 4, 2018}{1}{section.1}
 \contentsline {section}{\numberline {2}Symmetry Described Simp-Lie: Saturday, October 6, 2018}{3}{section.2}
 \contentsline {section}{\numberline {3}Here Comes the $SO(n)$: Tuesday, October 9, 2018}{6}{section.3}
-\contentsline {section}{\numberline {4}Thursday, October 11, 2018}{8}{section.4}
+\contentsline {section}{\numberline {4}Here Comes the $SU(n)$: Thursday, October 11, 2018}{8}{section.4}
 \contentsline {section}{\numberline {5}Saturday, October 13, 2018}{11}{section.5}
 \contentsline {section}{\numberline {6}Tuesday, October 16, 2018}{13}{section.6}
 \contentsfinish 

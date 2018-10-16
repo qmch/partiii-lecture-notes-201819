@@ -1,23 +1,25 @@
-Today, we'll finish the proof that the tangent space of a Lie group $G$ at the origin, $T_e(G)$, equipped with the bracket operation $[X,Y]=XY-YX$ for $X,Y\in T_e(G)$ forms a Lie algebra. The game plan is as follows. We want to show that for two elements $X,Y\in T_e(G)$, their Lie bracket $[X,Y]$ is also in the tangent space. Therefore we will explicitly construct a curve in $G$ out of other elements we know are in $G$ such that our new curve has exactly the Lie bracket $[X,Y]$ as its tangent vector near $t=0$.
+Today, we'll finish the proof that the tangent space of a Lie group $G$ at the origin, $T_e(G)$, equipped with the bracket operation $[X,Y]=XY-YX$ for $X,Y\in T_e(G)$ forms a Lie algebra. Specifically, we must prove that $L(G)$ is closed under the bracket. 
 
-Recall that last time, we considered two elements $X_1,X_2$ in the Lie algebra $L(G)$ and defined two curves $C_1: t\mapsto g_1(t) \in G$ and $C_2: t\mapsto g_2(t)\in G$. These curves had the properties that at $t=0$, $$g_1(0)=g_2(0)=I_n$$ with $I_n$ the identity matrix, and $$\dot g_1(0)=X_1,\dot g_2(0)=X_2.$$ We proceeded to expand them to order $t^2$, writing
+The game plan is as follows. We want to show that for any two elements $X,Y\in T_e(G)$, their Lie bracket $[X,Y]$ is also in the tangent space. Therefore we will explicitly construct a curve in $G$ out of other elements we know are in $G$ such that our new curve has exactly the Lie bracket $[X,Y]$ as its tangent vector near $t=0$.
+
+Recall that last time, we considered two curves $C_1: t\mapsto g_1(t) \in G$ and $C_2: t\mapsto g_2(t)\in G$ which are at least twice differentiable, and by definition the tangent vectors (i.e. first derivative) of these curves give rise to two elements $X_1,X_2$ in the Lie algebra $L(G)$. These curves had the properties that at $t=0$, $$g_1(0)=g_2(0)=I_n$$ with $I_n$ the identity matrix, and $$\dot g_1(0)=X_1,\dot g_2(0)=X_2.$$ We proceeded to expand them to order $t^2$, writing
 $$g_1(t)=I_n+X_1 t+W_1 t^2+O(t^3)\text{ and }g_2(t)=I_n+X_2 t+W_2 t^2+O(t^3).$$
 Now define the element
-$$W(t)\equiv g_1^{-1}(t) g_2^{-1}(t) g_1(t) g_2(t).$$
-Under an appropriate reparametrization, this will be the curve we want. We can rewrite this equation as
-$$g_1(t) g_2(t)= g_2(t) g_1(t)W(t).$$
+$$h(t)\equiv g_1^{-1}(t) g_2^{-1}(t) g_1(t) g_2(t).$$
+Because $h(t)$ is constructed via group multiplication in $G$, $h$ is also in $G$. Under an appropriate reparametrization, this will be the curve we want. We can rewrite this equation as
+$$g_1(t) g_2(t)= g_2(t) g_1(t)h(t).$$
 Plugging in our expansions of $g_1,g_2$ we find that
 $$g_1(t)g_2(t)= I_n+t(X_1+X_2)+t^2(X_1X_2 +W_1+W_2)+O(t^3)$$
 and similarly
-$$g_1(t)g_2(t)= I_n+t(X_1+X_2)+t^2(X_2X_1 +W_1+W_2)+O(t^3).$$
-If we now expand $$W(t)=I_n+w_1 t+ w_2 t^2+O(t^3),$$
+$$g_2(t)g_1(t)= I_n+t(X_1+X_2)+t^2(X_2X_1 +W_1+W_2)+O(t^3).$$
+If we now expand $$h(t)=I_n+w_1 t+ w_2 t^2+O(t^3),$$
 we find that\footnote{It's straightforward, so I'll do it here. Explicitly, if we expand to order $t$ we get $g_2g_1 W(t)=I+(X_1+X_2+w_1)t$. But by comparison to the expression for $g_1g_2$ we see that $w_1=0$. So we have to go to order $t^2$: $g_2g_1 W(t)=I+(X_1+X_2)t+(w_2+W_1+W_2+X_2X_1).$ Now comparing again we find that $w_2+X_2X_1=X_1X_2$, or equivalently $w_2=X_1X_2-X_2X_1=[X_1,X_2]$.}
 $$w_1=0, w_2= X_1X_2-X_2X_1=[X_1,X_2].$$
 
 Now let us define a new curve,
-$$C_3:s\mapsto g_3(s)=W(\sqrt{s})\in G$$ parametrized by some $s\in \RR$. Near $s=0$, we have
+$$C_3:s\mapsto g_3(s)=h(+\sqrt{s})\in G$$ parametrized by some $s\in \RR$. We need $t\geq 0$ so $s>0, s=t^2$. Near $s=0$, we have
 $$g_3(s)=I_n+s[X_1,X_2]+O(s^{3/2}) \implies \dot g_3(0)= \frac{g_3(s)}{ds}|_{s=0}=[X_1,X_2]\in L(G).$$
-So indeed the bracket operation $[X_1,X_2]$ corresponds to another element in the tangent space. All is well and thus $L(G)=(T_e(G),[,])$ is a real Lie algebra of dimension $D$. \qed
+So indeed the bracket operation $[X_1,X_2]$ corresponds to another element in the tangent space.\footnote{We might want to make sure that the tangent vector of our curve is really well-defined at $s=0$-- in particular, we might be concerned about $s<0$. To be really thorough, we can define $\tilde h(t)=g_2(t)^{-1}g_1(t)^{-1}g_2(t)g_1(t)$ and by a similar process extend the curve $h$ to negative $s$. This doesn't add anything to our proof but it can certainly be done and one can check that the first derivatives of $h$ and $\tilde h$ match at $s=0$.} All is well and thus $L(G)=(T_e(G),[,])$ is a real Lie algebra of dimension $D$. \qed
 
 \begin{exm}
 Let $G=SO(2)$. Then 
@@ -35,4 +37,72 @@ $$L(SO(2))=\left\{\begin{pmatrix}
 0&-c\\
 c&0
 \end{pmatrix}, c\in \RR\right\}$$
+The Lie algebra of $SO(2)$ is therefore the set of $2\times 2$ real antisymmetric matrices.
 \end{exm}
+
+\begin{exm}
+Let $G=SO(n)$. Now our curve is $g(t)=R(t)\in SO(n)$ with $R(0)=I_n$, and the defining equation of $SO(n)$ says that
+$$R^T (t)R(t)=I_n \forall t\in \RR.$$
+Differentiating with respect to $t$ (if you like, we're looking at the leading order behavior by expanding $R(0)+\dot R(0) t$) we find that
+$$\dot R^T(t) R(t)+ R^T(t) \dot R(t)=0 \implies X^T +X=0,$$
+where as usual we let $X=\dot R(0)=\frac{dR(t)}{dt}|_{t=0}$.
+Therefore we learn that $$X^T=-X,$$
+or in other words, $X$ is antisymmetric.
+
+One might worry about the determinant condition, but in fact since any matrix close to the identity already has determinant $1$ (recall that $O(n)$ has two connected components with $\det R=\pm 1$), the $\det R=1$ condition does not impose an additional constraint, so moreover
+$$L(O(n))=L(SO(n))= \set{X\in \text{Mat}_n(\RR): X^T = -X.}$$
+The Lie algebra of $O(n)$ and $SO(n)$ is the set of real $n\times n$ antisymmetric matrices, and by counting constraints we see it has dimension $\frac{1}{2}n(n-1)$.
+\end{exm}
+
+\begin{exm}
+We can play the same game with $G=SU(n)$. Let $g(t)=U(t)\in SU(n), U(0)=I_n$. THen
+$$U^\dagger(t)U(t)= I_n \forall t\in \RR.$$
+Differentiating and setting $t=0$ we find that
+$$Z^\dagger + Z=0$$ where $Z=\dot U(0)\in L(SU(n))$.
+
+We also have the condition that $\det U(t)=1\forall t\in \RR$.\footnote{This didn't matter in the real case, but here we don't have the same disconnected structure as in $O(n)$. The determinant need only have unit magnitude, $|\det U|^2=1$, and so we get an extra constraint. Practically speaking, we see that antisymmetry already forced $X\in L(O(n))$ to be traceless, whereas this is not the case for $SU(n)$.} Let's expand $U(t)=I_n+Z t+ O(t^2)$ near $t=0$. As an exercise, one may prove that $\det U(t) = 1+\text{Tr}(Z) t+O(t^2),$ and so $\det U(t)=1 \forall t \implies \text{Tr}(Z)=0$. Thus
+$$L(SU(n))=\set{Z \in \text{Mat}_n(\CC): Z^\dagger = -Z, \text{Tr}(Z)=0,}$$
+the set of complex $n\times n$ antihermitian traceless matrices. 
+
+What is the dimension of $L(SU(n))$? We get $2\times \frac{1}{2}n(n-1)$ real constraints from the entries above the diagonal, $n$ constraints forcing the real parts of the diagonal entries to be zero, and $1$ constraint from the tracelessness condition. Thus we have $n^2+1$ total constraints and dimension $2n^2-(n^2+1)=n^2-1$.
+\end{exm}
+
+\begin{exm}
+With our results for the general $SU(n)$ in hand, we can take the specific example of $G=SU(2)$. The Lie algebra is the set of $2\times 2$ traceless antihermitian matrices, and it should have dimension $2^2-1=3$. But we already know of three linearly independent matrices which (nearly) satisfy this property: they are the Pauli matrices from quantum mechanics.
+$$\sigma_a=\sigma_a^\dagger, \text{Tr}\sigma_a= 0, a=1,2,3$$
+We can define $T^a=-\frac{1}{2} i \sigma_a$ (so that $T^a$ is antihermitian rather than hermitian). Recall the Pauli matrices obey
+$$\sigma_a\sigma_b = \delta_{ab}I_2 +i \epsilon_{abc}\sigma_c,$$
+so it is straightforward to compute the Lie bracket on $T^a$,
+$$[T^a,T^b]=-\frac{1}{4}[\sigma_a, \sigma_b] = -\frac{1}{2}i \epsilon_{abc} \sigma_c = f^{ab}_c T^c$$
+where
+$$f^{ab}_c=\epsilon_{abc}$$
+(note that indices up and down are not so important here-- they are just labels and do not indicate any sort of covariant behavior as in relativity).
+
+However, we can also compare with $SO(3)$, which we computed the Lie group for earlier. Recall that
+$$L(SO(3))=\set{3\times 3\text{real antisymmetric matrices}},$$
+and $\dim(L(SO(3))=\frac{1}{2}n(n-1)|_{n=3}=3$. A convenient basis is
+$$\tilde T^1=\begin{pmatrix}
+0&0&0\\
+0&0&-1\\
+0&1&0
+\end{pmatrix},
+\tilde T^2 =\begin{pmatrix}
+0&0&1\\
+0&0&0\\
+-1&0&0
+\end{pmatrix},
+\tilde T^3 = \begin{pmatrix}
+0&-1&0\\
+1&0&0\\
+0&0&0
+\end{pmatrix}.
+$$
+These are clearly linearly independent and satisfy the antisymmetry condition. More compactly, we can also write $$\tilde T^a_{bc}=-\epsilon_{abc},$$ and then with respect to this basis, the Lie bracket is
+$$[\tilde T^a, \tilde T^b]=f^{ab}_c \tilde T^c$$
+where $f^{ab}_c= \epsilon_{abc}, a,b,c=1,2,3$.
+
+But these are exactly the same structure constants we found for $L(SU(2))$, and so we find that the Lie algebras are isomorphic:
+$$L(SO(3)) \simeq L(SU(2)).$$
+This is interesting since $SO(3)\not \simeq SU(2)$, i.e. the original groups are \emph{not} isomorphic.\footnote{One way to see this is by remembering that $SO(3)$ has the manifold structure of $B_3$, while $SU(2)$ has the structure of $S^3$.} However, it will turn out that $SO(3)=SU(2)/\ZZ_2$, i.e. one can say that $SU(2)$ is the double cover of $SO(3)$.
+\end{exm}
+
