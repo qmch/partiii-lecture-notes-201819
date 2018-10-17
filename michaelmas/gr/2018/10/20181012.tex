@@ -38,15 +38,17 @@ So every upstairs indices we swap out gets a $+\Gamma$ and every downstairs inde
 $$\tilde \Gamma^{a'}_{b'c'}=\frac{\p \tilde x^{a'}}{\p x^a} \frac{ \p x^a}{\p \tilde x^{b'}}\frac{\p x^c}{\p \tilde x^c} \Gamma^a_{bc}-\frac{\p^2 \tilde x^{a'}}{\p x^b \p x^c}\frac{\p x^b}{\p \tilde x^{b'}}\frac{\p x^c}{\p\tilde x^{c'}}.$$
 Note that the second part is symmetric under the interchange of $b',c'$. Therefore take just the part antisymmetric in $b',c'$:
 $$\Gamma^{a'}_{b'c'}-\Gamma^{a'}_{c'b'}=\frac{\p \tilde x^{a'}}{\p x^a}\frac{\p x^b}{\p \tilde x^{b'}}\frac{\p x^c}{\p \tilde x^{c'}}(\Gamma^a_{bc}-\Gamma^a_{cb}).$$
+\begin{defn}
 The antisymmetric part of $\Gamma$ transforms like a tensor, and so we define the torsion tensor
 $$T^a_{bc}\equiv\Gamma^a_{bc}-\Gamma^a_{cb}=2\Gamma^a_{[bc]}.$$
 Some definitions define this up to a factor of 2 or with different signs.
+\end{defn}
 
 Consider an arbitrary scalar $S$.
 $$(\nabla_a \nabla_b-\nabla_b\nabla_a)S= \nabla_a \p_b S- \nabla_b \p_a S.$$
 If these were just partial derivatives, this would be zero. But working it out explicitly, we see that 
 $$(\nabla_a \nabla_b-\nabla_b\nabla_a)S=\p_a \p_b S-\Gamma^c_{ab}\p_c S -\p_b \p_a S + \Gamma^c_{ba}\p_c S = T^c_{ba} \p_c S = T^c_{ba}\nabla_c S.$$
-Therefore the torsion measures how much covariant derivatives fail to commute. In general relativity, the torsion is usually taken to be zer. However, a treatment of fermions naturally requires non-zero torsion, and in local supersymmetry or ``superspace formulations of anything,'' non-zero torsion is essential.
+Therefore the torsion measures how much covariant derivatives fail to commute on scalars. In general relativity, the torsion is usually taken to be zero. However, a treatment of fermions naturally requires non-zero torsion, and in local supersymmetry or ``superspace formulations of anything,'' non-zero torsion is essential.
 
 We haven't yet actually found what the connection is in terms of things we actually care about. 
 \begin{defn}
@@ -67,7 +69,7 @@ using the fact that $\Gamma^d_{bc}=\Gamma^d_{cb}$ since we have set the torsion 
 
 Now we simply multiply by $g^{ce}$ to find that
 $$\frac{1}{2}g^{ce}(-\p_c g_{ab} \p_a g_{bc} +\p_b g_{ca})=\Gamma^d_{ab} g_{dc} g^{ce} =\Gamma^d_{ab} \delta^e_d = \Gamma^e_{ab}.$$
-This gives us explicitly the metric connection, which we sometimes call the Christoffel connection or Christoffel symbols. (They are a pain to compute by hand.) Thus
+This gives us explicitly the metric connection, which we sometimes call the Christoffel connection or Christoffel symbols.\footnote{They are a pain to compute by hand, hence why one professor of mine once referred to them as the ``Christ-awful symbols.''} Thus
 $$\Gamma^a_{bc}=\frac{1}{2} g^{ad}(-\p_d g_{bc}+\p_b g_{cd} + \p_c g_{bd}).$$
 It is, as expected, symmetric under exchange $b\leftrightarrow c$ since the metric is symmetric, $g_{ab}=g_{ba}$.
 
@@ -78,6 +80,6 @@ $$\nabla_c(V_a)=\nabla_c (g_{ab} V^b)=(\nabla_c g_{ab}) V^b+ g_{ab}\nabla_c V^b=
 since $\nabla_c g_{ab}=0$. Therefore with the metric connection, the metric commutes with the covariant derivative. This is also true of the inverse metric-- prove this as an exercise.
 
 \begin{ex}
-Prove\footnote{I think we can do this with Leibniz, actually. $\nabla_c(g_{ab}g^{ab})=\nabla_c(g_ab) g^{ab}+g_{ab} \nabla_c g^{ab}$.} that the covariant derivative of the inverse metric is also zero,
+Prove\footnote{I think we can do this with Leibniz, actually. $\nabla_c(g_{ab}g^{ab})=\nabla_c(g_{ab}) g^{ab}+g_{ab} \nabla_c g^{ab} = 0$ since the trace of the metric is just a scalar. If $g_{ab}$ is not identically zero, it must be that $\nabla_c g^{ab}$ vanishes.} that the covariant derivative of the inverse metric is also zero,
 $$\nabla_c g^{ab}=0.$$
 \end{ex}

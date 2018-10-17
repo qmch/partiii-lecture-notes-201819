@@ -1,0 +1,89 @@
+We defined the symmetric metric connection (i.e. the Christoffel connection) such that
+$$\nabla_a g_{bc}=0\text{ with } \Gamma^c_{ab}=\Gamma^{c}_{ba}.$$
+
+We also found that if $\phi$ is a scalar field, the covariant derivatives commute:
+$$(\nabla_a \nabla_b - \nabla_b \nabla_a)\phi = \p_a \p_b \phi - \Gamma^c_{ab} \p_c \phi - \p_b \p_a \phi+ \Gamma^c_{ba}\p_c\phi =0$$
+where we used the symmetry of the Christoffel symbols to cancel the second and fourth terms.
+We might then ask if this is true for the covariant derivatives on a $1$-form as well.
+\begin{eqnarray*}
+(\nabla_a \nabla_b - \nabla_b \nabla_a)V_c &=&
+\nabla_a(\p_b V_c - \Gamma^e_{bc} V_e) - (a\leftrightarrow b)\\
+&=&\p_a\p_b V_c - \Gamma^e_{bc} \p_a V_e - (\p_a \Gamma^e_{bc})V_e - \Gamma^f_{ab} (\p_f V_c- \Gamma^e_{fc} V_e) -\Gamma^f_{ac}(\p_b V_f - \Gamma^e_{bc}V_e) +\Gamma^f_{bc}(\p_a V_f -\Gamma^e_{af})\\
+&&-\p_b\p_a V_c + \Gamma^e_{ac}\p_b V_e + (\p_b \Gamma^e_{ac})V_e +\Gamma^f_{ba}(\p_f V_c - \Gamma^e_{fc} V_e)
+\end{eqnarray*}
+%check the Sean Carroll notes or Harvey Reall for the expression and/or work it out carefully.
+
+It's not quite zero (in general), but what we find after a bit of close inspection is that all the second derivative terms cancel, and all the terms with derivatives of $V$ also cancel.\footnote{Actually, we could do this for a general connection without assuming that the connection is symmetric in its lower two indices. If we do so, we pick up a term with the torsion tensor in it.} We're left with products of the Christoffel symbols and also derivatives thereof:
+$$(\nabla_a\nabla_b - \nabla_b \nabla_a)V_c=(-\p_a \Gamma^e_{bc}+\p_b \Gamma^e_{ac} - \Gamma^f_{bc} \Gamma^e_{af}+\Gamma^f_{ac} \Gamma^e_{bf}) V_e.$$
+Since the expression on the LHS is a tensor, the RHS must also be a tensor. (We can check this explicitly using the transformation properties of $\Gamma$, though I don't recommend it.)
+
+\begin{defn}
+We therefore define the curvature tensor ${R_{abc}}^e$ by the following:
+$$(\nabla_a \nabla_b - \nabla_b \nabla_a)V_c\equiv {R_{abc}}^e V_e,$$
+where $R_{abc}^e$ is given explicitly by
+$$R_{abc}^e = -\p_a \Gamma^e_{bc} +\p_b \Gamma^e_{ac}-\Gamma^f_{bc} \Gamma^e_{fa}+\Gamma^f_{ac} \Gamma^e_{fb}.$$
+
+Roughly speaking, the curvature tensor measures how much the covariant derivatives of tensors fail to commute.\footnote{This is only technically true for torsion-free connections. To quote Sean Carroll, ``The Riemann tensor measures that part of the commutator of covariant derivatives that is proportional to the vector field, while the torsion tensor measures the part that is proportional to the covariant derivative of the vector field.''}
+\end{defn}
+
+On arbitrary tensors $T^{ab\ldots}_{cd\ldots}$ one can write down a rather long expression for the commutator of the covariant derivatives:
+$$(\nabla_e \nabla_f -\nabla_f \nabla_e)T^{ab\ldots}_{cd\ldots} = {R_{ef}}^a_p T^{pb \ldots}_{cd \ldots}+{R_{ef}^b}_p T^{ap\ldots}_{cd \ldots}+ R_{efc}^p T^{ab\ldots}_{pd\ldots} + R_{efd}^p T^{ab\ldots}_{cp\ldots} + \ldots$$
+similar to our formula for taking individual covariant derivatives. There is no further interesting content in these arbitrary tensors, however-- all the interesting physics seems to already be captured in the curvature tensor.
+
+The Riemann tensor (i.e. the curvature tensor with an index lowered) also has some nice symmetries which you may like to check.
+\begin{eqnarray*}
+R_{abcd}&=& -R_{bacd}\\
+R_{abcd}&=& -R_{abdc}\\
+R_{abcd}&=&R_{cdab}\\
+R_{abcd}+R_{acdb}+R_{adbc}&=&0
+\end{eqnarray*}
+These can be recovered from the explicit form of the curvature tensor with sufficient patience.
+
+As a consequence of these identities, the Riemann tensor has many components (though they are somewhat constrained by symmetry). In $d$ dimensions, it has
+$\frac{1}{12} d^2(d^2-1)$ components, so in $4$ spacetime dimensions there are $20$ independent components. In $d=3$ there are only $6$ and in $d=2$, just 1.
+
+In general there are many, many terms one needs to work out to actually compute the Riemann tensor. There are very nice computer programs like Mathematica which can automate the process, or if you have some time on your hands it is a decent exercise to write the code yourself.
+
+\begin{defn}
+We also define the \term{Ricci tensor}:
+$$R_{bd}\equiv R_{abcd}g^{ac}$$
+where we contract on the first and third indices of the Riemann tensor. The Ricci tensor is symmetric, $R_{ab}=R_{ba}$.
+\end{defn}
+\begin{defn}
+If we contract once more, we get the \term{Ricci scalar},
+$$R\equiv R^{ab}g_{ab}.$$
+\end{defn}
+
+In two-dimensional calculations, $R$ is the same as the Gaussian curvature up to a numerical factor. 
+In addition, computing the Ricci scalar for Minkowski space reveals that it is zero-- Minkowski space is flat.
+
+We can now discuss geodesics, curves which extremize the proper distance between two endpoints $p,q$. 
+\begin{defn}
+The proper distance along the line from $p$ to $q$ is given by
+$$\int_p^q ds = \int_p^q \sqrt{\left|g_{ab}\frac{dx^a}{d\lambda} \frac{dx^b}{d\lambda}\right|} d\lambda$$
+since $ds^2=g_{ab} dx^a dx^b.$ This is a functional of the path $x^a(\lambda)$ we take through the space, and when it is extremized\footnote{When this refers to a path length in just space it's minimized, but when we are computing proper time it is maximized.} we call the resulting path a \term{geodesic}. 
+\end{defn}
+Geodesics generalize the concept of a straight line to curved space. For instance, a great circle is an example of a geodesic for the surface of the Earth.
+
+Extremizing the integral of $ds$ is hard because of the square root, so we usually just extremize $\int_p^q ds^2$ instead. That is, we extremize
+$$I=\int_p^q g_{ab}\frac{dx^a}{d\lambda} \frac{dx^b}{d\lambda} d\lambda= \int_p^q L d\lambda.$$
+By the Euler-Lagrange equations, we can compute
+$$\frac{d}{d\lambda} \left(\frac{\p L}{\p \dot x^a}\right)- \frac{\p L}{\p x^a}=0$$
+where $\cdot = \p/\p\lambda.$
+Therefore
+$$\frac{d}{d\lambda}(2g_{ab}\dot x^{b}) -\p_a (g_{bc} \dot x^b \dot x^c) =0$$
+Equivalently
+$$\frac{d}{d\lambda}(g_{ab}\dot x^b)-\frac{1}{2}(\p_a g_{bc})\dot x^b \dot x^c =0.$$
+By the chain rule we rewrite the first term as
+$$g_{ab}\ddot x^b +\left(\frac{\p}{\p x^c}g_{ab}\right) \frac{\p x^c}{\p \lambda} \frac{\p x^b}{\p \lambda}-\frac{1}{2}\p_a g_{bc} \dot x^b \dot x^c=0.$$
+Regrouping,
+\begin{eqnarray*}
+0&=& g_{ab} \ddot x^b + (\p_c g-{ab}-\frac{1}{2}\p_a g_{bc})\dot x^b \dot x^c\\
+&=& g^{ae}g_{ab} \ddot x^b +\frac{1}{2} g^{ae}(\p_c g_{ab}+\p_b g_{ac}-\p_a g_{bc})\dot x^b \dot x^c.
+\end{eqnarray*}
+Recognizing that the first term becomes a delta function $\delta^e_b$ and the second term includes a Christoffel symbol, we rewrite this as
+$$\frac{d^2x^e}{d\lambda^2}+\Gamma^e_{bc}\frac{dx^b}{d\lambda} \frac{dx^c}{d\lambda}=0,$$
+which we often call the \term{geodesic equation.} The name of the game is to construct the tangent vector $V^a$ to the curve, with $V^a=\frac{dx^a}{d\lambda}.$
+We can also write
+$$V^b \nabla_b V^a = 0,$$
+which is also sometimes called the geodesic equation.
