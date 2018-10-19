@@ -1,0 +1,106 @@
+Today, we'll revisit the idea of Lie algebras from Lie groups. A Lie group is a very special type of manifold because it is equipped with a group structure, and this means that it comes with some nice maps on the manifold built-in.
+\begin{defn}
+In particular, for each element $h\in G$ a Lie group, we have smooth maps
+$$L_h:G\to G, g\in G\mapsto hg \in G$$
+and
+$$R_h:G\to G, g\in G \mapsto gh \in G$$
+known as \term{left-} and \term{right-translations}.
+\end{defn}
+We'll understand the meaning of this term more clearly in just a minute, but we can already see that these maps are \term{surjective} (their image includes every element of the group),
+$$\forall g'\in G \exists g= h^{-1}g'\in G \implies L_h(g)=g'$$
+and \term{injective} (for every element of the image, the inverse is unique),
+$\forall g, g'\in G, L_h(g)=L_h(g') \implies g=g'$ since
+$$L_h(g)=L_h(g')\implies hg = hg' \implies g=g'$$ by the existence of unique inverses under group multiplication. \qed
+
+Thus the \term{inverse map},
+$$(L_h)^{-1}=L_{h^{-1}},$$
+also exists and is smooth. 
+\begin{defn}
+We say that $L_h$ and $R_h$ are \term{diffeomorphisms} of $G$ (i.e. an isomorphism such that both the map and its inverse are smooth).
+\end{defn}
+
+To concretely understand how $L_h$ acts on elements of $G$, we therefore introduce coordinates $\set{\theta^i},i=1,\ldots,D$ in some region containing the identity element $e$:
+$$g=g(\theta)\in G, g(0)=e.$$
+Let $g'=g(\theta')=L_h(g)=h g(\theta).$
+A priori, $g'$ need not be in the same coordinate patch as $g$, but because $G$ is a manifold, we have some nice transition functions which will allow us to describe $g'$ in compatible local coordinates. 
+
+To avoid these complications, let us assume for now that $g$ and $g'$ are in the same coordinate patch as $g$. In coordinates,  $L_h$ is then specified by $D$ real functions on the coordinates $\theta$,
+$${\theta'}^i={\theta'}^i(\theta),i=1,\ldots,D.$$
+As $L_h$ is a diffeomorphism, the \term{Jacobian matrix}
+$$J^i_j(\theta)=\P{{\theta'}^i}{\theta^j}$$
+exists and is invertible (i.e. $\det J\neq 0$).
+
+\begin{defn}
+However, the map $L_h:G\to G$ now induces a map $L_h^*$ from tangent vectors at $g$ to the tangent space to $L_h(g)=hg\in G$. That is,
+$$L_h^*: \mathcal{T}_g(G)\to \mathcal{T}_{hg}(G).$$
+In coordinates, we see that $L_h^*$ maps a tangent vector $V=V^i \P{}{\theta^i}$ in the original coordinates:
+$$L_h^*: V=V^i \P{}{\theta^i}\in \mathcal{T}_g(G)\mapsto V'={V'}^i \P{}{{\theta'}^i}\in \mathcal{T}_{hg}(G)$$
+with $${V'}^i=J^i_j (\theta) V^j.$$
+
+We call this map $L_h^*$ the \term{differential} of $L_h$.
+\end{defn}
+In words, we have moved a tangent vector at $g$ to $hg$ by rewriting it in terms of the derivatives $\p/\p\theta'$ with respect to the local coordinates at $hg$, and the components $V^i$ transform by multiplication by the Jacobian. This is pretty powerful-- left translation lets us move tangent vectors from near the identity to anywhere we like on the group manifold! We'll see that this has consequences for the structure of the Lie algebra as well.
+
+\begin{defn}
+A \term{vector field} $V$ on $G$ specifies a tangent vector
+$V(g)\in \mathcal{T}_g(G)$
+at each point $g\in G$. In coordinates,
+$$V(\theta)=V^i(\theta)\P{}{\theta^i} \in \mathcal{T}_{g(\theta)}(G).$$
+We say a vector field is smooth if the component functions $V^i(\theta)\in \RR, i=1,\ldots,D$ are differentiable.
+\end{defn}
+
+In fact, starting from a single tangent vector at the identity
+$$\omega\in \mathcal{T}_e(G),$$
+we can then define a vector field using left-translation.
+$$V(g)=L_g^*(\omega) \forall g\in G.$$
+So now we're leaving the tangent vector fixed and moving it all around our manifold using the differential map $L_g^*$. But since $L_g^*$ is smooth and invertible, $V(g)$ is smooth and \emph{non-vanishing}.
+To see this, suppose $L_g^*$ sent some $\omega \neq 0$ to $v'=0$. Since the components of $\omega$ transform with the Jacobian matrix, this implies that the Jacobian matrix has a zero eigenvalue (i.e $0=J^i_j V^j$). But we said the Jacobian matrix was invertible, so this is a contradiction (otherwise $J^{-1}$ could send the zero vector to something nonzero, ${J^{-1}}^i_j 0 = V^i, V^i\neq 0$).
+
+Then starting from a basis $\set{\omega_a}, a=1,\ldots,D$ for $\mathcal{T}_e(G),$ we get \emph{$D$ independent nowhere-vanishing vector fields on $G$},
+$$V_a(g)=L_g^*(\omega_a),a=1,\ldots,D.$$
+This turns out to already be a very strong constraint on what manifolds admit Lie groups.
+\begin{exm}
+By the ``hairy ball theorem,'' any smooth vector field on $S^2$ has at least two zeros.\footnote{Or one that is ``double zero.''} Therefore $M(G)\not\simeq S^2$.
+
+In fact, if $G$ is compact and $\text{dim}(G)=2$, the only possible manifold structure is $M(G)=T^2=S^1\times S^1$ the torus, corresponding to the group structure $U^1\times U^1.$
+\end{exm}
+
+\begin{defn}
+Note that $V_a(g), a\in 1,\ldots,D$ are called \term{left-invariant vector fields} on $G$. They obey
+$$L_h^*V_a(g)=L_h^* \circ L_g^*(\omega_a)=L_{hg}^*(\omega_a)=V_a(hg).$$
+This has some very nice consequences for the structure of the Lie algebra-- for more on this, see the appendix to Prof. Dorey's notes (which I may type here later).
+\end{defn}
+
+For matrix Lie groups, $G\subset \text{Mat}_n(F), n\in \NN, F=\RR\text{ or }\CC$, we find that $\forall h\in G, X\in L(G)$ we get a map
+$$L_h^*: \mathcal{T}_e(G)\to T_h(G).$$
+Recall that in general the elements in the Lie algebra are not in the Lie group itself (e.g. the elements of $U(n)$ are unitary but the elements of $L(U(n))$ are anti-hermitian). However, since $L_h^*$ is a map on the tangent space, it turns out that $L_h^*$ then induces a map on the elements of the Lie algebra:
+$$L_h^*(X)=hX \in \mathcal{T}_h(G).$$
+
+The proof is as follows: consider a curve
+$$C:t\in \RR\mapsto g(t)\in G$$
+with $g(0)=e,\dot g(0)=X\in L(G)$. Near $t=0$ we can Taylor expand,
+$$g(t)\simeq I_n+tX+O(t^2).$$
+Define a new curve
+$$C':t\in \RR \mapsto h(t)=h \cdot g(t) \in G$$
+with $h\in G$. Near $t=0$, $h(t)$ then has the expansion
+$$h(t)\simeq h+thX + O(t^2)$$
+Therefore $$hX\in \mathcal{T}_h(G),$$
+so we can quite sensibly define a map from the Lie algebra (defined locally at the origin) to the tangent space of anywhere else we like on the manifold.
+
+Equivalently, given any smooth curve
+$$C:t\in \RR \mapsto g(t)\in G,$$
+with $$\dot g(t)\in \mathcal{T}_{g(t)}(G) \implies g^{-1}(t) \dot g(t)= L_{g^{-1}(t)}^* (\dot g(t))\in L(G) \forall t\in \RR.$$ In words, we can simply take any smooth curve on $G$ and move it back to the origin, and then its first derivative is in the tangent space at the origin, i.e. the Lie algebra $L(G)$.
+
+Conversely, given $X\in L(G)$ we can reconstruct a curve $C_X: \RR\to G, t\mapsto g(t)$ with
+$$g^{-1}(t)\frac{dg(t)}{dt}=X \forall t\in \RR.$$
+Our goal is then to solve this ordinary differential equation with boundary condition $g(0)=I_n.$ We'll define the \term{matrix exponential} (likely familiar from quantum mechanics). For a matrix $M\in \text{Mat}_n(F)$, we use the Taylor series of the exponential to write
+$$\exp(M)\equiv \sum_{l=0}^\infty \frac{1}{l!} M^l \in \text{Mat}_n(F).$$
+If we now set 
+$$g(t)=\exp(tX)= \sum_{l=0}^\infty \frac{1}{l!}t^l X^l,$$
+then it's immediate that $g(0)=\exp(0)=I_n$ and
+\begin{eqnarray*}
+\frac{dg(t)}{dt}&=&\sum_{l=1}^\infty \frac{1}{(l-1)!}t^{l-1}X^l\\
+&=&\exp(tX) X\\
+&=&g(t) X. \qed
+\end{eqnarray*}
+Therefore $g(t)$ solves the differential equation and we say that the exponential map takes the Lie algebra to the Lie group.
