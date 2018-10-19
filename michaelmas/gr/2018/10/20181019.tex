@@ -53,28 +53,37 @@ $$V^a\nabla_a V^b=0.$$ If we further choose $V^a V_b=-1$ (this is true for the t
 One can now consider families of curve parametrized by both time $t$ along the curve and another parameter $s$. The tangent vectors to each geodesic are given by
 $$T^a(s) \equiv \frac{dx^a(t,s)}{dt}$$
 and if we derive with respect to $s$ instead we get a tangent vector relating neighboring geodesics,
-$$S^a(t)=\frac{dx^a(t,s)}{ds}.$$
+$$S^a(t)\equiv\frac{dx^a(t,s)}{ds},$$
+sometimes called the deviation vector.
 How does $S^a$ change as one moves along the geodesics? If we consider
-$$T^a\nabla_a S^b$$ this is like the relative velocity. (Expand on this later.)
+$$V^b \equiv (\nabla_T S)^b=T^a\nabla_a S^b$$ this is like the ``relative velocity of geodesics'' (where I've used $\nabla_T$ to represent a directional covariant derivative)-- it measures how much the deviation vector $S^a$ points in the direction of the tangent vector $T^a$.
 
+One can equivalently define the ``relative acceleration of geodesics'' as
+$$A^b \equiv (\nabla_T S)^b = T^a \nabla_a V^b.$$ We'll revisit this quantity shortly.
+
+\begin{lem}
 Consider the following quantity:
-$$S^a \nabla_a T^b-T^a \nabla_a S^b = S^a (\p_a T^b +\Gamma^b_{ac} T^c) - T^a (\p_a S^b +\Gamma^b_{ac} S^c).$$
-The terms with Christoffel symbols cancel by the symmetry of $\Gamma^a_{bc}$ ($a$ and $c$ are dummy indices). But $$S^a \p_a T^b = S^a \p T^b/\p x^a = d^2 x^b/dsdt = T^a \p_a S^b,$$
+$$S^a \nabla_a T^b-T^a \nabla_a S^b.$$ 
+Expanding out, we find that $$S^a\nabla_a T^b- T^a \nabla_a S^b= S^a (\p_a T^b +\Gamma^b_{ac} T^c) - T^a (\p_a S^b +\Gamma^b_{ac} S^c).$$
+The terms with Christoffel symbols cancel by the symmetry of $\Gamma^b_{ac}$ (since $a$ and $c$ are dummy indices, we can swap them and relabel). But $$S^a \p_a T^b = S^a \frac{\p T^b}{\p x^a} = \frac{\p^2 x^b}{\p s\p t} = T^a \p_a S^b,$$
 so our expression
 $$S^a \nabla_a T^b-T^a \nabla_a S^b=0.$$
-This tells us that in fact we can swap $S^a$ and $T^b$ through the covariant derivative.
+This tells us that we can swap $S^a$ and $T^b$ through the covariant derivative so long as we keep the indices fixed.
+\end{lem}
 
 Now what is the acceleration between neighboring geodesics,
-$$\frac{d^2x^a}{ds^2}=T^c \nabla_c(T^b \nabla_b S^a)?$$
+$$A^a =\frac{d^2S^a}{dt^2}?$$
+Expanding out, we find that it is
 \begin{eqnarray*}
-\frac{d^2x^a}{ds^2}=T^c \nabla_c(T^b \nabla_b S^a)&=&T^c (\nabla_c S^B)(\nabla_b T^a)+T^c S^b \nabla_c \nabla_b T^a\\
-&=& T^c(\nabla_c S^b)(\nabla_b T^a)+T^c S^b(\nabla_b \nabla_c T^a +{R_{cb}}^a_d T^d).
+\frac{d^2S^a}{dt^2}&=&T^c \nabla_c(T^b \nabla_b S^a)\\
+&=&T^c (\nabla_c S^B)(\nabla_b T^a)+T^c S^b \nabla_c \nabla_b T^a\\
+&=& T^c(\nabla_c S^b)(\nabla_b T^a)+T^c S^b(\nabla_b \nabla_c T^a +{{R_{cb}}^a}_d T^d).
 \end{eqnarray*}
-In the next step, we'll move the $T$ inside the parentheses to get
-$$T^c(\nabla_c S^b)(\nabla_b T^a)+S^b\nabla_b(T^c \nabla_c T^a) - S^b(\nabla T^c) \nabla_c T^a+T^c S^b{R_{cb}}^a_d T^d.$$
+In the next step, we'll move the $T^c$ inside the $\nabla_b$ derivative to get
+$$T^c(\nabla_c S^b)(\nabla_b T^a)+S^b\nabla_b(T^c \nabla_c T^a) - S^b(\nabla_b T^c) \nabla_c T^a+T^c S^b{{R_{cb}}^a}_d T^d.$$
 But the second term vanishes by the geodesic equation, and the third term can be written as
 $-S^c \nabla_c T^b \nabla_b T^a = -T^c \nabla_c S^b \nabla_b T^a$ (by the identity we proved earlier) so the third term cancels the first one.
 
 What remains is a function of the Riemann tensor. Using the symmetries of the Riemann tensor, we can rewrite our acceleration equation as
-$$\frac{d^2S^a}{dt^2}=R^a_{bcd} T^b T^c S^d,$$
+$$\frac{d^2S^a}{dt^2}={R^a}_{bcd} T^b T^c S^d,$$
 which we call the \term{equation of geodesic deviation.} If the Riemann tensor is zero, then the relative velocity between geodesics is constant. If the Riemann tensor $\neq 0$, then we get a ``stretching force'' between neighboring geodesics, sometimes called a tidal force.
