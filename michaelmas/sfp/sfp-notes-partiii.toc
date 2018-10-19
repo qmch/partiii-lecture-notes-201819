@@ -4,4 +4,5 @@
 \contentsline {section}{\numberline {4}Here Comes the $SU(n)$: Thursday, October 11, 2018}{8}{section.4}
 \contentsline {section}{\numberline {5}Saturday, October 13, 2018}{11}{section.5}
 \contentsline {section}{\numberline {6}Tuesday, October 16, 2018}{13}{section.6}
+\contentsline {section}{\numberline {7}Thursday, October 18, 2018}{16}{section.7}
 \contentsfinish 
