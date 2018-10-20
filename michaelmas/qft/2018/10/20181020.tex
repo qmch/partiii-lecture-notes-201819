@@ -35,7 +35,7 @@ $$\frac{(-i)^2}{2!}\int_{t_0}^t dt' \int_{t_0}^t dt'' T(H_I(t')H_I(t'')$$ (where
 \begin{defn}
 We find that $U$ can be written compactly as
 $$U(t,t_0)=T \exp \set{-i\int_{t_0}^t dt' H_I(t')},$$
-which we call \term{Dyson's formul.} (Note that $U(t,t_0=T \exp \set{+i\int_{t_0}^t dt' L_I(t')}$, in terms of the Lagrangian.) This is a formal result, but we usually just expand to some finite order in terms of the coupling constants.
+which we call \term{Dyson's formula.} (Note that $U(t,t_0=T \exp \set{+i\int_{t_0}^t dt' L_I(t')}$, in terms of the Lagrangian.) This is a formal result, but we usually just expand to some finite order in terms of the coupling constants.
 \end{defn}
 This is the last bit of machinery we need to start computing scattering amplitudes in quantum field theory!
 
@@ -43,12 +43,12 @@ This is the last bit of machinery we need to start computing scattering amplitud
 The time evolution used in scattering theory is called the \term{$S$-matrix} (S for scattering). The $S$ matrix is defined to be
 $$S=\lim_{t\to \infty,t_0\to -\infty}U(t,t_0).$$
 \end{defn}
-We will consider interactions where the final state $\ket{f}$ and the initial state $\ket{i}$ are well-separated from each other and are far away from the interaction. Therefore, the initial and final states $\ket{i},\ket{f}$ behave like free particles, i.e. they are eigenstates of $H_0$.
+We will consider interactions where the final state $\ket{f}$ and the initial state $\ket{i}$ are well-separated from each other and are far away from the interaction. Therefore, the initial and final states $\ket{i},\ket{f}$ behave like free particles, i.e. they are eigenstates of $H_0$.\footnote{This is a heuristically useful description but a little slippery in the details. A  priori, there's no reason that eigenstates of the free Hamiltonian should be eigenstates of the interacting Hamiltonian. If you prefer, you can think of the scattering amplitude as the overlap (as measured by the inner product) between initial free particle states and final free particle states, with the possibility for some interaction in between. Even if we started with free particle eigenstates, our interaction is sure to evolve these states to some new ones, but we can look at the overlap between the time evolved versions of the free particle states $U(t,t_0)\ket{i}$ and the final free particle states we're interested in, $\bra{f}.$}
 
-This should seem at least plausible: at leat/early times, the particles are well-separated and don't feel the effect of each other. As they approach, they may interact before going their separate ways. The scattering amplitude is then
+This should seem at least plausible: at late/early times, the particles are well-separated and don't feel the effect of each other. As they approach, they may interact before going their separate ways. The scattering amplitude is then
 $$\lim_{t\to\infty, t_0\to -\infty}\bra{f}U(t,t_0)\ket{i}=\bra{f}S \ket{i}.$$
 
-Note that there are some cases that need to be treated differently, like bound states. For instance, a proton and an electron at low energies could interact, $p+e^-\to$ the bound state $(H)$. Here, the assumption that the particles end up well-separated is violated. It turns out that such solutions appear as poles in the $S$-matrix, but this is a more advanced topic and we won't discuss it futher here.
+Note that there are some cases that need to be treated differently, like bound states. For instance, a proton and an electron at low energies could interact, $p+e^-\to$ the bound state $(H)$. Here, the assumption that the particles end up well-separated is violated. It turns out that such solutions appear as poles in the $S$-matrix, but this is a more advanced topic and we won't discuss it further here.
 
 Let's return to scalar Yukawa theory. Now, we'll drop the $I$ subscripts and assume uniformly that we are in the interaction picture. We have the Hamiltonian
 $$\cH = g \psi^* \psi \phi,$$

@@ -18,7 +18,7 @@ $L(G)$ therefore determines $G$ in a neighborhood of the identity (up to the rad
 \begin{exm}
 For $G=O(n)$, 
 $$L(O(n))=\set{X\in \text{Mat}_n(\RR): X+X^T=0}.$$ 
-Then $X\in L(O(n)) \implies \text{Tr} X=0.$ Now let $g=\exp(X)$, $X\in L(O(n)$. We have a nice identity\footnote{To prove this, consider a basis where $X$ is diagonal. Then the determinant of the exponential  is the exponential of the sum of the eigenvalues.} that
+Then $X\in L(O(n)) \implies \text{Tr} X=0.$ Now let $g=\exp(X)$, $X\in L(O(n)$. We have a nice identity\footnote{To prove this, consider a basis where $X$ is diagonal, $X_{ij}=\delta_{ij}\lambda_i,$ with $\lambda_i$ the eigenvalues of $X$. Then powers of $X$ are given by $X_{ij}^n=\delta_{ij}\lambda_i^n$ and the matrix exponential is simply the matrix with the exponential of each diagonal entry, $(\exp X)_{ij}=\delta_{ij} \exp(\lambda_i).$ It follows that the determinant of the exponential is $\Pi_i \exp(\lambda_i)= \exp(\sum_i \lambda_i)$, which is just the exponential of the sum of the eigenvalues.} that
 $$\det (\exp X) = \exp(\text{Tr} X),$$
 and since $\text{Tr} X = 0, \det (\exp X) = 1$. Therefore $\exp(X)\in SO(n) \subset O(n).$
 
@@ -28,7 +28,7 @@ We'll mention another non-proven fact-- for $G$ compact, the image of the $\exp$
 Our map can also fail to be injective when $G$ has a $U(1)$ subgroup. 
 \begin{exm}
 For $G=U(1),$ we have 
-$$L(U(1))=\set{xX=ix \in \CC: x\in \RR}.$$
+$$L(U(1))=\set{X=ix \in \CC: x\in \RR}.$$
 Thus $g=\exp(X)=\exp (ix),$
 but the Lie algebra elements have a degeneracy where $ix$ and $ix+2\pi i$ yield the same group element (by Euler's formula) under the $\exp$ map.
 \end{exm}
@@ -36,7 +36,7 @@ but the Lie algebra elements have a degeneracy where $ix$ and $ix+2\pi i$ yield 
 Let's now return to our discussion of $SU(2)$ vs. $SO(3).$ We saw that $L(SU(2))\simeq L(SO(3)),$ and so we can construct a double-covering, i.e. a globally 2:1 map
 $d:SU(2)\to SO(3)$ with $d: A\in SU(2) \mapsto d(A) \in SO(3).$ One can write the map explicitly as
 $$d(A)_{ij} =\frac{1}{2} \text{tr}_2 (\sigma_i A \sigma_j A^\dagger).$$
-However, $d$ is not one-to-one since $d(A)=d(-A).$ But we'll explore the properties of this map more on Example Sheet 2. Recall that $SU(2)\simq S^3$ the three-sphere. If we therefore quotient out by this map, this is the same as identifying antipodal points on the three-sphere. That is, this map proivdes an isomorphism
+However, $d$ is not one-to-one since $d(A)=d(-A).$ But we'll explore the properties of this map more on Example Sheet 2. Recall that $SU(2)\simeq S^3$ the three-sphere. If we therefore quotient out by this map, this is the same as identifying antipodal points on the three-sphere. That is, this map provides an isomorphism
 $$SO(3) \simeq SU(2)/\ZZ_2$$
 where $\ZZ_2=\set{I_2,-I_2}$ is the centre of $SU(2)$, which is a discrete (normal) subgroup of $SU(2)$.\footnote{A subgroup $H\subset G$ is normal if $gHg^{-1}=H \forall g\in G$. Then we define the quotient $G/H$ to be the original group under identification of the equivalence classes corresponding to the elements of the normal subgroup. Normal subgroups ``tile'' the group-- they separate it into distinct cosets, so it makes good sense to quotient (``mod out'') by a normal subgroup.}
 
