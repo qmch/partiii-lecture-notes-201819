@@ -1,0 +1,65 @@
+Previously, we defined the exponential map
+$$g(t)=\exp(tX)=\sum_{l=0}^\infty \frac{1}{l!}t^l X^l.$$ In the exercises (Example Sheet 1, Q10) we'll check explicitly that for $X\in L(SU(n)),$ we have $\exp(tX)\in SU(N) \forall t\in \RR.$ We'll also show in a separate question (Example Sheet 2, Q1) that for a choice of $X\in L(G)$ with $G$ a Lie group and $J$ an interval with $J\subset \RR$, $S_X=\set{g(t)=\exp(tX} \forall t \in J \subset \RR$ forms an abelian subgroup of $G$. We call this a one-parameter subgroup.
+
+Now we might be interested to reconstruct $G$ from $L(G)$. Setting $t=1$ we get a map $$\exp:L(G)\to G,$$ and this map is one-to-one in some neighborhood of the identity $e$. (We haven't proved this but it's true.) Then given $X,Y\in L(G)$ we would also like to reconstruct the group multiplication from the Lie algebra, and the solution to this will be the \term{Baker-Campbell-Hausdorff (BCH) formula}.
+
+For $X,Y\in L(G)$ define
+$$g_X=\exp(X), g_Y=\exp(Y)$$
+and
+$$g_X^\epsilon(x)=\exp(\epsilon X), g_Y^\epsilon(Y)=\exp (\epsilon Y).$$
+Then their product is
+$$g_X g_Y= \exp(Z)\in G, z\in L(G).$$ Expanding out, we find that
+$$\left(\sum_{l=0}^\infty \frac{X^l}{l!}\right)\left(\sum_{l'=0}^\infty \frac{Y^{l'}}{l' !}\right)=\sum_{m=0}^\infty \frac{Z^m}{m!}$$
+and one may work out the terms order by order-- it looks something like this.
+$$Z=X+Y+\frac{1}{2}[X,Y]+\frac{1}{12}([X,[X,Y]]-[Y,[X,Y])+\ldots \in L(G),$$
+and we know that this is in the Lie algebra since it is made up of $X$, $Y$, and brackets of $X$ and $Y$ which are guaranteed to be in the Lie algebra. Moreover this generalizes to Lie algebras that aren't matrix groups, since the construction only uses the vector space structure of $L(G)$ and the Lie bracket.
+
+$L(G)$ therefore determines $G$ in a neighborhood of the identity (up to the radius of convergence of $\exp Z$, anyway). The exponential map may \emph{not} be globally one-to-one, however. For instance, it is not surjective when $G$ is not connected.
+\begin{exm}
+For $G=O(n)$, 
+$$L(O(n))=\set{X\in \text{Mat}_n(\RR): X+X^T=0}.$$ 
+Then $X\in L(O(n)) \implies \text{Tr} X=0.$ Now let $g=\exp(X)$, $X\in L(O(n)$. We have a nice identity\footnote{To prove this, consider a basis where $X$ is diagonal. Then the determinant of the exponential  is the exponential of the sum of the eigenvalues.} that
+$$\det (\exp X) = \exp(\text{Tr} X),$$
+and since $\text{Tr} X = 0, \det (\exp X) = 1$. Therefore $\exp(X)\in SO(n) \subset O(n).$
+
+We'll mention another non-proven fact-- for $G$ compact, the image of the $\exp$ map is the connected component of the identity. This squares with what we just showed for $O(n).$
+\end{exm}
+
+Our map can also fail to be injective when $G$ has a $U(1)$ subgroup. 
+\begin{exm}
+For $G=U(1),$ we have 
+$$L(U(1))=\set{xX=ix \in \CC: x\in \RR}.$$
+Thus $g=\exp(X)=\exp (ix),$
+but the Lie algebra elements have a degeneracy where $ix$ and $ix+2\pi i$ yield the same group element (by Euler's formula) under the $\exp$ map.
+\end{exm}
+
+Let's now return to our discussion of $SU(2)$ vs. $SO(3).$ We saw that $L(SU(2))\simeq L(SO(3)),$ and so we can construct a double-covering, i.e. a globally 2:1 map
+$d:SU(2)\to SO(3)$ with $d: A\in SU(2) \mapsto d(A) \in SO(3).$ One can write the map explicitly as
+$$d(A)_{ij} =\frac{1}{2} \text{tr}_2 (\sigma_i A \sigma_j A^\dagger).$$
+However, $d$ is not one-to-one since $d(A)=d(-A).$ But we'll explore the properties of this map more on Example Sheet 2. Recall that $SU(2)\simq S^3$ the three-sphere. If we therefore quotient out by this map, this is the same as identifying antipodal points on the three-sphere. That is, this map proivdes an isomorphism
+$$SO(3) \simeq SU(2)/\ZZ_2$$
+where $\ZZ_2=\set{I_2,-I_2}$ is the centre of $SU(2)$, which is a discrete (normal) subgroup of $SU(2)$.\footnote{A subgroup $H\subset G$ is normal if $gHg^{-1}=H \forall g\in G$. Then we define the quotient $G/H$ to be the original group under identification of the equivalence classes corresponding to the elements of the normal subgroup. Normal subgroups ``tile'' the group-- they separate it into distinct cosets, so it makes good sense to quotient (``mod out'') by a normal subgroup.}
+
+Put another way, $SO(3)$ is the upper hemisphere $U^+$ of the three-sphere $S^3$ with antipodal identification on the equation $S^2$. But the upper hemisphere $U^+$ is homeomorphic to the three-ball $B_3$, with $\p B_3 = S^2$. So the quotient is the same thing as chopping $S^3$ in half, flattening out the upper hemisphere $U^+\to B^3$ and identifying antipodal points on the equator $\p B_3 =S^2.$
+
+\begin{defn}
+For a Lie group $G$, a \term{representation} $D$ is a map
+$$D:G\to \text{Mat}_n(F)\text{ with }\det M \neq 0.$$
+Equivalently we could call this a map to $GL(n,F).$ That is, a representation takes us from a Lie group to a set of invertible matrices such that the group multiplication is preserved by the map,
+$$\forall g_1,g_2\in G, D(g_1)D(g_2)=D(g_1g_2).$$
+For a Lie group specifically, we also require that the manifold structure is preserved, so that $D$ is a smooth map (continuous and differentiable). When the map is injective, we say that the representation is \term{faithful}, but in general representations may be of lower dimension (e.g. the trivial representation where we send every group element to the identity matrix).
+\end{defn}
+
+\begin{defn}
+For a Lie algebra $\fg,$ a \term{representation} $d$ is a map
+$$d:\fg\to \text{Mat}_n(F).$$
+Note that the zero matrix is part of the Lie algebra since a Lie algebra has a vector space structure, so it won't make sense to require that $\det M\neq 0$. All we require is that this map $d$ has the properties that
+\begin{itemize}
+    \item it preserves the bracket operation, $[d(X_1),d(X_2)]=d([X_1,X_2])$ where $[d(X_1),d(X_2)]$ is now the matrix commutator.
+    \item the map is linear, so it preserves the vector space structure: $d(\alpha X_1+\beta X_2)=\alpha d(X_1)+\beta d(X_2) \forall X_1,X_2\in \fg, \a,\beta \in F$.
+\end{itemize}
+\end{defn}
+
+The \term{dimension of a representation} is then the dimension $n$ of the corresponding matrices we're using in the image of our map $d$ or $D$. The matrices in the image naturally act on vectors living in a vector space $V=F^n$ (i.e. column vectors with $n$ entries in the field $F$). We call this the \term{representation space}.
+
+Next time, we'll show that representations of the Lie group have a natural correspondence to representations of the Lie algebra.

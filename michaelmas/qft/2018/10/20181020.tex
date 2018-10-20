@@ -1,0 +1,73 @@
+Today, we'll take our first look at interacting theories in detail! Let's first complete our description of the interaction picture. Operators in the interaction picture evolve in time as
+$$O_I(t) \equiv e^{iH_0t}O_S e^{-iH_0t},$$ with $O_S$ the Schr\"odinger picture operator. In the context of quantum field theory,
+$$\phi_I(x)=e^{iH_0t}\phi(\vec x)e^{-iHt}$$
+so that $\phi_I$ obeys the Klein-Gordon equation
+$$(\p^2+m^2)\phi_I=0,$$ with solution
+$$\phi_I(x)=\int \frac{d^3p}{(2\pi)^3 \sqrt{2E_p}} (a_{\vec p} e^{-ip \cdot x}+ a_{\vec p}^\dagger e^{ip \cdot x}.$$
+Here, note that we're taking the four-vector inner product as in the Heisenberg picture, with $p^0=E_p$ and $x^0=t$. We also see that
+$\phi_I(t=0,\vec x)= \phi_S(\vec x),$ so the fields at $t=0$ agree with the Schr\"odinger picture fields.
+
+As before,
+$$[a_{\vec p},a_{\vec p}^\dagger]=(2\pi)^3 \delta^3(\vec p - \vec p'),$$ with other brackets vanishing. Note that $\ket{0}$ satisfies $a_{\vec p}\ket{0}=0$ is the vacuum of the free theory, not the interacting theory. Interaction picture fields are related to the Heisenberg picture ones by
+$$\phi_H(t,\vec x)=e^{iHt} e^{-iH_0t} \phi_I(x) e^{iH_0t} e^{-iHt},$$
+where $e^{-iH_0t} \phi_I(x) e^{iH_0t}=\phi_S(\vec x).$ We can also regroup the operators here to write
+$$\phi_H(t,\vec x)\equiv U(t,0)^\dagger \phi_I(t,\vec x) U(t,0)$$
+where $U(t,t_0)\equiv e^{iH_0(t-t_0)}e^{-iH(t-t_0)}$ is a unitary time evolution operator such that
+$$U(t_1,t_2)U(t_2,t_3)=U(t_1,t_3)$$ and $U(t,t)=1$. Equivalently,
+$$\ket{\psi(t)}_I=U(t,t')\ket{\psi(t')}_I.$$ That is, $U$ evolves interaction picture states in time.
+
+By differentiating with respect to time, we see that
+\begin{eqnarray*}
+i\frac{dU(t,0)}{dt}&=&i\left[iH_0 e^{iH_0 t}e^{-iHt}+e^{iH_0t}(-iH) e^{-iHt}\right]\\
+&=&e^{iH_0t} (H-H_0)e^{-iHt}\\
+&=&e^{iH_0t} (H_{int})_S e^{-iH_0t} e^{iH_0t} e^{-iHt}\\
+&=&(H_{int})_I U(t,0).
+\end{eqnarray*}
+
+If $(H_{int})_I=H_I$ were just a function, we could solve this by $U=\exp[-i \int_{t_0}^t H_i(t')dt'],$ but because it is an operator we have ordering ambiguities,
+$$[H_i(t'),H_I(t'')]\neq 0 \text{ for }t'\neq t''.$$
+However, our differential equation for $U$ tells us that $U(t,t_0)$ satisfies
+$$U(t,t_0)=1+(-i)\int_{t_0}^t dt' H_I(t')U(t',t_0)$$
+(you can check this explicitly in one line). Therefore we can substitute this back into itself to get the infinite series
+$$U(t,t_0)=1+(-i)\int_{t_0}^t dt' H_I(t')+(-i)^2 \int_{t_0}^t dt' \int_{t_0}^{t'} dt'' H_I(t')H_I(t'')+\ldots.$$
+From the ranges of integration, it's clear that the $H_I$s are automatically time-ordered-- for instance, $H_I(t'')$ always takes place at $t''\geq t'$. In general we can exploit symmetry to write the second term as
+$$\frac{(-i)^2}{2!}\int_{t_0}^t dt' \int_{t_0}^t dt'' T(H_I(t')H_I(t'')$$ (where we've picked up a $2$ as a symmetry factor), and in general we get a symmetry factor of $n!$ to a term with $n$ copies of $H_I(t')$.
+\begin{defn}
+We find that $U$ can be written compactly as
+$$U(t,t_0)=T \exp \set{-i\int_{t_0}^t dt' H_I(t')},$$
+which we call \term{Dyson's formul.} (Note that $U(t,t_0=T \exp \set{+i\int_{t_0}^t dt' L_I(t')}$, in terms of the Lagrangian.) This is a formal result, but we usually just expand to some finite order in terms of the coupling constants.
+\end{defn}
+This is the last bit of machinery we need to start computing scattering amplitudes in quantum field theory!
+
+\begin{defn}
+The time evolution used in scattering theory is called the \term{$S$-matrix} (S for scattering). The $S$ matrix is defined to be
+$$S=\lim_{t\to \infty,t_0\to -\infty}U(t,t_0).$$
+\end{defn}
+We will consider interactions where the final state $\ket{f}$ and the initial state $\ket{i}$ are well-separated from each other and are far away from the interaction. Therefore, the initial and final states $\ket{i},\ket{f}$ behave like free particles, i.e. they are eigenstates of $H_0$.
+
+This should seem at least plausible: at leat/early times, the particles are well-separated and don't feel the effect of each other. As they approach, they may interact before going their separate ways. The scattering amplitude is then
+$$\lim_{t\to\infty, t_0\to -\infty}\bra{f}U(t,t_0)\ket{i}=\bra{f}S \ket{i}.$$
+
+Note that there are some cases that need to be treated differently, like bound states. For instance, a proton and an electron at low energies could interact, $p+e^-\to$ the bound state $(H)$. Here, the assumption that the particles end up well-separated is violated. It turns out that such solutions appear as poles in the $S$-matrix, but this is a more advanced topic and we won't discuss it futher here.
+
+Let's return to scalar Yukawa theory. Now, we'll drop the $I$ subscripts and assume uniformly that we are in the interaction picture. We have the Hamiltonian
+$$\cH = g \psi^* \psi \phi,$$
+where $\psi$ and $\psi^*$ are (anti-)nucleons (e.g. a proton or neutron), and $\phi$ is a meson.
+\begin{itemize}
+    \item $\phi$ has $a$ and $a^\dagger$ terms which destroy and create mesons, respectively.
+    \item $\psi$ has $b$ and $c^\dagger$ terms, where $b$ destroys a nucleon and $c^\dagger$ creates an anti-nucleon.
+    \item $\psi^*$ has $b^\dagger$ and $c$ terms, where $b^\dagger$ creates a nucleon and $c$ destroys an anti-nucleon.
+\end{itemize}
+Looking at the possible terms in the Hamiltonian, we can already see interesting behavior-- we'll have terms where nucleon-anti-nucleon pairs are created and destroyed, e.g. $b^\dagger c^\dagger a$ which destroys a meson and produces a nucleon-anti-nucleon pair. This contributes to meson decay, $\phi\to \psi\bar \psi$.\footnote{When we talk about the fields, we use $*$, but when we denote antiparticles, we usually use the bar notation, e.g. an anti-$\psi$ is a $\bar \psi$.} What we recover is the leading order in $g$ term in $U(t,t_0)$.
+
+At second order, we have more complicated terms like
+$$g^2(b^\dagger c^\dagger a)(a^\dagger c b),$$
+which describes nucleon-anti-nucleon scattering. We can draw a nice diagram for this process.
+
+Returning to the case of meson decay, we have some $\phi$ meson going in with some defined momentum $\vec p$ as our initial state, and similarly we have $\psi,\bar \psi$ going out with some momenta $\vec q_1,\vec q_2.$ We can write these states as
+$$\ket{i}=\sqrt{2E_p}a_{\vec p}^\dagger \ket{0}$$
+and
+$$\ket{f}=\sqrt{4E_{q_1}E_{q_2}}b_{\vec q_1}^\dagger c_{\vec q_2}^\dagger \ket{0}.$$
+To zeroth order there is no interaction and the scattering amplitude is zero. To first order, we have
+$$\bra{f}S\ket{i}=-ig \bra{f}\int d^4 x \psi^* (x) \psi(x) \phi(x) \ket{i} + O(g^2).$$
+We'll compute this exactly next time and argue that the $O(g^2)$ corrections are relatively small, arriving at our first quantum field theory scattering amplitude.
