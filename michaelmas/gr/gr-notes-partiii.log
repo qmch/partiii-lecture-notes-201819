@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  19 OCT 2018 17:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  22 OCT 2018 00:15
 entering extended mode
 **./gr-notes-partiii.tex
 (gr-notes-partiii.tex
@@ -1513,12 +1513,9 @@ Package microtype Info: Character `029' is missing
 
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <12> not available
 (Font)              Font shape `T1/pplx/b/n' tried instead on input line 13.
-(2018/10/20181005.tex
-Overfull \vbox (1.28773pt too high) has occurred while \output is active []
-
-
-[1{C:/Users/Ian/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<2018/10/20181005_img1.jpg, id=86, 309.02953pt x 227.72578pt>
+(2018/10/20181005.tex [1{C:/Users/Ian/AppData/Local/MiKTeX/2.9/pdftex/config/pd
+ftex.map}]
+<2018/10/20181005_img1.jpg, id=89, 309.02953pt x 227.72578pt>
 File: 2018/10/20181005_img1.jpg Graphic file (type jpg)
 <use 2018/10/20181005_img1.jpg>
 Package pdftex.def Info: 2018/10/20181005_img1.jpg  used on input line 22. on i
@@ -1526,10 +1523,9 @@ nput line 22.
 Package pdftex.def Info: Requested size: 309.02876pt x 227.72522pt on input lin
 e 22.
 LaTeX Font Info:    Font shape `T1/pplx/m/sl' in size <9> not available
-(Font)              Font shape `T1/pplx/m/it' tried instead on input line 41.
- [2 <./2018/10/20181005_img1.jpg>] [3]) (2018/10/20181008.tex [4]) (2018/10/201
-81010.tex
-[5] [6] [7]) (2018/10/20181012.tex [8]
+(Font)              Font shape `T1/pplx/m/it' tried instead on input line 36.
+ [2 <./2018/10/20181005_img1.jpg>] [3]) (2018/10/20181008.tex
+[4]) (2018/10/20181010.tex [5] [6] [7]) (2018/10/20181012.tex [8]
 Overfull \hbox (18.15373pt too wide) detected at line 35
 \OMS/zplm/m/n/10 r[]\OML/zplm/m/it/10 T[] \OT1/zplm/m/n/10 = \OML/zplm/m/it/10 
 @[]T[] \OT1/zplm/m/n/10 +  []\OML/zplm/m/it/10 T[] \OT1/zplm/m/n/10 +  []\OML/z
@@ -1567,13 +1563,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 30.
  ) 
 Here is how much of TeX's memory you used:
- 31635 strings out of 493352
- 571806 string characters out of 3139718
- 699138 words of memory out of 3000000
+ 31648 strings out of 493352
+ 571923 string characters out of 3139718
+ 699136 words of memory out of 3000000
  33973 multiletter control sequences out of 15000+200000
- 617688 words of font info for 449 fonts, out of 3000000 for 9000
+ 618344 words of font info for 458 fonts, out of 3000000 for 9000
  1289 hyphenation exceptions out of 8191
- 57i,12n,67p,10401b,432s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,12n,67p,10401b,438s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Ian\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ec
 tt0800.pk>{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc} <C:\Users\I
 an\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt0900.pk><C:/
@@ -1587,9 +1583,9 @@ pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb
 ><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program F
 iles/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.
 9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on gr-notes-partiii.pdf (15 pages, 292090 bytes).
+Output written on gr-notes-partiii.pdf (15 pages, 295263 bytes).
 PDF statistics:
- 311 PDF objects out of 1000 (max. 8388607)
- 62 named destinations out of 1000 (max. 500000)
+ 320 PDF objects out of 1000 (max. 8388607)
+ 63 named destinations out of 1000 (max. 500000)
  53922 words of extra memory for PDF output out of 61914 (max. 10000000)
 

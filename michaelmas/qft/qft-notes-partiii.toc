@@ -5,4 +5,5 @@
 \contentsline {section}{\numberline {5}Saturday, October 13, 2018}{11}{section.5}
 \contentsline {section}{\numberline {6}Tuesday, October 16, 2018}{13}{section.6}
 \contentsline {section}{\numberline {7}Thursday, October 18, 2018}{17}{section.7}
+\contentsline {section}{\numberline {8}Saturday, October 20, 2018}{21}{section.8}
 \contentsfinish 
