@@ -3,18 +3,18 @@ Previously, we defined the exterior derivative, which took a $p$-form to a $p+1$
 Suppose we start with a scalar field $\phi(x)$. The ordinary derivative is just
 $$\p_a \phi=\P{\phi}{{x^a}}.$$
 Let us change coordinates to ${\tilde x^{a'}}$ some function of the original coordinates. Then this derivative transforms as
-$$\p_{a'}\phi= \frac{\p \phi}{\p {\tilde x}^{a'}} \P{}{x^a}\phi = \frac{\p x^a}{\p {\tilde x}^{a'}}\p_a \phi.$$
-We might ask whether the derivative of a vector transforms in the same way. But instead, we get something not quite right.
+$$\p_{a'}\phi= \frac{\p x^a}{\p {\tilde x}^{a'}} \P{}{x^a}\phi = \frac{\p x^a}{\p {\tilde x}^{a'}}\p_a \phi.$$
+We might ask whether the derivative of a vector transforms in the same way. But instead, we get something a little different.
 
 \begin{eqnarray*}
 \p_{b'} \tilde V^{a'} &=& \frac{\p x^b}{\p \tilde x^{b'}} \P{}{x^b}\left( \frac{ \p \tilde x^{a'}}{\p x^a} V^a\right)\\
 &=&\frac{\p x^b}{\p \tilde x^{b'}}\frac{\p V^a}{\p x^b} \frac{\p \tilde x^{a'}}{\p x^a} + \frac{\p x^b}{\p \tilde x^{b'}}\frac{\p^2 \tilde x^{a'}}{\p x^a \p x^b}V^a.
 \end{eqnarray*}
-This first part is tensorial, but the second part is not (it has a term which is a second derivative of the coordinates). In order to get a tensor from the derivative, we need to ad a correction term, defining
+This first part is tensorial, but the second part is not (it has a term which is a second derivative of the coordinates). In order to get a tensor from the derivative, we need to add a correction term. Let us define
 $$\nabla_b V^a \equiv \p_b V^a +\Gamma^a_{bc} V^c$$
-where $\Gamma^a_{bc}$ is called a connection. We can figure out how $\Gamma$ transforms under coordinate transformations:
+where $\Gamma^a_{bc}$ is called a \term{connection}. We can figure out how $\Gamma$ transforms under coordinate transformations:
 $$\tilde \Gamma^{a'}_{b'c'}=\frac{\p \tilde x^{a'}}{\p x^a} \frac{ \p x^a}{\p \tilde x^{b'}}\frac{\p x^c}{\p \tilde x^c} \Gamma^a_{bc}-\frac{\p^2 \tilde x^{a'}}{\p x^b \p x^c}\frac{\p x^b}{\p \tilde x^{b'}}\frac{\p x^c}{\p\tilde x^{c'}}.$$
-This correction term allows us to get a proper tensor when we take the covariant derivative of a vector.
+So $\Gamma$ does \emph{not} transform as a tensor, but that's actually what we want-- this correction term allows us to get a proper tensor when we take the covariant derivative of a vector.
 
 We'd like $\nabla$ to be linear and obey the Leibniz rule: for two tensors $T,S$ and two real numbers $\alpha,\beta\in \RR$, we should have
 $$\nabla(\alpha T+\beta S)= \alpha \nabla T+\beta \nabla S$$

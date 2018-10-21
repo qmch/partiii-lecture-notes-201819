@@ -1,16 +1,16 @@
 Last time, we wrote down the geodesic equation. That is, we defined curves $x^a(x)$ such that
-$$\frac{d^2x^a}{dx^2}+\Gamma^a_{bc}\frac{dx^b}{ds}\frac{dx^c}{ds}=0.$$
+$$\frac{d^2x^a}{ds^2}+\Gamma^a_{bc}\frac{dx^b}{ds}\frac{dx^c}{ds}=0.$$
 In terms of the tangent vector to the curve $V^a = \frac{dx^a}{ds},$
 we can equivalently write
 $$V^a\nabla_a V^b=0.$$
 
 What happens if we reparametrize the curve? For instance, we could change to some new variables $$\tilde s=\tilde s(s).$$
-Then $d/ds=\frac{d\tilde s}{ds} \frac{d}{d\tilde s}$ and $\frac{d^2}{ds^2}=\frac{d^2 \tilde s}{ds^2}\frac{d}{d\tilde s^2} + (\frac{d\tilde s}{ds})\frac{d^2}{d\tilde s^2}.$
+Then $d/ds=\frac{d\tilde s}{ds} \frac{d}{d\tilde s}$ and $\frac{d^2}{ds^2}=\frac{d^2 \tilde s}{ds^2}\frac{d}{d\tilde s^2} + (\frac{d\tilde s}{ds})^2\frac{d^2}{d\tilde s^2}.$
 
 By substituting, we get a new version of the geodesic equation.
-$$(\frac{d\tilde s}{ds})^2 \frac{d^2}{d\tilde s^2} x^a+ \frac{d^2\tilde s}{ds^2} \frac{d}{d\tilde s} x^a + (\frac{d\tilde s}{ds})^2 \Gamma^a_{bc} \frac{dx^b}{d\tilde s}\frac{dx^c}{d\tilde s}=0.$$
+$$\left(\frac{d\tilde s}{ds}\right)^2 \frac{d^2}{d\tilde s^2} x^a+ \frac{d^2\tilde s}{ds^2} \frac{d}{d\tilde s} x^a + \left(\frac{d\tilde s}{ds}\right)^2 \Gamma^a_{bc} \frac{dx^b}{d\tilde s}\frac{dx^c}{d\tilde s}=0.$$
 A little rewriting reveals that in terms of $\tilde s,$ we get
-$$\frac{d^2x^a}{d\tilde s^2}+\Gamma^a_{bc} \frac{dx^b}{d\tilde s} \frac{dx^c}{d\tilde s}=-\frac{d^2s^2/ds^2}{(ds^2/ds)^2} \frac{dx^a}{d\tilde s}.$$
+$$\frac{d^2x^a}{d\tilde s^2}+\Gamma^a_{bc} \frac{dx^b}{d\tilde s} \frac{dx^c}{d\tilde s}=-\frac{\frac{d^2\tilde s^2}{d s^2}}{\left(\frac{d\tilde s}{d s}\right)^2} \frac{dx^a}{d\tilde s}.$$
 But $\tilde s$ is arbitrary, so in terms of our new tangent vector $\tilde V^a=dx^a/d\tilde s,$ we have
 $$\tilde V^b \nabla_b \tilde V^a=f(s)\tilde V^a,$$
 a more general form of the geodesic equation. 
@@ -59,7 +59,7 @@ How does $S^a$ change as one moves along the geodesics? If we consider
 $$V^b \equiv (\nabla_T S)^b=T^a\nabla_a S^b$$ this is like the ``relative velocity of geodesics'' (where I've used $\nabla_T$ to represent a directional covariant derivative)-- it measures how much the deviation vector $S^a$ points in the direction of the tangent vector $T^a$.
 
 One can equivalently define the ``relative acceleration of geodesics'' as
-$$A^b \equiv (\nabla_T S)^b = T^a \nabla_a V^b.$$ We'll revisit this quantity shortly.
+$$A^b \equiv (\nabla_T V)^b = T^a \nabla_a V^b.$$ We'll revisit this quantity shortly.
 
 \begin{lem}
 Consider the following quantity:
