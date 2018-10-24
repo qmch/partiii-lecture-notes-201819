@@ -1,0 +1,98 @@
+In Newtonian gravity, a matter density $\rho$ instantaneously sources a gravitational potential by Laplace's equation,
+$$\nabla^2 \phi=4\pi G\rho,$$
+where $G=6.67\times 10^{-8}$ cm$^3$g$^{-1}$s$^{-2}$. Note that this is a second-order differential equation.
+
+In general relativity, we have instead the metric $g_{ab}$ which has 10 components, and $T_{ab}$, the energy-momentum tensor which also has $10$ components, with $T_{00}$ the energy density. In special relativity, the energy-momentum tensor was conserved,$\p_a T^{ab}=0.$ The equivalent of this in general relativity is the covariant derivative,
+$$\nabla_a T^{ab}=0.$$
+
+In general all our equations of motion are second-order. One needs only to specify two boundary conditions, e.g. position and velocity, and then the equations can be solved. What is the equivalent of the Newtonian equation for gravity? Looking for quantities which transform in the correct way, with $T_{ab}$ as the equivalent of the matter density $\rho$, the only thing we can cook up is the Einstein tensor:
+$$R_{ab}-\frac{1}{2}R g_{ab}+\Lambda g_{ab}=8\pi G T_{ab}.$$
+Note that
+$$\nabla_a(R^{ab}-\frac{1}{2} g^{ab}R)=0$$
+by the Bianchi identities, so $T^{ab}$ is indeed conserved up to $\Lambda$ the cosmological constant. Experimentally, we think that $\Lambda=111\times 10^{-56}$cm$^2$. Note that $\Lambda$ has the effect of globally modifying the Ricci scalar by a constant, which is equivalent to setting the background curvature of our spacetime.
+
+\begin{defn}
+Let us introduce the Levi-Civita symbol (also known as the alternating symbol). For $n$ dimensions, we have the tensor
+$$\eta_{a_1\ldots a_n}$$ such that
+$$\eta_{a_1\ldots a_n}=\begin{cases}
++1 &\text{if }a_1\ldots a_n\text{ is an even permutation of }1,\ldots n\\
+-1 &\text{if }a_1\ldots a_n\text{ is an odd permutation of }1,\ldots n.
+\end{cases}$$
+This is a generalization of our familiar $\epsilon_{ijk}$ tensor. Note that for any matrix $M^a_b,$ one can define the determinant in terms of
+$\eta_{a_1\ldots a_n}\det M = \eta_{b_1\ldots b_n}M^{b_1}_{a_1} M^{b_2}_{a_2}\ldots M^{b_n}_{a_n}.$
+\end{defn}
+
+Let's suppose that $M^b_a=\frac{\p x^b}{\p \tilde x^a}$ now, e.g. for a change in coordinates. Then
+$$\eta_{a_1\ldots a_n}\left[\det \frac{\p x^c}{\p \tilde x^d}\right]=\eta_{b_1\ldots b_n}\frac{\p x^{b_1}}{\p \tilde x^{a_1}}\ldots \frac{\p x^{b_n}}{\p \tilde x^{a_n}}.$$
+Rearranging a bit, we have
+$$\eta_{a_1\ldots a_n}=\left[\det \frac{\p \tilde x^c}{\p x^d}\right]\eta_{b_1\ldots b_n}\frac{\p x^{b_1}}{\p \tilde x^{a_1}}\ldots \frac{\p x^{b_n}}{\p \tilde x^{a_n}}.$$
+This last bit looks like a good tensorial transformation, but the factor of the determinant spoils it. Therefore $\eta$ is \emph{not a tensor}; rather, it is a tensor density.
+
+We can fix this, though. Consider the metric tensor $g_{ab}$. It transforms under an arbitrary coordinate transformation as
+$$g_{ab}\mapsto \tilde g_{ab}=\frac{\p x^c}{\p \tilde x^a}\frac{\p x^d}{\p\tilde x^b}g_{cd}.$$
+Taking determinants of both sides we get
+$$\det \tilde g = \left[\det \frac{\p x^c}{\p \tilde x^a}\right]^2 (\det g).$$
+Taking square roots of both sides (and taking the absolute value, since we don't know the sign of $\det g$) we get
+$$\sqrt{|\det \tilde g|}=|\det \frac{\p x^c}{\p \tilde x^a}|\sqrt{|\det g|}.$$
+Thus we see that
+$$\sqrt{|\det g|}\eta_{a_1\ldots a_n}$$ is a tensor since the determinant factors then cancel. We may therefore define the alternating tensor
+$$\epsilon_{a_1\ldots a_n}=g^{1/2}\eta_{a_1\ldots a_n}$$ where $g^{1/2}\equiv\sqrt{|\det g_{ab}|}.$
+
+Let's also recall that the volume element $d^x$ transforms as
+$$d^nx\mapsto d^n \tilde x =|\det \frac{\p \tilde x^a}{\p x^b}|d^n x.$$
+But $d^nx=dx^1 \wedge dx^2 \wedge \ldots \wedge dx^n,$ which is really a differential $n$-form-- it can be written
+$$\frac{1}{n!}\eta_{a_1\ldots a_n}dx^{a_1}\wedge \ldots \wedge dx^{a_n}.$$
+It's apparent that the volume element then transforms as a tensor density like $\eta$. To make it transform as a tensor, we could instead write
+$$\frac{1}{n!}\epsilon_{a_1\ldots a_n} dx^{a_1}\wedge \ldots \wedge dx^{a_n},$$
+where $\epsilon_{a_1\ldots a_n} dx^{a_1}\wedge \ldots \wedge dx^{a_n}=g^{1/2}d^nx$ is now invariant. As a result, we call $g^{1/2}d^n x$ the \term{invariant volume element} and we could integrate a scalar $\Phi$ as
+$$\int \Phi g^{1/2} d^n x,$$
+where the integral is now independent of the coordinate system.
+
+We'll now discuss Stokes's (or Gauss's, or Ostragradsky's) theorem. Consider the volume integral
+$$\int_{\Sigma}\nabla_a V^a g^{1/2}d^n x.$$
+We want to write it as an integral over the boundary $\p \Sigma$. We also choose coordinates such that $\p\Sigma$ is a surface of $x^n$ constant (we are in $n$ spacetime dimensions), and then take $g_{ab}$ to be of the form
+$$g_{ab}=\begin{pmatrix}
+\gamma_{ij}&0\\
+0&N^2
+\end{pmatrix}$$
+where $i,\in=1,\ldots,n-1.$
+Now $n_a$ is a unit normal vector to $\p\Sigma,$
+$$n_a\equiv (0,0,\ldots, 0,N)$$ with $n^a=(0,0,\ldots,1/N)$. Clearly, the inverse metric is
+$$g_{ab}=\begin{pmatrix}
+\gamma^{ij}&0\\
+0&1/N^2
+\end{pmatrix}$$
+
+Now
+$$\nabla_a V^a=\p_a V^a +\nabla^a_{ac} V^c,$$
+and since
+$$\Gamma^a_{bc}=\frac{1}{2}g^{ad}(-\p_d g_{bc}+\p_b g_{cd}+\p_c g_{bd}$$
+we find that
+$$\Gamma^a_{ac}=\frac{1}{2}g^{ad}(-\p_d g_{ac}+\p_a g_{cd}+\p_c g_{ad}).$$
+These first two terms cancel by the symmetry of $g^{ad}$, so we're left with
+$$\Gamma^a_{ac}=\frac{1}{2} \text{Tr} g^{-1}\p_c g=\frac{1}{2}\text{Tr}\p_c \ln g = \frac{1}{2} \ln \p_c \det g$$
+where to get from the third to fourth expression, we have used the identity
+$$\det g = \exp \text{Tr} \ln g.$$
+Suppose $g$ is symmetric. Then it can be diagonalized, $D=O^T g O$ with $O$ some orthogonal matrix and $D$ the diagonal matrix of the eigenvalues of $g$. Equivalently $g=O DO^T.$ Then
+\begin{eqnarray*}
+\exp \text{Tr}\ln ODO^T&=&\exp \text{Tr}(\ln O + \ln D + \ln O^T)\\
+&=&\exp \text{tr}(\ln (O O ^T)+\ln D)\\
+&=&\exp \text{Tr}(\ln I + \ln D)\\
+&=& \exp \text{Tr}(\ln D)\\
+&=&\exp \sum_i \ln \lambda_i\\
+&=&\Pi_i \lambda_i = \det D = \det O^T g O = \det g O O^T = \det g.
+\end{eqnarray*}
+
+Using this identity\footnote{Okay, I'm really unsure about this proof. What does it even mean to take the log of a matrix? I guess we could take a power series expansion about the identity? From Symmetries we have the more reasonable version of this identity in terms of exponentials: $\det \exp(g)= \exp (\text{Tr } g)$, which is certainly true. So one can define the log of a matrix $A$ as $B=\log A$, where $B$ is defined such that $\exp B = A$. We've been too cavalier about applying the properties of this matrix logarithm I think, in assuming that all the regular properties of the log hold (although it seems that they do). If this makes you unhappy, repeat the proof with $g'=\exp g$ and then take the log at the end.}, 
+we see that
+$$\Gamma^a_{ac}=\p_c \ln \sqrt{|\det g|}=\p_c(\ln g^{1/2})=\frac{1}{2} \frac{\p_c g}{g}.$$ Therefore
+$$\int_\Sigma \nabla_a V^a g^{1/2} d^n x=\int \p_a(g^{1/2} V^a) dx^1 dx^2 \ldots dx^n.$$
+Integrating over $x^n$ we get
+\begin{eqnarray*}
+\int_\Sigma \nabla_a V^a g^{1/2} d^n x&=&\int \p_a(g^{1/2} V^a) dx^1 dx^2 \ldots dx^n\\
+&=& \int V^{``n''} g^{1/2} dx^1 \ldots dx^{n-1}\\
+&=& \int V^{``n''}N(\det \gamma)^{1/2} dx^1 \ldots dx^{n-1}\\
+&=& \int n_a V^a (\det \gamma)^{1/2} dx^1 \ldots dx^{n-1}.
+\end{eqnarray*}
+This equation is covariant, so it is true in general:
+$$\int_\Sigma \nabla_a V^a g^{1/2} d^n x = \int_{\p \Sigma} n^a V^a \gamma^{1/2} d^{n-1}x,$$ with $\gamma^{1/2}d^{n-1}x$ the volume element on $\p \Sigma.$\footnote{There is a very nice way to write Stokes's theorem in terms of differentials and differential forms. See Carroll Appendix E for the proof.}

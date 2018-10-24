@@ -1,0 +1,153 @@
+Today we'll discuss \term{parallel transport.} Suppose $x^a(\lambda)$ is some parametrized curve in our space. Then we may take a point on that curve at $\lambda=\lambda_0$ and define a vector defined at $x^a(\lambda=\lambda_0),$ called $V^a(\lambda_0)$. Can we define a way to smoothly slide $V^a$ along this curve?
+
+Take the tangent vector to the curve $x^a(\lambda), l^a=\frac{dx^a}{d\lambda}.$ Then define the parallel transport of $V^a(\lambda_0)$ along the curve by the vector $V^b$ satisfying
+$$l^a \nabla_a V^b=0.$$
+
+One may think of this as being a generalization of a geodesic, the solution to the first-order differential equation
+\begin{equation*}
+\frac{dx^a}{d\lambda}\frac{\p V^b(\lambda)}{\p x^a}+\frac{dx^a}{d\lambda}\Gamma^b_{ac}V^c(\lambda)=0
+\end{equation*}
+or equivalently
+\begin{equation}\label{paralleltransport}
+\frac{\p V^b(\lambda)}{\p \lambda}+\frac{dx^a}{d\lambda}\Gamma^b_{ac}V^c(\lambda)=0.
+\end{equation}
+If we identify $l^a=V^a$, we see that this is just the geodesic equation, i.e. a geodesic is a curve for which the parallel transport of its tangent vector along the curve is trivial. Equivalently, the directional derivative of the tangent vector to a geodesic along that geodesic is zero, which we could have seen before.
+
+The general solution to Eqn. \ref{paralleltransport} has the form
+\begin{equation}\label{parallelsol}
+V^b(\lambda)=V^b(\lambda_0)-\int_{\lambda_0}^\lambda d\lambda' \Gamma^b_{ac}(\lambda') \frac{dx^a}{d\lambda'}V^c(\lambda').
+\end{equation}
+It's easy to check that Eqn. \ref{parallelsol} solves \ref{paralleltransport} by taking the derivative $\P{}{\lambda}$ and also checking (trivially) that $V^b(\lambda=\lambda_0)=V^b(\lambda_0)$. Therefore this is a solution (albeit in terms of the function we want, $V^b(\lambda)$) to our first-order differential equation, and this can be solved to whatever order we want by iteration from $\lambda_0.$
+
+Now consider parallel-transporting a tangent vector around a small closed loop starting at $x^a(\lambda_0)$. If the loop is small, we can use Taylor's theorem to look at $V$ and $\Gamma$ expanded around $x^a(\lambda_0)$ to leading order in powers of $x^a(\lambda)-x^a(\lambda_0)$. I'll change notation from lecture a bit for (what I hope is additional) clarity. Let me define
+$$\delta x^a(\lambda) \equiv x^a(\lambda)-x^a(\lambda_0),$$
+the leading-order change in $x^a$ with respect to $\lambda$ about $\lambda_0.$
+
+Explicitly, we have
+$$V^a(\lambda)=V^a(\lambda_0) + \frac{\p V^a}{\p x^b}|_{\lambda_0} \delta x^b(\lambda)+O(\delta x^2)$$
+and similarly
+$$\Gamma^a_{bc}(\lambda)=\Gamma^a_{bc}(\lambda_0)+\frac{\p \Gamma^a_{bc}}{\p x^d}|_{\lambda_0}\delta x^d(\lambda)+O(\delta x^2).$$
+
+Now let's write the equation of parallel transport at $\lambda=\lambda_0.$ From our Taylor expansion, we have
+$$\frac{dx^a}{d\lambda}\frac{\p V^b}{\p x^a}|_{\lambda_0}+\frac{dx^a}{d\lambda}\Gamma^b_{ac}(\lambda_0)V^c(\lambda_0)=0$$
+which magically becomes\footnote{I'm not happy with this step yet. Is it because our path is arbitrary? The next equation seems to say that}
+$$\frac{\p V^b}{\p x^a}|_{\lambda_0}+\Gamma^b_{ac}(\lambda_0)V^c(\lambda_0)=0.$$
+
+If we now substitute this into our Taylor expansion for $V$, to lowest order in $\delta x(\lambda)$ we have
+\begin{equation}\label{lo-paralleltransport}
+V^b(\lambda)=V^b(\lambda_0)-\Gamma^b_{ac}(\lambda_0)V^a(\lambda_0)\delta x^c(\lambda).
+\end{equation}
+We can then plug this into our general solution to find
+$$V^b(\lambda)=V^b(\lambda_0) - \int_{\lambda_0}^\lambda d\lambda' \frac{dx^a}{d\lambda'}\left[\Gamma^b_{ac}(\lambda_0)+\frac{\p \Gamma^b_{ac}}{\p x^d}|_{\lambda_0} \delta x^d(\lambda')+\ldots\right]\left[V^c(\lambda_0)-\Gamma^c_{ef} V^e(\lambda_0)\delta x^f(\lambda')\right]$$
+
+Evaluating this to lowest (interesting) order, i.e. terms linear in $x^a(\lambda')-x^a(\lambda_0)$, we get
+$$V^b(\lambda)=V^b(\lambda_0)
+-\int_{\lambda_0}^\lambda d\lambda' \frac{dx^a}{d\lambda'}|_{\lambda_0}
+\left(\Gamma^b_{ac}(\lambda_0)V^c(\lambda_0)
++\delta x^d(\lambda')\left[\frac{\p \Gamma^b_{ae}}{\p x^d}|_{\lambda_0} V^e(\lambda_0)-\Gamma^b_{ac}(\lambda_0)\Gamma^c_{de}(\lambda_0)V^e(\lambda_0)\right]\right)$$
+using the fact that $\Gamma$ is symmetric in its lower two indices and all indices except for $b$ are dummy indices which can be relabeled.
+
+If we now integrate around a closed loop, we know that
+$$\int_{\lambda_0}^\lambda d\lambda' \frac{dx^a}{d\lambda'}=\oint dx^a = x^a|_{initial}^{final}=0,$$
+so we can write
+$$\int_{\lambda_0}^\lambda d\lambda'(x^d(\lambda')-x^d(\lambda_0))\frac{dx^a}{d\lambda'}=\int_{\lambda_0}^\lambda d\lambda'\left(-\frac{dx^d}{d\lambda'}x^a(\lambda')\right)+\text{boundary terms},$$
+ using integration by parts. But it follows that this first term is zero around a closed loop so
+$$\int_{\lambda_0}^\lambda d\lambda'(x^d(\lambda')-x^d(\lambda_0))\frac{dx^a}{d\lambda'}=\int_{\lambda_0}^\lambda d\lambda'(-\frac{dx^d}{d\lambda'}(x^a(\lambda')-x^a(\lambda_0)).$$
+We find that this integral is antisymmetric under interchange $a\leftrightarrow d.$ If we antisymmetrize over $a\leftrightarrow d$ inside the square bracket term, we arrive at
+$$V^b(\lambda)-V^b(\lambda_0)=
+-\frac{1}{2}\int d\lambda' [x^d(\lambda')-x^d(\lambda_0)]\frac{dx^a}{d\lambda'}
+\left[\frac{\p \Gamma^b_{ae}}{\p x^d}-\frac{\p \Gamma^b_{de}}{\p x^a}-\Gamma^b_{ac}\Gamma^c_{de}+\Gamma^b_{dc}\Gamma^c_{ae}\right]_{\lambda_0}V^e(\lambda_0).$$
+
+But we recognize (okay, we could with enough experience recognize) that the term in square brackets is just the Riemann tensor evaluated at $\lambda_0$, so that our expression simplifies to
+$$\Delta V^b = V^b(\lambda)-V^b(\lambda_0)=-\frac{1}{2}R^b_{cde}(\lambda_0)V^c(\lambda_0)\oint x^d \frac{dx^e}{d\lambda'}d\lambda'.$$
+We may interpret this equation as telling us that the change in the vector $V$ as we go around a closed loop is in general not zero-- instead, it is proportional to the Riemann tensor at the starting point $\lambda_0$ and the area of the loop $\oint x^d \frac{dx^e}{d\lambda'}d\lambda'.$
+
+Curvature therefore tells you how vectors change under a general parallel transport. In Minkowski space, we can pick coordinates where the $\Gamma^a_{bc}=0$, and then vectors do not change under parallel transport.
+
+We may note that the Riemann tensor obeys the \term{Bianchi identity} (technically the second Bianchi identity). Recall that the Riemann tensor takes the form
+$$R^a_{bcd}=\p_c \Gamma^a_{db}-\p_d \Gamma^a_{cb}+\Gamma^f_{bc} \Gamma^a_{fc}-\Gamma^f_{bc}\Gamma^a_{fd}.$$
+We might want to know how to compute derivatives of the Riemann tensor, e.g. $\nabla_c R^a_{bcd}=?$
+
+This would be pretty awful to compute by hand, as it would have many terms as we expand out each of the $\Gamma$s. Let's be a little more clever. Choose normal coordinates so that $\Gamma^a_{bc}=0$. Note that this doesn't in general mean that the derivatives $\p_a \Gamma$ or $\p^2 \Gamma$ also vanish. Nevertheless, we can see schematically that $\nabla_e R^a_{bcd}$ will have terms like
+$$\nabla_e R^a_{bcd}=\p^2\Gamma,(\p \Gamma)\Gamma, \Gamma \p \Gamma, \Gamma^3.$$
+But in normal coordinates, all except the first of these have $\Gamma$s in them and must vanish! Therefore we need only consider the terms which are second derivatives of $\Gamma.$ Namely,
+$$\nabla_e R^a_{bcd}=\p_e \p_c \Gamma^a_{db}-\p_e \p_d \Gamma^a_{cb}.$$
+Under relabeling of the indices we get the similar expressions
+$$\nabla_c R^a_{bde}=\p_c \p_d \Gamma^a_{eb}-\p_c \p_e \Gamma^a_{db}$$
+and
+$$\nabla_d R^a_{bec}=\p_d \p_e \Gamma^a_{cb}-\p_d \p_c \Gamma^a_{eb}.$$
+Adding these up and using the fact that partial derivatives commute, we see that all the terms cancel and we are left with
+$$\nabla_e R^a_{bcd}+\nabla_c R^a_{bde}+\nabla_d R^a_{bec}=0.$$
+This vanishes in Gaussian normal coordinates and is a tensor, so it vanishes in all coordinate systems.
+
+We can also contract some indices, for instance $a$ and $c$. Recall we defined the Ricci tensor, $R_{bd}=R^a_{bad}$. Then contracting, we get
+$$\nabla_e R_{bd}+\nabla_a R^a_{bde}-\nabla_d R_{be}=0,$$
+where we've used the antisymmetry of the Riemann tensor in its last two indices, $R_{abcd}=-R_{abdc}.$ This... isn't great yet. Let's contract $b$ and $e$. The last term will give us the Ricci scalar $R=R_{ab}g^{ab},$ and so we'll get the final expression
+\begin{eqnarray*}
+0&=&\nabla_b R^b_d +\nabla_a R^a_d -\nabla_d R\\
+&=&\nabla_a R^a_b -\frac{1}{2}\nabla_b R\\
+&=& \nabla_a G^{ab},
+\end{eqnarray*}
+where $G^{ab}$ is the Einstein tensor,
+$$G^{ab}\equiv R^{ab}-\frac{1}{2}Rg^{ab}.$$
+
+\subsection*{Non-lectured aside: Riemann tensor and parallel transport around a loop}
+
+I was dissatisfied with the proof that the change in $V$ after parallel transport around a loop is proportional to the Riemann tensor. Therefore, here is an alternate proof which I find more convincing, based on an exercise from Sean Carroll's \textit{Spacetime and Geometry}.\footnote{Chapter 3, Exercise 7, page 148.}
+
+Consider the following path.%image here
+We'd like to compute the parallel transport of a generic vector $V$ from $A\to B\to C \to D \to A$ and show that the difference between the initial and final vectors is proportional to both the area of the loop $\delta a \delta b$ and the corresponding components of the Riemann tensor. To make our lives easier, we'll just compute the parallel transport from $A\to B \to C$ and take advantage of symmetry to recover the other half of the path. That said, how should we go about doing this computation?
+
+First, I'll turn to Carroll's Appendix I on the ``parallel propagator'' for some useful background and notation. Carroll writes:
+\begin{quotation}
+\textit{We begin by noticing that for some path $\gamma:\lambda \to x^\sigma(\lambda)$, solving the parallel transport equation for a vector $V^\mu$ amounts to finding a matrix ${P^\mu}_\rho(\lambda,\lambda_0)$, which relates the vector at its initial value $V^\mu(\lambda_0)$ to its value somewhere later down the path:
+\begin{equation}\label{parallelpropdef}
+V^\mu(\lambda)={P^\mu}_\rho(\lambda,\lambda_0).
+\end{equation}
+Of course the matrix ${P^\mu}_\rho(\lambda,\lambda_0)$, known as the \textbf{parallel propagator}, depends on the path $\gamma$ (although it's hard to find a notation that indicates this without making $\gamma$ look like an index). If we define
+$${A^\mu}_\rho(\lambda)=-\Gamma^\mu_{\sigma\rho}\frac{dx^\sigma}{d\lambda},$$ where the quantities on the right-hand side are evaluated at $x^\nu(\lambda)$, then the parallel transport equation becomes
+\begin{equation}\label{paralleltransredef}
+\frac{d}{d\lambda}V^\mu ={A^\mu}_\rho V^\rho.
+\end{equation}
+Since the parallel propagator must work for any vector, substituting \ref{parallelpropdef} into \ref{paralleltransredef} shows that ${P^\mu}\rho(\lambda,\lambda_0)$ also obeys this equation:
+$$\frac{d}{d\lambda}{P^\mu}_\rho(\lambda,\lambda_0)={A^\mu}_\sigma(\lambda){P^\sigma}_\rho(\lambda,\lambda_0).$$
+To solve this equation, first integrate both sides:
+$$P^\mu_\rho(\lambda,\lambda_0)=\delta^\mu_\rho+\int_{\lambda_0}^\lambda {A^\mu}_\sigma(\eta){P^\sigma}_\rho(\eta,\lambda_0)d\eta.$$
+}
+\end{quotation}
+
+The rest of this appendix goes to show that the full solution for the parallel propagator is in fact a path-ordered (cf. time-ordered) exponential-- in fact, it is the general relativity version of Dyson's formula from quantum field theory, with the ${A^\mu}_\sigma$s taking the place of copies of the interaction Hamiltonian. This is a very neat connection but won't actually help us finish the proof, so I direct you to Carroll if you would like the details. For our purposes, the first-order version of $P$ will suffice (i.e. up to a single integral $d\eta$).
+
+What is the parallel propagator ${P^\mu}_\rho(A\to B)$? By our first-order expression, it is simply
+\begin{eqnarray*}
+{P^\mu}_\rho (A \to B)&=& \delta^\mu_\rho+ \int_{\lambda_0}^{\lambda} {A^\mu}_\sigma(\eta){P^\sigma}_\rho(\eta,0)d\eta\\
+&=& \delta^\mu_\rho+ \int_{0}^{\delta a} \left(\Gamma^\mu_{\nu \sigma}(A) \frac{dx^\nu}{dx^1}\right) (\delta^\sigma_\rho) dx^1\\
+&=&\delta^\mu_\rho +\int_0^{\delta a}(-\Gamma^\mu_{\nu \rho}(A) \delta^\nu_1) dx^1\\
+&=&\delta^\mu_\rho -\Gamma^\mu_{1\rho}(A) \delta a,
+\end{eqnarray*}
+where I have explicitly performed the integration along the path $A\to B$. 
+
+To go from the first line to the second line, I have used the fact that we are only interested in the leading order behavior in $\delta a$. Since I know we will already get a factor of $\delta a$ from the integration, one can see that Taylor expanding the $\Gamma$ in ${A^\mu}_\sigma$ would end up giving us an $O(\delta a^2)$ term, so it suffices to just take $\Gamma$ evaluated at $A$ (we'll see in the transport $B\to C$ an example where this is crucially not the case). The somewhat unusual $\delta^\nu_1$ comes from the fact I am also using the coordinate $x^1$ as my integration parameter $\eta$.
+
+We can now play the same game to compute the parallel propagator ${P^\nu}_\mu(B\to C)$: it is
+\begin{eqnarray*}
+{P^\nu}_\mu(B\to C)&=&\delta^\nu_\mu +\int_0^{\delta b} (-\Gamma^\nu_{\sigma \mu}(B)\delta^\sigma_2) dx^2\\
+&=&\delta^\nu_\mu -\int_0^{\delta b}\left[\Gamma^\nu_{\sigma \mu}(A)+\frac{\p}{\p x^1}\Gamma^\nu_{\sigma\mu}(A)\delta a\right]\delta^\sigma_2 dx^2\\
+&=&\delta^\nu_\mu-\Gamma^\nu_{2 \mu}(A) \delta b - \frac{\p\Gamma^\nu_{2\mu}}{\p x^1}\delta a \delta b.
+\end{eqnarray*}
+Finally, we put it all together:
+\begin{eqnarray*}
+V^\nu(C)&=& {P^\nu}_\mu(B\to C){P^\mu}_\rho(A\to B) V^\rho\\
+&=&{P^\nu}_\mu(B\to C) \left[\delta^\mu_\rho -\Gamma^\mu_{1\rho}(A) \delta a\right] V^\rho\\
+&=&{P^\nu}_\mu(B\to C)\left[ V^\mu-\Gamma^\mu_{1\rho}(A) V^\rho \delta a\right]\\
+&=&\left[\delta^\nu_\mu-\Gamma^\nu_{2 \mu}(A) \delta b - \frac{\p\Gamma^\nu_{2\mu}}{\p x^1}\delta a \delta b\right]\left[ V^\mu-\Gamma^\mu_{1\rho}(A) V^\rho \delta a\right]\\
+&=&V^\nu(A)-\Gamma^\nu_{2\mu}(A)V^\mu \delta b - \delta^\nu_\mu\Gamma^\mu_{1\rho}(A) V^\rho \delta a - V^\mu \frac{\p \Gamma^\nu_{2\mu}(A)}{\p x^1}\delta a \delta b +\Gamma^\nu_{2\mu} \Gamma^\mu_{1\rho}V^\rho \delta a \delta b+O(\delta a^2,\delta b^2)\\
+&=&V^\nu(A)-\Gamma^\nu_{2\mu}(A)V^\mu \delta b - \Gamma^\nu_{1\mu}(A) V^\mu \delta a + \delta a \delta b \left(-V^\mu \frac{\p \Gamma^\nu_{2\mu}(A)}{\p x^1} +\Gamma^\nu_{2\mu} \Gamma^\mu_{1\rho}V^\rho \right).
+\end{eqnarray*}
+
+That seems like a pretty long result! In fact, things are nicer than they seem. Instead of having to repeat this calculation $C\to D \to A$ to get us home, we simply note that $A\to D \to C$ is just the calculation we did with $x^1\leftrightarrow x^2$ and $\delta a \leftrightarrow \delta b$. Taking the negative of the resulting expression after this relabeling (if the loop is small) gives us $C\to D \to A$. That is, 
+$$V^\nu(A\to B \to C \to D \to A)-V^\nu (A)=V^\nu(A\to B \to C)-V^\nu(A \to D \to C).$$
+We see that under the exchange $x^1\leftrightarrow x^2$ and $\delta a \leftrightarrow \delta b$, the terms linear in $\delta a, \delta b$ will go away, as will the zeroth order term. What is left after a bit of relabeling is
+$$V^\nu(A\to B \to C \to D \to A)=\delta a \delta b
+V^\mu \left(\p_2 \Gamma^\nu_{1\mu} -\p_1 \Gamma^\nu_{2 \mu} +\Gamma^\nu_{2\sigma} \Gamma^\sigma_{1\mu} - \Gamma^\nu_{1\sigma} \Gamma^\sigma_{2\mu}\right)=\delta a \delta b V^\mu (-{R^\nu}_{\mu 12}).$$
+Just as before, we have found that the difference between parallel transporting in one order versus the other is proportional to the Riemann tensor and to the area of the loop.

@@ -1,0 +1,77 @@
+Today, we'll introduce Wick's formula and contractions, calculate some more scattering amplitudes, and maybe see our first Feymman diagrams for calculating amplitudes in a more convenient way.
+
+First, we complete the calculation of the order $g$ scattering amplitude from last time. We were interested in meson decay, where we prepared initial and final states
+$$\ket{i}=\sqrt{2E_p}a_{\vec p}^\dagger \ket{0}$$
+and
+$$\ket{f}=\sqrt{4E_{q_1}E_{q_2}}b_{\vec q_1}^\dagger c_{\vec q_2}^\dagger \ket{0},$$
+and we were interested in the scattering amplitude $\bra{f}S \ket{i}$. To leading order, we found that
+$$\bra{f}S\ket{i}=-ig \bra{f}\int d^4 x \psi^* (x) \psi(x) \phi(x) \ket{i} + O(g^2),$$
+and we'll see how to compute this.
+
+We know how to expand each of these fields in terms of creation and annihilation operators, and we want to make sure that the initial state and final state are indeed proportional to each other so that this QFT amplitude will be reduced to a c-function of the four-momenta (i.e. it is just a number). 
+
+For instance, in $\phi$ we will have both $a_{\vec p}^\dagger$ and $a_{\vec p}$ terms, but our initial state already has an $a^\dagger$. So the $a^\dagger$ bit of $\phi$ acting on $\ket{i}$ will produce a two-meson state which the $\psi$s won't touch, which means that its inner product with $\bra{0}$ will be zero. (Alternately you can think of the $a^\dagger$ from $\phi$ as acting on the $\bra{0}$ on the left, commuting through the $\psi$s. That is, $a_{\vec k}\ket{0}=0\implies \bra{0} a_{\vec k}^\dagger =0.$) So our matrix element takes the form
+$$\bra{f}S\ket{i}=-ig \bra{f} \int d^4x \psi^*(x) \psi(x)\int \frac{d^3k}{(2\pi)^3}\frac{\sqrt{2E_p}}{\sqrt{2E_k}}(a_k a_p^\dagger e^{-ik\cdot x}+a_k^\dagger a_p^\dagger e^{ik\cdot x})\ket{0},$$
+but this second term is just zero and we can switch the $a_k, a_p^\dagger$ at the cost of a delta function $(2\pi)^3 \delta^3(\vec k -\vec p)$, which allows us to do the integral over $d^3k$.
+
+We get
+\begin{eqnarray*}
+\bra{f}S\ket{i}&=&-ig\bra{f} \int d^4x \psi^* \psi(x)e^{-ip\cdot x}\ket{0}\\
+&=&-ig \bra{0} \int \frac{d^4x}{(2\pi)^6}\frac{d^3k_1 d^3k_2}{\sqrt{4E_{k_1}E_{k_2}}} \sqrt{4E_{q_1}E_{q_2}} c_{q_2}b_{q_1} (b_{k_1}^\dagger e^{ik_1\cdot x}+c_{k_1} e^{-ik_1 \cdot x})(b_{k_1} e^{-ik_2\cdot x}+c_{k_2}^\dagger e^{ik_2 \cdot x})e^{-ip\cdot x} \ket{0}.
+\end{eqnarray*}
+Only the $b^\dagger$ and $c^\dagger$ terms survive, and taking the appropriate commutators gives us delta functions over the momenta. That is,
+\begin{eqnarray*}
+\bra{f}S\ket{i}&=&-ig\bra{0}\int d^4x e^{i(q_1+q_2-q)\cdot x}\ket{0}\\
+&=&-ig\delta^4(q_1+q_2-p)(2\pi)^4
+\end{eqnarray*}
+where this delta function simply imposes overall 4-momentum conservation. Note that this is a matrix element, not a probability yet. To actually turn this into a measurable probability, we must take the mod squared and integrate over the possible outgoing momenta $q_1,q_2$-- we'll defer this to later.
+
+
+We'll now discuss \term{Wick's theorem} for a real scalar field. We wish to compute quantities like
+$$\bra{f}T\set{H_I(x_1)\ldots H_I(x_n)}\ket{i},$$
+the amplitude of some time-ordered product-- remember that Dyson says we ought to be evolving our states with time-ordered products. Our life would be easier if we worked in terms of normal-ordered products instead, where the $a$s are on the RHS and the $a^\dagger$s are on the LHS. This would let us easily see which terms contribute to the final amplitude (e.g. which $a$s cancel particles created by $a^\dagger$s on the RHS).
+
+Let's compute a simple example first: write
+$$\phi(x)\equiv \phi^+(x)+\phi^-(x)$$
+where
+$$\phi^+ (x)\equiv \int \frac{d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}} a_p e^{-ip\cdot x}$$
+and
+$$\phi^-(x)\equiv \int \frac{d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}} a_p^\dagger e^{+ip\cdot x}.$$
+If we look at the case $x^0>y^0$, the time-ordered product $T\{\phi(x)\phi(y)\}$ takes the form
+\begin{eqnarray*}
+T\set{\phi(x)\phi(y)}&=&\phi(x)\phi(y)\\
+&=&(\phi^+(x)+\phi^-(x))(\phi^+(y)+\phi^-(y))\\
+&=&\phi^+(x)\phi^+(y)+\phi^-(x)\phi^-(y)+\phi^-(y)\phi^+(x)+\phi^-(x)\phi^+(y)+[\phi^+(x),\phi^-(y)]\\
+&=&:\phi(x)\phi(y):+D(x-y)
+\end{eqnarray*}
+where we've collected terms with all the $\phi^+$ terms to the right of the $\phi^-$ terms into the normal-ordered product $:\phi(x)\phi(y):$. If we had $y^0>x^0$ instead, we would get
+$$T\set{\phi(x)\phi(y)}=:\phi(x)\phi(y):+D(y-x).$$
+Putting these together, we see that
+$$T\set{\phi(x)\phi(y)}=:\phi(x)\phi(y):+\Delta_F(x-y),$$
+where $\Delta_F$ is simply the Feynman propagator. It's important to note that while the time-ordered and normal-ordered products are both operators, their difference is $\Delta_F$, a c-function.
+
+\begin{defn}
+We define a \term{contraction} of a pair of fields in a string in a string (denoted by a square bracket between the two fields) to mean replacing the two contracted fields by their Feynman propagator.
+
+For instance, we saw that
+$$T\set{\phi(x)\phi(y)}=:\phi(x)\phi(y)+\phi(x)\text{ contracted with }\phi(y).$$
+(I can't typeset this yet.)
+\end{defn}
+
+Wick's theorem states that
+$$T\set{\phi(x_1)\ldots \phi(x_n)}=:\phi(x_1)\ldots \phi(x_n):+:\text{all possible contractions}:.$$
+Since all normal ordered terms kill the vacuum state, this allows us to immediately compute amplitudes like
+$$\bra{0}T\set{\phi_1\ldots \phi_4}\ket{0}=\Delta_F (x_1-x_2)\Delta_F(x_3-x_4)+\Delta_F(x_1-x_3)\Delta_F(x_2-x_4)+\Delta_F(x_1-x_4)\Delta_F(x_2-x_3).$$
+
+The proof of Wick's theorem is by induction. Suppose it holds for $T\set{\phi_2\ldots \phi_n}$. Then (see textbooks for detail)
+$$T\set{\phi_1 \phi_2\ldots \phi_n}=(\phi_1^+ +\phi_1^-)[:\phi_2\ldots \phi_n+:\text{all contractions of }\phi_2\ldots \phi_n:].$$
+The $\phi_1^-$ is okay where it is, while the $\phi_1^+$ must be commuted to the RHS of the $\phi_2\ldots \phi_n$ terms. Each commutator past the $x_k$ term in $\phi_2\ldots \phi_n$ gives us a $D(x_1-x_k)$, which is equivalent to a contraction between $\phi_1$ and $\phi_k$.
+
+Wick's theorem has some immediate consequences. For instance,
+$$\bra{0}T \phi_1\ldots \phi_n\ket{0}=0$$ if $n$ is odd (since one $\phi$ is always left out of the contractions) and it is
+$$\sum_{i_1,\ldots,i_n}\Delta_F (x_{i_1}-x_{i_2})\Delta_F(x_{i_3}-x_{i_4})\ldots \Delta_F(x_{i_{n-1}}-x_{i_n})$$
+where the sum is taken over symmetric permutations of $i_1,\ldots,i_n$.
+
+Note that Wick's theorem also has a generalization to complex fields $\psi\in \CC$, e.g.
+$$T(\psi(x)\psi^*(y))=:\psi(x)\psi^*(y):+\Delta_F(x-y)$$
+where the contraction of $\psi(x)\psi^*(y)\equiv \Delta_F(x-y)$ and the contractions of two $\psi$s or two $\psi^*$s is zero.

@@ -1,0 +1,116 @@
+Last time, we started discussing representations of Lie groups. That is, a representation $D$ is a map from a Lie group $G$ to matrices $GL(n,F)$ over a field such that $D$ is smooth and the group multiplication is preserved,
+$$\forall g_1,g_2\in G, D(g_1)D(g_2)=D(g_1g_2)$$
+(where the multiplication on the LHS is taken to be ordinary matrix multiplication). The field $F$ is usually $\RR$ or $\CC$ and $n\in\NN$ is called the \term{dimension} of the representation. In general $\dim D = n \neq \dim G$. A subtle point: the dimension of the representation is the dimension of the target space $GL(n,F)$. We'll see some example
+
+Note that this implies that
+$$D(e)D(g)=D(g)\forall g\in G \implies D(e)=I_n$$
+and similarly
+$$D(g)D(g^{-1})=D(gg^{-1})=D(e)=I_n\implies D(g^{-1})=(D(g))^{-1}.$$
+
+Now consider a matrix Lie group,
+$$G\subset \text{Mat}_m(\tilde F)$$ ($\tilde F$ could be a different field). For each $X\in L(G)$ the Lie algebra of $G$, construct a curve in $G$,
+$$C:t\in \RR \mapsto g(t)\in G$$ such that $g(0)=I_m,\dot g(0)=X$. If we have a representation $D$ of $G$, then $D(g(t))$ is a curve in $\text{Mat}_n(F).$ Let us now define
+$$d(X)\equiv \frac{d}{dt}D(g(t))|_{t=0}\in \text{Mat}_n(F).$$
+We claim that $d(X)$ is then a representation of the Lie algebra $L(G)$ corresponding to the representation $D$ of the Lie group $G$.
+
+Near $t=0$, we can certainly expand $D(g(t))$ as
+$$D(g(t))=I_n+t d(X)+O(t^2).$$
+
+Let us take $X_1,X_2\in L(G)$ and play our usual game: we construct curves $C_1,C_2$ such that
+$$C_1:t\mapsto g_1(t),C_2:t\mapsto g_2(t)$$
+with
+$$g_1(0)=g_2(0)=I_m, \dot g_1(0)=X_1, \dot g_2(0)=X_2.$$
+We will show that multiplication of these curves in the right way produces an element corresponding to the Lie bracket.
+
+Consider the curve
+$$h(t)=g_1^{-1}(t)g_2^{-1}(t) g_1(t) g_2(t) \in G.$$
+Previously, we expanded $g_1$ and $g_2$ and showed that $h(t)$ can be written as
+$$h(t)=I_m+t^2[X_1,X_2]+O(t^3).$$
+Suppose we now pass this curve to the representation of $G$ and calculate $D(h(t))$. Since a representation preserves group multiplication, we get
+$$D(h(t))=D(g_1)^{-1}D(g_2)^{-1}D(g_1)D(g_2).$$
+
+But we can also use our map on the Taylor expansion of $h$.
+\begin{eqnarray*}
+D(h)&=& D(I_m+ t^2[X_1,X_2]+O(t^3))\\
+&=&D(I_m)+t^2 \left(\frac{d}{dt^2} D(h(t))|_{t=0}\right)+O(t^3)\\
+&=&I_n +t^2 d([X_1,X_2])+O(t^3)
+\end{eqnarray*}
+where we have used the fact that $[X_1,X_2]$ is the coefficient for $t^2$ in $h(t)$ (if you like, you can think of $h$ as a function of $t^2$, or reparametrize $h$ as we did when initially constructing the Lie algebra from the tangent space of $G$) so that $\frac{d}{dt^2}D(h(t^2))|_{t^2=0}=d([X_1,X_2]).$
+
+Expanding the individual terms in the group multiplication we get
+$$D(g_1)=D(I_m+tX_1+\ldots)=I_n+t d(X_1)+O(t^2)$$
+and
+$$D(g_1)^{-1}=[I_m+td(X_1)+O(t^2)]^{-1}=I_n-td(X_1)+O(t^2).$$
+
+If we multiply it all out, we get that
+$$D(g_1)^{-1}D(g_2)^{-1}D(g_1)D(g_2)=I_m+t^2[d(X_1),d(x_2)].$$
+So indeed the bracket is preserved under the representation map:
+$$d([X_1,X_2])=[d(X_1),d(X_2)].\qed$$
+
+\begin{ex}%revisit the wording here
+Given a representation $d$ of $L(G)$, show that in some neighborhood of the identity $e$, $g=\exp(X),X\in L(G)$, show that
+$$D(g)=D[\exp X] = \exp(d(X)).$$
+Show that $g_1=\exp (X_1), g_2 \exp(X_2), X_1,X_2\in L(G),$ the group multiplication is preserved by $D$, $D(g_1g_2)=D(g_1)D(g_2).$
+\end{ex}
+
+We'll now consider representations of Lie algebras in more depth. One of the nice features of the Cartan classification of Lie groups is that it will also classify their representations.
+
+Let $\fg$ be a Lie algebra of dimension $D$. Here are some representations of $\fg.$
+\begin{defn}
+The \term{trivial representation} $d_0$ maps all elements of $\fg$ to the number $0$:
+$$d_0(X)\forall X\in \fg \implies \dim(d_0)=1.$$
+Trivial representations correspond to invariants-- all elements of the algebra are mapped to zero and by the exponential map, all group elements are the identity.
+\end{defn}
+\begin{defn}
+If $\fg=L(G)$ for some matrix Lie group, $G\subset \text{Mat}_n(F)$, we have the \term{fundamental representation} $d_f$ with
+$$d_f(X)=X\forall X\in \fg \implies \dim(d_f)=n.$$
+That is, we just take the element of the Lie algebra and represent it by itself.
+\end{defn}
+\begin{defn}
+All Lie algebras have an \term{adjoint representation}, $d_{Adj}$, with
+$$\dim(d_{Adj})=\dim(\fg)=D$$
+(where $D$ is the dimension of the Lie algebra).
+
+For all $X\in \fg$, we define a linear map
+$$ad_X:\fg \to \fg$$
+by
+$$Y\in \fg \mapsto ad_X(Y) = [X,Y]\in \fg.$$
+Since $ad_X$ is a linear map between vector spaces of dimension $D$, it is equivalent to a $D\times D$ matrix. Choosing a basis
+$$B=\set{T^a,a=1,\ldots,D}$$
+for $\fg$ and setting
+$X=X_a T^a, Y=Y_a T^a,$
+we get
+$$ [X,Y]=X_a Y_b [T^a,T^b]=X_a Y_b f^{ab}_c T^c.$$
+In this basis, we therefore have the explicit form of the adjoint map:
+$$[ad_X(Y)]_c=(R_X)^b_c Y_b$$
+with
+$$(R_X)^b_c \equiv X_a f^{ab}_c,$$
+where $R_X$ is a $D\times D$ matrix.
+
+We can then define the \term{adjoint representation} by
+$$d_{adj}(X)=ad_X \forall X\in \fg,$$
+or with respect to a basis,
+$$[d_{adj}(X)]^b_c = (R_X)^b_c \forall X\in \fg, b,c=1,\ldots, D.$$
+\end{defn}
+
+We can then check the defining properties of a representation.
+\begin{enumerate}
+    \item[i)] $$\forall X, Y\in \fg, [d_{Adj}(X),d_{Adj}(Y)]=d_{adj}([X,Y]).$$
+    Proof: $d_{Adj}(X)=ad_X,d_{Adj}(Y)=ad_Y.$
+    The $\forall Z\in \fg,$, composing the ad maps gives us
+    $$(d_{adj}(X) \circ d_{Adj}(Y))(Z)=[X,[Y,Z]]$$
+    and in the other order,
+    $$(d_{adj}(Y) \circ d_{Adj}(X))(Z)=[Y,[X,Z]].$$
+    Evaluating the RHS of our expression, we have
+    $$d_{Adj}([X,Y])(Z)=ad_{[X,Y]}Z=[[X,Y],Z].$$
+    Subtracting the LHS from the RHS, we can rewrite as
+    \begin{eqnarray*}
+    (\text{LHS}-\text{RHS})(Z)&=&[X,[Y,Z]]-[Y,[X,Z]]-[[X,Y,Z]\\
+    &=&[X,[Y,Z]]+[Z,[X,Y]]+[Y,[Z,X]]\\
+    &=&0
+    \end{eqnarray*}
+    using the antisymmetry property of the bracket and the Jacobi identity.
+    \item[ii)] $\forall X,Y\in \fg, \alpha,\beta\in F$ we have
+    $$d_{Adj}(\alpha X+\beta Y)=\alpha d_{Adj}(X)+\beta d_{Adj}(Y),$$
+    which holds due to the linearity of $ad_X, ad_Y.$
+\end{enumerate}
