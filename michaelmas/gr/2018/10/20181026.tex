@@ -1,0 +1,84 @@
+Today we'll discuss the action principle for general relativity. Last time, we wrote the Einstein equations,
+$$R_{ab}-\frac{1}{2}Rg_{ab}+\Lambda g_{ab}=8\pi GT_{ab}.$$
+
+We can write down an action for our theory: it is
+$$I=\underbrace{\frac{1}{16\pi G}\int_M (R-2\Lambda)g^{1/2}d^4x}_{\text{Einstein-Hilbert action}} + \underbrace{\int L_{matter} g^{1/2}d^4x}_{\text{arbitrary matter contribution}}.$$
+
+We'll need the condition that $\delta I=0$ as we vary the metric,
+$$g_{ab}\mapsto g_{ab}+h_{ab}$$ for $h_{ab}$ a small perturbation. Since $h_{ab}$ is small, we need only keep terms linear in $h_{ab}$. 
+
+The inverse metric is then given by
+$$g^{ab} g_{bc}=\delta^a_c,$$ which is the same in any system, so it does not change. In the perturbed metric, we see that the inverse metric must go to 
+$$g^{ab}-h^{ab}$$ since
+$$(g^{ab}-h^{ab})(g_{bc}+h_{bc})=\delta^a_c -h^a_c+h^a_c+O(h^2)=\delta^a_c.$$
+Note that tensor manipulations (e.g. raising and lowering indices) are carried out w.r.t the unperturbed metric $g_{ab}$.
+
+Now how does $g^{1/2}$ vary? It is
+\begin{eqnarray*}
+g^{1/2}&=& \sqrt{|\det g_{ab}|}\\
+&=&\sqrt{|\exp \text{tr}\ln g_{ab}}\\
+&=&\exp \frac{1}{2} \text{tr}\ln g_{ab}\\
+&\to& \exp \frac{1}{2}\text{tr}\ln (g_{ab}+h_{ab})\\
+&=&\exp \frac{1}{2} \text{tr} \ln g_{ac} (\delta^c_b + h^c_b)\\
+&=&\exp \frac{1}{2}\text{tr}(\ln g_{ab}+\ln (\delta^c_b +h^c_b))\\
+&=& g^{1/2} \exp \frac{1}{2} \text{tr}(h^c_b)\\
+&=&g^{1/2} \exp \frac{1}{2} h\\
+&=&g^{1/2} \left(1+\frac{1}{2}h\right)
+\end{eqnarray*}
+where we have defined $h\equiv \text{tr} h^c_b$ as the trace of our perturbation $h_{ab}.$. We conclude that
+$$\delta g^{1/2}=g^{1/2}\frac{1}{2}h.$$
+
+Now how do we vary the Ricci scalar?
+$$\delta R = \delta(R_{ab} g^{ab})=\delta R_{ab} g^{ab} +R_{ab} \delta g^{ab}= \delta R_{ab} g^{ab}-R_{ab} h^{ab}.$$
+The variation of the Ricci tensor clearly depends on the variation of the Christoffel symbols $\Gamma^a_{bc},$ with
+$$R_{ce}=\p_b \Gamma^b_{ce}-\p_e \Gamma^b_{cb}+\Gamma^b_{cf} \Gamma^f_{ce}-\Gamma^b_{ef}\Gamma^f_{cb}.$$
+The Christoffel symbols in terms of the original metric are
+$$\Gamma^a_{bc}=\frac{1}{2}g^{ad}(-\p_d g_{bc}+\p_b g_{cd} +\p_c g_{bd})$$
+and under the perturbation $g+h$ we have
+\begin{eqnarray*}
+\Gamma^a_{bc}(g+h)&=&\frac{1}{2}(g^{ad}-h^{ad})(-\p_d (g_{bc}+h_{bc})+\p_b (g_{cd}+h_{cd})+\p_c(g_{bd}+h_{bd}))\\
+&=&\Gamma^a_{bc}(g)+\frac{1}{2}\left(g^{ad}(-\p_d h_{bc}+\p_b h_{cd}+\p_c h_{bd})+h\p g\right).
+\end{eqnarray*}
+But since the difference between two connections is a tensor, the whole second term here must be a tensor and in particular the $h\p g$ term must be made of Christoffel symbols, so it vanishes (equivalently, in normal coordinates the first derivatives of $g$ are all zero at a point).%Revisit this argument.
+
+If we now pretend we were doing this calculation in normal coordinates all along (okay, we change to normal coordinates at each point), the derivatives of $g$ vanish and
+$$\Gamma^a_{bc}(g+h)=\Gamma^a_{bc}(g)+\frac{1}{2}g^{ad}\left(-\nabla_d h_{bc}+\nabla_b h_{cd}+\nabla_c h_{bd}\right).$$
+Therefore the variation in the Christoffel symbols is
+$$\delta^a_{bc}=-\frac{1}{2} \nabla^a h_{bc} +\frac{1}{2} \nabla_b h^a_c +\frac{1}{2}\nabla_c h^a_b,$$
+which we can easily check is symmetric under $b\leftrightarrow c$.
+
+Then the Ricci tensor varies as
+\begin{eqnarray*}
+\delta R_{ce}&=& \p_b \delta \Gamma^b_{ce} -\p_e \delta \Gamma^b_{bc} +(\Gamma \delta \Gamma)\\
+&=& \nabla_b \delta \Gamma^b_{ce} -\Gamma_e \delta \Gamma^b_{bc}\\
+&=&\frac{1}{2} (-\nabla_b \nabla^b h_{ce} +\nabla_b \nabla_c h^b_e + \nabla_b \nabla_e h^b_c - \nabla_c \nabla^c h),
+\end{eqnarray*}
+where the $\Gamma \delta \Gamma$ terms have vanished since $\Gamma=0$ in normal coordinates.
+We arrive at the variation of the Ricci scalar,
+\begin{eqnarray*}
+\delta R &=& \delta (R_{ab} g^{ab})\\
+&=&\delta R_{ab} g^{ab} + R_{ab} \delta g^{ab}\\
+&=& \delta R_{ab} g^{ab} -R_{ab} h^{ab}\\
+&=& \frac{1}{2}g^{ce} (-\nabla_d \nabla^d h_{ce} +\nabla_d \nabla_c h^d_e + \nabla_d \nabla_e h^d_c -\nabla_c \nabla_e h)-R_{ab} h^{ab}\\
+&=& -\nabla_d \nabla^d h + \nabla_d \nabla_c h^{cd}-R_{ab} h^{ab}.
+\end{eqnarray*}
+
+Putting it all together we have the varation of the action,
+$$
+\delta I_{grav}=\frac{1}{16\pi G} \int_M g^{1/2} g^4 x \left[-\nabla_d (\nabla^d h) +\nabla_d (\nabla_e h^{de}) - R_{de} h^{de} +\frac{1}{2} h R - \Lambda h\right]$$
+Using Gauss's theorem, we rewrite the first two terms as
+$$\int_{\p M}d \Sigma (-\nabla^d h + \nabla_e h^{de})n_d$$
+where since these are total derivatives evaluated on the ``boundary'' of our space, we assume they are irrelevant and vanish. Thus, forcing the variation of the action to vanish, we recover
+$$R_{ab}-\frac{1}{2}R g_{ab}+\Lambda g_{ab}=0,$$
+the Einstein equations in the absence of matter. Taking the variation of the matter term is much simpler:
+$$I_{matter}=\int L_{matter} g^{1/2}d^x = \int \frac{1}{2} T_{ab} h^{ab} g^{1/2} d^4x,$$
+so we get a stress-energy term. This expression defines the energy-momentum tensor of any matter-- note that $T_{ab}$ is always symmetric since $h^{ab}$ is symmetric and the indices are fully contracted. In QFT, we defined the energy-momentum tensor a little differently using Noether's theorem for translations in time and space, but that energy-momentum tensor is not guaranteed to be symmetric. If $T_{ab}$ is symmetric, then taking the covariant derivative of the Einstein equations gives
+$$8\pi G \nabla_a T^a_b= \nabla^a(R_{ab}-\frac{1}{2} R g_{ab})+\nabla_b \Lambda = 0$$
+by the Bianchi identity and the fact that $\Lambda$ is a constant.
+
+\begin{exm}
+One can write a specific action for the matter term. Consider
+$$I_{matter}=\int [-\frac{1}{2} g^{ab}\p_a \phi \p_b \phi-\frac{1}{2} m^2 \phi^2 -\frac{1}{4!} \lambda \phi^4] g^{1/2} d^4x.$$
+Note we've chosen the signs here so that in Minkowski space, the kinetic term has the sign $\frac{1}{2} \dot \phi^2 >0.$ One may then derive the corresponding energy-momentum tensor,
+$$T_{ab}=\p_c \phi \p_b \phi -\frac{1}{2} g_{ab}[(\p\phi)^2+m^2\phi^2+\frac{\lambda}{4!}\phi^4]$$
+\end{exm}
