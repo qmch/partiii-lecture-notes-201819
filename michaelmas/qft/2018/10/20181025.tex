@@ -30,6 +30,12 @@ Writing this all out, one can perform the $x_1,x_2$ integrals to get (surprise) 
 $$(-ig)^2 \left\{\frac{i}{(p_1-p_1')^2-m^2+i\epsilon}+\frac{i}{(p_2'-p_1)^2-m^2+i\epsilon}\right\} (2\pi)^4\delta^4(p_1+p_2-p_1'-p_2').$$
 In fact, there are two terms here-- one where the $\psi$s exchange a meson and go on their ways, and one where the $\psi$s exchange a meson and then cross over (so that what we thought was the first nucleon was actually the second). The meaning of this will be more obvious when we draw the Feynman diagrams. It should be clear that the delta function imposes conservation of overall momentum (i.e. the outgoing momentum is equal to the ingoing momentum, $p_1+p_2=p_1'+p_2'$).
 
+\feynmandiagram [horizontal=a to b] {
+i1 -- [fermion] a -- [fermion] i2,
+a -- [photon] b,
+f1 -- [fermion] b -- [fermion] f2,
+};
+
 \subsection*{Feynman diagrams} This is basically the simplest interesting calculation we could have done, and using Wick's theorem to get there has given us a big mess. Surely there must be a better way, you say. And there is. We draw \term{Feynman diagrams} to keep track of the different possible Wick contractions, i.e. to represent the expansion of $\bra{f}(S-1)\ket{i}$. We have a set of rules for how to draw the diagrams representing different processes, and can associate numbers or integrals to the diagrams.
 
 Here are the rules.
@@ -50,7 +56,7 @@ Using the Feynman rules, we can immediately write down the amplitude for our nuc
 \begin{eqnarray*}
 \bra{f}(S-1)\ket{i}&=&(-ig)^2\int \frac{d^4k}{(2\pi)^4} \frac{i}{k^2-m^2+i\epsilon} (2\pi)^8 \{\delta^4(p_1-p_1' -k)\delta^4(p_2-p_2' +k)\\
 &&+\delta^4(p_1-p_2'-k)\delta^4(p_2+k-p_1')\}\\
-&=& i(-ig)^2 \set{\frac{1}{(p1-p_1')^2-m^2+i\epsilon}+\frac{1}{(p_1-p_2')-m^2+i\epsilon}} (2\pi)^4 \delta^4(p_1+p_2-p_1' -p_2').
+&=& i(-ig)^2 \set{\frac{1}{(p_1-p_1')^2-m^2+i\epsilon}+\frac{1}{(p_1-p_2')-m^2+i\epsilon}} (2\pi)^4 \delta^4(p_1+p_2-p_1' -p_2').
 \end{eqnarray*}
 
 The diagrams are suggestive of an analogous classical scattering process, like billiard balls. If we like, we can say that this is like the nucleons exchanging a meson of 4-momentum $k$. However, note that this meson doesn't necessarily satisfy the relativistic dispersion relation $k^2=m^2$. If it doesn't, it's called ``off-shell'' or a virtual particle, and this is a purely quantum effect. Conversely, the external legs of our diagram are forced to be \term{on-shell}. It's also important to recognize that while internal momenta are fixed by momentum conservation in ``tree-level'' diagrams, once we introduce loops into our Feynman diagrams all bets are off and we must integrate over all possible momenta for those virtual particles.

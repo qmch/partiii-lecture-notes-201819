@@ -37,6 +37,12 @@ $$L_\CC (SU(2))=\text{Span}_\CC\set{T^a, a=1,2,3}.$$
 For now, we'll simply note that for $X\in L(SU(2))$, we can certainly rewrite $X$ as
 $$X=X_H H + X_+ E^++ X_- E^-,$$
 where $X_H\in i\RR$ and $X_+=(\bar X_-).$ This is called the Cartan-Weyl basis for $L(SU(2))$.\footnote{We've been writing $L(G)$ to distinguish the Lie algebra from the corresponding Lie group $G$, but other texts may use the convention of writing $su(2)$ using lowercase letters or the Fraktur script $\mathfrak{su}(2)$ for the Lie algebra. Just a convention to be aware of.}
+In this basis, a general element takes the form
+$$X=\begin{pmatrix}
+X_H & X_+\\
+X_-&-X_H
+\end{pmatrix}.$$
+This is certainly traceless, and $X\in L(SU(2))\iff$ $X$ is antihermitian, i.e. $X_H\in i\RR, X_+ = -(\bar X_-)$.
 
 This basis has some nice properties. For instance, we see that
 \begin{eqnarray*}

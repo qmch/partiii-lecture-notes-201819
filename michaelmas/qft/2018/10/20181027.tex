@@ -1,0 +1,46 @@
+Last time, we introduced the Feynman rules for drawing Feynman diagrams and computing scattering amplitudes, and it's good to check that these diagrams really do correspond to Wick contractions of our fields. Let's now make a canonical definition of the amplitude $\mathcal{A}_{fi}$, defined by
+$$\bra{f}(S-1)\ket{i}=i\mathcal{A}_{fi} \underbrace{(2\pi)^4 \delta^4(\sum_{j\in f} p_j - \sum_{j\in i} p_j)}_{\text{from translational invariance}}$$
+where the $i$ is included by convention to match with non-relativistic QM.
+
+We should then refine the Feynman rules to compute the amplitude (stripping away the overall momentum-conserving delta function, since we will always get it). Here are our revised rules:
+\begin{itemize}
+    \item Draw all possible diagrams with appropriate external legs given by $\ket{i},\ket{f}.$
+    \item Impose 4-momentum conservation at each vertex.
+    \item Write a factor of the coupling $(-ig)$ at each vertex.
+    \item For each internal line, add a factor of the propagator.
+    \item Integrate over internal momenta $\int \frac{d^4k}{(2\pi)^4}.$ (This is trivial for tree-level diagrams since the momenta are all fixed by momentum conservation, but these will be real integrals for diagrams with internal loops.)
+\end{itemize}
+
+\begin{exm}%add the diagrams
+Consider the scattering process $\psi+\bar \psi \to \phi+\phi$ in scalar Yukawa theory. There are two diagrams for this, and both are of order $(-ig)^2$. We can write down the amplitude almost by inspection:
+$$i\mathcal{A}_{if}=(-ig)^2\left[\frac{i}{(p_1-p_1')^2-\mu^2}+\frac{i}{(p_1-p_2')^2-\mu^2}\right]$$
+Note we've dropped the $i\epsilon$s here since the denominators don't vanish.
+\end{exm}
+
+\begin{exm}%add the diagram
+We can now consider our first loop diagram, $\phi\phi \to \phi\phi.$ It's a $O(g^4)$ diagram, so we write down the amplitude for this diagram as
+$$i\mathcal{A}_{if}=(-ig)^4 \int \frac{d^4k}{(2\pi)^4}\frac{i}{k^2-\mu^2+i\epsilon} \frac{i}{(k-p_2')^2-\mu^2 +i\epsilon}\frac{i}{(k+p_1'-p_1)^2-\mu^2+i\epsilon}\frac{i}{(k+p_1')^2-\mu^2+i\epsilon}.$$
+We won't actually compute this integral, though we should note that at least it has a chance of converging since it goes as $d^4k/k^8$. These loop integrals can be tricky, and we'll revisit them in more detail next term in Advanced QFT. Sometimes the integrals won't converge, and we'll need the machinery of renormalization to sweep away the infinities and get actual numbers out of our integrals.
+\end{exm}
+
+Let's now consider $\phi^4$ theory, with $\cH_{int}=\frac{\lambda}{4!} \phi^4$. Now we have a single interaction vertex-- it's a 4-point vertex, where for each vertex we pay a cost of $-i\lambda$. The other Feynman rules are the same. Note that there's no $1/4!$ factor here. To see why, consider the simplest diagram for $\phi\phi\to \phi \phi$ scattering.
+$$i\mathcal{A}_{fi}\sim -\frac{i\lambda}{4!}\bra{p_1',p_2'}:\phi(x)\phi(x)\phi(x)\phi(x):\ket{p_1,p_2}.$$ Generically, this is
+$$\bra{0}a_{\vec p_1'}a_{\vec p_2'}\ldots a_{\vec p_a}^\dagger a_{\vec p_2}^\dagger \ket{0}$$
+and so any one of the fields $\phi$ can annihilate or create the external particles. Therefore there are $4!$ ways of matching up the operators and commuting them so that we start and end with $\ket{0}.$  You can get other combinatoric factors like this (often 2 or 4). Having a term $\lambda_n \phi^n/n!$ is conventional, though.
+
+Let's consider now
+$$\bra{0}T\set{\phi(x_1)\ldots \phi(x_m) S}\ket{0},$$ which we call a correlation function. This is analogous to the correlation functions we saw in Statistical Field Theory. It's a more elementary but less physical object than an $S$-matrix element. For brevity, denote
+$$\phi_i \equiv \phi(x_i).$$ Now the $n$th term in the expansion for $S$ gives
+$$\frac{1}{n!}\left(\frac{-i\lambda}{4!}\right)^n\int d^4 y_1 \ldots d^4 y_n \bra{0} T\set{\phi_1 \ldots \phi_m \phi^4(y_1)\ldots \phi^4(y_n)}\ket{0}.$$
+Wick's theorem tells us to contract all pairs of fields in all possible ways. As an example, consider the case $n=1,m=4$.
+Then we have a term
+$$-\frac{i\lambda}{4!}\int d^4x \bra{0}T\set{\phi_1 \ldots \phi_4 \phi^4(x)}\ket{0}.$$
+We're going to have to contract all the fields, since any uncontracted fields will kill the vacuum states. We could get a contraction where all the numbered $\phi$ fields contract with the $x$s, e.g.
+$$-\frac{i\lambda}{4!}\int d^4 x \overbrace{\phi_1 \phi(x)}\overbrace{\phi_2 \phi(x)} \overbrace{\phi_3\phi(x)}\overbrace{\phi_4\phi(x)}$$
+and permutations of $\phi_1,\ldots,\phi_4.$ We could also contract two of the numbered $\phi$s,\footnote{This will give us a disconnected Feynman diagram.}
+$$-\frac{i\lambda}{4!} \int d^4x \overbrace{\phi_1 \phi_2} \overbrace{\phi_3 \phi(x)} \overbrace{\phi_3 \phi_4} \overbrace{\phi(x)\phi(x)}$$
+and permutations of contracting 2 $\phi_i$s. Finally, we'll have contractions of all the $\phi_i$s together, which look like
+$$-\frac{i\lambda}{4!}\int d^4x \overbrace{\phi_1\phi_2} \overbrace{\phi_3\phi_4} \overbrace{\phi(x)\phi(x)}\overbrace{\phi(x)\phi(x)}.$$
+The first of these gives us $4!$ terms of Feynman propagators $\Delta_F (x_i-x)$ (4 choices for $x_1$, $3$ for $x_2$, and so on). There are 12 ways of pairing $\phi_3,\phi_4$ with $\phi(x)$ (4 choices for $\phi_3$ and $3$ choices for $\phi_4$). There are also 12 choices for which two fields $\phi_i,\phi_j$ to contract with $\phi(x)$s. Finally, there are $3$ ways of pairing only $\phi(x)$s (e.g. take $\phi_1$. We get 3 choices of $\phi_{i\neq 1}$ to pair it with, and the other contraction is then fixed).
+
+So the first term gets $-i\lambda$, the second gets $-i\lambda/2$, and the last gets $-i\lambda/8$. Note that $\Delta_F(x-x)=\Delta_F(0)$ diverges, so these ``bubble'' diagrams will diverge badly. Our theory turns out to be renormalizable, but again this isn't always the case.

@@ -41,19 +41,19 @@ and under the perturbation $g+h$ we have
 \end{eqnarray*}
 But since the difference between two connections is a tensor, the whole second term here must be a tensor and in particular the $h\p g$ term must be made of Christoffel symbols, so it vanishes (equivalently, in normal coordinates the first derivatives of $g$ are all zero at a point).%Revisit this argument.
 
-If we now pretend we were doing this calculation in normal coordinates all along (okay, we change to normal coordinates at each point), the derivatives of $g$ vanish and
+If we now pretend we were doing this calculation in normal coordinates all along (okay, we change to normal coordinates at each point), the derivatives of $g$ vanish and we can replace the partial derivatives with the covariant derivatives to get
 $$\Gamma^a_{bc}(g+h)=\Gamma^a_{bc}(g)+\frac{1}{2}g^{ad}\left(-\nabla_d h_{bc}+\nabla_b h_{cd}+\nabla_c h_{bd}\right).$$
-Therefore the variation in the Christoffel symbols is
+Therefore the variation in the Christoffel symbols is in general
 $$\delta^a_{bc}=-\frac{1}{2} \nabla^a h_{bc} +\frac{1}{2} \nabla_b h^a_c +\frac{1}{2}\nabla_c h^a_b,$$
 which we can easily check is symmetric under $b\leftrightarrow c$.
 
-Then the Ricci tensor varies as
+Then the variation of the Ricci tensor is
 \begin{eqnarray*}
 \delta R_{ce}&=& \p_b \delta \Gamma^b_{ce} -\p_e \delta \Gamma^b_{bc} +(\Gamma \delta \Gamma)\\
 &=& \nabla_b \delta \Gamma^b_{ce} -\Gamma_e \delta \Gamma^b_{bc}\\
 &=&\frac{1}{2} (-\nabla_b \nabla^b h_{ce} +\nabla_b \nabla_c h^b_e + \nabla_b \nabla_e h^b_c - \nabla_c \nabla^c h),
 \end{eqnarray*}
-where the $\Gamma \delta \Gamma$ terms have vanished since $\Gamma=0$ in normal coordinates.
+where the $\Gamma \delta \Gamma$ terms have vanished since $\Gamma=0$ in normal coordinates, and we have again promoted $\p_b$ to $\nabla_b$.
 We arrive at the variation of the Ricci scalar,
 \begin{eqnarray*}
 \delta R &=& \delta (R_{ab} g^{ab})\\
@@ -68,7 +68,7 @@ $$
 \delta I_{grav}=\frac{1}{16\pi G} \int_M g^{1/2} g^4 x \left[-\nabla_d (\nabla^d h) +\nabla_d (\nabla_e h^{de}) - R_{de} h^{de} +\frac{1}{2} h R - \Lambda h\right]$$
 Using Gauss's theorem, we rewrite the first two terms as
 $$\int_{\p M}d \Sigma (-\nabla^d h + \nabla_e h^{de})n_d$$
-where since these are total derivatives evaluated on the ``boundary'' of our space, we assume they are irrelevant and vanish. Thus, forcing the variation of the action to vanish, we recover
+where since these are total derivatives evaluated on the ``boundary'' of our space, we assume they are irrelevant and vanish as we take the space to be infinitely large.\footnote{This won't always be valid, but it is here.} Thus, forcing the variation of the action to vanish, we recover
 $$R_{ab}-\frac{1}{2}R g_{ab}+\Lambda g_{ab}=0,$$
 the Einstein equations in the absence of matter. Taking the variation of the matter term is much simpler:
 $$I_{matter}=\int L_{matter} g^{1/2}d^x = \int \frac{1}{2} T_{ab} h^{ab} g^{1/2} d^4x,$$
@@ -78,7 +78,7 @@ by the Bianchi identity and the fact that $\Lambda$ is a constant.
 
 \begin{exm}
 One can write a specific action for the matter term. Consider
-$$I_{matter}=\int [-\frac{1}{2} g^{ab}\p_a \phi \p_b \phi-\frac{1}{2} m^2 \phi^2 -\frac{1}{4!} \lambda \phi^4] g^{1/2} d^4x.$$
-Note we've chosen the signs here so that in Minkowski space, the kinetic term has the sign $\frac{1}{2} \dot \phi^2 >0.$ One may then derive the corresponding energy-momentum tensor,
-$$T_{ab}=\p_c \phi \p_b \phi -\frac{1}{2} g_{ab}[(\p\phi)^2+m^2\phi^2+\frac{\lambda}{4!}\phi^4]$$
+$$I_{matter}=\int \left[-\frac{1}{2} g^{ab}\p_a \phi \p_b \phi-\frac{1}{2} m^2 \phi^2 -\frac{1}{4!} \lambda \phi^4 \right] g^{1/2} d^4x.$$
+Note we've chosen the signs here so that in Minkowski space ($g^{ab}=\eta^{ab}$), the kinetic term is positive, $\frac{1}{2} \dot \phi^2 >0.$ One may then derive the corresponding energy-momentum tensor,
+$$T_{ab}=\p_c \phi \p_b \phi -\frac{1}{2} g_{ab} \left[(\p\phi)^2+m^2\phi^2+\frac{\lambda}{4!}\phi^4\right]$$
 \end{exm}

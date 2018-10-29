@@ -70,9 +70,16 @@ $$\Gamma^a_{bc}=\frac{1}{2}g^{ad}(-\p_d g_{bc}+\p_b g_{cd}+\p_c g_{bd})$$
 we find that
 $$\Gamma^a_{ac}=\frac{1}{2}g^{ad}(-\p_d g_{ac}+\p_a g_{cd}+\p_c g_{ad}).$$
 These first two terms cancel by the symmetry of $g^{ad}$, so we're left with
-$$\Gamma^a_{ac}=\frac{1}{2} \text{Tr} g^{-1}\p_c g=\frac{1}{2}\text{Tr}\p_c \ln g = \frac{1}{2} \ln \p_c \det g$$
+\begin{eqnarray*}
+\Gamma^a_{ac}&=& \frac{1}{2} g^{ad}\p_c g_{ad}\\
+&=&\frac{1}{2} \text{Tr} [g^{-1}\p_c g]\\
+&=& \frac{1}{2}\text{Tr}[\p_c \ln g]\\
+&=&\frac{1}{2} \p_c \ln \det g\\
+&=&\p_c \ln \sqrt{|\det g|}
+\end{eqnarray*}
 where to get from the third to fourth expression, we have used the identity
-$$\det g = \exp \text{Tr} \ln g.$$
+$$\det g = \exp \text{Tr} \ln g$$
+and the fact that $\p_c$ and the trace commute (since $\p_c$ is linear).
 Suppose $g$ is symmetric. Then it can be diagonalized, $D=O^T g O$ with $O$ some orthogonal matrix and $D$ the diagonal matrix of the eigenvalues of $g$. Equivalently $g=O DO^T.$ Then
 \begin{eqnarray*}
 \exp \text{Tr}\ln ODO^T&=&\exp \text{Tr}(\ln O + \ln D + \ln O^T)\\
@@ -85,14 +92,22 @@ Suppose $g$ is symmetric. Then it can be diagonalized, $D=O^T g O$ with $O$ some
 
 Using this identity\footnote{Okay, I'm really unsure about this proof. What does it even mean to take the log of a matrix? I guess we could take a power series expansion about the identity? From Symmetries we have the more reasonable version of this identity in terms of exponentials: $\det \exp(g)= \exp (\text{Tr } g)$, which is certainly true. So one can define the log of a matrix $A$ as $B=\log A$, where $B$ is defined such that $\exp B = A$. We've been too cavalier about applying the properties of this matrix logarithm I think, in assuming that all the regular properties of the log hold (although it seems that they do). If this makes you unhappy, repeat the proof with $g'=\exp g$ and then take the log at the end.}, 
 we see that
-$$\Gamma^a_{ac}=\p_c \ln \sqrt{|\det g|}=\p_c(\ln g^{1/2})=\frac{1}{2} \frac{\p_c g}{g}.$$ Therefore
+$$\Gamma^a_{ac}=\p_c \ln \sqrt{|\det g|}=\p_c(\ln g^{1/2})=\frac{1}{2} \frac{\p_c \det g}{\det g}.$$ 
+We also need the following result:
+$$\p_a(g^{1/2} V^a)= g^{1/2} \p_a V^a + V^a \frac{1}{2 g^{1/2}} \p_a (\det g) = g^{1/2} (\p_a V^a + \Gamma^b_{ba} V^a)= \nabla_a V^a g^{1/2},$$
+which will let us turn a covariant derivative into an ordinary partial derivative.
+
+Therefore
 $$\int_\Sigma \nabla_a V^a g^{1/2} d^n x=\int \p_a(g^{1/2} V^a) dx^1 dx^2 \ldots dx^n.$$
 Integrating over $x^n$ we get
 \begin{eqnarray*}
-\int_\Sigma \nabla_a V^a g^{1/2} d^n x&=&\int \p_a(g^{1/2} V^a) dx^1 dx^2 \ldots dx^n\\
-&=& \int V^{``n''} g^{1/2} dx^1 \ldots dx^{n-1}\\
-&=& \int V^{``n''}N(\det \gamma)^{1/2} dx^1 \ldots dx^{n-1}\\
-&=& \int n_a V^a (\det \gamma)^{1/2} dx^1 \ldots dx^{n-1}.
+\int_\Sigma \nabla_a V^a g^{1/2} d^n x&=&\int_\Sigma \p_a(g^{1/2} V^a) dx^1 dx^2 \ldots dx^n\\
+&=& \int_{\p \Sigma} V^{``n''} g^{1/2} dx^1 \ldots dx^{n-1}\\
+&=& \int_{\p\Sigma} V^{``n''}N(\det \gamma)^{1/2} dx^1 \ldots dx^{n-1}\\
+&=& \int_{\p\Sigma} \left(\frac{1}{N} n_a V^a\right) N(\det \gamma)^{1/2} dx^1 \ldots dx^{n-1}\\
+&=& \int_{\p\Sigma} n_a V^a (\det \gamma)^{1/2} dx^1 \ldots dx^{n-1},
 \end{eqnarray*}
+where $V^{``n''}$ is the $n$th component of $V$.
+Here, we have just turned a covariant derivative into a regular partial derivative so we can apply the regular divergence theorem.
 This equation is covariant, so it is true in general:
 $$\int_\Sigma \nabla_a V^a g^{1/2} d^n x = \int_{\p \Sigma} n^a V^a \gamma^{1/2} d^{n-1}x,$$ with $\gamma^{1/2}d^{n-1}x$ the volume element on $\p \Sigma.$\footnote{There is a very nice way to write Stokes's theorem in terms of differentials and differential forms. See Carroll Appendix E for the proof.}

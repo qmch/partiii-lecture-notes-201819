@@ -1,0 +1,102 @@
+Last time, we mentioned in passing that there is an action associated to the matter in our space,
+$$I_{matter}=\int g^{1/2} d^4x L_{matter}.$$
+For instance, for a scalar field $\phi$ in $\phi^4$ theory we might have
+$$I_{matter}=\int g^{1/2} d^4x \left[-\frac{1}{2}g^{ab}\p_a \phi \p_b \phi -\frac{1}{2}m^2\phi^2-\frac{1}{4} \lambda \phi^4\right].$$
+Now $\phi$ is invariant under variation of the metric, so
+$$\delta I =\int g^{1/2} d^4x \left[\frac{1}{2} h^{ab}\p_a \phi \p_b \phi +\frac{1}{2} g_{ab}(-\frac{1}{2} g^{cd} \p_c \phi \p_d \phi -\frac{1}{2} m^2 \phi^2 -\frac{1}{4} \lambda \phi^4)\right].$$
+The corresponding energy-momentum tensor is therefore
+$$T_{ab}=\p_a \phi \p_b \phi -\frac{1}{2} g_{ab}(\p_c \phi \p_d g^{cd} +m^2\phi^2 +\frac{1}{2} \lambda \phi^4).$$
+The equation for motion for $\phi$ is
+$$-\Box \phi+ m^2 +\lambda \phi^3 =0,$$
+where the $\Box$ operator is $\nabla_a \nabla^a$, a generalization of the Laplacian. (This is sometimes called the d'Alembertian.)
+
+We can calculate $\nabla_a T^{ab}$ to get
+$$\Box \phi \p_b \phi + \nabla_a \phi \nabla^a \nabla_b \phi - \nabla_b \phi \nabla^b \nabla_c \phi - m^2 \phi \nabla_b \phi - \lambda \phi^3 \nabla_b \phi,$$
+where the second and third terms cancel,%check this
+so we see that
+$$\nabla_a T^{ab}=\nabla^b \phi(-\text{Equation of motion})=0.$$
+Thus the energy-momentum tensor is conserved by the equations of motion.
+
+Suppose $m^2 <0$ and look for solutions of the field equations that are constant,
+$$\phi^2 = -m^2/\lambda.$$ Then $T_{ab}$ takes the form
+$$T_{ab}=-\frac{1}{2}(-m^2 \frac{m^2}{\lambda}+\frac{\lambda}{2} \frac{m^2}{\lambda^2})= -\frac{1}{4}g_{ab} \frac{m^4}{\lambda}.$$
+
+This is what happens in the Higgs mechanism. However, note that the stress-energy tensor is proportional to $g_{ab}$ only and is therefore equivalent to a cosmological constant. That is, from the Einstein equations
+$$R_{ab}-\frac{1}{2}R g_{ab} +\Lambda g_{ab} = 8\pi G T_{ab},$$ 
+we get a contribution to $\Lambda$ of
+$$-8\pi G \left(\frac{1}{4} \frac{m^4}{\lambda}\right)$$ However, $\Lambda$ has a length scale of $10^{28}$ cm, whereas $m^4/\lambda$ has a weak interaction scale of $10^{15}$ cm, so there is a 43 orders of magnitude conflict between the value of the vacuum energy predicted by the Higgs mechanism and the value experimentally observed. There is no known solution to this problem.
+
+What about the electromagnetic field? For this field, we have an associated action of
+$$I_{em}=-\frac{1}{4}\int d^4x g^{1/2} F_{ab} F^{ab} = -\frac{1}{4}\int d^4x g^{1/2} F_{ab} F_{cd} g^{ac} g^{bd}.$$
+Here, the Maxwell tensor is given as usual by $F_{ab}\equiv \p_a A_b -\p_b A_a$ with $A_a$ the electromagnetic four-potential. As the metric is varied, we take $\delta A_a$ to be zero and find the variation
+$$\delta I_{em}=-\frac{1}{4} \int d^4x g^{1/2} [-2 h^{ac} g^{bd} F_{ab} F_{cd} + \frac{1}{2} g_{ab} F_{cd} F^{cd} h^{ab}].$$
+We find that the corresponding stress-energy tensor is
+$$T_{ab}=F_{ac} {F_b}^c - \frac{1}{4} g_{ab} F_{cd} F^{cd}.$$
+It's a simple exercise to check that $\nabla_a T^{ab}=0$ if $\nabla_a F_{bc} + \nabla_b F_{ca} + \nabla_c F_{ab}=0$ and $\nabla_a F^{ab}=0$.
+
+Let's now examine some symmetries of the Einstein equation. In the absence of matter, we have
+$$R_{ab}-\frac{1}{2} R g_{ab} +\Lambda g_{ab}=0.$$
+If $\Lambda=0$ as well, then one solution is the Minkowski spacetime,
+$$ds^2 = -dt^2 + dx^2 +dy^2 +dz^2.$$
+In Minkowski spacetime, the metric is constant and so all the Christoffel symbols vanish, $\Gamma^a_{bc}=0$, and thus all the nice tensors and scalars we cooked up also vanish,
+$${R^a}_{bcd}=R_{ab}=R=0.$$ Note that the Minkowski metric is therefore invariant under translations, spatial rotations, and Lorentz transformations.
+
+What if we consider a spacetime where $\Lambda >0$? Can we still find a maximally symmetric space for such a $\Lambda$? The answer is yes-- it is called de Sitter space, and the solution looks like
+$$ds^2=\Omega^2(t) (-dt^2+dx^2+dy^2+dz^2),$$
+where $\Omega$ cannot depend on $x,y,z$ to preserve rotational invariance but it may depend on $t$.
+
+Note that the Einstein equations in vacuum take the nice form
+\begin{eqnarray*}
+0&=& g^{ab}(R_{ab}-\frac{1}{2} R g_{ab}+\Lambda g_{ab})\\
+&=&R -\frac{1}{2} R (4) +4 \Lambda\\
+&\implies& R=4\Lambda,
+\end{eqnarray*}
+so the Einstein equations become
+$$R_{ab}=\Lambda g_{ab}.$$
+Then
+$$\Box \Omega = -\frac{2}{3} \Lambda \Omega^3$$
+where $\Box$ is the flat space wave operator
+$$\Box = -\frac{\p^2}{\p t^2}+\nabla^2.$$
+Letting $\cdot =\P{}{t}$, we have
+$$\ddot \Omega = \frac{2}{3} \Lambda \Omega^3.$$
+We can solve by multiplying by $\dot \Omega$ and integrating,
+$$\dot \Omega \ddot \Omega = \frac{2}{3} \Lambda \Omega^3 \dot \Omega \implies \frac{1}{2} \dot \Omega^2 = \frac{1}{2} \Lambda \Omega^4.$$
+We conclude that
+$$\dot \Omega = \sqrt{\frac{\Lambda}{3}} \Omega^2,$$
+and integrating again we write
+$$\frac{\dot \Omega}{\Omega^2}=\pm\sqrt{\Lambda/3} \implies \frac{1}{\Omega}=\mp \sqrt{\Lambda/3}t.$$
+It follows that $\Omega^2=\frac{3}{\Lambda t^2}$, so our de Sitter metric is
+$$ds^2 = \frac{3}{\Lambda t^2}[-dt^2+dx^2 +dy^2 +dz^2].$$
+The limit $\Lambda \to 0$ is pathological, but as $t\to 0$ the metric coefficients blow up. We call this a \term{coordinate singularity} (as opposed to an essential singularity, like in a black hole). All this tells us is that this set of coordinates don't work towards $t\to 0$. The only way to tell in general if a divergence is an essential singularity is to find that one of our curvature tensors or scalars diverges, e.g. $R\to \infty.$ Conversely, we can get rid of coordinate singularities by an appropriate change of coordinates.
+
+Here's an example. Suppose we invent the new coordinate $T$ given by
+$$t=\sqrt{\frac{3}{\Lambda}} e^{\sqrt{\Lambda/3} T}.$$
+Then the differential is
+$$dt=dT e^{\sqrt{\Lambda/3}T}.$$
+In the new coordinates, the metric takes the form
+$$ds^2 = -dT^2 + e^{-2\sqrt{\Lambda/3}T}(dx^2+dy^2+dz^2).$$
+Those of you with previous relativity experience might recognize this as a Friedman-Robertson-Walker (FRW) universe-- interpreted physically, this is simply a flat-space universe where space contracts as $T$ increases.
+
+But we could have alternatively defined a coordinate $\tilde T$ such that
+$$t=\sqrt{\frac{3}{\Lambda}}e^{-\sqrt{\Lambda/3}\tilde T}.$$
+We'd get a similar metric to before, but now space is expanding:
+$$ds^2 = -d\tilde T^2 +e^{2\sqrt{\Lambda/3}\tilde T} (dx^2+dy^2 + dz^2),$$
+which says that space is expanding as $\tilde T$ increases. What's gone wrong? All that's happened is that our new ``time'' coordinates $T,\tilde T$ don't describe the entire spacetime. Note that as $T\to -\infty, t\to 0$ and as $\tilde T \to +\infty, t\to 0$.
+
+Our two different metrics, one in $T,x,y,z$ and one in $\tilde T,x,y,z$, both represent solutions of Einstein's equations. But both come from the same original metric, so they seem to describe different parts of spacetime. We'd like to have a single set of coordinates which is good everywhere. Can we do this?
+
+Let us define coordinates $X,Y,Z,V+W$ such that
+\begin{eqnarray*}
+T&=&\sqrt{\frac{3}{\Lambda}}\ln \frac{V+W}{\sqrt{3/\Lambda}}\\
+x&=& \sqrt{\frac{3}{\Lambda}} \frac{X}{V+W}\\
+Y&=& \sqrt{\frac{3}{\Lambda}} \frac{Y}{V+W}\\
+Z&=& \sqrt{\frac{3}{\Lambda}} \frac{Z}{V+W}.
+\end{eqnarray*}
+We also impose the following constraint:
+$$-V^2+W^2+X^2+Y^2 +Z^2=3/\Lambda,$$
+which defines a surface in five-dimensional space. Suppose we look at this constraint in $\RR^{1,4}$, flat five-dimensional space with metric
+$$ds^2=-dV^2+dW^2+dX^2+dY^2+dZ^2.$$
+If we eliminate $W$ between these two (by taking $dW$ in the first equation) we find that the metric in our constrained five-dimensional space is precisely the same as what you get by plugging in
+$T,x,y,z$ as functions of $V,W,X,Y,Z$ into
+$$ds^2=-dT^2+e^{-2\sqrt{\Lambda/3}T}(dx^2+dy^2+dz^2).$$
+The proof of this is in Anthony Zee's \textit{Einstein Gravity in a Nutshell} and also in Schr\"odinger's paper \textit{Properties of expanding universes}.

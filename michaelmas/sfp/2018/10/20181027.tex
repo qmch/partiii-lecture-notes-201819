@@ -1,0 +1,85 @@
+Some remarks from last time. In terms of the original basis vectors, our basis for $SU(2)$ was
+$$H=2i T^3, E_\pm i(T^1 \pm i T^2$$
+with $T^a=-\frac{1}{2}i \sigma_a, a=1,2,3.$ Conversely $T^3=H/2i, T^1=\frac{1}{2i}(E_+ + E_-), T^2= -\frac{1}{2}(E_+-E_-).$
+
+It follows that a representation $R$ of $L_\CC(SU(2))$, $R(H2),R(E_+),R(E_-)$ gives a representation of $L(SU(2))$ by applying our representation to the original basis elements, e.g.
+$$R(T^1)=\frac{1}{2i} R(E_++ E_-)=\frac{1}{2i}(R(E_+)+R(E_-).$$
+
+Today we'll consider the $SU(2)$ representation from $L(SU(2))$ representations. That is, we'll look at the connection between the representation of a Lie algebra $L(G)$ and the representation of the original Lie group $G$.
+
+The punchline from last time was that finite-dimensional irreps of $L(SU(2))$ can be labeled by the highest weight $\Lambda_\in \ZZ_{\geq 0},$ with a weight set
+$$S_\Lambda=\set{-\Lambda, \Lambda+2,\ldots, \Lambda-2, +\Lambda}\subset \ZZ.$$
+We had $\dim(R_\Lambda)=\Lambda+1$.
+
+To a physicist, this is simply a complicated way of expressing angular momentum in quantum mechanics. Recall that the total angular momentum is orbital $+$ spin angular momentum. We had our $\vec J$ operator,
+$$\vec J=(J-1,J_2,J_3)$$ with eigenstates (e.g. of $J_3$) labeled by $j\in \ZZ/2, j\geq 0.$ We then had
+$$m\in \set{-j,j+1,\ldots,+j}$$
+such that
+$$\hat J_3\ket{j,m}=m\ket{j,m}$$
+and the total angular momentum $J^2$ with
+$$\hat J^2 \ket{j,m}=j(j+1)\ket{j,m}.$$
+
+We can set up the correspondence
+$$J_3=\frac{1}{2}R(H)$$
+and
+$$J_\pm = J_1\pm i J_2 = R(E_\pm)$$
+so that the highest weight $\Lambda$ of the representation corresponds to 
+$$\Lambda = 2j \in \ZZ$$ and a general weight $\lambda \in S(R)$ corresponds to the angular momentum along a particular axis,
+$$\lambda = 2m\in \ZZ.$$
+The eigenvector $v_\Lambda$ thus corresponds to
+$v_\Lambda \sim \ket{j,j}$ and similarly $v_\lambda \sim \ket{j,m}.$
+This explains in an algebraic context why $m$ ranges from $-j$ to $j$ in integer steps, with $j$ a positive half-integer. Fixing $\Lambda$ is equivalent to choosing the total angular momentum, and fixing $\lambda$ is then choosing the angular momentum along a particular axis (e.g. $J_3$).
+
+Recall that locally we can parametrize group elements $A\in SU(2)$ using the exponential map,
+$$A=\exp(X), X\in L(SU(2)).$$
+Starting from the irreducible representations $R_\Lambda$ of $L(SU(2))$ defined above, we can then define the representation
+$$D_\Lambda(A)\equiv \exp (R_\Lambda(X)), \Lambda \in \ZZ_{\geq 0}.$$
+Recall that $SU(2)$ and $SO(3)$ have the same Lie algebra. In general this will yield a valid representation of $SU(2)$ but \emph{not} of $SO(3)\simeq SU(2)/\ZZ_2.$ For this to be a representation of $SO(3)$, we must further require that it is well-defined on the quotient by the center of the group $\set{I_2,-I_2},$ i.e.
+$$D_\Lambda(-I_2)=D_\Lambda(I_2) \iff D_\Lambda(-A)=D_\Lambda(A) \forall A\in SU(2).$$
+
+Let's check explicitly if that holds. First note that we can write
+$$-I_2 = \exp (i \pi H)$$
+(from the explicit form of $H$-- check this). Now we'll pass to the representation $D_\Lambda$:
+$$D_\Lambda(-I_2)=D_\Lambda(\exp(i\pi H)) = \exp(i\pi R_\Lambda(H)).$$
+But $R_\Lambda(H)$ has eigenvalues $\lambda\in\set{-\Lambda,\Lambda+2,\ldots,+\Lambda}$, so the matrix on the left $D_\Lambda(-I_2)$ must have the same eigenvalues (after exponentiation) $$\exp(i\pi \lambda)= \exp(i\pi \Lambda)=(-1)^\Lambda$$ since $\lambda$ goes in steps of $2$.
+Therefore we find that
+$$D_\Lambda(-I_2)=D_\Lambda(I_2)=(I)_{(\Lambda+1)\times (\Lambda+1)}\iff \Lambda \in 2\ZZ.$$
+That is, $\Lambda$ must be even. In this case,
+$\Lambda \in 2 \ZZ \implies D_\Lambda$ is a representation of $SU(2)$ and $SO(3)$, whereas $\Lambda \in 2 \ZZ+1 \implies D_\Lambda$ is a representation of $SU(2)$ but \emph{not} of $SO(3)$. Sometimes we call this a ``spinor representation'' (i.e. half-integer spin) of $SO(3)$, but these aren't really representations of $SO(3)$-- really, they're representations of the double cover $SU(2)$.
+
+This reveals something a bit interesting-- the true rotation group of the physical world we live in is not $SO(3)$ but $SU(2)$. The particles which see these complex rotations are exactly the particles with half-integer spin.
+
+\subsection*{New representations from old} 
+\begin{defn}
+If $R$ is a representation of a real Lie algebra $\fg$, we define a \term{conjugate representation} by
+$$\bar R(X)=R(X)^* \forall X\in \fg.$$
+It's an exercise to check that this really is a representation-- see example sheet 2. Note that sometimes $\bar R \simeq R$, so the new representation is isomorphic to the old one.
+\end{defn}
+\begin{defn}
+Given representations $R_1,R_2$ of a Lie algebra with corresponding representation spaces $V_1,V_2$ and dimensions $d_1,d_2$, we may define the \term{direct sum} of the representations, denoted
+$$R_1 \oplus R_2.$$
+The direct sum acts on the direct sum of the vector spaces, $$V_1 \oplus V_2 = \set{v_1 \oplus v_2: v_1 \in V_1,
+v_2 \in V_2}.$$ The dimension of the new representation space is simply $\dim(V_1 \oplus V_2)=d_1 +d_2.$ The direct sum is then defined very simply by
+$$(R_1 \oplus R_2)(X)\cdot (v_1 \oplus v_2)=(R_1(X)v_1)\oplus (R_2(X)v_2) \in V_1,V_2.$$
+There's probably a nice commuting diagram for this in category theory. To make this more concrete, one can write $(R_1\oplus R_2)(X)$ as a block diagonal matrix with $R_1(X)$ in the upper left, $R_2(X)$ in the lower right. This is known as a \term{reducible} representation, i.e a representation which can be written as the direct sum of two (or more) representations.
+\end{defn}
+
+\begin{defn}
+Given vector spaces $V_1,V_2$ with dimensions $d_1,d_2$, we define the \term{tensor product space} $V_1 \otimes V_2$. It's got a different structure than the more familiar Cartesian product-- our tensor product space is spanned by basis elements
+$$v_1 \otimes v_2, v_1\in V_1,v_2\in V_2.$$
+In particular, the tensor product space has dimension $\dim(V_1\otimes V_2)=d_1 \times d_2$.
+However, the addition structure on the tensor product space is special. In a Cartesian product, it makes sense to add terms like $(0,1)+(1,0)=(1,1)$ (i.e. term-wise addition). But a tensor product is a formal product. In a tensor product, $\ket{0}\otimes \ket{1} + \ket{1}\otimes \ket{0}$ cannot be simplified any further. It only makes sense to add terms which share one of the terms, e.g. something like $(0,1)+(1,1)=(1,1).$ Tensor products are of particular interest in physics because when we consider the Hilbert space of a multi-particle state, it can be represented not as a direct product but a tensor product of the individual single-particle states.\footnote{For a simple example, consider two particle spin states taking discrete values. $\ket{a},\ket{b}\in \set{\ket{0},\ket{1}}$. Then the two-particle states are described by the tensor product space $\ket{a}\otimes\ket{b}$ (sometimes $\ket{a}\ket{b}$ or simply $\ket{ab}$), which is spanned by $\ket{00},\ket{01},\ket{10},\ket{11}$. It's obvious in this notation that it doesn't make sense to add states like $\ket{10}+\ket{01}$-- addition is only well-defined when at least one of the original basis states matches, e.g. $\ket{10}+\ket{11}=\ket{1}(\ket{0}+\ket{1})$.}
+
+Given two linear maps $M_1:V_1\to V_1,M_2: V_2\to V_2,$ we can define the \term{tensor product map} $(M_1\otimes M_2): V_1\otimes V_2 \to V_1 \otimes V_2$ such that
+$$(M_1\otimes M_2)(v_1\otimes v_2)=(M_1 v_1)\otimes (M_2 v_2) \in V_1\otimes V_2,$$
+which may be extended naturally to all elements of $V_1\otimes V_2$ by linearity (since we have defined it on all basis vectors).
+\end{defn}
+\begin{defn}
+Suppose we have two representations $R_1,R_2$ of a Lie algebra $\fg$ acting on representation spaces $V_1,V_2$. By definition, for $X\in\fg$ we have
+$$R_1(X):V_1\to V_1, R_2(X):V_2\to V_2.$$
+Then we can define a new representation, the \term{tensor product representation} $(R_1\otimes R_2)$ such that for each $X\in \fg$, we get
+$$(R_1\otimes R_2)(X):V_1 \otimes V_2 \to V_1 \otimes V_2,$$
+given explicitly by
+$$(R_1\otimes R_2)(X)\equiv R_1(X) \otimes I_{V_2} + I_{V_1} \otimes R_2(X).$$
+Here, I've denoted $I_{V_1}$ as the identity on $V_1$ and the same is true for $I_{V_2}$. We'll talk more about what this looks like and why it's defined this way next time.
+\end{defn}
