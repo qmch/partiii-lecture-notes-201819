@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  26 OCT 2018 17:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  29 OCT 2018 23:54
 entering extended mode
 **./qft-notes-partiii.tex
 (qft-notes-partiii.tex
@@ -1436,53 +1436,132 @@ Package: translator 2010/06/12 ver 1.10
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\translator-language-m
 appings.tex")))
-Package hyperref Info: Option `colorlinks' set `true' on input line 27.
+("C:\Program Files\MiKTeX 2.9\tex\latex\tikz-feynman\tikz-feynman.sty"
+Package: tikz-feynman 2016/02/05v1.1.0Feynman diagrams with TikZ
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgfopts\pgfopts.sty"
+Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
+\pgfopts@list@add@a@toks=\toks50
+\pgfopts@list@add@b@toks=\toks51
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tikz-feynman\tikzlibraryfeynman.code.te
+x"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryarrows.meta.c
+ode.tex"
+File: pgflibraryarrows.meta.code.tex 2015/05/13 v3.0.1a (rcs-revision 1.13)
+\pgfarrowinset=\dimen320
+\pgfarrowlength=\dimen321
+\pgfarrowwidth=\dimen322
+\pgfarrowlinewidth=\dimen323
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
+librarycalc.code.tex"
+File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
+librarydecorations.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduledecorations.code
+.tex"
+\pgfdecoratedcompleteddistance=\dimen324
+\pgfdecoratedremainingdistance=\dimen325
+\pgfdecoratedinputsegmentcompleteddistance=\dimen326
+\pgfdecoratedinputsegmentremainingdistance=\dimen327
+\pgf@decorate@distancetomove=\dimen328
+\pgf@decorate@repeatstate=\count320
+\pgfdecorationsegmentamplitude=\dimen329
+\pgfdecorationsegmentlength=\dimen330
+)
+\tikz@lib@dec@box=\box67
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
+librarydecorations.markings.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\decorations\pgflibraryd
+ecorations.markings.code.tex"))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
+librarydecorations.pathmorphing.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\decorations\pgflibraryd
+ecorations.pathmorphing.code.tex"))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
+librarydecorations.pathreplacing.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\decorations\pgflibraryd
+ecorations.pathreplacing.code.tex"))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\grap
+hs\tikzlibrarygraphs.code.tex"
+File: tikzlibrarygraphs.code.tex 2015/06/05 v3.0.1a (rcs-revision 1.44)
+\tikz@lib@auto@number=\count321
+\tikz@qnode@count=\count322
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
+librarypatterns.code.tex"
+File: tikzlibrarypatterns.code.tex 2008/01/15 v3.0.1a (rcs-revision 1.2)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibrarypatterns.code
+.tex"
+File: pgflibrarypatterns.code.tex 2008/03/03 v3.0.1a (rcs-revision 1.13)
+))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
+librarypositioning.code.tex"
+File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
+libraryshapes.geometric.code.tex"
+File: tikzlibraryshapes.geometric.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1
+)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\shapes\pgflibraryshapes
+.geometric.code.tex"
+File: pgflibraryshapes.geometric.code.tex 2008/06/26 v3.0.1a (rcs-revision 1.1)
+
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\tikz-feynman\tikzfeynman.keys.code.tex"
+)))
+Package hyperref Info: Option `colorlinks' set `true' on input line 30.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\hypcap.sty"
 Package: hypcap 2016/05/16 v1.12 Adjusting the anchors of captions (HO)
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\titlesec\titlesec.sty"
 Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
-\ttl@box=\box67
+\ttl@box=\box68
 \beforetitleunit=\skip78
 \aftertitleunit=\skip79
-\ttl@plus=\dimen320
-\ttl@minus=\dimen321
-\ttl@toksa=\toks50
-\titlewidth=\dimen322
-\titlewidthlast=\dimen323
-\titlewidthfirst=\dimen324
+\ttl@plus=\dimen331
+\ttl@minus=\dimen332
+\ttl@toksa=\toks52
+\titlewidth=\dimen333
+\titlewidthlast=\dimen334
+\titlewidthfirst=\dimen335
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\titlesec\frame.tss"
 File: frame.tss 2016/03/15
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\titlesec\titletoc.sty"
 Package: titletoc 2011/12/15 v1.6 TOC entries
-\ttl@leftsep=\dimen325
+\ttl@leftsep=\dimen336
 )
 .................................................
 . LaTeX info: "xparse/define-environment"
 . 
-. Defining environment 'comp' with sig. 'mm' on line 74.
+. Defining environment 'comp' with sig. 'mm' on line 77.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \shortexact with sig. 'O{} O{} mmmm' on line 84.
+. Defining command \shortexact with sig. 'O{} O{} mmmm' on line 87.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \leftexact with sig. 'O{} O{} mmmm' on line 89.
+. Defining command \leftexact with sig. 'O{} O{} mmmm' on line 92.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \rightexact with sig. 'O{} O{} mmmm' on line 94.
+. Defining command \rightexact with sig. 'O{} O{} mmmm' on line 97.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \dblarrow with sig. 'O{} O{} O{}' on line 105.
+. Defining command \dblarrow with sig. 'O{} O{} O{}' on line 108.
 .................................................
 )
 (qft-notes-partiii.aux)
@@ -1581,17 +1660,17 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count320
-\scratchdimen=\dimen326
-\scratchbox=\box68
-\nofMPsegments=\count321
-\nofMParguments=\count322
-\everyMPshowfont=\toks51
-\MPscratchCnt=\count323
-\MPscratchDim=\dimen327
-\MPnumerator=\count324
-\makeMPintoPDFobject=\count325
-\everyMPtoPDFconversion=\toks52
+\scratchcounter=\count323
+\scratchdimen=\dimen337
+\scratchbox=\box69
+\nofMPsegments=\count324
+\nofMParguments=\count325
+\everyMPshowfont=\toks53
+\MPscratchCnt=\count326
+\MPscratchDim=\dimen338
+\MPnumerator=\count327
+\makeMPintoPDFobject=\count328
+\everyMPtoPDFconversion=\toks54
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1641,7 +1720,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package xypdf Info: Line width: 0.4pt on input line 3.
-\AtBeginShipoutBox=\box69
+\AtBeginShipoutBox=\box70
 Package hyperref Info: Link coloring ON on input line 3.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
@@ -1650,7 +1729,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count326
+\c@section@level=\count329
 )
 LaTeX Info: Redefining \ref on input line 3.
 LaTeX Info: Redefining \pageref on input line 3.
@@ -1742,12 +1821,21 @@ Dictionary: translator-basic-dictionary, Language: English
 ("C:\Program Files\MiKTeX 2.9\tex\latex\siunitx\siunitx-abbreviations.cfg"
 File: siunitx-abbreviations.cfg 2017/08/02 v2.7j siunitx: Abbreviated units
 )
-\c__siunitx_mathsf_int=\count327
+
+Package tikz-feynman Warning: LuaTeX is required if you wish to have vertices a
+utomatically placed. You can disable this warning by setting /tikzfeynman/warn 
+luatex=false on input line 3.
+
+
+Package tikz-feynman Warning: The preamble requested version 1.0.0, but the sys
+tem version is 1.1.0. This may change some diagrams. on input line 3.
+
+\c__siunitx_mathsf_int=\count330
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-\c__siunitx_mathtt_int=\count328
+\c__siunitx_mathtt_int=\count331
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1755,7 +1843,6 @@ Package microtype Info: Loading generic protrusion settings for font family
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <10> not available
 (Font)              Font shape `T1/pplx/b/n' tried instead on input line 7.
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 8.
-
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
@@ -1792,7 +1879,7 @@ Overfull \hbox (32.51971pt too wide) in alignment at lines 24--28
 
 [9] [10]) (2018/10/20181013.tex [11] [12]) (2018/10/20181016.tex [13] [14]
 [15] [16]) (2018/10/20181018.tex [17] [18] [19]
-<2018/10/20180704_1.JPG, id=264, 571.00829pt x 426.46828pt>
+<2018/10/20180704_1.JPG, id=270, 571.00829pt x 426.46828pt>
 File: 2018/10/20180704_1.JPG Graphic file (type jpg)
 <use 2018/10/20180704_1.JPG>
 Package pdftex.def Info: 2018/10/20180704_1.JPG  used on input line 94. on inpu
@@ -1819,14 +1906,14 @@ OT1/zplm/m/n/10 )\OML/zplm/m/it/10  \OT1/zplm/m/n/10 (\OML/zplm/m/it/10 x[]\OT1
 /zplm/m/n/10 ) : [] = [] [] \OT1/pplx/m/n/10 .
  []
 
-[26]) [27]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 42.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 42.
+[26]) (2018/10/20181027.tex [27] [28]) [29]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 45.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 45.
  (qft-notes-partiii.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 42.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 42.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 45.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 45.
 Package rerunfilecheck Info: File `qft-notes-partiii.out' has not changed.
-(rerunfilecheck)             Checksum: 61DE8426D432B01F2A9FB8F104F18F06;616.
+(rerunfilecheck)             Checksum: 5026AE5B6CC3BC4DAAD9F31B7327823C;680.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1835,16 +1922,16 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 42.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 45.
  ) 
 Here is how much of TeX's memory you used:
- 34286 strings out of 493352
- 641885 string characters out of 3139718
- 749087 words of memory out of 3000000
- 36467 multiletter control sequences out of 15000+200000
- 643179 words of font info for 554 fonts, out of 3000000 for 9000
+ 36986 strings out of 493352
+ 723753 string characters out of 3139718
+ 853606 words of memory out of 3000000
+ 39088 multiletter control sequences out of 15000+200000
+ 643379 words of font info for 557 fonts, out of 3000000 for 9000
  1289 hyphenation exceptions out of 8191
- 57i,18n,67p,10402b,844s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,18n,78p,10402b,844s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Ian\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ec
 tt0800.pk> <C:\Users\Ian\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\d
 pi600\ectt1000.pk>{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc} <C:
@@ -1861,9 +1948,9 @@ b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on qft-notes-partiii.pdf (27 pages, 485781 bytes).
+Output written on qft-notes-partiii.pdf (29 pages, 497094 bytes).
 PDF statistics:
- 457 PDF objects out of 1000 (max. 8388607)
- 95 named destinations out of 1000 (max. 500000)
- 78018 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 476 PDF objects out of 1000 (max. 8388607)
+ 101 named destinations out of 1000 (max. 500000)
+ 78026 words of extra memory for PDF output out of 89155 (max. 10000000)
 

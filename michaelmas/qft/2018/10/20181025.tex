@@ -30,11 +30,11 @@ Writing this all out, one can perform the $x_1,x_2$ integrals to get (surprise) 
 $$(-ig)^2 \left\{\frac{i}{(p_1-p_1')^2-m^2+i\epsilon}+\frac{i}{(p_2'-p_1)^2-m^2+i\epsilon}\right\} (2\pi)^4\delta^4(p_1+p_2-p_1'-p_2').$$
 In fact, there are two terms here-- one where the $\psi$s exchange a meson and go on their ways, and one where the $\psi$s exchange a meson and then cross over (so that what we thought was the first nucleon was actually the second). The meaning of this will be more obvious when we draw the Feynman diagrams. It should be clear that the delta function imposes conservation of overall momentum (i.e. the outgoing momentum is equal to the ingoing momentum, $p_1+p_2=p_1'+p_2'$).
 
-\feynmandiagram [horizontal=a to b] {
-i1 -- [fermion] a -- [fermion] i2,
-a -- [photon] b,
-f1 -- [fermion] b -- [fermion] f2,
-};
+%\feynmandiagram [horizontal=a to b] {
+%i1 -- [fermion] a -- [fermion] i2,
+%a -- [photon] b,
+%f1 -- [fermion] b -- [fermion] f2,
+%};
 
 \subsection*{Feynman diagrams} This is basically the simplest interesting calculation we could have done, and using Wick's theorem to get there has given us a big mess. Surely there must be a better way, you say. And there is. We draw \term{Feynman diagrams} to keep track of the different possible Wick contractions, i.e. to represent the expansion of $\bra{f}(S-1)\ket{i}$. We have a set of rules for how to draw the diagrams representing different processes, and can associate numbers or integrals to the diagrams.
 

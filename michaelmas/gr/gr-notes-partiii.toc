@@ -6,5 +6,6 @@
 \contentsline {section}{\numberline {6}Friday, October 19, 2018}{13}{section.6}
 \contentsline {section}{\numberline {7}Monday, October 22, 2018}{15}{section.7}
 \contentsline {section}{\numberline {8}Wednesday, October 24, 2018}{20}{section.8}
-\contentsline {section}{\numberline {9}Friday, October 26, 2018}{22}{section.9}
+\contentsline {section}{\numberline {9}Friday, October 26, 2018}{23}{section.9}
+\contentsline {section}{\numberline {10}Monday, October 29, 2018}{26}{section.10}
 \contentsfinish 
