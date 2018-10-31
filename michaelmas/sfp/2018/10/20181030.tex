@@ -1,0 +1,111 @@
+Last time, we defined the tensor product of two representations. Suppose we have a Lie algebra $\fg$ and two representations $R_1,R_2$ with representation spaces $V_1,V_2$ respectively and dimensions $\dim(R_1)=d_1,\dim(R_2)=d_2$. Then the tensor product of these two representations acts on the representation space $V_1\otimes V_2$ and is defined such that $\forall X\in \fg,$
+$$(R_1\otimes R_2)(X)=R_1(X)\otimes I_2 + I_1 \otimes R_2(X).$$
+Here, $I_1,I_2$ are the identity maps on $V_1$ and $V_2$.  Note also that
+$$(R_1\otimes R_2)(X) \neq R_1(X) \otimes R_2(X),$$
+since this would be quadratic rather than linear in $X$ and would therefore fail to be a representation.
+
+To make this more concrete, let us choose bases
+\begin{eqnarray*}
+B_1&=&\set{v_1^j; j=1,\ldots, d_1}\\
+B_2 &=&\set{v_2^\alpha; \alpha = 1,\ldots, d_2}.
+\end{eqnarray*}
+Thus a basis for $V_1 \otimes V_2$ is
+$$B_{1\otimes 2}=\set{v_1^j \otimes v_2^\alpha; j=1,\ldots, d_1, \alpha = 1,\ldots, d_2}.$$
+The dimension of the new representation is therefore $\dim(R_1 \otimes R_2) = d_1d_2$ (i.e. it is spanned by $d_1d_2$ tensor products of the $d_1$ basis vectors of $V_1$ and the $d_2$ basis vectors of $V_2$).
+
+The tensor product representation $R_1\otimes R_2$ is then given in a basis by
+$$(R_1\otimes R_2)(X)_{a\alpha, j \beta}=R_1(X)_{ij} \underbrace{I_{\alpha \beta}}_{d_2\times d_2} + \underbrace{I_{ij}}_{d_1\times d_1} R_2(X)_{\alpha \beta}$$
+where the identity matrices have the dimensions indicated.
+
+\begin{defn}
+We say that a representation $R$ with representation space $V$ has an \term{invariant subspace} $U\subset V$ if
+$$R(X) u \in U \forall X\in \fg, u\in U.$$
+Every representation space has two trivially invariant subspaces, $U=\set{0}$ and $U=\set{V}$. We then say that if $V$ has no non-trivial invariant subspaces, we call the corresponding representation an \term{irreducible representation} or \term{irrep} of $\fg$.
+\end{defn}
+
+If $R$ has an invariant subspace $U$, we may find a basis such that for all $X\in \fg$, the representation matrices take the block matrix form
+$$
+R(X)=
+\left(
+\begin{array}{c|c}
+A(X) & B(X) \\
+\hline
+0 & C(X)
+\end{array}
+\right)
+$$
+where the elements of $U$ now take the form
+$$\left(\begin{array}{c}
+U\\ \hline
+0
+\end{array}\right).$$
+
+\begin{defn}
+Moreover, a \term{fully reducible representation} can be written as a direct sum of irreps, i.e. in some basis, $R$ takes a block diagonal form 
+$$
+R(X)=
+\left(
+\begin{array}{c|c|c|c}
+R_1(X) &  & & \\
+\hline
+ & R_2(X) & & \\
+\hline
+& & \ddots & \\
+\hline
+& & & R_n(X)
+\end{array}
+\right)
+$$
+\end{defn}
+
+It's an important fact that if $R_i, i=1,\ldots, m$ are finite-dimensional irreps of a simple Lie algebra then
+$$R_1\otimes R_2 \otimes \ldots \otimes R_m$$ is fully reducible as some direct sum
+$$R_1\otimes R_2 \otimes \ldots \otimes R_m\cong \tilde R_1 \oplus \tilde R_2 \oplus \ldots \oplus \tilde R_{\tilde m}.$$
+
+Practically speaking, let's consider tensor products of $L(SU(2))$ representations. Let $R_\Lambda,R_{\Lambda'}$ be two irreps of $L(SU(2))$ with highest weights $\Lambda,\Lambda'$ and representation spaces $V_\Lambda,V_{\Lambda'}$, where $\Lambda,\Lambda' \in \ZZ_{\geq 0}$. We defined these last time-- these are just the spin states of particles with total spin $\Lambda/2,\Lambda'/2$. They have dimension
+$$\dim(R_\Lambda)=\Lambda+1,\dim(R_{\Lambda'})=\Lambda'+1.$$
+We can then form the tensor product representation $R_\Lambda \otimes R_{\Lambda'}$ with representation space spanned by the tensor products of basis vectors:
+$$V_{\Lambda}\otimes V_{\Lambda'}=\text{span}_\RR \set{v\otimes v'; v\in V_\Lambda, v'\in V_{\Lambda'}}.$$
+Now $\forall X\in L(SU(2))$ we have
+$$(R_\Lambda \otimes R_{\Lambda'})(X)\cdot (V\otimes v') = (R_\Lambda(X) v)\otimes v'+ v \otimes (R_{\Lambda'}(X)v').$$
+Since $L(SU(2))$ is simple, this gives a fully reducible representation of $L(SU(2))$ of dimension
+$$\dim(R_\Lambda \otimes R_{\Lambda'}) = (\Lambda+1)(\Lambda'+1)$$
+Then we can rewrite the tensor product as a direct product:
+$$R_\Lambda \otimes R_{\Lambda'}=\bigoplus_{\Lambda'' \in \ZZ_{\geq 0}} L^{\Lambda''}_{\Lambda,\Lambda'}R_{\Lambda''}$$ for some non-negative integers $L^{\Lambda''}_{\Lambda,\Lambda'}$, which we call ``Littlewood-Richardson coefficients.'' That is, the various irreps appear in the direct sum with some multiplicity given by these coefficients.
+
+Now recall that $V_\Lambda$ has a basis $\set{v_\lambda}$ where $\lambda$ specifies the weights,
+$$\lambda \in S_\Lambda = \set{-\Lambda,-\Lambda+2,\ldots,+\Lambda}$$
+where these $v_\lambda$ are eigenvectors of $R_\Lambda(H)$ such that
+$$R_\Lambda(H)v_\lambda = \lambda v_\lambda.$$
+Similarly $V_{\Lambda'}$ is equipped with a basis
+$\set{v'_{\lambda'}}$ where 
+$$\lambda' \in S_{\Lambda'} = \set{-\Lambda',-\Lambda'+2,\ldots,+\Lambda'}$$
+and
+$$R_{\Lambda'}(H)v'_{\lambda'}=\lambda' v'_{\lambda'}.$$
+Therefore a basis for the representation space $V_\Lambda \otimes V_{\Lambda'}$ is given by
+$$B_{\Lambda \otimes \Lambda'} = \set{v_\lambda \otimes v'_{\lambda'}; \lambda \in S_\lambda, \lambda' \in S_{\Lambda'}}.$$
+
+Acting on a particular basis vector, we find that
+\begin{eqnarray*}
+(R_\Lambda \otimes R_{\Lambda'})(H)(v_\lambda \otimes v'_{\lambda'}&=&(R_\Lambda(H)v_\lambda) \otimes v'_{\lambda'}+v_\lambda \otimes (R_{\Lambda'}(H)v'_{\lambda'})\\
+&=& (\lambda + \lambda')(v_\lambda \otimes v'_{\lambda'}).
+\end{eqnarray*}
+What we find is that the possible weights are therefore just sums of the individual $\lambda,\lambda'$. That is, the weight set of $R_\Lambda \otimes R_{\Lambda'}$ is simply
+$$S_{\Lambda,\Lambda'}=\set{\lambda+\lambda': \lambda\in S_{\Lambda},\lambda'\in S_{\Lambda'}}.$$
+Note that elements of this set can have degeneracy-- the same number can appear more than once!\footnote{Consider $\lambda=2,\lambda'=0$ and $\lambda=0,\lambda'=2$. Both of these will appear as terms in the set so the weight $2$ can appear twice. We'll see this concretely in a minute.} However, it's also true that if we look for the highest weight of the new tensor product representation, it is exactly $\Lambda+\Lambda'$, appearing with multiplicity one:
+$$L^{\Lambda+\Lambda'}_{\Lambda,\Lambda'}=1.$$
+
+Thus we may write
+$$R_\Lambda \otimes R_{\Lambda'}=R_{\Lambda+\Lambda'}\oplus \tilde R_{\Lambda,\Lambda'}$$
+where we have written the tensor product in terms of a new irrep $R_{\Lambda+\Lambda'}$ and also a \term{remainder} $\tilde R_{\Lambda,\Lambda'}$. This has a new weight set $\tilde S_{\Lambda, \Lambda'}$ such that
+$$S_{\Lambda,\Lambda'}=S_{\Lambda+\Lambda'} \cup \tilde S_{\Lambda,\Lambda'}.$$
+Equivalently $\tilde S_{\Lambda,\Lambda'}=S_{\Lambda,\Lambda'}\setminus S_{\Lambda+\Lambda'}.$
+
+What does this look like? Consider the case $\Lambda=\Lambda'=1.$ Then
+$$S_1=\set{-1,+1},$$
+so the weight set of the tensor product is
+$$S_{1\otimes 1}=\set{(-1)+(-1),(-1)+1,1+(-1),1+1}=\set{-2,0,0,+2} =\set{-2,0,2}\cup \set{0}.$$
+It follows that
+$$R_1\otimes R_1 = R_2 \oplus R_0,$$
+which is the sophisticated version of the fact from undergrad quantum mechanics that a system of two spin $1/2$ particles can behave like a spin $1$ particle or a spin $0$ particle:
+$$\text{spin }1/2 \otimes \text{spin } 1/2 = \text{spin }1 \oplus \text{spin } 0.$$

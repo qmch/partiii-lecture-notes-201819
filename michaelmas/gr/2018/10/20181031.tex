@@ -1,0 +1,73 @@
+Last time, we introduced de Sitter space. de Sitter space is a hyperboloid in $\RR^{4,1}$, given by the constraint
+$$-V^2+W^2+X^2+Y^2+Z^2=3/\Lambda$$
+embedded in a space of metric
+$$ds^2=-dV^2+dW^2+dX^2+dY^2+dZ^2.$$
+To see geometrically what this is, take $V=$constant and this puts time as a constant,
+$$W^2+X^2+Y^2+Z^2=\text{const}=k^2,$$ a three-sphere $S^3$. We can introduce hyperspherical coordinates, which generalize spherical coordinates for $S^2$. They take the form
+\begin{eqnarray*}
+W&=&k\cos\chi\\
+X&=&k\sin\chi \cos\theta\\
+Y&=&k\sin\chi\sin\theta \cos\phi\\
+Z&=&k\sin\chi\sin\theta\sin\phi,
+\end{eqnarray*}
+with $0\leq \chi \leq \pi, 0\leq \theta\leq \pi, 0\leq \phi \leq 2\pi.$
+
+The metric in this space is then
+$$d\sigma^2_{(S^2)}=d\chi^2 + \sin^2\chi (d\theta^2+\sin^2\theta d\phi^2).$$
+That is, spatial sections of de Sitter space are three-spheres.
+
+Thus we can invert the relationships to find
+\begin{eqnarray*}
+V&=&\sqrt{\frac{3}{\Lambda}}\cosh\tau \sqrt{\frac{\Lambda}{3}}\\
+W&=&\sqrt{\frac{3}{\Lambda}}\sinh\tau \sqrt{\frac{\Lambda}{3}}\cos\chi\\
+X&=&\sqrt{\frac{3}{\Lambda}}\sinh\tau \sqrt{\frac{\Lambda}{3}}\sin\chi\cos\theta\\
+Y&=&\sqrt{\frac{3}{\Lambda}}\sinh\tau \sqrt{\frac{\Lambda}{3}}\sin\chi\sin\theta\cos\phi\\
+Z&=&\sqrt{\frac{3}{\Lambda}}\sinh\tau \sqrt{\frac{\Lambda}{3}}\sin\chi\sin\theta\sin\phi.
+\end{eqnarray*}
+
+The full metric is then
+$$ds^2=-d\tau^2+\frac{3}{\Lambda}\cosh^2\tau \frac{\Lambda}{3}\left(d\chi^2 + \sin^2\chi (d\theta^2+\sin^2\theta d\phi^2)\right).$$
+de Sitter space thus shrinks from infinite size down to a minimum size $\sqrt{3/\Lambda}$, and then re-expands to infinite size.
+
+So our $T,x,y,z$ coordinates only worked for part of the spacetime, and the same is true of the $\tilde T,x,y,z$ coordinates. This is what led us to see only an expanding or contracting universe in the $T$ and $\tilde T$ parameters.
+
+Let's also note that in Minkowski spacetime, if you wait long enough, you can see all of space. That is, the light from anywhere in space will eventually reach you (equivalently, null geodesics reach arbitrarily far away in finite time). However, this is not true in de Sitter space. As the universe expands, the light cone is forced to close up as $\tau\to \infty$. As a result, there are regions of space that can never be seen-- we call this a cosmological horizon, a boundary between what you can and cannot see.\footnote{This is somewhat clearer when we draw the Penrose/conformal diagram for de Sitter space, I think.}
+
+\begin{defn}
+Recall that the Riemann tensor has 20 independent components in $3+1$ dimensional spacetime. The Ricci tensor only contains some of the information from the original Riemann tensor, so we define the \term{Weyl tensor}, $C_{abcd}$, in terms of the part of $R_{abcd}$ not accounted for by $R_{ab}$ and $R$:
+$$R_{abcd}=C_{abcd}+\frac{1}{2}(g_{ad}R_{bc}-g_{ad}R_{ac}-g_{ac}R_{bd}+g_{bc}R_{ad})+\frac{1}{6}R(g_{ad}g_{bc}-g_{ac}g_{bd}).$$
+\end{defn}
+Note that since Einstein's equation specifies $R_{ab},R$ in terms of $T_{ab},\Lambda$,
+$$R_{ab}-\frac{1}{2}Rg_{ab}+\Lambda g_{ab}=8\pi G T_{ab},$$
+knowing these two quantities determines $R_{ab},R$. The degrees of freedom of the gravitational field are described by the Weyl tensor. Note that $C$ has the same symmetries as the Riemann tensor,
+$$C_{abcd}=-C_{bacd}=-C_{abdc}=C_{cdab},\quad C_{a[bcd]}=0.$$
+If we contract $a$ and $c$ (multiply by $g^{ac}$), we find that
+$${C^a}_{bad}=0$$ means that $C$ is traceless, and we find that $C_{abcd}$ has 10 independent components.
+
+We'll now observe that the Riemann tensor for de Sitter space is
+$$R_{abcd}=\frac{\Lambda}{3}(g_{ac}g_{bd}-g_{ad}g_{bc}).$$
+Hence $R$ is completely specified by $T_{ab},\Lambda$ and therefore $C_{abcd}=0$ for de Sitter space.
+
+\subsection*{Conformal transformations} Let us define a new metric
+$$ds^2=\Omega^2(-dt^2+dx^2+dy^2+dz^2).$$
+This is an example of a \term{conformal transformation}. A conformal transformation takes $g_{ab}$ to a new metric $\hat g_{ab}=\Omega^2 g_{ab}$ where $\Omega$ is any function of the coordinates.
+
+Note that $\Omega^2$ is positive, so spacelike/timelike/null curves in $g$ are also spacelike/timelike/null in $\hat g$ (the sign of $ds^2$ for a given curve is unchanged in the new metric). Therefore conformal transformations preserve the causal structure of spacetime. Is it also true that geodesics remain geodesics in the new metric?
+
+We write down the geodesic equation,
+$$\frac{d^2x^a}{ds^2}+\Gamma^a_{bc} \frac{dx^b}{ds}\frac{dx^c}{ds}=0$$ for an affinely parametrized geodesic. What are the new christoffel symbols? They are
+$$\Gamma^a_{bc}(\hat g)=\frac{1}{2} \hat g^{ad}(-\p_d \hat g_{bc}+\p_b \hat g_{cd}+\p_c \hat g_{bd}).$$
+The metric transforms as $g_{ab}\to \hat g_{ab}=\Omega^2 g_{ab}$, and since the inverse metric is given by $\hat g^{ab}\hat g_{bc}=\delta^a_c$ (the original metric is similar), we find that $\hat g^{ab}=\Omega^{-2} g^{ab}.$ Therefore plugging in, we get
+\begin{eqnarray*}
+\Gamma^a_{bc}(\hat g)&=&\frac{1}{2} \Omega^{-2} g^{ad}(-\p_d(\Omega^2 g_{bc})+\p_b(\Omega^2 g_{cd})+\p_c(\Omega^2 g_{bd}))\\
+&=&\Gamma^a_{bc}(g)+\frac{1}{\Omega}(-g^{ad}g_{bc} \p_d \Omega + g^{ad}g_{cd} \p_b \Omega + g^{ad} g_{bc}\p_c \Omega)\\
+&=&\Gamma^a_{bc}(g)+\frac{1}{\Omega}(\underbrace{-g^{ad}g_{bc} \nabla_d \Omega + g^{ad}g_{cd} \nabla_b \Omega + g^{ad} g_{bc}\nabla_c \Omega}_{\text{tensorial}})\\
+&=&\Gamma^a_{bc}(g)+\frac{1}{\Omega}(-g_{bc}\nabla^a \Omega +\delta^a_c \nabla_b \Omega +\delta^a_b \nabla_c \Omega).
+\end{eqnarray*}
+Note that we've turned partial derivatives into covariant derivatives, since they are equivalent on a scalar like $\Omega$. So we have the original Christoffel symbols plus some junk. Let's put it back into the geodesic equation:
+$$\frac{d^2x^a}{ds^2}+\left[\Gamma^a_{bc}(g)+\frac{1}{\Omega}(-g_{bc}\nabla^a \Omega +\delta^a_c \nabla_b \Omega +\delta^a_b \nabla_c \Omega)\right]\frac{dx^b}{ds}\frac{dx^c}{ds}=0.$$
+If our geodesic $\frac{dx^b}{ds}$ is timelike or spacelike, then $g_{bc}\frac{dx^b}{ds}\frac{dx^c}{ds}=\pm 1$ and this will be hard to solve. But if $\frac{dx^b}{ds}$ is null, then $g_{bc}\frac{dx^b}{ds}\frac{dx^c}{ds}=0$ gives the geodesic equation
+$$\frac{d^2x^a}{ds^2}+\Gamma^a_{bc}(g)\frac{dx^b}{ds}\frac{dx^c}{ds}=-\frac{2}{\omega}\frac{dx^a}{ds}\left(\nabla_b \Omega \frac{dx^b}{ds}\right).$$
+But this is just the geodesic equation for a geodesic that is \emph{not affinely parametrized}. Therefore conformal transformations map null geodesics onto null geodesics.
+
+In general, spacelike and timelike geodesics are not mapped onto geodesics in the new metric, though they are still spacelike and timelike respectively.

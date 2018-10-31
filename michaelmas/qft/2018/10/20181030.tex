@@ -1,0 +1,58 @@
+%Today, we'll continue our dive into scattering amplitudes. We see that in two-particle scattering processes, the same combinations of $p_1,p_2,p_1',p_2'$ often appear, so it's useful to introduce the \term{Mandelstam variables} $s,t,$ and $u$, defined as
+%\begin{eqnarray*}
+%s&=&(p_1+p_2)^2=(p_1'+p_2')^2\\
+%t&=&(p_1-p_1')^2=(p_2-p_2')^2\\
+%u&=&(p_1-p_2')^2=(p_2-p_1')^2.
+%\end{eqnarray*}
+
+Last time, we introduced the correlation functions
+$$\bra{0}T\set{\phi(x_1)\ldots \phi(x_m) S}\ket{0}.$$
+Let's consider the term with $m=4$ and $n=2$ (four numbered fields $\phi_i$ and two four-point vertices $\phi^4$). That term looks like
+$$\frac{1}{2} \left(\frac{-i\lambda}{4!}\right)^2 \int d^4x d^4 y \bra{0}T\set{\phi_1 \phi_2 \phi_3 \phi_4 \phi^4(x) \phi^4(y)}\ket{0}.$$
+As before, we claim that the most important contributions are the completely connected ones, and anything not totally contracted will vanish in the time-ordered product. One such contraction is
+$$\overbrace{\phi_1 \phi(x)}\overbrace{\phi_2 \phi(x)} \overbrace{\phi_3 \phi(y)} \overbrace{\phi_4 \phi(y)} \overbrace{\phi(x)\phi(y)}\overbrace{\phi(x)\phi(y)}.$$
+But we could get some distinct diagrams depending on how we connect up the dots. The Feynman rules for the first diagram%add diagram
+give
+$$\frac{(-i\lambda)^2}{2}\int d^4x d^4 y \Delta_F(x_1-x)\Delta (x_2-x)\Delta_F(x_3-y) \Delta_F(x_4-y) \Delta_F^2(x-y).$$
+Let's work out the combinatoric factors: there are four choices for which $\phi(x)$ goes with $x_1$ and three choices for which $\phi(x)$ goes with $x_2$, for a factor of $12$. The same is true for $x_3,x_4$ and $y$. We get a factor of $2$ for which of the remaining $\phi(y)$s the first $\phi(x)$ contracts with, and then the other is determined. We also get a factor $2!$ from interchange of $x$ and $y$. The four $\phi(x)$s are identical, as are the four $\phi(y)$s, so we should add a factor of $(1/4!)^2$ to take care of that. Finally, we have ${4\choose 2}=1/2!$ choices of which $\phi_i$s to connect to $\phi(x)$s. Putting it all together we get
+$$\frac{1}{2!}\times \left(\frac{1}{4!}\right)^2 \times \underbrace{12}_{x_1,x_2\to x} \times \underbrace{12}_{x_3,x_4\to y} \times \underbrace{2}_{x\to y} \times \underbrace{2!}_{x\leftrightarrow y} = \frac{1}{2}.$$
+The Feynman rules for the correlation functions of $\phi^4$ theory are then given by
+$$\bra{0}T\set{\phi(x_1)\ldots \phi(x_m)  \exp(-\frac{i\lambda}{4!}\int d^4x \phi^4 (x))}\ket{0},$$ which is equal to the sum of all diagrams with $m$ external points and any number of internal vertices connected by propagator lines. In perturbation theory, we categorize the diagrams based on the number of powers of $\lambda,$ i.e. the number of vertices in the diagram. For each diagram, there is one integral containing
+\begin{itemize}
+    \item Each propagator from $y$ to $z$, $\Delta_F(y-z)$
+    \item Each vertex at $x$, $-i\lambda \int d^4 x$,
+\end{itemize}
+and we divide by a symmetry factor. Since the propagator is an integral over momentum space, it's easier to express the Feynman rules in momentum space. Rather than integrating over all space $d^4x$ we can equivalently just integrate a momentum-conserving delta function. Let's work out the momentum space Feynman rules:
+\begin{itemize}
+    \item To each propagator from $x$ to $y$, assign $e^{ip \cdot y}$ to the $y$ vertex (where the arrow is going out) and $e^{-ip\cdot x}$ to the vertex $x$ with arrows in. 
+    \item Associate $\frac{i}{p^2-m^2+i\epsilon}$ to the line itself (for a particle with mass $m$) and an integral over all momentum $\int \frac{d^4p}{(2\pi)^4}.$ 
+    \item Thus the integral at a vertex becomes
+    $$\int d^4x e^{-ip_1 \cdot x + i p_2 \cdot x - i p_3 \cdot x + i p_4 \cdot x}=(2\pi)^4 \delta^4(p_1+p_3-p_2-p_4)$$
+    where $p_1,p_3$ are flowing into the vertex, $p_2,p_4$ out. (There should also be a $-i\lambda$ for each vertex.)
+\end{itemize}
+
+However, as before the $\delta$ functions will make some of the momentum integrals trivial, and for each of these the $(2\pi)^4$ will cancel. We are left with the following momentum space rules:
+\begin{itemize}
+    \item For each internal line associate a factor of $\frac{i}{p^2-m^2+i\epsilon}$.
+    \item For each vertex associate a factor of $-i\lambda$.
+    \item Impose four-momentum conservation at vertices, and overall.
+    \item Integrate over undetermined momenta from internal lines, $\int \frac{d^4k}{(2\pi)^4}$.
+    \item Divide by the appropriate symmetry factor.
+\end{itemize}
+Note that there isn't really a nice way to get the symmetry factors from looking at the Feynman diagrams-- one must usually consider the Wick contraction to get these factors right.
+
+\subsection*{Vacuum bubbles and connected diagrams} What is the transition from the vacuum state to the vacuum state, $\bra{0}S\ket{0}?$
+In $\phi^4$ theory, we get a sum of ``vacuum bubbles,'' diagrams with \emph{no external lines}. One should check (e.g. on the second example sheet) that the $S$-matrix element is simply the exponential of the various topologically distinct vacuum bubble diagrams. Weird!%draw a picture, see David Tong's notes
+
+In general we call the correlation function
+$$\bra{0}T\set{\phi(x_1)\ldots \phi(x_m) S}\ket{0}$$
+an \term{m-point function}, and its value is the sum over diagrams with $m$ external points. A typical diagram has some vacuum bubbles, e.g. at second order in $\phi^4$ we have a disconnected diagram which looks like a line with a loop and the figure 8. Remarkably, the vacuum bubbles add to the same exponential as in the pure vacuum case. We'll discuss this more in detail next term, but there is an apparently sensible way of treating the vacuum bubbles.\footnote{I believe this is related to renormalization.} Therefore we may write
+$$\bra{0}T\set{\phi(x_1)\ldots \phi(x_m) S}\ket{0}=(\sum \text{connected diagrams})\times \bra{0}S\ket{0},$$
+where connected means that every point in the diagram is connected to at least one external line.
+
+Really, the issue here comes from the fact that the vacuum of the free theory is \emph{not} the vacuum of the interacting theory. Let $\ket{\Omega}$ be the vacuum of the \emph{interacting} theory, normalized such that
+$H\ket{\Omega}=0$ with $H=H_0+H_{int}$ (n.b. $H_0\ket{0}=0$) and $\braket{\Omega}{\Omega}=1$. Then we define
+$$G^{(n)}(x_1\ldots x_n)\equiv \bra{\Omega}T\set{\phi_H (x_1)\ldots \phi_H(x_n)}\ket{\Omega}.$$
+We call these \emph{Green's functions}. We'll claim now that
+$$\bra{\Omega}T\set{\phi_{1,H}\ldots \phi_{m,H}}\ket{\Omega}=\frac{\bra{0}T \set{\phi_{1,I}\ldots \phi_{m,I}S]}}{\bra{0}s\ket{0}}.$$
+What this means as that the Green's functions are precisely given by the sum of connected diagrams with $m$ external points-- we need not worry too much about the vacuum bubbles and disconnected diagrams because removing the vacuum bubbles gets the vacuum right (and $S$ evolves our interaction picture fields to Heisenberg picture fields). We'll do the proof next time.
