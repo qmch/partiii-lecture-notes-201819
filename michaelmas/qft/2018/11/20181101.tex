@@ -1,0 +1,74 @@
+A brief correction: the time evolution operator should be defined
+$U(t,t_0)=e^{iH_0}e^{iH(t-t_0)}e^{-iH_0 t_0)}$ so that our time evolution relations all work out.
+
+Now last time, we claimed that
+$$\bra{\Omega}T\set{\phi_{1,H}\ldots \phi_{m,H}}\ket{\Omega}=\frac{\bra{0}T \set{\phi_{1,I}\ldots \phi_{m,I}S]}}{\bra{0}S\ket{0}}.$$
+That is, it suffices to consider only connected diagrams, since the vacuum bubbles add up to a multiplicative factor (namely, the vacuum energy) that can be factored out of the overall correlation function.
+Let us expand the numerator on the RHS as
+$$\bra{0}U(\infty, t_1) \phi_{1,I} U(t_1,t_2)\phi_{2,I} \ldots U(t_{n-1},t_n)\phi_{n,I} U(t_n,-\infty)\ket{0}$$
+with $x_1^0 > x_2^0 > \ldots > x_m^0$. Thus the numerator becomes Heisenberg picture states,
+$$\underbrace{\bra{0}U(\infty,0)\phi_{I,H}\ldots \phi_{m,H}}_{\bra\psi}U(0,-\infty)\ket{0}$$
+setting everything back to the Heisenberg picture at $t=0$. Consider now
+$$\bra{\psi}U(0,t_0)\ket{0}=\bra{\psi}e^{iHt_0}\ket{0}$$
+since $H_0\ket{0}=0.$ Insert a complete set of interacting states $|ket{p_1,\ldots, p_n}$. Then 
+\begin{eqnarray*}
+\lim_{t_0\to-\infty} \bra{\psi}U(0,t_0)\ket{0}&=&
+\lim_{t_0\to-\infty}\bra{\psi}e^{iHt_0}\left[\ket{\Omega}\bra{\Omega}+\sum_{n=1}^\infty \int  \prod_{j=1}^n \frac{d^3p_j}{2E_{p_j}(2\pi)^3}\ket{p_1,\ldots,p_n}\bra{p_1,\ldots,p_n}\right]\ket{0}\\
+&=&\braket{\psi}{\Omega}\braket{\Omega}{0}+
+\sum_{n=1}^\infty \int  \prod_{j=1}^n \frac{d^3p_j}{2E_{p_j}(2\pi)^3} e^{i\sum_{k=1}^n E_{p_k} t_0}\braket{\psi}{p_1,\ldots,p_n}\braket{p_1,\ldots,p_n}{0}.
+\end{eqnarray*}
+Luckly, this second term vanishes due to the Riemann-Lebesgue lemma: ``for reasonable $f(x)$ (i.e. square-integrable), $\lim_{\mu\to\infty} \int_a^b f(x)e^{i\mu x}dx=0.$'' Therefore the numerator is just
+$$\bra{0}U(\infty,0)\phi_{1,H}\ldots \phi_{m,H}\ket{\Omega}\braket{\Omega}{0}$$
+and similarly
+$$\bra{0}U(\infty,0)\ket{\psi}=\lim_{t_0\to\infty}\bra{0}e^{-iHt_0}\ket{\psi},$$
+so our numerator becomes
+$$\bra{\Omega}\phi_{1,H}\ldots \phi_{m,H}\ket{\Omega}\braket{\Omega}{0}\braket{0}{\Omega}$$
+and the denominator is just $\braket{0}{\Omega}\braket{\Omega}{0}$ (it's the same calculation, but suppose there are no fields. Then the first factor is just $\braket{\Omega}{\Omega}=1$ by normalization.)
+
+Going back to our previous example, we say that to describe scattering in the interacting theory, our external states  e.g. $\ket{p_1,p_2}$ should come from the interacting theory. This means that we exclude loops on the external lines (``amputation'').
+
+\subsection*{Mandelstam variables} In two-particle scattering processes, the same combinations of $p_1,p_2,p_1',p_2'$ (ingoing and outgoing four-momenta) often appear, so it's useful to introduce the \term{Mandelstam variables} $s,t,$ and $u$, defined as
+\begin{eqnarray*}
+s&=&(p_1+p_2)^2=(p_1'+p_2')^2\\
+t&=&(p_1-p_1')^2=(p_2-p_2')^2\\
+u&=&(p_1-p_2')^2=(p_2-p_1')^2
+\end{eqnarray*}
+where the squared here indicates a four-vector product (e.g. $(p_1+p_2)^2=(p_1^\mu+p_2^\mu)({p_1}_\mu+{p_2}_\mu).$
+\begin{ex}
+Show that the sum of the Mandelstam variables is
+$$s+t+u=m_1^2+m_2^+{m_1'}^2+{m_2'}^2,$$
+where $m_1,m_2,m_1',m_2'$ are the masses of the initial and final particles, so the Mandelstam variables are not all independent.
+\end{ex}
+
+WLOG, we can consider the initial particles in the center-of-mass frame, i.e. a frame in which the net $3$-momentum is zero. Thus $\vec{p}_1=-\vec{p}_2.$
+In this frame, $s$ takes the simple form
+$$s=(p_1+p_2)^2=(E_1+E_2)^2.$$ Since $s$ is a Lorentz scalar, it takes the same value in all frames. Therefore $\sqrt{s}$ is the center of mass energy, e.g. at the LHC we say that $\sqrt{s}=\SI{13}{\tera\electronvolt}$. In particular if $m_1=m_2$, then by symmetry $E_1=E_2=\sqrt{s}/2.$
+
+\subsection*{Cross sections and decay rates} So far, $\ket{i}$ and $\ket{f}$ have been states of definite momenta. What happens in a realistic situation where our ingoing states are now some distribution (a density function) smeared over momenta?
+
+To understand this, suppose we have a collision with $2\to n$ scattering, i.e. we have two particles ingoing with momenta $p_1,p_2$ and $n$ outgoing particles with momenta $q_1,\ldots,q_n$. Then the scattering amplitude is proportional to
+$$\braket{q_1 q_2\ldots q_n}{p_1p_2}(2\pi)^4 \delta^4(p_1+p_2 -\sum_{i=1}^n q_i).$$
+But probabilities are related to the amplitude squared, so it seems as if we've picked up an extra delta function in computing the physical probability of this interaction. The resolution is this-- in reality, $\ket{i},\ket{f}$ are very sharply peaked superpositions of momentum eigenstates. That is, our ingoing states take the form
+$$\ket{p_1p_2}_{in}=\int \frac{d^3 \tilde p_1}{(2\pi)^3 2E_{\tilde p_1}}\frac{d^3 \tilde p_2}{(2\pi)^3 2E_{\tilde p_2}} f_1(\tilde p_1)f_2 (\tilde p_2)\ket{\tilde p_1 \tilde p_2},$$
+where $\ket{\tilde p_1 \tilde p_2}$ are the real four-momentum eigenstates.
+
+If we suppose that the outgoing particles are also pure momentum eigenstates, then then our delta functions are soaked up by integrals when we try to compute the transition probability $W$. We then have
+\begin{eqnarray*}
+W&=&(2\pi)^8)\int \frac{d^3 \tilde p_1}{(2\pi)^3 2E_{\tilde p_1}} \frac{d^3 \tilde p_2}{(2\pi)^3 2E_{\tilde p_2}} \frac{d^3 p_1'}{(2\pi)^3 2E_{p_1'}} \frac{d^3 p_2'}{(2\pi)^3 2E_{p_2'}}\\ &&\times\set{|M|^2 f_1(\tilde p_1)f_1^* (p_1')f_2(\tilde p_2)f_2^*(p_2')\delta^4(\sum_i q_i -\tilde p_1 -\tilde p_2)\delta^4(\sum q_i-p_1' -p_2')}.
+\end{eqnarray*}
+Note that what we have written as the square of the matrix element here is really $$|M|^2=\braket{q_1\ldots q_n}{\tilde p_1 \tilde p_2}\braket{p_1'p_2'}{q_1\ldots q_n}.$$ We'll clean this up later to write everything in terms of the physical values $p$ and $q$ rather than dummy variables $p', \tilde p.$
+
+This expression for $W$ is the transition probability for $2\to n$ scattering to states of definite momentum $q_1\ldots q_n$.
+We can expand one of the delta functions in Fourier space to write 
+\begin{eqnarray*}
+W&=&\int d^4x \int \frac{d^3\tilde p_1}{(2\pi)^3 2E_{\tilde p_1}} f_1(\tilde p_1) e^{i\tilde p_1 \cdot x}\frac{d^3\tilde p_2}{(2\pi)^3 2E_{\tilde p_2}} f_2(\tilde p_2) e^{i\tilde p_2 \cdot x}\\
+&&\times \frac{d^3 p_1'}{(2\pi)^3 2E_{p_1'}} f_1^*(p_1') e^{ip_1' \cdot x} \frac{d^3 p_2'}{(2\pi)^3 2E_{p_2'}} f_2^*(p_2') e^{ip_2' \cdot x}\\
+&&\times\delta^4(\sum_i q_i - p_1'-p_2')
+\end{eqnarray*}
+Using the normalization we define the Fourier transform of the wavepacket,
+$$\ket{\psi_i}\equiv \int \frac{d^3p}{(2\pi)^3\sqrt{2E_p}}f_i(p) e^{-ip\cdot x}\ket{p}.$$
+The matrix element $|M|^2$ is a function of $\tilde p_1, \tilde p_2,p_1', p_2', q_i$ One can use the notion of sharp peaks to approximate this by the value where $\tilde p_i=p_i' = p_i.$ That is, our momentum distributions $f_i$ are localized around some values $p_i$, so they behave similarly to delta functions. Then the transition probability becomes
+$$W=\int d^4x \frac{|\psi_1 (x)|^2}{2E_1}\frac{|\psi_2(x)|^2}{2E_2}(2\pi)^4 \delta^4(\sum_i q_i-p_1-p_2)|M|^2,$$
+which means that the wavepacket in position space has some corresponding spread-- like momentum, it is localized and not a single value. The total transition probability is a function of the spread in momentum $f_i(p)$ as well as the momenta themselves, $|M|^2$. Thus
+$$\frac{dW}{d^4x}=\frac{|\psi_1 (x)|^2}{2E_1}\frac{|\psi_2(x)|^2}{2E_2}(2\pi)^4 \delta^4(\sum_i q_i-p_1-p_2)|M|^2,$$
+where $|M|^2$ is now the actual matrix element $|\braket{q_1\ldots q_n}{p_1p_2}|^2$. We'll complete this discussion next time.

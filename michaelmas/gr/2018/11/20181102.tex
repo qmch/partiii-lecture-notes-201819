@@ -1,0 +1,77 @@
+Let's consider how various quantities of interest transform under covariant transformations,
+$g_{ab}\to \hat g_{ab}=\Omega^2 g_{ab}.$
+The Christoffels transform as
+$$\Gamma^a_{bc}(\hat g)=\Gamma^a_{bc}(g)+\frac{1}{\Omega}(-g_{bc}\nabla^a \Omega +\delta^a_c \nabla_b \Omega +\delta^a_b \nabla_c \Omega),$$
+as we saw last time. The Riemann tensor transforms as
+$${R^{ab}}_{cd}(\hat g)=\Omega^{-2}{R^{ab}}_{cd}(g)+\frac{1}{4}[\delta^a_c \Omega^b_d - \delta^a_d \Omega^b_c -\delta^b_c \Omega^a_d +\delta^b_d \Omega^a_c,$$
+with $$\Omega^a_b\equiv \frac{4}{\Omega}\nabla^a \nabla_b (1/\Omega)-2\delta^a_b \nabla_c(1/\Omega) \nabla^c(1/\Omega).$$
+The Ricci tensor is also complicated:
+$$R^a_b(\hat g)=\Omega^{-2}R^a_b(g) +\frac{1}{2\Omega}\nabla_b \nabla^a (1/\Omega)-\frac{1}{2\Omega^4}\Box (\Omega^2)\delta^a_b$$
+with $\Box\equiv \nabla_d \nabla^d.$ However, the Ricci scalar and the Weyl tensor transform more nicely:
+$$R(\hat g)=\Omega^{-2}R(g)-6\Omega^{-3}\Box \Omega \quad\text{and}\quad C^a_{bcd}(\hat g)=C^a_{bcd}(g).$$
+So in fact the Weyl tensor is invariant under conformal transformations.
+
+\subsection*{Conformal invariance and Maxwell's equations} The source-free Maxwell's equations take the form
+$$\nabla_a F_{bc}+\nabla_b F_{ca}+\nabla_c F_{ab}=0, \quad \nabla_a F^{ab}=0.$$
+Writing out the first explicitly, all the Christoffels cancel by symmetries since $\Gamma^a_{bc}=\Gamma^a_{cb}$ and $F_{ab}=-F_{ba}.$ Therefore 
+$$\nabla_a F_{bc}+\nabla_b F_{ca}+\nabla_c F_{ab}= \p_a F_{bc} + \p_b F_{ca}+\p_c F_{ab}=0$$ and our expression is conformally invariant, as it is independent of the connection. What about the equation with the indices down? We have
+$$\p_a F^{ab}+\Gamma^a_{ac} F^{cb}+\Gamma^b_{ac} F^{ac}=0,$$
+where the last term is zero since $\Gamma$ is symmetric under $a\leftrightarrow c$ and $F$ is antisymmetric. Because $\Gamma^a_{ac}=g^{-1/2}\p_c (g^{1/2}),$ we may rewrite the remaining terms as
+$$g^{-1/2}\p_a (g^{1/2}F^{ab})=0.$$
+We then have $F^{ab}(g)=g^{ac} g^{bd}F_{cd}(g),$ so each factor of the inverse metric makes us pick up an $\Omega^{-2}$. Therefore
+$$F^{ab}(\hat g)=\Omega^{-4}F^{ab}(g).$$
+Since $g=|\det g_{ab}|,$ it follows that
+\begin{eqnarray*}
+\hat g&=&|\det \hat g_{ab}|\\
+&=&|\det g_{ab} \Omega^2|\\
+&=&\Omega^8 |\det g_{ab}|\\
+&=&\Omega^8 g.
+\end{eqnarray*}
+Thus $$g^{1/2}\to \hat g^{1/2}\Omega^4 g^{1/2},$$ so indeed the scaling behavior precisely cancels out with the $\Omega^{-4}$ attached to $F^{ab}$. That is,
+$$\nabla_a F^{ab}\text{ in }\hat g=0.$$
+Note this is only true in 4 dimensions-- in $N$ dimensions, we have instead $g^{1/2}\to \hat g^{1/2}=\Omega^N g^{1/2}$.
+
+We have therefore shown that Maxwell's equations are conformally invariant in spacetime dimension $4$, but the Einstein equations are not conformally invariant-- as we have seen, the Ricci tensor and Ricci scalar transform in some general complicated way. Nevertheless, the conformal invariance of the Weyl tensor tells us that the purely gravitational degrees of freedom are conformally invariant.
+
+Last time, we looked at de Sitter space and remarked that three of the four coordinates took the form of the metric on the three sphere $S^3$. We wrote down the full metric
+$$ds^2=-d\tau^2+\cosh^2\tau \left(d\chi^2 + \sin^2\chi (d\theta^2+\sin^2\theta d\phi^2)\right),$$
+where we have set the parameter $\Lambda$ to $3$ so that the ``radius'' $3/\Lambda$ is $1$.
+There is a symmetry which is quite natural to write down for this metric-- note that $ds^2$ does not depend on the coordinate $\phi$. Now an \term{infinitesimal symmetry} is a small change in a coordinate which leaves the line element $ds^2$ invariant. That is, under the shift $x^a\to x^a +\zeta^a$,
+\begin{eqnarray*}
+ds^2&=& g_{ab}+(x) dx^a dx^b\\
+&=&g_{ab}(x+\zeta)d(x+\zeta)^a d(x+\zeta)^b\\
+&=&(g_{ab}(x)+\zeta^e \p_e g_{ab}(x)) d(x^a+\zeta^a) dx^b+\zeta^b).
+\end{eqnarray*}
+However, note that in general, $\zeta^a \equiv \zeta^a(x)$ a function of $x$. Then we must apply the chain rule when we calculate $d(x^a+\zeta^a(x)):$
+\begin{eqnarray*}
+d(x^a+\zeta^a)&=&dx^a+ \frac{\p \zeta^a}{\p x^c} dx^c\\
+&=&(\delta^a_c +\p_c \zeta^a)dx^c.
+\end{eqnarray*}
+Putting it all together, we find that
+\begin{eqnarray*}
+ds^2&=& g_{ab}+(x) dx^a dx^b\\
+&=&(g_{ab}(x)+\zeta^e \p_e g_{ab}(x)) (\delta^a_c + \p_c \zeta^a)dx^c (\delta^b_d+\p_d \zeta^b) dx^d\\
+&=& g_{ab} \delta^a_c \delta^b_d dx^c dx^d + (\zeta^e \p_e g_{ab} \delta^a_c \delta^b_d + g_{ab} \p_c \zeta^a \delta^b_d + g_{ab} \p_d \zeta^b \delta^a_c)dx^c dx^d,
+\end{eqnarray*}
+where we have collected terms linear in $\zeta$. But now we see that the first term is just $g_{ab} dx^a dx^b,$ so if the line element is invariant, then the $dx^c dx^d$ term must vanish. Invariance therefore requires that
+$$(\zeta^e \p_e g_{cd} + g_{ad} \p_c \zeta^a +g_{cb} \p_d \zeta^b)dx^c dx^d=0.$$
+Since this is true for arbitrary $dx^c$, we conclude that the expression in the parentheses is identically zero. That is,
+$$\zeta^e \p_e g_{cd} + g_{ad} \p_c \zeta^a +g_{cb} \p_d \zeta^b=0.$$
+This does not look like a tensor a priori, but in fact it is. If we want to replace the derivatives $\p_c \zeta^a$ and $\p_d \zeta^b$ with covariant derivatives, we'll have to pay the small price of subtracting off the corresponding Christoffels. Thus
+$$\zeta^e \p_e g_{cd} + g_{ad} \nabla_c \zeta^a - g_{ad}\Gamma^a_{ce} \zeta^e+g_{cb} \nabla_d \zeta^b - g_{cb} \Gamma^b_{de}\zeta^e=0.$$
+
+If we now write out the Christoffel symbols in terms of derivatives of the metric, we get something that looks kind of messy:
+$$\nabla_c \zeta_d +\nabla_d \zeta_c +\zeta^e \p_e g_{cd} -g_{ad} \frac{1}{2} g^{af}(-\p_f g_{ce}+\p_c g_{ef} +\p_e g_{cf})\zeta^e - g_{cb}\frac{1}{2} g^{bf}(-\p_f g_{de}+\p_d g_{ef}+\p_e g_{df})\zeta^e=0$$
+But things are better than they seem. Using the metrics to raise and lower indices appropriately, we get a very nice set of cancellations-- all the derivatives of the metric turn out to cancel (including the $\zeta^e \p_e g_{cd}$ out front), and we are left with the simple expression
+$$\nabla_c \zeta_d +\nabla_d \zeta_c$$
+We call the solutions $\zeta$ Killing vectors.\footnote{``Killing here is not some bizarre ritual but Wilhelm Killing.'' --Malcolm Perry} Killing was a German group theorist, and there is in fact a connection to group theory here. Suppose there are two independent Killing vectors $k^a,l^a$. Consider the commutator of two Killing vectors (i.e. a bracket) defined
+$$m^b\equiv k^a\nabla_a l^b - l^a \nabla_a k^b.$$
+Expanding out, we see that
+$m^b=k^a\p_a l^b+ k^a\Gamma^b_{ac} l^c - l^a \p_a k^b - l^a \Gamma^b_{ac} k^c,$
+where the $\Gamma$ terms cancel. Therefore $m$ is independent of the connection. We might ask whether $m$ also satisfies Killing's equation. We find that
+\begin{eqnarray*}
+\nabla_a m_b +\nabla_b m_a &=& \nabla_a (k^c \nabla_c l_b - l^c \nabla_c k_b)+\nabla_b (k^c \nabla_c l_a -l^c \nabla_c k_a)\\
+&=& \nabla_a k^c \nabla_c l_b -\nabla_a l^c \nabla_c k_b + \nabla_b k^c \nabla_c l_a -\nabla_b l^c \nabla_c k_a\\
+&&+k^c \nabla_a \nabla_c l_b - l^c \nabla_a \nabla_c k_b +k^c \nabla_b \nabla_c l_a - l^c \nabla_b \nabla_c k_a.
+\end{eqnarray*}
+After a stunning array of cancellations using the fact that $\nabla_c k^c \nabla_c l_b - \nabla^c l_b \nabla_c k_a=0$ (by Killing's equations) we find that $m$ does indeed satisfy Killing's equations as well (check this as an exercise?). So there is some algebraic structure on Killing forms.
