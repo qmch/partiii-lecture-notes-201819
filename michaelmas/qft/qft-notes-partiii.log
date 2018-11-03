@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  29 OCT 2018 23:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  3 NOV 2018 09:32
 entering extended mode
 **./qft-notes-partiii.tex
 (qft-notes-partiii.tex
@@ -1515,7 +1515,7 @@ File: pgflibraryshapes.geometric.code.tex 2008/06/26 v3.0.1a (rcs-revision 1.1)
 ))
 ("C:\Program Files\MiKTeX 2.9\tex\latex\tikz-feynman\tikzfeynman.keys.code.tex"
 )))
-Package hyperref Info: Option `colorlinks' set `true' on input line 30.
+Package hyperref Info: Option `colorlinks' set `true' on input line 29.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\hypcap.sty"
 Package: hypcap 2016/05/16 v1.12 Adjusting the anchors of captions (HO)
 )
@@ -1541,27 +1541,27 @@ Package: titletoc 2011/12/15 v1.6 TOC entries
 .................................................
 . LaTeX info: "xparse/define-environment"
 . 
-. Defining environment 'comp' with sig. 'mm' on line 77.
+. Defining environment 'comp' with sig. 'mm' on line 76.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \shortexact with sig. 'O{} O{} mmmm' on line 87.
+. Defining command \shortexact with sig. 'O{} O{} mmmm' on line 86.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \leftexact with sig. 'O{} O{} mmmm' on line 92.
+. Defining command \leftexact with sig. 'O{} O{} mmmm' on line 91.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \rightexact with sig. 'O{} O{} mmmm' on line 97.
+. Defining command \rightexact with sig. 'O{} O{} mmmm' on line 96.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \dblarrow with sig. 'O{} O{} O{}' on line 108.
+. Defining command \dblarrow with sig. 'O{} O{} O{}' on line 107.
 .................................................
 )
 (qft-notes-partiii.aux)
@@ -1826,10 +1826,6 @@ Package tikz-feynman Warning: LuaTeX is required if you wish to have vertices a
 utomatically placed. You can disable this warning by setting /tikzfeynman/warn 
 luatex=false on input line 3.
 
-
-Package tikz-feynman Warning: The preamble requested version 1.0.0, but the sys
-tem version is 1.1.0. This may change some diagrams. on input line 3.
-
 \c__siunitx_mathsf_int=\count330
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
@@ -1879,7 +1875,7 @@ Overfull \hbox (32.51971pt too wide) in alignment at lines 24--28
 
 [9] [10]) (2018/10/20181013.tex [11] [12]) (2018/10/20181016.tex [13] [14]
 [15] [16]) (2018/10/20181018.tex [17] [18] [19]
-<2018/10/20180704_1.JPG, id=270, 571.00829pt x 426.46828pt>
+<2018/10/20180704_1.JPG, id=284, 571.00829pt x 426.46828pt>
 File: 2018/10/20180704_1.JPG Graphic file (type jpg)
 <use 2018/10/20180704_1.JPG>
 Package pdftex.def Info: 2018/10/20180704_1.JPG  used on input line 94. on inpu
@@ -1906,14 +1902,20 @@ OT1/zplm/m/n/10 )\OML/zplm/m/it/10  \OT1/zplm/m/n/10 (\OML/zplm/m/it/10 x[]\OT1
 /zplm/m/n/10 ) : [] = [] [] \OT1/pplx/m/n/10 .
  []
 
-[26]) (2018/10/20181027.tex [27] [28]) [29]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 45.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 45.
+[26]) (2018/10/20181027.tex [27] [28]) (2018/10/20181030.tex
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 17.
+
+[29]) (2018/11/20181101.tex [30] [31] [32]) [33]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 51.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 51.
  (qft-notes-partiii.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 45.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 45.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 51.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 51.
 Package rerunfilecheck Info: File `qft-notes-partiii.out' has not changed.
-(rerunfilecheck)             Checksum: 5026AE5B6CC3BC4DAAD9F31B7327823C;680.
+(rerunfilecheck)             Checksum: F3F9A3DF76AC216E5F192B58DEFA2DB7;807.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1922,14 +1924,14 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 45.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 51.
  ) 
 Here is how much of TeX's memory you used:
- 36986 strings out of 493352
- 723753 string characters out of 3139718
- 853606 words of memory out of 3000000
- 39088 multiletter control sequences out of 15000+200000
- 643379 words of font info for 557 fonts, out of 3000000 for 9000
+ 37036 strings out of 493352
+ 724234 string characters out of 3139718
+ 853679 words of memory out of 3000000
+ 39090 multiletter control sequences out of 15000+200000
+ 645722 words of font info for 582 fonts, out of 3000000 for 9000
  1289 hyphenation exceptions out of 8191
  57i,18n,78p,10402b,844s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Ian\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ec
@@ -1948,9 +1950,9 @@ b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on qft-notes-partiii.pdf (29 pages, 497094 bytes).
+Output written on qft-notes-partiii.pdf (33 pages, 526167 bytes).
 PDF statistics:
- 476 PDF objects out of 1000 (max. 8388607)
- 101 named destinations out of 1000 (max. 500000)
- 78026 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 513 PDF objects out of 1000 (max. 8388607)
+ 110 named destinations out of 1000 (max. 500000)
+ 78042 words of extra memory for PDF output out of 89155 (max. 10000000)
 
