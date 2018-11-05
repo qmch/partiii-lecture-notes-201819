@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  3 NOV 2018 09:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.9.21)  5 NOV 2018 17:36
 entering extended mode
 **./sfp-notes-partiii.tex
 (sfp-notes-partiii.tex
@@ -1518,7 +1518,7 @@ dftex.map}]
 LaTeX Font Info:    Font shape `T1/pplx/m/sl' in size <9> not available
 (Font)              Font shape `T1/pplx/m/it' tried instead on input line 74.
  [2]
-<2018/10/20181004_baryonoctet.png, id=149, 642.4pt x 462.72874pt>
+<2018/10/20181004_baryonoctet.png, id=155, 642.4pt x 462.72874pt>
 File: 2018/10/20181004_baryonoctet.png Graphic file (type png)
 <use 2018/10/20181004_baryonoctet.png>
 Package pdftex.def Info: 2018/10/20181004_baryonoctet.png  used on input line 8
@@ -1540,14 +1540,14 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 17.
 
 (2018/10/20181009.tex [6] [7]
-<2018/10/20181009_img1.jpg, id=216, 378.28828pt x 293.22047pt>
+<2018/10/20181009_img1.jpg, id=222, 378.28828pt x 293.22047pt>
 File: 2018/10/20181009_img1.jpg Graphic file (type jpg)
 <use 2018/10/20181009_img1.jpg>
 Package pdftex.def Info: 2018/10/20181009_img1.jpg  used on input line 80. on i
 nput line 80.
 Package pdftex.def Info: Requested size: 264.79999pt x 205.25291pt on input lin
 e 80.
-<2018/10/20181009_img2.jpg, id=218, 680.5425pt x 237.88875pt>
+<2018/10/20181009_img2.jpg, id=224, 680.5425pt x 237.88875pt>
 File: 2018/10/20181009_img2.jpg Graphic file (type jpg)
 <use 2018/10/20181009_img2.jpg>
 Package pdftex.def Info: 2018/10/20181009_img2.jpg  used on input line 95. on i
@@ -1582,29 +1582,27 @@ zplm/m/it/10 X[]\OT1/pplx/m/n/10 (-20) , \OML/zplm/m/it/10 X[] \OMS/zplm/m/n/10
 
 ) (2018/10/20181023.tex [21] [22]) (2018/10/20181025.tex [23] [24] [25])
 (2018/10/20181027.tex [26] [27]) (2018/10/20181030.tex [28] [29] [30])
-(2018/11/20181101.tex [31] [32]) [33]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 39.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 39.
- (sfp-notes-partiii.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 39.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 39.
+(2018/11/20181101.tex [31] [32]) (2018/11/20181103.tex [33] [34]) [35]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 41.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
+
+(sfp-notes-partiii.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 41.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 41.
 Package rerunfilecheck Info: File `sfp-notes-partiii.out' has not changed.
-(rerunfilecheck)             Checksum: 3881F99261EF80197726704B7AC4309B;1027.
+(rerunfilecheck)             Checksum: 17C381908846CE0F87DCD26A1934A58F;1091.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 39.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
  ) 
 Here is how much of TeX's memory you used:
- 31960 strings out of 493352
- 575743 string characters out of 3139718
+ 31980 strings out of 493352
+ 575978 string characters out of 3139718
  701321 words of memory out of 3000000
- 34045 multiletter control sequences out of 15000+200000
- 637435 words of font info for 572 fonts, out of 3000000 for 9000
+ 34046 multiletter control sequences out of 15000+200000
+ 637645 words of font info for 575 fonts, out of 3000000 for 9000
  1289 hyphenation exceptions out of 8191
  57i,15n,67p,10402b,504s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc} <C:\Users\Ian\AppDa
@@ -1623,9 +1621,9 @@ s/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/symbols/msbm10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/urw/palatino/uplb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino
 /uplr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on sfp-notes-partiii.pdf (33 pages, 609199 bytes).
+Output written on sfp-notes-partiii.pdf (35 pages, 622014 bytes).
 PDF statistics:
- 525 PDF objects out of 1000 (max. 8388607)
- 162 named destinations out of 1000 (max. 500000)
- 58084 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 551 PDF objects out of 1000 (max. 8388607)
+ 174 named destinations out of 1000 (max. 500000)
+ 58092 words of extra memory for PDF output out of 61914 (max. 10000000)
 
