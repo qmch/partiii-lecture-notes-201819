@@ -1,0 +1,104 @@
+Assorted remarks. There was another correction-- time evolution is correctly given by $U(t,t_0)=e^{iH_0 t} e^{-iH(t-t_0)} e^{-iH_0 t_0}$, where the $-$ in the second exponential is key. After today's lecture, we'll be able to solve all the problems on Example Sheet 2 (in principle). Remark: on question 10b on sheet 2, the answer is incorrect. It should read \textit{``Find $\frac{d\sigma}{dt}$ in terms of $g,s,t,m$, and $M$.''} Note that the matrix element $\mathcal{M}$ and the amplitude $A_{f_i}$ are the same thing (e.g. in Prof. Allanach's notes). Whew.
+
+Okay, moving on. Last time we wrote down
+$$\frac{dW}{d^4x}=\frac{|\psi_1 (x)|^2}{2E_1}\frac{|\psi_2(x)|^2}{2E_2}(2\pi)^4 \delta^4(\sum_i q_i-p_1-p_2)|M|^2,$$ which is the \emph{transition probability density per unit time}. It depends (perhaps very weakly) on $x$. Here's the picture we should imagine-- we have a ``beam'' of particle $2$, described in space by a wavefunction $|\psi_2(x)|^2$ and moving with velocity $v$. Thus the flux of particle 2 per unit area is 
+$\phi=v|\psi_2(x)|^2.$ In the rest frame of particle 1, we have a density of particle 1 $\rho=|\psi_1(x)|^2$, and it has some effective cross-sectional area $d\sigma$. Therefore we can rewrite this probability density as
+$$\frac{dW}{d^4x}=d\sigma\cdot \phi \cdot \rho.$$
+Equivalently we write the differential cross section as
+$$d\sigma = \frac{(2\pi)^4 \delta^4(p_1 +p_2 -\sum_i q_i)}{\mathcal{F}}|M|^2$$
+where $\mathcal{F}=4E_1E_2 v$ is the ``flux factor.'' Thus $d\sigma$ is the effective cross-sectional area to scatter into final states of momenta $\set{q_i}$. If we now boost to the rest frame of particle 2, in this frame the four-momenta take the form
+$$p_2^\mu=(m_2,0),\quad p_1^\mu=(\sqrt{m_1^2+|\vec p_1|^2},\vec p_1).$$
+The relative velocity $v=|\vec p_1|/E_1,$ so in this frame the flux factor takes the form
+$$\mathcal{F}=4E_1|\vec p_1|=4m_2\sqrt{E_1^2-m_1^2}=4\sqrt{(p_1 \cdot p_2)^2-m_1^2m_2^2},$$
+where we have used the fact that in this frame $p_1\cdot p_2 = E_1m_2$. This is the correct Lorentz invariant definition of the flux factor.
+
+In the massless limit, $m_1,m_2\ll E_1,E_2$. This is the case for high-energy colliders like the LHC ($\sqrt{s}=\SI{13}{\tera\electronvolt}$, while $m_p\sim \SI{1}{\giga\electronvolt}$). 
+In this limit, we therefore have
+$$\mathcal{F}=4\sqrt{(p_1 \cdot p_2)^2-m_1^2m_2^2}\approx 4(p_1\cdot p_2) \approx 2(m_1^2+2 p_1\cdot p_2 +m_2^2) =2(p_1+p_2)^2,$$
+where we have added on and neglected mass terms rather freely in the limit where the masses are small compared to the $p_1\cdot p_2$ term which is proportional to the energy $E_1$.
+
+Then $\mathcal{F}\sim 2s$ where $s=(p_1+p_2)^2$. To compute the total cross-section, we then sum over the $\set{q_i}$ in the correct manner to get
+$$\sigma = \int \prod_{i=1}^n \left(\frac{d^3 q_i}{(2\pi)^3 2E_{q_i}}\right)\frac{|M|^2}{\mathcal{F}} (2\pi)^4 \delta^4(p_1+p_2 -\sum_{i=1}^n q_i).$$
+We call the integrals over $d^3q_i$ ``phase space integrals.''
+
+\subsection*{$2\to 2$ scattering}
+Let us specialize in the case of 2 to 2 scattering. What is the behavior of the differential cross-section, e.g. in terms of the Mandelstam variables? Let's look at the variations of $\sigma$ with respect to 
+$$t=(p_1-q_1)^2=m_1^2+{m_1'}^2-2E_{p_1}E_{q_1}+2 \vec p_1 \cdot \vec q_1.$$ Notice that
+$$\frac{dt}{d\cos\theta}=2|\vec p_1||\vec q_1|,$$
+where $\cos\theta$ is the angle between $\vec p_1$ and $\vec q_1$. But $\theta$ is a frame-dependent quantity, so we must be a little careful what frame we're working in. Let us instead write the integration measure
+$$\frac{d^3q_2}{2E_{q_2}}=d^4 q_2\delta(q_2^2-{m_2'}^2) \theta(q_2^0)$$
+with $\theta$ the step function. We proved this way back in Lecture 5, in a somewhat different form. What we wrote then was 
+$$\frac{d^3q_2}{2E_{q_2}}=d^4 q_2 \delta((q_2^0)^2-\vec q_2^2 -{m_2'}^2)|_{q_2^0>0}.$$
+But this is clearly equivalent-- just turn the $q_2^0$ condition into a step function and rewrite $(q_2^0)^2-\vec q_2^2$ in terms of the four-momentum $q_2^2$.
+We then rewrite the $d^3q_1$ integral in spherical coordinates for $q_1$:
+$$\frac{d^3q_1}{2E_{q_1}}=\frac{|\vec q_1|^2 d|\vec q_1|}{2E_{q_1}} d\cos\theta d\phi.$$
+Since $E_{q_1}^2+m_1^2={m_1'}^2 +|\vec q_1|^2 \implies 2E_{q_1}dE_{q_1}=|\vec q_1|d|\vec q_1|$ allows us to rewrite our expression for $\frac{d^3q_1}{2E_{q_1}}$ (using the $dt/d\cos\theta$ expression) as
+$$\frac{d^3q_1}{2E_{q_1}}=\frac{1}{4|\vec p_1|} dE_{q_1}d\phi dt.$$
+If we explicitly substitute our expressions for $d^3q_1/2E_{q_1}$ and $d^3q_2/2E_{q_2}$ into the expression for $\sigma,$
+we get
+$$\sigma=\int \frac{1}{(2\pi)^2} \left(\frac{1}{4|\vec p_1|} dE_{q_1} d\phi dt\right)\left(d^4 q_2 \delta(q_2^2 -{m_2'}^2)\theta(q_2^0)\right)\frac{|M|^2}{\mathcal{F}}\delta^4 (p_1+p_2-(q_1+q_2)).$$
+The $\phi$ integral is trivial-- it cancels a factor of $2\pi$. The $q_2$ integral is also trivial by the last delta function-- since it just sets $q_2=q_1-p_1-p_2$. (All the step function tells us is that the energy of the final state is non-negative.) We now take the derivative $d/dt$ of both sides to get an expression for $d\sigma/dt$:
+$$\frac{d\sigma}{dt}=\frac{1}{8\pi \mathcal{F}|\vec p_1|}\int dE_{q_1}|M|^2 \delta((q_1-\sqrt{s})^2-{m_2'}^2).$$
+Expanding out the square we find that
+$$(q_1-\sqrt{s})^2-{m_2'}^2=q_1^2-2q_q(p_1+p_2)+s-{m_2'}^2,$$
+so our final expression is
+$$\frac{d\sigma}{dt}=\frac{1}{8\pi \mathcal{F}|\vec p_1|}\int dE_{q_1}|M|^2 \delta(s-{m_2'}^2 +{m_1'}^2-2q_1 \cdot(p_1+p_2)).$$
+Boosting now to the center of mass frame where $p_1^\mu=(\sqrt{|\vec p_1|^2+m_1^2},\vec p_1)$ and $p_2^\mu=(\sqrt{|\vec p_1|^2+m_2^2},-\vec p_1)$, we note that $s$ is some constant of the collision,
+$$s=\left(\sqrt{|\vec p_1|^2+m_1^2}+\sqrt{|\vec p_1|^2+m_2^2}\right)^2.$$
+We can solve for $|\vec p_1|$ as an exercise (see the end of this section) to find
+$$|\vec p_1|=\frac{\lambda^{1/2}(s,m_1^2,m_2^2)}{2\sqrt{s}}$$
+where $$\lambda(x,y,z)\equiv x^2+y^2+z^2-2xy-2xz-2yz.$$ We therefore find that
+$$\mathcal{F}=2\lambda^{1/2}(s,m_1^2,m_2^2).$$ With our expressions for $|\vec p_1|$ and $\mathcal{F}$ firmly in hand, we can plug them back into our expression for $d\sigma/dt$, we get
+$$\frac{d\sigma}{dt}=\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)(1/2\sqrt{s})}\int dE_{q_1} \delta(s-{m_2'}^2+{m_1'}^2-2q_1\cdot(p_1+p_2)).$$
+Since we are in the center-of-mass frame, $p_1+p_2=(m_1+m_2,0,0,0)=(\sqrt{s},0,0,0)$, and so 
+\begin{eqnarray*}
+\frac{d\sigma}{dt}&=&\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)(1/2\sqrt{s})}\int dE_{q_1} \delta(s-{m_2'}^2+{m_1'}^2-2E_{q_1}\sqrt{s})\\
+&=&\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)(1/2\sqrt{s})} \int d\tilde E_{q_1} \frac{1}{2\sqrt{s}} \delta(s-{m_2'}^2+{m_1'}^2-\tilde E_{q_1})\\
+&=&\frac{|M|^2}{16\pi\lambda(s,m_1^2,m_2^2)}.
+\end{eqnarray*}
+%$$\frac{d\sigma}{dt}=\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)}.$$
+In the massless limit (a common approximation) we have $t=(p_1-q_1)^2-2p_1\cdot q_1 =-2|\vec p_1||\vec q_1|(1-\cos\theta),$ and the total cross section is
+$$\sigma_{tot}=\int_{-4|\vec p_1||\vec q_1|}^0 dt \frac{d\sigma}{dt}.$$
+
+In the center-of-mass frame $|\vec p_1|=|\vec q_1|=\sqrt{s}/2$ so $\frac{dt}{d\cos\theta}=\frac{s}{2}$. Defining $d\Omega$ the differential solid angle element,
+$$d\Omega\equiv d\cos\theta d\phi$$ (a frame-dependent quantity) we find that
+$$\frac{d\sigma}{d\Omega}=\frac{s}{4\pi}\frac{d\sigma}{dt}=\frac{|M|^2}{64\pi^2 s}$$
+for particles with masses much less than the collision energy.
+
+We can also consider decay rates, which we treat much the same way. Take the initial state to be a sharply peaked superposition of momentum-space eigenstates. Our transition probability density is
+$$\frac{dW}{d^4x}=\frac{|\psi(x)|^2}{2E_p} |M|^2(2\pi)^4\delta^4(p-\sum_i q_i),$$
+where $\psi(x)$ is the space-time wavefunction of the decaying particle. $dW/d^x$ is then the chance of finding the decaying particle per unit volume. We can equivalently define the differential decay rate $d\Gamma$ such that
+$$\frac{dW}{d^4x}=|\psi(x)|^2 \times d\Gamma.$$
+Thus
+$$\Gamma=\frac{1}{2E_p}\int \prod_{i=1}^n \left(\frac{d^3 q_i}{(2\pi)^3 2E_{q_i}}\right)|M|^2(2\pi)^4 \delta^4(p-\sum_{i=1}^n q_i).$$
+Note that $\Gamma$ is \emph{not} Lorentz invariant, as it goes as $1/E$ of the decaying particle. The standard convention is to define $\Gamma$ in the rest frame of the decaying particle. The lifetime of a particle is given by 
+$$\tau=6.58\times 10^{-25}\text{ seconds}\times \frac{\SI{1}{\giga\electronvolt}}{\Gamma}.$$
+
+To link this back to our previous discussion of nucleon scattering, $\psi\psi \to \psi\psi$, we computed two diagrams for this process. We found that the matrix element was
+$$iM=(-ig)^2\left\{\frac{1}{t-m^2}+\frac{1}{2-m^2}\right\},$$
+with $t$ and $u$ the standard Mandelstam variables. 
+
+\subsection*{Non-lectured aside-- solving for $|\vec p_1|$} We have 
+$$s=\left(\sqrt{|\vec p_1|^2+m_1^2}+\sqrt{|\vec p_1|^2+m_2^2}\right)^2.$$
+To solve for $|\vec p_1|$, let us expand out 
+$$s=(|\vec p_1|^2+m_1^2)+(|\vec p_1|^2+m_2^2)+2\sqrt{(|\vec p_1|^2+m_1^2)(|\vec p_1|^2+m_2^2)}.$$
+We move all the terms not in the square root to the left to get
+$$\frac{s-2|\vec p_1|^2-m_1^2-m_2^2}{2}=\sqrt{(|\vec p_1|^2+m_1^2)(|\vec p_1|^2+m_2^2)}$$
+and square again to get rid of all the square roots. We may write
+$$\frac{(s-m_1^2-m_2^2)^2}{4}+|\vec p_1|^4 -|\vec p_1|^2(s-m_1^2-m_2^2)=(|\vec p_1|^2+m_1^2)(|\vec p_1|^2+m_2^2)$$
+or equivalently
+$$\frac{(s-m_1^2-m_2^2)^2}{4}+|\vec p_1|^4 -|\vec p_1|^2(s-m_1^2-m_2^2)=|\vec p_1|^4 +(m_1^2+m_2^2)|\vec p_1|^2 +m_1^2m_2^2.$$
+The $|\vec p_1|^4$ terms cancel, as do the $(m_1^2m_2^2)|\vec p_1|^2$s, so we are left with
+$$s|\vec p_1|^2 =\frac{(s-m_1^2-m_2^2)^2}{4}-m_1^2m_2^2.$$
+A little rearranging yields
+$$|\vec p_1|^2 =\frac{(s-m_1^2-m_2^2)^2-4m_1^2 m_2^2}{4s}=\frac{\lambda(s,m_1^2,m_2^2)}{4s}.\qed$$
+Now we want to solve for $\mathcal{F}$. Note that
+$$2p_1\cdot p_2 = (p_1+p_2)^2-m_1^2-m_2^2=s-m_1^2-m_2^2.$$
+Then we can get $\mathcal{F}$ by writing
+\begin{eqnarray*}
+\mathcal{F}&=&4\sqrt{(p_1\cdot p_2)^2-m_1^2m_2^2}\\
+&=&2\sqrt{(2p_1\cdot p_2)^2-4m_1^2m_2^2}\\
+&=&2\sqrt{(s-m_1^2-m_2^2)^2-4m_1^2m_2^2}\\
+&=&2\lambda^{1/2},
+\end{eqnarray*}
+where we have recognized $\lambda$ from the first calculation for $|\vec p_1|.$

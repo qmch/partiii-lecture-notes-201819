@@ -1,7 +1,11 @@
 Last time, we used Noether's theorem to find the stress-energy tensor
-$$T^{\mu\nu}=\P{\cL}{(\p_\mu\phi)}\p^\nu \phi - \eta^{\mu\nu} \cL.$$
+\begin{equation}
+T^{\mu\nu}=\P{\cL}{(\p_\mu\phi)}\p^\nu \phi - \eta^{\mu\nu} \cL.
+\end{equation}
 To better understand this object, we might ask: what is $T^{\mu\nu}$ for free scalar field theory? Recall the Lagrangian for this theory is
-$$\cL=\frac{1}{2}\p_\mu \phi \p^\mu \phi - \frac{1}{2} m^2 \phi^2.$$
+\begin{equation}
+\cL=\frac{1}{2}\p_\mu \phi \p^\mu \phi - \frac{1}{2} m^2 \phi^2.
+\end{equation}
 Then by explicit computation, the stress-energy tensor is
 $$T^{\mu\nu}=\p^\mu \phi \p^\nu \phi - \eta^{\mu\nu} \cL.$$
 The energy is given by 
@@ -44,11 +48,11 @@ A \term{quantum field} is an operator-valued function of space obeying the commu
 \end{eqnarray}
 \end{defn}
 
-Note that $\phi_a(x), \pi^b(x)$ don't depend on $t$, since we are in the Schr\"odinger picture. All the $t$ dependence sits in the states which evolve by the usual time-dependent Schr\"odinger equation
+It's no coincidence that these precisely replicate the commutation relations of the operators $\hat x$ and $\hat p$ in ordinary quantum mechanics, except that now we have an additional label $\vec x$ on the fields. Note that $\phi_a(x), \pi^b(x)$ don't depend on $t$, since we are in the Schr\"odinger picture. All the $t$ dependence sits in the states which evolve by the usual time-dependent Schr\"odinger equation
 $$i\frac{d}{dt} \ket{\psi}=H\ket{\psi}.$$
-We have an infinite number of degrees of freedom, at least one for each $x$ in space. For some theories (free theories), the coordinates evolve independently. Free field theories have $L$ quadratic in $\phi_a$ (plus derivatives thereof), which implies linear equations of motion.
+We have an infinite number of degrees of freedom, at least one for each $x$ in space. For some theories (free theories), different solutions $\phi$ can be added together and will evolve independently-- free field theories have $L$ quadratic in $\phi_a$ (plus derivatives thereof), which implies linear equations of motion.
 
-We saw that the simplest free theory leads to the classical Klein-Gordon equation for a real scalar field $\phi(\vec{x},t)$, i.e. $\p_\mu \p^\mu \phi+m^2\phi=0$. To see why this is free, take the Fourier tranform
+We saw that the simplest free theory leads to the classical Klein-Gordon equation for a real scalar field $\phi(\vec{x},t)$, i.e. $\p_\mu \p^\mu \phi+m^2\phi=0$. To see explicitly why this is a free theory, take the Fourier transform of $\phi(\vec x,t)$ to write the equations of motion in momentum space:
 $$\phi(\vec{x},t)=\int \frac{d^3 p}{(2\pi)^3} e^{i \vec{p}\cdot \vec{x}}\phi (\vec{p},t).$$
 Then we get the equation of motion
 $$\left[\P[2]{}{t}+(|\vec{p}|^2+m^2)\right] \phi(\vec{p},t)=0.$$
@@ -56,14 +60,15 @@ We see that the solution is a harmonic oscillator with frequency $\omega_{\vec p
 
 \subsection*{Review of 1D harmonic oscillators} Recall that the Hamiltonian for the simple harmonic oscillator is
 $$H=\frac{1}{2} p^2 +\frac{1}{2} \omega^2 q^2,$$
-subject to the quantization condition $$[q,p]=i.$$ It's certainly possible to solve this system by the series method, but the algebraic method is much more elegant by far. Our approach is as follows-- we'd like to factor the Hamiltonian, but we know that it doesn't quite work because $p$ and $q$ do not commute. Therefore, we define the following operators:
+subject to the quantization condition $$[q,p]=i,$$ 
+where $p$ and $q$ are the momentum and position operators as usual. It's certainly possible to solve this system by the series method, but the algebraic method is much more elegant by far and will generalize better. Our approach is as follows-- we'd like to factor the Hamiltonian (since if $p$ and $q$ were classical quantities we could just write it as $\frac{1}{2}(p+i\omega q)(p-i\omega q)$, for instance) but we know that this doesn't quite work because $p$ and $q$ do not commute. Therefore, we define the following operators:
 \begin{itemize}
 \item The creation or raising operator, $a^\dagger \equiv -\frac{i}{\sqrt{2\omega}} p +\sqrt{\frac{\omega}{2}}q$
 \item The annihilation or lowering operator, $a \equiv +\frac{i}{\sqrt{2\omega}} p +\sqrt{\frac{\omega}{2}}q$.
 \end{itemize}
 Note that we can equivalently solve for $p$ and $q$ in terms of $a$ and $a^\dagger$: $q=\frac{1}{\sqrt{2\omega}}(a+a^\dagger)$ and $p=-i \sqrt{\frac{\omega}{2}}(a-a^\dagger)$. Substituting $p$ and $q$ into the quantization condition yields the commutator of $a,a^\dagger$,
 $$[a,a^\dagger]=1.$$
-A little more algebra allows us to rewrite the Hamiltonian as
+We'll then factorize the Hamiltonian into $a$ and $a^\dagger$, picking up an extra term from the commutation relation of $p$ and $q$-- a little more algebra allows us to rewrite the Hamiltonian as
 $$H=\frac{1}{2}\omega (a a^\dagger+ a^\dagger a)=\omega (a^\dagger a +\frac{1}{2}).$$
 Computing the commutators $[H,a]$ and $[H,a^\dagger]$ reveals that
 $$[H,a^\dagger]=\omega a^\dagger, [H,a]=-\omega a,$$
@@ -72,6 +77,6 @@ which tells us that $a,a^\dagger$ take us between energy eigenstates.\footnote{E
 If we further postulate that the energy is bounded from below, this implies the existence of a ground state $\ket{0}$ such that the lowering operator acting on $\ket{0}$ kills the state: $a\ket{0}= 0$. In our original Hamiltonian, this ground state has energy given by
 $$H \ket{0}=\omega (a^\dagger a +\frac{1}{2})\ket{0} = \frac{\omega}{2}\ket{0},$$ so the ground state energy (or \term{zero point energy}) of the system is $\omega/2$. For our quantum theory it's really differences in energy which matter more than their absolute values,\footnote{Remark: gravity is different! Gravity couples directly to energy, not to differences in energy. But in a simple theory like the 1D harmonic oscillator, all we care about is the spacing of the energy levels.} so we can just as easily write an equivalent Hamiltonian $H=\omega a^\dagger a$ and set the ground state energy to $0$.
 
-We only need one state to construct our full ladder of energy eigenstates, and we can do so by passing our equation back to $q$-space (real coordinates) and further writing $p=i \P{}{q}$. If we plug these back into the Hamiltonian, knowing that $H\ket{0}=0$ now, we can solve for the ground state, finding that it is a Gaussian in $q$ with some appropriate variance and normalization. Then we simply need to apply $a^\dagger$ to get all the other states, labeling them as $\ket{n}\equiv(a^\dagger)^n \ket{0}$ with $H \ket{n}=n\omega \ket{n}$. (Here we've disregarded normalization, but it's easy enough to add some scaling factor so that $\braket{n}{m}=\delta_{nm}$.)
+We only need one state to construct our full ladder of energy eigenstates, and we can do so by passing our equation back to $q$-space (real coordinates) and further writing $p=i \P{}{q}$. If we plug these back into the Hamiltonian, having set $H\ket{0}=0$, we can then solve for the ground state and find that it is a Gaussian in $q$ with some appropriate variance and normalization. Then we simply need to apply $a^\dagger$ repeatedly to get all the other states, labeling them as $\ket{n}\equiv(a^\dagger)^n \ket{0}$ with $H \ket{n}=n\omega \ket{n}$. (Here we've disregarded normalization, but it's easy enough to add some scaling factor in the definition of $\ket{n}$ so that $\braket{n}{m}=\delta_{nm}$.)
 
 That's about all there is to the quantum harmonic oscillator! We have recovered the quantized energy levels and defined operators to move between them. Next time, we'll repeat the same procedure with quantum fields.

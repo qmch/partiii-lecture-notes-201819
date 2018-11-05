@@ -10,14 +10,14 @@ But it follows that
 $$\ket{\pv, \vec{q}}=\ket{\vec{q},\vec p},$$
 since the creation operators for different momenta commute. So our states are symmetric under interchange, which means these particles are bosons. The full Hilbert space is spanned by
 $$\ket{0},a_{\pv}^\dagger \ket{0}, a_{\pv_1}^\dagger a_{\pv_2}^\dagger\ket{0}, \ldots$$
-and this is called Fock space.
+and this is called \term{Fock space}.
 
 If we use the number operator
 $$N\equiv \int \frac{d^3p}{(2\pi)^3} a_{\pv}^\dagger a_{\pv}$$
 which counts the number of particles in a state, we find (exercise)
 $$N\ket{\pv_1, \ldots ,\pv_n}=n \ket{\pv_1, \ldots ,\pv_n}.$$
 But it's easy to check that (and you should check this using the commutation relations) $$[N,H]=0,$$
-which means that the number of particles is conserved in the free theory (this is not true once we add interactions).
+which means that the number of particles is conserved in the free theory (crucially, this is not true once we add interactions).
 
 Let's also note that our momentum eigenstates are \emph{not} localized in space. We can describe a spatially localized state by a Fourier transform,
 $$\ket{\vec x} = \int \frac{d^3 p}{(2\pi)^3} e^{-i \vec p \cdot \vec x} \ket{\vec p}.$$
@@ -35,10 +35,10 @@ $$1=\int \frac{d^3p}{(2\pi)^3} \ket{\pv}\bra{\pv}.$$
 Either half of this (the $d^3p$ part and the $\ket{\pv}\bra{\pv}$ part) is not LI, but somehow the whole thing is (since it's equal to $1$).
 
 How do we prove this? We start by claiming that
-$$\int \frac{d^3p}{2E_{\pv}}$$ is Lorentz invariant. This follows because $\int d^4p$ is LI, since $\Lambda \in SO(1,3)$ (i.e. $\det \Lambda=1$) so the factor of $\det \Lambda$ we would normally pick up from doing the coordinate transformation is just 1-- $\int d^4p = \int d^4 p'$. It's also true that $p_0^2= \vec{p}^2+m^2$ is Lorentz invariant (in particular, it expresses the length of a four-vector $p_\mu p^\mu = m^2$). The solutions for $p_0$ have two branches, positive and negative:
+$$\int \frac{d^3p}{2E_{\pv}}$$ is Lorentz invariant. This follows because $\int d^4p$ is LI, since $\Lambda \in SO(1,3)$ (i.e. $\det \Lambda=1$) so the factor of $\det \Lambda$ we would normally pick up from doing the coordinate transformation is just 1. So the four-volume element is Lorentz invariant, $\int d^4p = \int d^4 p'$. It's also true that $p_0^2= \vec{p}^2+m^2$ is Lorentz invariant (in particular, it expresses the length of a four-vector $p_\mu p^\mu = m^2$). The solutions for $p_0$ have two branches, positive and negative:
 $$p_0 = \pm \sqrt{\pv^2+m^2}.$$
 But our choice of branch is also Lorentz invariant (we can't go from the positive to negative solutions via Lorentz transformation). Therefore combining the last few facts, we get
-$$\int d^4 p \delta(p_0^2-\pv^2-m^2)|_{p^0 >0} = \int \frac{d^3 p}{2p_0|_{p_0=E_p}},$$
+$$\int d^4 p \delta(p_0^2-\pv^2-m^2)|_{p^0 >0} = \int \left.\frac{d^3 p}{2p_0}\right|_{p_0=E_p},$$
 where we have used the fact that $$\delta(g(x))=\sum_{x_i\text{ roots of g}} \frac{\delta(x-x_i)}{|g'(x_i)|}.$$
 (To see why this is true, consider Taylor expanding $\delta(g(x))$ around its roots to leading order.)
 
@@ -46,13 +46,14 @@ We make the next claim: $2E_p \delta^3(\pv - \vec q)$ is the Lorentz invariant v
 $$\int \frac{d^3 p}{2E_p} 2E_p \delta^3(\pv - \vec q)=1.$$
 But we showed that $\int d^3p/2E_p$ was Lorentz invariant and 1 is certainly Lorentz invariant, so it follows that $2E_p\delta^3(\pv-\vec q)$ is also Lorentz invariant.
 
-We therfore learn that the correctly normalized states are
+We therefore learn that the correctly normalized states are
 $$\ket{p}\equiv \sqrt{2E_p}\ket{\pv} = \sqrt{2 E_p}a_{\pv}^\dagger \ket{0},$$
 (where $p$ is now the four-vector $p$, not the three-vector $\pv$) with the inner product
 $$\braket{p}{q}=(2\pi)^3 2\sqrt{E_p E_q} \delta^3(\pv - \vec q).$$
-We can then rewrite the 1-particle identity operator as an integral over the normalized states,
+We can then rewrite the 1-particle identity operator\footnote{To see this really is the identity, let's act on the normalized $\ket{q}$. It's basically a one-liner:
+$$\int \frac{d^3p}{2E_p(2\pi)^3}\ket{p}\bra{p}\ket{q}=\int\frac{d^3p}{2E_p(2\pi)^3}\ket{p}\left[(2\pi)^3 2\sqrt{E_pE_q}\delta^3(\vec p-\vec q)\right]=\ket{q},$$ since the delta function makes the integral trivial by setting $\vec p = \vec q$.} as an integral over the normalized states,
 $$1=\int \frac{d^3p}{2E_p(2\pi)^3} \ket{p}\bra{p}.$$
-(To see this is the identity, try acting on the normalized $\ket{q}$.)
+
 
 \subsection*{Free $\CC$ scalar field} We could also look at the free complex scalar field $\psi$, with Lagrangian
 $$\cL = \p_\mu \psi^* \p^\mu \psi - \mu^2 \psi^* \psi.$$

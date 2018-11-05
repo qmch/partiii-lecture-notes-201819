@@ -2,6 +2,7 @@ Last time, we derived the Euler-Lagrange equations for Lagrangian densities:
 \begin{equation}
 \p_\mu \P{\mathcal{L}}{(\p_\mu \phi_a)}-\P{\mathcal{L}}{\phi_a}=0.
 \end{equation}
+Today, we'll look at some more simple Lagrangians. We'll introduce Noether's theorem as it applies to fields and also derive the energy-momentum tensor in a field theory context.
 
 \begin{exm}
 Consider the Maxwell Lagrangian,
@@ -79,7 +80,7 @@ j^\mu\equiv\P{L}{(\p_\mu \phi)}\Delta \phi -X^\mu
 \end{equation} as our conserved current (that is, $\p_\mu j^\mu =0$).
 
 \begin{exm}
-Take a complex scalar field $\psi(x)=\frac{1}{\sqrt{2}}(\phi_1(x)+i\phi_2(x)).$ We can then trea $\psi, \psi^*$ as independent variables and write a Lagrangian
+Take a complex scalar field $$\psi(x)=\frac{1}{\sqrt{2}}(\phi_1(x)+i\phi_2(x)).$$ We can then treat $\psi, \psi^*$ as independent variables and write a Lagrangian
 $$L=\p_\mu \psi^* \p^\mu \psi - V(|\psi|^2).$$
 Then we observe that under $\psi\to e^{i\beta}\psi, \psi^* \to e^{-i\beta}\psi^*,$ the Lagrangian is invariant. The differential changes are $\Delta \psi = i \psi$ (think of expanding $\psi\ \to e^{i\beta}\psi$ to leading order) and similarly $\Delta \psi^*=-i\psi^*$ (here we find that $X^\mu=0$).
 
@@ -98,6 +99,6 @@ We write this as $j^\mu_\nu \equiv T^\mu_\nu$, the energy-momentum tensor.
 \begin{defn}
 The \term{energy-momentum tensor} (sometimes \term{stress-energy tensor})is the conserved current corresponding to translations in time and space. It takes the form 
 $$T^{\mu\nu} \equiv \P{\cL}{(\p_\mu \phi)}\p^\nu \phi - \eta^{\mu\nu} \cL,$$
-where we have raised an index with the Minkowski metric as is conventional. The conserved charges from integrating $\int d^3x T^{0\nu}$ end up being the total energy $E=\int d^3x T^{00}$ and the three components of momentum $P^i=\int d^3x T^{0i}$.
+where we have raised an index with the Minkowski metric as is conventional. The conserved charges from integrating $\int d^3x T^{0\nu}$ end up being the total energy $E=\int d^3x T^{00}$ and the three components of momentum $P^i=\int d^3x T^{0i}$.\footnote{The definition of the energy-momentum tensor here is slightly different from the one used in general relativity. Here, we have used time and space translations to derive $T^{\mu\nu}$, but in general relativity, we use variations of the metric $g^{\mu\nu}$ instead. The benefit of the GR definition is that the resulting tensor is always symmetric, whereas the $T^{\mu\nu}$ from spacetime translations is not guaranteed to be symmetric. We'll see an example of this in the example sheets, but the $T^{\mu\nu}$ defined by spacetime translations can always be \emph{made} symmetric by defining the ``Belinfante-Rosenfeld tensor.'' The construction isn't anything too special, but people working in relativity insist that variations of the action with respect to the metric is the correct way to define the energy-momentum tensor.}
 \end{defn}
 \end{exm}

@@ -63,7 +63,7 @@ $$\zeta^e \p_e g_{cd} + g_{ad} \nabla_c \zeta^a - g_{ad}\Gamma^a_{ce} \zeta^e+g_
 If we now write out the Christoffel symbols in terms of derivatives of the metric, we get something that looks kind of messy:
 $$\nabla_c \zeta_d +\nabla_d \zeta_c +\zeta^e \p_e g_{cd} -g_{ad} \frac{1}{2} g^{af}(-\p_f g_{ce}+\p_c g_{ef} +\p_e g_{cf})\zeta^e - g_{cb}\frac{1}{2} g^{bf}(-\p_f g_{de}+\p_d g_{ef}+\p_e g_{df})\zeta^e=0$$
 But things are better than they seem. Using the metrics to raise and lower indices appropriately, we get a very nice set of cancellations-- all the derivatives of the metric turn out to cancel (including the $\zeta^e \p_e g_{cd}$ out front), and we are left with the simple expression
-$$\nabla_c \zeta_d +\nabla_d \zeta_c$$
+$$\nabla_c \zeta_d +\nabla_d \zeta_c=0$$
 We call the solutions $\zeta$ \term{Killing vectors}.\footnote{``Killing here is not some bizarre ritual but Wilhelm Killing.'' --Malcolm Perry} Killing was a German group theorist, and there is in fact a connection to group theory here. Suppose there are two independent Killing vectors $k^a,l^a$. Consider the commutator of two Killing vectors (i.e. a bracket) defined
 $$m^b\equiv k^a\nabla_a l^b - l^a \nabla_a k^b.$$
 Expanding out, we see that
@@ -74,4 +74,52 @@ where the $\Gamma$ terms cancel. Therefore $m$ is independent of the connection.
 &=& \nabla_a k^c \nabla_c l_b -\nabla_a l^c \nabla_c k_b + \nabla_b k^c \nabla_c l_a -\nabla_b l^c \nabla_c k_a\\
 &&+k^c \nabla_a \nabla_c l_b - l^c \nabla_a \nabla_c k_b +k^c \nabla_b \nabla_c l_a - l^c \nabla_b \nabla_c k_a.
 \end{eqnarray*}
-After a stunning array of cancellations using the fact that $\nabla_c k^c \nabla_c l_b - \nabla^c l_b \nabla_c k_a=0$ (by Killing's equations) we find that $m$ does indeed satisfy Killing's equations as well (check this as an exercise?). So there is some algebraic structure on Killing forms.\footnote{Killing vectors are vectors by definition, and they certainly seem to form a vector space since the covariant derivative is linear. The fact that we have a bracket on them makes me suspect this is a Lie algebra, $[k,l]^b=k^a\nabla_a l^b - l^a \nabla_a k^b$. It is clearly antisymmetric and bilinear, i.e. $[l,k]=[-k,l]$ and $[k+l,m]^b=(k^a+l^a)\nabla_a m^b -m^a \nabla_a (k^b+l^b)=(k^a \nabla_a m^b - m^a \nabla_a k^b)+(l^a \nabla_a m^b - m^a \nabla_a l^b)=[k,m]+[l,m]$. I suspect, though have not yet proved, that the Jacobi identity also holds.}
+After a stunning array of cancellations using the fact that $\nabla_a k^c \nabla_c l_b - \nabla^c l_b \nabla_c k_a=0$ (by Killing's equations) we find that $m$ does indeed satisfy Killing's equations as well (check this as an exercise?). So there is some algebraic structure on Killing vectors.\footnote{Killing vectors are vectors by definition, and they certainly seem to form a vector space since the covariant derivative is linear. The fact that we have a bracket on them makes me suspect this is a Lie algebra, $[k,l]^b=k^a\nabla_a l^b - l^a \nabla_a k^b$. It is clearly antisymmetric and bilinear, i.e. $[l,k]=[-k,l]$ and $[k+l,m]^b=(k^a+l^a)\nabla_a m^b -m^a \nabla_a (k^b+l^b)=(k^a \nabla_a m^b - m^a \nabla_a k^b)+(l^a \nabla_a m^b - m^a \nabla_a l^b)=[k,m]+[l,m]$. I suspect, though have not yet proved, that the Jacobi identity also holds.}
+
+\subsection*{Non-lectured aside: commutator of Killing vectors is a Killing vector} The proof in class was a little bit too quick about this, so here is a slower exposition. Let me write a series of brief lemmas, and then put them together to solve the overall problem.
+
+\begin{lem}\label{killinglemma}
+If $k$ and $l$ are Killing vectors, then $(\nabla_a k^c)(\nabla_c l_b)-(\nabla_b l^c )(\nabla_c k_a)=0$.
+\end{lem}
+The proof is simple. First note that whenever we have an index that is contracted over, we can trivially switch which is the up index and which is the down, e.g. $A^\mu B_\mu=g^{\mu\nu} A_\nu B_\mu= A_\nu B^\nu$. In addition, by raising an index in Killing's equations we have
+$$\nabla^a k_b + \nabla_b k^a = 0.$$
+Then
+\begin{eqnarray*}
+\nabla_a k^c \nabla_c l_b &=& \nabla_a k_c \nabla^c l_b\\
+&=&(-\nabla_c k_a)(-\nabla_b l^c)\text{ by Killing's equations}\\
+&=&(\nabla_b l^c)(\nabla_c k_a). 
+\end{eqnarray*}
+Thus $(\nabla_a k^c)(\nabla_c l_b)-(\nabla_b l^c )(\nabla_c k_a)=0$. \qed
+
+We also recall the following fact, which serves as the definition of the Riemann tensor:
+$$[\nabla_a,\nabla_b]V^c={R^c}_{dab}V^d.$$
+We can lower the index $c$ on the left by metric compatibility and use the fact that $R_{cdab}=R_{abcd}$ to rewrite the commutator in a more useful way:
+\begin{equation}\label{riemannascommutator}
+[\nabla_a,\nabla_b]V_c=R_{abcd}V^d.
+\end{equation}
+%
+This is enough to do the proof. We can explicitly compute
+\begin{eqnarray*}
+\nabla_a m_b +\nabla_b m_a &=& \nabla_a (k^c \nabla_c l_b - l^c \nabla_c k_b)+\nabla_b (k^c \nabla_c l_a -l^c \nabla_c k_a)\\
+&=& \left[(\nabla_a k^c)( \nabla_c l_b) -(\nabla_b l^c)( \nabla_c k_a)\right]+ \left[(\nabla_b k^c)( \nabla_c l_a)-(\nabla_a l^c )(\nabla_c k_b)\right]  \\
+&&+k^c \nabla_a \nabla_c l_b - l^c \nabla_a \nabla_c k_b +k^c \nabla_b \nabla_c l_a - l^c \nabla_b \nabla_c k_a.
+\end{eqnarray*}
+Here, I have used the product rule and regrouped terms in a suggestive way. Clearly, there are two kinds of terms here: terms of the form $\nabla_a k^c \nabla_c l_b$, with only first derivatives, and terms of the form $k^c \nabla_a \nabla_c l_b.$
+
+However, by applying our lemma \ref{killinglemma}, we see that the pairs of (first derivative) terms in square brackets vanish, so we are left with only the second derivative terms. That is,
+$$\nabla_a m_b + \nabla_b m_a =k^c \nabla_a \nabla_c l_b + k^c \nabla_b \nabla_c l_a- l^c \nabla_a \nabla_c k_b  - l^c \nabla_b \nabla_c k_a,$$
+where I have again anticipated a cancellation by grouping the $k^c$ and $l^c$ terms together.
+
+Now we can rewrite these in terms of their commutators:
+\begin{eqnarray*}
+\nabla_a m_b + \nabla_b m_a &=&k^c ([\nabla_a,\nabla_c]+\nabla_c\nabla_a) l_b + k^c ([\nabla_b,\nabla_c]+\nabla_c\nabla_b) l_a\\
+&&- l^c ([\nabla_a,\nabla_c]+\nabla_c\nabla_a) k_b  - l^c ([\nabla_b,\nabla_c]+\nabla_c\nabla_b) k_a\\
+&=& k^c [\nabla_a,\nabla_c] l_b + k^c [\nabla_b,\nabla_c]l_a - l^c [\nabla_a,\nabla_c]k_b  - l^c [\nabla_b,\nabla_c]k_a,
+\end{eqnarray*}
+where all the not-commutator terms have vanished due to Killing's equations (e.g. $k^c \nabla_c (\nabla_a l_b + \nabla_b l_a)=0$). We're almost there. Now we apply the definition of the Riemann tensor, Eqn. \ref{riemannascommutator}, to change commutators into Riemann tensors like so:
+\begin{eqnarray*}
+\nabla_a m_b + \nabla_b m_a &=& k^c R_{acbd} l^d + k^c R_{bcad} l^d -l^c R_{acbd} k^d -l^c R_{bcad} k^d\\
+&=& k^c R_{acbd} l^d + k^c R_{bcad} l^d -l^d R_{acbd} k^c -l^d R_{bcad} k^c\\
+&=&0,
+\end{eqnarray*}
+where we have simply relabeled the dummy indices $c$ and $d$ on the last two terms. Therefore if $k$ and $l$ are Killing vectors, then their commutator is also a Killing vector. \qed

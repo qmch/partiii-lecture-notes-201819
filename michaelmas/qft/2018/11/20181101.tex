@@ -2,28 +2,32 @@ A brief correction: the time evolution operator should be defined
 $U(t,t_0)=e^{iH_0}e^{iH(t-t_0)}e^{-iH_0 t_0)}$ so that our time evolution relations all work out.
 
 Now last time, we claimed that
-$$\bra{\Omega}T\set{\phi_{1,H}\ldots \phi_{m,H}}\ket{\Omega}=\frac{\bra{0}T \set{\phi_{1,I}\ldots \phi_{m,I}S]}}{\bra{0}S\ket{0}}.$$
+$$\bra{\Omega}T\set{\phi_{1,H}\ldots \phi_{m,H}}\ket{\Omega}=\frac{\bra{0}T \set{\phi_{1,I}\ldots \phi_{m,I}S]}\ket{0}}{\bra{0}S\ket{0}}.$$
 That is, it suffices to consider only connected diagrams, since the vacuum bubbles add up to a multiplicative factor (namely, the vacuum energy) that can be factored out of the overall correlation function.
 Let us expand the numerator on the RHS as
-$$\bra{0}U(\infty, t_1) \phi_{1,I} U(t_1,t_2)\phi_{2,I} \ldots U(t_{n-1},t_n)\phi_{n,I} U(t_n,-\infty)\ket{0}$$
-with $x_1^0 > x_2^0 > \ldots > x_m^0$. Thus the numerator becomes Heisenberg picture states,
+$$\bra{0}U(\infty, t_1) \phi_{1,I} U(t_1,t_2)\phi_{2,I} \ldots U(t_{n-1},t_n)\phi_{n,I} U(t_n,-\infty)\ket{0},$$
+and WLOG we label the fields to already be time-ordered, with $x_1^0 > x_2^0 > \ldots > x_m^0$. That is, we've split up $S=\lim_{t\to \infty, t_0\to-\infty} U(t,t_0)$ into intervals from $t_i=x_i^0$ to $t_{i+1}=x_{i+1}^0$. We can then break up the operators,
+$$U(t_1,t_2)=U(t_1,0)U(0,t_2)$$ so that the numerator becomes
+$$\bra{0}U(\infty, 0) \underbrace{[U(0,t_1)\phi_{1,I} U(t_1,0)]}_{\phi_{1,H}} [U(0,t_2)\phi_{2,I} U(t_2,0)]\ldots U(t_{n-1},0)[U(0,t_n)\phi_{n,I} U(t_n,0)]U(0,-\infty)\ket{0},$$
+which is a bunch of Heisenberg picture states sandwiched between the vacuum states and some $U$s.
+More compactly,
 $$\underbrace{\bra{0}U(\infty,0)\phi_{I,H}\ldots \phi_{m,H}}_{\bra\psi}U(0,-\infty)\ket{0}$$
 setting everything back to the Heisenberg picture at $t=0$. Consider now
 $$\bra{\psi}U(0,t_0)\ket{0}=\bra{\psi}e^{iHt_0}\ket{0}$$
-since $H_0\ket{0}=0.$ Insert a complete set of interacting states $|ket{p_1,\ldots, p_n}$. Then 
+since $H_0\ket{0}=0.$ Insert a complete set of interacting states $\ket{p_1,\ldots, p_n}$. Then 
 \begin{eqnarray*}
 \lim_{t_0\to-\infty} \bra{\psi}U(0,t_0)\ket{0}&=&
 \lim_{t_0\to-\infty}\bra{\psi}e^{iHt_0}\left[\ket{\Omega}\bra{\Omega}+\sum_{n=1}^\infty \int  \prod_{j=1}^n \frac{d^3p_j}{2E_{p_j}(2\pi)^3}\ket{p_1,\ldots,p_n}\bra{p_1,\ldots,p_n}\right]\ket{0}\\
 &=&\braket{\psi}{\Omega}\braket{\Omega}{0}+
 \sum_{n=1}^\infty \int  \prod_{j=1}^n \frac{d^3p_j}{2E_{p_j}(2\pi)^3} e^{i\sum_{k=1}^n E_{p_k} t_0}\braket{\psi}{p_1,\ldots,p_n}\braket{p_1,\ldots,p_n}{0}.
 \end{eqnarray*}
-Luckly, this second term vanishes due to the Riemann-Lebesgue lemma: ``for reasonable $f(x)$ (i.e. square-integrable), $\lim_{\mu\to\infty} \int_a^b f(x)e^{i\mu x}dx=0.$'' Therefore the numerator is just
-$$\bra{0}U(\infty,0)\phi_{1,H}\ldots \phi_{m,H}\ket{\Omega}\braket{\Omega}{0}$$
-and similarly
-$$\bra{0}U(\infty,0)\ket{\psi}=\lim_{t_0\to\infty}\bra{0}e^{-iHt_0}\ket{\psi},$$
+Luckly, this second term vanishes due to the Riemann-Lebesgue lemma: ``for reasonable $f(x)$ (i.e. square-integrable), $\lim_{\mu\to\infty} \int_a^b f(x)e^{i\mu x}dx=0.$'' Therefore we get
+$$\lim_{t_0\to-\infty} \bra{\psi}U(0,t_0)\ket{0}=\bra{0}U(\infty,0)\phi_{1,H}\ldots \phi_{m,H}\ket{\Omega}\braket{\Omega}{0}$$
+where we have put back in the definition of $\bra{\psi}$. By the same token,
+$$\lim_{t_0\to\infty}\bra{0}e^{-iHt_0}\ket{\psi}=\bra{0}U(\infty,0)\ket{\psi},$$
 so our numerator becomes
 $$\bra{\Omega}\phi_{1,H}\ldots \phi_{m,H}\ket{\Omega}\braket{\Omega}{0}\braket{0}{\Omega}$$
-and the denominator is just $\braket{0}{\Omega}\braket{\Omega}{0}$ (it's the same calculation, but suppose there are no fields. Then the first factor is just $\braket{\Omega}{\Omega}=1$ by normalization.)
+and the denominator is just $\braket{0}{\Omega}\braket{\Omega}{0}$ (it's the same calculation, but suppose there are no fields. Then the first factor is just $\braket{\Omega}{\Omega}=1$ by normalization).
 
 Going back to our previous example, we say that to describe scattering in the interacting theory, our external states  e.g. $\ket{p_1,p_2}$ should come from the interacting theory. This means that we exclude loops on the external lines (``amputation'').
 
@@ -36,7 +40,7 @@ u&=&(p_1-p_2')^2=(p_2-p_1')^2
 where the squared here indicates a four-vector product (e.g. $(p_1+p_2)^2=(p_1^\mu+p_2^\mu)({p_1}_\mu+{p_2}_\mu).$
 \begin{ex}
 Show that the sum of the Mandelstam variables is
-$$s+t+u=m_1^2+m_2^+{m_1'}^2+{m_2'}^2,$$
+$$s+t+u=m_1^2+m_2^2+{m_1'}^2+{m_2'}^2,$$
 where $m_1,m_2,m_1',m_2'$ are the masses of the initial and final particles, so the Mandelstam variables are not all independent.
 \end{ex}
 
@@ -67,7 +71,7 @@ W&=&\int d^4x \int \frac{d^3\tilde p_1}{(2\pi)^3 2E_{\tilde p_1}} f_1(\tilde p_1
 \end{eqnarray*}
 Using the normalization we define the Fourier transform of the wavepacket,
 $$\ket{\psi_i}\equiv \int \frac{d^3p}{(2\pi)^3\sqrt{2E_p}}f_i(p) e^{-ip\cdot x}\ket{p}.$$
-The matrix element $|M|^2$ is a function of $\tilde p_1, \tilde p_2,p_1', p_2', q_i$ One can use the notion of sharp peaks to approximate this by the value where $\tilde p_i=p_i' = p_i.$ That is, our momentum distributions $f_i$ are localized around some values $p_i$, so they behave similarly to delta functions. Then the transition probability becomes
+What we've called the matrix element $|M|^2$ is still a function of $\tilde p_1, \tilde p_2,p_1', p_2', q_i$, but one can use the notion of sharp peaks (i.e. in our distributions $f_i$) to approximate $|M^2|$ by its value where $\tilde p_i=p_i' = p_i.$ That is, our momentum distributions $f_i$ are localized around some values $p_i$, so they behave similarly to delta functions and we can set all the dummy variables to the physical momenta $p_1,p_2$. Then the transition probability becomes
 $$W=\int d^4x \frac{|\psi_1 (x)|^2}{2E_1}\frac{|\psi_2(x)|^2}{2E_2}(2\pi)^4 \delta^4(\sum_i q_i-p_1-p_2)|M|^2,$$
 which means that the wavepacket in position space has some corresponding spread-- like momentum, it is localized and not a single value. The total transition probability is a function of the spread in momentum $f_i(p)$ as well as the momenta themselves, $|M|^2$. Thus
 $$\frac{dW}{d^4x}=\frac{|\psi_1 (x)|^2}{2E_1}\frac{|\psi_2(x)|^2}{2E_2}(2\pi)^4 \delta^4(\sum_i q_i-p_1-p_2)|M|^2,$$

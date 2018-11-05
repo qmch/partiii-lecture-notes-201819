@@ -1,9 +1,9 @@
 \begin{quote}\textit{$2=\pi=i=-1$ in these lectures.} --a former lecturer of Prof. Allanach's.\end{quote}
-To begin with, some logistic points. The notes (and I assume course material) will be based on \href{http://www.damtp.cam.ac.uk/user/tong/qft/qft.pdf}{David Tong's QFT notes} plus some of Prof. Allanach's on cross-sections and decay rates. See \url{http://www.damtp.cam.ac.uk/user/examples/indexP3.html} and in particular \url{http://www.damtp.cam.ac.uk/user/examples/3P1l.pdf} for the notes on cross-sections. In revising these notes, I'll be cross-referencing the Tong QFT notes as well as my copy of Anthony Zee's \textit{Quantum Field Theory in a Nutshell,} which takes the unusual step of starting from the path integral formalism and introducing second quantization later.
+To begin with, some logistic points. The notes and much of the course material will be based on \href{http://www.damtp.cam.ac.uk/user/tong/qft/qft.pdf}{David Tong's QFT notes} plus some of Prof. Allanach's on cross-sections and decay rates. See \url{http://www.damtp.cam.ac.uk/user/examples/indexP3.html} and in particular \url{http://www.damtp.cam.ac.uk/user/examples/3P1l.pdf} for the notes on cross-sections. In revising these notes, I'll be cross-referencing the Tong QFT notes as well as my copy of Anthony Zee's \textit{Quantum Field Theory in a Nutshell,} which takes a different pedagogical order in starting from the path integral formalism and introducing second quantization (the approach described here) later. Any good education in QFT requires an understanding of both formalisms, and we'll see the path integral next term in \emph{Advanced Quantum Field Theory}.\footnote{Note that the path integral formulation from \emph{Statistical Field Theory}, also taught this term, is precisely equivalent to the path integral that appears in QFT under the identification of one of the Euclidean dimensions of a statistical field theory with the imaginary time dimension of a QFT. This will be more obvious in hindsight.}
 
 After Tuesday's lecture, we'll be assigned one of four course tutors:
 \begin{itemize}
-    \item Francesco Careschi, fc435\@cam.ac.uk
+    \item Francesco Careschi, fc435@cam.ac.uk
     \item Muntazir Abidi, sma74
     \item Khim Leong, lkw30
     \item Stefano Vergari, sv408
@@ -13,7 +13,7 @@ Also, the Saturday, November 24th lecture has been moved to 1 PM Monday 26 Novem
 \begin{defn}
 A \term{quantum field theory} (QFT) is a field theory with an infinite number of degrees of freedom (d.o.f.). Recall that a field is a function defined at all points in space and time (e.g. air temperature is a scalar field in a room wherever there's air). The states in QFT are in general multi-particle states.
 \end{defn}
-Special relativity tells us that energy can be converted into mass, and so particles are produced and destroyed in interactions (particle number not conserved). This reveals a conflict between SR and quantum mechanics, where particle number is fixed. Interaction forces in our theory then arise from structure in the theory, dependent on things like
+Special relativity tells us that energy can be converted into mass, and so particles are produced and destroyed in interactions (particle number is in general not conserved). This reveals a conflict between SR and quantum mechanics, where particle number is fixed. Interaction forces in our theory then come from additional structure in the theory, depending on things like
 \begin{itemize}
     \item symmetry
     \item locality
@@ -21,61 +21,71 @@ Special relativity tells us that energy can be converted into mass, and so parti
 \end{itemize}
 
 \begin{defn}
-A \term{free QFT} is a QFT that has particles but no interactions. The classic free theory is a relativistic theory with infinitely many quantized harmonic oscillators.
+A \term{free QFT} is a QFT that has particles but no interactions. The classic free theory is a relativistic theory with which treats particles as excitations of infinitely many quantized harmonic oscillators.
 \end{defn}
-Free theories are generally not realistic but they are important, as interacting theories can be built from these with perturbation theory. The fact we can do this means the particle interactions are somehow weak (weak coupling), but other theories have strong coupling and cannot be described with perturbation theory.
+Free theories are generally not realistic but they are important, as interacting theories can be built from these with perturbation theory. The fact we can do this means the particle interactions are somehow weak (we say these theories have \term{weak coupling}), but other theories of interest (e.g. the strong force) have strong coupling and cannot be described with perturbation theory.
 
-\subsection*{Units in QFT} In QFT, we usually set $c=\hbar=1$. Since $[c]=[L][T]^{-1}, [\hbar]=[L]^2[M][T]^{-1},$ we find that in natural units, $$[L]=[T]=[M]^{-1}=[E]^{-1}$$ (where the last equality follows from $E=mc^2$ with $c=1$). We often just pick one unit, e.g. an energy scale like eV, and describe everything else in terms of powers of that unit. To convert back to metres or seconds, just reinsert the relevant powers of $c$ and $\hbar$.
+\subsection*{Units in QFT} In QFT, we usually set $c=\hbar=1$. Since $[c]=[L][T]^{-1}$ and $[\hbar]=[L]^2[M][T]^{-1},$ we find that in natural units, $$[L]=[T]=[M]^{-1}=[E]^{-1}$$ (where the last equality follows from $E=mc^2$ with $c=1$, for example). We often just pick one unit, e.g. an energy scale like \si{\electronvolt}, and describe everything else in terms of powers of that unit. To convert back to metres\footnote{As a USAmerican, I am likely to be bewilderingly inconsistent with regards to using American versus British spellings. Please bear with me.} or seconds, just reinsert the relevant powers of $c$ and $\hbar$.
 
 \begin{exm}
 The de Broglie wavelength of a particle is given by $\lambda=\hbar/(mc)$. An electron has mass $m_e\simeq \SI{e6}{\electronvolt}$, so $\lambda_e = \SI{2e-12}{\meter}$.
 \end{exm}
 
-If a quantity $x$ has dimension $(mass)^d$, we write $[x]=d$, e.g. $$G=\frac{\hbar c}{M_p^2}\implies [G]=-2.$$  $M_p \approx \SI{e19}{\giga\electronvolt}$ corresponds to the Planck scale, $\lambda_p \sim \SI{e-33}{\centi\meter}$, the length/energy scales where we expect quantum gravitational effects to become relevant. We note that the problems associated with relativising the Schr\"odinger equation are fixed in QFT by particle creation.
+If a quantity $x$ has dimension $(mass)^d$, we write $[x]=d$, e.g. $$G=\frac{\hbar c}{M_p^2}\implies [G]=-2.$$  $M_p \approx \SI{e19}{\giga\electronvolt}$ corresponds to the Planck scale, $\lambda_p \sim \SI{e-33}{\centi\meter}$, the length/energy scales where we expect quantum gravitational effects to become relevant. We note that the problems associated with relativising the Schr\"odinger equation are fixed in QFT by particle creation and annihilation.
 
-Before we do QFT, let's review classical field theory. In classical particle mechanics, we have a finite number of generalized coordinates $q_a(t)$ (where $a$ is a label telling you which coordinate you're talking about) and in general they are a function of time $t$. But in field theory, we instead have $\phi_a(x,t)$ where $a$ labels the field in question and $x$ is no longer a coordinate but a label like $a$.\footnote{See for instance Anthony Zee's \textit{QFT in a Nutshell} to see a more detailed description of how we go from discrete to continuous systems.}
+\subsection*{Classical field theory} Before we do QFT, let's review classical field theory. In classical particle mechanics, we have a finite number of generalized coordinates $q_a(t)$ (where $a$ is a label telling you which coordinate you're talking about), and in general they are a function of time $t$. But in field theory, we instead have continuous fields $\phi_a(\vec{x},t)$, where $a$ labels the field in question and $\vec x$ is no longer a coordinate but a label like $a$.\footnote{See for instance Anthony Zee's \textit{QFT in a Nutshell} to see a more detailed description of how we go from discrete to continuous systems.}
 
-In our classical field theory, there are now an infinite number of d.o.f., at least one for each $x$, so position has been demoted from a dynamical variable to a mere label.
+In our classical field theory, there are now an infinite number of degrees of freedom, at least one for each position in space $\vec x$, so position has been demoted from a dynamical variable to a mere label.
 
 \begin{exm}
 The classical electromagnetic field is a vector field with components $E_i(x,t), B_i(x,t)$ such that $i,j,k\in \{1,2,3\}$ label spatial directions. In fact, these six fields are derived from four fields (or rather four field components), the four-potential $A_\mu(x,t)=(\phi,\vec{A})$ where $\mu\in\{0,1,2,3\}$.
 
 Then the classical fields are simply related to the four-potential by
-$$E_i=\P{A_i}{t}-\P{A_0}{x_i} \text{ and } B_i=\frac{1}{2}\epsilon_{ijk} \P{A_k}{x_j}$$
+\begin{equation}
+E_i=\P{A_i}{t}-\P{A_0}{x_i} \text{ and } B_i=\frac{1}{2}\epsilon_{ijk} \P{A_k}{x_j}
+\end{equation}
 with $\epsilon_{ijk}$ the usual \href{https://en.wikipedia.org/wiki/Levi-Civita_symbol}{Levi-Civita symbol}, and where we have used the Einstein summation convention (repeated indices are summed over).
 \end{exm}
 
-The dynamics of a field are given by a \term{Lagrangian} $L$, which is simply a function of $\phi_a(x,t), \dot \phi_a(x,t),$ and $\grad \phi_a(x,t)$. 
+The dynamics of a field are given by a \term{Lagrangian} $L$, which is simply a function of $\phi_a(x,t), \dot \phi_a(x,t),$ and $\grad \phi_a(x,t)$. This is in precise analogy to the Lagrangian of a discrete system, which is a function of the coordinates $q_a(t)$ and their derivatives $\dot q_a(t)$.
 \begin{defn}
 We write
-$$L=\int d^3 x \mathcal{L}(\phi_a, \p_\mu \phi_a),$$
+\begin{equation}
+L=\int d^3 x \mathcal{L}(\phi_a, \p_\mu \phi_a),
+\end{equation}
 where we call $\mathcal{L}$ the \term{Lagrangian density}, or by a common abuse of terminology simply the Lagrangian.
 \end{defn}
 \begin{defn}
 We may then also define the \term{action}
-$$S\equiv \int_{t_0}^{t_1}L dt = \int d^4x \mathcal{L}(\phi_a,\p_\mu \phi_a)$$
+\begin{equation}
+S\equiv \int_{t_0}^{t_1}L dt = \int d^4x \mathcal{L}(\phi_a,\p_\mu \phi_a)
+\end{equation}
 \end{defn}
-Let us also note that in these units we have $[S]=0$ (since it appears alone in an exponent, for instance, $e^{iS}$) and so since $[d^4x]=-4$ we have $[\mathcal{L}]=4.$
+Let us also note that in these units we take the action $S$ to be dimensionless, $[S]=0$ (since it appears alone in an exponent, for instance, $e^{iS}$), and so since $[d^4x]=-4$ we have $[\mathcal{L}]=4.$
 
-The dynamical principle of classical field theory is that fields evolve s.t. $S$ is stationary with respect to variations of the field that don't affect the intiial or final values (boundary conditions). A general variation of the fields produces a variation in the action
+The dynamical principle of classical field theory is that fields evolve such that $S$ is stationary with respect to variations of the field that don't affect the initial or final values (boundary conditions). That is, $\delta S=0$. A general variation of the fields produces a variation in the action
 $$\delta S=\sum_a \int d^4 x\left \{ \P{\mathcal{L}}{\phi_a}\delta\phi_a +\P{\mathcal{L}}{(\p_\mu\phi_a)} \delta(\p_\mu \phi_a)\right\}.$$
-With an integration by parts we find that the variation is the action becomes
+Integrating the second term by parts, we find that the variation in the action becomes
 $$\delta S= \sum_a \int d^4x \left\{ \P{\mathcal{L}}{\phi_a}\delta \phi_a +\p_\mu \left( \P{\mathcal{L}}{(\p_\mu \phi_a)}\delta \phi_a\right)-\p_\mu \left(\P{\mathcal{L}}{(\p_\mu \phi_a)}\right)\delta \phi_a\right\}.$$
 
-The integral of the total derivative term vanishes for any term that decays at spatial $\infty$ (i.e. $\mathcal{L}$ is reasonably well-behaved) and has $\delta \phi_a(x,t_1)=\delta \phi_a(x,t_0)=0$. Therefore the boundary term goes away and we find that stationary action implies the \term{Euler-Lagrange equations},
-$$\p_\mu\P{\mathcal{L}}{(\p_\mu\phi_a)}-\P{\mathcal{L}}{\phi_a}=0.$$
+The integral of the total derivative term vanishes for any term that decays at spatial $\infty$ (i.e. $\mathcal{L}$ is reasonably well-behaved) and has $\delta \phi_a(x,t_1)=\delta \phi_a(x,t_0)=0$, as guaranteed by our boundary conditions. Therefore the boundary term goes away and we find that stationary action, $\delta S=0$, implies the \term{Euler-Lagrange equations},
+\begin{equation}
+\p_\mu\P{\mathcal{L}}{(\p_\mu\phi_a)}-\P{\mathcal{L}}{\phi_a}=0.
+\end{equation}
 
 \begin{exm}
-Consider the Klein-Gordon field $\phi$, defined
-$$\mathcal{L}=\frac{1}{2} \eta^{\mu\nu}\p_\mu \phi \p_\nu \phi -\frac{1}{2}m^2 \phi^2.$$
+Consider the Klein-Gordon field $\phi$, defined as the real-valued field $\phi$ which has a Lagrangian
+\begin{equation}
+\mathcal{L}=\frac{1}{2} \eta^{\mu\nu}\p_\mu \phi \p_\nu \phi -\frac{1}{2}m^2 \phi^2.
+\end{equation}
 Here $\eta^{\mu\nu}$ is the standard Minkowski metric\footnote{We use the mostly minus convention here, but honestly the sign conventions are all arbitrary and relativity often uses the other one where time gets the minus sign.}.
 
 To compute the Euler-Lagrange equation for this field theory,
  we see that $$\P{\cL}{\phi}=-m^2\phi \text{ and } \P{\cL}{(\p_\mu \phi)}=\p^\mu \phi.$$
-The Euler-Lagrange equations then tell us that $$\p_\mu \p^\mu \phi+m^2\phi = 0,$$ which we call the \emph{Klein-Gordon equation}. It has wave-like solutions $\phi=e^{-ipx}$ with $(-p^2+m^2)\phi=0$ (so that $p^2=m^2$, which is what we expect in units where $c=1$).
+The Euler-Lagrange equations then tell us that $\phi$ obeys the equation of motion $$\p_\mu \p^\mu \phi+m^2\phi = 0,$$ which we call the \emph{Klein-Gordon equation}. It has wave-like solutions $\phi=e^{-ipx}$ with $(-p^2+m^2)\phi=0$ (so that $p^2=m^2$, which is what we expect in units where $c=1$).
 \end{exm}
 
-\subsection*{A non-lectured aside on functional derivatives} If you're like me, you get a little anxious about taking complicated functional derivatives. The easiest way to manage these is to rewrite the Lagrangian so that all terms precisely match the form of the quantity you are taking the derivative with respect to, and remember that matching indices produce delta functions. 
+\subsection*{Non-lectured aside: on functional derivatives} If you're like me, you get a little anxious about taking complicated functional derivatives. The easiest way to manage these is to rewrite the Lagrangian so that all terms precisely match the form of the quantity you are taking the derivative with respect to, and remember that matching indices produce delta functions. 
 
 Here's a quick example. To compute $\P{}{(\p_\alpha \phi)}\left[ \p_\mu \phi \p^\mu \phi\right]$, rewrite the term in the brackets as $\eta^{\mu\nu}\p_\mu \phi \p_\nu \phi$ (since we are deriving with respect to a function of the form $\p_\alpha \phi$) and make sure to take the derivative with respect to a new index not already in the expression, e.g. $\p_\alpha \phi$. Then 
 \begin{eqnarray*}

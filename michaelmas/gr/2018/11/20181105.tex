@@ -1,0 +1,75 @@
+Last time, we introduced Killing vectors, symmetries of the metric. They obey the equation
+$$\nabla_c \zeta_d +\nabla_d \zeta_c=0.$$
+We also introduced a bracket on two Killing vectors $k,l$ defined such that
+$$[k,l]^b=m^b=k^a \nabla_a l^b-l^a\nabla_a k^b.$$ If we now plug in $m$ into Killing's equation, we find that 
+$\nabla_a m_b + \nabla_b m_a=0$, so the commutator of two Killing vectors is itself a Killing vector. We'll simply state without proof that the bracket we've defined also obeys the Jacobi identity,
+$$[m,[k,l]]+[k,[l,m]]+[l,[m,k]]=0.$$
+Therefore the set of Killing vectors equipped with this bracket forms a Lie algebra.
+
+From Symmetries, Fields and Particles we recall that the exponential map takes a Lie algebra to its corresponding Lie group. Let's see how that applies here. In Minkowski space, we have the metric
+$$ds^2=-dt^2+dx^2+dy^2+dz^2$$
+and it turns out that Killing's equations
+$$\nabla_a k_b +\nabla_b k_a=0$$
+have 10 linearly independent solutions, which are the maximum allowed in four spacetime dimensions.
+
+How do we find these solutions? Consider the geodesics of a particle, defined by the geodesic equation
+$$u^a \nabla_a u^a =0.$$
+Here, $u^a$ is the tangent vector to a particle worldline. Now consider some Killing vector $k^a$ and look at the inner product $k^a u_a$. In particular, let us consider the parallel transport of this quantity
+$$u^a \nabla_a(k^b u_b),$$
+which describes the evolution of $k^a u_a$ as you move along the worldline of the particle.
+Expanding this out, we see that
+$$u^a\nabla_a (u^bk_b)=u^a u^b \nabla_a k_b + u^a k^b \nabla_a u_b=0,$$
+where the first term is zero by Killing's equation\footnote{Explicitly, we can write $u^a u^b \nabla_a k_b = \frac{1}{2}(u^a u^b \nabla_a k_b + u^b u^a \nabla_a k_b)=\frac{1}{2}u^a u^b (\nabla_a k_b+ \nabla_b k_a)=0$, switching the dummy indices on the second term and applying Killing's equation.} and the second is zero by the geodesic equation. Thus $u^b k_b$ is constant along the particle trajectory, and each Killing vector is associated to a conservation law for free particle motion.
+
+The Killing vectors for Minkowski space include
+\begin{itemize}
+\item $k^a=(1,0,0,0)$,
+corresponding to time translation symmetry $\implies$ conservation of energy
+\item $(0,1,0,0),(0,0,1,0),(0,0,0,1)$, translations in the $x,y,z$ directions $\implies$ conservation of (three components of) linear momentum
+\item $(0,0,z,-y),(0,z,0,-x),(0,y,-x,0),$ corresponding to spatial rotations $\implies$ conservation of (three components of) angular momentum
+\item $(x,t,0,0),(y,0,t,0),(z,0,0,t)$ corresponding to Lorentz transformations $\implies$ conservation of the position of the particle at $t=0$\footnote{In a field theory context, we sometimes say that Lorentz invariance implies the center of energy of the system moves with constant velocity.}
+\end{itemize}
+The Lorentz transformations and rotations form a group $SO(3,1)$, and the translations also form a group (specifically, an abelian group). The semidirect product of these two results in the Poincar\'e group, which is the maximal set of symmetries of Minkowski space.
+
+There are two more maximally symmetric four-dimensional spacetimes-- they are de Sitter space, which we saw in Lectures 10 and 11, and anti-de Sitter space (AdS), which is similar but has a negative cosmological constant, $\Lambda < 0$. In words, Minkowski space, dS, and AdS are the maximally symmetric $3+1$D spaces with zero, positive, and negative curvature respectively.
+
+Let's take a little detour back to Newtonian gravity. In Newtonian gravity, the gravitational potential $\phi$ obeys Poisson's equation,
+$$\nabla^2 \phi=2\pi G \rho$$
+and the gravitational force is given by
+$$\vec g = -\grad \phi.$$
+For a static spherically symmetric field, outside a gravitating body the potential is simply
+$$\phi=-\frac{GM}{r},$$
+which reproduces the inverse square law. How does the situation change in general relativity? Suppose we have a metric of the form
+$$ds^2=-V(r)dt^2 +\frac{dr^2}{W(r)}+r^2(d\theta^2+\sin^2\theta d\phi^2).$$
+Consider spheres of constant $t,r$. The Killing vector $m^a=(0,0,0,1)$ corresponds to rotation about the $\phi$ axis, and there are two more rotational Killing vectors which result in a symmetry group $SO(3).$ The Killing vector $k^a=(1,0,0,0)$ simply results in time translations (with the group structure of $(\RR,+)$).
+
+To simplify the calculations, we may take $V=W=C_1+C_2/r$, where $C_1,C_2$ are some constants of integration. We choose $C_1=+1$ so that as $r\to\infty$, our metric looks like Minkowski space (we say the metric is \emph{asymptotically flat}). If we set $C_2=-2GM$, this leads to what is known as the \term{Schwarzschild metric}. Here $G$ is Newton's constant and $M$ has the interpretation of the black hole mass. %\footnote{Evidently, this solution was found by Droste in 1911 before Karl Schwarzschild in 1916, but Droste ended up a combatant in WWI and didn't get the credit.}
+
+There are 4 major experimental tests of general relativity. They are as follows:
+\begin{enumerate}
+    \item Deflection of starlight
+    \item Determination of orbital shape (circle, ellipse, hyperbola, parabola)
+    \item Gravitational redshift
+    \item Shapiro effect.
+\end{enumerate}
+We'll see the first three of these in class and work out the last as an exercise on the example sheet, but all four involve finding particle motion in the Schwarzschild geometry.
+
+We should therefore analyze the geodesics $x^a(s)$ where $s$ is an affine parameter (the proper time $\tau$ if the curve is timelike). We define the tangent vector $u^a$ by
+$$u^a=\frac{dx^a}{ds}=\dot x^a(s).$$
+Note that the geodesic equation says that $u^a \nabla_a u^b=0,$ and $u^b u_b=-\epsilon$ for some constant $\epsilon.$ This follows since
+$u^a\nabla_a(u^b u_b)=2u^b (u^a \nabla_a u_b)=0,$
+where the term in parentheses vanishes by the geodesic equation. Now, we could write down the geodesic equation explicitly in terms of Christoffel symbols, but it is often more expedient to write down the action for a free particle,
+$$I=\int ds g_{ab}\dot x^a \dot x^b,$$
+and note that geodesics are paths of stationary action, $\delta I=0$.
+
+Therefore we should write down the action and look at the Euler-Lagrange equations.
+$$I=\int ds \left[-\left(1-\frac{2M}{r}\right)\dot t^2 + \left(1-\frac{2M}{r}\right)^{-1} \dot r^2 +r^2 \dot \theta^2 +r^2\sin^2\theta \dot \phi^2\right].$$
+Since the metric has no explicit $\phi, t$ dependence, we can immediately write down two conserved quantities:
+the energy, $$E=\left(1-\frac{2M}{r}\right)\dot t$$
+and the angular momentum about the $\phi$ axis,
+$$L=r^2 \sin^2\theta \dot \phi.$$
+In Newtonian theory, we make things simple by setting $\theta=\pi/2$ so that motion lies in the equatorial plane. If we now write down the $\theta$ equation of motion, we have
+$$\frac{d}{ds}(r^2\dot \theta)-r^2 \sin\theta\cos\theta \dot \phi^2=0.$$
+If our particle initially lies in the equatorial plane $\theta(0)=\pi/2$ and the initial velocity also lies in the equatorial plane, $\dot \theta(0)=0$, then 
+$$r^2 \ddot \theta+2r \dot r \dot\theta =0 \implies \ddot\theta(0)=0,$$
+so just as in the classical case, if our initial motion (position and velocity) lies in the equatorial plane then it is constrained to lie in the equatorial plane at all future times.
