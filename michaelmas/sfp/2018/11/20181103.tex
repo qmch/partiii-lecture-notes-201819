@@ -3,34 +3,33 @@ Today we'll complete our initial discussion of Killing forms and begin the Carta
 Last time, we showed that if $\fg$ is not semi-simple, then some of the structure constants must vanish. Let's see what how this implies that $\kappa$ is degenerate (i.e. there exists some $v\in V$ such that its Killing form vanishes, $i(v,w)=0$ for all $w\in V$).
 
 We started by separating the basis vectors $T^a$ into a set $\set{T^i,i=1,\ldots,d}$ spanning the ideal $\mathfrak{j}$ and the rest of the basis vectors $\set{T^\alpha, \alpha=d+1,\ldots, D}$. Since $\mathfrak{j}$ is abelian, we found that
-\begin{equation}
+\begin{equation}\label{ijazero}
 [T^i, T^j]=0\quad \forall i,j=1,\ldots,d \implies f^{ij}_a=0,
 \end{equation}
 and since $\mathfrak{j}$ is an ideal
-\begin{equation}
-T^\alpha, T^j]=f^{\alpha j}_k T^k\in \mathfrak{j} \implies f^{\alpha j}_\beta=0.
+\begin{equation}\label{ajbzero}
+[T^\alpha, T^j]=f^{\alpha j}_k T^k\in \mathfrak{j} \implies f^{\alpha j}_\beta=0.
 \end{equation}
 Now consider a general element of the Lie algebra, $$X=X_a T^a \in \mathfrak{g}$$ and a general element of the ideal,
 $$Y=Y_i T^i \in \mathfrak{j}.$$
 Then
-$$\kappa[X,Y]=\kappa^{ai}X_a Y_i,$$
-where
-$$\kappa^{ai}=f^{ad}_c f^{ic}_d.$$
+$$\kappa(X,Y)=\kappa^{ai}X_a Y_i,\text{ with }
+\kappa^{ai}\equiv f^{ad}_c f^{ic}_d.$$
 Let's take this carefully.
-\begin{eqnarray*}
-\kappa^{ai}&=&f^{ae}_c f^{ic}_e\\
-&=&f^{ae}_\alpha f^{i\alpha}_e\\
-&=&f^{aj}_\alpha f^{i\alpha}_j.
-\end{eqnarray*}
-To go from the first line to the second, we have used the fact that if $c=1,\ldots,d$, then $f^{ic}_d$ vanishes, so $f^{ic}_d=f^{i\alpha}_d$. To go from the second line to the third, we have then used the fact that if $e=d+1,\ldots,D$ then $f^{ae}_{\alpha}$ vanishes, so $f^{ae}_\alpha=f^{aj}_\alpha.$.
+\begin{align*}
+\kappa^{ai}&=f^{ae}_c f^{ic}_e\text{ by definition}\\
+&=f^{ae}_\alpha f^{i\alpha}_e\text{ by }\ref{ijazero}\\
+&=f^{aj}_\alpha f^{i\alpha}_j\text{ by }\ref{ajbzero}.
+\end{align*}
+To go from the first line to the second, we have used the fact that if $c=1,\ldots,d$, then $f^{ic}_e$ vanishes, so $f^{ic}_e=f^{i\alpha}_e$. To go from the second line to the third, we have then used the fact that if $e=d+1,\ldots,D$ then $f^{ae}_{\alpha}$ vanishes, so $f^{ae}_\alpha=f^{aj}_\alpha.$
 Now separate the sum over $a=1,\ldots,D$ into $k=1,\ldots,d$ and $\beta=d+1,\ldots,D$.
 Thus
 $$\kappa^{ai}=\underbrace{f^{\beta j}_\alpha}_{\text{zero by } f^{\alpha j}_\beta=0} f^{i\alpha}_j + \underbrace{f^{kj}_\alpha}_{\text{zero by}f^{kj}_a=0} f^{i\alpha}_k=0.$$
-Therefore $\kappa[X,Y]=0 \forall Y\in \mathfrak{j},\forall X \in \fg\implies \kappa$ is degenerate.\footnote{It may be worth unpacking what we used where.} Taking the contrapositive, we conclude that $\kappa$ is nondegenerate $\implies \fg$ is semi-simple. \qed
+Therefore $$\kappa[X,Y]=0 \quad\forall Y\in \mathfrak{j},\forall X \in \fg\implies \kappa\text{ is degenerate.}$$ Taking the contrapositive, we conclude that $\kappa$ is nondegenerate $\implies \fg$ is semi-simple. \qed
 
 In Hugh Osborn's notes, he proves the other direction, so this turns out to be an if and only if. That is, $\kappa$ is nondegenerate $\iff \fg$ is semi-simple.
 
-\subsection*{Cartan classification} Cartan proved in 1894 that one can fully classify all finite dimensional, simple, complex Lie algebras. Happily, these are often the ones which are of most use to us in physics. Simple Lie groups come with non-degenerate inner products (a fortiori), which is a nice property. Moreover we look at complex Lie algebras since the field $\CC$ is \term{algebraically closed}-- polynomials with complex coefficients have in general complex solutions, whereas the same is not true for polynomials with real coefficients (which can have complex solutions).
+\subsection*{Cartan classification} Cartan proved in 1894 that one can fully classify all finite dimensional, simple, complex Lie algebras. Happily, these are often the ones which are of most use to us in physics. Simple Lie groups come with non-degenerate inner products (a fortiori, since simple implies semi-simple), which is a nice property. Moreover we will often look at complex Lie algebras since the field $\CC$ is \term{algebraically closed}-- polynomials with complex coefficients have in general complex solutions, whereas the same is not true for polynomials with real coefficients (which can have complex solutions).
 
 Recall that when we did the representation theory of $L(SU(2))_\CC,$ we defined a Cartan-Weyl basis,
 $$\set{H,E_\pm}$$ where $H$ is diagonal and $E_\pm$ moves us between eigenvectors. The brackets turned out to be

@@ -1,0 +1,112 @@
+Last time, we started discussing the Cartan classification of finite-dimensional simple complex Lie algebras. We defined the Cartan subalgebra, the maximal abelian subalgebra containing only ad-diagonalizable elements. We defined the rank of the Cartan subalgebra of a Lie algebra $\fg$ as
+$$\text{Rank}[\fg]=\dim \mathfrak{h} = r.$$
+
+Now the idea is that if $H^i,i=1,\ldots,r$ is a basis for the Cartan subalgebra, then $[H_i,H_j]=0$ and all the $H_i$ considered as matrices can be simultaneously diagonalized in some basis. We conclude that $\fg$ is spanned by simultaneous eigenvectors of $H_i$.
+
+Now there also exist eigenvectors $E^\alpha \in \fg$ such that
+$$\text{ad}_{H^i}(E^\alpha)=[H^i, E^\alpha]=\alpha^i E^\alpha,$$
+with $\alpha^i\in \CC,i=1,\ldots,r$. A general element of the Cartan subalgebra $H\in \mathfrak{h}$ can be written
+$$H=e_i H^i$$
+where $e_i$ represents the components of $H$. Now we can write
+$$[H,E^\alpha]=\alpha(H)E^\alpha$$
+where $\alpha(H)=e_i \alpha^i$ is now a function from $H$ (specifically the components $e_i$ of $H$) to the complex numbers $\CC$.
+
+A root (i.e. a set of values $\alpha=\set{\alpha^i}$) therefore defines a linear map $\mathfrak{h}\to \CC$. We think of roots as elements of the \emph{dual vector space} $\mathfrak{h}^*$ of the Cartan subalgebra $\mathfrak{h}$. One can further prove that the roots are non-degenerate (see Fuchs and Schweigert, pg. 87). For our purposes, we will simply assume this is true.
+
+Then we have a set of roots $\Phi$ consisting of $d-r$ distinct elements of $\fh^*$ (that is, $\dim(\fg)-\dim(\fh)$). 
+\begin{defn}
+We define the Cartan-Weyl basis for $\fg$ to be the set
+$$B=\set{H^i,i=1,\ldots,r}\cup \set{E^\alpha, \alpha \in \Phi}$$
+with $|\Phi|=d-r$.
+\end{defn}
+
+Recall now that by the Cartan theorem, $\fg$ simple $\implies$ the Killing form is non-degenerate. The Killing form is the natural choice of inner product on the Lie algebra, and it is defined by
+$$K(X,Y)=\frac{1}{N}\text{Tr}[\text{ad}_X \circ \text{ad}_Y]$$
+(where we have WLOG chosen a normalization constant $N\in\RR^*$).
+
+We'll need a few properties of Lie algebras to move forward here. First, the bracket satsifies the Jacobi identity,
+\begin{equation}\label{jacobi}
+    [X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0
+\end{equation}
+for all $X,Y,Z\in \fg.$
+We have the property of the adjoint representation that taking the ad map commutes nicely with taking the bracket,
+\begin{equation}
+    \text{ad}_{[X,Y]}=\text{ad}_X \circ \text{ad}_Y-\text{ad}_Y \circ \text{ad}_X
+\end{equation}
+for all $X,Y\in \fg$.
+Finally, we have the invariance of the Killing form,
+\begin{equation}\label{killinginvariance}
+    K([Z,X],Y)+K(X,[Z,Y])=0
+\end{equation}
+for all $X,Y,Z\in \fg.$
+
+We'd like to prove the following two statements:
+\begin{enumerate}
+    \item[i)] $\forall H\in \fh,\alpha\in \Phi$, we have
+    $$K(H,E^\alpha)=0.$$
+    \item[ii)] $\forall \alpha,\beta\in \Phi, \alpha+\beta \neq 0,$
+    $$K(E^\alpha,E^\beta)=0.$$
+\end{enumerate}
+
+Let's prove this. $\forall H'\in \fh$ and any $H\in \fh$, we can write
+\begin{align*}
+\alpha(H')K(H,E^\alpha)&= K(H,[H',E^\alpha])\\
+&=-K([H',H],E^\alpha)\text{ by \ref{killinginvariance}}\\
+&=-K(0,E^\alpha)=0,
+\end{align*}
+where in the first line we have simply moved the $\alpha(H')$ into the inner product. Hence $\alpha \in \phi, \alpha\neq 0 \implies K(H,E^\alpha)=0.$ \qed
+
+The second statement is proved as follows. $\forall H'\in \fh$, we write
+$$(\alpha(H')+\beta(H'))K(E^\alpha,E^\beta)=K([H',E^\alpha],E^\beta)+K(E^\alpha,[H',E^\beta])].$$
+But by\ref{killinginvariance}, this whole expression vanishes. Therefore
+$\forall\alpha,\beta\in \Phi, \alpha+\beta \neq 0 \forall H'\in \fh$,
+$$\implies K(E^\alpha,E^\beta)=0 \text{ if } \alpha+\beta \neq 0. \qed$$
+
+Let's prove one more lemma. 
+\begin{itemize}
+    \item[iii)] $\forall H\in \fh, \exists H'\in \fh$ such that $K(H,H')\neq 0.$
+\end{itemize}
+The proof is as follows. For some $H\in \fh$, assume that no such $H'$ exists. Then $$K(H,H')=0\forall H'\in \fh.$$ But from i) above, we know that
+$$K(H,E^\alpha)=0\forall \alpha \in \Phi.$$
+Since the matrices $H_i\in \fh$ and $E^\alpha\in \fg$ form a basis for $\fg$, this means that $$K(H,X)=0\forall X \in \fg \implies K \text{ is degenerate}, $$
+which contradicts our assumption that $K$ was non-degenerate. Therefore $\exists H'\in \fh$ with $K(H,H')\neq 0$. \qed
+
+Therefore it is not only the case that $K$ is a non-degenerate inner product on $\fg$; in fact, we have proven the stronger result that $K$ is non-degenerate even when restricted to the Cartan subalgebra $\fh\subset \fg$.
+
+In components, we write
+$$K(H,H')=K^{ij}e_i e_j'$$ where$K^{ij}=K(H^i,H^j)$. Thus iii) implies that $K$ is invertible as an $r\times r$ matrix-- it has no zero eigenvalues. That is,
+$$\exists(K^{-1})_{ij}\text{ such that }(K^{-1})_{ij} K^{jk}=\delta_i^k.$$
+
+Why is this useful? Precisely because $K^{-1}$ now induces a non-degenerate inner product on $\fh^*$, the dual space. Thus with $\alpha,\beta\in \Phi,$ we get
+$$[H^i,E^\alpha]=\alpha^i E^\alpha\text{ and }[H^i,E^\beta]=\beta^i E^\alpha.$$
+\begin{defn}
+We therefore define the inner product on elements of the dual space,
+$$(\alpha,\beta)=(K^{-1})_{ij}\alpha^i \beta^j.$$
+\end{defn}
+
+We shall now prove the following statement.
+\begin{itemize}
+\item[v)] With $\alpha\in \Phi\implies -\alpha\in \Phi$ with
+$K(E^\alpha,E^{-\alpha})\neq 0.$
+\end{itemize}
+From i) we have $K(E^\alpha,H)=0\forall H\in \fh$, and from ii) we have $K(E^\alpha,E^\beta)=0 \forall \beta\in \Phi, \alpha\neq -\beta$. Suppose $-\alpha \notin \Phi$. Then we would have
+$$K(E^\alpha,X)=0\quad \forall X\in \fg,$$
+which would contradict the non-degeneracy of $K$ on $\fg$. Therefore there must be another basis vector $E^{-\alpha}$ such that $K(E^\alpha,E^{-\alpha})\neq 0$. \qed
+
+Now we've almost completely characterized the algebra in the Cartan-Weyl basis. We've written
+\begin{align*}
+[H^i,H^j]&=0 \quad\forall i,j=1,\ldots,r\\{}
+[H^i,E^\alpha]&= \alpha^i E^\alpha \quad\forall i=1,\ldots,r \forall \alpha \in \Phi.
+\end{align*}
+But there's one more set of brackets we must compute: the bracket of the step elements with themselves, $[E^\alpha,E^\beta]$. Fortunately, the computation is not too bad. We can do it with the Jacobi identity:
+\begin{align*}
+[H^i,[E^\alpha,E^\beta]]&=-[E^\alpha,[E^\beta,H^i]]-[E^\beta,[H^i,E^\beta]]\\
+&=(\alpha^i+\beta^i)[E^\alpha,E^\beta],
+\end{align*}
+where we have freely used the antisymmetry of the brackets to switch the order of $E^\beta,E^\alpha$, and also made use of the known commutation relation of $[H^i,E^\alpha]$. Thus for $\alpha+\beta \neq 0$, we conclude that
+$$[E^\alpha,E^\beta]=\begin{cases}
+N_{\alpha,\beta}E^{\alpha+\beta} & \text{if }\alpha+\beta\in \Phi\\
+0 & \text{if }\alpha+\beta\not\in \Phi.
+\end{cases}
+$$
+That is, we've found that the element $[E^\alpha,E^\beta]$ is actually proportional to the step element with root $\alpha+\beta$, with some undetermined constants $N_{\alpha,\beta}.$

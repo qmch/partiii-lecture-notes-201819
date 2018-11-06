@@ -2,7 +2,7 @@ Last time, we finished discussing the representation theory of $L(SU(2))$. In pa
 $$R_\Lambda \otimes R_{\Lambda'}=\bigoplus_{\Lambda'' \in \ZZ_{\geq 0}} L^{\Lambda''}_{\Lambda,\Lambda'}R_{\Lambda''}$$
 with $$L^{\Lambda''}_{\Lambda,\Lambda'}\in \ZZ_{\geq 0}.$$
 
-We also described an algorithm to work out the direct product representation, namely taking writing the tensor product as a direct sum of the representation $R_{\Lambda+\Lambda'}$ and some remainder term $\tilde R_{\lambda,\Lambda'}.$ It's an exercise (sheet 2, Q3) to work out that
+We also described an algorithm to work out the direct product representation, namely writing the tensor product as a direct sum of the representation $R_{\Lambda+\Lambda'}$ and some remainder term $\tilde R_{\lambda,\Lambda'}.$ It's an exercise (sheet 2, Q3) to work out that
 $$R_N\otimes R_M = R_{|N-M|}\oplus R_{|N-M|+2} \oplus\ldots \oplus R_{N+M}.$$
 Tensor products are important because multi-particle spaces are described in general by tensor products, not direct products (this leads to the phenomenon of entanglement).
 
@@ -30,20 +30,20 @@ $$X=X_a T^a,\quad Y=Y_a T^a, \quad Z=Z_a T^a.$$
 We also have some structure constants associated to the basis,
 $$[T^a,T^b]=f^{ab}_c T^c.$$
 Thus the composition of the ad maps is some $D\times D$ matrix, and we can work out in this basis the components of this matrix.
-\begin{eqnarray*}
-[X,[Y,Z]]&=&X_a Y_b Z_c [T^a,[T^b,T^c]]\\
-&=&X_a Y_b Z_c [T^a,f^{bc}_d T^d]\\
-&=& X_a Y_b Z_c f^{ad}_e f^{bc}_d T^e\\
-&=&M(X,Y)^c_e Z_c T^e
-\end{eqnarray*}
+\begin{align*}
+[X,[Y,Z]]&= X_a Y_b Z_c [T^a,[T^b,T^c]]\\
+&= X_a Y_b Z_c [T^a,f^{bc}_d T^d]\\
+&= X_a Y_b Z_c f^{ad}_e f^{bc}_d T^e\\
+&= M(X,Y)^c_e Z_c T^e
+\end{align*}
 with 
 $$M(X,Y)^c_e \equiv X_a Y_b f^{ad}_c f^{bc}_d.$$
-The matrix $M(x,Y)$ is therefore the linear map $\text{ad}_X\circ \text{ad}_Y:\fg \to \fg$, and all that remains is to take the trace to get the Killing form.
-\begin{eqnarray*}
-\kappa^{ab}X_a Y_b &=& \text{Tr}_D[M(X,Y)]\\
-&=&M(X,Y)^c_c\\
-&=&X_a Y_b f^{ad}_c f^{bc}_d.
-\end{eqnarray*}
+The matrix $M(X,Y)$ is therefore the linear map $\text{ad}_X\circ \text{ad}_Y:\fg \to \fg$, and all that remains is to take the trace to get the Killing form.
+\begin{align*}
+\kappa^{ab}X_a Y_b &= \text{Tr}_D[M(X,Y)]\\
+&= M(X,Y)^c_c\\
+&= X_a Y_b f^{ad}_c f^{bc}_d.
+\end{align*}
 Therefore the Killing form in terms of structure constants is explicitly
 $$\kappa^{ab}=f^{ad}_c f^{bc}_d.$$
 The indices $c$ and $d$ are summed over, so we get the two free indices $a,b$ as desired.
@@ -52,22 +52,22 @@ Now what do we mean by saying that the Killing form is a ``natural'' inner produ
 $$\kappa([Z,X],Y)+\kappa(X,[Z,Y])=0$$ for all $Z\in \fg, X,Y \in \fg.$ This is the equivalent of invariance under a conjugation by a Lie algebra element, $g X g^{-1}.$
 
 Let's show that this property holds for this inner product.
-\begin{eqnarray*}
-\kappa([Z,X],Y) &=&\text{Tr}[\text{ad}_{[Z,X]}\circ \text{ad}_Y]\\
-&=&\text{Tr}[(\text{ad}_Z \circ \text{ad}_X - \text{ad}_X \circ \text{ad}_Z)\circ \text{ad}_Y]\\
-&=&\text{Tr}[\text{ad}_Z \circ \text{ad}_X \circ \text{ad}_Y] - \text{Tr}[\text{ad}_X \circ \text{ad}_Z \circ \text{ad}_Y]\\
-\end{eqnarray*}
+\begin{align*}
+\kappa([Z,X],Y) &=\text{Tr}[\text{ad}_{[Z,X]}\circ \text{ad}_Y]\\
+&=\text{Tr}[(\text{ad}_Z \circ \text{ad}_X - \text{ad}_X \circ \text{ad}_Z)\circ \text{ad}_Y]\\
+&=\text{Tr}[\text{ad}_Z \circ \text{ad}_X \circ \text{ad}_Y] - \text{Tr}[\text{ad}_X \circ \text{ad}_Z \circ \text{ad}_Y]
+\end{align*}
 where in going from the first to the second line, we have used the fact that the ad map is also a representation and can therefore be rewritten by linearity in its argument $[Z,X]$.
 Similarly,
 $$\kappa(X,[Z,Y])=\text{Tr}[\text{ad}_X\circ \text{ad}_Z \circ \text{ad}_Y]-\text{Tr}[\text{ad}_X \circ \text{ad}_Y \circ \text{ad}_Z].$$
-However, if we now compare these two expressions we see that by the cyclic property of the trace (e.g. interpreting the ad maps as matrices on the vector space), their sum vanishes, and so
+However, if we now compare these two expressions we see that by the cyclic property of the trace (i.e. interpreting the ad maps as matrices on the vector space), their sum vanishes\footnote{Explicitly, this means that $\text{Tr}[\text{ad}_X \circ \text{ad}_Y \circ \text{ad}_Z]=\text{Tr}[\text{ad}_Z \circ \text{ad}_X \circ \text{ad}_Y]$.}, and so
 $$\kappa([Z,X],Y)+\kappa(X,[Z,Y])=0. \qed$$
 
 We may next ask under what conditions $\kappa$ is non-degenerate, i.e. the map $\kappa^{ab}$ is invertible. 
 \begin{thm}
 (Cartan) The Killing form $\kappa$ on a Lie algebra $\fg$ is non-degenerate $\iff \fg$ is semi-simple.
 \end{thm}
-In the specific case, if $\fg$ is simple, $\kappa$ is the unique invariant inner product on $\fg$ up to an overall scalar multiple.
+In the specific case, if $\fg$ is simple, then the Killing form $\kappa$ is the unique invariant inner product on $\fg$ up to an overall scalar multiple.
 \begin{defn}
 A Lie algebra is \term{semi-simple} if it has no abelian ideals. (This is a little weaker than simple, clearly.)
 \end{defn}
@@ -82,9 +82,10 @@ $$\fg\text{ not semi-simple }\implies \kappa\text{ is degenerate}.$$
 Suppose $\fg$ is not semi-simple. Then $\fg$ has an abelian ideal $\mathfrak{j}.$ Let $\dim(\fg)=D$ and suppose the ideal has dimension $\dim(\mathfrak{j})=d.$ WLOG we can choose a basis $B$ for $\fg$ such that
 $$B=\set{T^a} =\set{\underbrace{T^i; i=1,\ldots,d}_{\text{span }\mathfrak{j}}}\cup \set{T^\alpha;\alpha=d+1,d+2,\ldots, D},$$
 i.e. a subset $T^i$ of the basis vectors span the ideal $\mathfrak{j}.$ Since $\mathfrak{j}$ is abelian,
-$$[T^i,T^j]=0\forall i,j.$$ Therefore the structure constants are constrained by
+$$[T^i,T^j]=0\quad\forall i,j=1,\ldots,d.$$ Therefore the structure constants are constrained by
 $$f^{ij}_a = 0,\quad i,j=1,\ldots, d, a=1,\ldots,D.$$
 That is, the bracket vanishes for all pairs of elements in the abelian ideal, so all structure constants with $ij$ indices up are zero.
 
 Moreover, $\mathfrak{j}$ is an ideal, so the bracket of a basis element for $\mathfrak{j}$ with a general basis element is still in $\mathfrak{j}.$ That is,
 $$[T^\alpha,T^j]=f^{\alpha j}_k T^k \in j \implies f^{\alpha j}_\beta=0, \beta = d+1,\ldots,D.$$
+We'll use these facts next time to complete the proof of Cartan's theorem in one direction.
