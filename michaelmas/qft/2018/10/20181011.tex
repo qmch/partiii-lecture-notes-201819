@@ -22,11 +22,11 @@ $$\int \frac{d^3 \vec p}{(2\pi)^3}\left(\frac{-i}{2}\right)\set{-e^{i\vec p \cdo
 since $\delta^3(\vec x)= \int \frac{d^3 \vec p}{(2\pi)^3} e^{i \vec p \cdot \vec x}$ and $\vec p$ is a dummy integration variable, so we can freely switch the sign in the exponent.
 
 Now we compute $H$ in terms of $a_{\vec p} a_{\vec p}^\dagger$ to find (after some work with $\delta$ functions which you should check) that
-\begin{eqnarray*}
-H&=&\frac{1}{2}\int d^3 x \left( \pi^2+(\grad \phi)^2+m^2\phi^2\right)\\
-&=& \frac{1}{2}\int d^3x \frac{d^3 \vec p}{(2\pi)^3} \frac{d^3 \vec q}{(2\pi)^3} \left[ \frac{-\sqrt{\omega_{\vec p}\omega_{\vec q}}}{2}(a_{\vec p} e^{i\vec p \cdot \vec x}-a^\dagger_{\vec p} e^{-i \vec p \cdot \vec x})(a_q e^{iq \cdot x}-a_q^\dagger e^{-i q\cdot x})\right.\\
-&&\left.+\frac{1}{2\sqrt{\omega_{\vec p}\omega_{\vec q}}}(ip a_p e^{ip\cdot x}-ip a_p^\dagger e^{-i p\cdot x}) \right]
-\end{eqnarray*}
+\begin{align*}
+H={}&\frac{1}{2}\int d^3 x \left( \pi^2+(\grad \phi)^2+m^2\phi^2\right)\\
+={}& \frac{1}{2}\int d^3x \frac{d^3 \vec p}{(2\pi)^3} \frac{d^3 \vec q}{(2\pi)^3} \left[ \frac{-\sqrt{\omega_{\vec p}\omega_{\vec q}}}{2}(a_{\vec p} e^{i\vec p \cdot \vec x}-a^\dagger_{\vec p} e^{-i \vec p \cdot \vec x})(a_q e^{iq \cdot x}-a_q^\dagger e^{-i q\cdot x})\right.\\
+&+\left.\frac{1}{2\sqrt{\omega_{\vec p}\omega_{\vec q}}}(ip a_p e^{ip\cdot x}-ip a_p^\dagger e^{-i p\cdot x}) \right]
+\end{align*}
 There's a lot of algebraic manipulation here (details in David Tong's notes) but the net result is that
 $$H=\frac{1}{2} \int \frac{d^3p}{(2\pi)^3} \omega_{\vec p}(a_{\vec p} a_{\vec p}^\dagger + a_{\vec p}^\dagger a_{\vec p}).$$
 This is simply the Hamiltonian for an infinite number of uncoupled simple harmonic oscillators with frequency $\omega_p$, just as expected.
@@ -34,11 +34,11 @@ This is simply the Hamiltonian for an infinite number of uncoupled simple harmon
 Now we can define a vacuum state $\ket{0}$ as the state which is annihilated by all operators $a_{\vec p}$: 
 $$a_{\vec p}\ket{0}=0 \forall \vec p.$$
 Then computing the vacuum state energy $H\ket{0}$ yields
-\begin{eqnarray*}
-H\ket{0}&=&\int \frac{d^3p}{(2\pi)^3}\omega_p (a_p^\dagger a_p + \frac{1}{2}[a_p, a_p^\dagger])\ket{0}\\
-&=&\frac{1}{2}\int \frac{d^3 p}{(2\pi)^3}\omega_p [a_p, a^\dagger_p] \ket{0}\\
-&=& \int d^3 p \frac{\omega_p}{2} \delta^3 (\vec{0})\ket{0},
-\end{eqnarray*}
+\begin{align*}
+H\ket{0}&=\int \frac{d^3p}{(2\pi)^3}\omega_p (a_p^\dagger a_p + \frac{1}{2}[a_p, a_p^\dagger])\ket{0}\\
+&=\frac{1}{2}\int \frac{d^3 p}{(2\pi)^3}\omega_p [a_p, a^\dagger_p] \ket{0}\\
+&= \int d^3 p \frac{\omega_p}{2} \delta^3 (\vec{0})\ket{0},
+\end{align*}
 which is infinite. Oh no!
 
 What's happened is that $\int d^3p \left(\frac{1}{2}\omega_p\right)$ is the sum of ground state energies for each harmonic oscillator, but $\omega_p =\sqrt{|\vec p|^2 + m^2} \to \infty$ as $|\vec p|\to \infty$, so we call this a high-frequency or \term{ultraviolet divergence.} That is, at very high frequencies/short distances, our theory breaks down and our theory should cut off at high momentum.\footnote{This sort of cutoff behavior becomes especially important in the \term{renormalization group}, a method of studying the relationships of different field theories under special scaling transformations. We'll see this in \emph{Statistical Field Theory.}} Of course, there's another way to handle this divergence in our theory-- just redefine the Hamiltonian to set the ground state energy to zero.\footnote{``We're not interested in gravity, only energy differences, so we can just subtract $\infty.$'' --Ben Allanach}
@@ -60,10 +60,10 @@ and simply move all annihilation operators to the righthand side of the expressi
 \end{defn}
 \begin{exm}
 For our free scalar field Hamiltonian, the normal-ordered version looks like
-\begin{eqnarray*}
-:H:&=& \frac{1}{2} \int \frac{d^3p}{(2\pi)^3} \omega_p :(a_p a_p^\dagger + a_p^\dagger a_p):\\
-&=&\int \frac{d^3p}{(2\pi)^3} \omega_p a_p^\dagger a_p.
-\end{eqnarray*}
+\begin{align*}
+:H:&= \frac{1}{2} \int \frac{d^3p}{(2\pi)^3} \omega_p :(a_p a_p^\dagger + a_p^\dagger a_p):\\
+&=\int \frac{d^3p}{(2\pi)^3} \omega_p a_p^\dagger a_p.
+\end{align*}
 \end{exm}
 
 We'd like to recover particles from this theory. Recall that $\forall p, a_p\ket{0}=0$, so $H\ket{0}=0$ (where now $H$ means the normal-ordered version of the Hamiltonian). It's easy to verify (exercise) that

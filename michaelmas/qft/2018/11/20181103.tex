@@ -40,7 +40,7 @@ $$\sigma=\int \frac{1}{(2\pi)^2} \left(\frac{1}{4|\vec p_1|} dE_{q_1} d\phi dt\r
 The $\phi$ integral is trivial-- it cancels a factor of $2\pi$. The $q_2$ integral is also trivial by the last delta function-- since it just sets $q_2=q_1-p_1-p_2$. (All the step function tells us is that the energy of the final state is non-negative.) We now take the derivative $d/dt$ of both sides to get an expression for $d\sigma/dt$:
 $$\frac{d\sigma}{dt}=\frac{1}{8\pi \mathcal{F}|\vec p_1|}\int dE_{q_1}|M|^2 \delta((q_1-\sqrt{s})^2-{m_2'}^2).$$
 Expanding out the square we find that
-$$(q_1-\sqrt{s})^2-{m_2'}^2=q_1^2-2q_q(p_1+p_2)+s-{m_2'}^2,$$
+$$(q_1-\sqrt{s})^2-{m_2'}^2=q_1^2-2q_1\cdot(p_1+p_2)+s-{m_2'}^2,$$
 so our final expression is
 $$\frac{d\sigma}{dt}=\frac{1}{8\pi \mathcal{F}|\vec p_1|}\int dE_{q_1}|M|^2 \delta(s-{m_2'}^2 +{m_1'}^2-2q_1 \cdot(p_1+p_2)).$$
 Boosting now to the center of mass frame where $p_1^\mu=(\sqrt{|\vec p_1|^2+m_1^2},\vec p_1)$ and $p_2^\mu=(\sqrt{|\vec p_1|^2+m_2^2},-\vec p_1)$, we note that $s$ is some constant of the collision,
@@ -51,19 +51,19 @@ where $$\lambda(x,y,z)\equiv x^2+y^2+z^2-2xy-2xz-2yz.$$ We therefore find that
 $$\mathcal{F}=2\lambda^{1/2}(s,m_1^2,m_2^2).$$ With our expressions for $|\vec p_1|$ and $\mathcal{F}$ firmly in hand, we can plug them back into our expression for $d\sigma/dt$, we get
 $$\frac{d\sigma}{dt}=\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)(1/2\sqrt{s})}\int dE_{q_1} \delta(s-{m_2'}^2+{m_1'}^2-2q_1\cdot(p_1+p_2)).$$
 Since we are in the center-of-mass frame, $p_1+p_2=(m_1+m_2,0,0,0)=(\sqrt{s},0,0,0)$, and so 
-\begin{eqnarray*}
-\frac{d\sigma}{dt}&=&\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)(1/2\sqrt{s})}\int dE_{q_1} \delta(s-{m_2'}^2+{m_1'}^2-2E_{q_1}\sqrt{s})\\
-&=&\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)(1/2\sqrt{s})} \int d\tilde E_{q_1} \frac{1}{2\sqrt{s}} \delta(s-{m_2'}^2+{m_1'}^2-\tilde E_{q_1})\\
-&=&\frac{|M|^2}{16\pi\lambda(s,m_1^2,m_2^2)}.
-\end{eqnarray*}
+\begin{align*}
+\frac{d\sigma}{dt}&=\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)(1/2\sqrt{s})}\int dE_{q_1} \delta(s-{m_2'}^2+{m_1'}^2-2E_{q_1}\sqrt{s})\\
+&=\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)(1/2\sqrt{s})} \int d\tilde E_{q_1} \frac{1}{2\sqrt{s}} \delta(s-{m_2'}^2+{m_1'}^2-\tilde E_{q_1})\\
+&=\frac{|M|^2}{16\pi\lambda(s,m_1^2,m_2^2)}.
+\end{align*}
 %$$\frac{d\sigma}{dt}=\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)}.$$
 In the massless limit (a common approximation) we have $t=(p_1-q_1)^2-2p_1\cdot q_1 =-2|\vec p_1||\vec q_1|(1-\cos\theta),$ and the total cross section is
 $$\sigma_{tot}=\int_{-4|\vec p_1||\vec q_1|}^0 dt \frac{d\sigma}{dt}.$$
 
-In the center-of-mass frame $|\vec p_1|=|\vec q_1|=\sqrt{s}/2$ so $\frac{dt}{d\cos\theta}=\frac{s}{2}$. Defining $d\Omega$ the differential solid angle element,
+In the center-of-mass frame $|\vec p_1|=|\vec q_1|=\sqrt{s}/2$ so $\frac{dt}{d\cos\theta}=\frac{s}{2}$. Defining the differential solid angle element $d\Omega$ by
 $$d\Omega\equiv d\cos\theta d\phi$$ (a frame-dependent quantity) we find that
 $$\frac{d\sigma}{d\Omega}=\frac{s}{4\pi}\frac{d\sigma}{dt}=\frac{|M|^2}{64\pi^2 s}$$
-for particles with masses much less than the collision energy.
+for particles with masses much less than the collision energy.\footnote{Solid angle is the generalization of angles in the plane. A normal angle measured in radians corresponds to an arc length subtended by that angle on a circle of unit radius. In the same way, solid angle (measured in steradians) can be thought of as a surface area on a $2$-sphere of unit radius, so that the total solid angle for a sphere is $4\pi$.}
 
 We can also consider decay rates, which we treat much the same way. Take the initial state to be a sharply peaked superposition of momentum-space eigenstates. Our transition probability density is
 $$\frac{dW}{d^4x}=\frac{|\psi(x)|^2}{2E_p} |M|^2(2\pi)^4\delta^4(p-\sum_i q_i),$$
@@ -75,16 +75,16 @@ Note that $\Gamma$ is \emph{not} Lorentz invariant, as it goes as $1/E$ of the d
 $$\tau=6.58\times 10^{-25}\text{ seconds}\times \frac{\SI{1}{\giga\electronvolt}}{\Gamma}.$$
 
 To link this back to our previous discussion of nucleon scattering, $\psi\psi \to \psi\psi$, we computed two diagrams for this process. We found that the matrix element was
-$$iM=(-ig)^2\left\{\frac{1}{t-m^2}+\frac{1}{2-m^2}\right\},$$
+$$iM=(-ig)^2\left\{\frac{1}{t-m^2}+\frac{1}{u-m^2}\right\},$$
 with $t$ and $u$ the standard Mandelstam variables. 
 
 \subsection*{Non-lectured aside-- solving for $|\vec p_1|$} We have 
 $$s=\left(\sqrt{|\vec p_1|^2+m_1^2}+\sqrt{|\vec p_1|^2+m_2^2}\right)^2.$$
 To solve for $|\vec p_1|$, let us expand out 
 $$s=(|\vec p_1|^2+m_1^2)+(|\vec p_1|^2+m_2^2)+2\sqrt{(|\vec p_1|^2+m_1^2)(|\vec p_1|^2+m_2^2)}.$$
-We move all the terms not in the square root to the left to get
+We move all the terms outside the square root to the LHS to get
 $$\frac{s-2|\vec p_1|^2-m_1^2-m_2^2}{2}=\sqrt{(|\vec p_1|^2+m_1^2)(|\vec p_1|^2+m_2^2)}$$
-and square again to get rid of all the square roots. We may write
+and square again to get rid of all the square roots. We can then expand the left side in a useful way, writing
 $$\frac{(s-m_1^2-m_2^2)^2}{4}+|\vec p_1|^4 -|\vec p_1|^2(s-m_1^2-m_2^2)=(|\vec p_1|^2+m_1^2)(|\vec p_1|^2+m_2^2)$$
 or equivalently
 $$\frac{(s-m_1^2-m_2^2)^2}{4}+|\vec p_1|^4 -|\vec p_1|^2(s-m_1^2-m_2^2)=|\vec p_1|^4 +(m_1^2+m_2^2)|\vec p_1|^2 +m_1^2m_2^2.$$

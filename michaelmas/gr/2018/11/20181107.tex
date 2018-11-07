@@ -1,0 +1,119 @@
+We can write down the action for the Schwarzschild metric: it reads
+$$I=\int ds (-V\dot t^2 +\dot r^2/V + r^2(\dot\theta^2 +\sin^2\theta \dot\phi^2).$$ 
+Last time, we found two constants of the motion, the angular momentum and energy given by
+\begin{align*}
+    L&= r^2\sin^2\theta \dot \phi,\\
+    E&= \dot t V
+\end{align*}
+where $$V\equiv 1-2M/r.$$
+We also showed that for orbits with initial position and velocity in the equatorial plane, $\theta(0)=\pi/2$ and $\dot \theta(0)=0$, such orbits will always stay in the equatorial plane, $\theta(t)=\pi/2$ and $\dot \theta(t)=0$. Therefore by a suitable choice of coordinates, we can always set this initial condition to be true, and it suffices to analyze motion in the equatorial plane (so that the $\dot \theta$ dependence drops out of the action and $L$ simplifies to $L=r^2 \dot \phi$). 
+
+Since the Lagrangian itself is a constant of the motion (because it has no explicit time dependence), we also have
+$$-\epsilon= g_{ab}\dot x^a \dot x^b =-V\dot t^2 +\dot r^2/V + r^2\dot\theta^2 +r^2\sin^2\theta \dot\phi^2,$$
+where we have defined $\epsilon$ such that
+$$\epsilon=\begin{cases}
+0 & \text{ for light rays}\\
+1 &\text{ for massive particles}.
+\end{cases}$$
+Using the constants of motion and setting $\theta=\pi/2,\dot \theta=0$, we can rewrite this as a radial equation,
+\begin{equation}\label{radial1}
+-\epsilon = -E^2+ \frac{\dot r^2}{V}+L^2/r^2.
+\end{equation}
+This can be solved in terms of elliptic functions, but for those of us who aren't specialists in elliptic functions we have three options:
+\begin{itemize}
+    \item Perturbation theory
+    \item Special cases
+    \item Numerical solutions.
+\end{itemize}
+%
+We'll consider the first two of these. Equation \ref{radial1} can be written in a suggestive form:
+\begin{equation}\label{radial2}
+\underbrace{\frac{1}{2}\dot r^2}_{\text{``kinetic energy''}} +\frac{1}{2}\underbrace{\left(1-\frac{2M}{r}\right)\left(\frac{L^2}{r^2}+\epsilon\right)}_{\text{effective ``potential energy''}}=\underbrace{\frac{1}{2}E^2}_{\text{total energy}}.
+\end{equation}
+If we now differentiate the rewritten radial equation \ref{radial2} with respect to $s$ and divide by $\dot r$ (i.e. we assume a non-circular orbit\footnote{If the orbit is circular, then we have $\dot r=0$ and this just becomes an equation for the orbit radius $r$ in terms of $M,E,$ and $L$. It also depends on $\epsilon,$ i.e. whether we are looking at a massive test particle or a photon. As a fun consequence, it turns out that light can have a stable circular orbit around a black hole, and the radius at which it does so is called the photon sphere. Rotating (Kerr) black holes have more complicated equations of motion and this leads to multiple photon spheres!}), we get a second-order equation in $r$:
+\begin{equation}\label{radial2ndorder}
+\ddot r +\frac{\epsilon M}{r^2}-\frac{L^2}{r^3}+\frac{3ML^2}{r^4}=0.
+\end{equation}
+The fact that $\epsilon=0$ for light rays means that light does not experience Newtonian gravity (i.e. an inverse square law).\footnote{The existence of this $M/r^2$ term also means that what we have called $M$ (which a priori was just a parameter in our definition of the Schwarzschild metric) really is the mass of the gravitating object. That is, we have reproduced Newton's inverse square law for an object of mass $M$.} There is a centripetal force term, $L^2/r^3$, but there is also a correction which does not appear at all in Newtonian mechanics. The $1/r^4$ correction is purely a general relativistic effect.
+
+What can we say about the orbital shapes? In an orbit, we should be able to solve for a relationship between $r$ and $\phi$. Let us write this relationship in a somewhat unusual way: let
+$$r(\phi)=1/u(\phi),$$
+where $u(\phi)$ is just some function of $\phi$ (e.g. for a circular orbit, $u(\phi)=1$) or equivalently
+$$u(\phi)=1/r.$$ 
+By the chain rule, we can compute a derivative of $u$ with respect to $\phi$:
+\begin{align*}
+\frac{du}{d\phi}&= \frac{du}{dr}\frac{dr}{ds}\frac{ds}{d\phi}\\
+&= -\frac{1}{r^2} \dot r\frac{r^2}{L}\\
+&= -\frac{\dot r}{L}.
+\end{align*}
+If we now rewrite Eqn. \ref{radial2} in terms of $u$ and $du/d\phi$ as
+$$L^2\left(\frac{du}{d\phi}\right)^2-E^2+(1-2Mu)(\epsilon+L^2u^2)=0,$$
+we can divide through by $L^2$ and differentiate with respect to $\phi$\footnote{We must also divide by $du/d\phi$, but this is okay since $du/d\phi=-\dot r/L\neq 0$ for non-circular orbits.} to get
+$$\frac{d^2u}{d\phi^2}+u-3Mu^2-M\epsilon/L^2=0.$$
+The first, second, and fourth terms are all Newtonian, but the $-3Mu^2$ term is again a general relativistic correction.
+
+Let's consider a light ray, with $\epsilon=0$. In Newtonian physics, we would just have
+$$\frac{d^2u}{d\phi^2}+u=0,$$ whose solution is just a sine, $$u_0=\sin\phi/b.$$\footnote{Of course we could solve this with a complex exponential, but since $u$ relates $r$ and $\phi$, which are both classical quantities, $u$ had better be a real-valued function.} We've chosen the normalization such that when $\phi=\pi/2$, $u_0=1/b\implies b=r_0$, the distance of closest approach. Therefore when
+\begin{align*}
+    \phi=0 &\implies u=0,r=\infty\\
+    \phi=\pi &\implies u=0, r=\infty\\
+    \phi=\pi/2, &\implies u=1/b, r=b.
+\end{align*}
+This is equivalent to saying that near a massive body, a light ray travels in a straight line and is not deflected in Newtonian gravity. In contrast, when we introduce the perturbation $-3Mu^2$, we now have
+\begin{equation}
+\frac{d^2u}{d\phi^2}+u-3Mu^2=0.
+\end{equation}
+To solve the perturbed equation, we make the ansatz that $u=u_0+u_1$ where $u_0$ solves the original equation and $u_1$ is a small perturbation. To leading order in $u_1$, we get
+\begin{equation}\label{perturbedu1}
+\frac{d^2u_1}{d\phi^2}+u_1=\frac{3M\sin^2\phi}{b^2}
+\end{equation}
+where we have put back in the explicit solution for $u_0$.
+We've therefore simplified our problem to a linear equation for $u_1$, and the quickest way to solve this is the method of variation of parameters. That is, we take the solution to the homogeneous equation and assume that the solution to the inhomogeneous equation \ref{perturbedu1} is the homogenous solution multiplied by some function. More concretely, we make the ansatz that $$u_1=f(\phi)\sin\phi,$$ where $u_1=\sin\phi$ solves the homogenous equation $\frac{d^2u_1}{d\phi^2}+u_1=0$.\footnote{Strictly, we should also include the $\cos$ solution when we do variation of parameters. I haven't yet worked out the consequences of including this in our analysis.} Then
+$$\frac{du_1}{d\phi}=f\cos\phi+f' \sin\phi$$
+and
+$$\frac{d^2u_1}{d\phi^2}=-f\sin\phi+2f' \cos\phi+f''\sin\phi.$$
+If we substitute this back into Eqn. \ref{perturbedu1}, we find that
+$$-f\sin\phi+2f'\cos\phi+f''\sin\phi+f\sin\phi=\frac{3M\sin^2\phi}{b^2}.$$
+The order $f$ terms cancel, so we're left with what is effectively a first-order equation in $f'$. Rewriting in terms of an integration factor (read: a big thing we're taking the derivative of), we get
+$$\frac{1}{\sin\phi}\frac{d}{d\phi}(f'\sin^2\phi)=\frac{3M\sin^2\phi}{b^2},$$
+or equivalently
+$$\frac{d}{d\phi}(f'\sin^2\phi)=\frac{3M\sin^3\phi}{b^2}=\frac{3M\sin\phi}{b^2}(1-\cos^2\phi).$$
+An integration and a little algebra reveals that
+$$f'=-\frac{2M\cos\phi}{b^2\sin^2\phi}-\frac{M\cos\phi}{b^2}+\frac{C}{\sin^2\phi},$$
+but this constant $C$ is just zero by the boundary conditions ($f'$ should not diverge when $\phi\to 0$ or $\pi$).
+Integrating once more we find that
+$$f=\frac{2M}{b^2\sin\phi} - \frac{M\sin\phi}{b^2},$$
+so to leading order
+$$u=u_0+u_1=\frac{\sin\phi}{b}+\left(\frac{2M}{b^2} - \frac{M\sin^2\phi}{b^2}\right).$$
+Close to $\phi=0,\pi$ we have $u\to 0$, so taking $\phi=\epsilon$ small, we get
+$$\frac{\sin\epsilon}{b}+\frac{2M}{b^2}-\frac{M\sin^2 \epsilon}{b^2}=0.$$ Expanding to leading order in $\epsilon$, we find that
+$$\epsilon \approx \frac{-2M}{b}.$$ This means that as $r\to\infty$, $\phi\to\epsilon\approx -2M/b$.
+Therefore in a gravitational field, light is deflected from its straight-line path by an angle $4M/b$ (where $b$ is the distance of closest approach).
+
+This has some practical applications. In 1919, Eddington proposed to measure the deflection of light grazing the sun during a solar eclipse to see if this relativistic bending of light could be detected, and indeed this deflection was measured. This was a great success for Einstein's theory. Moreover, the Hubble Space Telescope has made observations of gravitational lensing, i.e. where light is bent around a massive body to produce a secondary image. If the mass is in the way of the light, one sees a ring, called an ``Einstein ring.'' 
+
+Finally, one may consider the GR corrections to planetary orbits, taking $\epsilon=1$ for a massive test particle. One finds that the angular equation now takes the form
+$$\left(\frac{du}{d\phi}\right)^2=\frac{(E^2-1)}{L^2}+\frac{2Mu}{L^2}-u^2+2Mu^3,$$
+where again the $u^3$ term is the relativistic correction. In the Newtonian theory, this has a solution
+$$u_0=\frac{M}{L^2}(1+e\cos\phi).$$
+Now we again treat the $u^3$ term as a perturbation, writing
+$$u=u_0+u_1$$
+so that
+$$2\frac{du_0}{d\phi}\frac{du_1}{d\phi}=\frac{2Mu_1}{L^2}-2u_0u_1+2Mu_0^3$$
+to first order in the perturbation. Substituting in for $u_0,$ we get
+\begin{align*}
+    \frac{2M^4}{L^6}(1+e\cos\phi)^3&= -\frac{2Me\sin\phi}{L^2}\frac{du_1}{d\phi}+\frac{2M}{L^2}(1+e\cos\phi)u_1-\frac{2Mu_1}{L^2}\\
+    &=-\frac{2Me\sin\phi}{L^2}\frac{du_1}{d\phi}+\frac{2M}{L^2}e\cos\phi u_1.
+\end{align*}
+We rewrite as
+$$\cos\phi u_1 -\sin\phi\frac{du_1}{d\phi}=\frac{M^3}{eL^4}(1+e\cos\phi)^3,$$
+or in terms of an integration factor,
+$$-\sin^2\phi \frac{d}{d\phi}(\frac{u_1}{\sin\phi})=\frac{M^3}{eL^4}(1+e\cos\phi)^3.$$
+One can expand out the $(1+e\cos\phi)^3$ into its three terms as
+$$\frac{d}{d\phi}(\frac{u_1}{\sin\phi})=-\frac{M^3}{eL^4\sin^2\phi}(1+3e\cos\phi+3e^2\cos^2\phi+e^3\cos^3\phi).$$
+Most of these terms are just periodic in $\phi$ and only produce small wiggles in $u$. But note that the $\cos^2\phi$ term can be rewritten as $3e^2-3e^2\sin^2\phi$, so in particular the $\sin^2\phi$s will cancel and we'll get something that grows without bound in $\phi$. Yikes! What's the behavior of this term?
+$$\frac{d}{d\phi}(\frac{u_1}{\sin\phi})\simeq -\frac{M^3}{3L^4}-3e^2 \simeq \frac{3eM^3}{L^4}.$$
+What we find is that
+$$u_1=\frac{3eM^3}{L^4}\phi \sin\phi$$
+and so our solution for $u$ takes the form
+$$u=\frac{M}{L^2}(1+e\cos\phi)+\frac{3e M^3}{L^4}\phi\sin\phi.$$

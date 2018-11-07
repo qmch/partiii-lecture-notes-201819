@@ -1,6 +1,6 @@
-Today, we'll complete our initial discussion of propagators and then hopefully introduce interacting fields.
+Today, we'll complete our initial discussion of propagators and then introduce interacting fields.
 
-To evaluate the $p^0$ integral, one can make an $i\epsilon$ prescription and modify the pole to
+Last time, we claimed the Feynman propagator could be written as an integral over $d^4p$, and reduces to the regular propagator $D(x-y)$ or $D(y-x)$ depending on the sign of $x^0-y^0$. The propagator $D(x-y)$ was an integral over $d^3p$ only, so we need to integrate over the $p^0$ component. To evaluate the $p^0$ integral, one can make an $i\epsilon$ prescription and modify the pole to
 $$\Delta_F=\int \frac{d^4p}{(2\pi)^4}\frac{i}{p^2-m^2+i\epsilon}e^{-ip\cdot (x-y)}$$
 with $\epsilon>0$ and small. This helps us to keep track of which pole is inside our contour, but we can also equivalently shift the contour (see picture). This shifts the pole at $E_p$ to $E_p-i\epsilon$ and from $-E_p$ to $-E_p+i\epsilon$. This is a little quick, so I'll work it out more carefully in a footnote later.
 
@@ -110,4 +110,4 @@ Since $e^{ik^0x^0}$ is exponentially damped in the upper half-plane, we close th
 $$2\pi i \frac{e^{-i\omega_k x^0}}{-2\omega_k}$$
 (letting $\e\to 0$) and we conclude that for $x^0>0$,
 $$\Delta_F(x)=-i \int \frac{d^3 k}{(2\pi)^3 2\omega_k}e^{-i(\omega_k t- \vec{k}\cdot \vec{x})}.$$
-A similar calculation holds for $x^0 < 0$, so we recover the form of the Feynman propagator which correctly accounts for the sign of $x^0$.
+A similar calculation holds for $x^0 < 0$, so we recover our friend the Feynman propagator, which correctly accounts for the sign of $x^0$.

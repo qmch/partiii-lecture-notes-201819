@@ -30,11 +30,11 @@ $$[O_1(x),O_2(y)]=0 \forall (x-y)^2 <0.$$
 Does this condition hold? Let's define
 $$\Delta(x-y)\equiv [\phi(x),\phi(y)]$$
 and expand in the Fourier basis.
-\begin{eqnarray*}
-\Delta(x-y) &=& \int \frac{d^3p}{(2\pi)^6} \frac{d^3p'}{\sqrt{4E_p E_{p'}}} \left([a_{\pv},a_{\pv'}^\dagger] e^{-i(p\cdot x - p' \cdot y)}+[a_{\pv}^\dagger, a_{\pv'}] e^{i(p\cdot x-p' \cdot y)}\right)\\
-&=& \int \frac{d^3p}{2E_p(2\pi)^3}\left(e^{-ip\cdot (x-y)}-e^{i p' \cdot (x-y)}\right)
-\end{eqnarray*}
-Remarkably, this is just a $c$-number-- it's not an operator at all but a (classical) number. It is Lorentz invariant since the integration measure $d^3p/(2E_p)$ is and the integrand is (it depends on $p\cdot (x-y)$, so totally contracted). Moreover, each term is separately Lorentz invariant. In addition, if $x-y$ is spacelike then $x-y$ can be Lorentz transformed to $y-x$ in the first term, giving $0$. It does not vanish for timelike separations, e.g.
+\begin{align*}
+\Delta(x-y) &= \int \frac{d^3p}{(2\pi)^6} \frac{d^3p'}{\sqrt{4E_p E_{p'}}} \left([a_{\pv},a_{\pv'}^\dagger] e^{-i(p\cdot x - p' \cdot y)}+[a_{\pv}^\dagger, a_{\pv'}] e^{i(p\cdot x-p' \cdot y)}\right)\\
+&= \int \frac{d^3p}{2E_p(2\pi)^3}\left(e^{-ip\cdot (x-y)}-e^{i p' \cdot (x-y)}\right)
+\end{align*}
+Remarkably, this is just a $c$-number-- it's not an operator at all but a (classical) number.\footnote{Wikipedia says this terminology is due to Dirac, who coined it to contrast with q-numbers (quantum numbers), which are just operators.} It is Lorentz invariant since the integration measure $d^3p/(2E_p)$ is Lorentz invariant and the integrand is too (it depends only on $p\cdot (x-y)$, which is the product of two four-vectors and therefore an invariant scalar). Moreover, each term is separately Lorentz invariant. In addition, if $x-y$ is spacelike then $x-y$ can be Lorentz transformed to $y-x$ in the first term, giving $0$. It does not vanish for timelike separations, e.g.
 $$[\phi (\vec x,0), \phi(\vec x,t)] = \int \frac{d^3p}{(2\pi)^3 2 E_p}(e^{-imt}-e^{+imt})\neq 0.$$
 And at equal times 
 $$[\phi(\vec x,t),\phi(\vec y, t)]=\int \frac{d^3p}{(2\pi)^3 2E_p}(e^{i\vec p \cdot (\vec x - \vec y)}- e^{-i \vec p \cdot (\vec x- \vec y)})=0$$

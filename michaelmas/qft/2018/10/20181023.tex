@@ -15,21 +15,21 @@ $$\bra{f}S\ket{i}=-ig \bra{f} \int d^4x \psi^*(x) \psi(x)\int \frac{d^3k}{(2\pi)
 but this second term is just zero and we can switch the $a_k, a_p^\dagger$ at the cost of a delta function $(2\pi)^3 \delta^3(\vec k -\vec p)$, which allows us to do the integral over $d^3k$.
 
 We get
-\begin{eqnarray*}
-\bra{f}S\ket{i}&=&-ig\bra{f} \int d^4x \psi^* \psi(x)e^{-ip\cdot x}\ket{0}\\
-&=&-ig \bra{0} \int \frac{d^4x}{(2\pi)^6}\frac{d^3k_1 d^3k_2}{\sqrt{4E_{k_1}E_{k_2}}} \sqrt{4E_{q_1}E_{q_2}} c_{q_2}b_{q_1} (b_{k_1}^\dagger e^{ik_1\cdot x}+c_{k_1} e^{-ik_1 \cdot x})(b_{k_1} e^{-ik_2\cdot x}+c_{k_2}^\dagger e^{ik_2 \cdot x})e^{-ip\cdot x} \ket{0}.
-\end{eqnarray*}
+\begin{align*}
+\bra{f}S\ket{i}&=-ig\bra{f} \int d^4x \psi^* \psi(x)e^{-ip\cdot x}\ket{0}\\
+&=-ig \bra{0} \int \frac{d^4x}{(2\pi)^6}\frac{d^3k_1 d^3k_2}{\sqrt{4E_{k_1}E_{k_2}}} \sqrt{4E_{q_1}E_{q_2}} c_{q_2}b_{q_1} (b_{k_1}^\dagger e^{ik_1\cdot x}+c_{k_1} e^{-ik_1 \cdot x})(b_{k_1} e^{-ik_2\cdot x}+c_{k_2}^\dagger e^{ik_2 \cdot x})e^{-ip\cdot x} \ket{0}.
+\end{align*}
 Only the $b^\dagger$ and $c^\dagger$ terms survive, and taking the appropriate commutators gives us delta functions over the momenta. That is,
-\begin{eqnarray*}
-\bra{f}S\ket{i}&=&-ig\bra{0}\int d^4x e^{i(q_1+q_2-q)\cdot x}\ket{0}\\
-&=&-ig\delta^4(q_1+q_2-p)(2\pi)^4
-\end{eqnarray*}
+\begin{align*}
+\bra{f}S\ket{i}&=-ig\bra{0}\int d^4x e^{i(q_1+q_2-q)\cdot x}\ket{0}\\
+&=-ig[(2\pi)^4\delta^4(q_1+q_2-p)],
+\end{align*}
 where this delta function simply imposes overall 4-momentum conservation. Note that this is a matrix element, not a probability yet. To actually turn this into a measurable probability, we must take the mod squared and integrate over the possible outgoing momenta $q_1,q_2$-- we'll defer this to later.
 
 
 We'll now discuss \term{Wick's theorem} for a real scalar field. We wish to compute quantities like
 $$\bra{f}T\set{H_I(x_1)\ldots H_I(x_n)}\ket{i},$$
-the amplitude of some time-ordered product-- remember that Dyson says we ought to be evolving our states with time-ordered products. Our life would be easier if we worked in terms of normal-ordered products instead, where the $a$s are on the RHS and the $a^\dagger$s are on the LHS. This would let us easily see which terms contribute to the final amplitude (e.g. which $a$s cancel particles created by $a^\dagger$s on the RHS).
+the amplitude of some time-ordered product-- remember that Dyson says we ought to be evolving our states with time-ordered products. Our life would be easier if we worked in terms of normal-ordered products instead, where the $a$s are on the RHS and the $a^\dagger$s are on the LHS. This would let us easily see which terms contribute to the final amplitude (e.g. which $a$s cancel particles created by $a^\dagger$s on the RHS). Wick's theorem relates time-ordered products to normal-ordered products in a nice way.
 
 Let's compute a simple example first: write
 $$\phi(x)\equiv \phi^+(x)+\phi^-(x)$$
@@ -38,12 +38,12 @@ $$\phi^+ (x)\equiv \int \frac{d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}} a_p e^{-ip\cd
 and
 $$\phi^-(x)\equiv \int \frac{d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}} a_p^\dagger e^{+ip\cdot x}.$$
 If we look at the case $x^0>y^0$, the time-ordered product $T\{\phi(x)\phi(y)\}$ takes the form
-\begin{eqnarray*}
-T\set{\phi(x)\phi(y)}&=&\phi(x)\phi(y)\\
-&=&(\phi^+(x)+\phi^-(x))(\phi^+(y)+\phi^-(y))\\
-&=&\phi^+(x)\phi^+(y)+\phi^-(x)\phi^-(y)+\phi^-(y)\phi^+(x)+\phi^-(x)\phi^+(y)+[\phi^+(x),\phi^-(y)]\\
-&=&:\phi(x)\phi(y):+D(x-y)
-\end{eqnarray*}
+\begin{align*}
+T\set{\phi(x)\phi(y)}&=\phi(x)\phi(y)\\
+&=(\phi^+(x)+\phi^-(x))(\phi^+(y)+\phi^-(y))\\
+&=\phi^+(x)\phi^+(y)+\phi^-(x)\phi^-(y)+\phi^-(y)\phi^+(x)+\phi^-(x)\phi^+(y)+[\phi^+(x),\phi^-(y)]\\
+&=:\phi(x)\phi(y):+D(x-y)
+\end{align*}
 where we've collected terms with all the $\phi^+$ terms to the right of the $\phi^-$ terms into the normal-ordered product $:\phi(x)\phi(y):$. If we had $y^0>x^0$ instead, we would get
 $$T\set{\phi(x)\phi(y)}=:\phi(x)\phi(y):+D(y-x).$$
 Putting these together, we see that

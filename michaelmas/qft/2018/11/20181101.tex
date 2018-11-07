@@ -6,37 +6,42 @@ $$\bra{\Omega}T\set{\phi_{1,H}\ldots \phi_{m,H}}\ket{\Omega}=\frac{\bra{0}T \set
 That is, it suffices to consider only connected diagrams, since the vacuum bubbles add up to a multiplicative factor (namely, the vacuum energy) that can be factored out of the overall correlation function.
 Let us expand the numerator on the RHS as
 $$\bra{0}U(\infty, t_1) \phi_{1,I} U(t_1,t_2)\phi_{2,I} \ldots U(t_{n-1},t_n)\phi_{n,I} U(t_n,-\infty)\ket{0},$$
-and WLOG we label the fields to already be time-ordered, with $x_1^0 > x_2^0 > \ldots > x_m^0$. That is, we've split up $S=\lim_{t\to \infty, t_0\to-\infty} U(t,t_0)$ into intervals from $t_i=x_i^0$ to $t_{i+1}=x_{i+1}^0$. We can then break up the operators,
+and WLOG we label the fields to already be time-ordered, with $x_1^0 > x_2^0 > \ldots > x_m^0$. That is, we've split up the overall time evolution operator $S=\lim_{t\to \infty, t_0\to-\infty} U(t,t_0)$ into intervals from $t_i=x_i^0$ to $t_{i+1}=x_{i+1}^0$. We can then break up the operators,
 $$U(t_1,t_2)=U(t_1,0)U(0,t_2)$$ so that the numerator becomes
 $$\bra{0}U(\infty, 0) \underbrace{[U(0,t_1)\phi_{1,I} U(t_1,0)]}_{\phi_{1,H}} [U(0,t_2)\phi_{2,I} U(t_2,0)]\ldots U(t_{n-1},0)[U(0,t_n)\phi_{n,I} U(t_n,0)]U(0,-\infty)\ket{0},$$
 which is a bunch of Heisenberg picture states sandwiched between the vacuum states and some $U$s.
 More compactly,
 $$\underbrace{\bra{0}U(\infty,0)\phi_{I,H}\ldots \phi_{m,H}}_{\bra\psi}U(0,-\infty)\ket{0}$$
-setting everything back to the Heisenberg picture at $t=0$. Consider now
+setting everything back to the Heisenberg picture at $t=0$. Consider now this same expression where instead of evolving the free theory ground state with the unitary operator $U(0,-\infty),$ we consider evolution from $t=t_0$ some finite time to $t=0$:
 $$\bra{\psi}U(0,t_0)\ket{0}=\bra{\psi}e^{iHt_0}\ket{0}$$
 since $H_0\ket{0}=0.$ Insert a complete set of interacting states $\ket{p_1,\ldots, p_n}$. Then 
-\begin{eqnarray*}
-\lim_{t_0\to-\infty} \bra{\psi}U(0,t_0)\ket{0}&=&
+\begin{align*}
+\lim_{t_0\to-\infty} \bra{\psi}U(0,t_0)\ket{0}&=
 \lim_{t_0\to-\infty}\bra{\psi}e^{iHt_0}\left[\ket{\Omega}\bra{\Omega}+\sum_{n=1}^\infty \int  \prod_{j=1}^n \frac{d^3p_j}{2E_{p_j}(2\pi)^3}\ket{p_1,\ldots,p_n}\bra{p_1,\ldots,p_n}\right]\ket{0}\\
-&=&\braket{\psi}{\Omega}\braket{\Omega}{0}+
-\sum_{n=1}^\infty \int  \prod_{j=1}^n \frac{d^3p_j}{2E_{p_j}(2\pi)^3} e^{i\sum_{k=1}^n E_{p_k} t_0}\braket{\psi}{p_1,\ldots,p_n}\braket{p_1,\ldots,p_n}{0}.
-\end{eqnarray*}
-Luckly, this second term vanishes due to the Riemann-Lebesgue lemma: ``for reasonable $f(x)$ (i.e. square-integrable), $\lim_{\mu\to\infty} \int_a^b f(x)e^{i\mu x}dx=0.$'' Therefore we get
+&=\braket{\psi}{\Omega}\braket{\Omega}{0}+
+\lim_{t_0\to-\infty}\sum_{n=1}^\infty \int  \prod_{j=1}^n \frac{d^3p_j}{2E_{p_j}(2\pi)^3} e^{i\sum_{k=1}^n E_{p_k} t_0}\braket{\psi}{p_1,\ldots,p_n}\braket{p_1,\ldots,p_n}{0}.
+\end{align*}
+Note that in the first term $\bra{\psi} e^{iHt_0}\ket{\Omega}\braket{\Omega}{0},$ all nonzero powers of $H$ from the exponential will kill the vacuum state $\ket{\Omega}$ by definition, so the only thing that survives is the zeroth order term, $\braket{\psi}{\Omega}\braket{\Omega}{0}.$ Luckily, the second term vanishes completely due to the Riemann-Lebesgue lemma: stated roughly, ``for reasonable $f(x)$ (i.e. square-integrable), $\lim_{\mu\to\infty} \int_a^b f(x)e^{i\mu x}dx=0.$'' Therefore we find that
 $$\lim_{t_0\to-\infty} \bra{\psi}U(0,t_0)\ket{0}=\bra{0}U(\infty,0)\phi_{1,H}\ldots \phi_{m,H}\ket{\Omega}\braket{\Omega}{0}$$
 where we have put back in the definition of $\bra{\psi}$. By the same token,
 $$\lim_{t_0\to\infty}\bra{0}e^{-iHt_0}\ket{\psi}=\bra{0}U(\infty,0)\ket{\psi},$$
 so our numerator becomes
 $$\bra{\Omega}\phi_{1,H}\ldots \phi_{m,H}\ket{\Omega}\braket{\Omega}{0}\braket{0}{\Omega}$$
-and the denominator is just $\braket{0}{\Omega}\braket{\Omega}{0}$ (it's the same calculation, but suppose there are no fields. Then the first factor is just $\braket{\Omega}{\Omega}=1$ by normalization).
+and the denominator is just $\braket{0}{\Omega}\braket{\Omega}{0}$.\footnote{It's literally the same calculation, but suppose there are no fields. Then the first factor is just $\braket{\Omega}{\Omega}=1$ by normalization of the interacting theory vacuum states.} Therefore
+$$\frac{\bra{0}T \set{\phi_{1,I}\ldots \phi_{m,I}S]}\ket{0}}{\bra{0}S\ket{0}}=\frac{\bra{\Omega}\phi_{1,H}\ldots \phi_{m,H}\ket{\Omega}\braket{\Omega}{0}\braket{0}{\Omega}}{\braket{\Omega}{0}\braket{0}{\Omega}}=\bra{\Omega}T\set{\phi_{1,H}\ldots \phi_{m,H}}\ket{\Omega},
+$$
+as promised. Note we have put time ordering back in since we explicitly time-ordered the fields when we expanded out $S$. This completes the proof.\qed
 
-Going back to our previous example, we say that to describe scattering in the interacting theory, our external states  e.g. $\ket{p_1,p_2}$ should come from the interacting theory. This means that we exclude loops on the external lines (``amputation'').
+In words, this tells us that we can do our calculations relative to the vacuum of the interacting theory $\ket{\Omega}$ rather than the vacuum of the free theory $\ket{0}$, which means (in terms of our perturbative expansion) that we need not consider vacuum bubbles when we compute our correlation functions.
+
+Going back to our previous example, we say that to describe scattering in the interacting theory, our external states, e.g. $\ket{p_1,p_2}$, should come from the interacting theory. This means that we exclude loops on the external lines (a process we call ``amputation'').
 
 \subsection*{Mandelstam variables} In two-particle scattering processes, the same combinations of $p_1,p_2,p_1',p_2'$ (ingoing and outgoing four-momenta) often appear, so it's useful to introduce the \term{Mandelstam variables} $s,t,$ and $u$, defined as
-\begin{eqnarray*}
-s&=&(p_1+p_2)^2=(p_1'+p_2')^2\\
-t&=&(p_1-p_1')^2=(p_2-p_2')^2\\
-u&=&(p_1-p_2')^2=(p_2-p_1')^2
-\end{eqnarray*}
+\begin{align*}
+s&=(p_1+p_2)^2=(p_1'+p_2')^2\\
+t&=(p_1-p_1')^2=(p_2-p_2')^2\\
+u&=(p_1-p_2')^2=(p_2-p_1')^2
+\end{align*}
 where the squared here indicates a four-vector product (e.g. $(p_1+p_2)^2=(p_1^\mu+p_2^\mu)({p_1}_\mu+{p_2}_\mu).$
 \begin{ex}
 Show that the sum of the Mandelstam variables is

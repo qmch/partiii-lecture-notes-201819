@@ -1,11 +1,11 @@
-Today, we'll introduce the Dirac equation, which governs the behavior of fermions! We'll show explicitly why spin $1/2$ is different.\footnote{It's pretty cool to learn about this in Cambridge, where Dirac actually discovered the behavior of spin $1/2$ particles.}
+Today, we'll introduce spinors, the mathematical framework describing the behavior of fermions! We'll start to show explicitly why spin $1/2$ is different than spin $0$.\footnote{It's pretty cool to learn about this in Cambridge, where Dirac actually discovered the behavior of spin $1/2$ particles.}
 
 Now, so far we've only considered scalar fields $\phi$. Under a Lorentz transformation, these transform as
 \begin{align*}
     x^\mu & \to {x'}^\mu = {\Lambda^\mu}_\nu x^\nu\\
     \phi(x) & \to \phi'(x)=\phi(\Lambda^{-1}x).
 \end{align*}
-Most particles have an intrinsic angular momentum, which we call \term{spin}, and fields with spin have a non-trivial Lorentz transformation. For instance, spin $1$ particles (i.e. \term{vector fields}) come with an index,
+Most particles have an intrinsic angular momentum, which we call \term{spin}, and fields with spin have a non-trivial Lorentz transformation. For instance, spin $1$ particles (i.e. \term{vector fields}) come with an index $\mu$ and transform as
 $$A^\mu(x)\to {A^\mu}'(x)={\Lambda^\mu}_\nu A^\nu(\Lambda^{-1} x).$$
 In general fields can transform as $\phi^a \to {D^a}_b(\Lambda) \phi^b(\Lambda^{-1}x),$
 where we say the ${D^a}_b$ form a representation of the Lorentz group. These might be familiar from \emph{Symmetries, Fields and Particles}, but to give a quick overview, a representation $D$ of a group $g$ is a map from that group to a space of linear transformations (usually taken to be matrices) which preserves the group multiplication. That is, it satisfies

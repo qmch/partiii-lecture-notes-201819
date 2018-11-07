@@ -14,18 +14,22 @@ $$:\psi^*(x_1)\psi(x_1)\psi^*(x_2)\psi(x_2): \overbrace{\phi(x_1)\phi(x_2)}$$
 in the time-ordered product. The contracted bit will make sure we have no issues with $\phi$ fields (since there are no $\phi$s in our initial and final states), while the normal-ordered part gives us $\psi$s to annihilate the initial nucleons and $\psi^*$s to create the final nucleons. All other terms are zero.
 
 We will ignore all terms involving $c,c^\dagger$ in the field expansions since they give zeroes (i.e. to this order, we don't need to worry about antiparticles). We ought to compute
-\begin{eqnarray*}
-\bra{p_1',p_2'}:\psi^*(x_1)\psi(x_1)\psi^*(x_2)\psi(x_2):\ket{p_1,p_2}&=&\int \frac{d^3 q_1 \ldots d^3 q_4 \sqrt{16 E_{p_1}\ldots E_{p_4}}}{(2\pi)^12 \sqrt{2E_{q_1}\ldots 2E_{q_4}}} 
-\bra{0}b_{\vec p_1'} b_{\vec p_2'} \overbrace{b_{\vec q_1}^\dagger b_{\vec q_2}^\dagger}^{\psi^*s} \overbrace{b_{\vec q_3} b_{\vec q_4}}^{\psi s} b_{\vec p_1}^\dagger b_{\vec p_2}^\dagger \ket{0}\\
-&&\times e^{i(q_1\cdot x_1 +q_2 \cdot x_2-q_3 \cdot x_1 -q_2 \cdot x_2)}.
-\end{eqnarray*}
+\begin{align*}
+    \bra{p_1',p_2'}:\psi^*(x_1)\psi(x_1)\psi^*(x_2)\psi(x_2):\ket{p_1,p_2}={}&\int \frac{d^3 q_1 \ldots d^3 q_4 \sqrt{16 E_{p_1}\ldots E_{p_4}}}{(2\pi)^12 \sqrt{2E_{q_1}\ldots 2E_{q_4}}}\\ 
+    &\times\bra{0}b_{\vec p_1'} b_{\vec p_2'} \underbrace{b_{\vec q_1}^\dagger b_{\vec q_2}^\dagger}_{\psi^*s} \underbrace{b_{\vec q_3} b_{\vec q_4}}_{\psi s} b_{\vec p_1}^\dagger b_{\vec p_2}^\dagger \ket{0}\\
+    &\times e^{i(q_1\cdot x_1 +q_2 \cdot x_2-q_3 \cdot x_1 -q_2 \cdot x_2)}.
+\end{align*}
 Using commutation relations one can check (in a few lines) that this big mess of creation and annihilation operators simplifies to a slightly more manageable mess of delta functions we can integrate over and get rid of. That is,
-\begin{eqnarray*}
-\bra{0}b_{\vec p_1'} b_{\vec p_2'} {b_{\vec q_1}^\dagger b_{\vec q_2}^\dagger} {b_{\vec q_3} b_{\vec q_4}} b_{\vec p_1}^\dagger b_{\vec p_2}^\dagger \ket{0}&=&\left[ \delta^3(\vec p_1'-\vec q_2)\delta^3(\vec p_2'-\vec q_1)+\delta^3(\vec p_2'-\vec q_2)\delta^3 (\vec p_1' - \vec q_1)\right]\\
-&&\times \left[\delta^3 (\vec q_4-\vec p_1)\delta^3 (\vec q_3-\vec p_2)+\delta^3(\vec q_4-\vec p_2)\delta^3(\vec q_3 - \vec p_1)\right].
-\end{eqnarray*}
+\begin{align*}
+    \bra{0}b_{\vec p_1'} b_{\vec p_2'} {b_{\vec q_1}^\dagger b_{\vec q_2}^\dagger} {b_{\vec q_3} b_{\vec q_4}} b_{\vec p_1}^\dagger b_{\vec p_2}^\dagger \ket{0}={}&
+        \left[ \delta^3(\vec p_1'-\vec q_2)\delta^3(\vec p_2'-\vec q_1)+\delta^3(\vec p_2'-\vec q_2)\delta^3 (\vec p_1' - \vec q_1)\right]\\
+    &\times \left[\delta^3 (\vec q_4-\vec p_1)\delta^3 (\vec q_3-\vec p_2)+\delta^3(\vec q_4-\vec p_2)\delta^3(\vec q_3 - \vec p_1)\right].
+\end{align*}
 If we now integrate over this, our delta functions give us several exponential terms:
-$$\bra{p_1', p_2'}:\psi^*(x_1)\psi(x_1)\psi^*(x_2)\psi(x_2):\ket{p_1,p_2}=\left[e^{i(p_1'\cdot x_2 +p_2' \cdot x_1)}+e^{i(p_2'\cdot x_2 + p_1'\cdot x_1)}\right]\left[e^{-i(p_1\cdot x_2 +p_2 \cdot x_1)}+e^{-i(p_2\cdot x_2 + p_1\cdot x_1)}\right].$$
+\begin{align*}
+    \bra{p_1', p_2'}:\psi^*(x_1)\psi(x_1)\psi^*(x_2)\psi(x_2):\ket{p_1,p_2}={}&\left[e^{i(p_1'\cdot x_2 +p_2' \cdot x_1)}+e^{i(p_2'\cdot x_2 + p_1'\cdot x_1)}\right]\\
+    &\times\left[e^{-i(p_1\cdot x_2 +p_2 \cdot x_1)}+e^{-i(p_2\cdot x_2 + p_1\cdot x_1)}\right].
+\end{align*}
 Writing this all out, one can perform the $x_1,x_2$ integrals to get (surprise) even more delta functions. We also integrate over the internal momentum $k$ and find as our final result
 $$(-ig)^2 \left\{\frac{i}{(p_1-p_1')^2-m^2+i\epsilon}+\frac{i}{(p_2'-p_1)^2-m^2+i\epsilon}\right\} (2\pi)^4\delta^4(p_1+p_2-p_1'-p_2').$$
 In fact, there are two terms here-- one where the $\psi$s exchange a meson and go on their ways, and one where the $\psi$s exchange a meson and then cross over (so that what we thought was the first nucleon was actually the second). The meaning of this will be more obvious when we draw the Feynman diagrams. It should be clear that the delta function imposes conservation of overall momentum (i.e. the outgoing momentum is equal to the ingoing momentum, $p_1+p_2=p_1'+p_2'$).
@@ -36,7 +40,7 @@ In fact, there are two terms here-- one where the $\psi$s exchange a meson and g
 %f1 -- [fermion] b -- [fermion] f2,
 %};
 
-\subsection*{Feynman diagrams} This is basically the simplest interesting calculation we could have done, and using Wick's theorem to get there has given us a big mess. Surely there must be a better way, you say. And there is. We draw \term{Feynman diagrams} to keep track of the different possible Wick contractions, i.e. to represent the expansion of $\bra{f}(S-1)\ket{i}$. We have a set of rules for how to draw the diagrams representing different processes, and can associate numbers or integrals to the diagrams.
+\subsection*{Feynman diagrams} This is basically the simplest interesting calculation we could have done, and using Wick's theorem to get there has given us a big mess. Surely there must be a better way, you say. And there is. We draw \term{Feynman diagrams} to keep track of the different possible Wick contractions, i.e. to represent the perturbative expansion of $\bra{f}(S-1)\ket{i}$. We have a set of rules for how to draw the diagrams representing different processes, and can associate integrals to the diagrams.
 
 Here are the rules.
 \begin{itemize}
@@ -53,10 +57,12 @@ Here are the rules.
 \end{itemize}
 
 Using the Feynman rules, we can immediately write down the amplitude for our nucleon scattering process: it is
-\begin{eqnarray*}
-\bra{f}(S-1)\ket{i}&=&(-ig)^2\int \frac{d^4k}{(2\pi)^4} \frac{i}{k^2-m^2+i\epsilon} (2\pi)^8 \{\delta^4(p_1-p_1' -k)\delta^4(p_2-p_2' +k)\\
-&&+\delta^4(p_1-p_2'-k)\delta^4(p_2+k-p_1')\}\\
-&=& i(-ig)^2 \set{\frac{1}{(p_1-p_1')^2-m^2+i\epsilon}+\frac{1}{(p_1-p_2')-m^2+i\epsilon}} (2\pi)^4 \delta^4(p_1+p_2-p_1' -p_2').
-\end{eqnarray*}
+\begin{align*}
+\bra{f}(S-1)\ket{i}={}&(-ig)^2\int \frac{d^4k}{(2\pi)^4} \frac{i}{k^2-m^2+i\epsilon} (2\pi)^8 \{\delta^4(p_1-p_1' -k)\delta^4(p_2-p_2' +k)\\
+&+\delta^4(p_1-p_2'-k)\delta^4(p_2+k-p_1')\}\\
+={}& i(-ig)^2 \left(\frac{1}{(p_1-p_1')^2-m^2+i\epsilon}+\frac{1}{(p_1-p_2')-m^2+i\epsilon}\right) (2\pi)^4 \delta^4(p_1+p_2-p_1' -p_2').
+\end{align*}
 
-The diagrams are suggestive of an analogous classical scattering process, like billiard balls. If we like, we can say that this is like the nucleons exchanging a meson of 4-momentum $k$. However, note that this meson doesn't necessarily satisfy the relativistic dispersion relation $k^2=m^2$. If it doesn't, it's called ``off-shell'' or a virtual particle, and this is a purely quantum effect. Conversely, the external legs of our diagram are forced to be \term{on-shell}. It's also important to recognize that while internal momenta are fixed by momentum conservation in ``tree-level'' diagrams, once we introduce loops into our Feynman diagrams all bets are off and we must integrate over all possible momenta for those virtual particles.
+The diagrams are suggestive of an analogous classical scattering process, like billiard balls colliding elastically. If we like, we can say that this is like the nucleons exchanging a meson of 4-momentum $k$. However, note that this meson doesn't necessarily satisfy the relativistic dispersion relation $k^2=m^2$. If it doesn't, it's called ``off-shell'' or a virtual particle, and the impact of virtual particle interactions is a purely quantum effect. 
+
+Conversely, the external legs of our diagram are forced to be \term{on-shell}-- because these are outgoing particles (that one could really observe and measure in a detector, for example), they had better satisfy the relativistic dispersion relation. It's also important to recognize that while internal momenta are fixed by momentum conservation in ``tree-level'' diagrams, once we introduce loops into our Feynman diagrams all bets are off and we must integrate over all possible momenta for those virtual particles.
