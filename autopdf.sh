@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Updating local files."
+git pull
+
 echo "Beginning PDF-making!"
 #TeX the GR notes and copy them to the PDFs folder
 cd ./michaelmas/gr
