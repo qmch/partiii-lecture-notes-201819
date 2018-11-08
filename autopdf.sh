@@ -8,19 +8,19 @@ echo "Beginning PDF-making!"
 cd ./michaelmas/gr
 latexmk -pdf gr-notes-partiii.tex
 latexmk -c
-cp gr-notes-partiii.pdf ../../pdfs
+mv gr-notes-partiii.pdf ../../pdfs
 
 #same thing for QFT
 cd ../qft
 latexmk -pdf qft-notes-partiii.tex
 latexmk -c
-cp qft-notes-partiii.pdf ../../pdfs
+mv qft-notes-partiii.pdf ../../pdfs
 
 #and for Symmetries!
 cd ../sfp
 latexmk -pdf sfp-notes-partiii.tex
 latexmk -c
-cp sfp-notes-partiii.pdf ../../pdfs
+mv sfp-notes-partiii.pdf ../../pdfs
 
 echo "PDFs made. Pushing to the remote."
 #finally, return to the home directory, git add, and git commit.
