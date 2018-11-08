@@ -1,0 +1,99 @@
+Today we will construct a LI action of spinor fields. Suppose we have a complex field $\psi$, with
+$$\psi^\dagger(x)=(\psi^*)^T(x).$$
+Is $\psi^\dagger(x) \psi(x)$ a Lorentz scalar? We'll check how it transforms. In general we have
+$$\psi^\dagger(x)\psi*x) \to \psi^\dagger(\Lambda^{-1}x)\underbrace{S[\Lambda]^\dagger S[\Lambda]}_{\neq 1}\psi(\Lambda^{-1}x),$$
+which is not quite what we want, since $S$ is not unitary. Since $\gamma^0=(\gamma^0)^\dagger$ is hermitian and $\gamma^i=-(\gamma^i)^\dagger$ is antihermitian in our representation, we have
+$$\gamma^0 \gamma^\mu \gamma^0=(\gamma^\mu)^\dagger\implies (S^\mu\nu)^\dagger =-\frac{1}{4}[{\gamma^\mu}^\dagger,{\gamma^\nu}^\dagger]=-\gamma^0 S^{\mu\nu}\gamma^0.$$
+(Note that Greek indices run from $0$ to $3$ here, while Latin indices are $1,2,3$. As they should be.)
+
+Thus
+$$S[\Lambda]^\dagger=\exp(\frac{1}{2} \Omega_{\mu\nu}(S^{\mu\nu})^\dagger)=\gamma^0 S[\Lambda]^{-1}\gamma^0,$$
+which we get by using $(\gamma^0)^2=1$ repeatedly. 
+\begin{defn}
+With this in mind, we define a \term{Dirac adjoint} of $\psi$:
+$$\bar\psi(x)\equiv \psi^\dagger(x) \gamma^0.$$
+\end{defn}
+We now claim that $\bar \psi(x)\psi(x)$ \emph{is} a Lorentz scalar. Writing explicitly,
+\begin{align*}
+    \bar \psi(x)\psi(x) &= \psi^\dagger(x) \gamma^0 \psi(x)\\
+    &\to \psi^\dagger(\Lambda^{-1}x)S[\Lambda]^\dagger \gamma^0 S[\Lambda]\psi(\Lambda^{-1}(x)\\
+    &=\psi^\dagger(\Lambda^{-1}x) \gamma^0 \psi(\Lambda^{-1}(x)\\
+    &= \bar \psi(\Lambda^{-1}x)\psi(\Lambda^{-1}x). \qed
+\end{align*}
+
+Moreover, we claim that $\bar\psi(x)\gamma^\mu \psi(x)$ is a Lorentz vector. Under a Lorentz transformation, it transforms as
+$$\bar\psi(\Lambda^{-1}x)S[\Lambda]^\dagger \gamma^\mu S[\Lambda]\psi(\Lambda^{-1}(x).$$
+If this is to be a Lorentz vector, we must have
+$$S[\Lambda]^{-1} \gamma^\mu S[\Lambda]=\Lambda^\mu_\nu \gamma^\nu.$$
+Now we know that
+$$\Lambda^\mu_\nu = \exp\left(\frac{1}{2}\Omega_{\rho\sigma}M^{\rho\sigma}\right)^\mu_\nu$$
+and
+$$S[\Lambda]=\exp\left(\frac{1}{2}\Omega_{\rho\sigma}S^{\rho\sigma}\right),$$
+so infinitesimally we have
+%%%%rewrite this!
+$$(M^{\rho\sigma})^\mu_\nu \gamma^\nu = -[S^{\rho\sigma},\gamma^\mu].$$ But from the definition of $M$, we have on the LHS
+$$(\eta^{\rho\mu}\delta^\sigma_\nu-\eta^{\sigma\mu}\delta^\rho_\nu)\gamma^\nu =\eta^{\rho\mu}\gamma^\sigma - \gamma^\rho \eta^{\sigma\mu}=-[S^{\rho\sigma},\gamma^\mu],$$
+which we proved previously.
+
+Now we'll claim that
+$$S=\int d^4x \underbrace{\bar \psi(x)(i \gamma^\mu \p_\mu -m)\psi(x)}_{\cL_D}$$
+is a LI action, where $\cL_D$ is the \term{Dirac Lagrangian}. This action describes a free spinor field, and it has some strange properties. If we look at the mass dimension of the field with $[m]=1$, we find that $[\psi]=[\bar\psi]=\frac{3}{2}$. We can now vary $\psi,\bar\psi$ independently to get the equations of motion. Varying $\psi$, we find that
+$$(i\gamma^\mu \p_\mu -m)\psi=0,$$
+which is known as the \term{Dirac equation.} Note that this equation is only first-order in $\p_\mu$, whereas the scalar field yielded a second-order equation in $\p_\mu$. One arrives at a similar equation of $\bar \psi$ after an integration by parts:
+$$i\p_\mu \gamma^\mu \bar \psi + m \bar \psi=0.$$
+
+Let us now introduce the \term{slash notation}:
+$$A_\mu \gamma^\mu = \gamma_\mu A^\mu = \slashed{A}.$$
+Hence the Dirac equation is written
+$$(i\slashed{\p}-m)\psi=0.$$
+Note that the Dirac equation mixes up different components of $\psi$, but each individual component solves the Klein-Gordon equation:
+\begin{align*}
+    (i\slashed{\p}+m)(i\slashed{p}-m)\psi=0
+    &\implies -(\gamma^\mu \gamma^\nu \p_\mu \p_\nu +m^2)\psi=0\\
+    &\iff -(\frac{1}{2}\set{\gamma^\mu, \gamma^\nu}\p_\mu \p_\nu +m^2)\psi =0\\
+    &\iff -(\p_\mu \p^\mu+m^2)\psi =0.
+\end{align*}
+Remember, we should think of the spinor as secretly four components with a non-trivial transformation under rotations.
+
+Now in our representation (the chiral representation), $S[\Lambda]$ is block diagonal. It takes the form
+$$
+S[\Lambda]=\begin{cases}
+    \begin{pmatrix}
+        e^{i\gv \phi \cdot \gv \sigma/2} & 0\\
+        0 & e^{i\gv \phi \cdot \gv \sigma/2}
+    \end{pmatrix}
+    & \text{for rotations,}\\
+    \begin{pmatrix}
+        e^{-\gv \chi \cdot \gv \sigma/2} & 0\\
+        0 & e^{-\gv \chi \cdot \gv \sigma/2}
+    \end{pmatrix}
+    & \text{for boosts.}
+\end{cases}
+$$
+From \emph{Symmetries}, we might recall that since the representation takes a block diagonal form, it is \emph{reducible}, i.e. it decomposes into two \emph{irreducible} representations acting on $U_L,U_R$, where we now write
+$$\psi={{U_L}\choose{U_R}}$$
+with $U_L,U_R$ some 2-component $\CC$ objects. We call $U_L$ and $U_R$ (where $L,R$ stand for left and right) \term{Weyl} or \term{chiral spinors.} They transform identically under rotations,
+$$U_{L,R}\to e^{i\gv \phi \cdot \gv \sigma/2}U_{L,R}$$ but oppositely under boosts,
+\begin{align*}
+    U_L &\to e^{-\gv \chi \cdot \gv \sigma/2}U_L\\
+    U_R &\to e^{+\gv \chi \cdot \gv \sigma/2}U_R.
+\end{align*}
+In group theory language, we say that $U_L$ is in the $(1/2,0)$ representation of the Lorentz group, while $U_R$ is in the $(0,1/2)$ representation (where the Lorentz group $SO(1,3)\simeq SU(2)\times SU(2)$). 
+A general spinor is in the direct product space,
+$$\psi=(1/2,0)\oplus(0,1/2).$$
+
+\subsection*{The Weyl equation} Let us now decompose the Dirac Lagrangian $\cL_D$ in terms of Weyl spinors. Thus
+$$\cL_D=\bar\psi(i\slashed \p -m)\psi =i U_L^\dagger \sigma^\mu \p_\mu U_L + i U_R^\dagger \bar \sigma^\mu \p_\mu U_R - m(U_L^\dagger U_R+U_R^\dagger U_L),$$
+where $\sigma^\mu\equiv (I,\gv \sigma),\bar \sigma^\mu \equiv (I,-\gv \sigma).$ We observe that the kinetic terms separate entirely-- it is only the mass term which mixes $U_L$ and $U_R$. A massive spinor requires both $U_L$ and $U_R$ in general, but a massless fermion only requires a single one (e.g. $U_L$). This leads us to write
+\begin{align*}
+    i\sigma^\mu \p_\mu U_L&=0,\\
+    i \bar \sigma^\mu \p_\mu U_R&=0,
+\end{align*}
+which are known as Weyl's equations.
+
+Na\"ively, we expect that since $U_L$ and $U_R$ each have two complex components, our count of the real degrees of freedom should come out to $2\times 2\times 2=8$. But it turns out this is not quite right. In classical mechanics, the number of degrees of freedom are typically given by
+$$\#\text{ d.o.f.}=\frac{1}{2}\times(\text{dimensionality of phase space.}).$$
+In field theory, we discuss instead the d.o.f. per spacetime point. For a real scalar $\phi$, the conjugate momentum is $\Pi_\phi =\dot\phi \implies$\# d.o.f.$=\frac{1}{2}\times (2)=1$. However, for a spinor we have
+$\Pi_\psi = \psi^\dagger,$ not $\dot\psi$. Therefore we get $4$ complex components $=8$ real degrees of freedom is $\psi$, but no extra in $\psi^\dagger$. The upshot is that for spinors,
+$$\#\text{ d.o.f.}=\frac{1}{2}(8)=4.$$
+We can choose spin $\uparrow$ or spin $\downarrow$, and consider particles or antiparticles, so $2\times 2=4.$ We'll explore what happens to the extra degrees of freedom next time.

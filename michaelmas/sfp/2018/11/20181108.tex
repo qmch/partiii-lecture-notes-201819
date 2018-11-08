@@ -1,0 +1,120 @@
+Today, we will continue our study of the Cartan-Weyl basis. Recall that we introduced the idea of a Cartan subalgebra $\fh\subset \fg$ in the last two lectures. With a little work, we produced a set of basis vectors $E^\alpha$ where $\alpha\in \fh^*$ are the set of roots, and they form a basis for the dual vector space $\fh^*$.
+
+We found that since the Cartan subalgebra is an abelian subalgebra, the commutator of two elements in it vanishes by definition,
+$$[H^i,H^j]=0.$$
+The step operators $E^\alpha$ are eigenvectors of the ad map,
+$$[H^i,E^\alpha]=\alpha^i E^\alpha.$$
+And the bracket of two step operators is either zero or proportional to another step operator,
+$$[E^\alpha,E^\beta]=\begin{cases}
+N_{\alpha,\beta}E^{\alpha+\beta} & \text{if }\alpha+\beta\in \Phi\\
+0 & \text{if }\alpha+\beta\not\in \Phi
+\end{cases}
+$$
+for some (as yet undetermined) constants $N_{\alpha,\beta}$ (and with the caveat that $\alpha+\beta\neq 0$).
+
+Now, our proof relied on the computation
+$$[H^i,[E^\alpha,E^\beta]]=(\alpha^i+\beta^i)[E^\alpha, E^\beta],$$
+so $[E^\alpha,E^\beta]$ is only an eigenvector with nonzero eigenvalue if $\alpha+\beta \neq 0.$
+Otherwise, for the case $\alpha+\beta=0$ let us consider the inner product
+$$\kappa([E^\alpha,E^{-\alpha}],H)$$
+and claim it can be written as
+\begin{equation}\label{pre-halpha}
+  \kappa([E^\alpha,E^{-\alpha}],H) =\alpha(H)\kappa(E^\alpha,E^{-\alpha}).
+\end{equation}
+The proof is straightforward: using the invariance of the inner product, we can rewrite
+\begin{align*}
+\kappa([E^\alpha,E^{-\alpha}],H)&=\kappa(E^\alpha,[E^{-\alpha},H])\\
+&=\kappa(E^\alpha,-[e_i H^i,E^{-\alpha}])\\
+&=\kappa(E^\alpha,-e_i (-\alpha^i E^{-\alpha}))\\
+&=\alpha(H) \kappa(E^\alpha, E^{-\alpha}),
+\end{align*}
+recalling from last time that if $H = e_i H^i$ in some basis, then $\alpha(H) = e_i \alpha^i.$ \qed
+
+But by iv from the previous lecture, we found that
+$$\kappa(E^\alpha,E^{-\alpha})\neq 0,$$
+so let us now define
+$$H^\alpha\equiv \frac{[E^\alpha, E^{-\alpha}]}{\kappa(E^\alpha, E^{-\alpha})}.$$
+If we write this as an expression for $[E^\alpha,E^{-\alpha}]$ and substitute into Eqn. \ref{pre-halpha}, then by the linearity of the inner product we see that
+$$\kappa(H^\alpha,H)=\alpha(H)\forall h\in \fh.$$
+
+%%definitely come back to this and fix the notation.
+This gives us a linear equation on the components $e_i$ of $H$. Writing $H^\a$ and $H$ in a basis for $\fh$,
+$$H^\alpha=\rho_i^\alpha H^i, \quad H=e_i H^i \in \fh,$$
+the equation becomes
+$$K^{ij} \rho^{\alpha}_i e_j= \alpha^j e_j$$
+or equivalently
+$$K^{ij} \rho_i^\alpha= \alpha^j,$$
+so we can solve for the components $\rho_i^\alpha$ of $H^\alpha$ in terms of the roots $'alpha^j$:
+$$\rho_i^\alpha = (K^{-1})_{ij} \alpha^j \implies H^\alpha = \rho_i^\alpha H^i = (K^{-1})_{ij} \alpha^j H^i.$$
+
+Therefore we find that
+$$[E^\alpha,E^\beta]=\begin{cases}
+N_{\alpha,\beta}E^{\alpha+\beta} & \text{if }\alpha+\beta\in \Phi\\
+\kappa(E^\alpha, E^{-\alpha}H^\alpha & \text {if }\alpha+\beta=0\\
+0 & \text{otherwise.}
+\end{cases}
+$$
+
+What properties does this $H^\alpha \in \fh$ have? $\forall \alpha,\beta \in \Phi,$ we see that
+\begin{align*}
+    [H^\alpha,E^\beta]&=(\kappa^{-1})_{ij}\alpha^i [H^j,E^\beta]\\
+    &=(\kappa^{-1})_{ij}\alpha^i \beta^j E^\beta\\
+    &=(\alpha,\beta) E^\beta,
+\end{align*}
+where we see that as promised, $\kappa^{-1}$ has a natural interpretation as an inner product on elements $\alpha,\beta$ in the dual space. Now for all $\alpha\in \Phi$ we shall define
+$$e^\alpha=\sqrt{\frac{2}{(\alpha,\alpha)\kappa(E^\alpha, E^{-\alpha})}}E^\alpha$$
+and
+$$h^\alpha=\frac{2}{(\alpha,\alpha)}H^{\alpha}.$$
+Note that we require $(\alpha,\alpha)\neq 0$ for these expressions to be sensible-- see e.g. Fuchs and Schweigert pg. 87 for the proof.
+
+Supposing these elements are well-defined, we now get a similar set of brackets in this basis (written in terms of the roots $\alpha$). That is,
+\begin{align*}
+    [h^\alpha, h^\beta]&= 0\\
+    [h^\alpha,e^\beta]&= \frac{2(\alpha,\beta)}{(\alpha,\alpha)}e^\beta\\
+    [e^\alpha,e^\beta]&=\begin{cases}
+    n_{\alpha,\beta} e^{\alpha+\beta} & \alpha+\beta \in \Phi\\
+    h^\alpha & \alpha+\beta =0\\
+    0 & \text{otherwise}.
+    \end{cases}
+\end{align*}
+
+Let's look at a specific example. Consider $L_\CC (SU(2))$ subalgebras. We have
+$$\alpha\in \Phi \implies -\alpha \in \Phi.$$
+Now for each pair $\pm \alpha \in \Phi,$ we get a subalgebra of $L_\CC(SU(2))$ spanned by the set
+$$\set{e^\alpha, e^{-\alpha}, e^\alpha}.$$
+Our brackets therefore tell us that
+\begin{align*}
+    [h^\alpha,e^{\pm\alpha}]&= \pm 2 e^{\pm \alpha}\\
+    [e^{+\alpha},e^{-\alpha}]&= h^\alpha,
+\end{align*}
+so we immediately recover the subalgebra structure we saw before. Let us label these subalgebras by our choice of root $\alpha$ and call the corresponding subalgebra $sl(2)_\alpha.$
+
+Then as a consequence, we get what are called root strings.
+\begin{defn}
+For $\alpha,\beta\in \Phi$, define the \term{$\alpha$-string passing through $\beta$} as the set of roots of the form $\beta+\rho\alpha, \rho\in\ZZ$. That is,
+$$S_{\alpha,\beta}=\set{\beta+\rho \alpha \in \Phi, \rho\in \ZZ}.$$
+\end{defn}
+Now there is a corresponding vector subspace of $\fg$ which we can obtain by exponentiating the root string:
+$$V_{\alpha,\beta}=\text{span}_\CC\set{e^{\beta+\rho\alpha}; \beta +\rho\alpha \in S_{\alpha,\beta}}.$$
+Now consider the action of $sl(2)_\alpha$ on $V_{\alpha,\beta}.$ We see that
+\begin{align*}
+    [h^\alpha,e^{\beta+\rho\alpha}] &= \frac{2(\alpha,\beta+\rho \alpha)}{(\alpha,\alpha)}e^{\beta+\rho \alpha} \in V_{\alpha,\beta}\\
+    &= \left(\frac{2(\a,\beta)}{(\a,\a)}+2\rho\right)e^{\beta+\rho\a}.
+\end{align*}
+By a similar computation, we find that
+$$[e^{\pm \a},e^{\beta+\rho\a}]\propto e^{\beta+(\rho\pm 1)\a} \text{ if }\beta+(\rho\pm 1)\alpha \in \Phi,$$
+and it is zero otherwise.
+Therefore $V_{\alpha,\beta}$ is a representation space for a representation $R$ of $sl(2)_\alpha$. In particular,
+$$R(h^\a)=\text{ad}_{h^\a}\text{ and } R(e^{\pm\a})=\text{ad}_{e^{\pm \a}}.$$
+
+We see that $R$ has a weight set given by
+$$S_R=\set{\frac{2(\a,\beta)}{(\a,\a)}+2\rho; \beta+\rho\a\in \Phi}.$$
+%
+Now the representation $R$ has some direct sum representation:
+$$R=R_{\Lambda_1}\oplus \ldots \oplus R_{\Lambda_L}, \Lambda_l \in \ZZ_{\geq 0}.$$
+The total weight set is of course the union of all the individual weight sets of the elements of the direct product:
+$$S_R=S_{\Lambda_1}\cup \ldots \cup S_{\Lambda_L}.$$
+It's also true that $\forall \Lambda \in \ZZ_{\geq 0}$, we have a weight set which can be written
+$$S_\Lambda=\set{-\Lambda,-\Lambda+2,\ldots,+\Lambda}.$$
+But recall that our set of roots is non-degenerate-- each $\alpha\in \Phi$ appears once and only once. So the non-degeneracy of the roots of $\fg$ means that the weights of our representation $R$ are also non-degenerate. Therefore
+$$S_R=S_\Lambda=\set{-\Lambda,-\Lambda+2,\ldots,+\Lambda}.$$

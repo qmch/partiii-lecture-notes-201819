@@ -9,7 +9,7 @@ with $\alpha^i\in \CC,i=1,\ldots,r$. A general element of the Cartan subalgebra 
 $$H=e_i H^i$$
 where $e_i$ represents the components of $H$. Now we can write
 $$[H,E^\alpha]=\alpha(H)E^\alpha$$
-where $\alpha(H)=e_i \alpha^i$ is now a function from $H$ (specifically the components $e_i$ of $H$) to the complex numbers $\CC$.
+where $$\alpha(H):\fh \to \CC, H=e_i H^i \mapsto e_i \alpha^i$$ is now a (multi)linear function from $H$ (specifically the components $e_i$ of $H$) to the complex numbers $\CC$.
 
 A root (i.e. a set of values $\alpha=\set{\alpha^i}$) therefore defines a linear map $\mathfrak{h}\to \CC$. We think of roots as elements of the \emph{dual vector space} $\mathfrak{h}^*$ of the Cartan subalgebra $\mathfrak{h}$. One can further prove that the roots are non-degenerate (see Fuchs and Schweigert, pg. 87). For our purposes, we will simply assume this is true.
 
@@ -74,7 +74,7 @@ which contradicts our assumption that $K$ was non-degenerate. Therefore $\exists
 Therefore it is not only the case that $K$ is a non-degenerate inner product on $\fg$; in fact, we have proven the stronger result that $K$ is non-degenerate even when restricted to the Cartan subalgebra $\fh\subset \fg$.
 
 In components, we write
-$$K(H,H')=K^{ij}e_i e_j'$$ where$K^{ij}=K(H^i,H^j)$. Thus iii) implies that $K$ is invertible as an $r\times r$ matrix-- it has no zero eigenvalues. That is,
+$$K(H,H')=K^{ij}e_i e_j'$$ where $K^{ij}=K(H^i,H^j)$. Thus iii) implies that $K$ is invertible as an $r\times r$ matrix-- it has no zero eigenvalues. That is,
 $$\exists(K^{-1})_{ij}\text{ such that }(K^{-1})_{ij} K^{jk}=\delta_i^k.$$
 
 Why is this useful? Precisely because $K^{-1}$ now induces a non-degenerate inner product on $\fh^*$, the dual space. Thus with $\alpha,\beta\in \Phi,$ we get
@@ -82,11 +82,12 @@ $$[H^i,E^\alpha]=\alpha^i E^\alpha\text{ and }[H^i,E^\beta]=\beta^i E^\alpha.$$
 \begin{defn}
 We therefore define the inner product on elements of the dual space,
 $$(\alpha,\beta)=(K^{-1})_{ij}\alpha^i \beta^j.$$
+Next lecture, we'll see why this is a natural choice of inner product.
 \end{defn}
 
 We shall now prove the following statement.
 \begin{itemize}
-\item[v)] With $\alpha\in \Phi\implies -\alpha\in \Phi$ with
+\item[iv)] With $\alpha\in \Phi\implies -\alpha\in \Phi$ with
 $K(E^\alpha,E^{-\alpha})\neq 0.$
 \end{itemize}
 From i) we have $K(E^\alpha,H)=0\forall H\in \fh$, and from ii) we have $K(E^\alpha,E^\beta)=0 \forall \beta\in \Phi, \alpha\neq -\beta$. Suppose $-\alpha \notin \Phi$. Then we would have
@@ -109,4 +110,4 @@ N_{\alpha,\beta}E^{\alpha+\beta} & \text{if }\alpha+\beta\in \Phi\\
 0 & \text{if }\alpha+\beta\not\in \Phi.
 \end{cases}
 $$
-That is, we've found that the element $[E^\alpha,E^\beta]$ is actually proportional to the step element with root $\alpha+\beta$, with some undetermined constants $N_{\alpha,\beta}.$
+That is, we've found that when $\alpha+\beta\neq 0$, the element $[E^\alpha,E^\beta]$ is actually proportional to the step element with root $\alpha+\beta$ (if it exists), with some undetermined constants $N_{\alpha,\beta}.$

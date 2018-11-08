@@ -1,9 +1,9 @@
 Some remarks from last time. In terms of the original basis vectors, our basis for $SU(2)$ was
-$$H=2i T^3, E_\pm i(T^1 \pm i T^2$$
-with $T^a=-\frac{1}{2}i \sigma_a, a=1,2,3.$ Conversely $T^3=H/2i, T^1=\frac{1}{2i}(E_+ + E_-), T^2= -\frac{1}{2}(E_+-E_-).$
+$$H=2i T^3,\quad E_\pm =i(T^1 \pm i T^2),$$
+with $T^a\equiv-\frac{1}{2}i \sigma_a, a=1,2,3.$ Conversely, we can invert these relationships to find $T^3=H/2i, T^1=\frac{1}{2i}(E_+ + E_-), T^2= -\frac{1}{2}(E_+-E_-).$
 
-It follows that a representation $R$ of $L_\CC(SU(2))$, $R(H2),R(E_+),R(E_-)$ gives a representation of $L(SU(2))$ by applying our representation to the original basis elements, e.g.
-$$R(T^1)=\frac{1}{2i} R(E_++ E_-)=\frac{1}{2i}(R(E_+)+R(E_-).$$
+It follows that a representation $R$ of the complexified Lie algebra $L_\CC(SU(2))$ (i.e. a set of linear maps $R(H),R(E_+),R(E_-)$) induces a representation of the original Lie algebra $L(SU(2))$, which we get by applying our representation to the original basis elements, e.g.
+$$R(T^1)=\frac{1}{2i} R(E_+ + E_-)=\frac{1}{2i}(R(E_+)+R(E_-)).$$
 
 Today we'll consider the $SU(2)$ representation from $L(SU(2))$ representations. That is, we'll look at the connection between the representation of a Lie algebra $L(G)$ and the representation of the original Lie group $G$.
 
@@ -12,7 +12,7 @@ $$S_\Lambda=\set{-\Lambda, \Lambda+2,\ldots, \Lambda-2, +\Lambda}\subset \ZZ.$$
 We had $\dim(R_\Lambda)=\Lambda+1$.
 
 To a physicist, this is simply a complicated way of expressing angular momentum in quantum mechanics. Recall that the total angular momentum is orbital $+$ spin angular momentum. We had our $\vec J$ operator,
-$$\vec J=(J-1,J_2,J_3)$$ with eigenstates (e.g. of $J_3$) labeled by $j\in \ZZ/2, j\geq 0.$ We then had
+$$\vec J=(J_1,J_2,J_3)$$ with eigenstates (e.g. of $J_3$) labeled by $j\in \ZZ/2, j\geq 0.$ We then had
 $$m\in \set{-j,j+1,\ldots,+j}$$
 such that
 $$\hat J_3\ket{j,m}=m\ket{j,m}$$
@@ -61,14 +61,29 @@ $$R_1 \oplus R_2.$$
 The direct sum acts on the direct sum of the vector spaces, $$V_1 \oplus V_2 = \set{v_1 \oplus v_2: v_1 \in V_1,
 v_2 \in V_2}.$$ The dimension of the new representation space is simply $\dim(V_1 \oplus V_2)=d_1 +d_2.$ The direct sum is then defined very simply by
 $$(R_1 \oplus R_2)(X)\cdot (v_1 \oplus v_2)=(R_1(X)v_1)\oplus (R_2(X)v_2) \in V_1,V_2.$$
-There's probably a nice commuting diagram for this in category theory. To make this more concrete, one can write $(R_1\oplus R_2)(X)$ as a block diagonal matrix with $R_1(X)$ in the upper left, $R_2(X)$ in the lower right. This is known as a \term{reducible} representation, i.e a representation which can be written as the direct sum of two (or more) representations.
+There's probably a nice commuting diagram for this in category theory. To make this more concrete, one can write $(R_1\oplus R_2)(X)$ as a block diagonal matrix with $R_1(X)$ in the upper left, $R_2(X)$ in the lower right. 
+$$
+R(X)=
+\left(
+\begin{array}{c|c}
+R_1(X) & \\
+\hline
+ & R_2(X)
+\end{array}
+\right)
+$$
+This is known as a \term{reducible} representation, i.e. a representation which can be written as the direct sum of two (or more) representations.
 \end{defn}
 
 \begin{defn}
 Given vector spaces $V_1,V_2$ with dimensions $d_1,d_2$, we define the \term{tensor product space} $V_1 \otimes V_2$. It's got a different structure than the more familiar Cartesian product-- our tensor product space is spanned by basis elements
 $$v_1 \otimes v_2, v_1\in V_1,v_2\in V_2.$$
 In particular, the tensor product space has dimension $\dim(V_1\otimes V_2)=d_1 \times d_2$.
-However, the addition structure on the tensor product space is special. In a Cartesian product, it makes sense to add terms like $(0,1)+(1,0)=(1,1)$ (i.e. term-wise addition). But a tensor product is a formal product. In a tensor product, $\ket{0}\otimes \ket{1} + \ket{1}\otimes \ket{0}$ cannot be simplified any further. It only makes sense to add terms which share one of the terms, e.g. something like $(0,1)+(1,1)=(1,1).$ Tensor products are of particular interest in physics because when we consider the Hilbert space of a multi-particle state, it can be represented not as a direct product but a tensor product of the individual single-particle states.\footnote{For a simple example, consider two particle spin states taking discrete values. $\ket{a},\ket{b}\in \set{\ket{0},\ket{1}}$. Then the two-particle states are described by the tensor product space $\ket{a}\otimes\ket{b}$ (sometimes $\ket{a}\ket{b}$ or simply $\ket{ab}$), which is spanned by $\ket{00},\ket{01},\ket{10},\ket{11}$. It's obvious in this notation that it doesn't make sense to add states like $\ket{10}+\ket{01}$-- addition is only well-defined when at least one of the original basis states matches, e.g. $\ket{10}+\ket{11}=\ket{1}(\ket{0}+\ket{1})$.}
+This is already different from the Cartesian (direct) product, which has dimension $\dim(V_1\times V_2)=d_1+d_2$. 
+
+Moreover, the addition structure on the tensor product space is special. In a Cartesian product, it makes sense to add terms like $(0,1)+(1,0)=(1,1)$ (i.e. term-wise addition). But a tensor product is a formal product. In a tensor product, $\ket{0}\otimes \ket{1} + \ket{1}\otimes \ket{0}$ cannot be simplified any further. It only makes sense to add terms which have one of the elements from the original spaces in common, e.g. something like $(0,1)+(1,1)=(1,1).$ 
+
+Tensor products are of particular interest in physics because when we consider the Hilbert space of a multi-particle state, it can be represented not as a direct product but a tensor product of the individual single-particle states.\footnote{For a simple example, consider two particle spin states taking discrete values. $\ket{a},\ket{b}\in \set{\ket{0},\ket{1}}$. Then the two-particle states are described by the tensor product space $\ket{a}\otimes\ket{b}$ (sometimes $\ket{a}\ket{b}$ or simply $\ket{ab}$), which is spanned by $\ket{00},\ket{01},\ket{10},\ket{11}$. It's obvious in this notation that it doesn't make sense to add states like $\ket{10}+\ket{01}$-- addition is only well-defined when at least one of the original basis states matches, e.g. $\ket{10}+\ket{11}=\ket{1}(\ket{0}+\ket{1})$. It's also clear that the tensor product space is ``bigger'' than the direct product space. To make contact with quantum mechanics, it's the tensor product structure which lets us prepare entangled states like $\ket{00}+\ket{11}$ which have no natural projection onto the original one-particle states.}
 
 Given two linear maps $M_1:V_1\to V_1,M_2: V_2\to V_2,$ we can define the \term{tensor product map} $(M_1\otimes M_2): V_1\otimes V_2 \to V_1 \otimes V_2$ such that
 $$(M_1\otimes M_2)(v_1\otimes v_2)=(M_1 v_1)\otimes (M_2 v_2) \in V_1\otimes V_2,$$
