@@ -1,0 +1,107 @@
+We saw in the chiral representation that the spinor representation $S[\Lambda]$ was block diagonal, but this is not always true. As far as we are concerned, any repn related to the original $\gamma^\mu$s by a similarity transformation is equally good,
+$$\gamma^\mu\to U\gamma^\mu U^{-1}.$$
+However, what we would like is a repn independent way to define the Weyl spinors. As it turns out, we can do this by defining the matrix $\gamma^5$ as
+$$\gamma^5 \equiv i \gamma^0 \gamma^1 \gamma^2 \gamma^3.$$
+One can check (quick exercise) that $\gamma^5$ satisfies
+$$\set{\gamma^\mu,\gamma^5}=0\text{ and }(\gamma^5)^2=I.$$
+In the chiral repn, $\gamma^5$ takes the form
+$$\gamma^5=\begin{pmatrix}
+-I&0\\0&I
+\end{pmatrix}.$$
+Let us define the projection operators
+\begin{align*}
+    P_L & \equiv \frac{1}{2}(I-\gamma^5)\\
+    P_R & \equiv \frac{1}{2}(I+\gamma^5).
+\end{align*}
+Note this convention is slightly different than the one in David Tong's notes. Under these definitions, one can see that
+$$P_L^2=P_L,\quad P_R^2=P_R,\quad \text{and } P_LP_R =0.$$
+From the explicit form of $\gamma^5$, it's clear that these projection operators select the corresponding Weyl spinors.
+\begin{defn}
+We define a \term{left-handed spinor} as
+$$\psi_L=P_L \psi,$$
+and similarly a \term{right-handed spinor} as
+$$\psi_R=P_R \psi.$$
+For instance, neutrinos are left-handed spinors, while the right-handed up quark is a right-handed spinor.
+
+Handedness can be more physically defined in terms of whether a particle's spin is parallel or antiparallel to its velocity. Note that \emph{massive} left-handed and right-handed spinors can be transformed into one another by a Lorentz boost, since we can boost into the rest frame of a massive particle (for instance) or boost past it into a frame where it appears to be moving in the opposite direction. This is not the case for the massless Weyl spinors we defined before-- you can never catch up with or overtake a massless particle, so its handedness is invariant under Lorentz transformations.
+\end{defn}
+One can now construct new tensors using $\gamma^5$, e.g.
+$$\bar \psi(x) \gamma^t \psi(x)\to_{LT} \bar \psi(\Lambda^{-1}x)S[\Lambda]^{-1}\gamma^5 S[\Lambda] \psi(\Lambda^{-1}x).$$
+We call such a quantity a \term{pseudoscalar,} and one can check that $[S_{\mu\nu},\gamma^t]=0$, so our pseudoscalar under a Lorentz transformation transforms to 
+$$\bar\psi(\Lambda^{-1}x)\gamma^5 \psi(\Lambda^{-1}x).$$
+However, it's not quite a scalar because of a subtle point we'll come to shortly. Similarly we can define
+$$\bar \psi(x) \gamma^5 \gamma^\mu \psi(x),$$
+which we call an \term{axial vector}. These are distinguished from regular scalars and vectors by their behavior under a parity transformation.
+
+We say that $\psi_L,\psi_R$ are related by \term{parity}, i.e. a flip in handedness. So far, all the Lorentz transformations we've looked at were continuously connected to the identity (i.e. they are in the connected component of $O(3,1)$). In fact, there are also two discrete symmetries we can consider which leave four-vector inner products fixed.\footnote{The connected components of the Lorentz group have the structure of $V_4$, the Klein four-group. All these transformations do is switch around regions between parts of the light cone, if you like.}
+\begin{itemize}
+    \item Time reversal $T: x^0\to -x^0, x^i \to x^i$
+    \item Parity $P: x^0\to x^0, x^i\to -x^i$.
+\end{itemize}
+Note that $P$ involves flipping all three spatial components, since changing the sign of only one or two is equivalent to a rotation (and therefore that transformation is in the same connected component).
+
+Under $P$, rotations don't change sign, but boosts do. That is,
+$$\begin{cases}
+U_\pm \to e^{i\gv \phi \cdot \gv \sigma/2} U_\pm \text{ under rotations},\\
+U_\pm \to e^{\pm\gv \chi \cdot \gv \sigma/2} U_\pm \text{ under boosts}.
+\end{cases}$$
+Therefore we see that $P$ exchanges left- and right-handed spinors:
+$$P: \psi_{L/R}(\vec x,t)\to \psi_{R/L}(-\vec x, t).$$
+For a Dirac spinor, this is implemented by
+$$P:\psi(\vec x,t)\to \gamma^0 \psi(-\vec x,t).$$
+The quantity $\bar \psi \psi(\vec x,t)\to \bar \psi \psi(-\vec x,t),$ so $\bar \psi \psi$ transforms under $P$ like a scalar. Meanwhile, $\bar \psi \gamma^\mu \psi(\vec x,t)$ transforms as
+$$\bar \psi \gamma^\mu \psi(\vec x,t) \to\begin{cases}
+\bar \psi \gamma^0 \psi(-\vec x,t) & \mu=0\\
+\bar \psi \gamma^0 \gamma^i \gamma^0 \psi(-\vec x,t)& \mu = i\\ = -\bar \psi \gamma^i \psi(-\vec x,t).
+\end{cases}$$
+Therefore this transforms as a vector under $P$, with the spatial part flipping sign. Some other combinations we can cook up are the transformation of%redo the notation here to match the second one
+\begin{align*}
+    \bar \psi \gamma^t \psi(\vec x,t)&=\bar \psi \gamma^0 \gamma^5 \gamma^0 \psi(-\vec x,t)\\
+    &= -\bar \psi \gamma^5 \psi(-\vec x,t),
+\end{align*}
+so the minus sign here leads us to call this a pseudoscalar, while $\bar \psi \gamma^5 \gamma^\mu \psi(\vec x,t)$ transforms as
+\begin{align*}
+    \bar \psi \gamma^5 \gamma^\mu \psi(\vec x,t)
+    &\to \bar \psi \gamma^0 \gamma^5 \gamma^\mu \gamma^0\psi(-\vec x,t)\\
+    &=\begin{cases}
+    -\bar\psi \gamma^5 \gamma^0 \psi(-\vec x,t) & \mu=0\\
+    +\bar\psi \gamma^5 \gamma^i \psi(-\vec x,t) & \mu=i.
+    \end{cases}
+\end{align*}
+The different sorts of bi-linears (combos of a $\bar \psi$ and $\psi$) we can cook up is summarized in Table \ref{tab:bilinears}. We can add extra terms to the Lagrangian using $\gamma^5$, but such terms break $P$ symmetry. Nature in fact uses thes, e.g. terms in the Lagrangian like
+$$\cL=\frac{g}{2}W_\mu \bar\psi \gamma^\mu(1-\gamma^5)\psi.$$
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+         $\bar\psi \psi$ & scalar & $1$\\ \hline
+         $\bar \psi \gamma^\mu \psi$ & vector & 4\\ \hline
+         $\bar \psi S^{\mu\nu}\psi$ & tensor & $4\times 3/2=6$\\ \hline
+         $\bar \psi \gamma^t \psi$ & pseudoscalar & 1\\ \hline
+         $\bar \psi \gamma^5 \gamma^\mu \psi$ & pseudovector & 4\\ \hline
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:bilinears}
+\end{table}
+
+For instance, the $W$ boson is a vector field which only couples to left-handed fermions. 
+\begin{defn}
+A theory which puts $\psi_L,\psi_R$ on equal footing is called \term{vector-like.} If they appear differently/have different interactions, the theory is called \term{chiral.}
+
+It turns out the Standard Model is a chiral theory-- Chien-Shiung Wu famously observed in 1956 that parity symmetry is explicitly violated in beta decays.
+\end{defn}
+
+\subsection*{Symmetries and currents of spinors} We might now like to understand what the corresponding conserved quantities are that correspond to spinors. For instance, under spacetime translation we have
+$$x^\mu \to x^\mu -\alpha \epsilon^\mu,$$
+so
+$$\Delta \psi=\epsilon^\mu \p_\mu \psi \implies T^{\mu\nu}=i \bar \psi \gamma^\mu \p^\nu \psi-\eta^{\mu\nu}\cL_D.$$
+This comes from applying Noether's theorem straightforwardly to the Dirac Lagrangian.
+We get a conserved current when the equations of motion are obeyed, so we can impose them on $T^{\mu\nu}$. This doesn't help us in the bosonic case where the equations of motion are second-order, but for spinors it does because the equatiosn are first order. Thus
+$$(i\slashed{\p}-m)\psi=0 \implies \text{we can set }\cL_D=0\text{ in }T^{\mu\nu}.$$
+Therefore
+$$T^{\mu\nu}=i\bar \psi \gamma^\mu \p^\nu \psi.$$
+We can write $\cL_D$ in a more symmetric way by splitting it up and integrating by parts,
+$$S=\int d^4x \frac{1}{2} \bar \psi(i \slashed{\p}^\rightarrow -m)\psi+\frac{1}{2}\bar \psi(-i \slashed{\p}^\leftarrow - m)\psi = \frac{1}{2} \bar \psi i \slashed{\p}^\leftrightarrow - m)\psi$$
+where the $\leftrightarrow$ indicates a symmetrization. Thus we can write
+$$T^{\mu\nu}=\frac{i}{2}\bar\psi (\gamma^\mu \p^\nu- \gamma^\nu \p^\mu)\psi.$$

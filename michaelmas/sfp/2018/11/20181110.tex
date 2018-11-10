@@ -1,0 +1,98 @@
+In general, if we consider a real Lie algebra $\fg_\RR$, such that $\dim(\fg_\RR)=D$, its Killing form $\kappa^{ab}$ will also in general be real. Treating $\kappa$ as a $D\times D$ matrix, one can then ask about the \term{signature} of the matrix, i.e. how many positive and negative eigenvalues $\kappa$ has when interpreted as a matrix, and more generally whether they are all of the same sign.
+\begin{defn}
+A real Lie algebra $\fg_\RR$ is of \term{compact type} if $\exists$ a basis in which
+$$\kappa^{ab}=-K \delta^{ab}, K\in \RR^+.$$
+\end{defn}
+If we have a basis for $\fg_\RR$ with $\fg_\RR$ the real span of the generators $\set{T^a,a=1,\ldots,D}$ then we can take the \term{complexification} of $\fg_\RR$, which is defined to be the complex span of the same basis vectors,
+$$\fg_\CC = \text{Span}_\CC \set{T^a,a=1,\ldots,D}.$$
+However, going back to a real Lie algebra from a complex one is harder-- there may be several real Lie algebras which have the same complexification. Instead, we say that $\fg_\RR$ is a \term{real form} of $\fg_\CC$.
+
+\begin{thm}
+Every complex semi-simple Lie algebra of finite dimension has a real form of compact type.
+\end{thm}
+This may be helpful on the final question of Example Sheet 2.
+
+
+Continuing with our discussion of root strings, we previously defined
+$$S_{\alpha,\beta}=\set{\beta+\rho \alpha\ in \Phi,\rho\in \ZZ}.$$
+We then argued that for $V_{\alpha,\beta}$ the representation space of a repn $R$ of $sl(2)_\alpha$, there was a weight set
+$$S_R=\set{\frac{2(\alpha,\beta)}{\alpha,\alpha}+2\rho; \beta+\rho\alpha \in \Phi}.$$
+
+We then noted that if we conisder the irreps $R_\Lambda$ of $sl(2)_\alpha$ for some $\Lambda\in \ZZ_{\geq 0},$ we get
+$$S_R=S_\Lambda=\set{-\Lambda,-\Lambda+2,\ldots,+\Lambda}.$$
+The allowed values of $\rho$ are then $\rho=n\in \ZZ$ such that $n_-\leq n \leq n_+, n\pm \in \ZZ$ are some bounding values. By comparing the expression for the weight set with the minimum and maximum weights $\pm \Lambda,$ we see that
+\begin{align*}
+    -\Lambda&= \frac{2(\alpha,\beta)}{(\a,\a)}+2n_-\\
+    +\Lambda &=\frac{2(\alpha,\beta)}{(\a,\a)}+2n_+\\
+    \implies&\frac{2(\alpha,\beta)}{(\a,\a)}=-(n_+ + n_-)\in \ZZ.
+\end{align*}
+However, we also know that the allowed set of roots form an unbroken string,
+$$S_{\a,\beta}=\set{\beta+n\alpha; n\in \ZZ, n_- \leq n \leq n_+}.$$
+So this places a constraint on what the roots can be. This inner product constraint would be a lot stronger if we could guarantee the roots were real.
+
+Let's pass for a moment to the Cartan-Weyl basis,
+$$[H^i,E^\delta]=\delta^i E^\delta$$
+where $i=1,\ldots, r \forall \delta \in \Phi.$ Then we write the Killing form as
+$$\kappa^{ij}=\kappa(H^i,H^j)=\frac{1}{N}\Tr[\ad_{H^i}\circ \ad_{H^j}]$$
+Now we remark that it would be very nice if these ad maps were mutually diagonal, since for
+$$A=\begin{pmatrix}
+\lambda_1^A & &\\
+ & \ddots & \\
+ & & \lambda_n^A
+\end{pmatrix}, B=\begin{pmatrix}
+\lambda_1^B & &\\
+ & \ddots & \\
+ & & \lambda_n^B
+\end{pmatrix},
+$$
+the trace is given simply by 
+$$\Tr[AB]=\sum_{i=1}^n \lambda_i^A \lambda_i^b.$$
+
+%probably gotta revisit this argument
+So let us rewrite the ad maps in terms of the roots (which are of course just the eigenvalues when we diagonalize both maps):
+\begin{align*}
+    \kappa^{ij}&=\frac{1}{N}\Tr[\ad_{H_i}\circ \ad_{H_j}]\\
+    &= \frac{1}{N} \sum_{\delta\in\Phi} \delta^i \delta^j.
+\end{align*}
+Moreover we know that 
+$$(\alpha,\beta)=\a^i \beta^j(\kappa^{-1})_{ij}=\frac{1}{N} \sum_{\delta\in \Phi} \alpha_i \delta^i \delta^j \beta_j,$$
+where
+$$\alpha_i \equiv (\kappa^{-1})_{ij}\alpha^j.$$
+
+Now since $\alpha_i\delta^i=(\alpha,\delta),$ we see that
+$$(\alpha,\beta)=\frac{1}{N}\sum_{\delta\in \Phi} (\a,\delta)\beta,\delta).$$
+Thus the quantity
+$$R_{\alpha,\beta}=\frac{2(\a,\beta)}{(\a,\a)}\in \ZZ.$$
+Moreover
+$$\frac{2}{(\beta,\beta)}R_{\a,\beta}=\frac{1}{N}\sum_{\delta\in \Phi}R_{\a,\delta}R_{\beta,\delta}\in \RR \implies (\beta,\beta)\in\RR \forall \beta\in \Phi.$$
+We conclude that the inner product of two roots is always real,
+$$(\a,\beta)\in \RR \quad \forall \a,\beta\in\Phi.$$
+
+\subsection*{Real Geometry of Roots} Now that we know that the roots have real inner products, it makes good sense to discuss the real geometry of the dual space $\fh^*$. Let us now claim that the roots $\alpha \in \Phi$ are not only elements of $\fh^*$ but indeed span the dual space,
+$$\fh^*=\text{Span}_\CC\set{\alpha\in\Phi}.$$
+\begin{proof}
+If the roots $\alpha$ do not span $\fh^*$, then
+$\exists \lambda \in \fh^*$ with
+$$(\lambda,\alpha)=(\kappa^{-1})_{ij}\lambda^i \alpha^j = \kappa^{ij} \lambda_i \alpha_j=0 \quad \forall \alpha \in \Phi,$$
+i.e. another element $\lambda$ which is orthogonal to all the roots. Thus we can construct
+$$H_\lambda=\lambda_i H^i \in \fh,$$
+and we can compute some brackets now:
+$$[H_\lambda,H]=0 \quad \forall H\in \fh$$
+and
+$$[H_\lambda,E^\a]=(\lambda,\a)E^\alpha =0 \quad \forall \alpha \in \Phi.$$
+But this is very strange, because this means that
+$[H_\lambda,X]=0\forall X \in \fg$. This means that $\fg$ has a non-trivial ideal, namely
+$$\mathfrak{j}=\text{Span}_\CC\set{H_\lambda}.$$
+But this would mean that $\fg$ is not simple, so we have reached a contradiction.
+\end{proof}
+
+Therefore the $r$ roots form a basis for $\fh^*$ (with complex coefficients), and we may then define the \term{real subspace},
+$$\fh^*_\RR=\text{Span}_\RR\set{\alpha_{(i)};i=1,\ldots, r},$$
+which is the \emph{real} span of the roots.
+
+Since the roots span $\fh^*$, any root $\beta\in \Phi$ can be written as
+$$\beta=\sum_{i=1}^r \beta^i \alpha_{(i)}$$
+with $\beta\in \CC$ generically. However, if we take the inner product of $\beta$ with each of the $\alpha_{(j)}$s, we find that
+$$(\beta,\alpha_{(j)})=\sum_{i=1}^r \beta^i(\alpha_{(i)},\alpha_{(j)}.$$
+ However, we know that the inner products of the roots $\alpha$ are real, so $(a_{(i)},\a_{(j)})$ considered as an $r\times r$ matrix is real, and $(\beta,\alpha_{(j)}$ considered as a vector of length $r$ is also real. Therefore all the coefficients $\beta^i$ must also be real, which means that all the roots live in the real subspace:
+ $$\beta\in \fh^*_\RR \quad \forall \beta \in \Phi.$$
