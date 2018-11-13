@@ -35,7 +35,8 @@ Let's also note that in Minkowski spacetime, if you wait long enough, you can se
 
 \begin{defn}
 Recall that the Riemann tensor has 20 independent components in $3+1$ dimensional spacetime. The Ricci tensor only contains some of the information from the original Riemann tensor, so we define the \term{Weyl tensor}, $C_{abcd}$, in terms of the part of $R_{abcd}$ not accounted for by $R_{ab}$ and $R$:
-$$R_{abcd}=C_{abcd}+\frac{1}{2}(g_{ad}R_{bc}-g_{ad}R_{ac}-g_{ac}R_{bd}+g_{bc}R_{ad})+\frac{1}{6}R(g_{ad}g_{bc}-g_{ac}g_{bd}).$$
+%$$R_{abcd}=C_{abcd}+\frac{1}{2}(g_{ad}R_{bc}-g_{ab}R_{ac}-g_{ac}R_{bd}+g_{bc}R_{ad})+\frac{1}{6}R(g_{ad}g_{bc}-g_{ac}g_{bd}).$$
+$$R_{abcd}=C_{abcd}+\frac{1}{2}(-g_{ad}R_{cb}+g_{ac}R_{db}+g_{bc}R_{da}-g_{bd}R_{ca})-\frac{1}{6}R(g_{ad}g_{bc}+g_{ac}g_{bd}).$$%there was an error here before but it's fixed now I think
 \end{defn}
 Note that since Einstein's equation specifies $R_{ab},R$ in terms of $T_{ab},\Lambda$,
 $$R_{ab}-\frac{1}{2}Rg_{ab}+\Lambda g_{ab}=8\pi G T_{ab},$$
@@ -55,7 +56,7 @@ This is an example of a \term{conformal transformation}. A conformal transformat
 Note that $\Omega^2$ is positive, so spacelike/timelike/null curves in $g$ are also spacelike/timelike/null in $\hat g$ (the sign of $ds^2$ for a given curve is unchanged in the new metric). Therefore conformal transformations preserve the causal structure of spacetime. Is it also true that geodesics remain geodesics in the new metric?
 
 We write down the geodesic equation,
-$$\frac{d^2x^a}{ds^2}+\Gamma^a_{bc} \frac{dx^b}{ds}\frac{dx^c}{ds}=0$$ for an affinely parametrized geodesic. What are the new christoffel symbols? They are
+$$\frac{d^2x^a}{ds^2}+\Gamma^a_{bc} \frac{dx^b}{ds}\frac{dx^c}{ds}=0$$ for an affinely parametrized geodesic. What are the new Christoffel symbols? They are
 $$\Gamma^a_{bc}(\hat g)=\frac{1}{2} \hat g^{ad}(-\p_d \hat g_{bc}+\p_b \hat g_{cd}+\p_c \hat g_{bd}).$$
 The metric transforms as $g_{ab}\to \hat g_{ab}=\Omega^2 g_{ab}$, and since the inverse metric is given by $\hat g^{ab}\hat g_{bc}=\delta^a_c$ (the original metric is similar), we find that $\hat g^{ab}=\Omega^{-2} g^{ab}.$ Therefore plugging in, we get
 \begin{eqnarray*}
@@ -70,4 +71,4 @@ If our geodesic $\frac{dx^b}{ds}$ is timelike or spacelike, then $g_{bc}\frac{dx
 $$\frac{d^2x^a}{ds^2}+\Gamma^a_{bc}(g)\frac{dx^b}{ds}\frac{dx^c}{ds}=-\frac{2}{\omega}\frac{dx^a}{ds}\left(\nabla_b \Omega \frac{dx^b}{ds}\right).$$
 But this is just the geodesic equation for a geodesic that is \emph{not affinely parametrized}. Therefore conformal transformations map null geodesics onto null geodesics.
 
-In general, spacelike and timelike geodesics are not mapped onto geodesics in the new metric, though they are still spacelike and timelike respectively.
+In general, spacelike and timelike geodesics are not mapped onto geodesics in the new metric, though they will still be spacelike and timelike curves respectively.

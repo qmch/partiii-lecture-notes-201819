@@ -1,0 +1,68 @@
+Last time, we wrote down the metric for a black hole in Eddington-Finkelstein coordinates. It takes the form
+$$ds^2=-\left(1-\frac{2M}{r}\right) dv+2dvdr+r^2 (d\theta^2+\sin^2 \theta d\phi^2).$$
+
+We found that $v$ is finite on the horizon, so the singularity at $r=2M$ was simply a coordinate singularity. However, the singularity at $r=0$ is a much bigger problem. We found that the trace of the Riemann tensor (and therefore the Weyl tensor, since this is a vacuum spacetime) diverges badly as $r\to 0$:
+$$R_{abcd}R^{abcd}=C_{abcd}C^{abcd}\sim m^2/r^6.$$
+
+One might think that in assuming spherical symmetry we've added some extra assumption to produce this singularity, but in fact Penrose showed more generally that if there is a horizon, then there must be a singularity.\footnote{The converse is not proven yet (singularity $\implies$ horizon) and is the statement of the weak cosmic censorship conjecture.}
+
+Moreover, black holes (unlike diamonds) are not forever.\footnote{Technically diamonds are also metastable states of carbon, so make of that what you will.} In 1974, Hawking found that when particle-antiparticle pairs are produced very near to the event horizon (as vacuum fluctuations), one of the two may fall into the black hole while the other escapes. The result is that the black hole behaves like a thermally radiating black body of temperature $1/8\pi M=T_{\text{Hawking}}$. In units, $T_{\text{Hawking}}=6\times 10^{-8}\left(\frac{M_S}{M}\right)$ Kelvin, where $M_S$ is the solar mass of $2\times 10^{33}$ grams.
+
+However, thermal radiation is associated to an energy flux of $\sigma T^4\times$ surace area, where $\sigma$ is the Stefan-Boltzmann constant. One expects that a black hole will generically radiate not just photons but all elementary particles. However, rewriting the mass-temperature reation as $M=1/8\pi T$ and interpreting the mass $M$ as an energy, we find that the specific heat is
+$$C=\P{M}{T}=-\frac{1}{8\pi T^2}<0.$$
+The fact that the specific heat is negative implies that the black holes are unstable.
+
+If we then compute $dM/dt$, we find that
+$$\frac{dM}{dt}=-(\text{energy flux})\sim -\frac{1}{M^4}M^2,$$
+which means that a black hole has a lifetime scaling as $M^3$, and given enough time, a black hole will evaporate. For astrophysical black holes, this takes place on a timescale of about $10^{67}(M^2/M_S^2)$ years.
+
+However, black hole evaporation is important for the theory of black holes-- for instance, it's not totally clear what happens to the singularity when a black hole evaporates. What happened to the information (about the electron states, molecular configurations, etc.) contained in all the stuff that fell in? This is related to the black hole information paradox, which we will likely see more about in the \emph{Black Holes} course in Lent.
+
+Let us also note that black holes generically form when when an amount of matter $M$ is confined to some distance of scale $R~2M$. However, the laws of physics (as far as we are concerned here) are invariant under time reversal, so where we defined our retarded coordinate
+$$v=t+r+2m\ln (\frac{r-2M}{2M}),$$
+we could just as easily flip the sign on $t$ to get the advanced coordinate
+$$u=t-r-2M(\ln \frac{r-2M}{2M}).$$
+
+In the $(u,r,\theta,\phi)$ coordinates the metric now takes the form 
+$$ds^2=-(1-2M/r)du^2-2dudr +r^2(d\theta^2 +\sin^2\theta d\phi^2).$$
+We find that all timelike lines must leave the horizon, so this is essentially the time-reversed version of a black hole, usually called a white hole.
+
+In practice, white holes do not appear to exist in nature. Solutions of the wave equation in electrodynamics,
+$$\Box A^a=-\mu_0 j^a,$$
+one picks the retarded solutions and not the advanced solutions in order to preserve some nice idea of causality.\footnote{Wonder if there's a meaningful concept of thermodynamics for white holes.}
+
+And now for something completely different. We'll dip into cosmology in a GR context for a minute. Much of the seminal work here is associated to Lema\^itre (1972, Belgium), Friedmann (1922, Russia), Robertson (1931, US), and Walker (1937, UK). Between them, they developed models of the entire universe beginning from the assumptions that space is homogeneous (the same everywhere) and isotropic (the same in every direction). These are enough to suggest that our metric ought to describe a maximally symmetric space with a full set of six Killing vectors for a 3-dimensional space. Indeed, the simplest possibility is just flat $\RR^3$,
+$$d\sigma^2=dr^2+r^2(d\theta^2+\sin^2\theta d\phi^2).$$
+We call this $k=1$, and its symmetries are simply those of Euclidean 3-dimensional space. However, we could also consider the geometry of $S^3$ in hyperspherical coordinates,
+$$d\sigma^2=dr^2+\sin^2 r(d\theta^2+\sin^2\theta d\phi^2).$$ Here, $r$ and $\theta$ run from $0\leq r,\theta\leq \pi$ and $\phi$ runs from $0\leq \phi < 2\pi$. The symmetry group is $SO(4)$, and we say this has $k=1$. However, note that unlike in $\RR^3$, space is of finite spatial extent here. If we denote the metric by $\gamma_{ij}$ with $i,j=1,2,3$, we have
+$$R_{ijkl}=\frac{1}{6}R(\gamma_{ik}\gamma_{jk}-\gamma_{il}\gamma_{jk}),$$
+where $R$ is the Ricci scalar, and the Ricci scalar is now identified with the scalar curvature from regular differential geometry. (This is a bit like de Sitter space.)
+
+Lastly, we can take $k=-1$, the hyperboloid with metric $$d\sigma^2=dr^2+\sinh^2 r (d\theta^2 +\sin^2\theta d\phi^2).$$
+Here, the coordinate ranges are $0\leq r < \infty, 0\leq \theta \leq \pi, 0\leq \phi < 2\pi.$ Now ,we get a similar Riemann tensor
+$$R_{ijkl}=\frac{1}{6}R(\gamma_{ik}\gamma_{jk}-\gamma_{il}\gamma_{jk})$$
+but with $R<0.$
+
+More generally, let us now take the spacetime metric to be
+$$ds^2=-dt^2+a^2(t) d\sigma_k^2$$
+where $k=0,\pm 1$ and $a(t)$ is some cosmological scale factor which depends on time.
+
+Now, there should be an energy-momentum tensor describing all the stuff in the universe, since our universe is certainly not a vacuum solution. There's stuff like galaxies and dark matter (about $26$\%), dark energy (about $74$\%), and radiation (not much). We might write the energy-momentum tensor in the following form:
+$$T_{ab}=(p+\rho)u_a u_b +p g_{ab},$$
+where $u^a$ is a velocity four-vector, $\rho$ is the energy density, and $p$ is the pressure.
+
+Galaxies and dark matter are free and don't interact much, so for them we have $p=0$, sometimes called \term{dust}. On the other hand, radiation (in particular thermal radiation) obeys an equation of state $p=\frac{1}{3}\rho$. Finally, dark energy (which remains largely mysterous) has an equation of state thought to be $p=-\rho$ with $\rho>0$.
+
+Let's look at the energy-momentum tensor for dark energy for a second. The velocity term is zero by the equation of state ($p+\rho=0$), so
+$$T_{ab}=-\rho g_{ab}.$$
+Of course, this is totally equivalent to adding a term $\Lambda g_{ab}$ in the Einstein equations, so one can trade dark energy for a cosmological constant $\Lambda=8\pi \rho_{DE}$ with $\rho_{DE}$ the energy density of the dark energy.
+
+What about all the regular massive stuff? Suppose we assume that on average, galaxies have no intrinsic motion of their own, so they can be put into a rest frame, $u^a=(1,0,0,0)$ (normalized by $u^a u_a=-1$). Of course, the whole point of the energy-momentum tensor is that it is conserved,
+$$\nabla_a T^{ab}=0,$$
+so writing this out explicitly we find that
+$$\nabla_a((p+\rho)u^a u^b + p g^{ab})=0.$$
+In the rest frame, $b=0$ is the only equation with any content, so considering $p,\rho,a$ as all functions of $t$ we find that
+$$\dot \rho=-3(\dot p+\rho)\dot a/a,$$
+where $\cdot=d/dt$, a derivative with respect to coordinate time. Now if $p=0$ then
+$$\dot \rho =3\rho \dot a/a \implies \rho(t)=\rho_0 a_0^3/a^3(t).$$
+Imagine measuring $\rho$ now, corresponding to a time $t_0$ when the universe has some scale factor $a_0$. This looks like the equation for the conservation of mass.
