@@ -1,0 +1,103 @@
+Today, we'll continue our discussion of symmetries and currents of spinors. The spacetime translations give rise to a stress-energy tensor $T^{\mu\nu}=i \bar \psi \gamma^\mu \p^\nu \psi.$ We can also consider the current associated to Lorentz transformations:
+$$\psi^\alpha \to {S[\Lambda]^\alpha}_\beta\psi^\beta (x^\mu-{\omega^\mu}_\nu x^\nu)$$
+where ${\omega^\mu}_\nu=\frac{1}{2}\Omega_{\rho\sigma}{(M^{\rho\sigma})^\mu}_\nu.$ If we take ${(M^{\rho\sigma})^\mu}_\nu = \eta^{\rho\mu}\delta^\sigma_\nu -\eta^{\sigma\mu} \delta^\rho_\nu$, we get $\omega^{\mu\nu}=\Omega^{\mu\nu}.$ Thus the variation in $\psi^\alpha$ is
+$$\delta \psi^\a = -{\omega^\mu}_\nu x^\nu \p_\mu \psi^\a +\frac{1}{2}\Omega_{\rho\sigma} {(S^{\rho\sigma})^\alpha}_\beta \psi^\beta.$$
+Substituting for $\Omega^{\mu\nu}$ and pulling out $\omega^{\mu\nu}$, we find that
+$$\delta \psi^\alpha = -\omega^{\mu\nu}[x_\nu \p_\mu \psi^\a -\frac{1}{2} {(S_{\mu\nu})^\alpha}_\beta \psi^\beta].$$
+Similarly, the variation in $\bar \psi$ is given by
+$$\delta \bar\psi_\alpha = -\omega^{\mu\nu}[x_\nu \p_\mu \bar \psi_\a +\frac{1}{2} \bar \psi_\beta {(S_{\mu\nu})^\beta}_\alpha].$$
+Note that this last term comes with a plus sign for $\bar\psi$. Applying Noether's theorem, we get the conserved currents
+$$(J^\mu)^{\rho\sigma}=x^\rho T^{\mu\sigma}-x^\sigma T^{\mu\rho}-i \bar \psi \gamma^\mu S^{\rho\sigma}\psi.$$
+The first two terms are the same as in the scalar case, but we get an extra term which will give us the properties of spin $1/2$ after quantization.
+
+For example, the last term for $(J^0)^{ij}$ is given by
+\begin{align*}
+    (J^0)^{ij}&= -i\bar \psi \gamma^0 S^{ij}\psi\\
+    &= \frac{1}{2}\epsilon^{ijk}\psi^\dagger \begin{pmatrix}\sigma^k & 0\\0&\sigma^k\end{pmatrix}\psi,
+\end{align*}
+where we have written the second line in the chiral repn, used the commutation relations of the $\gamma$ matrices, and take $i,j,k\in \set{1,2,3}.$
+
+There are also internal vector-like symmetries,
+$$\psi\to e^{i\alpha}\psi \implies \delta \psi =i\alpha \psi.$$
+Thus the conserved current here is
+$$j^\mu_V = \bar \psi \gamma^\mu \psi,$$
+with the conserved quantity
+$$Q=\int d^3x \bar \psi \gamma^0 \psi =\int d^3x \psi^\dagger \psi.$$
+This has the interpretation of conserved electric charge and particle number.
+
+Finally, we have axial symmetries. In the $m=0$ limit, we can do $\psi \to e^{i\alpha \gamma^5} \psi$, which rotates LH/RH spinors in opposite directions. The conserved axial vector current is then
+$$j^\mu_A =\bar \psi \gamma^\mu \gamma^5 \psi.$$
+
+\subsection*{Plane wave solutions} We'd like to solve the Dirac equation,
+$$(i\slashed{\p}-m)\psi)=0.$$
+In particular, we will look for solutions of the form
+$$\psi = u_p e^{-ip\cdot x}.$$
+Substituting into the Dirac equation (using the chiral repn for $\gamma^\mu$), we have
+\begin{equation}\label{diracplanewave}
+(\slashed{p}-m I)u_{\vec p} = \begin{pmatrix} -m & p_\mu \sigma^\mu \\
+p_\mu \bar \sigma^\mu & -m
+\end{pmatrix} u_{\vec p} =0.
+\end{equation}
+Let us now claim that the solution is
+$$u_{\vec p}=\begin{pmatrix}
+    \sqrt{p\cdot \sigma} & \xi\\
+    \sqrt{p\cdot \bar \sigma} & \xi
+\end{pmatrix}$$
+for any constant two-component spinor $\xi$, normalized such that $\xi^\dagger \xi =1$.
+\begin{proof}
+Let us suppose that $u_{\vec p}={u_1\choose u_2}$ and substitute into Eqn. \ref{diracplanewave}. Then we get
+\begin{align}
+    (p\cdot \sigma)u_2 &= m u_1\\
+    (p\cdot \bar \sigma)u_1 &= m u_2.
+\end{align}
+Indeed, either of these implies the other since
+\begin{align*}
+    (p\cdot \sigma)(p\cdot \bar \sigma) &= p_0^2 -p_i p_j \sigma^i \sigma^j\\
+    &= p_0^2 -p_i p_j \underbrace{\frac{1}{2}\set{\sigma^i,\sigma^j}}_{\delta^{ij}}\\
+    &=p_\mu p^\mu = m^2.
+\end{align*}
+So multiplying the first by $p\cdot \bar \sigma$ gives the second, for instance. Now we try the solution
+$$u_1=(p\cdot \sigma)\xi'$$ for some 2-spinor $\xi'$ to find that
+$$u_2=\frac{1}{m}(\p \cdot \bar \sigma)(p\cdot \sigma)\xi' = m\xi'.$$
+
+What this tells us is that any vector of the form
+$$u_{\vec p} =A \begin{pmatrix}
+(p\cdot \sigma)\xi'\\ m \xi'
+\end{pmatrix}$$
+is a solution to \ref{diracplanewave} with $A$ a constant. To make this look more symmetric, we choose $A=1/m$ and $\xi'=\sqrt{p\cdot \bar \sigma}\xi,$with $\xi$ constant. Then
+$$u_{\vec p}=\begin{pmatrix}\sqrt{p\cdot \sigma}\xi\\
+\sqrt{p\cdot \bar \sigma}\xi
+\end{pmatrix}.$$
+\end{proof}
+
+\begin{exm}
+Let's take a massive spinor in its rest frame, mass $m$ and $\vec p=0$. Then 
+$$u_{\vec p}=\sqrt{m}{\xi \choose \xi}$$
+for any $\xi$. Under spatial rotations, $\xi$ transforms to
+$$\xi \to e^{i\gv \sigma \cdot \gv \phi/2}\xi,$$
+and after quantization, $\xi$ will describe spin. For instance, $\xi={1\choose 0}$ will be a spin $\uparrow$ along the $z$-axis.
+
+What happens if we boost the particle along the $x^3$ axis? We get
+$$u_{\vec p}\begin{pmatrix}\sqrt{E-p^3} {1\choose 0}\\
+\sqrt{E+p^3}{1\choose 0}
+\end{pmatrix}\to_{E\to p^3, m\to 0} \sqrt{2E} \begin{pmatrix}0\\0\\1\\0\end{pmatrix}$$
+and for spin down we have
+$$u_{\vec p}\begin{pmatrix}\sqrt{E+p^3} {0\choose 1}\\
+\sqrt{E-p^3}{0\choose 1}
+\end{pmatrix}\to_{m\to 0} \sqrt{2E} \begin{pmatrix}0\\1\\0\\0\end{pmatrix}.$$
+We've been a little slick in rewriting the nonvanishing component of $p\cdot \sigma$, since the argument of the square root is technically a matrix. But we won't dwell on this too much except to say that it seems to be well-defined for our purposes.
+\end{exm}
+
+Note that there are also negative frequency solutions to the Dirac equation. We simply take the ansatz of 
+$\psi= v_{\vec p} e^{+ip\cdot x}$ and get some similar solutions $v_{\vec p}=\begin{pmatrix} \sqrt{p\cdot \sigma}\eta \\ -\sqrt{p \cdot \bar \sigma}\eta\end{pmatrix},$ with $\eta$ a two-component spinor where $\eta^\dagger \eta =1$.
+
+\begin{defn} The \term{helicity} operator projects angular momentum along the direction of motion:
+$$h=\hat{\vec p}\cdot \vec s =\frac{1}{2} \hat p_i \begin{pmatrix} \sigma^i & 0\\0&\sigma^i
+\end{pmatrix}.$$
+The massless spin $\uparrow$ particle has $h=+1/2$, while the massless spin $\downarrow$ particle has $h=-1/2$, as one might expect.
+\end{defn}
+
+\subsection*{Quantizing the Dirac field} The Dirac field admits a quantization-- if we throw around some creation and annihilation operators like we as field theorists are wont to do, we find that the field can be written as
+$$\psi(\vec x)=\sum_{s=1}^2 \int \frac{d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_{\vec p}}} \left[ b_{\vec p}^s u_{\vec p}^s e^{i\vec p \cdot \vec x} +c_{\vec p}^{s\dagger} v_{\vec p}^s e^{-i \vec p \cdot \vec x}\right]$$
+and $\psi^\dagger$ is similar,
+$$\psi(\vec x)=\sum_{s=1}^2 \int \frac{d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_{\vec p}}} \left[ b_{\vec p}^{s\dagger} u_{\vec p}^{s\dagger} e^{i\vec p \cdot \vec x} +c_{\vec p}^{s} v_{\vec p}^{s\dagger} e^{-i \vec p \cdot \vec x}\right].$$
