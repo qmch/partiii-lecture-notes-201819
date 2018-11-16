@@ -1,0 +1,102 @@
+Today we'll continue our discussion of quantizing the Dirac field, which describes the behavior of spinors (e.g. spin $1/2$ particles). For bosons, we had commutation relations. In fermionic quantization, we instead require anti-commutation relations between the creation and annihilation operators. That is, defining the anti-commutator as
+$$\set{A,B}\equiv AB+BA,$$
+we have the following anti-commutation relations.
+\begin{align*}
+    \set{\psi_\a(\vec x),\psi_\beta (\vec y)}&=0\\
+    \set{\psi_\a^\dagger(\vec x),\psi_\beta^\dagger(\vec y)}&=0\\
+    \set{\psi_\a(\vec x),\psi_\beta^\dagger(\vec y)}&=\delta_{\a\beta}\delta^3(\vec x -\vec y).
+\end{align*}
+We now claim these are equivalent to the following anti-commutation relations for the creation and annihilation operators:
+$$\set{b_{\vec p}^r,b_{\vec q}^{s\dagger}}=\set{c_{\vec p}^r, c_{\vec q}^{s\dagger}}=(2\pi)^3 \delta^{rs}\delta^3(\vec p -\vec q),$$
+with all other anticommutators vanishing. (See Sheet 3, Q6 for the computation.)
+
+The corresponding Hamiltonian is
+$$\cH=\pi \dot \psi -\cL=i\psi^\dagger \dot \psi-i\bar \psi \gamma^0 \p_0 \psi -i\bar \psi \gamma^i \p_i \psi+m\bar \psi \psi.$$
+One finds that the first two terms cancel, so we are left with the Hamiltonian
+$$\cH=\bar \psi(-i \gamma^i \p_i +m) \psi.$$
+We can now plug in the expansions for $\psi,\bar\psi$ which we wrote down last lecture and use the anti-commutation relations for operators (plus some results on products of spinors) to show that
+\begin{gather*}
+    u_{\vec p}^{r\dagger} u_{\vec p}^s = v_{\vec p}^{r\dagger} v_{\vec p}^s = 2p_0 \delta^{rs},\\
+    u_{\vec p}^{r\dagger} v_{\vec p}^s = v_{\vec p}^{r\dagger}u_{\vec p}^s=0.
+\end{gather*}
+We'll show this on Sheet 3, Q7. Thus the Hamiltonian can be rewritten (after normal ordering) as
+$$H=\int \frac{d^3p}{(2\pi)^3}E_p \sum_{s=1}^2 (b_{\vec p}^{s\dagger} b_{\vec p}^s + c_{\vec p}^{s\dagger}c_{\vec p}^s.$$
+The issue with trying to use commutation relations is that they produce a minus sign in one of the terms in the Hamiltonian, meaning that one can reduce the energy of a state by creating a particle. In words, the vacuum state becomes unstable, and we get an explosion of particles as the energy decreases without bound. This isn't really physical so anti-commutation relations are the way to go.
+
+The spinor field also leads to \term{Fermi-Dirac statistics}. Note that
+$$b_{\vec p}^s\ket{0}=0=c_{\vec p}^s\ket{0}.$$ Although $b_{\vec p}^s, c_{\vec p}^r$ have anti-commutation relations, the Hamiltonian $H$ has the usual commutation relations with them (check this):
+\begin{align*}
+    [H,b_{\vec p}^{r\dagger}]&= E_{\vec p} b_{\vec p}^{r\dagger}\\
+    [H,b_{\vec p}^r]&= -E_{\vec p}b_{\vec p}^r.
+\end{align*}
+Let's set up the state
+$$\ket{\vec p, r}\equiv b_{\vec p}^{r\dagger}\ket{0}.$$
+Then by the anti-commutation relations, the two-particle state obeys
+$$\ket{\vec p_1,r_1; \vec p_2,r_2}=-\ket{\vec p_2,r_2; \vec p_1,r_1},$$
+which precisely means the state is antisymmetric under exchange of particles.
+
+Let's now pass to the Heisenberg picture. We have $\psi(x)$ satisfying $\P{\psi}{t}=i[H,\psi]$, which is solved by
+$$\psi_\alpha(x)=\sum_{s=1}^2 \int \frac{d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}} (b_{\vec p}^s u_{\vec p_\alpha}^s e^{-ip\cdot x} + c_{\vec p}^{s\dagger}v_{\vec p_\alpha}^s e^{+ip\cdot x}).$$
+$\psi_\alpha^\dagger$ is similar, but with daggers everywhere:
+$$\psi_\alpha^\dagger(x)= \sum_{s=1}^2 \int \frac{d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}} (b_{\vec p}^{s\dagger} u_{\vec p_\alpha}^{s\dagger} e^{+ip\cdot x} + c_{\vec p}^{s}v_{\vec p_\alpha}^{s\dagger} e^{-ip\cdot x}).$$
+In analogy with the Feynman propagator $\Delta(x-y)=[\phi(x),\phi(y)]$, let us now define
+$$iS_{\alpha\beta}(x-y)=\set{\psi_\a (x),\bar \psi_\beta(y)}.$$
+In what follows, we'll drop the indices $\alpha,\beta$ but should remember that $S$ is a $4\times 4$ matrix since $\alpha,\beta$ index over the four spinor components. We substitute in our expressions for $\psi,\bar\psi$ from above to find
+\begin{equation}
+iS(x-y)=\sum_{r,s} \int \frac{d^3q d^3p}{(2\pi)^6 \sqrt{4 E_p E_q}} \left(\set{b_{\vec p}^s, b_{\vec q}^{r\dagger}}u_{\vec p}^s \bar u_{\vec q}^r e^{-i(p\cdot x-q\cdot y)}
++\set{c_{\vec p}^{s\dagger},c_{\vec q}^r}v_{\vec p}^s \bar v_{\vec q}^r e^{i(p\cdot x-q\cdot y)} \right).
+\end{equation}
+Using the anticommutation relations of $b,c$ we have
+$$iS(x-y)=\int \frac{d^3p}{(2\pi)^3 2E_p}\left(\sum_{s=1}^2 u_{\vec p\alpha}^s \bar u_{\vec p\beta}^s e^{-ip \cdot(x-y)}+v_{\vec p\alpha}^s \bar v_{\vec p\beta}^s e^{+ip\cdot(x-y)}\right).$$
+We see that (Sheet 3, Q5) these $u\bar u$ terms become $(\slashed{p}+m)_{\alpha\beta},$ so the overall expression becomes
+$$iS(x-y)=(i\slashed{\p}_x +m)D(x-y)-(i\slashed \p_x+m)D(y-x),$$
+where $\slashed \p_x = \gamma^\mu \P{}{{x^\mu}}$ and $D(x-y)=\int \frac{d^3p}{(2\pi)^3 2E_p} e^{-p\cdot(x-y)}$.
+
+Some comments on how to interpret this.
+\begin{enumerate}
+    \item For spacelike separations $(x-y)^2<0, D(x-y)-D(y-x)=0$. In bosonic theory, we made a big deal of this, since it ensured that the commutator was zero for spacelike separations. We interpreted this as saying that our theory was causal-- the propagator from point $x$ to $y$ precisely cancels the contribution from propagating from $y$ to $x$ when $x$ and $y$ are spacelike separated. What can we say about the anticommutation relation in our spinor theory? We have
+    $$\set{\psi_\a(x),\bar \psi_\beta(y)}=0\quad \forall(x-y)^2<0.$$
+    However, it turns out that all observables are bilinear in $\psi,\bar \psi$ (cf. our table \ref{tab:bilinears}) and so the observables do commute at spacelike separations. The theory is still causal.
+    \item Away from singularities (e.g. poles in the $S$-matrix), we have
+    $$(i\slashed \p_x - m)S(x-y)=0.$$ The proof is by direct computation:
+    \begin{align*}
+        (i\slashed \p_x - m)S(x-y)&= (i\slashed \p_x -m)(i\slashed{\p}_x+m)[D(x-y)-D(y-x)]\\
+        &=-(\p_x^2+m^2)[D(x-y)-D(y-x)]\\
+        &=0 \text{ using }p^2=m^2 \text{ on-shell}.
+    \end{align*}
+    In going from the first to the second line, we have also cancelled the slashes (see Sheet 3 Q3): $\slashed{\p}\slashed{\p}=\p^2.$
+\end{enumerate}
+
+These taken together allow us to write down the Feynman propagator for spinors. A similar calculation gives
+$$\bra{0}\psi_\a(x)\bar \psi_\beta (y)\ket{0}=\int \frac{d^3p}{(2\pi)^3 2E_p}(\slashed{p}+m)_{\alpha\beta} e^{-ip\cdot (x-y)}.$$
+We had almost the same thing in the bosonic case, but without the $\slashed{p}+m$. Similarly,
+$$\bra{0}\bar \psi_\beta(x)\psi_\alpha (y)\ket{0}=\int \frac{d^3p}{(2\pi)^3 2E_p}(\slashed{p}-m)_{\beta\alpha} e^{-ip\cdot (x-y)}.$$
+One should check this (as one of many, many exercises).
+
+Let us now define
+\begin{equation}
+    S_{F,\alpha\beta}(x-y)\equiv \bra{0} T\set{\psi_\a(x)\bar \psi_\beta(y)}\ket{0}=\begin{cases}
+    \bra{0}\psi_\a(x) \bar \psi_{\beta} (y)\ket{0} & :x^0 > y^0\\
+    -\bra{0}\bar \psi_{\beta}(y)\psi_\a(x)\ket{0} & :y^0>x^0.
+    \end{cases}
+\end{equation}
+Note the minus sign is required for Lorentz invariance. When $(x-y)^2<0, \set{\psi(x),\bar \psi(y)}=0$ and so $T$ as defined is Lorentz invariant. The same is true for strings of fermionic operators inside the time ordering $T$: they anti-commute, so
+$[\phi_1,\psi]=0, \set{\psi_1,\bar\psi_2}=0,[\phi_1,\phi_2]=0$
+sum up the relations of bosonic and fermionic fields.
+
+We also pick up the sign flip when computing normal-ordered products, which will affect Wick's theorem. Here,
+$$:\psi_1 \psi_2:=-:\psi_2 \psi_1:$$
+We can write the contraction
+$$S_F(x-y)\equiv \overbrace{\psi(x)\bar \psi(y)},$$
+so the time-ordered version gives us
+$$T[\psi(x)\bar \psi(y)]=:\psi(x)\bar \psi(y): +\overbrace{\psi(x)\bar \psi(y)}.$$
+Wick's theorem is then as before, but with extra minus signs, e.g.
+$$:\psi_1^+ \psi_2^-:=-\psi_2^- \psi_1^+.$$ If we want to contract $\psi_1$ with $\bar \psi_3$ in the expression
+$$:\psi_1 \psi_2 \bar \psi_3 \psi_4:$$
+then we have to anti-commute $\bar \psi_3,\psi_2$ to get
+$$:\overbrace{\psi_1 \psi_2 \bar \psi_3} \psi_4:=-:\overbrace{\psi_1 \bar \psi_3}\psi_2 \psi_4:=-\overbrace{\psi_1\bar \psi_3} :\psi_2 \psi_4:$$
+The Feynman propagator for spinors is therefore
+$$S_F(x-y)=i\int \frac{d^4p}{(2\pi)^4} e^{-ip\cdot (x-y)} \frac{\slashed{p}+m}{p^2-m^2+i\epsilon},$$
+which satisfies
+$$(i\slashed{\p}-m)S_F(x-y)=i\delta^4(x-y),$$
+so $S_F$ is a Green's function of the Dirac equation.

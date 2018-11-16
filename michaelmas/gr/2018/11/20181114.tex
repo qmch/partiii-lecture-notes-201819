@@ -31,12 +31,12 @@ $$\frac{16\pi \rho_0 a_0^3}{3} \int \sin^2\theta d\theta =t,$$
 which has the solution
 $$\frac{8\pi \rho_0 a_0^3}{3}(\theta-\frac{1}{2}\sin 2\theta)=t.$$ Thus
 $$a(t)=\frac{8\pi \rho_0 a_0^3}{3}\sin^2\theta,$$
-which is the formula for a cycloid. The universe therefore expands out to some maximum scale at $\theta=\pi/2$, and then contracts down at $t=\pi$.
+which is the formula for a cycloid. The universe therefore expands out to some maximum scale at $\theta=\pi/2$, and then contracts back to a singularity at $t=\pi$.
 
-What if $k=-1$? Then we ought to change to $$a=\frac{8\pi\rho_0 a_0^3}{3}\sinh^2 \theta,$$
-a hyperbolic sine. The solution is now
+What if $k=-1$? Then we ought to modify the sine to a sinh, $$a=\frac{8\pi\rho_0 a_0^3}{3}\sinh^2 \theta.$$
+The solution is now
 $$t=\frac{9\pi\rho_0 a_0^3}{3}(\frac{1}{2}\sinh 2\theta -\theta),$$
-which leads to continuous expansion. For small $t$. It is at first independent of $k$: for small $t$,
+which leads to continuous expansion. It is at first independent of $k$: for small $t$,
 $$a(t)\sim t^{2/3}.$$
 But at late times, $k=-1$ looks like linear expansion.
 
@@ -45,7 +45,7 @@ What we find is that it is hard to measure $k$ when $t$ is small-- at early time
 \begin{figure}
     \centering
     \includegraphics{2018/11/20181114_scalefactor.png}
-    \caption{The scale factor as a function of time. We have written the metric as $ds^2=-dt^2 +a^2(t) d\sigma_k^2$, where $d\sigma_k^2$ is a purely spatial metric. It can be positively curved ($k=+1$), negatively curved ($k=-1$), or flat ($k=0$). At early times (the circled red region), all three scenarios expand similarly, but the $k=+1$ solution eventually contracts back to a singularity, while the $k=0$ and $k=-1$ solutions expand forever. Experimentally, we cannot yet distinguish between which of these scenarios describes our universe.}
+    \caption{The scale factor as a function of time. We have written the metric as $ds^2=-dt^2 +a^2(t) d\sigma_k^2$, where $d\sigma_k^2$ is a purely spatial metric. The spatial part can be positively curved ($k=+1$), negatively curved ($k=-1$), or flat ($k=0$). At early times (the circled red region), all three scenarios expand similarly, but the $k=+1$ solution eventually contracts back to a singularity, while the $k=0$ and $k=-1$ solutions expand forever. Experimentally, we cannot yet distinguish between which of these scenarios describes our universe.}
     \label{fig:flrw_metric}
 \end{figure}
 
@@ -79,7 +79,7 @@ $$0=\p_a({h'}^{ab}-\frac{1}{2}\eta^{ab}h')=\p_a(h^{ab}-\frac{1}{2}\eta^{ab}h)+\p
 These last two terms cancel, so setting this gauge is equivalent to solving
 $$\Box \epsilon^b = -C^b$$ for
 $C^b=\p_a(h^{ab}-\frac{1}{2}\eta^{ab}h).$
-But we can always solve this equation by constructing a Green's function for $\Box$, so one can always choose this gauge.
+But we can always solve this equation by constructing a Green's function for $\Box$, so one can always choose this gauge. We'll show this explicitly in the next lecture.
 
 \subsection*{The Green's function for $\Box$} Generically, our equation takes the form
 $$-\frac{\p^2 \epsilon^b}{\p t^2}+\nabla^2 \epsilon^b =-C^b.$$

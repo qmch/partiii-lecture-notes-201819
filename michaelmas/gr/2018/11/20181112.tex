@@ -4,7 +4,7 @@ $$ds^2=-\left(1-\frac{2M}{r}\right) dv+2dvdr+r^2 (d\theta^2+\sin^2 \theta d\phi^
 We found that $v$ is finite on the horizon, so the singularity at $r=2M$ was simply a coordinate singularity. However, the singularity at $r=0$ is a much bigger problem. We found that the trace of the Riemann tensor (and therefore the Weyl tensor, since this is a vacuum spacetime) diverges badly as $r\to 0$:
 $$R_{abcd}R^{abcd}=C_{abcd}C^{abcd}\sim m^2/r^6.$$
 
-One might think that in assuming spherical symmetry we've added some extra assumption to produce this singularity, but in fact Penrose showed more generally that if there is a horizon, then there must be a singularity.\footnote{The converse is not proven yet (singularity $\implies$ horizon) and is the statement of the weak cosmic censorship conjecture.}
+One might think that in assuming spherical symmetry we've added some extra assumption to produce this singularity, but in fact Penrose showed under a set of more general conditions that if there is a horizon, then there must be a singularity.\footnote{This is Penrose's 1965 singularity theorem. The converse is not proven yet (singularity $\implies$ horizon) and is the statement of the weak cosmic censorship conjecture, also due to Penrose.}
 
 Moreover, black holes (unlike diamonds) are not forever.\footnote{Technically diamonds are also metastable states of carbon, so make of that what you will.} In 1974, Hawking found that when particle-antiparticle pairs are produced very near to the event horizon (as vacuum fluctuations), one of the two may fall into the black hole while the other escapes. The result is that the black hole behaves like a thermally radiating black body of temperature $1/8\pi M=T_{\text{Hawking}}$. In units, $T_{\text{Hawking}}=6\times 10^{-8}\left(\frac{M_S}{M}\right)$ Kelvin, where $M_S$ is the solar mass of $2\times 10^{33}$ grams.
 
@@ -18,7 +18,7 @@ which means that a black hole has a lifetime scaling as $M^3$, and given enough 
 
 However, black hole evaporation is important for the theory of black holes-- for instance, it's not totally clear what happens to the singularity when a black hole evaporates. What happened to the information (about the electron states, molecular configurations, etc.) contained in all the stuff that fell in? This is related to the black hole information paradox, which we will likely see more about in the \emph{Black Holes} course in Lent.
 
-Let us also note that black holes generically form when when an amount of matter $M$ is confined to some distance of scale $R~2M$. However, the laws of physics (as far as we are concerned here) are invariant under time reversal, so where we defined our retarded coordinate
+Let us also note that black holes generically form when when an amount of matter $M$ is confined to some distance of scale $R\sim 2M$. However, the laws of physics (as far as we are concerned here) are invariant under time reversal, so where we defined our retarded coordinate
 $$v=t+r+2m\ln (\frac{r-2M}{2M}),$$
 we could just as easily flip the sign on $t$ to get the advanced coordinate
 $$u=t-r-2M(\ln \frac{r-2M}{2M}).$$
@@ -31,7 +31,7 @@ In practice, white holes do not appear to exist in nature. Solutions of the wave
 $$\Box A^a=-\mu_0 j^a,$$
 one picks the retarded solutions and not the advanced solutions in order to preserve some nice idea of causality.\footnote{Wonder if there's a meaningful concept of thermodynamics for white holes.}
 
-And now for something completely different. We'll dip into cosmology in a GR context for a minute. Much of the seminal work here is associated to Lema\^itre (1972, Belgium), Friedmann (1922, Russia), Robertson (1931, US), and Walker (1937, UK). Between them, they developed models of the entire universe beginning from the assumptions that space is homogeneous (the same everywhere) and isotropic (the same in every direction). These are enough to suggest that our metric ought to describe a maximally symmetric space with a full set of six Killing vectors for a 3-dimensional space. Indeed, the simplest possibility is just flat $\RR^3$,
+And now for something completely different. We'll dip into cosmology in a GR context for a minute. Much of the seminal work here is associated to Lema\^itre (1972, Belgium), Friedmann (1922, Russia), Robertson (1931, US), and Walker (1937, UK). Between them, they developed models of the entire universe beginning from the assumptions that space is homogeneous (the same everywhere) and isotropic (the same in every direction). These are enough to suggest that the spatial part of our metric ought to describe a maximally symmetric space with a full set of six Killing vectors for a 3-dimensional space. Indeed, the simplest possibility is just flat $\RR^3$,
 $$d\sigma^2=dr^2+r^2(d\theta^2+\sin^2\theta d\phi^2).$$
 We call this $k=1$, and its symmetries are simply those of Euclidean 3-dimensional space. However, we could also consider the geometry of $S^3$ in hyperspherical coordinates,
 $$d\sigma^2=dr^2+\sin^2 r(d\theta^2+\sin^2\theta d\phi^2).$$ Here, $r$ and $\theta$ run from $0\leq r,\theta\leq \pi$ and $\phi$ runs from $0\leq \phi < 2\pi$. The symmetry group is $SO(4)$, and we say this has $k=1$. However, note that unlike in $\RR^3$, space is of finite spatial extent here. If we denote the metric by $\gamma_{ij}$ with $i,j=1,2,3$, we have
@@ -43,9 +43,11 @@ Here, the coordinate ranges are $0\leq r < \infty, 0\leq \theta \leq \pi, 0\leq 
 $$R_{ijkl}=\frac{1}{6}R(\gamma_{ik}\gamma_{jk}-\gamma_{il}\gamma_{jk})$$
 but with $R<0.$
 
-More generally, let us now take the spacetime metric to be
+\begin{defn}
+More generally, let us now take the spacetime metric in $3+1$ dimensions to be
 $$ds^2=-dt^2+a^2(t) d\sigma_k^2$$
-where $k=0,\pm 1$ and $a(t)$ is some cosmological scale factor which depends on time.
+where $k=0,\pm 1$ and $a(t)$ is some cosmological scale factor which depends on time. That is, the metric separates into a time component and a spatial component whose only dependence on $t$ is through the scale factor $a(t)$. Such metrics are known as \term{FLRW spacetimes} (for Friedman, Lema\^itre, Robetrson, and Walker).\footnote{You'll also hear FRW, RW, and FL used to describe such metrics. It depends on who you want to give the credit to.}
+\end{defn}
 
 Now, there should be an energy-momentum tensor describing all the stuff in the universe, since our universe is certainly not a vacuum solution. There's stuff like galaxies and dark matter (about $26$\%), dark energy (about $74$\%), and radiation (not much). We might write the energy-momentum tensor in the following form:
 $$T_{ab}=(p+\rho)u_a u_b +p g_{ab},$$

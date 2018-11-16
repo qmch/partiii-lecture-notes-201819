@@ -1,0 +1,80 @@
+Previously, we introduced the Minkowski wave equation with a source
+$$\Box \phi(\vec x,t)=C(x,t),$$
+where the $\Box$ operator is
+$$-\frac{\p^2}{\p t^2}+\frac{\p^2}{\p x^2}+\frac{\p^2}{\p y^2}+\frac{\p^2}{\p z^2}.$$
+This is a hyperbolic operator (cf. elliptic operators, e.g. the Laplacian), so the solutions are not unique. One can find the Green's function $G(\vec x,t;\vec x',t')$ such that
+\begin{equation}
+\Box G=\delta^{(4)}(x-x').\label{boxgreensfn}
+\end{equation}
+If we have such a function, then
+\begin{align*}
+    \phi(\vec x,t)&= \int d^4 x' G(\vec x,t; \vec x',t') C(x',t')\\
+    \implies \Box \phi(x,t)&=\int d^4x' \Box G(\vec x,t;\vec x',t')C(x',t')\\
+    &=\int d^4x' \delta^{(4)}(x-x')C(x',t')\\
+    &=C,
+\end{align*}
+so this makes it easy to solve for $\phi$ in terms of any source function we like.
+
+If we take the Fourier transform of \ref{boxgreensfn} with respect to $x$, we find that
+$$\hat G(\vec p,\omega;x',t')=\frac{e^{-i\omega t'+i\vec p \cdot \vec x'}}{\omega^2-p^2}.$$
+Thus we take the inverse Fourier transform to get back to real space,
+$$G(\vec x,t; \vec x',t')=\frac{1}{(2\pi)^4} \int d^4p \frac{e^{-i\omega t'+i\vec p \cdot \vec x'}}{\omega^2-p^2}e^{i\omega t-i \vec p \cdot \vec x}.$$
+But there's a problem-- this integral has poles on the real line at $\omega=\pm |\vec p|$.
+
+Now, in \emph{Quantum Field Theory}, we saw a similar integral and chose a particular contour to do the complex integral, which yielded the Feynman propagator. Here, we will instead be interested in the ``retarded Green's function'' in order to preserve causality in our classical theory. That is, we will move both poles into the upper half plane by a small amount.
+
+There are other choices for how to define the contour, and some of the other solutions arise in the contexts of QFT, statistical field theory, and classical electrodynamics. We can compare our choice of the retarded Green's function to the advanced Green's function (moving both poles down), the time ordered (Feynman) propagator (moving the pole at $\omega=|\vec p|$ up and $\omega=-|\vec p|$ down), and the anti time-ordered Green's function (moving $\omega=|\vec p|$ down and $\omega=-|\vec p|$ up).
+
+Let us therefore choose to compute the retarded Green's function and write the real-space Green's function as
+$$G(\vec x,t; \vec x',t')=\frac{1}{(2\pi)^4} \int d^4p \frac{e^{i\omega (t-t')-i\vec p \cdot (\vec x-\vec x')}}{(\omega-|\vec p|-i\epsilon)(\omega+|\vec p|-i\epsilon)}.$$
+Notice that if $(t-t')>0$, then we must close the contour in the upper half-plane, where $\omega\to+i\infty$, while the opposite is true for $t-t'<0$. But we have chosen to move both the poles into the upper half-plane, so by the Cauchy integral formula, this contour integral is only nonzero for $t-t'>0$, and its value is precisely given by the residues:
+$$G(\vec x,t;\vec x',t')=\frac{2\pi i}{(2\pi)^4} \int d^3p \left[\frac{1}{2|\vec p|}e^{i|\vec p|(t-t')-i\vec p(x-\vec x')}-\frac{1}{2|\vec p|}e^{-i|\vec p|(t-t')-i\vec p \cdot (\vec x-\vec x')}\right]$$
+for $t-t'>0$, and $=0$ otherwise.
+
+Let us further define $\vec r\equiv \vec x-\vec x'$ and notice that we can therefore rewrite our integral in spherical polar coordinates, with
+$$d^3p=p^2 dp \sin \theta d\theta d\phi,$$
+where the $p$ on the RHS means $|\vec p|$, and $\theta$ is simply the angle between $\vec p$ and $\vec r$. Then in terms of $r,p$ we can rewrite and explicitly calculate this integral. For $t-t'>0,$
+\begin{align}
+    G(\vec x,t;\vec x',t')&=\frac{i}{16\pi^3}\int pdp \sin\theta d\theta d\phi \left[e^{ip(t-t')-ipr\cos\theta}-e^{-ip(t-t')-ipr\cos\theta}\right]\label{retgreen:orig}\\
+    &=\frac{i}{8\pi^2}\int pdp \sin\theta d\theta d\phi \left[e^{ip(t-t')-ipr\cos\theta}-e^{-ip(t-t')-ipr\cos\theta}\right]\nonumber\\
+    &=\frac{1}{8\pi^2 r}\int dp \left[e^{ip(t-t')}-e^{-ip(t-t')}\right]e^{ip\cos\theta}|_0^\pi\nonumber\\
+    &=\frac{1}{8\pi^2 r}\int dp \left[e^{ip(t-t')}-e^{-ip(t-t')}\right][e^{ipr}-e^{-ipr}]\label{retgreen:angular}\\
+    &=-\frac{1}{2\pi^2 r}\int_0^\infty dp \sin p(t-t') \sin(pr)\nonumber\\
+    &=-\frac{1}{4\pi^2r}\Int dp \sin p(t-t')\sin pr\label{retgreen:limits}\\
+    &=+\frac{1}{4\pi^2 r}\Int dp [\cos p(t-t'+r)-\cos p(t-t'-r)] \frac{1}{2}\nonumber\\
+    &=\frac{1}{8\pi^2 r}\Int dp \text{ Re}[e^{ip(t-t'+r)}-e^{-ip(t-t'-r)}]\label{retgreen:realpart}\\
+    &= \frac{1}{4\pi r} [\delta(t-t'+r)-\delta(t-t'-r)]\nonumber\\
+    &= -\frac{1}{4\pi r} \delta(t-t'+r).\nonumber
+\end{align}
+Let's break down what we did here. In going from Eqn. \ref{retgreen:orig} to Eqn. \ref{retgreen:angular}, we explicitly performed the $\phi$ and $d\cos\theta$ integrals, and we then rewrote the difference of complex exponentials as a $\sin$. In Eqn. \ref{retgreen:limits}, we used the fact that $\sin p(t-t') \sin pr$ is even in $p$ to extend the limits of integration to $-\infty\to\infty$, and changed a product of sines to a difference of cosines using a trig identity. Finally, in \ref{retgreen:realpart}, we rewrote the cosines as the real parts of imaginary exponentials, performed the $dp$ integral, and dropped one of the resulting $\delta$ functions since $\delta(t-t'+r)$ has the property that for $t-t'>0,r>0 \implies t-t'+r\neq 0$. Therefore all we are left with is
+$$G=-\frac{1}{4\pi r}\delta(t-t'-|\vec x-\vec x'|).$$
+With our Green's function in hand, we can now write down our solution $\phi$ for an arbitrary source:
+$$\phi(\vec x,t)=-\int d^4x'\frac{1}{4\pi|\vec x-\vec x'|} C(\vec x',t')\delta (t-t'-|\vec x-\vec x'|).$$
+Here, the delta function restricts you to the past light cone of $(\vec x,t)$. This is in line with our ideas about causality (i.e. the influence of waves should propagate from the past to the future, and not the other way around).
+
+It might concern you that $\vec x$ seems to be treated differently from $t$ in this integral, so our solution is not obviously covariant. To resolve this, let us recall that for a function $g(x)$, $x\in\RR$,
+$$\Int dx f(x)\delta(g(x))=\sum_{a\in g^{-1}(0)}\frac{f(a)}{|g'(a)|}.$$
+(That is, $a$ is in the set of zeroes of $g(x)$.) Then we have
+$$\int d^4 x'\delta((x-x')^2) \ldots = \int d^3 x' dt' \delta((t-t')^2-(\vec x-\vec x')^2).$$
+The term in the first $\delta$ function is zero if there is a light ray joining $x$ and $x'$ (considered as four-vectors). The delta function on the RHS can be written as $t-t'-|\vec x-\vec x'|, t-t'+|\vec x-\vec x'|,$ so we equivalently get
+$$\frac{\delta(t-t'-|\vec x-\vec x'|)}{2|\vec x-\vec x'|}+\frac{\delta(t-t'+|\vec x-\vec x'|)}{2|\vec x-\vec x'|}.$$
+But this means that we can rewrite our solution for $\phi$ as
+$$\phi(x,t)=-\frac{1}{2\pi}\int d^4 x' \delta((x-x')^2)C(\vec x',t')\theta(t-t'),$$
+which now looks completely covariant. Here, $\theta$ is the usual Heaviside step function.
+
+Great. Let's return to our problem of gravitational radiation. We can certainly fix the harmonic gauge by solving
+$$\Box \epsilon^a=C^a(\vec x,t)=\nabla_a({h'}^{ab}-\frac{1}{2}g^{ab}h').$$
+Since we have just constructed the solution, any perturbation $h_{ab}$ can be put in the harmonic gauge.
+
+Let us now write down the linearized Einstein equations. Recall that harmonic gauge means that
+\begin{equation}
+\nabla_a(h^{ab}-\frac{1}{2}g^{ab}h)=0.\label{harmonicgauge}
+\end{equation}
+The linearized Einstein equations take the form
+$$-\frac{1}{2}\Box h_{ab}+\frac{1}{2}\underbrace{\p_d \p_a h^d_b}_{\frac{1}{2} \p_a \p_b h} +\frac{1}{2}\underbrace{\p_d \p_b h^d_a}_{\frac{1}{2} \p_a \p_b h} -\frac{1}{2}\p_a \p_b h + \frac{1}{2}\eta_{ab}\Box h -\frac{1}{2}\underbrace{\eta_{ab}\p_c \p_d h^{cd}}_{\frac{1}{2}\eta_{ab}\Box h}=8\pi T_{ab}.$$
+Applying the harmonic gauge condition \ref{harmonicgauge}, this simplifies considerably to
+$$-\frac{1}{2}\Box h_{ab}+\frac{1}{4}\eta_{ab}\Box h=8\pi T_{ab}.$$
+By contracting with $\eta_{ab}$, we find that
+$$\frac{1}{2}\Box h=8\pi T,$$ and substituting this result back in we get
+$$\Box h_{ab}=-16\pi\left(T_{ab}-\frac{1}{2}\eta_{ab}T\right).$$
+This equation therefore relates perturbations $h_{ab}$ of the Minkowski metric to their sources represented by $T_{ab}$. Our formula for solving $\Box$ equations works just as well here, so we can now determine the form of the perturbations given a source function. The equations in a curved background spacetime are more complicated and beyond the scope of this course.\footnote{It's important that whatever $T_{ab}$ we put in space, it doesn't have too much of an impact on the background $\eta_{ab}$ so that we can treat this with perturbation theory. Of course, we could always set $T_{ab}=0$ to solve the vacuum Einstein equations, and then it's fairly clear our theory still admits a class of wave solutions, $\Box h_{ab}=0$. These are precisely the gravitational waves observed by experiments like LIGO in the United States and VIRGO in Italy.}

@@ -1,0 +1,104 @@
+Let's finish the proof from last time.
+We want to prove that the simple roots are linearly independent. The goal is this-- we will write a general element in the dual space as a sum of the simple roots, and show that that element is nonzero unless all the coefficients of the basis vectors are zero.
+
+Consider vectors $\lambda\in \fh^*_\RR$, which we can write in terms of the basis elements $\alpha_{(i)}$. Thus
+$$\lambda=\sum_{i\in \mathcal{I}} c_i \alpha_{(i)}$$
+with $\mathcal{I}$ a set of indices, $\alpha_{(i)}\in \Phi_S$, and $c_i\in \RR$ some real coefficients. We can split the set of indices $\mathcal{I}$ into $\mathcal{I}=\mathcal{I}_+ \cup \mathcal{I}_-$, where
+$$\mathcal{I}_+=\set{i\in \mathcal{I}: c_i >0},\mathcal{I}_-=\set{i\in \mathcal{I}: c_i <0}.$$
+
+We then define
+\begin{align*}
+    \lambda_+ &= \sum_{i\in \mathcal{I}_+} c_i \alpha_{(i)}\\
+    \lambda_- &= -\sum_{i\in \mathcal{I}_-} c_i \alpha_{(i)}
+\end{align*}
+so that
+$$\lambda=\lambda_+-\lambda_-,$$
+and we take $\lambda_+,\lambda_-$ to not both be zero.
+
+\begin{align*}
+    \lambda&=\lambda_+-\lambda_-\\
+    \implies (\lambda,\lambda)&=(\lambda_+,\lambda_+)+(\lambda_-,\lambda_-)-2(\lambda_+,\lambda_-)\\
+    &> -2(\lambda_+,\lambda_-)\\
+    &=+2 \sum_{i\in \mathcal{I}_+} \sum_{j\in \mathcal{I}_-} c_i c_j (\alpha_{(i)},\alpha_{(j)}) >0.
+\end{align*}
+In going from the second to third lines, we have used the fact that the inner product of any nonzero element (specifically, $\lambda_+$ and $\lambda_-$) with itself is positive, and in the last line we have used the property that $c_ic_j <0$ and $(\alpha_{(i)},\alpha_{(j)})<0$. Thus $(\lambda,\lambda)>0 \implies \lambda\neq 0$, so the simple roots are linearly independent. (That is, there is no general combination $\lambda$ of the simple roots $\alpha$ which is zero.) \qed
+
+Since the simple roots are linearly independent, we now see that since $|\Phi_S|\leq r$, by iv) from last time we find that $\forall \beta \in \Phi_+,\beta=\sum c_i \alpha_{(i)}$ with $\alpha_{(i)} \in \Phi_S, c_i \in \ZZ_{\geq 0}$. If $\beta \in \Phi_-$, then $-\beta \in \Phi_+$ and $\beta=\sum \tilde c_i \alpha_{(i)}.$ Either way, the \emph{simple} roots entirely span the entire set $|\Phi|,$ so $|\Phi_S|=r$.
+
+Now let us choose the simple roots as a basis for $\fh_\RR^*$. Thus the set
+\begin{align*}
+    B&=\set{\alpha \in \Phi_S}\\
+    &= \set{\alpha_{(i)}:i=1,\ldots,r}
+\end{align*}
+completely spans $\fh_\RR^*.$
+\begin{defn}
+We now define the \term{Cartan matrix} $A^{ij}$, given by
+\begin{equation}\label{defn:cartan}
+A^{ij} = \frac{2(\alpha_{(i)}, \alpha_{(j)})} {(\alpha_{(j)},\alpha_{(j)}}\in \ZZ,
+\end{equation}
+with $i,j=1,\ldots,r$. We know the elements of $A$ are in $\ZZ$ by our previous results about root strings.
+\end{defn}
+
+Now we will relate this back to subalgebras. For each $\alpha_{(i)}\in \Phi_S$, we get an $sl(2)_{\alpha_{(i)}}$ subalgebra spanned by
+$$\set{h^i=h^{\alpha_{(i)}}, e^i_\pm =e^{\pm \alpha_{(i)}}}.$$
+We call this the \term{Chevally basis}. How does this compare to our old subalgebras? Let's write down some brackets.
+\begin{align*}
+    [h^i,h^j]&= 0 \quad \forall i,j=1,\ldots,r\\
+    [h^i,e^j_\pm]&= \pm A^{ji} e^j_\pm
+\end{align*}
+Note that repeated indices are \emph{not} summed over here.
+The bracket $[e_+^i,e_-^j]$ takes some care to compute. When $i=j$ it is just $h^i$, but when $i\neq j,$ we have
+$$[e_+^i, e_-^j]= n_{ij} e^{\alpha_{(i)}-\alpha_{(j)}} \text{ if } \alpha_{(i)}-\alpha_{(j)}\in \Phi,$$
+and it is zero otherwise. However, since $\alpha_{(i)},\alpha_{(j)}$ are simple roots by assumption, it must be that $\alpha_{(i)}-\alpha_{(j)}\notin \Phi$, so this bracket is \emph{always zero}. We conclude that
+$$[e_+^i,e_-^j]=\delta_{ij}h^i.$$
+
+Here's another bracket:
+\begin{align*}
+    [e_+^i,e_+^j]&= \ad_{e_+^i} e_+^j\\
+    &\propto e^{\alpha_{(i)}+\alpha_{(j)}}\text{ if } \alpha^{(i)}+\alpha^{(j)}\in \Phi\\
+    &= 0\text{ otherwise}.
+\end{align*}
+Indeed, we could repeat the ad map $n$ times to get that
+\begin{align*}
+    (\ad_{e_+^i})^n e_+^j&\propto e^{n\alpha_{(i)}+\alpha_{(j)}}\text{ if } n\alpha^{(i)}+\alpha^{(j)}\in \Phi\\
+    &= 0\text{ otherwise}.
+\end{align*}
+But the $\alpha_{(i)}$ root string through $\a_{(j)}$ has length
+$$l_{ij}=1-\frac{2(\alpha_{(i)},\alpha_{(j)})} {(\alpha_{(i)},\alpha_{(i)})}=1-A^{ji}.$$
+Therefore we derive the \term{Serre relation}:
+\begin{equation}
+(\ad_{e_\pm^i})^{1-A^{ji}}e_\pm^j =0.
+\end{equation}
+That is, if we apply the ad map enough times, we will eventually exhaust the elements of the root string.
+
+What we've proved is that a finite-dimensional simple complex Lie algebra $\fg$ is completely determined by its Cartan matrix.
+
+The Cartan matrix comes with some constraints. Recall it's defined as
+$$A^{ij}\equiv \frac{2(\alpha_{(i)}, \alpha_{(j)})} {(\alpha_{(j)},\alpha_{(j)}}\in \ZZ,$$
+Then it satisfies the following.
+\begin{enumerate}
+    \item $A^{ij}=2$ with $i=1,\ldots,r$.
+    \item $A^{ij}=0 \iff A^{ji}=0$ (by the symmetry of the inner product in the numerator).
+    \item $A^{ij}\in \ZZ_{\geq 0}$ if $i\neq j$ (since $\alpha_{(i)}\neq \alpha_{(j)} \in \Phi_S \implies (\alpha_{(i)},\alpha_{(j)})\leq 0$).
+    \item $\det A > 0$. \begin{proof}
+    Note that the Cartan matrix is proportional to $\kappa^{-1}$ because of the inner product in the numerator, so we can write $A$ as $A^{ij}=S^{ik} D_k^j$, where $S^{ik}=(\alpha_{(i)},\alpha_{(k)})=(\kappa^{-1})_{ik}$ represents the $\kappa^{-1}$ part and $D_k^j = \frac{2}{(\alpha_{(j)},\alpha_{(j)})}\delta_k^j$ is diagonal. It's true that $\det D >0$, so we only need to prove that $\det S >0$ and then our result is true by the property that determinants multiply. Note that $\kappa^{-1}$ is a real symmetric matrix, so we can diagonalize it: $S=\kappa^{-1}=O\Lambda O^T$ with $\Lambda = \text{diag}\set{\rho_1,\ldots,\rho_r}$ for $\rho_i\in \RR$ an eigenvalue of $\kappa^{-1}.$ But then for any eigenvector $v_\rho^i$, we have
+    $$(\kappa^{-1})_{ij}v_\rho^j = \rho \delta_{ij} v^j_\rho$$
+    so
+    $$(v_\rho,v_\rho)=(\kappa^{-1})_{ij} v_\rho^i v_\rho^j = \rho \sum_{i=1}^r (v_\rho^i)^2.$$ But $(v_\rho,v_\rho)= |v_\rho|^2 >0$, so we conclude that each eigenvalue $\rho$ of $S$ is $>0$. Thus, $\det S>0$, which implies $\det A >0$.
+    \end{proof}
+\end{enumerate}
+
+\begin{exm}
+If we take $r=2$, then the Cartan matrix looks like
+$$A=\begin{pmatrix}
+2&-m\\-n &2
+\end{pmatrix}.$$
+Here, $m,n\in \ZZ_{\geq 0}.$ Since $\det A >0$ we know that $mn <4$, and so we find that the possible values of $m$ and $n$ are very constrained:
+$$\set{m,n}=\set{0,0},\set{1,2},\set{1,3},\set{1,1}.$$
+\end{exm}
+\begin{enumerate}
+    \item[v] Semi-simple Lie algebras correspond to reducible Cartan matrices (i.e. matrices which can be written in block diagonal form), so if the Lie algebra is simple then $A$ is irreducible.
+\end{enumerate}
+This allows us to exclude the boring solution of $\set{m,n}=\set{0,0}$ (which would make $A$ diagonal), leaving us with three possibilities for $A$.
+
+Let us also note that relabeling the roots will in general permute the rows and columns of $A$. We don't want to think of these as ``different'' Cartan matrices, so next time we'll introduce a sort of diagram known as a Dynkin diagram which allows us to keep track of which $A$s are related by such relabelings.

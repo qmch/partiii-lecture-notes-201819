@@ -1,7 +1,10 @@
 Today we'll complete our initial discussion of Killing forms and begin the Cartan classification of finite-dimensional simple complex Lie algebras.
 
 Last time, we showed that if $\fg$ is not semi-simple, then some of the structure constants must vanish. Let's see what how this implies that $\kappa$ is degenerate (i.e. there exists some $v\in V$ such that its Killing form vanishes, $i(v,w)=0$ for all $w\in V$).
-
+\begin{thm}[Cartan's theorem]
+For a Lie algebra $\fg$, if its Killing form $\kappa$ is nondegenerate, then $\fg$ is semi-simple.
+\end{thm}
+\begin{proof}
 We started by separating the basis vectors $T^a$ into a set $\set{T^i,i=1,\ldots,d}$ spanning the ideal $\mathfrak{j}$ and the rest of the basis vectors $\set{T^\alpha, \alpha=d+1,\ldots, D}$. Since $\mathfrak{j}$ is abelian, we found that
 \begin{equation}\label{ijazero}
 [T^i, T^j]=0\quad \forall i,j=1,\ldots,d \implies f^{ij}_a=0,
@@ -25,7 +28,8 @@ To go from the first line to the second, we have used the fact that if $c=1,\ldo
 Now separate the sum over $a=1,\ldots,D$ into $k=1,\ldots,d$ and $\beta=d+1,\ldots,D$.
 Thus
 $$\kappa^{ai}=\underbrace{f^{\beta j}_\alpha}_{\text{zero by } f^{\alpha j}_\beta=0} f^{i\alpha}_j + \underbrace{f^{kj}_\alpha}_{\text{zero by}f^{kj}_a=0} f^{i\alpha}_k=0.$$
-Therefore $$\kappa[X,Y]=0 \quad\forall Y\in \mathfrak{j},\forall X \in \fg\implies \kappa\text{ is degenerate.}$$ Taking the contrapositive, we conclude that $\kappa$ is nondegenerate $\implies \fg$ is semi-simple. \qed
+Therefore $$\kappa[X,Y]=0 \quad\forall Y\in \mathfrak{j},\forall X \in \fg\implies \kappa\text{ is degenerate.}$$ Taking the contrapositive, we conclude that $\kappa$ is nondegenerate $\implies \fg$ is semi-simple.
+\end{proof}
 
 In Hugh Osborn's notes, he proves the other direction, so this turns out to be an if and only if. That is, $\kappa$ is nondegenerate $\iff \fg$ is semi-simple.
 
@@ -34,9 +38,7 @@ In Hugh Osborn's notes, he proves the other direction, so this turns out to be a
 Recall that when we did the representation theory of $L(SU(2))_\CC,$ we defined a Cartan-Weyl basis,
 $$\set{H,E_\pm}$$ where $H$ is diagonal and $E_\pm$ moves us between eigenvectors. The brackets turned out to be
 $$[H,H]=0,\quad [H,E_\pm]=\pm 2 E_{\pm}$$
-What this tells us is that the ad map $\text{ad}_H$ (defined by $\text{ad}_H(X)=[H,X]$, in case you forgot) is diagonal, and it has eigenvalues $0,\pm 2$.
-
-We would like to generalize this principle.
+What this tells us is that the ad map $\text{ad}_H$ (defined by $\text{ad}_H(X)=[H,X]$, in case you forgot) is diagonal, and it has eigenvalues $0,\pm 2$. We would now like to generalize this principle.
 \begin{defn}
 We say that $X\in \fg$ is \term{ad-diagonalizable} (AD) if
 $$\text{ad}_X:\fg \to \fg$$
@@ -71,13 +73,20 @@ is clearly not diagonalizable and therefore not ad-diagonalizable.
 \begin{exm}
 Consider $\fg=L_\CC (SU(n)),$ the set of traceless complex $n\times n$ matrices. A natural basis set is the pairs of diagonal elements
 $$(H^i)_{\alpha,\beta}=\delta_{\alpha i} \delta_{\beta i}-\delta_{\alpha (i+1)}\delta_{\beta(i+1)}.$$
-We claim that the diagonal elements $H^i, i=1,\ldots, n-1$ are generators of the Cartan subalgebra,
+For instance, $H^1$ looks like
+$$H^1=\begin{pmatrix}
+1 & 0& &\\
+0 & -1 & &\\
+& & 0 &\\
+& & & \ddots
+\end{pmatrix}.$$
+We now claim that the diagonal elements $H^i, i=1,\ldots, n-1$ are generators of the Cartan subalgebra, i.e.
 $$\mathfrak{h}=\text{span}_\CC\set{H^i, i=1,\ldots n-1}.$$
-It's certainly true that the diagonal elements $H^i$ commute and therefore have vanishing bracket,
+It's clear that the diagonal elements $H^i$ commute and therefore have vanishing bracket,
 $$[H^i,H^j]=0\forall i,j=1,\ldots,r.$$
 But passing to the adjoint representation, this means that
 $$(\text{ad}_{H^i}\circ \text{ad}_{H^j} - \text{ad}_{H^j}\circ \text{ad}_{H^i})=0,$$
-so we have $r$ linear maps
+so our basis elements $H^i$ naturally define $r$ linear maps
 $$\text{ad}_{H^i}:\fg \to \fg$$
 which are simultaneously diagonalizable (i.e. we can find a single set of eigenvectors which are compatible with all the linear maps).
 Therefore $\fg$ is spanned by the simultaneous eigenvectors of $\text{ad}_{H^i}.$ What may we conclude from this? Well, the ad map $\text{ad}_{H^i}$ has some zero eigenvalues:
@@ -88,9 +97,9 @@ The map also has non-zero eigenvalues which correspond to some set of eigenvecto
 $$\set{E^\alpha, \alpha \in \Phi}$$
 with $\Phi$ some set of eigenvalues. The ad map acts on these $E^\alpha$ by
 $$\text{ad}_{H^i}(E^\alpha)=[H^i, E^\alpha]=\alpha^i E^\alpha$$
-where the $\alpha^i\in \CC, i=1,\ldots, r$ are not all zero. (If they were all zero, $E^\alpha$ would be in $\mathfrak{h}$ by the maximality condition.)
+where the $\alpha^i\in \CC, i=1,\ldots, r$ are not all zero. (If they were all zero, $E^\alpha$ would be in $\mathfrak{h}$ by the maximality condition.) In $L(SU(2))_\CC$, these eigenvectors were just the elements $E_\pm.$
 \end{exm}
 \begin{defn}
-These values $\alpha^i$ define a \term{root} $\alpha$ of $\fg.$
+These values $\alpha^i$ define a \term{root} $\alpha$ of $\fg.$ That is, a root $\alpha$ can be thought of as an abstract label on the eigenvectors $E^\alpha$ defining its eigenvalues under the ad map $\ad_{H^i}$. We'll see another way to think of roots shortly, as objects in their own right (namely, linear maps) which act on the elements $H^i \in \fh$. More on this next time.
 \end{defn}
 

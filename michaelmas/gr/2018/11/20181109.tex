@@ -1,15 +1,15 @@
-Last time, we solved the radial equation in a weird way to find the deflection of light by a gravitational field.
+Last time, we solved the radial equation in a weird way to find the deflection of light by a gravitational field. This behavior is unique to general relativity-- there is no deflection of light by gravity in Newtonian gravitation.
 
-We also found an equation for the corrections to planetary orbits, working out that with $u(\phi)=1/r(\phi),$ we derived a perturbative solution for $u$ which was
+We also found an equation for the corrections to planetary orbits, deriving a perturbative solution for $u(\phi)=1/r(\phi)$ which took the form
 \begin{align*}
-u&\approx \frac{M}{L^2}(1+e\cos\phi)+\frac{3em^3}{L^4}\phi \sin\phi\\
-&\approx \frac{m}{L^2}(1+e\cos\phi(1-3m^2/L^2))+\text{ higher order wiggles}.
+u&\approx \frac{M}{L^2}(1+e\cos\phi)+\frac{3eM^3}{L^4}\phi \sin\phi\\
+&\approx \frac{M}{L^2}(1+e\cos\phi(1-3M^2/L^2))+\text{ higher order wiggles}.
 \end{align*}
 Here, we've accounted for the fact that our $u\propto \phi$ solution only works for $\phi$ small. What we've found is then the equation for a precessing ellipse for $0<e<1$.\footnote{The picture to think of here for precession is that the orbiting body tries to make an elliptical orbit but ``overshoots'' so that its next orbit doesn't begin exactly $2\pi$ later.} The $\Delta \phi$ between closest approaches to the central body is
-$$\frac{2\pi}{1-3m^2/L^2},$$
+$$\frac{2\pi}{1-3M^2/L^2},$$
 and hence the precession (i.e. the angular overshoot between closest approaches) is approximately
-$$\frac{6\pi m^2}{L^2},$$
-with $m^2/L^2\ll1$. Prior to GR, it was known that the orbit of Mercury precessed by $\sim 500''$ per century\footnote{The unit here is seconds, i.e. $1/360$ of a degree.}, but $43''$ per century could not be accounted for by planetary perturbation. As it turns out, the GR correction correctly accounts for this discrepancy.
+$$\frac{6\pi M^2}{L^2},$$
+with $M^2/L^2\ll1$. Prior to GR, it was known that the orbit of Mercury precessed by $\sim 500''$ per century\footnote{The unit here is seconds, i.e. $1/360$ of a degree.}, but $43''$ per century could not be accounted for by planetary perturbation. As it turns out, the GR correction correctly accounts for this discrepancy.
 
 \subsection*{Gravitational redshift} Recall that the Schwarzschild metric has the form
 $$ds^2=-V(r)dt^2+\frac{dr^2}{V(r)}+r^2(d\theta^2+\sin^2\theta d\phi^2).$$
