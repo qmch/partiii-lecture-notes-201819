@@ -39,9 +39,13 @@ A^{ij} = \frac{2(\alpha_{(i)}, \alpha_{(j)})} {(\alpha_{(j)},\alpha_{(j)}}\in \Z
 with $i,j=1,\ldots,r$. We know the elements of $A$ are in $\ZZ$ by our previous results about root strings.
 \end{defn}
 
-Now we will relate this back to subalgebras. For each $\alpha_{(i)}\in \Phi_S$, we get an $sl(2)_{\alpha_{(i)}}$ subalgebra spanned by
+Now we will relate this back to subalgebras. 
+\begin{defn}
+For each $\alpha_{(i)}\in \Phi_S$, we get an $sl(2)_{\alpha_{(i)}}$ subalgebra spanned by
 $$\set{h^i=h^{\alpha_{(i)}}, e^i_\pm =e^{\pm \alpha_{(i)}}}.$$
-We call this the \term{Chevally basis}. How does this compare to our old subalgebras? Let's write down some brackets.
+We call this the \term{Chevally basis}.
+\end{defn}
+How does this compare to our old subalgebras? Let's write down some brackets.
 \begin{align*}
     [h^i,h^j]&= 0 \quad \forall i,j=1,\ldots,r\\
     [h^i,e^j_\pm]&= \pm A^{ji} e^j_\pm
@@ -97,7 +101,7 @@ Here, $m,n\in \ZZ_{\geq 0}.$ Since $\det A >0$ we know that $mn <4$, and so we f
 $$\set{m,n}=\set{0,0},\set{1,2},\set{1,3},\set{1,1}.$$
 \end{exm}
 \begin{enumerate}
-    \item[v] Semi-simple Lie algebras correspond to reducible Cartan matrices (i.e. matrices which can be written in block diagonal form), so if the Lie algebra is simple then $A$ is irreducible.
+    \item[(e)] Semi-simple Lie algebras correspond to reducible Cartan matrices (i.e. matrices which can be written in block diagonal form), so if the Lie algebra is simple then $A$ is irreducible.
 \end{enumerate}
 This allows us to exclude the boring solution of $\set{m,n}=\set{0,0}$ (which would make $A$ diagonal), leaving us with three possibilities for $A$.
 
