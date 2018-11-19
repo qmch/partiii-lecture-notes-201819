@@ -38,27 +38,31 @@ In a coordinate basis, we know that the components of a vector transform like co
 $$X^a\to \tilde X^{a'}=\frac{\p \tilde x^{a'}}{\p x^a} X^a.$$
 Therefore in a coordinate basis, the components of a one-form must transform in the inverse way,
 $$\omega_a \to \tilde \omega_{a'} = \frac{\p x^a}{\p \tilde x^{a'}} \omega_a.$$
-Note where the primed indices lie and which coordinates are the new coordinates $\tilde x$ versus the old coordinates $x$. The factor here $\frac{\p x^a}{\p \tilde x^{a'}}$ is analogous to how the Lorentz transformation acts (as the Lorentz transformation is a particular coordinate transformation satisfying certain constraints).
+Note where the primed indices lie and which coordinates are the new coordinates $\tilde x$ versus the old coordinates $x$. A little mnemonic-- to keep the indices straight, just remember that primed indices go with $\tilde x$ coordinates, and we can only contract over pairs of up and down indices. In particular, when $x^a$ is in the denominator\footnote{Okay, technically not the denominator since it's a derivative but you know what I mean.} of a derivative $\P{\tilde x^{a'}}{x^a}$ it acts like an index-down quantity, so it should contract with an index-up object, namely the vector components $X^a$. Similarly, when $x^a$ is in the numerator of the derivative it remains index-up and should therefore contract with the index-down one-form components.%The factor here $\frac{\p x^a}{\p \tilde x^{a'}}$ is analogous to how the Lorentz transformation acts (as the Lorentz transformation is a particular coordinate transformation satisfying certain constraints).
 
-Suppose that $\langle df ,X\rangle = 0$ for some $df$. If one is working in $n$ dimensions, this gives one constraint equation on the $n$ components of $X$. Thus, there are $(n-1)$ different linearly independent choices of $X$ which solve this equation and therefore span an $n-1$-dimensional space. We have put one constraint specified by $f$ on our space of all possible $X$ such that $df$ is the normal to the surface $f=$ constant.
+Suppose that $\langle df ,X\rangle = 0$ for some $df$ and $X$ an arbitrary vector. If we are working in $n$ dimensions, this equation gives one constraint on the $n$ components of $X$. Thus, there are still $(n-1)$ different linearly independent choices of $X$ which solve this equation, so the solutions $X$ therefore span an $n-1$-dimensional space. We have put one constraint specified by $f$ on our space of all possible $X$ such that $df$ is the normal to the surface $f=$ constant.
 
 \begin{exm}
 Again, a non-lectured concrete example. Let us again work in $\RR^3$ and set $f=x.$ Then a general $X$ can be written as $X^a \P{}{x^a}$ and the condition that $\ang{df,X}=0$ can be computed explicitly as
 $$\ang{df,X}=\paren{X^1 \P{}{x}+X^2 \P{}{y}+X^3 \P{}{z}}(x)=X^1(1)=0.$$
-Therefore our surface is defined by $X^1=0$ but we may choose $X^2$ and $X^3$ freely ($n-1=2$ free choices). Indeed, we see that $df=dx$ is normal to the surface $f=x=$ constant.
+Therefore our surface is defined by $X^1=0$ but we may choose $X^2$ and $X^3$ freely (one constraint gives $3-1=2$ free choices). Indeed, we see that $df=dx$ is normal to the surface $f=x=$ constant.
 \end{exm}
 
-A tensor of type $(r,s)$ in a basis of $1$-forms $E^a$ and vectors $E_a$ takes the form
+\begin{defn}
+A \term{tensor} is a coordinate-invariant object which generalizes the idea of vectors and covectors. Written in terms of basis one-forms $E^a$ and basis vectors $E_a$, a tensor of type $(r,s)$ takes the form
 $$T={T^{a_1\ldots a_r}}_{b_1\ldots b_s} E_{a_1}\otimes E_{a_2}\otimes\ldots \otimes E_{a_r} \otimes E^{b_a}\otimes \ldots \otimes E^{b_s},$$
 where $\otimes$ is the tensor product (not just a direct product!).\footnote{Tensor products are more complicated than direct products because their addition structure is multilinear, i.e. linear in each argument individually but not all simultaneously. Where it might make sense to add $(2,1)+(1,2)=(3,3)$ in $\RR\times \RR$, the equivalent tensor product in $\RR \otimes \RR$ would have $2 \otimes 1 + 1\otimes 2 = 2\otimes 1 + 2 \otimes 1= (2+2)\otimes 1 = 4 \otimes 1$. So this is quite a different beast. More info on tensor products and tensors as mathematical constructions can be found at \url{https://jeremykun.com/2014/01/17/how-to-conquer-tensorphobia/}.}
+\end{defn}
 
-$T$ is coordinate invariant, so in a coordinate basis the components of $T$ transform as
+The tensor $T$ (not the components!) is coordinate invariant, so in a coordinate basis the components of $T$ transform as
 $${{\tilde T}^{a_1'\ldots a_r'}}_{b_1'\ldots b_s'}=\frac{\p \tilde x^{a_1'}}{\p x^{a_1}} \ldots \frac{\p \tilde x^{a_r'}}{\p x^{a_r}} \frac{\p x^{b_1}}{\tilde x^{b_1'}} \ldots \frac{\p x^{b_s}}{\tilde x^{b_s'}} {T^{a_1\ldots a_n}}_{b_1\ldots b_s}.$$
 In a non-coordinate basis, these $\frac{\p \tilde x^{a'}}{\p x^a}$ are replaced by some general functions $\Phi ^{a'}_a$ where $\tilde x^{a'}=\Phi^{a'}_a x^a$.
 
 We can perform the symmetrization operation, denoted by putting indices to be symmetrized in parentheses:
 $$X_{(a_1 \ldots a_r)}\equiv \frac{1}{r!}\left[\text{sum of all permutations of }a_1\ldots a_r\right].$$
-For example, $X_{(ab)}=\frac{1}{2}\left[X_{ab}+X_{ba}\right]$. Similarly we have the antisymmetrization operation, denoted by putting indices to be antisymmetrized in square brackets:
+For example, $X_{(ab)}=\frac{1}{2}\left[X_{ab}+X_{ba}\right]$. Here, the factorial accounts for that the symmetrization of an already-symmetric tensor should just be that tensor (so that if $X_{ab}=X_{ba},X_{(ab)}=\frac{1}{2}[X_{ab}+X_{ba}]=X_{ab}$). 
+
+Similarly we have the antisymmetrization operation, denoted by putting indices to be antisymmetrized in square brackets:
 $$X_{[a_1\ldots a_r]}=\frac{1}{r!}\left[\text{sum over all even permutations } - \text { sum of all odd permutations}\right].$$
 For example, $X_{[ab]}=\frac{1}{2}[X_{ab}-X_{ba}].$ Having defined symmetrization and antisymmetrization, we now consider a special class of tensor-- the totally antisymmetric $(0,p)$ tensor.
 
@@ -85,9 +89,11 @@ Note that $ddA=0$, so $d$ is nilpotent (it kills all exact differentials).\footn
 The gradient is a simple example of an exterior derivative of a 0-form (AKA a scalar):
 $$(d\phi)_\mu=\p_\mu \phi.$$
 
-From prior experiences with special (or general) relativity, we might have an intuition that the metric has something to do with gravitation. The line element $ds$ (defined by $ds^2 = g_{ab}dx^a dx^b$) is invariant and is therefore a (symmetric) tensor. In a freely falling frame, the metric of Minkowski space is $$\tilde \eta_{a'b'} = \frac{\p x^a}{\p\tilde x^{a'}}\frac{\p x^b}{\p \tilde x^{b'} }g_{ab}.$$ Do such $\frac{\p x^a}{\p\tilde x^{a'}}$ always exist? The answer turns out to be yes-- $g_{ab}$ is not degenerate, so one may diagonalize it and then rescale the eigenvalues. Sylevester's theorem states that if $g$ has $r$ positive eigenvalues, $s$ negative eigenvalues, then diagonalizing preserves this.%it's super unclear how this all applies, TBH. 
+We now introduce the metric, a very special rank two (i.e. two-index) symmetric tensor usually denoted $g_{\mu\nu}$.\footnote{So far, we have been using Latin indices everywhere. In most GR contexts, Greek indices $\mu,\nu,\sigma,$ etc. are used to range over $0,1,2,3$ and Latin indices $i,j,k$ over $1,2,3$ (the spatial components). Here, we follow the lecturer's convention of using Latin $a,b,c,d$ for all indices but note that it is nonstandard.} The metric generalizes the idea of distance from Euclidean geometry to curved spaces. Unlike the Euclidean metric, the scalar which the metric spits out is not guaranteed to be non-negative-- recall from special relativity that a timelike four-vector $V^\mu$ has a ''length'' given by $\eta_{\mu\nu} V^\mu V^\nu <0$. However, it is a scalar invariant and therefore preserved under arbitrary coordinate transformations.
 
-Therefore given $g_{ab}$ that is non-degenerate, the inverse metric $g^{ab}$ can be define with $g^{ab}g_{bc}=\delta^a_c$ the Kronecker delta. One may use the metric to raise and lower indices:
+From prior experience with special (or general) relativity, we might have an intuition that the metric also has something to do with gravitation. The line element $ds$ (defined by $ds^2 = g_{ab}dx^a dx^b$) is invariant and is therefore a (symmetric) tensor. In a freely falling frame, the metric of Minkowski space is $$\tilde \eta_{a'b'} = \frac{\p x^a}{\p\tilde x^{a'}}\frac{\p x^b}{\p \tilde x^{b'} }g_{ab}.$$ Do such $\frac{\p x^a}{\p\tilde x^{a'}}$ always exist? The answer turns out to be yes-- $g_{ab}$ is not degenerate, so one may diagonalize it and then rescale the eigenvalues. Sylvester's theorem states that if $g$ has $r$ positive eigenvalues, $s$ negative eigenvalues, then diagonalizing preserves this.%it's super unclear how this all applies, TBH. 
+
+Therefore given a metric $g_{ab}$ that is non-degenerate, the inverse metric $g^{ab}$ can be defined such that $g^{ab}g_{bc}=\delta^a_c$ the Kronecker delta. One may then use the metric and the inverse metric to raise and lower indices:
 $V_b=g_{bc}V^c$ and $V^a = g^{ab}V_b$.
 
 \textit{``There are more unknowns than there are knowns.''} A brief summary of this course.
