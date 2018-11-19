@@ -1,0 +1,143 @@
+Last time, we showed that one can always choose the harmonic gauge when considering gravitational radiation. That is, we can choose a perturbation $h_{ab}$ to satisfy the harmonic gauge condition
+$$\p_a h^{ab}-\frac{1}{2} \eta^{ab} \p_a h=0$$
+so that
+\begin{equation*}
+    \p^2 h_{ab}=0
+\end{equation*}
+
+Gravitational waves are the classical version of gravitons. We therefore expect our solutions to have two polarization states since gravitons are massless and bosonic (in particular, they are spin $2$).\footnote{The situation is different for massive spin 2. For a massive particle, we can always boost into its rest frame, so we get extra polarizations. The same is true for massive vector particles, e.g. massive photons.} However, as a symmetric rank 2 tensor, $h_{ab}$ has 10 components, and the gauge condition imposes four independent constraints (since it has one free index), so $10-4=6\neq 2$-- we seem to have ended up with some extra degrees of freedom. How do we resolve this?
+
+Recall that we wrote $h_{ab}$ plane wave solutions, so we may write
+$$h_{ab}=A e_{ab} \text{ Re}\left[\exp(ik_c x^c)\right].$$
+Here, $A$ is the amplitude of the wave, $e_{ab}$ is a polarization tensor (cf. the wave solutions to Maxwell's equations), and we are taking the real part because the metric is real. We can usually just take the real part at the end, so we'll treat it as implicit until the end of most of our calculations.
+
+Note that plugging this plane wave solution into the wave equation tells us that
+$$\p^2 h_{ab}=0 \implies k_a k^a =0,$$
+so the wave vector for our solutions is null. That is, gravitational waves travel at the speed of light. Let us also check the gauge condition:
+\begin{equation}\label{polarizationgauge}
+    k_a e^{ab}-\frac{1}{2}\eta^{ab}k_a e^c_c =0.
+\end{equation}
+This relates the wave vector $k$ to the polarization tensor $e_{ab}$. However, we recall from our initial discussion of the harmonic gauge that if $h_{ab}$ is a gauge transformation, then
+$$h_{ab}'= h_{ab}+\p_a \epsilon_b +\p_b \epsilon_a$$
+is also a valid gauge transformation.
+Let us suppose we have found some $h_{ab}$ which satisfies the harmonic gauge condition, and choose a specific gauge transformation
+$$\epsilon_a=-i A \Lambda_a e^{ik_c x^c}.$$
+Then the perturbation goes to
+$$h_{ab}\to h_{ab}+A(\Lambda_a k_b +\Lambda_b k_a)e^{ik_c x^c}.$$
+This induces a change in the polarization tensor
+$$e_{ab}\to e_{ab}+\Lambda_a k_b +\Lambda_b K_a,$$
+but it turns out that harmonic gauge is preserved. Explicitly,
+$$k_a e^{ab}-\frac{1}{2}\eta^{ab}k_a e^c_c \to k_a e^{ab}-\frac{1}{2} \eta^{ab} k_a e^c_c +k_a (\Lambda^a k^b + \Lambda^b k^a)-\frac{1}{2} \eta^{ab}k_a (2k_c \Lambda^c).$$
+The third and fifth terms cancel after a relabeling of dummy indices, and the fourth term $k_a \Lambda^b k^a$ vanishes since $k$ is null. Thus there are four further transformations labeled by $\Lambda_a$ that are gauge transformations. That is, we have four more nonphysical degrees of freedom, so now we have $10-4-4=2$ degrees of freedom corresponding to our two polarization states, as expected.
+
+Let us examine a wave travelling in the $+z$-direction, with wave vector
+\begin{align*}
+    k^a&= k(1,0,0,1)\\
+    k_a&=k(-1,0,0,1)
+\end{align*}
+in coordinates $x^a=(t,x,y,z)$ such that the exponential part of $h_{ab}$ takes the form $\exp([ik(-t+z)].$ What effect does $\Lambda$ have on $e_{ab}$? In particular, let us look at some specific components, remembering that $k_0=-k, k_3=k,k_1=k_2=0$. Then
+\begin{align*}
+    e_{01}&\to e_{01}+\underbrace{\Lambda_0 k_1}_0 +\Lambda_1 k_0\\
+    e_{02}&\to e_{02}+\underbrace{\Lambda_0 k_2}_0+\Lambda_2 k_0\\
+    e_{03}&\to e_{03}+\Lambda_0 k_3 +\Lambda_3 k_0=e_{03}+\Lambda_0 k -\Lambda_3 k.
+\end{align*}
+Since $k_1,k_2=0$, we could choose $\Lambda_1$ so that $e_{01}\to 0$ and $\Lambda_2$ so that $e_{02}\to 0$. The third one we cannot be so quick about, since it contains both $\Lambda_0,\Lambda_3$. But we could look at the trace of $e_{ab}$:
+\begin{align}
+    e^a_a &= -e_{00}+e_{11}+e_{22}+e_{33}\\
+    &\to -e_{00}+e_{11}+e_{22}+e_{33} -2\Lambda_0k_0 +2\Lambda_1 k_1 +2\Lambda_2 k_2 +2\Lambda_3k_3\\
+    &= -e_{00}+e_{11}+e_{22}+e_{33} + 2\Lambda_0k + 2\Lambda_3 k.
+\end{align}
+Therefore let us pick $\Lambda_0,\Lambda_3$ such that $e^a_a=0, e_{03}=0.$ We have now used up all our constraints from $\Lambda$. Thus the gauge condition \ref{polarizationgauge} now tells us that
+$$k_a e^{ab}-\frac{1}{2}k_b e^c_c = k_a e^{ab}=0,$$
+since the trace of $e$ is zero. Note also that $e_{ab}$ is certainly symmetric, since it is part of our plane wave solutions to $h_{ab}$, which itself must be symmetric since it represents a perturbation to the metric.
+
+But looking at the individual components of this equation (and recalling that $k_1=k_2=0$), we find that
+\begin{align*}
+    b=0,\quad k_0 e^{00}+k_3 e^{30}&=0\\
+    b=1,\quad k_0 e^{01}+k_3 e^{31}&=0\\
+    b=2,\quad k_0 e^{02}+k_3 e^{32}&=0\\
+    b=3,\quad k_0 e^{03}+k_3 e^{33}&=0.
+\end{align*}
+But because of our choice of $\Lambda$, these equations respectively imply that
+\begin{align*}
+e^{03}=e^{30}=0&\implies e^{00}=0,\\
+e^{01}=0 &\implies e^{13}=0,\\
+e^{02}=0 &\implies e^{23}=0,\\
+e^{03}=0 &\implies e^{33}=0
+\end{align*}
+We are left with just two undetermined components, $e_{12}=e_{21}$ and $e_{11}=-e_{22}.$ Therefore these are precisely the two polarization states we wanted.
+
+For a wave traveling in the positive $z$-direction, in the \term{transverse tracefree gauge}, we get the $\times$ polarization, where
+$$e_{ab}=\begin{pmatrix}
+0&0&0&0\\
+0&0&1&0\\
+0&1&0&0\\
+0&0&0&0
+\end{pmatrix}.$$
+That is, we have taken $e_{12}\neq 0$ and all others zero. We also get the $+$ polarization, with
+$$e_{ab}=\begin{pmatrix}
+0&0&0&0\\
+0&1&0&0\\
+0&0&-1&0\\
+0&0&0&0
+\end{pmatrix}.$$
+Now, we might be concerned that since this construction was based on the linearized Einstein equations, it's not guaranteed that our plane waves will also be solutions to the full (nonlinear) Einstein equations. In Maxwell there was no problem, since the original equations were linear. What about for gravity?
+
+It turns out things are okay (our plane wave solutions still make sense), but the approach is slightly different. Let us start as usual in flat space, $R_{ab}=0$,\footnote{Equivalently, we are solving the vacuum Einstein equations for $\Lambda=0$.} and write down a line element
+$$ds^2=2dudv + dx^2+dy^2.$$
+Here, $u,v$ are the advanced and retarded coordinates defined as
+\begin{align*}
+    u&= t-z\\
+    v&=-(t+z).
+\end{align*}
+Note that this is simply Minkowski space in a funny notation, which is clear if we expand out $dudv$ in $dt,dz$, and moreover note that our wave solutions are a function of $t-z=u$ only. We can also see that $u$ and $v$ are both clearly null coordinates for Minkowski space (one can observe this from the definitions of $u$ and $v$, which trace out the two sides of the light cone, or by setting $u,x,y$ constant and noting that $ds^2=0$ no matter what $v$ is). 
+
+Let us modify the line element now to
+$$ds^2=2dudv + dx^2+dy^2+H(x,y,u)du^2,$$
+where $H$ is some undetermined function of $x,y,$ and $u$. This $H$ spoils $v$ as a null coordinate, since for fixed $x,y,v$ we have in general $ds^2\neq 0$, but $u$ is still a good null coordinate. Such a metric is called the Kerr-Schild form of a metric. We still want our space to be flat, so
+$$R_{ab}=0 \implies H(x,y,u)=(x^2-y^2)f(u)+2xy g(u).$$
+Although $H$ is constrained to take this form, the functions $f(u),g(u)$ are arbitrary. What we discover is that our freedom in selecting the functions $f(u),g(u)$ corresponds precisely to the $+$ and $\times$ polarizations. However, these Kerr-Schild metrics are a bit more tricky to manipulate, so it's usually most convenient to just work in perturbation theory.
+
+How would we observe gravitational waves? Of course, we have done so-- the experimental discovery of gravitational waves won Rainer Weiss, Barry Barish, and Kip Thorne the 2017 Nobel Prize in Physics. In principle, a non-vanishing $h_{ab}$ affects the motion of particles, so let us look at the relative motion of nearby particles. In particular, let's look at the equation of geodesic deviation (see Lecture 6 if you've forgotten) and compare the tangent vectors $U^a=dx^a/ds$ of nearby geodesics. Here, $s$ is just some affine parameter.\footnote{The notation here is inconsistent with our previous discussion of the relative acceleration of geodesics. There, $t$ was the affine parameter along the curve and $s$ related neighboring geodesics. What was $S$ before is here $V$, and what was $T$ before is now $U$. I may clean up the notation to make it consistent later.} Going between neighboring geodesics, we get a vector $V^a(s)$ which evolves as you move along the geodesics as
+$$\frac{d^2 V^a}{ds^2}+{R^a}_{bcd}U^b U^d V^c =0.$$
+Suppose the particles are at rest in our frame, $U^a=(1,0,0,0).$ Thus the equation for $V$ becomes
+$$\frac{d^2V^a}{ds^2}+{R^a}_{0c0}V^c =0.$$
+Now the motion of these particles responds to $h$ via the Riemann tensor:
+$${R^a}_{cde}=\p_d \Gamma^a_{ce}-\p_e \Gamma^a_{cd}+\Gamma^2\text{ terms}.$$
+We neglect the $\Gamma^2$ terms, since these will be quadratic in our perturbation. What remains is
+\begin{align*}
+    {R^a}_{0c0}&= \p_c \Gamma^a_{00}-\p_0 \Gamma^a_{c0}\\
+    &= \p_c \left(\frac{1}{2}\eta^{ab}(-\p_b h_{00}+\p_0 h_{b0}+\p_0 h_{b0})\right)-\p_0\left(\frac{1}{2}\eta^{ab}(-\p_b h_{0c}+\p_0 h_{bc}+\p_c h_{0b})\right).
+\end{align*}
+However, in the transverse tracefree gauge, $h_{00}=h_{01}=h_{02}=h_{03}=0$ (this comes from our constraints on the polarization tensor $e_{ab}$), so any terms involving $h$s with $0$ indices are zero. What's left is
+$${R^a}_{0c0}=-\frac{1}{2}\eta^{ab}\p_0^2 h_{bc},$$
+and so equivalently we may write
+$$\frac{d^2V^a}{ds^2}-\frac{1}{2}\eta^{ab} \ddot h_{bc} V^c=0,$$
+where the dot denotes a derivative with respect to $t$.
+We see that $h$ drives an ``acceleration'' in $V^a$, which means that it produces a force between nearby particles.
+
+\subsection*{Non-lectured aside: detection of gravitational waves}
+Having discussed this, I should remark that this is \emph{not at all how gravitational waves are detected.} This force is tiny. We would have to isolate particles with incredible precision and measure their relative motions while accounting for all other possible interactions. In practice, we use interferometry to detect relative changes in distance along perpendicular axes. This also requires incredible precision, but in areas which are considerably more manageable for experimentalists. 
+
+Consider the $+$ polarization of a gravitational wave. If we begin with a circular ring of particles, this ring is first squeezed in the $x$ direction and then in the $y$ direction, going back and forth. See for instance the very nice animations at \url{https://en.wikipedia.org/wiki/Gravitational_wave#Effects_of_passing}.
+
+Suppose we're sitting at the origin $O$, and we set up our experiment in the $xy$ plane ($z=0$). It sends one light beam down the $x$ direction, and another in the $y$ direction. They travel for some distance $L$ (as measured in plain old Minkowski space), and then are reflected back to $O$ by some mirrors at the end. We prepare these light beams to be perfectly in phase when we emit them at $O$, so that if they travel the same distance $2L$ (going out and coming back), they will still be perfectly in phase when they arrive.
+
+Now suppose a gravitational wave in the $+$ polarization passes through. Remember that $+$ will stretch and squeeze the ring in $x$ and $y$, which are exactly the axes our detector is set up along. You might guess the effect it will have on the two arms of our experiment, but let's write it down. To leading order, the metric is
+$$g_{\mu\nu}=\eta_{\mu\nu}+A e_{\mu\nu}\cos(k(-t+z)).$$
+Since we are in the $+$ polarization and sitting at $z=0$, we can now write this as
+$$ds^2=dt^2+dz^2+(1+A\cos(kt))dx^2
++(1-A\cos(k t))dy^2.$$
+Therefore the length of the arm in the $x$ direction will be
+$$L_x\approx L\left(1+\frac{1}{2}A\cos(kt)\right)$$
+and the length of the arm in the $y$ direction becomes
+$$L_y\approx L\left(1-\frac{1}{2}A\cos(k t)\right).$$
+If we assume that the travel time of the light is small compared to $1/$the frequency of oscillations and that the amplitude $A$ is small, then the total difference in path length is
+$$2A\cos(kt_0)$$
+for a measurement made at time $t_0$. But this means that the beams of light will have travelled different distances and are therefore out of phase when they arrive back at the origin! This will result in interference between what were initially two perfectly in phase beams of light, and by measuring the changes in intensity when the beams are recombined at the origin, we can detect gravitational waves as they pass through. Note that because the light is being constantly produced at the emitters with a fixed reference wavelength, it is not the case that the light will be stretched and squeezed along with the arms. The light beams are like a fixed ruler, so the relative distances of the arms really do change in a measurable way.
+
+Practically speaking, this is very hard. The amplitude $A$ of the perturbation is very small, so the arms have length $L=4$ km and the light is amplified to a power of $100$ kW. The apparatus is seismically isolated in order to prevent noise from earthquakes, trucks on the highway, and any other number of background sources. The other smart thing to do is to set the light beams perfectly out of phase when they are produced rather than in phase, so that if no wave is passing through, the beams destructively interfere. This destructive interference is reduced when a gravitational wave passes through, and it's much easier to measure light/no light than light/slightly less light. 
+
+The other, other smart thing to do is to set up multiple detectors (if you can afford them) and set them up along different axes (separated by 45 degrees, for example). That's exactly what the LIGO Collaboration did, establishing sites in Livingston, Louisiana and Hanford, Washington. This has three main benefits. The first is the most obvious-- redundancy helps to avoid false positives, so if you see a signal at both sites (which are geographically separated), it's less likely to be a fake. The second is that you have a better chance of seeing a signal aligned with at least one set of detector axes, which improves the sensitivity of the measurement. The third is that it gives you spatial localization for the signal, i.e. you know when it hits the first detector and when it hits the second, and you know where both detectors are, so you can figure out approximately where the signal might have come from. The more detectors you add, the better you can localize the source. And in turn, this has big implications for astronomers who might like to observe these highly energetic events with their telescopes.
+
+The coordination of astrophysical observations through multiple channels (e.g. gamma rays, neutrinos, gravitational waves, and cosmic rays) is known as \term{multi-messenger astronomy}, and the experimental discovery of gravitational waves is already opening new avenues of collaboration. Thanks to LIGO, VIRGO, and other detectors coming online in the near future, we have a whole new way of listening to the sky, and no one knows exactly what they will teach us.

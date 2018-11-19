@@ -10,42 +10,44 @@ $$\p_a F_{bc} +\p_b F_{ca} +\p_c F_{ab}=0$$
 and
 $$\p_a F^{ab}=-j^b.$$
 
-But there's something strange about this-- these equations in their current form hold for cartesian coordinates only. Of course, the laws of physics (i.e. as expressed through observable results in experiments) cannot depend on the coordinate system used. 
+But there's something strange about this-- these equations in their current form hold for Cartesian coordinates only. Of course, the laws of physics (as expressed through empirical results in experiments) cannot depend on the coordinate system we use to define them. 
 \begin{exm}
 The Minkowski metric takes the Cartesian form
 $$ds^2=-dt^2+dx^2+dy^2+dz^2$$
 but if we pass to spherical coordinates, the metric now takes the form 
-$$ds^2=-dt^2+dr^2+r^2d\theta^2 +r^2 \sin^2 \theta d\phi^2=g_{ab}dx^a dx^b.$$
+$$ds^2=-dt^2+dr^2+r^2d\theta^2 +r^2 \sin^2 \theta d\phi^2=g_{ab}dx^a dx^b,$$
+where $x^a=(t,r,\theta,\phi).$
 \end{exm}
 
 General relativity is thus motivated by a desire to understand how the laws of physics are invariant not just under Lorentz transformations but general coordinate transformations. It is also motivated by the \term{weak equivalence principle}, which states that inertial mass and gravitational mass are the same thing-- the $m$ in $F=ma$ and the $m$ in $F=-\frac{GMm }{r^2}$ are the same mass! This is closely related to the \term{Einstein equivalence principle}, which states that in a freely falling frame, the laws of physics are those of special relativity. One cannot distinguish between being in freefall under a gravitational field and simply being at rest in no gravitational field.
 
-We consider spacetime to be a 4-dimensional system ($3+1$ dimensions, if you like) and in particular it has a manifold structure. We may make an explicit choice of $x^a$ some coordinates that label points in $M$, but it would be nice to define vectors in a way that is independent of the coordinates. This will lead us to revisit vectors and covectors.
+We consider spacetime to be a 4-dimensional system ($3+1$ dimensions, if you like) and in particular it has a manifold structure. We may make an explicit choice of some coordinates $\set{x^a}$ that label points in (a coordinate patch of) $M$, but it would be nice to define vectors in a way that is independent of the coordinates. This will lead us to revisit vectors and covectors.
 
-Consider a curve $\lambda(\tau):\RR\to M$ a parametrized curve sitting in $M$. Now take $f=f(x^a)$ a differentiable function of the coordinates, and define an operator that maps $f$ into $df/dt$: by applying the chain rule, we have
-$$df/dt=\P{x^a}{t}\left(\P{}{x^a}f\right).$$
-Thus a vector is a differential operator that acts on $f$: explicitly, it is $\P{x^a}{t}\P{}{x^a}$, where the $\P{x^a}{t}$ are the components of the vector.
+Consider a parametrized curve $\lambda(\tau):\RR\to M$ sitting in $M$. Now take $f=f(x^a)$ to be a differentiable function of the coordinates, and define an operator that maps $f$ into the total derivative $df/dt$: by applying the chain rule, we have
+$$\frac{df}{dt}=\P{x^a}{t}\left(\P{}{x^a}f\right).$$
+Thus a vector $V$ is a linear differential operator that acts on $f$: explicitly, we can write $$V=\P{x^a}{t}\P{}{x^a},$$ where the $\P{x^a}{t}$ are called the components of the vector and denoted by $V^a$. The right way to think of a vector is as a coordinate-independent generalization of a directional derivative. The components will in general transform when we change coordinates, but the vector as an operator stays the same.
 
-A general vector may therefore be written in its components in some basis $x^a$ as
+That said, a general vector can be written in its components in some coordinate basis $x^a$ as
 $$V= V^a \P{}{x^a}.$$
 
 Thinking back to our curve $\lambda(\tau)$, we may expand our coordinates locally as $x^a(\tau)=x^a (\tau_0)+V^a (\tau-\tau_0)+O((\tau-\tau_0)^2)$, where $V$ is the tangent vector to some curve through the point $\tau_0$. (Okay, we're being a bit careless with notation here-- the instructor has written $\lambda(t)$, but sometimes $t$ is a coordinate on the manifold.) Therefore we may also interpret (tangent) vectors as describing how our manifold curves locally about a point.
 
-Vectors (somewhat obviously) form a vector space. If $W, Y$ are vectors, $\alpha,\beta$ real numbers, then $\alpha W + \beta Y$ is another vector with components
+Vectors (as the name suggests) form a vector space.\footnote{We get most of the vector space axioms for free. Commutativity and associativity follow from doing component-wise addition in a basis, as does distributivity of scalar sums. The additive identity is the vector where all components are zero. The additive inverse for a vector with components $V^a$ is just $-V^a$. The scalar multiplication identity is automatic.} 
+If $W, Y$ are vectors, $\alpha,\beta$ real numbers, then $\alpha W + \beta Y$ is another vector with components
 $$(\alpha W^a+\beta Y^a)\P{}{x^a}.$$
 
-As (multi)linear differential operators, vectors obey the Leibniz rule
+As linear differential operators, vectors also obey the Leibniz rule
 $$V^a \P{}{x^a}(fg)= V^a \P{f}{x^a} g+ f V^a \P{g}{x^a}.$$
-So they form a vector space (check the vector space axioms again).
 
-The space of tangent vectors at a point $p$ is called $T_p(M)$. Recall that we defined our tangent vectors with respect to its components in some basis $x^a$. But if we now change to $\tilde x^b = \tilde x^b(x^a)$, then by the chain rule our basis vectors $\P{}{x^a}$ transform as
+The space of tangent vectors at a point $p$ is called $T_p(M)$. Recall that we defined our tangent vectors with respect to its components in some basis $x^a$. But if we now change to some new coordinates $\tilde x^b = \tilde x^b(x^a)$, then by the chain rule our basis vectors $\P{}{x^a}$ transform as
 $$\P{}{x^a}=\P{\tilde x^{b}}{x^a}\frac{\partial}{\partial \tilde x^b}.$$
-But $V$ as an operator is invariant-- it does not depend on our choice of coordinates, so only its decomposition into basis vectors can change. This means that if we rewrite $V$ in a different set of coordinates, we find that
-$$V=V^a \P{}{x^a}=\tilde V^a \frac{\p}{\p\tilde x^a} = V^a \P{\tilde x^b}{x^a}\frac{\p}{\p\tilde x^b},$$
-so by comparison the components of $V$ transform as
+But $V$ as an operator is invariant-- it does not depend on our choice of coordinates, so its components must also change. If we rewrite $V$ in a different set of coordinates, we find that
+$$V=V^a \P{}{x^a} = V^a \P{\tilde x^b}{x^a}\frac{\p}{\p\tilde x^b}$$
+by the chain rule. Since $V$ is independent of basis,
+$$V=V^a \P{}{x^a}= \tilde V^a \P{}{\tilde x^a},$$ so by comparison we see that the components of $V$ transform as
 $$V^a\to \tilde V^{a'} = \frac{\p\tilde x^{a'}}{\p x^a} V^a.$$
-In other words, tangent vectors transform as contravariant vectors, which is a generalization of the formula in special relativity where we had $$\P{\tilde x^{a'}}{x^a}=\Lambda^{a'}_{a}$$
-with $\Lambda^{a'}_{a}$ the Lorentz transform.
+In other words, tangent vectors transform as contravariant vectors, which we recognize as a generalization of the formula in special relativity where we had $$\P{\tilde x^{a'}}{x^a}=\Lambda^{a'}_{a}$$
+with $\Lambda^{a'}_{a}$ the Lorentz transformation.
 
 \begin{defn}
 We may also define \term{one-forms}, which are covariant vectors at some point $p$. Thus the inner product $\langle \omega, V\rangle$ is a real number, with $\omega$ a 1-form and $V$ a vector. The inner product is bilinear:
@@ -55,7 +57,7 @@ and similarly for the first argument, if $\omega = \alpha \eta+\beta \xi$
 $$\ang{\alpha \eta +\beta\xi, V} = \alpha \ang{\eta, V} +\beta \ang{\xi, V}.$$
 \end{defn}
 
-Let us write $V$ in a basis, $V=V^a E_a$ with $E_a$ some set of basis vectors. Then $\omega= \omega_a E^a$ has components in some basis of one forms $E^a$. We have that $\ang{E^a, E_b}=\delta^a_b$, where $E^a$ forms a basis of 1-forms which is dual to the ordinary basis vectors. (Remark: the components $V^a$ of a vector transform like coordinate functions, while the components of a one-form $\omega_a$ transform like basis vectors $E_a$.) We can then compute the inner product of a generic one-form and a vector, %As the components of a 1-form are real numbers (and the same is true of vectors) we may compute
+Let us write $V$ in a basis, $V=V^a E_a$ with $E_a$ some set of basis vectors. Then $\omega= \omega_a E^a$ has components in some basis of one forms $E^a$. We have that $\ang{E^a, E_b}=\delta^a_b$, where $E^a$ forms a basis of 1-forms which is dual to the ordinary basis vectors. It is often convenient to take the basis for the tangent space to be $\p/\p x^a$ and the basis for the dual (i.e. the cotangent space) to be $dx^a$. (Remark: the components $V^a$ of a vector transform like coordinate functions, while the components of a one-form $\omega_a$ transform like basis vectors $E_a$.) We can then compute the inner product of a generic one-form and a vector, %As the components of a 1-form are real numbers (and the same is true of vectors) we may compute
 \begin{eqnarray*}
 \ang{\omega,V}&=&\ang{\omega_a E^a, V^b E_b}\\
 &=& \omega_a V^b \delta^a_b\\

@@ -19,7 +19,7 @@ The \term{chronological future} of a point $p$ is the set of all points that can
 \end{defn}
 
 \begin{figure}
-\includegraphics{2018/10/20181005_img1}
+\includegraphics[width=0.5\textwidth]{2018/10/20181005_img1}
 \caption{An illustration of the light cones from a point $p$, plus the chronological future $I^+$ and chronological past $I^-$. Also depicted in red is a timelike curve (e.g. a possible particle trajectory in spacetime).}
 \end{figure}
 
@@ -33,12 +33,12 @@ Lorentz transformations in general involve time-- they are defined by the matric
 $$\Lambda^T \eta \Lambda= \eta,$$
 i.e. they preserve the inner product $\eta$ in Minkowski space, forming the group $O(3,1)$. Lorentz transformations consist of rotations in $\RR^3$ and boosts. This is equivalent to the defining property of rotation matrices $R$ that $R^T \delta R=\delta$, meaning that rotation matrices preserve the standard Euclidean inner product in $\RR^3$ and form the group $O(3)$.\footnote{Strictly, $O(3)$ also includes reflections-- for matrices which preserve both orientation and the inner product, we must also require that $\det R=+1$, defining the group $SO(3)$. We'll see a similar caveat with the Lorentz group in just a second.}
 Written explicitly, the Lorentz boost in the $x$-direction to a frame moving with velocity $v$ is
-\begin{eqnarray*}
-t\to t'&=&\frac{t-vx}{\sqrt{1-v^2}}\\
-x\to x'&=&\frac{x-vt}{\sqrt{1-v^2}}\\
-y\to y'&=&y\\
-z\to z'&=&z
-\end{eqnarray*}
+\begin{align*}
+t&\to t'=\frac{t-vx}{\sqrt{1-v^2}}\\
+x&\to x'=\frac{x-vt}{\sqrt{1-v^2}}\\
+y&\to y'=y\\
+z&\to z'=z
+\end{align*}
 We may also write it in matrix notation,
 $${\Lambda^a}_b =
 \begin{pmatrix}
