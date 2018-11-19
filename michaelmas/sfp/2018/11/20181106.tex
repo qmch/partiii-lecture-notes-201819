@@ -3,15 +3,15 @@ $$\text{Rank}[\fg]=\dim \mathfrak{h} = r.$$
 
 Now the idea is that if $H^i,i=1,\ldots,r$ is a basis for the Cartan subalgebra, then $[H_i,H_j]=0$ and all the $H_i$ considered as matrices can be simultaneously diagonalized in some basis. We conclude that $\fg$ is spanned by simultaneous eigenvectors of $H_i$.
 
-Now there also exist eigenvectors $E^\alpha \in \fg$ such that
+Recall that there are some eigenvectors $E^\alpha \in \fg$ of the ad maps $\ad_{H^i}$ with non-zero eigenvalues. That is, there exists a set of elements $E^\alpha$ which satisfy
 $$\text{ad}_{H^i}(E^\alpha)=[H^i, E^\alpha]=\alpha^i E^\alpha,$$
 with $\alpha^i\in \CC,i=1,\ldots,r$. A general element of the Cartan subalgebra $H\in \mathfrak{h}$ can be written
 $$H=e_i H^i$$
-where $e_i$ represents the components of $H$. Now we can write
+where $e_i$ represents the components of $H$, so we can then write the bracket
 $$[H,E^\alpha]=\alpha(H)E^\alpha$$
-where $$\alpha(H):\fh \to \CC, H=e_i H^i \mapsto e_i \alpha^i$$ is now a (multi)linear function from $H$ (specifically the components $e_i$ of $H$) to the complex numbers $\CC$.
+where $$\alpha(H):\fh \to \CC, H=e_i H^i \mapsto e_i \alpha^i$$ is now a (multi)linear function taking $H\in \fh$ to the complex numbers $\CC$.
 
-A root (i.e. a set of values $\alpha=\set{\alpha^i}$) therefore defines a linear map $\mathfrak{h}\to \CC$. We think of roots as elements of the \emph{dual vector space} $\mathfrak{h}^*$ of the Cartan subalgebra $\mathfrak{h}$. One can further prove that the roots are non-degenerate (see Fuchs and Schweigert, pg. 87). For our purposes, we will simply assume this is true.
+A root (i.e. a set of values $\alpha=\set{\alpha^i}$) therefore defines a linear map $\mathfrak{h}\to \CC$, and we think of roots as elements of the \emph{dual vector space} $\mathfrak{h}^*$ of the Cartan subalgebra $\mathfrak{h}$. One can further prove that the roots are non-degenerate (see Fuchs and Schweigert, pg. 87). For our purposes, we will simply assume this is true.
 
 Then we have a set of roots $\Phi$ consisting of $d-r$ distinct elements of $\fh^*$ (that is, $\dim(\fg)-\dim(\fh)$). 
 \begin{defn}
@@ -80,9 +80,9 @@ $$\exists(K^{-1})_{ij}\text{ such that }(K^{-1})_{ij} K^{jk}=\delta_i^k.$$
 Why is this useful? Precisely because $K^{-1}$ now induces a non-degenerate inner product on $\fh^*$, the dual space. Thus with $\alpha,\beta\in \Phi,$ we get
 $$[H^i,E^\alpha]=\alpha^i E^\alpha\text{ and }[H^i,E^\beta]=\beta^i E^\alpha.$$
 \begin{defn}
-We therefore define the inner product on elements of the dual space,
+We therefore define the inner product on elements of the dual space, $(\cdot,\cdot):\fh\times \fh \to \CC$, as
 $$(\alpha,\beta)=(K^{-1})_{ij}\alpha^i \beta^j.$$
-Next lecture, we'll see why this is a natural choice of inner product.
+In the next lecture, we'll see why this is a natural choice of inner product.
 \end{defn}
 
 We shall now prove the following statement.

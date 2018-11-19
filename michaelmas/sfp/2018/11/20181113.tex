@@ -70,15 +70,18 @@ $$\delta \in \Phi_S \text{ (is simple)} \iff \delta \in \Phi_+, \delta \neq \alp
 \end{defn}
 Simple roots have some good properties.
 \begin{enumerate}
-    \item[i)] if $\alpha,\beta\in \Phi_S$, then $\alpha=\beta$ is not a root. For suppose $\alpha-\beta\in \Phi$. Then either
+    \item[i)] \textit{If $\alpha,\beta\in \Phi_S$, then $\alpha=\beta$ is not a root.} 
+    \begin{proof}
+    Suppose $\alpha-\beta\in \Phi$. Then either
     \begin{itemize}
         \item $\alpha-\beta \in \Phi_+$. Then $\alpha=\alpha-\beta+\beta \implies \alpha$ not simple.
         \item $\alpha-\beta \in\Phi_-$. Then $\beta=\beta-\alpha+\alpha \implies \beta$ not simple.
     \end{itemize}
     Either way, we reach a contradiction, so $\alpha-\beta\notin \Phi.$
-    \item[ii)] If $\alpha,\beta \in \Phi_S,$ then the $\alpha$-string through $\beta$ ($\a\neq \beta$) takes the form
+    \end{proof}
+    \item[ii)] \textit{If $\alpha,\beta \in \Phi_S,$ then the $\alpha$-string through $\beta$ ($\a\neq \beta$) takes the form}
     $$l_{\a,\beta}=1-\frac{2(\a,\beta)}{(\a,\a)}\in \NN.$$
-    \begin{proof} The string consists of roots
+    \begin{proof} The root string consists of roots
     $$S_{\a,\beta}=\set{\beta+n\alpha;n\in \ZZ\quad n_- \leq n \leq n_+}.$$
     But this set certainly contains at least one element-- $\beta$, with $n=0$. Therefore $n_+\geq 0$ and $n_-\leq 0$. However, we also know that the sum of the bounds $n_+,n_-$ is given by 
     $$(n_++n_-)=-\frac{2(\a,\beta)}{(\a,\a)}\in \ZZ.$$
@@ -87,18 +90,19 @@ Simple roots have some good properties.
     We conclude that the root string takes the form
     $$l=n_+ - n_- + 1 = n_+ +1 = 1-\frac{2(\a,\beta)}{(\a,\a)} \in \NN.$$
     \end{proof}
-    \item[iii)] $\forall \alpha,\beta \in \Phi_S, \alpha \neq \beta$, we have $(\alpha,\beta)\leq 0$. (This follows from the previous property about the root string and the positivity of $(\alpha,\alpha)$.)
-    \item[iv)] Any positive root $\beta\in \Phi_+$ can be written as a linear combination of simple roots with positive integer coefficients.
+    \item[iii)] \textit{$\forall \alpha,\beta \in \Phi_S, \alpha \neq \beta$, we have $(\alpha,\beta)\leq 0$.} This follows from the previous property about the root string and the positivity of $(\alpha,\alpha)$.
+    \item[iv)] \textit{Any positive root $\beta\in \Phi_+$ can be written as a linear combination of simple roots with positive integer coefficients.}
     \begin{proof}
     This is trivially true if $\beta\in \Phi_S$ is itself a simple root. If $\beta\notin \Phi_S$, then we can write $\beta=\beta_1+\beta_2$ where $\beta_1,\beta_2 \in \Phi_+.$ If $\beta_1,\beta_2\in \Phi_S$, then we are done. Otherwise, we can split $\beta_1=\beta_3,\beta_4$ where $\beta_3,\beta_4\in \Phi_+$. The set of roots is of finite dimension, so this process has to terminate eventually with a full decomposition of $\beta$ into simple roots.
     \end{proof}
-    \item[v)] Simple roots are linearly independent.
-    \begin{proof}
-    Consider vectors $\lambda\in \fh^*_\RR$ which can be written in terms of the $\alpha_{(i)}$ basis elements. Thus
-    $$\lambda=\sum_{i\in J} c_i \alpha_{(i)}$$
-    with $J$ a set of indices, $\alpha_{(i)}\in \Phi_S$, and $c_i\in \RR$. We can split $J$ into $J=J_+ \cup J_-$ where
-    $$J_+=\set{i\in J: c_i >0},J_-=\set{i\in J: c_i <0}$$
-    We'll finish the proof next time.
-    \end{proof}
+    \item[v)] \textit{Simple roots are linearly independent.}
+    For clarity of reading, I have moved the proof to the notes for the next lecture since we only managed to write the first few lines in this lecture.
+    %\begin{proof}
+    %Consider vectors $\lambda\in \fh^*_\RR$ which can be written in terms of the $\alpha_{(i)}$ basis elements. Thus
+    %$$\lambda=\sum_{i\in J} c_i \alpha_{(i)}$$
+    %with $J$ a set of indices, $\alpha_{(i)}\in \Phi_S$, and $c_i\in \RR$. We can split $J$ into $J=J_+ \cup J_-$ where
+    %$$J_+=\set{i\in J: c_i >0},J_-=\set{i\in J: c_i <0}$$
+    %We'll finish the proof next time.
+    %\end{proof}
 \end{enumerate}
 %add the cross-references here! Check the notes

@@ -1,6 +1,5 @@
-Let's finish the proof from last time.
-We want to prove that the simple roots are linearly independent. The goal is this-- we will write a general element in the dual space as a sum of the simple roots, and show that that element is nonzero unless all the coefficients of the basis vectors are zero.
-
+Let's prove property v) from last time-- the simple roots are linearly independent. The structure of the proof is as follows-- we will write a general element in the dual space as a sum of the simple roots, and show that that element must be nonzero unless all the coefficients of the simple roots are zero. Therefore no nontrivial linear combination of the simple roots vanishes, which means the simple roots are linearly independent.
+\begin{proof}
 Consider vectors $\lambda\in \fh^*_\RR$, which we can write in terms of the basis elements $\alpha_{(i)}$. Thus
 $$\lambda=\sum_{i\in \mathcal{I}} c_i \alpha_{(i)}$$
 with $\mathcal{I}$ a set of indices, $\alpha_{(i)}\in \Phi_S$, and $c_i\in \RR$ some real coefficients. We can split the set of indices $\mathcal{I}$ into $\mathcal{I}=\mathcal{I}_+ \cup \mathcal{I}_-$, where
@@ -21,7 +20,8 @@ and we take $\lambda_+,\lambda_-$ to not both be zero.
     &> -2(\lambda_+,\lambda_-)\\
     &=+2 \sum_{i\in \mathcal{I}_+} \sum_{j\in \mathcal{I}_-} c_i c_j (\alpha_{(i)},\alpha_{(j)}) >0.
 \end{align*}
-In going from the second to third lines, we have used the fact that the inner product of any nonzero element (specifically, $\lambda_+$ and $\lambda_-$) with itself is positive, and in the last line we have used the property that $c_ic_j <0$ and $(\alpha_{(i)},\alpha_{(j)})<0$. Thus $(\lambda,\lambda)>0 \implies \lambda\neq 0$, so the simple roots are linearly independent. (That is, there is no general combination $\lambda$ of the simple roots $\alpha$ which is zero.) \qed
+In going from the second to third lines, we have used the fact that the inner product of any nonzero element (specifically, $\lambda_+$ and $\lambda_-$) with itself is positive, and in the last line we have used the property that $c_ic_j <0$ and $(\alpha_{(i)},\alpha_{(j)})<0$. Thus $(\lambda,\lambda)>0 \implies \lambda\neq 0$, so the simple roots are linearly independent. (That is, there is no general nontrivial combination $\lambda$ of the simple roots $\alpha\in \Phi_S$ which is zero.)
+\end{proof}
 
 Since the simple roots are linearly independent, we now see that since $|\Phi_S|\leq r$, by iv) from last time we find that $\forall \beta \in \Phi_+,\beta=\sum c_i \alpha_{(i)}$ with $\alpha_{(i)} \in \Phi_S, c_i \in \ZZ_{\geq 0}$. If $\beta \in \Phi_-$, then $-\beta \in \Phi_+$ and $\beta=\sum \tilde c_i \alpha_{(i)}.$ Either way, the \emph{simple} roots entirely span the entire set $|\Phi|,$ so $|\Phi_S|=r$.
 
