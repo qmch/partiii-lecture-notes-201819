@@ -4,30 +4,35 @@ Suppose we start with a scalar field $\phi(x)$. The ordinary derivative is just
 $$\p_a \phi=\P{\phi}{{x^a}}.$$
 Let us change coordinates to ${\tilde x^{a'}}$ some function of the original coordinates. Then this derivative transforms as
 $$\p_{a'}\phi= \frac{\p x^a}{\p {\tilde x}^{a'}} \P{}{x^a}\phi = \frac{\p x^a}{\p {\tilde x}^{a'}}\p_a \phi.$$
-We might ask whether the derivative of a vector transforms in the same way. But instead, we get something a little different.
+That is, it transforms in the way we expect an index-down quantity to transform, with the correct factor of $\frac{\p x^a}{\p {\tilde x}^{a'}}.$
+We might ask whether the partial derivative of a vector transforms in the same way. The answer is no-- instead, we get something a little different.
 
-\begin{eqnarray*}
-\p_{b'} \tilde V^{a'} &=& \frac{\p x^b}{\p \tilde x^{b'}} \P{}{x^b}\left( \frac{ \p \tilde x^{a'}}{\p x^a} V^a\right)\\
-&=&\frac{\p x^b}{\p \tilde x^{b'}}\frac{\p V^a}{\p x^b} \frac{\p \tilde x^{a'}}{\p x^a} + \frac{\p x^b}{\p \tilde x^{b'}}\frac{\p^2 \tilde x^{a'}}{\p x^a \p x^b}V^a.
-\end{eqnarray*}
-This first part is tensorial, but the second part is not (it has a term which is a second derivative of the coordinates). In order to get a tensor from the derivative, we need to add a correction term. Let us define
+\begin{align*}
+\p_{b} V^{a}\to \p_{b'} \tilde V^{a'} &= \left(\frac{\p x^b}{\p \tilde x^{b'}} \P{}{x^b}\right) \left( \frac{ \p \tilde x^{a'}}{\p x^a} V^a\right)\\
+&=\frac{\p x^b}{\p \tilde x^{b'}} \frac{\p \tilde x^{a'}}{\p x^a} \p_b V^a+ \frac{\p x^b}{\p \tilde x^{b'}}\frac{\p^2 \tilde x^{a'}}{\p x^a \p x^b}V^a.
+\end{align*}
+This first part is tensorial, but the second part is not (it has a term which is a second derivative of the coordinates). In order to get a tensor, we must add a correction term to the partial derivative. 
+\begin{defn}
+This motivates us to define the \term{covariant derivative} by
 $$\nabla_b V^a \equiv \p_b V^a +\Gamma^a_{bc} V^c$$
-where $\Gamma^a_{bc}$ is called a \term{connection}. We can figure out how $\Gamma$ transforms under coordinate transformations:
-$$\tilde \Gamma^{a'}_{b'c'}=\frac{\p \tilde x^{a'}}{\p x^a} \frac{ \p x^a}{\p \tilde x^{b'}}\frac{\p x^c}{\p \tilde x^c} \Gamma^a_{bc}-\frac{\p^2 \tilde x^{a'}}{\p x^b \p x^c}\frac{\p x^b}{\p \tilde x^{b'}}\frac{\p x^c}{\p\tilde x^{c'}}.$$
-So $\Gamma$ does \emph{not} transform as a tensor, but that's actually what we want-- this correction term allows us to get a proper tensor when we take the covariant derivative of a vector.
-
-We'd like $\nabla$ to be linear and obey the Leibniz rule: for two tensors $T,S$ and two real numbers $\alpha,\beta\in \RR$, we should have
+where $\Gamma^a_{bc}$ is called a \term{connection}. As the name suggests, a covariant derivative is a derivative which transforms in a tensorial way under arbitrary coordinate transformations.
+\end{defn}
+We can figure out how $\Gamma$ transforms under coordinate transformations:
+$$\tilde \Gamma^{a'}_{b'c'}=\frac{\p \tilde x^{a'}}{\p x^a} \frac{ \p x^b}{\p \tilde x^{b'}}\frac{\p x^c}{\p \tilde x^{c'}} \Gamma^a_{bc}-\frac{\p^2 \tilde x^{a'}}{\p x^b \p x^c}\frac{\p x^b}{\p \tilde x^{b'}}\frac{\p x^c}{\p\tilde x^{c'}}.$$
+So $\Gamma$ does \emph{not} transform as a tensor, but that's actually what we want-- this correction term allows us to get a proper tensor when we take the covariant derivative of a vector. Thus
+$$\nabla_b V^a \to \nabla_{b'}V^{a'}=\frac{\p x^b}{\p \tilde x^{b'}} \frac{\p \tilde x^{a'}}{\p x^a}\p_b V^a+\frac{\p \tilde x^{a'}}{\p x^a} \frac{ \p x^b}{\p \tilde x^{b'}} \Gamma^a_{bc} V^c.$$
+so $\nabla_b V^a$ is an honest tensor. We'd also like $\nabla$ to be linear and obey the Leibniz rule: for two tensors $T,S$ and two real numbers $\alpha,\beta\in \RR$, we should have
 $$\nabla(\alpha T+\beta S)= \alpha \nabla T+\beta \nabla S$$
 and also
 $$\nabla(T\otimes S)=\nabla T \otimes S + T\otimes \nabla S.$$
 
-For a vector $V$ and a one-form $W$, let $S=V^a W_a$. Then
-\begin{eqnarray*}
-\nabla_a S&=& \p_a S\\
-&=& (\p_a V^b)W_b+ V^b(\p_a W_b)\\
-&=& (\nabla_a V^b)W_b- \Gamma^b_{ac} V^c W_b+V^b(\p_a W_b)\\
-&=& (\nabla_a V^b)W_b+ V^b \nabla_a W_b.
-\end{eqnarray*}
+For a vector $V$ and a one-form $W$, define the scalar $S=V^a W_a$. Then
+\begin{align*}
+\nabla_a S&= \p_a S\\
+&= (\p_a V^b)W_b+ V^b(\p_a W_b)\\
+&= (\nabla_a V^b)W_b- \Gamma^b_{ac} V^c W_b+V^b(\p_a W_b)\\
+&= (\nabla_a V^b)W_b+ V^b \nabla_a W_b.
+\end{align*}
 Therefore for the Leibniz rule to hold on the product of a vector and a one-form, it must be that
 $$\nabla_b W_a \equiv \p_b W_a - \Gamma^c_{ba}W_c.$$
 Note the sign flip from the vector definition! More generally, we can use Leibniz to deduce what the covariant derivative operator is on a general tensor of type $(r,s)$.
@@ -39,47 +44,47 @@ $$\tilde \Gamma^{a'}_{b'c'}=\frac{\p \tilde x^{a'}}{\p x^a} \frac{ \p x^a}{\p \t
 Note that the second part is symmetric under the interchange of $b',c'$. Therefore take just the part antisymmetric in $b',c'$:
 $$\Gamma^{a'}_{b'c'}-\Gamma^{a'}_{c'b'}=\frac{\p \tilde x^{a'}}{\p x^a}\frac{\p x^b}{\p \tilde x^{b'}}\frac{\p x^c}{\p \tilde x^{c'}}(\Gamma^a_{bc}-\Gamma^a_{cb}).$$
 \begin{defn}
-The antisymmetric part of $\Gamma$ transforms like a tensor, and so we define the torsion tensor
+The antisymmetric part of $\Gamma$ transforms like a tensor, and so we define the \term{torsion tensor} as
 $$T^a_{bc}\equiv\Gamma^a_{bc}-\Gamma^a_{cb}=2\Gamma^a_{[bc]}.$$
 Some definitions define this up to a factor of 2 or with different signs.
 \end{defn}
 
 Consider an arbitrary scalar $S$.
 $$(\nabla_a \nabla_b-\nabla_b\nabla_a)S= \nabla_a \p_b S- \nabla_b \p_a S.$$
-If these were just partial derivatives, this would be zero. But working it out explicitly, we see that 
+If these were just partial derivatives, this commutator would be zero. But working it out explicitly, we see that 
 $$(\nabla_a \nabla_b-\nabla_b\nabla_a)S=\p_a \p_b S-\Gamma^c_{ab}\p_c S -\p_b \p_a S + \Gamma^c_{ba}\p_c S = T^c_{ba} \p_c S = T^c_{ba}\nabla_c S.$$
-Therefore the torsion measures how much covariant derivatives fail to commute on scalars. In general relativity, the torsion is usually taken to be zero. However, a treatment of fermions naturally requires non-zero torsion, and in local supersymmetry or ``superspace formulations of anything,'' non-zero torsion is essential.
+Therefore the torsion measures how much covariant derivatives fail to commute on scalars. We'll see a generalization of this idea when we discuss the Riemann tensor later. In general relativity, the torsion is usually taken to be zero so that $\Gamma$ is symmetric in its lower indices. However, a treatment of fermions naturally requires non-zero torsion, and in local supersymmetry or ``superspace formulations of anything,'' non-zero torsion is essential.
 
-We haven't yet actually found what the connection is in terms of things we actually care about. 
+Now, we haven't yet actually found what the connection is in terms of things we actually care about, like say the metric $g_{ab}.$
 \begin{defn}
-Let us define the metric connection as the $\Gamma$ such that
+Let us define the \term{metric connection} as the $\Gamma$ such that
 $$\nabla_c g_{ab}=0.$$
 This will allow us to find a formula for $\Gamma$ in terms of the metric $g$.
 \end{defn}
 
 We'll work it out explicitly.
-\begin{eqnarray*}
-\nabla_a g_{bc}&=&\p_a g_{bc}-\Gamma^d_{ab}g_{dc}-\Gamma^d_{ac}g_{bd}=0,\\
-\nabla_b g_{ca}&=&\p_b g_{ca}-\Gamma^d_{bc} g_{da} - \Gamma^d_{ba}g_{cd}=0,\\
-\nabla_c g_{ab}&=&\p_c g_{ab}-\Gamma^d_{ca} g_{bd}-\Gamma^d_{cb}g_{ad}=0.
-\end{eqnarray*}
-If we add the first two of these and subtract the third, we end up
+\begin{align*}
+\nabla_a g_{bc}&=\p_a g_{bc}-\Gamma^d_{ab}g_{dc}-\Gamma^d_{ac}g_{bd}=0,\\
+\nabla_b g_{ca}&=\p_b g_{ca}-\Gamma^d_{bc} g_{da} - \Gamma^d_{ba}g_{cd}=0,\\
+\nabla_c g_{ab}&=\p_c g_{ab}-\Gamma^d_{ca} g_{bd}-\Gamma^d_{cb}g_{ad}=0.
+\end{align*}
+If we add the first two of these and subtract the third, we end up with
 $$\p_a g_{bc}+\p_b g_{ca} - \p_c g_{ab} = 2\Gamma^d_{ab} g_{dc},$$
-using the fact that $\Gamma^d_{bc}=\Gamma^d_{cb}$ since we have set the torsion to zero.
+using the fact that $\Gamma^d_{bc}=\Gamma^d_{cb}$ since we want a torsion-free connection.
 
 Now we simply multiply by $g^{ce}$ to find that
-$$\frac{1}{2}g^{ce}(-\p_c g_{ab} \p_a g_{bc} +\p_b g_{ca})=\Gamma^d_{ab} g_{dc} g^{ce} =\Gamma^d_{ab} \delta^e_d = \Gamma^e_{ab}.$$
-This gives us explicitly the metric connection, which we sometimes call the Christoffel connection or Christoffel symbols.\footnote{They are a pain to compute by hand, hence why one professor of mine once referred to them as the ``Christ-awful symbols.''} Thus
+$$\frac{1}{2}g^{ce}(-\p_c g_{ab} +\p_a g_{bc} +\p_b g_{ca})=\Gamma^d_{ab} g_{dc} g^{ce} =\Gamma^d_{ab} \delta^e_d = \Gamma^e_{ab}.$$
+This gives us explicitly the metric connection, which we sometimes call the Christoffel connection or Christoffel symbols.\footnote{They are a pain to compute by hand, hence why one professor of mine once referred to them as the ``Christ-awful symbols.''} Thus after a quick relabeling of indices we get
 $$\Gamma^a_{bc}=\frac{1}{2} g^{ad}(-\p_d g_{bc}+\p_b g_{cd} + \p_c g_{bd}).$$
-It is, as expected, symmetric under exchange $b\leftrightarrow c$ since the metric is symmetric, $g_{ab}=g_{ba}$.
+It is, as desired, symmetric under exchange $b\leftrightarrow c$ since the metric is symmetric, $g_{ab}=g_{ba}$.
 
 So now on scalars,
 $$(\nabla_a \nabla_b -\nabla_b \nabla_a)S=0,$$
 i.e. covariant derivatives commute on scalars. Moreover using the metric connection if we have $V_a =g_{ab} V^b$, then
-$$\nabla_c(V_a)=\nabla_c (g_{ab} V^b)=(\nabla_c g_{ab}) V^b+ g_{ab}\nabla_c V^b= g_{ab}\nabla_c V^b,$$
-since $\nabla_c g_{ab}=0$. Therefore with the metric connection, the metric commutes with the covariant derivative. This is also true of the inverse metric-- prove this as an exercise.
+$$\nabla_c(V_a)=\nabla_c (g_{ab} V^b)=(\nabla_c g_{ab}) V^b+ g_{ab}(\nabla_c V^b)= g_{ab}\nabla_c V^b,$$
+since $\nabla_c g_{ab}=0$. Therefore with the metric connection, the metric commutes with the covariant derivative. This is also true of the inverse metric, which one can prove as an exercise.
 
 \begin{ex}
-Prove\footnote{I think we can do this with Leibniz, actually. $\nabla_c(g_{ab}g^{ab})=\nabla_c(g_{ab}) g^{ab}+g_{ab} \nabla_c g^{ab} = 0$ since the trace of the metric is just a scalar. If $g_{ab}$ is not identically zero, it must be that $\nabla_c g^{ab}$ vanishes.} that the covariant derivative of the inverse metric is also zero,
+Prove\footnote{I think we can do this with Leibniz, actually. $\nabla_c(g_{ab}g^{ab})=(\nabla_c g_{ab}) g^{ab}+g_{ab} \nabla_c g^{ab} = 0$ since the trace of the metric is just a constant. If $g_{ab}$ is not identically zero, it must be that $\nabla_c g^{ab}$ vanishes.} that the covariant derivative of the inverse metric is also zero,
 $$\nabla_c g^{ab}=0.$$
 \end{ex}

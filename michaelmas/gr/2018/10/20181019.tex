@@ -1,19 +1,19 @@
-Last time, we wrote down the geodesic equation. That is, we defined curves $x^a(x)$ such that
+Last time, we wrote down the geodesic equation. That is, we defined curves $x^a(s)$ such that
 $$\frac{d^2x^a}{ds^2}+\Gamma^a_{bc}\frac{dx^b}{ds}\frac{dx^c}{ds}=0.$$
 In terms of the tangent vector to the curve $V^a = \frac{dx^a}{ds},$
 we can equivalently write
 $$V^a\nabla_a V^b=0.$$
 
-What happens if we reparametrize the curve? For instance, we could change to some new variables $$\tilde s=\tilde s(s).$$
-Then $d/ds=\frac{d\tilde s}{ds} \frac{d}{d\tilde s}$ and $\frac{d^2}{ds^2}=\frac{d^2 \tilde s}{ds^2}\frac{d}{d\tilde s^2} + (\frac{d\tilde s}{ds})^2\frac{d^2}{d\tilde s^2}.$
+What happens if we reparametrize the curve? For instance, we could change to some new variables $\tilde s=\tilde s(s).$
+Then $$\frac{d}{ds}=\frac{d\tilde s}{ds} \frac{d}{d\tilde s}\text{ and }\frac{d^2}{ds^2}=\frac{d^2 \tilde s}{ds^2}\frac{d}{d\tilde s^2} + \left(\frac{d\tilde s}{ds}\right)^2\frac{d^2}{d\tilde s^2}.$$
 
-By substituting, we get a new version of the geodesic equation.
+By rewriting in terms of $\tilde s$, we get a new version of the geodesic equation.
 $$\left(\frac{d\tilde s}{ds}\right)^2 \frac{d^2}{d\tilde s^2} x^a+ \frac{d^2\tilde s}{ds^2} \frac{d}{d\tilde s} x^a + \left(\frac{d\tilde s}{ds}\right)^2 \Gamma^a_{bc} \frac{dx^b}{d\tilde s}\frac{dx^c}{d\tilde s}=0.$$
-A little rewriting reveals that in terms of $\tilde s,$ we get
+A little rearranging reveals that in terms of $\tilde s,$ we get
 $$\frac{d^2x^a}{d\tilde s^2}+\Gamma^a_{bc} \frac{dx^b}{d\tilde s} \frac{dx^c}{d\tilde s}=-\frac{\frac{d^2\tilde s^2}{d s^2}}{\left(\frac{d\tilde s}{d s}\right)^2} \frac{dx^a}{d\tilde s}.$$
-But $\tilde s$ is arbitrary, so in terms of our new tangent vector $\tilde V^a=dx^a/d\tilde s,$ we have
+But $\tilde s$ is arbitrary, so in terms of our new tangent vector $\tilde V^a=dx^a/d\tilde s,$ we get a more general form of the geodesic equation,
 $$\tilde V^b \nabla_b \tilde V^a=f(s)\tilde V^a,$$
-a more general form of the geodesic equation. 
+where $f(s)$ is now some arbitrary function.
 \begin{defn}
 If $f(s)=0$, we say the geodesic is \term{affinely parametrized.} If a geodesic is affinely parametrized, then it remains so for $\tilde s$ such that $d^2\tilde s/ds^2=0$, e.g. for $\tilde s= as+b,$ $a,b$ constants.
 \end{defn}
