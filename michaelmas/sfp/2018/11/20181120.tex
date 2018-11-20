@@ -1,0 +1,89 @@
+We argued last time that if we have a representation $R$ with representation space $V$, then we can write $V$ as the direct sum of the eigenspaces corresponding to the eigenvalues $\lambda$, such that
+$$V=\bigoplus_{\lambda\in S_R} V_\lambda.$$
+These eigenvalues are defined such that $\forall v\in V_{\lambda},$
+$$R(H^i)v = \lambda^i v,$$
+and $\lambda\in \fh^*$ are the weights of the representation $R$. They form a weight set $S_R.$
+
+Let us note that the roots $\alpha \in \Phi$ are precisely the weights of the adjoint representation, where
+$$R(X)=\ad_X \forall X\in \fg.$$
+In particular, let us now consider the representations of the step operators $E^\alpha$ acting on $v\in V_\lambda.$ What do the Cartan generators do to the element $R(E^\alpha)v$?
+\begin{align*}
+    R(H^i)R(E^\alpha)v&= R(E^\alpha)R(H^i)v+[R(H^i),R(E^\a)]v\\
+    &=R(E^\alpha)R(H^i)v+\a^i R(E^\a)v\\
+    &=(\lambda^i+\a^i)R(E^\a)v.
+\end{align*}
+Therefore
+$$R(E^\a)v\in V_{\lambda+\a}\text{ if }\lambda+\a \in S_R$$
+and it is zero otherwise.
+
+We can now look at the action of the $sl(2)_\a$ subalgebra. It has elements
+$$\set{R(h^\a),R(e^\a),R(e^{-\a})}.$$
+As $V$ is the representation space, it contains the representation space for some representation $R_\a$ of $sl(2)_\a$. Recall that $h^\a=\frac{2}{(\a,\a)}H^\a$ is a normalized version of capital $H^\a$, which in turn was defined to be $H^\a=(\kappa^{-1})_{ij}\a^i H^j$. Now $\forall v\in V_\lambda,$ we have
+\begin{align*}
+    R(h^\a)v&= \frac{2}{(\a,\a)}(\kappa^{-1})_{ij}\alpha^i R(H^j)v\\
+    &=\frac{2}{(\a,\a)}(\kappa^{-1})_{ij}\alpha^i \lambda^j v\\
+    &=\frac{2(\a,\lambda)}{(\a,\a)}v.
+\end{align*}
+Bus since the weights of $sl(2)$ are integers, we see that the weights are constrained by this sort of quantization condition: $\forall \lambda\in S_R,\forall \a\in \Phi,$ it holds that
+$$\frac{2(\a,\lambda)}{(\a,\a)}\in \ZZ.$$
+
+This leads us to the idea of \term{root and weight lattices}. Recall that by iv) from a few lectures ago, if $\beta \in \Phi$ is a root, then it can be decomposed into a linear combination of the simple roots $\alpha\in \Phi_S$:
+$$\beta =\sum_{i=1}^r \beta^i \alpha_{(i)},$$
+with $\beta^i \in \ZZ$. Hence all roots lie in the \term{root lattice}, which we denote by
+$$\mathcal{L}[\fg]=\set{\sum_{i=1}^r m^i \alpha_{(i)}:m^i \in \ZZ}.$$
+Thus the roots trace out a lattice of points in $r$ dimensions.
+\begin{defn}
+    Let us also note that there are the \term{simple coroots}, which are given by
+    $$\alpha^v_{(i)}=\frac{2\alpha_{(i)}}{(\alpha_{(i)},\alpha_{(i)})},$$
+    and equivalently the coroot lattice
+    $$\mathcal{L}^V[\fg]=\text{Span}_\ZZ\set{\alpha_{(i)}^v ; i=1,\ldots,r}$$
+    The \term{weight lattice} is dual to the co-root lattice. Thus
+    $$\cL_W[\fg]\equiv {\cL^V}^* [fg]$$
+    by definition, such that
+    $$\cL_W[\fg]=\set{\lambda\in \fh^*_\RR; (\lambda,\mu)\in \ZZ, \forall \mu \in \cL^v[\fg]}.$$
+    Thus $$\lambda \in \cL_W[\fg] \iff (\lambda,\alpha^v_{(i)}=\frac{2(\alpha^v_{(i)},\lambda)}{\alpha^v_{(i)},\alpha^v_{(i)})}\in \ZZ.$$
+\end{defn}
+But let us note that by the quantization condition $\frac{2(\alpha,\lambda)}{(\alpha,\alpha)}\in \ZZ$, all the weights of $R$ lie in $\cL_W[\fg]$. 
+\begin{defn}
+Given the basis $B$ for $\cL^V[\fg]$ as
+$$B=\set{\alpha_{(i)}^v,i=1,\ldots,r},$$
+we then define the dual basis $B^*$ to be
+$$B^*=\set{\omega_{(i)}:i=1,\ldots,r}$$
+for $\cL_W[\fg]$ such that
+$$(\alpha_{(i)}^v,\omega_{(j)})=\delta_{ij}.$$
+\end{defn}
+We say the basis vectors $\omega_{(i)},i=1,\ldots,r$ are the \term{fundamental weights} of $\fg$. As the simple roots spane $\fh^*_\RR$, we have
+$$\omega_{(i)}=\sum_{j=1}^r B_{ij}\alpha_{(j)}$$
+where $B_{ij}\in \RR,i,j=1,\ldots,r$. However, by taking the inner product of this expression with a new root $\alpha_{(k)},$ we see that
+$$\delta^i_j = \sum_{k=1}^r \frac{2(\alpha_{(i)},\alpha_{(k)})}{(\alpha_{(i)},\alpha_{(i)})}B_{jk} \implies B_{jk}A^{ki}=\delta^i_j,$$
+where $A^{ki}$ is simply the Cartan matrix. We see that again, the Cartan matrix tells us some powerful information about the relationship between the dual basis and the original basis. Namely,
+$$\alpha_{(i)}=\sum_{j=1}^r A^{ij}\omega_{(j)}.$$
+\begin{exm}
+Take $\fg=A_2$, with the Cartan matrix
+$$A=\begin{pmatrix}
+2&-1\\-1&2
+\end{pmatrix}.$$
+Thus $\alpha=\alpha_{(1)}=2\omega_{(1)}-\omega_{(2)}$
+and $\beta=\alpha_{(2)}=-\omega_{(1)}+2\omega_{(2)},$which together imply that
+$$\omega_{(1)}=\frac{1}{3}(2\alpha+\beta)$$ and
+$$\omega_{(2)}=\frac{1}{3}(\alpha+2\beta).$$
+\end{exm}
+
+From here, the course will move onto useful applications rather than defining more concepts. For instance, let's discuss highest-weight representations. Note that every finite dimensional representation $R$ of $\fg$ has an \emph{highest weight} $\Lambda$, given by
+$$\Lambda=\sum_{i=1}^r \Lambda^i \omega_{(i)} \in S_R$$
+where $\Lambda^i\in \ZZ$ and we may take $\Lambda^i\geq 0$, such that for the corresponding eigenvector $v_\Lambda \in V$, we have the coefficients $\Lambda^i$ given by
+$$R(h^i)v_\Lambda = \Lambda^i v_\Lambda, i=1,\ldots,r$$
+and moreover this eigenvector is annihilated by all raising operators,
+$$R(E^\alpha)v_\Lambda=0 \quad\forall \alpha\in \Phi_+.$$
+As we are working in an irreducible representation, the remaining weights are generated by products of $R(E^{-\alpha})$, such that
+$$\Pi_{\alpha}R(E^{-\alpha)}v_\Lambda \sim \Pi_{\alpha\in \Phi_-}R(E_\alpha) v_\Lambda.$$
+Note that any terms with $\alpha\in \Phi_+$ will kill the heighest weight eigenvector $v_\Lambda,$ and we can always rearrange the product by using the brackets from the algebra, so it suffices to take only products with $\alpha\in \Phi_-$.\footnote{The picture here is simply many copies of the angular momentum relations. If we start from some maximum weight}
+
+All the remaining weights $\lambda\in S_R$ in the representation can be written as
+$$\lambda=\Lambda-\mu$$
+where $$\mu=\sum_{i=1}^r \mu^i \alpha_{(i)}, \mu^i \in \ZZ_\geq 0.$$
+
+Here is a useful result: for any finite-dimensional representation of $\fg$, we can write
+$$\lambda=\sum_{i=1}^r \lambda^i \omega_{(i)}\in S_R,$$
+which implies that
+$$\lambda-m_{(i)}\alpha_{(i)} \in S_R: m_{(i)}\in \ZZ, 0,\leq m_{(i)}\leq \lambda^i, i=1,\ldots,r.$$
