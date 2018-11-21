@@ -42,11 +42,11 @@ in coordinates $x^a=(t,x,y,z)$ such that the exponential part of $h_{ab}$ takes 
     e_{03}&\to e_{03}+\Lambda_0 k_3 +\Lambda_3 k_0=e_{03}+\Lambda_0 k -\Lambda_3 k.
 \end{align*}
 Since $k_1,k_2=0$, we could choose $\Lambda_1$ so that $e_{01}\to 0$ and $\Lambda_2$ so that $e_{02}\to 0$. The third one we cannot be so quick about, since it contains both $\Lambda_0,\Lambda_3$. But we could look at the trace of $e_{ab}$:
-\begin{align}
+\begin{align*}
     e^a_a &= -e_{00}+e_{11}+e_{22}+e_{33}\\
     &\to -e_{00}+e_{11}+e_{22}+e_{33} -2\Lambda_0k_0 +2\Lambda_1 k_1 +2\Lambda_2 k_2 +2\Lambda_3k_3\\
     &= -e_{00}+e_{11}+e_{22}+e_{33} + 2\Lambda_0k + 2\Lambda_3 k.
-\end{align}
+\end{align*}
 Therefore let us pick $\Lambda_0,\Lambda_3$ such that $e^a_a=0, e_{03}=0.$ We have now used up all our constraints from $\Lambda$. Thus the gauge condition \ref{polarizationgauge} now tells us that
 $$k_a e^{ab}-\frac{1}{2}k_b e^c_c = k_a e^{ab}=0,$$
 since the trace of $e$ is zero. Note also that $e_{ab}$ is certainly symmetric, since it is part of our plane wave solutions to $h_{ab}$, which itself must be symmetric since it represents a perturbation to the metric.
@@ -81,7 +81,7 @@ $$e_{ab}=\begin{pmatrix}
 0&0&-1&0\\
 0&0&0&0
 \end{pmatrix}.$$
-Now, we might be concerned that since this construction was based on the linearized Einstein equations, it's not guaranteed that our plane waves will also be solutions to the full (nonlinear) Einstein equations. In Maxwell there was no problem, since the original equations were linear. What about for gravity?
+Now, we might be concerned that since this construction was based on the linearized Einstein equations, there's no guarantee that our plane waves will also be solutions to the full (nonlinear) Einstein equations. In Maxwell there was no problem, since the original equations were linear. What about for gravity?
 
 It turns out things are okay (our plane wave solutions still make sense), but the approach is slightly different. Let us start as usual in flat space, $R_{ab}=0$,\footnote{Equivalently, we are solving the vacuum Einstein equations for $\Lambda=0$.} and write down a line element
 $$ds^2=2dudv + dx^2+dy^2.$$
@@ -96,7 +96,7 @@ Let us modify the line element now to
 $$ds^2=2dudv + dx^2+dy^2+H(x,y,u)du^2,$$
 where $H$ is some undetermined function of $x,y,$ and $u$. This $H$ spoils $v$ as a null coordinate, since for fixed $x,y,v$ we have in general $ds^2\neq 0$, but $u$ is still a good null coordinate. Such a metric is called the Kerr-Schild form of a metric. We still want our space to be flat, so
 $$R_{ab}=0 \implies H(x,y,u)=(x^2-y^2)f(u)+2xy g(u).$$
-Although $H$ is constrained to take this form, the functions $f(u),g(u)$ are arbitrary. What we discover is that our freedom in selecting the functions $f(u),g(u)$ corresponds precisely to the $+$ and $\times$ polarizations. However, these Kerr-Schild metrics are a bit more tricky to manipulate, so it's usually most convenient to just work in perturbation theory.
+Although $H$ is constrained to take this form, the functions $f(u),g(u)$ are arbitrary. What we discover is that our freedom in selecting the functions $f(u),g(u)$ corresponds precisely to the $+$ and $\times$ polarizations. However, these Kerr-Schild metrics can be a bit tricky to manipulate, so it's usually most convenient to just work in perturbation theory.
 
 How would we observe gravitational waves? Of course, we have done so-- the experimental discovery of gravitational waves won Rainer Weiss, Barry Barish, and Kip Thorne the 2017 Nobel Prize in Physics. In principle, a non-vanishing $h_{ab}$ affects the motion of particles, so let us look at the relative motion of nearby particles. In particular, let's look at the equation of geodesic deviation (see Lecture 6 if you've forgotten) and compare the tangent vectors $U^a=dx^a/ds$ of nearby geodesics. Here, $s$ is just some affine parameter.\footnote{The notation here is inconsistent with our previous discussion of the relative acceleration of geodesics. There, $t$ was the affine parameter along the curve and $s$ related neighboring geodesics. What was $S$ before is here $V$, and what was $T$ before is now $U$. I may clean up the notation to make it consistent later.} Going between neighboring geodesics, we get a vector $V^a(s)$ which evolves as you move along the geodesics as
 $$\frac{d^2 V^a}{ds^2}+{R^a}_{bcd}U^b U^d V^c =0.$$

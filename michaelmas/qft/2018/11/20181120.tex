@@ -1,0 +1,54 @@
+Here's an important note about Wick's theorem on spinor fields. We can only contract spinor fields in the order $\overbrace{\psi(x)\bar \psi(y)}$. So far, we've looked at simple couplings like $\lambda \phi \bar \psi \psi$. What if we inserted a $\gamma^5$ to get
+$$\cL_{int}=-\lambda \phi \bar \psi_\alpha \gamma^5_{\alpha\beta} \psi_\beta?$$ We simply pick up a $\gamma^5$ in the interaction. Thus the three-point interaction is proportional to $-i\gamma^5_{\alpha\beta}\lambda.$
+Note that this interaction only preserves $P$ symmetry if $\phi$ is also a pseudoscalar, i.e. if $P\phi(t,\vec x)=-\phi(t,-\vec x).$
+
+We might then ask how to deal with spin indices when computing our physical observables like $|M|^2$ or $\sigma$. It turns out that in most experiments (e.g. at the LHC) the beams are prepared with random initial spin states, so when calculating observables it suffices to average over the spins. In scattering of two spin $1/2$ particles, for instance, we would sum $\frac{1}{4}\sum_{s,r}$ where the $1/4$ accounts for the four combinations $\ket{\uparrow\uparrow},\ket{\uparrow\downarrow},\ket{\downarrow\uparrow},\ket{\downarrow\downarrow}.$ The final states will also have some spin states, but we can take care of this by summing over final spins to get the cross-section variables.
+
+Note also that for $\psi\psi\to\psi\psi$ scattering, the matrix element is $M\equiv A-B$ where $A$ and $B$ are the two different terms. Therefore the square of the matrix element is
+$$\overline{|M|}^2=\overline{|A|^2}+\overline{|B|^2}-\overline{A^\dagger B}- \overline{B^\dagger A}$$
+where a bar indicates averaging/summing over spins. Here,
+$$A=\frac{\lambda^2 [\bar u_{\vec p'}^{s'} u_{\vec q}^r][\bar u_{\vec q'}^{r'}u_{\vec p}^s]}{u-\mu^2+i\epsilon}.$$
+However, note that we can rewrite 
+$$[\bar u_{\vec p'}^{s'} u_{\vec q}^r]=[\bar u_{\vec q}^r u_{\vec p'}^{s'}]$$
+since $(\gamma^0)^\dagger = \gamma^0.$
+Now
+$$\overline{|A|^2}=\frac{\lambda^4}{4}\sum_{r,s,r',s'}\frac{\bar u_{\vec p',\alpha}^{s'} u_{\vec q,\alpha}^r \bar u_{\vec q,\beta}^r u_{\vec p',\beta}^{s'}}{(u-\mu^2)^2}\bar u_{\vec q',\gamma}^{r'}u_{\vec p, \gamma}^s \bar u_{\vec p,\delta}^s u_{\vec q',\delta}^{r'}.$$
+After summing over $r$ (cf. Example Sheet 3), we get a pair of traces,
+$$\overline{|A|^2}=\frac{\lambda^4}{4}\frac{\text{Tr}[(\slashed{\vec p'}+m)(\slashed{q}+m)}{(u-\mu^2)^2}\text{Tr}(\slashed{\vec q'}-m)(\slashed{p}+m)].$$
+In the high-energy (low-mass) limit as $\mu,m\to 0$, we get
+$$\overline{|A|^2}=\frac{\lambda^4}{4u^2}\text{Tr}[\slashed{\vec p'}\slashed{q}]\text{Tr}[\slashed{\vec q'}\slashed{p}].$$
+Similarly $\overline{|B|^2}$ comes out to
+$$\overline{|B|^2}=\frac{\lambda^4}{4t^2}\text{Tr}[\slashed{q'}\slashed{q}]\text{Tr}[\slashed{p'}\slashed{p}].$$
+We can also do the same for the cross-terms to find
+\begin{align*}
+    \overline{A^\dagger B}&=\frac{\lambda^4}{4ut} \sum_{r,s,s'r'}\set{\bar u_{\vec q,\beta}^r u_{\vec p',\beta}^{s'} \bar u_{\vec p,\alpha}^s u_{\vec q',\alpha}^{r'} \bar u_{\vec q',\gamma}^{r'} u_{\vec q,\gamma}^r \bar u_{\vec p',\delta}^{s'}u_{\vec p,\delta}^s}\\
+    &=\frac{\lambda^4}{4ut}\text{Tr}(\slashed{p}\slashed{p'}\slashed{q}\slashed{q'}).
+\end{align*}
+Can we do this without going through the Wick way? Let us write down some Feynman rules for $\overline{|M|^2}$ with fermions.
+\begin{itemize}
+    \item $\CC$ conjugation switches the initial and final momenta.
+    \item Fermion lines with identical momenta are joined on the LHS. A closed fermion line is given by a trace over $\gamma$ matrices (after spin sum/average), with any $\gamma$ matrices at vertices placed in the correct position in the grace. Fermion lines are followed backwards (against the arrows).
+\end{itemize}
+%insert diagram
+Applying the Feynman rules, we can read off the traces:
+$$\overline{|M|^2}=\frac{\lambda^4}{4}\left\{\frac{\text{Tr}(\slashed q \slashed q')\text{Tr}(\slashed p \slashed p')}{t^2}+
+\frac{\text{Tr}(\slashed q' \slashed p)\text{Tr}(\slashed p' \slashed q)}{u^2}
+-\frac{2\text{Re}\text{Tr}\slashed p \slashed p' \slashed q \slashed q'}{ut}\right\}$$
+We can rewrite these traces as dot products, and moreover we know some good properties of the Mandelstam variables:
+\begin{align*}
+    s&=(p+q)^2=(p'+q')^2 \implies p\cdot q = p'\cdot q'=s/2\\
+    t&=(p-p')^2=(q-q')^2 \implies p\cdot p' = q\cdot q' =-t/2\\
+    u&=(p-q')^2=(q-p')^2 \implies p\cdot q'=p'\cdot q=-u/2.
+\end{align*}
+In terms of dot products, the matrix element is
+$$\frac{\lambda}{4}\left[\frac{4(q\cdot q')4 p \cdot p'}{t^2}+\frac{4(q'\cdot p)4(p'\cdot q)}{u^2}-\frac{8}{ut}(p\cdot q' p'\cdot q+p\cdot p' q \cdot q' -p\cdot q p'\cdot q')\right].$$
+Thus the matrix element reduces to
+$$\overline{|M|^2}=\lambda^4\left\{1+1-\frac{u^2+t^2-s^2}{2ut}\right\}.$$
+In terms of the differential cross-section, we now have
+$$\frac{d\sigma}{dt}=\frac{\overline{|M|^2}}{16\pi \lambda(s,m_1^2,m_2^2)}.$$
+But in this limit $m_1=m_2=0$ and $\lambda(s,0,0)=s^2$. $t=2|\vec p| \vec p'|(\cos\theta-1)$ in the center-of-mass frame, and $|\vec p|=|\vec p'|=\sqrt{s}/2.$ Therefore
+$$\frac{dt}{d\cos\theta}=2|\vec p||\vec p'|=s/2$$ and we find that
+$$d\Omega = d\cos\theta d\phi \implies \frac{d\sigma}{d\Omega}=\frac{s}{4\pi}\frac{d\sigma}{dt}=\frac{\overline{|M|^2}}{64\pi^2 s}=\frac{3\lambda^4}{64\pi^2 s}.$$
+If we now integrate the final state over the hemisphere of solid angle (since the particles are identical), we find that the full cross-section is
+$$\sigma=\frac{3\lambda^4}{32\pi s}.$$
+Note that $[\lambda]=0$ and $[s]=2$, so indeed this quantity checks out as being an area.

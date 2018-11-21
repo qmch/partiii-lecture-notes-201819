@@ -2,15 +2,15 @@ Last time, we wrote down the metric for a black hole in Eddington-Finkelstein co
 $$ds^2=-\left(1-\frac{2M}{r}\right) dv+2dvdr+r^2 (d\theta^2+\sin^2 \theta d\phi^2).$$
 
 We found that $v$ is finite on the horizon, so the singularity at $r=2M$ was simply a coordinate singularity. However, the singularity at $r=0$ is a much bigger problem. We found that the trace of the Riemann tensor (and therefore the Weyl tensor, since this is a vacuum spacetime) diverges badly as $r\to 0$:
-$$R_{abcd}R^{abcd}=C_{abcd}C^{abcd}\sim m^2/r^6.$$
+$$R_{abcd}R^{abcd}=C_{abcd}C^{abcd}\sim M^2/r^6.$$
 
 One might think that in assuming spherical symmetry we've added some extra assumption to produce this singularity, but in fact Penrose showed under a set of more general conditions that if there is a horizon, then there must be a singularity.\footnote{This is Penrose's 1965 singularity theorem. The converse is not proven yet (singularity $\implies$ horizon) and is the statement of the weak cosmic censorship conjecture, also due to Penrose.}
 
 Moreover, black holes (unlike diamonds) are not forever.\footnote{Technically diamonds are also metastable states of carbon, so make of that what you will.} In 1974, Hawking found that when particle-antiparticle pairs are produced very near to the event horizon (as vacuum fluctuations), one of the two may fall into the black hole while the other escapes. The result is that the black hole behaves like a thermally radiating black body of temperature $1/8\pi M=T_{\text{Hawking}}$. In units, $T_{\text{Hawking}}=6\times 10^{-8}\left(\frac{M_S}{M}\right)$ Kelvin, where $M_S$ is the solar mass of $2\times 10^{33}$ grams.
 
-However, thermal radiation is associated to an energy flux of $\sigma T^4\times$ surace area, where $\sigma$ is the Stefan-Boltzmann constant. One expects that a black hole will generically radiate not just photons but all elementary particles. However, rewriting the mass-temperature reation as $M=1/8\pi T$ and interpreting the mass $M$ as an energy, we find that the specific heat is
+However, thermal radiation is associated to an energy flux of $\sigma T^4\times$ surface area, where $\sigma$ is the Stefan-Boltzmann constant. One expects that a black hole will generically radiate not just photons but all elementary particles. However, rewriting the mass-temperature relation as $M=1/8\pi T$ and interpreting the mass $M$ as an energy, we find that the specific heat is
 $$C=\P{M}{T}=-\frac{1}{8\pi T^2}<0.$$
-The fact that the specific heat is negative implies that the black holes are unstable.
+The fact that the specific heat is negative implies that black holes are unstable.
 
 If we then compute $dM/dt$, we find that
 $$\frac{dM}{dt}=-(\text{energy flux})\sim -\frac{1}{M^4}M^2,$$
@@ -18,20 +18,20 @@ which means that a black hole has a lifetime scaling as $M^3$, and given enough 
 
 However, black hole evaporation is important for the theory of black holes-- for instance, it's not totally clear what happens to the singularity when a black hole evaporates. What happened to the information (about the electron states, molecular configurations, etc.) contained in all the stuff that fell in? This is related to the black hole information paradox, which we will likely see more about in the \emph{Black Holes} course in Lent.
 
-Let us also note that black holes generically form when when an amount of matter $M$ is confined to some distance of scale $R\sim 2M$. However, the laws of physics (as far as we are concerned here) are invariant under time reversal, so where we defined our retarded coordinate
-$$v=t+r+2m\ln (\frac{r-2M}{2M}),$$
-we could just as easily flip the sign on $t$ to get the advanced coordinate
-$$u=t-r-2M(\ln \frac{r-2M}{2M}).$$
+Let us also note that black holes generically form when when an amount of matter $M$ is confined to some distance of scale $R\sim 2M$. However, the laws of physics (as far as we are concerned here) are invariant under time reversal, so where we defined our retarded coordinate $v$ to be
+$$v=t+r+2M\left(\ln \frac{r-2M}{2M}\right),$$
+we could just as easily flip the sign on $t$ to get the advanced coordinate $u$, defined as
+$$u=t-r-2M\left(\ln \frac{r-2M}{2M}\right).$$
 
 In the $(u,r,\theta,\phi)$ coordinates the metric now takes the form 
 $$ds^2=-(1-2M/r)du^2-2dudr +r^2(d\theta^2 +\sin^2\theta d\phi^2).$$
-We find that all timelike lines must leave the horizon, so this is essentially the time-reversed version of a black hole, usually called a white hole.
+We find that all timelike lines must leave the horizon, so this is essentially the time-reversed version of a black hole, usually called a \term{white hole}.
 
-In practice, white holes do not appear to exist in nature. Solutions of the wave equation in electrodynamics,
+In practice, white holes do not appear to exist in nature. When solving the wave equation in electrodynamics,
 $$\Box A^a=-\mu_0 j^a,$$
 one picks the retarded solutions and not the advanced solutions in order to preserve some nice idea of causality.\footnote{Wonder if there's a meaningful concept of thermodynamics for white holes.}
 
-And now for something completely different. We'll dip into cosmology in a GR context for a minute. Much of the seminal work here is associated to Lema\^itre (1972, Belgium), Friedmann (1922, Russia), Robertson (1931, US), and Walker (1937, UK). Between them, they developed models of the entire universe beginning from the assumptions that space is homogeneous (the same everywhere) and isotropic (the same in every direction). These are enough to suggest that the spatial part of our metric ought to describe a maximally symmetric space with a full set of six Killing vectors for a 3-dimensional space. Indeed, the simplest possibility is just flat $\RR^3$,
+\subsection*{FLRW metrics and cosmology} And now for something completely different. We'll dip into cosmology in a GR context for a minute. Much of the seminal work here is associated to Lema\^itre (1972, Belgium), Friedmann (1922, Russia), Robertson (1931, US), and Walker (1937, UK). Between them, they developed models of the entire universe beginning from the assumptions that space is homogeneous (the same everywhere) and isotropic (the same in every direction). These are enough to suggest that the spatial part of our metric ought to describe a maximally symmetric space with a full set of six Killing vectors for a 3-dimensional space. Indeed, the simplest possibility is just flat $\RR^3$,
 $$d\sigma^2=dr^2+r^2(d\theta^2+\sin^2\theta d\phi^2).$$
 We call this $k=1$, and its symmetries are simply those of Euclidean 3-dimensional space. However, we could also consider the geometry of $S^3$ in hyperspherical coordinates,
 $$d\sigma^2=dr^2+\sin^2 r(d\theta^2+\sin^2\theta d\phi^2).$$ Here, $r$ and $\theta$ run from $0\leq r,\theta\leq \pi$ and $\phi$ runs from $0\leq \phi < 2\pi$. The symmetry group is $SO(4)$, and we say this has $k=1$. However, note that unlike in $\RR^3$, space is of finite spatial extent here. If we denote the metric by $\gamma_{ij}$ with $i,j=1,2,3$, we have
@@ -39,7 +39,7 @@ $$R_{ijkl}=\frac{1}{6}R(\gamma_{ik}\gamma_{jk}-\gamma_{il}\gamma_{jk}),$$
 where $R$ is the Ricci scalar, and the Ricci scalar is now identified with the scalar curvature from regular differential geometry. (This is a bit like de Sitter space.)
 
 Lastly, we can take $k=-1$, the hyperboloid with metric $$d\sigma^2=dr^2+\sinh^2 r (d\theta^2 +\sin^2\theta d\phi^2).$$
-Here, the coordinate ranges are $0\leq r < \infty, 0\leq \theta \leq \pi, 0\leq \phi < 2\pi.$ Now ,we get a similar Riemann tensor
+Here, the coordinate ranges are $0\leq r < \infty, 0\leq \theta \leq \pi, 0\leq \phi < 2\pi.$ Now we get a similar Riemann tensor
 $$R_{ijkl}=\frac{1}{6}R(\gamma_{ik}\gamma_{jk}-\gamma_{il}\gamma_{jk})$$
 but with $R<0.$
 
@@ -64,7 +64,67 @@ $$\nabla_a T^{ab}=0,$$
 so writing this out explicitly we find that
 $$\nabla_a((p+\rho)u^a u^b + p g^{ab})=0.$$
 In the rest frame, $b=0$ is the only equation with any content, so considering $p,\rho,a$ as all functions of $t$ we find that
-$$\dot \rho=-3(\dot p+\rho)\dot a/a,$$
+$$\dot \rho=-3(p+\rho)\dot a/a,$$
 where $\cdot=d/dt$, a derivative with respect to coordinate time. Now if $p=0$ then
 $$\dot \rho =3\rho \dot a/a \implies \rho(t)=\rho_0 a_0^3/a^3(t).$$
 Imagine measuring $\rho$ now, corresponding to a time $t_0$ when the universe has some scale factor $a_0$. This looks like the equation for the conservation of mass.
+
+\subsection*{Non-lectured aside: energy conditions}
+Our calculation of the $0$ component of the conservation of energy equation was a bit too quick. Let me redo this with an exposition from Carroll (pg. 333-334). Let's start with the energy-momentum tensor in the form
+$$T_{ab}=(p+\rho)u_a u_b +p g_{ab},$$
+and work in the rest frame, $u^a=(1,0,0,0).$ Then we can rewrite $T_{ab}$ as
+$$T_{ab}=\begin{pmatrix}
+\rho&0&0&0\\
+0&&&\\
+0&&g_{ij}p&\\
+0&&&
+\end{pmatrix}$$
+where $i,j$ index over $1,2,3$.
+If we now raise an index, we see that
+$${T^a}_b=\text{diag}(-\rho,p,p,p).$$
+and we can consider the zero component of the conservation of energy equation,
+$$\nabla_a {T^a}_0=0.$$
+Expanding out the covariant derivative, we find that
+$$0=\p_a {T^a}_0+\Gamma^a_{ab}{T^b}_0-\Gamma^b_{a0}{T^a}_b.$$
+
+To evaluate this covariant derivative, we should work out some Christoffel symbols. Fortunately, the nice form of ${T^a}_b$ means that we will only have to compute four. I will just compute two here, and you are free to skip to the result.
+Recall the metric takes the form $$ds^2=-dt^2+a^2(t)d\sigma_k^2,$$
+so the metric is diagonal. Let's compute $\Gamma^1_{10}.$
+\begin{align*}
+    \Gamma^1_{10}&=\frac{1}{2}g^{1d}(-\p_d g_{10}+\p_1 g_{0d}+\p_0 g_{1d})\\
+    &=\frac{1}{2}g^{11}(\p_0 g_{11})\\
+    &=\frac{1}{2} \frac{1}{a^2} (2 a\dot a)\\
+    &=\frac{\dot a}{a}.
+\end{align*}
+Of course, the spatial component of our metric is maximally symmetric, so really we've gotten three Christoffels for the price of one:
+$$\Gamma^1_{10}=\Gamma^2_{20}=\Gamma^3_{30}=\frac{\dot a}{a}.$$
+What about $\Gamma^0_{00}$? Well,
+$$\Gamma^0_{00}=\frac{1}{2}g^{0d}(-\p_d g_{00}+\p_0 g_{0d}+\p_0 g_{0d})=0$$
+since the $dt^2$ component of the metric is independent of $t$.
+
+So our covariant derivative becomes
+\begin{align*}
+    0&=\nabla_a T^a{}_0\\
+    &=\p_a T^a{}_0+ \Gamma^a_{ab}T^b{}_0-\Gamma^b_{a0}T^a{}_b\\
+    &=\p_0 T^0{}_0+ \Gamma^i_{i0}T^0{}_0-\Gamma^0_{00}T^0{}_0-\Gamma^i_{i0}T^i{}_i\\
+    &=-\dot \rho+ 3\frac{\dot a}{a}(-\rho)-3\frac{\dot a}{a}p\\
+    \implies \dot \rho &=-3\frac{\dot a}{a}(p+\rho).
+\end{align*}
+
+Following Carroll, let us define a generic equation of state relating $p$ to $\rho$ and write
+$$p=w \rho$$
+where $w$ is some time-independent constant. For dust, we have $w=0$, for radiation $w=1/3$, and for dark energy $w=-1$. Then
+$$\dot \rho = -3 \frac{\dot a}{a}(1+w)\rho,$$
+which we can separate and integrate\footnote{Basically, just write $\frac{\dot \rho}{\rho}=-3(1+w)\frac{\dot a}{a}$ and then recognize that this is just $\frac{d}{dt}(\log \rho(t))=-3(1+w)\frac{d}{dt}\log a(t)=\frac{d}{dt} \log a^{-3(1+w)}.$ Equate the $d/dt$s, equate the logs, and pick up a proportionality constant for your trouble.} to get
+$$\rho \propto a^{-3(1+w)}.$$
+This tells you precisely how the energy content of space gets diluted as space expands. In particular, note that for dark energy, $w=0\implies\rho=$constant, which is why we sometimes think of dark energy as a vacuum energy associated to empty space itself.
+
+We can also put constraints on $w$ using \term{energy conditions}. These are generic statements about the energy content of spacetime, and I will simply state these in terms of their constraints on $p$ and $\rho$:
+\begin{itemize}
+    \item The \term{Weak Energy Condition} (WEC), where $\rho\geq 0$ and $\rho+p\geq 0$. Thus $1+w\geq 0$.
+    \item The \term{Null Energy Condition} (NEC), where $\rho+p\geq 0$. A special case of the WEC.
+    \item The \term{Dominant Energy Condition} (DEC), where $\rho\geq |p|\geq 0.$ Thus $1-w \geq 0$. 
+    \item The \term{Null Dominant Energy Condition} (NDEC). Same as the Dominant Energy Condition, except we allow negative densities so long as $p=-\rho$ (a negative vacuum energy).
+    \item The \term{Strong Energy Condition} (SEC), where $\rho+p\geq 0$ and $\rho+3p \geq 0$. The SEC does not imply the WEC, but does imply the NEC.
+\end{itemize}
+The SEC comes up in the statements of some singularity theorems because of its implication that gravity is always attractive. Most classical matter obeys the DEC, and therefore also the WEC, NEC, and NDEC. If we require that the energy density $\rho$ is always non-negative, then all the energy conditions imply $w\geq -1.$
