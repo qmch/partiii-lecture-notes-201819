@@ -11,7 +11,7 @@ Consider the Maxwell Lagrangian,
 \end{equation}
 Plugging into the E-L equations, we find that $\P{\cL}{A_\nu}=0$ and
 \begin{equation}
-\P{\cL}{(\p_\mu A_\nu)}=\p^\mu A^\nu +\eta^{-\mu\nu}\p_\rho A^\rho.
+\P{\cL}{(\p_\mu A_\nu)}=\p^\mu A^\nu +\eta^{\mu\nu}\p_\rho A^\rho.
 \end{equation}
 Thus E-L tells us that
 \begin{equation}
@@ -24,7 +24,7 @@ which written explicitly is equivalent to Maxwell's equations in vacuum (we'll r
 
 The Lagrangians we'll consider here and afterwards are all \term{local}-- in other words, there are no couplings $\phi(\vec{x},t)\phi(\vec{y},t)$ with $\vec{x}\neq \vec{y}$. There's no reason a priori that our Lagrangians have to take this form, but all physical Lagrangians seem to do so.
 
-\subsection*{Lorentz invariance} Consider the Lorentz transformation on a scalar field $\phi(x)\equiv (\phi (x^\mu)$. The coordinates $x$ transform as $x'=\Lambda^{-1} x$ with $\Lambda^\mu_\sigma \eta^{\sigma\tau}\Lambda_\tau^\nu = \eta^{\mu\nu}$. Under $\Lambda,$ our field transforms as $\phi\to \phi'$ where $\phi'(x)=\phi(x')$. Recall that Lorentz transformations generically include boosts as well as rotations in $\RR^3$. As we've discussed in Symmetries, Fields and Particles, Lorentz transformations form a Lie group ($O(3,1)$, or specifically the proper orthochronous Lorentz group) under matrix multipication. They have a representation given on the fields (i.e. a mapping to a set of transformations on the fields which respects the group multiplication law).
+\subsection*{Lorentz invariance} Consider the Lorentz transformation on a scalar field $\phi(x)\equiv \phi (x^\mu)$. The coordinates $x$ transform as $x'=\Lambda^{-1} x$ with $\Lambda^\mu{}_\sigma \eta^{\sigma\tau}\Lambda^\nu{}_\tau = \eta^{\mu\nu}$. Under $\Lambda,$ our field transforms as $\phi\to \phi'$ where $\phi'(x)=\phi(x')$. Recall that Lorentz transformations generically include boosts as well as rotations in $\RR^3$. As we've discussed in Symmetries, Fields and Particles, Lorentz transformations form a Lie group ($O(3,1)$, or specifically the proper orthochronous Lorentz group) under matrix multipication. They have a representation given on the fields (i.e. a mapping to a set of transformations on the fields which respects the group multiplication law).
 
 For a scalar field, this is $\phi(x)\to \phi(\Lambda^{-1}x)$ (an active transformation). We could have also used a passive transformation where we re-label spacetime points: $\phi(x)\to \phi(\Lambda x)$. It doesn't matter too much-- since Lorentz transformations form a group, if $\Lambda$ is a Lorentz transformation, so is $\Lambda^{-1}$. In addition, most of our theories will be well-behaved and Lorentz invariant.
 
@@ -37,10 +37,10 @@ Consider the action given by
 $$S=\int d^4x \left[\frac{1}{2} \p_\mu \phi \p^\mu \phi-U(\phi)\right],$$
 \end{exm}
 where $U(\phi)$ is some potential density. $U\to U'(x) \equiv U(\phi'(x))= U(x')$ means that $U$ is a scalar field (check this!) and we see that
-$$\p_\mu \phi' =\P{}{{x^\mu}}\phi(x')=\P{{{x'}^\sigma}}{{x^\mu}} \p_\sigma' \phi(x')= (\Lambda^{-1})^\sigma_\mu \p_\sigma' \phi(x')$$
+$$\p_\mu \phi' =\P{}{{x^\mu}}\phi(x')=\P{{{x'}^\sigma}}{{x^\mu}} \p_\sigma' \phi(x')= (\Lambda^{-1})^\sigma{}_\mu \p_\sigma' \phi(x')$$
 where $\p_\sigma' \equiv \P{}{{{x'}^\sigma}}$.
 Thus the kinetic term transforms as
-$$\cL_{kin} \to \cL_{kin}'=\eta^{\mu\nu}\p_\mu \phi' \p_\nu \phi' =\eta^{\mu\nu}(\Lambda^{-1})^\sigma_\mu (\Lambda^{-1})^\tau_\nu \p_\sigma' \phi(x') \p_\tau' \phi(x')=\eta^{\sigma\tau} \p_\sigma' \phi(x')\p_\tau' \phi(x') = L_{kin}(x).$$
+$$\cL_{kin} \to \cL_{kin}'=\eta^{\mu\nu}\p_\mu \phi' \p_\nu \phi' =\eta^{\mu\nu}(\Lambda^{-1})^\sigma{}_\mu (\Lambda^{-1})^\tau{}_\nu \p_\sigma' \phi(x') \p_\tau' \phi(x')=\eta^{\sigma\tau} \p_\sigma' \phi(x')\p_\tau' \phi(x') = L_{kin}(x).$$
 
 Thus we see that the action overall transforms as
 $$S\to S' = \int d^4 x \cL(x')=\int d^4 x \cL(\Lambda^{-1}x).$$
@@ -48,7 +48,7 @@ Under a change of variables $u \equiv \Lambda^{-1} x$, we see that $\det(\Lambda
 $$S'=\int d^4 y \cL(y)=S.$$
 We conclude that $S$ is invariant under Lorentz transformations.
 
-We also remark that under a LT, a vector field $A_\mu$ transforms like $\p_\mu \phi$, so $$A_\mu'(x) = (\Lambda^{-1})^\sigma_\mu A_\sigma (\Lambda^{-1}x).$$
+We also remark that under a LT, a vector field $A_\mu$ transforms like $\p_\mu \phi$, so $$A_\mu'(x) = (\Lambda^{-1})^\sigma{}_\mu A_\sigma (\Lambda^{-1}x).$$
 This is enough to attempt Q1 from example sheet 1.\footnote{Copied here for quick reference: Show directly that if $\phi(x)$ satisfies the Klein-Gordon equation, then $\phi(\Lambda^{-1} x)$ also satisfies this equation for any Lorentz transformation $\Lambda.$}
 
 \begin{thm}
@@ -77,7 +77,7 @@ so that
 By Euler-Lagrange, the second term in parentheses vanishes, so we identify the first term in parentheses as none other than $\alpha \p_\mu X^\mu(x)$ from Eqn. \ref{lagrangeinfinitesimal} (in other words, $\p_\mu\left(\P{L}{(\p_\mu\phi)}\Delta \phi\right) =\p_\mu X^\mu$) and recognize 
 \begin{equation}
 j^\mu\equiv\P{L}{(\p_\mu \phi)}\Delta \phi -X^\mu
-\end{equation} as our conserved current (that is, $\p_\mu j^\mu =0$).
+\end{equation} as our conserved current (such that $\p_\mu j^\mu =0$).
 
 \begin{exm}
 Take a complex scalar field $$\psi(x)=\frac{1}{\sqrt{2}}(\phi_1(x)+i\phi_2(x)).$$ We can then treat $\psi, \psi^*$ as independent variables and write a Lagrangian
@@ -94,10 +94,10 @@ Under infinitesimal translation $x^\mu \to x^\mu -\alpha \epsilon^\mu$, we have 
 Rewriting to match the form $\cL+\a \p_\mu X^\mu$, we see that our new Lagrangian takes the form
 $L(x)+\alpha \epsilon^\nu \p_\mu (\delta^\mu_\nu L)$. We get one conserved current for each component of $\epsilon^\nu$, so that
 $$(j^\mu)_\nu = \P{\cL}{(\p_\mu \phi)}\p_\nu \phi - \delta^\mu_\nu \cL$$ with $\p_\mu(j^\mu)_\nu=0$.
-We write this as $j^\mu_\nu \equiv T^\mu_\nu$, the energy-momentum tensor. 
+We write this as $j^\mu{}_\nu \equiv T^\mu{}_\nu$, the energy-momentum tensor. 
 
 \begin{defn}
-The \term{energy-momentum tensor} (sometimes \term{stress-energy tensor})is the conserved current corresponding to translations in time and space. It takes the form 
+The \term{energy-momentum tensor} (sometimes \term{stress-energy tensor}) is the conserved current corresponding to translations in time and space. It takes the form 
 $$T^{\mu\nu} \equiv \P{\cL}{(\p_\mu \phi)}\p^\nu \phi - \eta^{\mu\nu} \cL,$$
 where we have raised an index with the Minkowski metric as is conventional. The conserved charges from integrating $\int d^3x T^{0\nu}$ end up being the total energy $E=\int d^3x T^{00}$ and the three components of momentum $P^i=\int d^3x T^{0i}$.\footnote{The definition of the energy-momentum tensor here is slightly different from the one used in general relativity. Here, we have used time and space translations to derive $T^{\mu\nu}$, but in general relativity, we use variations of the metric $g^{\mu\nu}$ instead. The benefit of the GR definition is that the resulting tensor is always symmetric, whereas the $T^{\mu\nu}$ from spacetime translations is not guaranteed to be symmetric. We'll see an example of this in the example sheets, but the $T^{\mu\nu}$ defined by spacetime translations can always be \emph{made} symmetric by defining the ``Belinfante-Rosenfeld tensor.'' The construction isn't anything too special, but people working in relativity insist that variations of the action with respect to the metric is the correct way to define the energy-momentum tensor.}
 \end{defn}
