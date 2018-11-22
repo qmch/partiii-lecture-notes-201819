@@ -1,0 +1,81 @@
+As a quick reminder, there is no lecture on Saturday! The lecture has been rescheduled to Monday at 1 PM in MR2. Also, a correction to Examples Sheet 3, Q8: $s^2$ in the numerator should be $(s-4m^2)^2$.
+
+\subsection*{Quantum electrodynamics (QED)} It's time now to quantize the free electromagnetic field $A_\mu$. The Lagrangian is
+\begin{equation}
+\cL=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu},
+\end{equation}
+where $F_{\mu\nu}\equiv \p_\mu A_\nu -\p_\nu A_\mu$ is the \term{field strength tensor}. If we compute the equations of motion by the usual Euler-Lagrange procedure, we find that
+$$\p_\mu\left(\P{\cL}{(\p_\mu A_\nu)}\right)=0=\p_\mu F^{\mu\nu}.$$
+From its definition in terms of $A_\mu$, we see that $F_{\mu\nu}$ therefore satisfies the \term{Bianchi identity}, i.e.
+\begin{equation}
+    \p_\lambda F_{\mu\nu}+\p_\mu F_{\nu\lambda}+\p_\nu F_{\lambda\mu}=0.
+\end{equation}
+From this simple-looking Lagrangian, we can recover all of Maxwell's equations. We'll need to be a little careful about signs in our definition of 3-vectors, so let us write the potential as
+$A^\mu=(\phi,\vec A)$ such that $\vec A=(A^1,A^2,A^3).$
+Then the electric field is
+$$\vec E=-\grad \phi - \dot {\vec A}$$
+where $$\grad \equiv\left(\P{}{x^1},\P{}{x^2},\P{}{x^3}\right)=\p_i.$$
+We also define the magnetic field as
+$$\vec B= \grad \wedge \vec A,$$
+where the wedge product is really just telling us to take the curl of $\vec A$ like we learned in freshman electrodynamics.
+Thus
+$$\vec E=(F_{01},F_{02},F_{03})=(-F^{01},-F^{02},-F^{03}).$$
+Looking at the definition of $\vec B$, we see that if $\vec B=(B_1,B_2,B_3)$, then for instance
+$$B_3=\p_1 A^2-\p_2 A^1 =-\p_1 A_2+\p_2 A_1 =-F_{12}.$$
+All in all, the field strength tensor allows us to recover all the elements of the electric and magnetic fields,
+$$F_{\mu\nu}=\begin{pmatrix}
+0&E_1&E_2&E_3\\-E_1&0&-B_3&B_2\\
+-E_2&B_3&0&-B_1\\
+-E_3&-B_2&B_1&0
+\end{pmatrix}.$$
+Here, $\mu$ indexes over rows and $\nu$ indexes over columns.
+The Bianchi identity then reads
+$$\div \vec B=0\text{ and }\dot {\vec B}=-\grad \wedge \vec E,$$
+while the equations of motion give
+$$\div \vec E=0 \text{ and }\dot {\vec E}=\grad \wedge \vec B.$$
+These are precisely Maxwell's equations in vacuum.
+
+Now let's quantize the field. Our Lagrangian has no mass term, which is as we expect since the photon is a massive vector field (spin 1) $A_\mu$. However, there are four components of $A_\mu$, so it seems that we have 4 real degrees of freedom $(\mu=0,1,2,3)$ even though the photon only has two polarization states! How do we resolve this? We make the following observations.
+\begin{itemize}
+    \item $A_0$ is not dynamical since $F_{\mu\nu}$ is antisymmetric-- there's no kinetic term for it in the Lagrangian $\cL$. In particular, given $A_i(\vec x,t_0)$ and $\dot A_i(\vec x,t_0), A_0$ is fully determined. For if $\div \vec E=0$ then
+    $$\nabla^2 A_0 +\div \dot{\vec A}=0,$$
+    with solution\footnote{This is just the Green's function for $\nabla^2$.}
+    \begin{equation}\label{a0solution}
+        A_0(\vec x,t_0)=\int \frac{d^3x' \div \dot{\vec A}(\vec x',t_0)}{4\pi|\vec x-\vec x'|}.
+    \end{equation}
+    So $A_0$ isn't independent-- there are really only three real degrees of freedom.
+    \item There is a large symmetry group of transformations of the form
+    $$A_\mu(x)\to A_\mu(x)+\p_\mu \lambda(x)$$
+    with $\lambda$ such that $\lim_{|\vec x|\to \infty }\lambda(x)=0$. Under such a transformation, we find that
+    $$F_{\mu\nu}\to \p_\mu(A_\nu+\p_nu \lambda)-\p_\nu(A_\mu+\p_\mu\lambda)=\p_mu A_\nu -\p_nu A_\mu$$
+    since partial derivatives commute, so $F_{\mu\nu}$ and therefore $\cL$ is invariant under these transformations. Equivalently, we may write the equations of motion as $\eta_{\mu\nu}\p_\rho F^{\rho\nu}=0$ or
+    $$(\eta_{\mu\nu}\p_\rho \p^\rho -\p_\mu \p_\nu)A^\nu =0.$$
+    Note that the operator in parentheses is not invertible-- it annihilates functions of the form $\p^\nu \lambda(x).$ Therefore there is a redundancy in our description of the vector field $A^\nu$, which we call a \term{gauge symmetry}. The existence of a gauge symmetry is equivalent to the statement that there is no unique solution for $A_\mu$; it is only determined up to adding $\p_\mu \lambda(x)$.
+\end{itemize}
+
+We say that the configuration space for $A_\mu$ is then \term{foliated}\footnote{separated into hypersurfaces} by \term{gauge orbits}\footnote{everywhere the gauge freedom takes you from a given starting point, i.e. for a particular choice of $A_\mu$, the corresponding orbit $O$ is $O=\set{A_\mu+\p_\mu \lambda(x): \lim_{|\vec x|\to \infty }\lambda(x)=0}$}. We can draw these as lines in configuration space, such that all states on a given line represent the same physical state. To actually compute things, we usually take a representative from a gauge orbit (``fix the gauge''), and in general we should choose a gauge that any $A_\mu$ can be put into. Here are some examples.
+\begin{enumerate}
+    \item Loren(t)z\footnote{This gauge condition is actually named for Ludvig Lorenz, and not Hendrik Lorentz of Lorentz invariance. Somewhat confusingly, this gauge condition is \emph{Lorentz} invariant, hence the confusion. See \url{https://en.wikipedia.org/wiki/Lorenz_gauge_condition}} gauge:
+    $$\p_\mu A^\mu=0.$$
+    This is a suitable gauge, as one can always put $A_\mu$ into this form. The proof is straightforward-- if we have an $A_\mu$ such that $\p_\mu A^\mu=f(x),$ we simply define $\tilde A_\mu=A_\mu+\p_\mu \lambda(x)$ where $\p_mu \p^\mu \lambda(x)=\p^2 \lambda =-f(x).$ We can solve this by our usual Green's function tricks for $\p^2$,\footnote{The operator $\p^2$ is like the Laplacian $\nabla^2$, but it has a time derivative in it too. In Minkowski space it takes the simple form $-\p_t^2+\p_x^2+\p_y^2+\p_z^2$ and is known as the d'Alembert operator or the d'Alembertian, denoted by $\Box$. Of course, we might want to do QFT in curved spacetime, so then $\p^2$ takes some other more complicated form.} and then $\p_\mu \tilde A^\mu=0$. However, this gauge still does not completely specify $A_\mu$ (remember what I said about the orbits being hypersurfaces), as we can always add to our new $A_\mu$ any $\p_\mu \tilde \lambda$ such that $\p^2 \tilde \lambda=0$, of which there are infinitely many choices for $\tilde \lambda$. The advantage of this gauge is that it is Lorentz invariant, and often convenient when we want to write propagators and other quantities in a manifestly covariant way.
+    \item Coulomb gauge/radiation gauge:
+    $$\div \vec A=0.$$
+    We can always put $A^\mu$ into this form by similar arguments to the Lorenz gauge, but with the regular three-dimensional Laplacian rather than the full $\p^2$ operator. Referring back to Eqn. \ref{a0solution}, we see that this gauge sets $A_0=0$ in vacuum. The advantage of this gauge is that it makes manifest the two physical degrees of freedom, i.e. the two polarization states of the photon. However, we lose Lorentz invariance.
+\end{enumerate}
+
+Having resolved the question of the extra degrees of freedom in $A_\mu$, let us now proceed to write the Hamiltonian for the EM field. What are the conjugate momenta? The first is
+$$\Pi_0=\P{\cL}{\dot A_0}=0,$$
+since there is no $\dot A_0=\dot \phi$ component in any of the fields, while the others are
+$$\Pi_i=\P{\cL}{\dot A_i}=-\dot A_i+\p_i A^0=F^{i0}=E^i.$$
+After a little algebra, we see that the Hamiltonian takes the form
+$$H=\int d^3x (\Pi_i \dot A_i -\cL)=\int d^3x \frac{1}{2}(\vec E^2 +\vec B^2)-A_0(\div \vec E).$$
+In this last term, $A_0$ (being non-dynamical) just acts like a Lagrange multiplier and sets $\div \vec E=0$.
+
+If we work in the Lorenz gauge, $\p_\mu A^\mu=0$, the equations of motion then become
+$$\p_\mu \p^\mu \vec A=0.$$ Let us note that in this gauge, we can write a new Lagrangian with an extra term,
+$$\cL=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-\frac{1}{2}(\p_\mu A^\mu)^2.$$
+Thus
+$$\p_\mu F^{\mu\nu}+\p^\nu(\p_\mu A^\mu)= 0 \iff \p_mu \p^\mu A^\nu =0.$$
+It will be convenient to work with this new Lagrangian and only impose $\p_\mu A^\mu=0$ later, at the operator level. Thus we can write a general Lagrangian as
+$$\cL=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-\frac{1}{2\alpha}(\p_\mu A^\mu)^2$$
+where $\alpha=1$ is known as \term{Feynman gauge} and $\alpha=0$\footnote{This looks bad, I know. What we'll see is that in the end, something sensible happens when we try to work out the photon propagator. Really, we should think of taking the $\alpha\to 0$ limit as forcing $\p_mu A^\mu\to 0$. In the path integral context, as $\a\to 0$ there is an increasingly high energy cost (i.e. an exponential damping in the factor $e^{iS}$) to having any $\p_\mu A^\mu$ coupling. In any case, we should first find the photon propagator in terms of $\alpha$, and then set $\a$ to zero (or one, if we're working in Feynman gauge).} is called \term{Landau gauge}.
