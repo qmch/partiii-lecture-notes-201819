@@ -7,7 +7,9 @@ with $S_R$ the weight set of the irrep $R$. We call the coefficients $\Lambda^i$
 For any finite dimensional repn (in particular an irrep) we argued that by tracing out the root strings (equivalently by hitting the highest-weight state with the lowering operators) we can recover all the other weights. That is, if $\lambda \in S_R,$ then
 $$\lambda-m_{(i)} \alpha_{(i)} \in S_R, m_{(i)}\in \ZZ, 0\leq m_{(i)}\leq \lambda^i.$$
 
-Note that the elements of the Cartan matrix tell us what the fundamental \emph{roots} are in terms of the fundamental \emph{weights}. The roots are the $\alpha$s and the weights are $\omega$s. In $A_2$ we had
+Note that the elements of the Cartan matrix tell us what the simple roots are in terms of the fundamental weights. The roots are the $\alpha$s and the weights are $\omega$s. See the non-lectured aside to this lecture for further discussion.
+
+In $A_2$ we had
  $$\alpha=\alpha_{(1)}=2\omega_{(1)}-\omega_{(2)}$$
 and $$\beta=\alpha_{(2)}=-\omega_{(1)}+2\omega_{(2)}.$$
 
@@ -15,19 +17,39 @@ Thus if we have the highest weight element
 $$\Lambda=\omega_{(1)}\in S_f,$$ then applying our algorithm gives us
 \begin{align*}
     \Lambda-\alpha_{(1)}&=\omega_{(1)}-(2\omega_{(1)}-\omega_{(2)})\\
-    &=-\omega_{(1)}+\omega_{(2)} \in S_f
+    &=-\omega_{(1)}+\omega_{(2)} \in S_f.
 \end{align*}
-where $S_f$ indicates the set of fundamental weights.
 Applying this again, we find that
 $\lambda=-\omega_{(1)}+\omega_{(2)}\implies \lambda-\alpha_{(2)} \in S_F.$ Thus
 \begin{align*}
     \lambda-\alpha_{(2)}&=-\omega_{(1)}+\omega_{(2)}-(2\omega_{(2)}-\omega_{(1)})\\
     &=-\omega_{(2)}.
 \end{align*}
-That's all we get, so we say that $\dim R_{(1,0)}=3$.
+That's all we get, so we say that $\dim R_{(1,0)}=3$. This process is illustrated in Fig. \ref{fig:s1-0}, as well as the conjugate representation starting from the highest weight $\Lambda=\omega_{(2)}$ in Fig. \ref{fig:s0-1}.
+
+\begin{figure}
+    \centering
+    \includegraphics{2018/11/20181122_s1-0.png}
+    \caption{The weight lattice for $R_{(1,0)}$. The fundamental weights $\omega_{(1)},\omega_{(2)}$ are the axes in magenta, such that the coordinates $(\lambda_1,\lambda_2)$ correspond to weights $\lambda=\lambda_1\omega_{(1)}+\lambda_2 \omega_{(2)}.$ The roots $\alpha,\beta$ are depicted in blue and red respectively. Arrows connect the highest weight element $\Lambda=\omega_{(1)}=(1,0)$ to the other two weights of this representation.}
+    \label{fig:s1-0}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics{2018/11/20181122_s0-1.png}
+    \caption{The weight lattice for $R_{(0,1)}$. Arrows connect the highest weight element $\Lambda=\omega_{(2)}=(0,1)$ to the other two weights of this representation.}
+    \label{fig:s0-1}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics{2018/11/20181122_s1-1.png}
+    \caption{The weight lattice for $R_{(1,1)}$. Arrows connect the highest weight element $\Lambda=\omega_{(1)}+\omega_{(2)}=(1,1)$ to the other weights of this representation. As it turns out, our algorithm cannot tell us that there are actually two elements of weight zero, which we need to complete the octet of weights. More sophisticated counting arguments can tell us what the correct multiplicity of each weight is, but we will not be too concerned with them for now}
+    \label{fig:s1-1}
+\end{figure}
 
 \subsection*{Irreps of $A_2$} For each \term{dominant integral weight}
-$$\Lambda=\Lambda^1 \omega_{(1)}+\Lambda^2 \omega-{(2)} \in \bar \cL_W$$
+$$\Lambda=\Lambda^1 \omega_{(1)}+\Lambda^2 \omega_{(2)} \in \bar \cL_W$$
 with $\Lambda^1,\Lambda^2 \in \ZZ_{\geq 0}$, we get an irrep denoted $R_{(\Lambda^1,\Lambda^2)}$. As it turns out (cf. Osborn pg. 113), the dimension is given by
 $$\dim R_{(\Lambda^1,\Lambda^2)}=\frac{1}{2}(\Lambda^1+1)(\Lambda^2+1)(\Lambda^1+\Lambda^2+2).$$
 
@@ -57,7 +79,7 @@ $\Lambda-\alpha_{(1)},\Lambda-\alpha_{(2)}\in S_{(1,1)}.$
 Thus
 $$(1,1)-(2,-1)=(-1,2)\in S_R$$ and $$(1,1)-(-1,2)=(2,-1)\in S_R.$$ Applying the algorithm again, there are also points at
 $$\Lambda-\a_{(1)}-\a_{(2)},\Lambda-\a_{(1)}-2\a_{(2)},\Lambda-2\a_{(1)}-\a_{(2)}\in S_R.$$
-If we draw this, we get a very nice diagram whose vertices are characterized by the points on a hexagon. As it turns out, what our algorithm cannot tell us is that there are two elements of zero weight.
+If we draw this, we get a very nice diagram whose vertices are characterized by the points on a hexagon-- see Fig. \ref{fig:s1-1}. As it turns out, what our algorithm cannot tell us is that there are two elements of zero weight.
 
 Note that finding these weights is a critical task when we are looking at the representation theory of physical systems, since the weights correspond to the quantum numbers of particles! This hexagon looks suspiciously like the Eightfold Way proposed by Murray Gell-Mann.
 
@@ -121,9 +143,9 @@ We then refined these ideas by arguing that the roots had a well-defined inner p
 
 From the simple roots, we got the simple coroots, which are just the simple roots after a normalization:
 $$\alpha^\vee_{(i)}=\frac{2\alpha_{(i)}}{(\alpha_{(i)},\alpha_{(i)})}.$$ Then we can consider the dual of these simple coroots under the inner product. These are a set of elements $\omega_{(i)}$ such that
-$$(\omega_{(j)},\alpha^\vee_{(i)})=\delta_{ij}.$$ We call these elements the fundamental weights. The fundamental weights now trace out their own lattice after taking integer linear combinations, known quite sensibly as the weight lattice. Thus the weight lattice is dual to the coroot lattice, and the Cartan matrix $A^{ij}$ tells us precisely the relationship between the simple roots and the fundamental weights:
+$$(\omega_{(j)},\alpha^\vee_{(i)})=\delta_{ij}.$$ We call these elements the fundamental weights. The fundamental weights now trace out their own lattice after taking integer linear combinations, known quite sensibly as the weight lattice. Thus the weight lattice is dual to the coroot lattice, and essentially by definition, the Cartan matrix $A^{ij}$ tells us precisely the relationship between the simple roots and the fundamental weights:
 $$\alpha_{(i)}=\sum_{j=1}^r A^{ij}\omega_{(j)}.$$
 
 Finally, given a particular irrep $R_\Lambda$, there must be a highest weight
 $$\Lambda=\sum_{i=1}^r \Lambda^i \omega_{(i)}$$
-where these $\Lambda^i$ are called Dynkin labels. In words, these are simply the coordinates of $\Lambda$ interpreted as a vector in the basis of the fundamental weights $\omega_{(i)}$. Since $R_\Lambda$ is an irrep, we can reach all the other fundamental weights of the irrep by subtracting off positive integer multiples of the simple roots.
+where these $\Lambda^i$ are called Dynkin labels. In words, these are simply the coordinates of $\Lambda$ interpreted as a vector in the basis of the fundamental weights $\omega_{(i)}$. Since $R_\Lambda$ is an irrep, we can reach all the other weights of the irrep by subtracting off positive integer multiples of the simple roots.
