@@ -1,0 +1,93 @@
+Last time, we introduced the formula for gravitational radiation far from a localized source. We said that for a source $T_{ab}$ sitting at $x',t'$, we see a perturbation to the metric at $x,t$ such that
+$$\bar h_{ab}(x,t)=\int d^3 x' T_{ab}(x,t-|x-x'|)\frac{1}{|\vec x- \vec x '|}.$$
+Note that with $r=|\vec x|,$ we can write
+$$\frac{1}{|\vec x-\vec x'|}=\frac{1}{r}(1-\frac{\vec x \cdot \vec x'}{r^2}+\frac{3(\vec x \cdot \vec x')^2}{r^4}-\frac{x'{}^2}{2x^2}+\ldots$$
+where the $1/r^2$ term is dipole radiation and the $1/r^4$ term is quadrupole radiation.
+
+Suppose we now look at static sources where $T_{ab}$ is independent of $t$. In particular, $T_{ab}$ is dominated by the rest mass energy, so just $T_{00}\neq 0$, and we say that $T_{00}=\rho$ a mass density. Then
+$$\bar h_{ab}=\frac{4}{r}\int d^3 x' T_{ab}(x')(1-\frac{\vec x \cdot \vec x'}{r^2}+\frac{3(\vec x \cdot \vec x')^2}{r^4}-\frac{x'{}^2}{2x^2}+\ldots].$$
+In particular the $00$ term of the perturbation is to leading order
+$$\bar h_{00}=\frac{4}{r}\int d^3x' \rho(x')=\frac{4M}{r}=-4\Phi,$$
+where $\Phi$ is simply the Newtonian gravitational potential in units where $G=1$. Note that since $\bar h$ is the trace-reversed version of $h$, we find that
+$$h_{00}=\bar h_{00}-\frac{1}{2}\eta_{00}(-\bar h_{00}+\bar h_{11}+\bar h_{22}+\bar h_{33})=\frac{1}{2}\bar h_{00}=-2\Phi$$
+since all the other components of $\bar h$ vanish.
+
+If we compare to large distances in the Schwarzschild metric, we see that
+$$ds^2=-\left(1-\frac{2M}{r}\right)dt^2+d\sigma^2,$$
+and the perturbation $h_{00}$ is basically
+$$h_{00}=\frac{2M}{r}=-2\Phi.$$
+Thus
+$$\underbrace{\bar h_{00}}_{\text{dipole}}=\frac{4}{r}\int d^3 x' \rho(x')\frac{x_i x_i'}{r^2}= \frac{4x_i}{r^3}\underbrace{\int d^3x' \rho(x')x_i'}_{P_i,\text{ dipole moment}}.$$
+Indeed, this whole term scales as $1/r^2$. Here Latin indices $i,j,k$ range over $1,2,3$ as is convention. Now we Work out the quadrupole term,
+\begin{align*}
+    \bar h_{00}&=\frac{4}{r}\int d^3 x' \rho(x')\left(\frac{3}{2}\frac{(\vec x \cdot \vec x')^2}{r^4}-\frac{1}{2} \frac{x'{}^2}{r^2}\right)\\
+    &=\frac{4}{r^5} x_i x_j \underbrace{\int d^3 x'\left(\frac{3}{2}x_i' x_j' -\frac{1}{2}\delta_{ij}x'^2\right)\rho(x')}_{Q_{ij}}
+\end{align*}
+where the entire integral here is identified as the quadrupole moment $Q_{ij}$. Note that some authors differ by a factor of $2$ in the definition of $Q_{ij}$, so be careful when comparing to other texts.
+
+What if we reintroduce time dependence into our source? We have the usual conservation law
+$$\p_a T^{ab}=0$$
+(where we have just taken the partial derivative since the source is localized and space looks like Minkowski space). Thus the $b=0$ component tells us that if $\p_0 T_{00}\neq 0$, then
+$$\p_0 T_{00}-\p_i T_{i0}=0$$
+tells us that $\p_i T_{i0}$ may not be zero. Similarly $$\p_0 T_{0j} -\p_i T_{ij}=0$$
+tells us that nontrivial time dependence in $T_{0j}$ might source spatial variations in $T_{ij},$ and vice versa-- in time-dependent situations, we cannot neglect $T_{0i},T_{ij}$.
+
+Note that the effective energy-momentum tensor $t_{ab}$ goes as $(\p\bar h)^2 \sim 1/r^2$, so
+$$\bar h_{00}(x,t)=\frac{4}{r} \underbrace{\int d^3 x' T_{00}(x',t-|vec x-\vec x'|)}_{\text{mass}}.$$
+But this mass term is constant to lowest order since the change in the energy (through $t_{ab}$) is of order $h^2$. So to this order $\bar h_{00}$ is constant.
+
+Now if we look at $\bar h_{0i}$, we see that
+$$\bar h_{0i}=\frac{4}{r}\int d^3 x' T_{0i}(x',t-|x-x'|).$$
+However, note that by Stokes's theorem,
+$$\int_{\text{all space}} \p_j(x_i T_{0j})dV= \int_\Sigma x_i T_{0j}dS_j =0,$$
+where the $\Sigma$ integral is taken to be out at $\infty$. However, it follows that the LHS of this expression is
+$$\int (\delta_{ij}T_{0j}+x_i \p_j T_{0j})dV = \int T_{0i}dV- \int x_i \p_0 T_{00} dV,$$
+where we have applied the conservation law for $T.$ Since we found this whole expression is zero, we can rewrite
+$$\bar h_{0i}=\frac{4}{r}\int d^3x' x_i' \p_0 T_{00}.$$
+This term $x_i' \p_0 T_{00}$ has the interpretation of the momentum of the source. If we assume we are observing in the rest frame, then this is zero. Therefore the dipole terms do not produce radiation on their own.
+
+We now turn to the quadrupole term,
+$$\bar h_{ij} \frac{4}{r} \int d^3 x' T_{ij}(x',t-|x-x'|).$$
+We can play similar tricks to rewrite $T_{ij}$ in terms of derivatives of $T_{00}$. For instance,
+\begin{align*}
+    \P{}{t}\int T_{0i}x_j dV &= \int (\p_k T_{ki})x_j dV\\
+    &= \int_\infty (T_{ki}x_j)-\int T_{ki} \p_k x_j dV\\
+    &= -\int T_{ij}dV,
+\end{align*}
+where we have integrated by parts and discarded the boundary term at infinity.
+Now look at a second-order time derivative,
+\begin{align*}
+    \frac{\p^2}{\p t^2}\int T_{00} x_i x_j dV &= \P{}{t}\int \p_k T_{0k}x_i x_j dV\\
+    &= -\P{}{t}\int T_{0i}x_j + T_{0j}x_i dV\\
+    &=2\int T_{ij} dV,
+\end{align*}
+using the conservation law, an integration by parts, and our first result.
+
+This tells us that we can swap out $T_{ij}$ for time derivatives,
+$$\bar h_{ij}=\frac{2}{r} \frac{\p^2}{\p t^2}\underbrace{\int d^3x' x_i' x_j' T_{00}}_{\frac{2}{3}Q_{ij}-\frac{1}{3}\delta_{ij} Q^k_k},$$
+where we can rewrite the integral in terms of the quadrupole moment. However, et us notice that since $Q_{ij}=\frac{1}{2}\int d^3 x'(3x_i' x_j' -\delta_{ij} x'^2,$ we see that $Q_{ij}\delta^{ij}=0,$ so $Q$ is traceless ($\delta^{ij}\delta_{ij}=3$ since $i,j$ range over $1,2,3$). We conclude that
+$$\bar h_{ij}=\frac{4}{3r}\frac{\p^2}{\p t^2} Q_{ij},$$
+which tells us that the metric perturbations depend on the second time derivatives of $Q$ the quadrupole moment. This is characteristic of spin 2, and means that the gravitational radiation will be even harder to detect. This is in contrast to electromagnetism where the fields vary as the first time derivative of the dipole moment, since the photon is spin 1.
+
+Now suppose we are looking at the radiation from very far away, out near infinity, and the radiation is coming at us in the $+z$ direction. In the transverse tracefree gauge, we have our two polarization states
+\begin{align*}
+    h_{12}&=\frac{4}{3r}\ddot Q_{12}\\
+    h_{11}-h_{22}=\frac{4}{3r}(\ddot Q_{11}-\ddot Q_{22}.
+\end{align*}
+The energy flux is then given by the $00$ component of the effective energy-momentum tensor:
+\begin{align*}
+    t_{00}&=\frac{1}{32\pi}\ang{\p_0 \bar h^{ab} \p_0 \bar h_{ab}}\\
+    &=\frac{1}{32\pi}\frac{16}{9r^2}\left[(\dddot Q_{11}-\dddot Q_{22})^2+2\dddot Q_{12}^2\right].
+\end{align*}
+We might like to write this in a more obviously covariant way, so suppose the radiation is coming at us in a direction $n_i$ where $n_i$ is a unit spacelike vector with $n_0=0$. Then the energy flux is
+$$t_{00}=\frac{1}{36 \pi r^2}\left[(\dddot Q_{ij} n_i n_j)^2+2 \dddot Q_{ij} \dddot Q_{ij} -4\dddot Q_{ik} \dddot Q_{jk} n_i n_j\right].$$
+This formula reduces to our original formula in $x,y,z$ coordinates for $n_i=(0,0,1)$.
+
+To find the total radiation, we now integrate over the sphere at infinity, noting that the surface area provides a factor of $r^2$ to cancel the $1/r^2$ in the energy flux. Note also that $$\int_\Sigma n_i n_j = \delta_{ij}4\pi/3,$$ where $\Sigma$ is the sphere at infinity. A similar computation yields
+$$\int n_i n_j n_k n_l = \frac{4\pi}{15}(\delta_{ij}\delta_{kl}+\delta_{ik} \delta_{jl}+\delta_{il}\delta_{jk}),$$
+and using these integrals we can write the total energy flux as
+$$\frac{1}{36\pi r^2}\dddot Q_{ij} \dddot Q_{ij}\left(\frac{2}{15}+2-\frac{4}{3}\right)4\pi r^2 =\frac{4}{45}\dddot Q_{ij}\dddot Q_{ij},$$
+where we call the final expression the quadrupole formula. 
+
+$$ds^2=-dt^2+dx^2+dy^2+dz^2, t>0$$
+$$ds^2=-\frac{1}{t'{}^2}dt'{}^2+dx^2+dy^2+dz^2$$
