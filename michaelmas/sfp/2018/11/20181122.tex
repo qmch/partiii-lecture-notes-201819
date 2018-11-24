@@ -6,45 +6,56 @@ with $S_R$ the weight set of the irrep $R$. We call the coefficients $\Lambda^i$
 
 For any finite dimensional repn (in particular an irrep) we argued that by tracing out the root strings (equivalently by hitting the highest-weight state with the lowering operators) we can recover all the other weights. That is, if $\lambda \in S_R,$ then
 $$\lambda-m_{(i)} \alpha_{(i)} \in S_R, m_{(i)}\in \ZZ, 0\leq m_{(i)}\leq \lambda^i.$$
+An important step of this algorithm is that we can only subtract the corresponding simple root $\alpha_{(i)}$ if the coefficient $\lambda^i$ of the fundamental weight $\omega_{(i)}$ is positive.
 
 Note that the elements of the Cartan matrix tell us what the simple roots are in terms of the fundamental weights. The roots are the $\alpha$s and the weights are $\omega$s. See the non-lectured aside to this lecture for further discussion.
 
-In $A_2$ we had
- $$\alpha=\alpha_{(1)}=2\omega_{(1)}-\omega_{(2)}$$
-and $$\beta=\alpha_{(2)}=-\omega_{(1)}+2\omega_{(2)}.$$
+\begin{exm}
+In $A_2$ we had the simple roots $\alpha,\beta$ which the Cartan matrix tells us can be written in terms of the fundamental weights $\omega_{(1)},\omega_{(2)}$ as follows:
+\begin{align*} \alpha&=\alpha_{(1)}=2\omega_{(1)}-\omega_{(2)}\\
+\beta&=\alpha_{(2)}=-\omega_{(1)}+2\omega_{(2)}.
+\end{align*}
 
-Thus if we have the highest weight element 
-$$\Lambda=\omega_{(1)}\in S_f,$$ then applying our algorithm gives us
+Let us first consider the representation $R_{(1,0)}$ of $A_2$ where the highest weight element is
+$$\Lambda=\omega_{(1)}=(1,0)\in S_f.$$ Here, we write weights in terms of their coordinates in the weight lattice, so that
+$$(\lambda_1,\lambda_2)\equiv \lambda_1 \omega_{(1)}+\lambda_2 \omega_{(2)}.$$ Then our algorithm tells us that since $\lambda_1=1,\lambda_2=0$, we must subtract the first root $\alpha_{(1)}=\alpha$ to get to the next weight of the representation. Thus
 \begin{align*}
     \Lambda-\alpha_{(1)}&=\omega_{(1)}-(2\omega_{(1)}-\omega_{(2)})\\
-    &=-\omega_{(1)}+\omega_{(2)} \in S_f.
+    &=-\omega_{(1)}+\omega_{(2)} =(-1,1)\in S_f.
 \end{align*}
-Applying this again, we find that
-$\lambda=-\omega_{(1)}+\omega_{(2)}\implies \lambda-\alpha_{(2)} \in S_F.$ Thus
+Now $\lambda_1=-1$ but $\lambda_2=1 > 0$, so we can subtract $\alpha_{(2)}=\beta$ to get 
+%$\lambda=-\omega_{(1)}+\omega_{(2)}\implies \lambda-\alpha_{(2)} \in S_F.$ Thus
 \begin{align*}
     \lambda-\alpha_{(2)}&=-\omega_{(1)}+\omega_{(2)}-(2\omega_{(2)}-\omega_{(1)})\\
-    &=-\omega_{(2)}.
+    &=-\omega_{(2)}=(0,-1).
 \end{align*}
-That's all we get, so we say that $\dim R_{(1,0)}=3$. This process is illustrated in Fig. \ref{fig:s1-0}, as well as the conjugate representation starting from the highest weight $\Lambda=\omega_{(2)}$ in Fig. \ref{fig:s0-1}.
+
+Now both coefficients are non-positive, so our algorithm terminates and these three elements are all we get. We conclude that $\dim R_{(1,0)}=3$. This process is illustrated in Fig. \ref{fig:s1-0}, as well as for the conjugate representation starting from the highest weight $\Lambda=\omega_{(2)}$ in Fig. \ref{fig:s0-1}.
+\end{exm}
 
 \begin{figure}
     \centering
     \includegraphics{2018/11/20181122_s1-0.png}
-    \caption{The weight lattice for $R_{(1,0)}$. The fundamental weights $\omega_{(1)},\omega_{(2)}$ are the axes in magenta, such that the coordinates $(\lambda_1,\lambda_2)$ correspond to weights $\lambda=\lambda_1\omega_{(1)}+\lambda_2 \omega_{(2)}.$ The roots $\alpha,\beta$ are depicted in blue and red respectively. Arrows connect the highest weight element $\Lambda=\omega_{(1)}=(1,0)$ to the other two weights of this representation.}
+    \caption{The weight lattice for $R_{(1,0)}$. The fundamental weights $\omega_{(1)},\omega_{(2)}$ are the axes in magenta, such that the coordinates $(\lambda_1,\lambda_2)$ correspond to weights $\lambda=\lambda_1\omega_{(1)}+\lambda_2 \omega_{(2)}.$ The roots $\alpha,\beta$ are depicted in dashed blue and red arrows respectively. From the highest weight element $\Lambda=\omega_{(1)}=(1,0)$, we first subtract $\alpha_{(1)}=\alpha$ (solid blue arrow) to get the new element $(-1,1)$, and then subtract $\alpha_{(2)}=\beta$ (solid red arrow) from $(-1,1)$ to get the final weight $(0,-1)$. Our algorithm terminates when we end up in the lower left quadrant of the magenta axes ($\lambda_1 \leq 0, \lambda_2 \leq 0$).}
     \label{fig:s1-0}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics{2018/11/20181122_s0-1.png}
-    \caption{The weight lattice for $R_{(0,1)}$. Arrows connect the highest weight element $\Lambda=\omega_{(2)}=(0,1)$ to the other two weights of this representation.}
+    \caption{The weight lattice for $R_{(0,1)}$. From the highest weight element $\Lambda=\omega_{(2)}=(0,1)$, we subtract $\alpha_{(2)}=\beta$ (solid red arrow) to get $(1,-1)$ and then subtract $\alpha_{(1)}=\alpha$ to get the final weight $(-1,0)$.}
     \label{fig:s0-1}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics{2018/11/20181122_s1-1.png}
-    \caption{The weight lattice for $R_{(1,1)}$. Arrows connect the highest weight element $\Lambda=\omega_{(1)}+\omega_{(2)}=(1,1)$ to the other weights of this representation. As it turns out, our algorithm cannot tell us that there are actually two elements of weight zero, which we need to complete the octet of weights. More sophisticated counting arguments can tell us what the correct multiplicity of each weight is, but we will not be too concerned with them for now}
+    \caption{The weight lattice for $R_{(1,1)}$. We'll break this up into steps. As usual, all coordinates are defined relative to the $\omega_{(1)},\omega_{(2)}$ axes in magenta.\newline
+    0. We begin at $\Lambda=\omega_{(1)}+\omega_{(2)}=(1,1)$. \newline
+    1. From here, we can follow either a red or a blue arrow since both $\lambda_1,\lambda_2 >0$. Following the red arrow (subtracting $\beta$) takes us to $(2,-1)$, while following the blue arrow (subtracting $\alpha$) takes us to $(-1,2)$. \newline
+    2. From $(2,-1)$ our algorithm says that we can follow the blue arrow (subtract $\alpha_{(1)}=\alpha$) once or twice to get to $(0,0)$ and $(-2,1)$ respectively. From $(-1,2)$ our algorithm says we can follow the red arrow (subtract $\alpha_{(2)}=\beta$) once or twice to get to $(0,0)$ and $(1,-2)$ respectively. \newline
+    3. $(0,0)$ is a dead end, but from $(-2,1)$ we can follow a red arrow to get to $(-1,-1)$. Similarly from $(1,-2)$ we can follow a blue arrow to get to $(-1,-1)$. Both the coefficients of $\omega_{(1)},\omega_{(2)}$ are now non-positive so the algorithm terminates.\newline
+    As it turns out, our algorithm cannot tell us that there are actually two elements of weight zero, which we need to complete the octet of weights. More sophisticated counting arguments can tell us what the correct multiplicity of each weight is, but we will not be too concerned with them for now.}
     \label{fig:s1-1}
 \end{figure}
 
@@ -115,7 +126,7 @@ $$S_{(1,0)}=\set{\omega_1,\omega_2-\omega_1,-\omega_2}.$$
 The tensor product is the sum of the two weight sets,
 $$S_{(1,0)\otimes (1,0)}=S_{(1,0)}+S_{(1,0)}.$$
 This is the same game we played when we considered tensor products of angular momentum, except now we are in $L(SU(3))$ so the possibilities live in a higher-dimensional space. What we find is that the new weight set is (just by taking sums of pairs of elements)
-$$S_{(1,0)\otimes (1,0)}=\set{2\omega_1,\omega_2,\omega_1-\omega_2,\omega_2,2(\omega_2-\omega_1),-\omega_1,\omega_1-\omega_2,-\omega_1,-2\omega_2}.$$
+$$S_{(1,0)\otimes (1,0)}=\set{2\omega_1,\omega_2,\omega_1-\omega_2,\omega_2,2\omega_2-2\omega_1,-\omega_1,\omega_1-\omega_2,-\omega_1,-2\omega_2}.$$
 \end{exm}
 
 \subsection*{Non-lectured aside: weights, roots, and lattices} I know I don't normally do non-lectured asides for this course since the notes and lecturing are extremely thorough, but let me take a minute to discuss some of the terminology we've been playing with here and put them into context.
@@ -146,6 +157,11 @@ $$\alpha^\vee_{(i)}=\frac{2\alpha_{(i)}}{(\alpha_{(i)},\alpha_{(i)})}.$$ Then we
 $$(\omega_{(j)},\alpha^\vee_{(i)})=\delta_{ij}.$$ We call these elements the fundamental weights. The fundamental weights now trace out their own lattice after taking integer linear combinations, known quite sensibly as the weight lattice. Thus the weight lattice is dual to the coroot lattice, and essentially by definition, the Cartan matrix $A^{ij}$ tells us precisely the relationship between the simple roots and the fundamental weights:
 $$\alpha_{(i)}=\sum_{j=1}^r A^{ij}\omega_{(j)}.$$
 
-Finally, given a particular irrep $R_\Lambda$, there must be a highest weight
+Finally, given a particular finite-dimensional irrep $R_\Lambda$, there must be a highest weight
 $$\Lambda=\sum_{i=1}^r \Lambda^i \omega_{(i)}$$
 where these $\Lambda^i$ are called Dynkin labels. In words, these are simply the coordinates of $\Lambda$ interpreted as a vector in the basis of the fundamental weights $\omega_{(i)}$. Since $R_\Lambda$ is an irrep, we can reach all the other weights of the irrep by subtracting off positive integer multiples of the simple roots.
+
+In particular, we have an algorithm to find all the other weights of the irrep. Consider a weight $$\lambda=\sum_{i=1}^r \lambda^i \omega_{(i)}=(\lambda^1,\lambda^2,\ldots,\lambda^r)$$ 
+If $\lambda^i >0$, then we can subtract off $m$ multiples of the simple root $\alpha_{(i)}$ from $\lambda$ where $0<m\leq \lambda^i$, so that $\lambda-j\alpha_{(i)}$ is another weight of the irrep. More generally,
+$$\lambda-m_{(i)} \alpha_{(i)} \in S_R, m_{(i)}\in \ZZ, 0\leq m_{(i)}\leq \lambda^i.$$
+The algorithm terminates when we reach an element $\lambda=(\lambda^1,\lambda^2,\ldots,\lambda^r)$ with all the $\lambda^i \leq 0$, and since we are subtracting simple (positive) roots we are guaranteed not to get caught in an infinite loop.
