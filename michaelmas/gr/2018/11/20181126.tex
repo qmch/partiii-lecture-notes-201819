@@ -1,0 +1,99 @@
+Today we introduce the \term{vierbein field}. This is a simply a different way of expressing the metric $g_{ab}$. We know that $g_{ab}$ is a symmetric rank 4 tensor, so it can be written as
+$$g_{ab}=e_a^\mu e^\nu_b \eta_{\mu\nu},$$
+with $\eta_{\mu\nu}=\text{diag}(-1,+1,+1,+1)$ the standard Minkowski metric. This is simply the same as saying that we can always diagonalize a symmetric non-degenerate matrix, and then we can rescale to get the elements of $\eta$ to be $\pm 1$.
+
+We call these $e^\mu_a$ \term{vierbein fields},\footnote{From German, ``four legs.'' You'll also hear \emph{vielbein}, ``many legs.''} or sometimes frame fields. The benefit of using vierbeins is that they transform nicely under Lorentz transformations and make certain symmetries of the theory more obvious. Note that $\mu,\nu$ will index over Lorentz indices, while $a,b$ index over spacetime indices.
+
+We can make a Lorentz transformation on $e_a^\mu$ to find that
+$$e^\mu_a\to \tilde e^\mu_a = \Lambda^\mu{}_\nu e^\nu_a,$$
+so that the metric transforms as
+$$g_{ab}\to \tilde e^\mu_a \tilde e^\nu_b \eta_{\mu\nu}=\Lambda^\mu{}_\sigma e^\sigma_a \Lambda^\nu{}_\rho e^\rho_b \eta_{\mu\nu}=\eta_{\sigma\rho}e^\sigma_a e^\rho_b =g_{ab}.$$
+Therefore performing a Lorentz transformation on $e^\mu_a$ preserves the metric $g_{ab}$, and thus \emph{local} Lorentz transformations form a hidden symmetry since $\Lambda$ can be functions of the coordinates.
+
+Here's another way to think about it. Look at the line element
+$$ds^2=g_{ab}dx^a dx^b.$$
+Note that these $dx^a$ are exact one-forms. Now if we rewrite the RHS in terms of our vierbeins, we get
+$$ds^2 = e^\mu _a e^\nu_b \eta_{\mu\nu}dx^a dx^b = \eta_{\mu\nu}E^\mu E^\nu,$$
+where we have defined $E^\mu \equiv e^\mu_a dx^a$. These $E^\mu$ form a basis of 1-forms. They are not quite orthonormal-- real orthonormality would require that $ds^2=\delta_{\mu\nu}E^\mu E^\nu$, whereas $\eta$ is of indefinite signature, so they really form a  pseudo-orthonormal basis of $1$-forms, but sometimes when we're being careless we will call them orthonormal anyway.
+ 
+Now recall that spacetime indices are raised and lowered using the metric $g_{ab}$ and inverse metric $g^{ab}$. In the same way, Lorentz indices can be raised and lowered using $\eta_{\mu\nu},\eta^{\mu\nu}$. A similar construction holds-- general tensors in spacetime are defined by how they transform under general coordinate transformations, whereas Lorentz tensors are defined by how they transform under local Lorentz transforms,
+$$V^\mu \to \hat V^\mu=\Lambda^\mu{}_\nu V^\nu \text{ and }V_\mu \to \hat V_\mu = V_\nu \Lambda^\nu{}_\mu.$$
+For a higher-rank Lorentz tensor, we could write
+$$T_{\mu\nu\sigma\rho\ldots}\to \hat T_{\mu\nu\sigma\rho\ldots} = \Lambda_\mu{}^{\mu'}\Lambda_\nu{}^{\nu'}\Lambda_\rho{}^{\rho'}\Lambda_\sigma{}^{\sigma'}\ldots T_{\mu'\nu'\rho'\sigma'\ldots}.$$
+We can also use $e^\mu_a$ to turn spacetime indices into Lorentz indices or vice versa, i.e.
+$$V^\mu= e^\mu_a V^a,$$
+so $$V^a = e^a_\mu V^\mu,$$ 
+where
+\footnote{We define the vierbein with the spacetime index down in this way so that $e^a_\mu e^\mu_b = \delta^a_b.$ Explicitly,
+$$e^a_\mu e^\mu_b = (g^{ac}\eta_{\mu\nu} e^\nu_c) e^\mu_b= g^{ac} g_{bc}=\delta^a_b.$$}
+$$e^a_\mu\equiv g^{ab} \eta_{\mu\nu} e^\nu_b.$$
+ 
+We can define partial derivatives in terms of vierbeins,
+$$\p_\mu = e^a_\mu \p_a.$$
+Thus the covariant derivative on scalars gives a Lorentz vector,
+$$\nabla_\mu \phi = \p_\mu \phi.$$ To compute the covariant derivative on a vector, we need to be a little more careful. Now
+$$\nabla_\mu V^\nu =\p_\mu V^\nu + \omega_\mu{}^\nu{}_\rho V^\rho,$$
+where this $\omega$ is a new kind of connection sometimes called the \term{spin connection}. The connection transforms under Lorentz transformations in a way similar to Christoffels under general coordinate transformations. The covariant derivative with indices downstairs is similar--
+$$\nabla_\mu V_\nu = \p_\mu V_\nu -\omega_\mu{}^\rho{}_\nu V_\rho.$$
+
+This new connection is defined such that $$\nabla_a e^b_\nu =0,$$ in analogy to the metric connection condition $\nabla_a g_{bc}=0$. We call this the vierbein postulate. Expanding out, we find that
+$$\p_a e^b_\nu+\Gamma^b_{ac} e^c_\nu - e^\mu_a \omega_\mu{}^\rho{}_\nu e^b_\rho=0.$$
+Using the fact that $e^a_\sigma e^\mu_a =\delta^\mu_\sigma$, we can solve for the spin connection (lowering an index) as
+$$\omega_{\lambda \tau \nu}=e^a_\lambda e_{b\tau}(\p_a e^b_\nu+\Gamma^b_{ac} e^c_\nu).$$
+
+We also require the torsion to vanish,
+$$\nabla_\mu e^a_\nu - \nabla_\nu e^a_\mu = T^\rho_{\mu\nu} e^a_\rho,$$
+where $T$ is the torsion tensor, and the requirement that it vanishes makes $\Gamma^b_{ac}=\Gamma^b_{ca}$, i.e. the Christoffels are symmetric in their lower two indices. Thus
+$$\nabla_\mu \eta_{\rho\tau}=0 \implies \omega_{\mu\rho\sigma}=-\omega_{\mu\sigma\rho}.$$
+
+Finally, we might construct a curvature tensor using our new covariant derivatives,
+$$(\nabla_\mu \nabla_\nu - \nabla_\nu \nabla_\mu)V_\sigma = R_{\mu\nu\sigma}{}^\rho(\omega)V_\rho.$$
+As it turns out,
+$$R_{abcd}(\Gamma)=e^\mu_a e^\nu_b e^\rho_c e^\sigma_d R_{\mu\nu\rho\sigma}(\omega),$$
+which we will prove on the fourth example sheet. It's a remarkable fact that these two curvatures are the same.
+
+Now let us return to our basis of $1$-forms $E^\mu=e^\mu_a dx^a$. Using our old friend the wedge product (remember, it's just an antisymmetrized tensor product), we can construct a basis of $2$-forms $E^\mu \wedge E^\nu$. Thus we write
+$$dE^\mu=\frac{1}{2} c^\mu{}_{\nu\rho} E^\nu \wedge E^\rho,$$
+where the $c$s are called \term{Ricci rotation coefficients} and we see that our spin connection can be written as
+$$\omega_{\mu\nu\rho}=\frac{1}{2}(c_{\mu\nu\rho}-c_{\nu\mu\rho}+c_{\rho\mu\nu}).$$
+It is therefore antisymmetric under $\nu\leftrightarrow \rho$.
+
+We can make life a little easier for ourselves by defining the connection $1$-form
+$$\omega^\mu{}_\nu = \omega^\mu{}_{\nu\rho}E^\rho$$
+and the torsion 2-form
+$$\Theta^\mu =\frac{1}{2} T^\mu{}_{\nu\rho} E^\nu \wedge E^\rho.$$
+Thus we find that
+$$dE^\mu+\omega^\mu{}_\nu E^\nu = \Theta^\mu=0,$$
+which is called \term{Cartan's first equation of structure}.
+
+As we might have guessed, there is also \term{Cartan's second equation of structure.} Consider the curvature $2$-form defined
+$$\Omega^\mu{}_\nu = \frac{1}{2}R^\mu{}_{\nu\rho\sigma}(\omega) E^\rho \wedge E^\sigma.$$
+Then
+$$\Omega^\mu{}_\nu = d\omega^\mu{}_\nu +\omega^\mu{}_{\rho }\wedge \omega^\rho{}_\nu.$$
+Note that the sign conventions here are the same as in Misner, Thorne, and Wheeler. Other authors may differ in their signs.
+
+\begin{exm}
+Let us consider the Schwarzschild metric,
+$$ds^2=-W^2(r)dt^2 +\frac{dr^2}{W^2(r)}+r^2(d\theta^2+\sin^2\theta d\phi^2).$$
+Writing down our basis of $1$-forms\footnote{We skipped writing down what the vierbein fields were in lecture, but by direct comparison we can see that since e.g. $g_{00}=-W^2$, $e^0_0 =W$ (accounting for the fact that $\eta_{00}=-1$ in this convention) and so $E^0=e^0_0 dx^0=W dt$. When the metric is diagonal, we can see that the vierbeins can be thought of like the ``square root of the metric.''}
+\begin{align*}
+    E^0 &= W dt\\
+    E^1 &= dr/W\\
+    E^2 &= rd\theta\\
+    E^3 &= r\sin\theta d\phi,
+\end{align*}
+such that $ds^2 = \eta_{\mu\nu}E^\mu E^\nu$, we can also write down the inverses,
+\begin{align*}
+    dt&= E^0/W\\
+    dr&= W E^1\\
+    d\theta &= E^2/r\\
+    d\phi &= E^3/r\sin\theta.
+\end{align*}
+Now the corresponding two-forms $dE^\mu$ are
+\begin{align*}
+    dE^0 &= W' dr \wedge dt = -W' dt \wedge dr = -W' E^0 \wedge E^1\\
+    dE^1 &=-\frac{1}{W^2} W' dr \wedge dr = 0\\
+    dE^2 &= dr\wedge d\theta =\frac{W}{r} E^1 \wedge E^2\\
+    dE^3 &= dr \sin\theta \wedge d\phi+ r\cos\theta d\theta \wedge d\phi = \frac{W}{r} E^1 \wedge E^3 + \frac{\cot \theta}{r} E^2 \wedge E^3.
+\end{align*}
+\end{exm}
