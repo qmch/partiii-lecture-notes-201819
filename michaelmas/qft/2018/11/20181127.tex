@@ -1,0 +1,93 @@
+The make-up lecture that was supposed to take place on Monday was cancelled, so we'll have an extra lecture instead on Thursday at the regular time.
+
+Last time, we started discussing Lorenz gauge, where
+$$\p_\mu A^\mu=0.$$
+We wrote down a new Lagrangian
+$$\cL=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-\frac{1}{2\alpha}(\p_\mu A^\mu)^2,$$
+noting that this new theory does not have the gauge symmetry of the original, and additionally, $A_0, A_i$ are now all dynamical. Thus
+$$\pi^0=\P{\cL}{\dot A_0}=-\frac{\p_\mu A^\mu}{\alpha}$$
+(which is now nonzero) and
+$$\pi^i = \P{\cL}{\dot A_i}=-\dot A^i +\p^i A^0$$
+as before.
+
+If we now apply the commutation relations
+$$[A_\mu(\vec x),A_\nu (\vec y)]=[\pi_\mu(\vec x),\pi_\nu (\vec y)]=0$$
+and
+$$[A_\mu(\vec x),\pi_\nu(\vec y)]=-i \delta^3(\vec x- \vec y)\eta_{\mu\nu},$$
+we can expand out the field in terms of polarization vectors $\epsilon_\mu^{(\lambda)}$ and creation and annihilation operators $a_{\vec p}^\lambda, a_{\vec p}^{\lambda\dagger}.$
+$A_\mu$ takes the form
+$$A_\mu(\vec x) =\int \frac{d^3p}{(2\pi)^3} \frac{1}{\sqrt{2|\vec p|}} \sum_{\lambda=0}^3 \left(\epsilon_\mu^{(\lambda)}(\vec p) a_{\vec p}^\lambda e^{i \vec p \cdot \vec x}+\epsilon_\mu^{(\lambda)}{}^* (\vec p) a_{\vec p}^{\lambda \dagger} e^{-i\vec p \cdot \vec x}\right).$$
+
+Note that the polarization vectors have a Lorentz index $\mu$ since $A_\mu$ must transform like a vector field. WLOG we may pick $\epsilon_\mu^{(0)}$ to be timelike and $\epsilon_\mu^{(i)}$ to be spacelike, with normalization
+$$\epsilon^\lambda \cdot \epsilon^{\lambda'}=\eta^{\lambda \lambda'}.$$
+Moreover we shall choose $\epsilon_\mu^{(1)},\epsilon_\mu^{(2)}$ to be transverse polarizations, i.e. $\epsilon^{(1)}\cdot p = 0$ and $\epsilon^{(2)}\cdot p = 0$. We now choose $\epsilon^{(3)}$ to be the longitudinal polarization. For a photon traveling in the $x^3$ direction, the momentum is simply $p^\mu=|\vec p|(1,0,0,1)$, so the polarization vectors take the simple form
+$$\epsilon^{(0)}=\begin{pmatrix}
+1\\0\\0\\0\end{pmatrix},\epsilon^{(1)}=\begin{pmatrix}
+0\\1\\0\\0\end{pmatrix},\epsilon^{(2)}=\begin{pmatrix}
+0\\0\\1\\0\end{pmatrix},\epsilon^{(3)}=\begin{pmatrix}
+0\\0\\0\\1\end{pmatrix}$$
+and we can Lorentz boost or rotate to get photons traveling in other directions.
+
+We also write the conjugate momentum in terms of creating and annihilation operators.
+$$\pi^\mu(\vec x) =\int \frac{d^3p}{(2\pi)^3} \sqrt{\frac{|\vec p|}{2}} \sum_{\lambda=0}^3 \left((\epsilon^{(\lambda)}(\vec p))^{\mu} a_{\vec p}^\lambda e^{i \vec p \cdot \vec x}-(\epsilon^{(\lambda)} (\vec p))^{*\mu} a_{\vec p}^{\lambda \dagger} e^{-i\vec p \cdot \vec x}\right).$$
+Now we get the following commutation relations:
+$$[a_{\vec p}^\lambda,a_{\vec q}^{\lambda'}]=[a_{\vec p}^{\lambda \dagger},a_{\vec q}^{\lambda' \dagger}]=0$$
+and
+$$[a_{\vec p}^\lambda, a_{\vec q}^{\lambda' \dagger}]=-\eta^{\lambda \lambda'} (2\pi)^3 \delta^3(\vec p-\vec q).$$
+The minus sign in front of the delta function may seem okay for for $\lambda=1,2,3$ but a bit strange for the timelike polarization. Somehow, timelike $\gamma$s are different.
+
+We define a ground state $\ket{0}$ by
+$$a_{\vec p}^\lambda \ket{0}=0$$ as usual, and then the various momentum states are
+$$\ket{\vec p,\lambda}=a_{\vec p}^{\lambda \dagger}\ket{0}.$$
+Now, this is totally fine for $\lambda=1,2,3$ but if we take $\lambda=0$, we get
+$$\braket{p,\lambda=0}{q,\lambda=0}=\bra{0}a_{\vec p}^0 a_{\vec q}^{0\dagger} \ket{0}=-(2\pi)^3 \delta^3(\vec p-q),$$
+which appears to be a state of negative norm. Now, a Hilbert space with negative norm states is usually problematic-- in particular, the probabilistic interpretation of QM goes out the window. In our case, the constraint equation comes to the rescue.
+
+Let us switch to the Heisenberg picture and see what becomes of this polarization.
+\begin{enumerate}
+    \item Initially, we might think we could just impose the gauge condition. But note that $\p_\mu A^\mu=0$ doesn't work since $\pi^0 = -\p_\mu A^\mu$, so the commutation relationships cannot be obeyed (i.e. if $\pi^0$ vanishes then all its commutators are zero).
+    \item We could impose a condition on Hilbert space, such that for physical states $\ket{\psi}$ we have $\p_\mu A^\mu\ket{\psi}=0$. But this is too strong. For suppose we split up $A_\mu$ into to parts,
+    $$A_\mu^+(\vec x)=\int \frac{d^3p}{(2\pi)^3} \frac{1}{\sqrt{2|\vec p|}} \sum_{\lambda=0}^3 \epsilon_\mu^{(\lambda)}(\vec p) a_{\vec p}^\lambda e^{i \vec p \cdot \vec x}$$
+    and
+    $$A_\mu^-=\int \frac{d^3p}{(2\pi)^3} \frac{1}{\sqrt{2|\vec p|}} \sum_{\lambda=0}^3 \epsilon_\mu^{(\lambda)}{}^* (\vec p) a_{\vec p}^{\lambda \dagger} e^{-i\vec p \cdot \vec x}.$$
+    Then we see that $\p_\mu A^{\mu+}\ket{0}=0$, which is okay, but $\p_\mu A^{\mu-}\ket{0}\neq 0,$ which tells us that $\ket{0}$ is not physical. Therefore this doesn't work.
+    \item Finally, let us say that physical states $\ket{\psi}$ are defined by
+    \begin{equation}\label{gbcondition}
+        \p_\mu A^{+\mu}(\vec x)\ket{\psi}=0
+    \end{equation}
+    so that
+    $$\bra{\psi'}\p_\mu A^\mu \ket{\psi}=0$$
+    for all physical states $\ket{\psi},\ket{\psi'}$. Eqn. \ref{gbcondition} is known as the \term{Gupta-Bleuler condition}.
+\end{enumerate}
+By the linearity of \ref{gbcondition}, we see that the physical states $\set{\ket{\psi}}$ span a Hilbert space. Moreover, we can decompose a generic state into its transverse components $\ket{\psi_T}$ and its timelike (and/or longitudinal) components $\ket{\phi}$:
+$$\ket{\psi}=\ket{\psi_T}\ket{\phi}.$$
+Then
+$$\p_\mu A^{+\mu}\ket{\psi}=0 \iff (a_{\vec k}^3- a_{\vec k}^0)\ket{\phi}=0$$
+Check this! This means that physical states contain timelike/longitudinal pairs only. That is,
+$$\ket{\phi}=\sum_{n=0}^\infty C_n \ket{\phi_n}$$
+where $n$ indexes over $n$ timelike/longitudinal pairs in general.%maybe check this
+
+Therefore
+$$\braket{\phi_m}{\phi_n}=\delta_{m0}\delta_{n0},$$ so states with transverse-longitudinal (TL) pairs have zero norm. These zero norm states are treated as an equivalence class-- two states which differ only in the TL pairs are treated as physically equivalent.
+
+This only makes sense if observables don't depend on $\ket{\phi_n}$, e.g. if our Hamiltonian is
+$$H=\int \frac{d^3p}{(2\pi)^3} |\vec p| \left(\sum_{i=1}^3 a_{\vec p}^{i\dagger} a_{\vec p}^i - a_{\vec p}^{0\dagger} a_{\vec p}^0\right),$$
+then since $$(a_{\vec k}^3 -a_{\vec k}^0)\ket{\psi}=0 \implies \bra{\psi} a_{\vec p}^{3\dagger} a_{\vec p}^3 \ket{\psi}=\bra{\psi} a_{\vec p}^{0\dagger} a_{\vec p}^0 \ket{\psi}.$$
+That is, as long as timelike and longitudinal pieces cancel in the Hamiltonian $H$, we only get physical contributions from transverse states.
+In general this cancellation works for any gauge-invariant operator evaluated on physical states.
+
+Now it's time for us to write down the photon propagator! It is
+$$\bra{0}T[A_\mu(\vec x)A_\nu (\vec y)]\ket{0}= \int \frac{d^4p}{(2\pi)^4} \frac{-i}{p^2+i\epsilon} \left[\eta_{\mu\nu}+(\alpha-1)\frac{p_\mu p_\nu}{p^2}\right]e^{-ip\cdot (x-y)}$$
+for a general gauge $\alpha$. Note that in Feynman gauge ($\alpha=1$), the propagator takes a particularly simple form-- we just get the $\frac{-i \eta_{\mu\nu}}{p^2+i\epsilon}$ term. One can check that if we do any physical calculation in full generality leaving the $\alpha$ in, there are no $\alpha$s in the final result.
+
+Can we introduce interactions and sources into our theory? Sure we can. Let's first write down the Maxwell Lagrangian with a source,
+$$\cL=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-j^\mu A_\mu.$$
+The equations of motion are $\p_\mu F^{\mu\nu}=j^\nu$, and we see that this implies
+$$\p_\nu j^\nu =\p_\nu \p_\mu F^{\mu\nu}=0,$$
+so $j^\nu$ is a conserved current. Now the Dirac Lagrangian tells us that our theory of spin $1/2$ fermions,
+$$\cL_D=\bar \psi(i\slashed{\p}-m)\psi,$$
+has an internal symmetry $\psi\to e^{-i\alpha}\psi, \bar \psi \to e^{i\alpha}\bar \psi$ with $\alpha\in \RR$. This yields a current $j^\mu=\bar \psi \gamma^\mu \psi$. So we take this current from the Dirac Lagrangian and put it straight into the Maxwell Lagrangian to couple our photon to fermions.
+
+Doing so yields the Lagrangian for quantum electrodynamics,
+$$L_{QED}=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}+\bar \psi(i\slashed{\p}-m)\psi - e\bar \psi_\alpha \gamma^\mu_{\alpha\beta} A_\mu \psi_\beta.$$
+Here, $\alpha,\beta$ are spinor indices and $\mu$ is a Lorentz index. $e$ is a coupling constant determining the strength of the coupling of the photon to our fermion (e.g. an electron). We therefore have the kinetic terms describing a massless spin one particle in $F_{\mu\nu}$, the Dirac kinetic terms for a massive spin $1/2$ particle in $\bar \psi(i\slashed{\p}-m)\psi$, and a coupling term which tells us that (as we are well aware) photons and electrons can interact.

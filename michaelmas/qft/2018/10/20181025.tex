@@ -16,8 +16,8 @@ in the time-ordered product. The contracted bit will make sure we have no issues
 We will ignore all terms involving $c,c^\dagger$ in the field expansions since they give zeroes (i.e. to this order, we don't need to worry about antiparticles). We ought to compute
 \begin{align*}
     \bra{p_1',p_2'}:\psi^*(x_1)\psi(x_1)\psi^*(x_2)\psi(x_2):\ket{p_1,p_2}={}&\int \frac{d^3 q_1 \ldots d^3 q_4 \sqrt{16 E_{p_1}\ldots E_{p_4}}}{(2\pi)^12 \sqrt{2E_{q_1}\ldots 2E_{q_4}}}\\ 
-    &\times\bra{0}b_{\vec p_1'} b_{\vec p_2'} \underbrace{b_{\vec q_1}^\dagger b_{\vec q_2}^\dagger}_{\psi^*s} \underbrace{b_{\vec q_3} b_{\vec q_4}}_{\psi s} b_{\vec p_1}^\dagger b_{\vec p_2}^\dagger \ket{0}\\
-    &\times e^{i(q_1\cdot x_1 +q_2 \cdot x_2-q_3 \cdot x_1 -q_2 \cdot x_2)}.
+    &\quad {}\times\bra{0}b_{\vec p_1'} b_{\vec p_2'} \underbrace{b_{\vec q_1}^\dagger b_{\vec q_2}^\dagger}_{\psi^*s} \underbrace{b_{\vec q_3} b_{\vec q_4}}_{\psi s} b_{\vec p_1}^\dagger b_{\vec p_2}^\dagger \ket{0}\\
+    &\quad {}\times e^{i(q_1\cdot x_1 +q_2 \cdot x_2-q_3 \cdot x_1 -q_2 \cdot x_2)}.
 \end{align*}
 Using commutation relations one can check (in a few lines) that this big mess of creation and annihilation operators simplifies to a slightly more manageable mess of delta functions we can integrate over and get rid of. That is,
 \begin{align*}

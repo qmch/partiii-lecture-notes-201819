@@ -1,0 +1,143 @@
+Today, we'll discuss the construction of non-abelian gauge theories, like the Standard Model! Let us first review the $U(1)$ case. We have a Lagrangian for a complex scalar field:
+$$\cL_\phi = \p_\mu \phi^* \p^\mu \phi- W(\phi^* \phi).$$
+This theory exhibits a \emph{global symmetry},
+\begin{align*}
+    \phi&\to g \phi\\
+    \phi^* &\to g^{-1}\phi^*,
+\end{align*}
+such that
+$$g=\exp(i\delta) \in U(1).$$
+That is, the Lagrangian is invariant under such a transformation of the fields, where $g$ does not depend on the point in spacetime.
+
+Let us also recall that we are interested in connecting Lie groups to Lie algebras, and so we can relate the Lie group which embodies our global symmetry to the Lie algebra $L(U(1))$ such that
+$$g=\exp(\epsilon X), \epsilon \ll 1, X \in L(U(1)) \simeq i\RR.$$
+That is, elements of the Lie group near the identity are related to the exponential of elements of the Lie algebra in the usual way.
+Thus the infinitesimal form of our transformation can be written as
+\begin{align*}
+    \phi&\to \phi+\delta_X \phi\\
+    \phi^* &\to \phi^*+\delta_X \phi^*,
+\end{align*}
+where
+\begin{align*}
+    \delta_X \phi &= \epsilon X \phi\\
+    \delta_X \phi^* &= -\epsilon X \phi^*
+\end{align*}
+and we take $X$ to be independent of the spacetime point $x$ (this will change later).
+We then argue that the variation in the Lagrangian (and therefore the action) vanishes to leading order in $\epsilon$,\footnote{This was actually on Example Sheet 1 of QFT! The proof is straightforward. Since $X$ does not depend on $x$ the spacetime point, we can just pull it out of the partial derivatives, so the kinetic term varies as
+$$\p_\mu(\phi^*-\epsilon X \phi^*) \p^\mu (\phi+\epsilon X \phi)=\p_\mu \phi^* \p^\mu \phi -\epsilon X \p_\mu \phi^* \p^\mu \phi +\epsilon X \p_\mu \phi^* \p^\mu \phi +O(\epsilon^2)= \p_\mu \phi^* \p^\mu \phi,$$
+so $\delta_X (\p_\mu \phi^* \p^\mu \phi)=0.$
+The potential term is essentially the same, but without the derivatives.}
+$$\delta_X \cL_\phi =0.$$
+
+Let us also recall our discussion of gauge invariance (e.g. from \emph{Quantum Field Theory}). For instance, electromagnetism exhibits a gauge $U(1)$ symmetry,
+$$g:\RR^{3,1}\to U(1).$$
+Gauge symmetries are local-- they can vary in space, so we should really write them as $X(x)$. Now as before we write
+$$g=\exp(\epsilon X(x)), \epsilon \ll 1$$
+where
+$$X:\RR^{3,1}\to L(U(1))$$
+now depends on where in spacetime we are looking.
+
+It's a useful fact that variations $\delta_X$ act much like derivatives-- they are linear, obey the Leibniz rule, and commute with partial derivatives. Therefore under the symmetry
+\begin{align*}
+    \delta_X \phi &= \epsilon X \phi\\
+    \delta_X \phi^* &= -\epsilon X \phi^*,
+\end{align*}
+we see that the kinetic terms transform slightly differently:
+$$\delta_X(\p_\mu \phi)= \p_\mu(\delta_X \phi) =\epsilon (\p_\mu X) \phi +\epsilon X (\p_\mu \phi),$$
+since $\p_\mu X \neq 0$ for our new gauge symmetry.
+So our original Lagrangian $\cL_\phi$ is no longer gauge invariant, but we can save gauge invariance by promoting the partial derivative to a covariant derivative,
+$$D_\mu=\p_\mu + A_\mu(x),$$
+with $A_\mu: \RR^{3,1}\to L(U(1)) = i\RR.$ That is, $A_\mu(x)$ is some new vector field which depends on space, and will help us define a gauge-invariant kinetic term in our Lagrangian. Under our gauge transformation, this $U(1)$ gauge field transforms as
+$$A_\mu \to A_\mu + \delta_X A_\mu,$$
+with the variation in $A_\mu$ defined to be
+$$\delta_X A_\mu = -\epsilon \p_\mu X.$$
+
+If we now take the variation of our covariant derivative, we see that
+\begin{align*}
+    \delta_X(D_\mu\phi)&= \delta_X(\p_\mu \phi + A_\mu \phi)\\
+    &=\p_\mu (\delta_X \phi)+(A_\mu (\delta_X) \phi + (\delta_X A_\mu) \phi)\\
+    &= \p_\mu (\epsilon X \phi)+ A_\mu \epsilon X \phi - \epsilon \p_\mu X \phi\\
+    &= \epsilon X \p_\mu \phi +\epsilon X A_\mu \phi\\
+    &= \epsilon X D_\mu \phi.
+\end{align*}
+Therefore our gauge field exactly cancels the extra term we got in the partial derivative, and we see that as the name suggests, the covariant derivative transforms in a nice covariant way (i.e. it transforms like the fields themselves under a gauge transformation).\footnote{Compare this with the covariant derivative defined in general relativity, where we are interested in coordinate transformations rather than transformations of the fields. There, we were led to introduce a connection in order to cancel out the non-tensorial nature of a quantity like $\p_mu V^\nu$. The principle is the same, but here our fields can be locally transformed by the gauge symmetry, whereas in GR we were dealing with some overall transformation of the coordinates.}
+
+We now write down the Maxwell Lagrangian, which is gauge-invariant--
+$$\cL = \frac{1}{4g^2} F_{\mu\nu} F^{\mu\nu}+(D_\mu \phi)^* (D^\mu \phi) -W(\phi^* \phi),$$
+with the field strength tensor defined in the usual way as
+$$F_{\mu\nu}\equiv\p_\mu A_\nu -\p_\nu A_\mu.$$
+It's a remarkable fact that the only way we know of to quantize a massless spin 1 field involves introducing the gauge field $A_\mu$.
+
+Having warmed up with Maxwell, let us now generalize this principle to a non-abelian gauge symmetry based on a Lie group $G$. We shall choose some representation $D$ of the Lie group $G$ and take $D$ to be of dimension $N$ so that its representation space $V$ is $V\simeq \CC^N$. That is, the field is an $N$-component complex vector. We also introduce the standard inner product on vectors in $V$, 
+$$(u,v)=\vec u^\dagger \cdot \vec v\quad \forall u,v\in V.$$
+Thus our complex scalar field is a map
+$$\phi:\RR^{3,1}\to V.$$
+
+The corresponding Lagrangian for this complex scalar field will be a kinetic term and a potential term, as usual:
+$$\cL_\phi = (\p_\mu \phi, \p^\mu \phi)-W[(\phi,\phi)].$$
+Let us take $D$ to be a \emph{unitary} representation, i.e.
+$$D(g)^\dagger D(g)=D(g) D(g)^\dagger = I_n.$$
+Then our representation preserves the inner product on the representation space $V$:
+$$(D(g)\phi, D(g) \tilde \phi)=(D^\dagger(g) D(g)\phi,\tilde \phi)=(\phi,\tilde\phi)$$
+by the unitarity of $D(g)$.
+
+Our Lagrangian is invariant under global transformations,
+$$\phi \to D(g)\phi \quad \forall g\in G,$$
+so near the identity let us look at infinitesimal transformations
+$$g=\exp(\epsilon X), \epsilon \ll 1, X \in L(G).$$
+%written as the exponential of elements of the Lie algebra. Here, note that the exponential is defined by the power series (analogous to the matrix exponential). 
+Thus we define
+$$D(g)=\exp(\epsilon R(X))\in \text{Mat}_N(\CC)$$
+where
+$$R:L(G)\to \text{Mat}_N (\CC)$$
+defines a unitary representation of the Lie algebra $L(G)$ (i.e. unitary maps on the representation space $\CC^N$). That is,
+$$R(X)^\dagger = -R(X) \quad \forall X \in L(G),$$
+so the representation matrices of the Lie \emph{algebra} $L(G)$ are anti-hermitian, which implies that the representation matrices of the corresponding Lie \emph{group} $G$ are unitary.
+
+Our gauge symmetry is a map from spacetime to the Lie algebra,
+$$X:\RR^{3,1} \to L(G).$$
+Thus the variation in $\phi$ with respect to $X$ is simply
+$$\delta_X \phi = \epsilon R(X(x))\phi \in V,$$
+where now we have explicitly included the spacetime dependence of the element $X$. But we see there's a problem-- $\cL_\phi$ is no longer invariant.
+
+Let us try to follow the example of electrodynamics and introduce a gauge field
+$$A_\mu : \RR^{3,1}\to L(G)$$
+which will restore gauge invariance. The variation of this gauge field is
+\begin{equation}\label{nonabelianvar}
+\delta_X A_\mu = -\epsilon \p_\mu X+\epsilon[X,A_\mu].
+\end{equation}
+Note that both $X$ and $A_\mu$ live in the Lie algebra, so this is a sensible construction (their variations/derivatives also ought to live in the Lie algebra). However, this second term is something special. If $X$ does not vary in space (i.e. we have a global symmetry), then this second term describes the \emph{adjoint} action of the Lie algebra on the gauge field $A_\mu$, which is itself in the Lie algebra.
+
+We now define our covariant derivative for this field as
+$$D_\mu \phi = \p_\mu \phi+R(A_\mu)\phi.$$
+The covariant derivative $D_\mu \phi$ lives in the %fill in?
+So we claim that the covariant derivative has all the properties we'd like:
+$$\delta_X(D_\mu \phi)=\epsilon R(X) D_\mu \phi$$
+and $$\delta_X\phi = \epsilon R(X)\phi.$$
+That is, the covariant derivative varies in the same way as the fields themselves.
+
+\begin{proof}
+We explicitly compute the variation.
+\begin{align*}
+    \delta_X(D_\mu \phi+&= \delta_X(\p_\mu \phi+R(A_\mu)\phi))\\
+    &=\p_\mu (\delta_X \phi)+R(A_\mu)\delta_X \phi+ R(\delta_X A_\mu)\phi\\
+    &= \underbrace{\p_\mu (\epsilon R(X) \phi)}_{(1)}+\underbrace{\epsilon R(A_\mu)R(X) \phi}_{(2)} - \epsilon R(\p_\mu X)\phi+\epsilon R([X,A_\mu])\phi\\
+    &= \underbrace{\epsilon R(\p_\mu X)\phi +\epsilon R(X) \p_\mu \phi}_{(1)}+\underbrace{\epsilon R(X) R(A_\mu)\phi + \epsilon [R(A_\mu),R(X)]}_{(2)}-\epsilon R(\p_\mu X)\phi +\epsilon [R(X),R(A_\mu)]\\
+    &= \epsilon R(X) \p_\mu \phi +\epsilon R(X) R(A_\mu)\phi\\
+    &= \epsilon R(X) D_\mu\phi.
+\end{align*}
+where we have used the linearity of the map $R$ to move variations through, and explicitly substituted our gauge field variation \ref{nonabelianvar}. We rewrote the $R(A_\mu)R(X)$ term using a commutator and cancelled it with the commutator term from the gauge field variation in order to reach our final result-- the covariant derivative transforms like the fields, so our kinetic term is now invariant.
+\end{proof}
+
+We now check that the inner product term is okay:
+\begin{align*}
+\delta_X[(D_\mu \phi,D^\mu \phi)]&=\epsilon(R(X)D_\mu \phi, D^\mu \phi+\epsilon (D_\mu \phi, R(X) D^\mu \phi)\\
+&=\epsilon(R(X)D_\mu \phi, D^\mu \phi+\epsilon (R^\dagger(X) D_\mu \phi, D^\mu \phi)\\
+&=0\iff R^\dagger(X) = R(X)
+\end{align*}
+So our potential term is also gauge invariant.
+
+Finally, we'd like to have an analog of the Maxwell term-- here, it takes the form
+$$F_{\mu\nu}=\p_\mu A_\nu -\p_\nu A_\mu +[A_\mu,A_\nu].$$
+We will show next time that this term obeys a covariant transformation law,
+$$\delta_X(F_{\mu\nu})=\epsilon[X,F_{\mu\nu}]\in L(G).$$

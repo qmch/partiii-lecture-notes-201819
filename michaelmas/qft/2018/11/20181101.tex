@@ -18,7 +18,8 @@ since $H_0\ket{0}=0.$ Insert a complete set of interacting states $\ket{p_1,\ldo
 \begin{align*}
 \lim_{t_0\to-\infty} \bra{\psi}U(0,t_0)\ket{0}&=
 \lim_{t_0\to-\infty}\bra{\psi}e^{iHt_0}\left[\ket{\Omega}\bra{\Omega}+\sum_{n=1}^\infty \int  \prod_{j=1}^n \frac{d^3p_j}{2E_{p_j}(2\pi)^3}\ket{p_1,\ldots,p_n}\bra{p_1,\ldots,p_n}\right]\ket{0}\\
-&=\braket{\psi}{\Omega}\braket{\Omega}{0}+
+&=\braket{\psi}{\Omega}\braket{\Omega}{0}\\
+&\qquad {}+
 \lim_{t_0\to-\infty}\sum_{n=1}^\infty \int  \prod_{j=1}^n \frac{d^3p_j}{2E_{p_j}(2\pi)^3} e^{i\sum_{k=1}^n E_{p_k} t_0}\braket{\psi}{p_1,\ldots,p_n}\braket{p_1,\ldots,p_n}{0}.
 \end{align*}
 Note that in the first term $\bra{\psi} e^{iHt_0}\ket{\Omega}\braket{\Omega}{0},$ all nonzero powers of $H$ from the exponential will kill the vacuum state $\ket{\Omega}$ by definition, so the only thing that survives is the zeroth order term, $\braket{\psi}{\Omega}\braket{\Omega}{0}.$ Luckily, the second term vanishes completely due to the Riemann-Lebesgue lemma: stated roughly, ``for reasonable $f(x)$ (i.e. square-integrable), $\lim_{\mu\to\infty} \int_a^b f(x)e^{i\mu x}dx=0.$'' Therefore we find that

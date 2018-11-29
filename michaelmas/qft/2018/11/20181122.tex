@@ -64,18 +64,18 @@ We say that the configuration space for $A_\mu$ is then \term{foliated}\footnote
 \end{enumerate}
 
 Having resolved the question of the extra degrees of freedom in $A_\mu$, let us now proceed to write the Hamiltonian for the EM field. What are the conjugate momenta? The first is
-$$\Pi_0=\P{\cL}{\dot A_0}=0,$$
+$$\pi_0=\P{\cL}{\dot A_0}=0,$$
 since there is no $\dot A_0=\dot \phi$ component in any of the fields, while the others are
-$$\Pi_i=\P{\cL}{\dot A_i}=-\dot A_i+\p_i A^0=F^{i0}=E^i.$$
+$$\pi_i=\P{\cL}{\dot A_i}=-\dot A_i+\p_i A^0=F^{i0}=E^i.$$
 After a little algebra, we see that the Hamiltonian takes the form
-$$H=\int d^3x (\Pi_i \dot A_i -\cL)=\int d^3x \frac{1}{2}(\vec E^2 +\vec B^2)-A_0(\div \vec E).$$
+$$H=\int d^3x (\pi_i \dot A_i -\cL)=\int d^3x \frac{1}{2}(\vec E^2 +\vec B^2)-A_0(\div \vec E).$$
 In this last term, $A_0$ (being non-dynamical) just acts like a Lagrange multiplier and sets $\div \vec E=0$.
 
 If we work in the Lorenz gauge, $\p_\mu A^\mu=0$, the equations of motion then become
 $$\p_\mu \p^\mu \vec A=0.$$ Let us note that in this gauge, we can write a new Lagrangian with an extra term,
 $$\cL=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-\frac{1}{2}(\p_\mu A^\mu)^2.$$
 Thus
-$$\p_\mu F^{\mu\nu}+\p^\nu(\p_\mu A^\mu)= 0 \iff \p_mu \p^\mu A^\nu =0.$$
+$$\p_\mu F^{\mu\nu}+\p^\nu(\p_\mu A^\mu)= 0 \iff \p_\mu \p^\mu A^\nu =0.$$
 It will be convenient to work with this new Lagrangian and only impose $\p_\mu A^\mu=0$ later, at the operator level. Thus we can write a general Lagrangian as
 $$\cL=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-\frac{1}{2\alpha}(\p_\mu A^\mu)^2$$
 where $\alpha=1$ is known as \term{Feynman gauge} and $\alpha=0$\footnote{This looks bad, I know. What we'll see is that in the end, something sensible happens when we try to work out the photon propagator. Really, we should think of taking the $\alpha\to 0$ limit as forcing $\p_mu A^\mu\to 0$. In the path integral context, as $\a\to 0$ there is an increasingly high energy cost (i.e. an exponential damping in the factor $e^{iS}$) to having any $\p_\mu A^\mu$ coupling. In any case, we should first find the photon propagator in terms of $\alpha$, and then set $\a$ to zero (or one, if we're working in Feynman gauge).} is called \term{Landau gauge}.

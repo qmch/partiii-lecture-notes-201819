@@ -1,0 +1,104 @@
+We previously said that if the symmetries of a theory are described by a Lie group $G$, then there is a corresponding Lie algebra $L(G)$ which induces a map
+$$\phi:\RR^{3,1}\to V$$ the representation space of the representation $D$ of $G$, and also the representation $R$ of $L(G)$.
+
+A gauge transformation is a symmetry applied locally,
+$$X:\RR^{3,1}\to L(G)$$
+such that
+$$\delta_X\phi = \epsilon R(X(x))\phi,$$
+where the transformation of the field $\phi$ is given by the representation $R(X(x))$, which depends explicitly on the spacetime point $x\in \RR^{3,1}.$
+
+Now we say that the gauge field $A_\mu$ is a map
+$$A_\mu:\RR^{3,1}\to L(G)$$
+which locally tells us how to define our covariant derivative. Modeling this after electrodynamics, under a gauge transformation the gauge field transforms by
+$$\delta_X A_\mu = -\epsilon \p_\mu X + \epsilon [X,A_\mu]\in L(G)$$
+This is sensibly defined since the bracket will give us another element of the Lie algebra, and when the symmetry is global this just reduces to an adjoint map $\delta_X A_\mu = \epsilon [X,A_\mu]$. If the Lie algebra is also abelian, then the field transforms trivially.
+
+Having defined the gauge field and its variation, we see that the covariant derivative is naturally defined as
+$$D_\mu \phi = \p_\mu \phi+R(A_\mu)\phi \implies \delta_X(D_\mu\phi)=\epsilon R(X) D_\mu \phi.$$
+Indeed, the whole point of defining a covariant derivative is that it transforms like the original fields $\phi$.
+
+With a covariant derivative in hand, we can then define a gauge invariant Lagrangian
+$$\tilde \cL = (D_\mu \phi, D^\mu \phi)-W[(\phi,\phi)].$$
+This first term is simply a covariant version of the kinetic term $\p_\mu \phi \p^\mu \phi$, while the second term contains any quadratic potentials we like.
+
+We shall also define a field strength tensor in analogy to electrodynamics. It is
+$$F_{\mu\nu}=\p_\mu A_\nu -\p_\nu A_\mu +[A_\mu, A_\nu].$$
+Note that the gauge symmetry $U(1)$ was abelian, so this last term vanished in electrodynamics. In general, this need not be true, and the variation of the field strength tensor is then
+$$\delta_X(F_{\mu\nu})=\epsilon [X,F_{\mu\nu}] \in L(G).$$
+\begin{proof}
+As we've mentioned, the variation $\delta_X$ acts like a derivative, so it commutes with partial derivatives and obeys the Leibniz rule.
+\begin{align*}
+    \delta_X(F_{\mu\nu}) &= \p_\mu (\delta_X A_\nu)-\p_\nu(\delta_X A_\mu) +[\delta A_\mu,A_\nu]+[A_\mu,\delta_X A_\nu]\\
+    &=-\epsilon \p_\mu \p_\nu X+\epsilon \p_\mu([X,A_\nu]) +\epsilon \p_\nu \p_\mu X - \epsilon \p_\nu([X,A_\mu])\\
+    &\quad {}-\epsilon[\p_\mu X, A_\nu] - \epsilon [A,\p_\nu, X] + \epsilon [[X,A_\mu],A_\nu]+\epsilon[A_\mu,[X,A_\nu]].
+\end{align*}
+The mixed partial terms cancel, and the derivative hits both of the terms inside the bracket, so $\epsilon \p_\mu ([X,A_\nu])-\epsilon[\p_\mu X,A_\nu]-\epsilon [A_\mu,\p_\nu X]=0$. We are left with four terms. We can rewrite the nested bracket using the Jacobi identity, and regroup terms using the linearity of the bracket:
+\begin{align*}
+    \delta_X(F_{\mu\nu})&= \epsilon [X,\p_\mu A_\nu]-\epsilon [X,\p_\nu A_\mu] - \epsilon ([A_\nu,[X,A_\mu]]+[A_\mu,[A_\nu,X]]\\
+    &=\epsilon [X,\p_\mu A_\nu-\p_\nu A_\mu]+\epsilon [X,[A_\mu,A_\nu])]\\
+    &=\epsilon [X,F_{\mu\nu}].
+\end{align*}
+Therefore the variation in $F_{\mu\nu}$ is precisely the adjoint action $\epsilon [X,F_{\mu\nu}]$.
+\end{proof}
+%Things get worse before they get better. A brief summary of Part III.
+Now we will use the Killing form to define a Lagrangian for $A_\mu$ using our field strength tensor. We write down the candidate Lagrangian
+$$\cL_A=\frac{1}{g^2} \kappa(F_{\mu\nu},F^{\mu\nu}),$$
+where the Killing form is the inner product on the field strength tensors. This is invariant for $L(G)$ semi-simple, since
+\begin{align*}
+    \delta_X \cL_A &= \frac{1}{g^2} \kappa(\delta_X F_{\mu\nu},F^{\mu\nu}] + \frac{1}{g^2} \kappa(F_{\mu\nu},\delta_X F^{\mu\nu})\\
+    &=\epsilon \left(\kappa([X,F_{\mu\nu}],F^{\mu\nu})+\kappa(F_{\mu\nu},[X,F^{\mu\nu}])\right)\\
+    &=0
+\end{align*}
+by the invariance of the Killing form.
+
+We can also consider a kinetic term provided that $L(G)$ is of \term{compact type}, i.e. $\exists$ a basis $B$ with
+$$B=\set{T^a, a=1,\ldots, d=\dim G}$$
+such that the Killing form is not only non-degenerate but has either positive- or negative-definite signature,
+$$\kappa^{ab}=\kappa(T^a,T^b)=-\kappa \delta^{ab}.$$
+That is, a ``metric'' with an inconsistent signature would give us wrong-sign kinetic terms. Thus
+$$\cL_A=-\frac{k}{g^2}\sum_{a=1}^d F_{\mu\nu}^{(a)} F^{\mu\nu (a)}.$$
+We require standard, same-sign kinetic terms for each component of the gauge field, or else our theory becomes wildly unstable (it becomes energetically favorable to have particles moving with higher and higher energies).
+
+Note that there is a family of consisten theories provided by Cartan-- for $G$ a compact simple Lie group, we get a real Lie algebra $\fg_\RR = L(G)$ of compact type. We can then complexify this Lie algebra to get a new Lie algebra $\fg = L_\CC(G),$ which is a simple complex Lie algebra.
+%We can choose a new set of matter representations. What's a matter representations? Not much, what's a matter representations with you?
+
+Now with our gauge field
+$$A_\mu: \RR^{3,1}\to L(G),$$
+the matter content of our theory is described by some fields
+$$\phi:\RR^{3,1}\to V_\Lambda$$
+such that $V_{\Lambda}$ is the representation space for a unitary representation (in particular an irrep) $R_\Lambda$ of $\fg_\RR$. Then $\Lambda \in \bar L_W[\fg].$
+
+Our new Lagrangian is
+$$\cL=\frac{1}{g^2}\kappa(F_{\mu\nu},F^{\mu\nu})+\sum_{\Lambda\in S}(D_\mu \phi_\Lambda, D^\mu \phi_\Lambda) - W(\set{(\phi_\Lambda,\phi_\Lambda),\Lambda \in S}).$$
+These sorts of theories are actually the only renormalizable theories of spin 1 particles that we know of. The Standard Model is precisely a non-abelian gauge theory of this type, with
+$$G_{SM}=U(1)\times SU(2)\times SU(3).$$
+There's a slight caveat, which is that the Standard Model also includes fermions, and so has spinor terms like $(\bar \psi, D\psi)$.%slashed D
+
+We believe that the strong force is described by an $SU(3)$ gauge symmetry, as listed in Table \ref{tab:qcd}.
+\begin{table}[]
+    \centering
+    \begin{tabular}{c c|c}
+         & $SU(3)$ global symmetry & $SU(3)$ gauge symmetry\\\hline
+         $\psi$ & $\underline{3}$ & $\underline{3}$\\
+         $\bar \psi$ & $\underline{\overline{3}}$ & $\underline{\overline{3}}$\\
+    \end{tabular}
+    \caption{The symmetries of the strong force, described by QCD (quantum chromodynamics). Both color and flavor symmetry are key in the representations (and therefore the physical states) which can be assembled out of individual quarks.}
+    \label{tab:qcd}
+\end{table}
+QCD is an interesting theory because the gauge symmetry leads to a ``color'' symmetry, while the global symmetry leads to ``flavor.'' 
+
+QCD obeys confinement, which means that particles only appear in color singlets $\underline{1}$. Let us look at what color combinations of quarks are permitted! For two quarks, we have
+$$\underline{3} \otimes \underline{3}=\underline{6} \oplus \underline{\overline{3}},$$
+for instance. Three quarks combine as
+$$\underline{3}\otimes \underline{3}\otimes \underline{3}=(\underline{6} \oplus \underline{\overline{3}}) \otimes \underline{3} = \underline{8} \oplus \underline{10} \oplus \underline{8} \oplus \underline{1}.$$
+Therefore we see that three quarks can be combined to form a baryon, since we have recovered a singlet $\underline{1}$, but two quarks cannot. If we take a quark and an anti-quark instead, we can get
+$$\underline{3}\otimes \underline{\overline{3}} = \underline{8}\oplus \underline{1},$$
+so a quark and an anti-quark can combine to form a meson.
+
+Looking at the flavor symmetry of baryons, we get the same
+$$\underline{3}\otimes \underline{3}\otimes \underline{3}=(\underline{6} \oplus \underline{\overline{3}}) \otimes \underline{3} = \underline{8} \oplus \underline{10} \oplus \underline{8} \oplus \underline{1}$$
+symmetry, and we find that the lightest baryons form a $\underline{8}$ set of particles, the baryon octet. They are labeled by the quantum numbers of $I,Y$ (isospin and hypercharge) which form the $8$-dimensional representation of $SU(3)$, i.e. the adjoint representation.
+
+In the end, we see that the course has come full circle-- from a mysterious hexagonal diagram and murmurings of quantum numbers as weights of representations, we have ultimately learned the language of symmetries in particle physics. We saw how continuous groups of symmetries were generated by infinitesimal elements of the tangent space, which had their own interesting internal structure. We also discussed the underlying algebraic structure of the angular momentum operators from quantum mechanics, and generalized this idea to understand the connections between representations and their fundamental weights, which in turn are precisely related to the quantum numbers of particles. 
+
+We showed that almost all the Lie algebras we're interested in fall into a fairly simple classification, and we learned how to construct new representations using the tensor product, as well as how to decompose them into direct sums algorithmically. Such arguments from representation theory are powerful and widespread precisely because nature seems to enjoy a large number of symmetries, both approximate and exact. Finally, we saw that so-called gauge theories are perhaps the most powerful embodiment of these symmetries. By promoting partial derivatives to covariant derivatives, we arrive at Lagrangians which are gauge-invariant and therefore enjoy conserved charges based on the particular representation of the gauge group(s) under which they transform. Such gauge theories include not only the individual theories of the electromagnetic and strong interactions but the most comprehensive quantum field theory we've constructed to date: the Standard Model. What comes next? Maybe you'll be the one to figure it out.

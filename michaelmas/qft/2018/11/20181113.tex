@@ -45,7 +45,7 @@ $$u_{\vec p}=\begin{pmatrix}
 \end{pmatrix}$$
 for any constant two-component spinor $\xi$, normalized such that $\xi^\dagger \xi =1$.
 \begin{proof}
-Let us suppose that $u_{\vec p}={u_1\choose u_2}$ and substitute into Eqn. \ref{diracplanewave}. Then we get
+Let us suppose that $u_{\vec p}=\begin{pmatrix}u_1\\u_2\end{pmatrix}$ and substitute into Eqn. \ref{diracplanewave}. Then we get
 \begin{align}
     (p\cdot \sigma)u_2 &= m u_1\\
     (p\cdot \bar \sigma)u_1 &= m u_2.
@@ -72,18 +72,18 @@ $$u_{\vec p}=\begin{pmatrix}\sqrt{p\cdot \sigma}\xi\\
 
 \begin{exm}
 Let's take a massive spinor in its rest frame, mass $m$ and $\vec p=0$. Then 
-$$u_{\vec p}=\sqrt{m}{\xi \choose \xi}$$
+$$u_{\vec p}=\sqrt{m}\begin{pmatrix}\xi\\ \xi\end{pmatrix}$$
 for any $\xi$. Under spatial rotations, $\xi$ transforms to
 $$\xi \to e^{i\gv \sigma \cdot \gv \phi/2}\xi,$$
-and after quantization, $\xi$ will describe spin. For instance, $\xi={1\choose 0}$ will be a spin $\uparrow$ along the $z$-axis.
+and after quantization, $\xi$ will describe spin. For instance, $\xi=\begin{pmatrix}1\\ 0\end{pmatrix}$ will be a spin $\uparrow$ along the $z$-axis.
 
 What happens if we boost the particle along the $x^3$ axis? We get
-$$u_{\vec p}\begin{pmatrix}\sqrt{E-p^3} {1\choose 0}\\
-\sqrt{E+p^3}{1\choose 0}
+$$u_{\vec p}\begin{pmatrix}\sqrt{E-p^3} \begin{pmatrix}1\\ 0\end{pmatrix}\\
+\sqrt{E+p^3}\begin{pmatrix}1\\ 0\end{pmatrix}
 \end{pmatrix}\to_{E\to p^3, m\to 0} \sqrt{2E} \begin{pmatrix}0\\0\\1\\0\end{pmatrix}$$
 and for spin down we have
-$$u_{\vec p}\begin{pmatrix}\sqrt{E+p^3} {0\choose 1}\\
-\sqrt{E-p^3}{0\choose 1}
+$$u_{\vec p}\begin{pmatrix}\sqrt{E+p^3} \begin{pmatrix}0\\ 1\end{pmatrix}\\
+\sqrt{E-p^3}\begin{pmatrix}0\\ 1\end{pmatrix}
 \end{pmatrix}\to_{m\to 0} \sqrt{2E} \begin{pmatrix}0\\1\\0\\0\end{pmatrix}.$$
 We've been a little slick in rewriting the nonvanishing component of $p\cdot \sigma$, since the argument of the square root is technically a matrix. But we won't dwell on this too much except to say that it seems to be well-defined for our purposes.
 \end{exm}

@@ -1,0 +1,117 @@
+A quick correction: on Example Sheet 3, Q1, the metric should be
+$$ds^2=-(1+2\Phi)dt^2+(1-2\Phi)(dx^2+dy^2+dz^2).$$
+
+Going on. Last time, we introduced the vierbein fields and wrote down a basis of 1-forms for the Schwarzschild metric.
+We found that the one-forms were
+\begin{align*}
+    E^0 &= W dt\\
+    E^1 &= dr/W\\
+    E^2 &= rd\theta\\
+    E^3 &= r\sin\theta d\phi,
+\end{align*}
+and the corresponding two-forms were
+\begin{align*}
+    dE^0 &= = -W' E^0 \wedge E^1\\
+    dE^1 &= 0\\
+    dE^2 &=\frac{W}{r} E^1 \wedge E^2\\
+    dE^3 &=  \frac{W}{r} E^1 \wedge E^3 + \frac{\cot \theta}{r} E^2 \wedge E^3.
+\end{align*}
+
+Now we want the connection $1$-form. But we know that $$dE^\mu=-\omega^\mu{}_\nu \wedge E^\nu,$$
+and that $\omega_{\mu\nu}=-\omega_{\nu\mu}$, so by direct comparison we see that with
+\begin{align*}
+    dE^0 &= -\omega^0{}_1 \wedge E^1 -\omega^0{}_2 \wedge E^2 -\omega^0{}_2 \wedge E^3\\
+    dE^1 &= -\omega^1{}_0 \wedge E^0 -\omega^1{}_2 \wedge E^2 -\omega^1{}_3 \wedge E^3\\
+    dE^2 &= -\omega^2{}_0 \wedge E^0 -\omega^2{}_1 \wedge E^1 -\omega^2{}_3 \wedge E^3.
+\end{align*}
+By comparison to the two-forms, we find that
+\begin{align*}
+    \omega^0{}_1 &= W' E^0\\
+    \omega^0{}_2 &= 0\\
+    \omega^0{}_3 &= 0\\
+    \omega^1{}_2 &= -W/r E^2\\
+    \omega^1{}_3 &= -W/r E^3\\
+    \omega^2{}_3 &= -\cot\theta/r E^3
+\end{align*}
+and the others are related to these by symmetry.
+
+To compute the curvature 2-form
+$$\Omega^\mu{}_\nu=d\omega^\mu{}_\nu+\omega^\mu{}_\rho \wedge \omega^\rho{}_\nu,$$
+we can do some direct computation. For instance,
+$$\Omega^0{}_1=d\omega^0{}_1+\omega^0{}_1 \wedge \omega^1{}_1 +\omega^0{}_2 \wedge \omega^2{}_1 +\omega^0{}_3 \wedge \omega^3{}_1.$$
+But these last two terms vanish by the $\omega$s we explicitly computed and $\omega^1{}_1=0$ by antisymmetry. Therefore
+\begin{align*}
+    \Omega^0{}_1&= d(W'E^0)\\
+    &=W'' dr \wedge E^0 + W'dE^0\\
+    &=W'' W E^1\wedge E^0 +W'(-W' E^0 \wedge E^1)\\
+    &=-(WW''+{W'}^2)E^0 \wedge E^1.
+\end{align*}
+A similar computation holds for $\Omega^0{}_2,\Omega^0{}_3$:
+$$\Omega^0{}_2 = \omega^0{}_1 \wedge \omega^1{}_2 = -WW'/r E^0 \wedge E^2$$
+and
+$$\Omega^0{}_3=-WW'/r E^0 \wedge E^3.$$
+What about $\Omega^1{}_2$? Here, we have (discarding terms from asymmetry of $\omega$)
+\begin{align*}
+    \Omega^1{}_2&= d\omega^1{}_2+\omega^1{}_0 \wedge \omega^0{}_2 + \omega^1{}_3 \wedge \omega^3{}_3\\
+    &= d(-W/r E^2)\\
+    &=(-W'/r+W/r^2) dr \wedge E^2 -W/r dE^2\\
+    &=(-WW'/r + W^2/r^2)E^1 \wedge E^2 -W^2/r^2 E^1 \wedge E^2\\
+    &=-WW'/r E^1 \wedge E^2.
+\end{align*}
+where the third term in the first line is like $E^3\wedge E^3$ and so vanishes.
+A  similar computation yields
+$$\Omega^1{}_2 = -\frac{WW'}{r} E^1 \wedge E^3.$$
+For $\Omega^2{}_3$, we have to do a bit more work.
+\begin{align*}
+    \Omega^2{}_3 &= d\omega^2{}_3 +\omega^2{}_1 \wedge \omega^1{}_3\\
+    &=\frac{1}{r\sin^2\theta}d\theta \wedge E^3 + \frac{\cot\theta}{r^2}dr \wedge E^3 -\frac{\cot\theta}{r}\left(\frac{\cot\theta}{r}E^2 \wedge E^2 +\frac{W}{r} E^1 \wedge E^3 +\frac{W^2}{r^2}E^2 \wedge E^3\right)\\
+    &=\left(\frac{1}{r^2 \sin^2\theta}-\frac{W^2}{r^2}-\frac{c\to^2\theta}{r^2}\right)E^2\wedge E^3\\
+    &=\left(\frac{1}{r^2}-\frac{W^2}{r^2}\right) E^2 \wedge E^3.
+\end{align*}
+
+However, recall that the curvature $2$-form has a nice relation to the Riemann tensor:
+$$\Omega^\mu{}_\nu=\frac{1}{2}R^\mu{}_{\nu\rho\sigma}E^\rho \wedge E^\sigma,$$
+so this object contains all the information about curvature (and is often more convenient to compute than Riemann directly).
+
+Note also that the Ricci tensor is the Riemann contracted over the first and third indices,
+$$R_{\rho\sigma}=R^\mu{}_{\rho\mu\sigma},$$
+so for instance
+$$R_{00}=R^0{}_{000}+R^1{}_{010}+R^2{}_{020}+R^3{}_{030}.$$
+But note that the Riemann tensor with an index up inherits the symmetries of the Riemann tensor with all indices down. For instance, $R^0{}_{000}=0$ since Riemann is antisymmetric in the first and last pair of indices. Meanwhile, $R^1{}_{010}\sim R_{1010}=R_{0101}=-R^0{}_{101}=+(WW'' +{W'}^2)$ from comparison to $\Omega^0{}_1$. Similarly, $R^2_{020}\sim -R^0{}_{202}=2WW'/r$, and $R^3{}_{030}\sim -R^0{}_{303}$, so we find that
+$$R_{00}=WW'' + {W'}^2+2WW'/r.$$
+A similar process yields the other components of Ricci,
+\begin{align*}
+    R_{11} &= -WW''-W'{}^2 -2WW'/r\\
+    R_{22} &= -2WW'/r -W^2/r^2 +1/r^2 =R_{33}.
+\end{align*}
+It's a good exercise to check that with $W=\left(1-\frac{\text{const}}{r}\right)^{1/2}$ makes $R_{\mu\nu}=0$, i.e. Schwarzschild solves the vacuum Einstein equations with $\Lambda=0$.
+
+\subsection*{Non-examinable: Spinors in curved spacetime} Recall from \emph{Quantum Field Theory} that a spinor is something that transforms like a spinor under the Lorentz group.\footnote{This is a bit tautological. If you prefer, a spinor is an object which satisfies the Lorentz algebra and for which a rotation of $4\pi$ but not $2\pi$ is the identity transformation. It is the correct formalism to describe objects of half-integer spin.}
+We know that there are some generators of the Lorentz group $L_{\mu\nu}$ (with $L_{\mu\nu}$ antisymmetric), such that these generators satisfy the Lorentz algebra
+$$[L_{\mu\nu},L_{\rho\sigma}]=\eta_{\mu\rho}L_{\nu\sigma} -\eta_{\mu\sigma}L_{\nu\rho}-\eta_{|nu\rho}L_{\mu\sigma} +\eta_{\nu\sigma}L_{\mu\rho}.$$
+
+In particular, spin $1/2$ particles satisfy the anticommutation relations
+$$\set{\gamma^\mu,\gamma^\nu}=2\eta^{\mu\nu} I_4,$$
+such that the generators are
+$$L_{\mu\nu}=\frac{i}{4}[\gamma_\mu, \gamma_\nu].$$
+In the context of GR, spinors transform under infinitesimal Lorentz transformations as
+$$\psi \to(1+\lambda^{\mu\nu}L_{\mu\nu})\psi,$$ with $\lambda_{\mu\nu}$ antisymmetric. That is, they do not transform like tensors, which complicates the definition of the covariant derivative. As it turns out, we define a covariant derivative on spinors as
+$$\nabla_\mu \psi = \p_\mu \psi + \frac{1}{2} \underbrace{\omega_\mu{}^{\rho\sigma}}_{\text{spin connection}} L_{\rho\sigma} \psi$$
+and $L$ is a generator of the Lorentz group.
+
+The Dirac equation in curved spacetime now takes the form
+$$0=(\gamma^\mu \nabla_\mu +m)\psi =(\gamma^a \nabla_a +m) \psi,$$
+with $\nabla_a = e^\mu_a \nabla_\mu$ and $\gamma^a = \gamma^\mu e^a_\mu$ (i.e. written as Lorentz quantities in terms of the vierbein).
+
+Note there's a complication with trying to quantize in curved spacetime. Usually we write down generalized coordinates $q^i$, which become fields $\phi(x)$ in field theory, and similarly generalized momenta $p_i = \P{L}{\dot \phi}=\dot \phi(x)=\pi(x).$
+The canonical commutation relations in QM, $[p_i, q^j]=-i \delta^j_i$ become
+$[\phi(x),\pi(x')]=i\delta^{(3)}(x-x')$. However, the complication here is that $\cdot=\P{}{t}$ when the underlying space is Minkowski, but this is not so well-defined in curved spacetime. If we're in the Schwarzschild spacetime we could use the regular $t$ coordinate, but we could just as well choose the advanced coordinate $u$ from Eddington-Finkelstein. What the ``right'' time derivative to take is totally unclear, and the problems only compound when we attempt to quantize gravity. This is of course a huge open problem, the details of which are beyond the scope of this course.
+
+%$$u^\nu \nabla_\nu u^\mu=0$$
+%$$u^\nu \nabla_\nu (\nabla_\mu u^\mu) =-S-R_{\rho\sigma}u^\rho u^\sigma, S\geq 0.$$
+%$$R_{\rho\sigma} u^\rho u^\sigma \geq 0$$
+%$$g_{ab}=\Omega \eta_{ab},\quad \Omega(t,x)=\begin{cases}
+%1 & |x| \geq 1\\
+%(1-1/t^6)x^2+1/t^6 & |x| < 1.
+%\end{cases}$$
+%$$-\frac{1}{t^6}\left(\frac{dt}{ds}\right)^2=-1\implies \frac{dt}{ds}=t^3\implies \tau_0=\int_0^{\tau_0} ds=\int_1^\infty \frac{dt}{t^3}=\frac{1}{2}.$$
