@@ -3,7 +3,7 @@ $$\nabla_a g_{bc}=0\text{ with } \Gamma^c_{ab}=\Gamma^{c}_{ba}.$$
 
 We also found that if $\phi$ is a scalar field, the covariant derivatives commute:
 $$(\nabla_a \nabla_b - \nabla_b \nabla_a)\phi = \p_a \p_b \phi - \Gamma^c_{ab} \p_c \phi - \p_b \p_a \phi+ \Gamma^c_{ba}\p_c\phi =0$$
-where we used the symmetry of the Christoffel symbols to cancel the second and fourth terms.
+where we used the fact that our Christoffel symbols are torsion-free (and therefore symmetric in $a,b$) to cancel the second and fourth terms.
 We might then ask if this is true for the covariant derivatives on a $1$-form as well.
 \begin{align*}
 (\nabla_a \nabla_b - \nabla_b \nabla_a)V_c ={}&
@@ -20,15 +20,17 @@ Since the expression on the LHS is a tensor, the RHS must also be a tensor. (We 
 
 \begin{defn}
 We therefore define the curvature tensor ${R_{abc}}^e$ by the following:
-$$(\nabla_a \nabla_b - \nabla_b \nabla_a)V_c\equiv {R_{abc}}^e V_e,$$
+\begin{equation}\label{ricciid}
+    (\nabla_a \nabla_b - \nabla_b \nabla_a)V_c\equiv {R_{abc}}^e V_e,
+\end{equation}
 where ${R_{abc}}^e$ is given explicitly by
 $${R_{abc}}^e = -\p_a \Gamma^e_{bc} +\p_b \Gamma^e_{ac}-\Gamma^f_{bc} \Gamma^e_{fa}+\Gamma^f_{ac} \Gamma^e_{fb}.$$
 
 Roughly speaking, the curvature tensor measures how much the covariant derivatives of tensors fail to commute.\footnote{This is only technically true for torsion-free connections. To quote Sean Carroll, ``The Riemann tensor measures that part of the commutator of covariant derivatives that is proportional to the vector field, while the torsion tensor measures the part that is proportional to the covariant derivative of the vector field.''}
 \end{defn}
 
-On arbitrary tensors $T^{ab\ldots}_{cd\ldots}$ one can write down a rather long expression for the commutator of the covariant derivatives:
-$$(\nabla_e \nabla_f -\nabla_f \nabla_e)T^{ab\ldots}_{cd\ldots} = {R_{ef}}^a_p T^{pb \ldots}_{cd \ldots}+{R_{ef}^b}_p T^{ap\ldots}_{cd \ldots}+ R_{efc}^p T^{ab\ldots}_{pd\ldots} + R_{efd}^p T^{ab\ldots}_{cp\ldots} + \ldots$$
+On arbitrary tensors $T^{ab\ldots}{}_{cd\ldots}$ one can write down a rather long expression for the commutator of the covariant derivatives:
+$$(\nabla_e \nabla_f -\nabla_f \nabla_e)T^{ab\ldots}{}_{cd\ldots} = {R_{ef}}{}^a{}_p T^{pb \ldots}{}_{cd \ldots}+{R_{ef}{}^b}{}_p T^{ap\ldots}{}_{cd \ldots}+ R_{efc}{}^p T^{ab\ldots}{}_{pd\ldots} + R_{efd}{}^p T^{ab\ldots}{}_{cp\ldots} + \ldots$$
 similar to our formula for taking individual covariant derivatives. There is no further content in computing commutators of covariant derivatives for these arbitrary tensors, however-- all the interesting physics seems to already be captured in the curvature tensor.
 
 The Riemann tensor (i.e. the curvature tensor with an index lowered) also has some nice symmetries which you may like to check.
@@ -56,7 +58,7 @@ $$R\equiv R^{ab}g_{ab}.$$
 \end{defn}
 
 In two-dimensional calculations, $R$ is the same as the Gaussian curvature up to a numerical factor. 
-In addition, since all the Christoffels for Minkowski space are zero (by virtue of being linear combinations of derivatives of the metric), computing the Ricci scalar for Minkowski space reveals that it is zero-- Minkowski space is flat.
+In addition, since all the Christoffels for Minkowski space are zero (by virtue of being linear combinations of derivatives of the metric), computing the Ricci scalar for Minkowski space reveals that it is zero-- as we initially stated, Minkowski space is flat.
 
 We can now discuss geodesics, curves which extremize the proper distance between two endpoints $p,q$. 
 \begin{defn}

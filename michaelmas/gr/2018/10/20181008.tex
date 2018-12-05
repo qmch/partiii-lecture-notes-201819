@@ -1,36 +1,42 @@
 Today, we'll start by remarking that Maxwell's equations can be written compactly in 4-vector format. Recall from a good course on electrodynamics that we define the electromagnetic field strength tensor $F^{\mu\nu}$ as
-$$F^{\mu\nu}=\begin{pmatrix}
+\begin{equation}
+F^{\mu\nu}=\begin{pmatrix}
 0& E_x & E_y & E_z\\
 -E_x & 0 & B_z & - B_y\\
 -E_y & -B_z & 0 & B_x\\
 -E_z & B_y & -B_x & 0
-\end{pmatrix}.$$
-$F^{\mu\nu}$ is a totally antisymmetric rank two tensor. Defining the four-current $j^\mu \equiv(\rho, \vec{j})$ with $\vec{j}$ the ordinary current density and $\rho$ the charge density, we see that
+\end{pmatrix}.
+\end{equation}
+This object $F^{\mu\nu}$ is a totally antisymmetric rank two tensor. Defining the four-current $j^\mu \equiv(\rho, \vec{j})$ with $\vec{j}$ the ordinary current density and $\rho$ the charge density, we see that
 $$\p_a F_{bc} +\p_b F_{ca} +\p_c F_{ab}=0$$
 and
 $$\p_a F^{ab}=-j^b.$$
 
-But there's something strange about this-- these equations in their current form hold for Cartesian coordinates only. Of course, the laws of physics (as expressed through empirical results in experiments) cannot depend on the coordinate system we use to define them. 
+But there's something strange about this-- these equations as written hold for Cartesian coordinates only. Of course, the laws of physics (as expressed through experimental results) cannot depend on the coordinate system we use to define them. 
 \begin{exm}
 The Minkowski metric takes the Cartesian form
 $$ds^2=-dt^2+dx^2+dy^2+dz^2$$
-but if we pass to spherical coordinates, the metric now takes the form 
+but if we change to spherical coordinates, the metric now takes the form 
 $$ds^2=-dt^2+dr^2+r^2d\theta^2 +r^2 \sin^2 \theta d\phi^2=g_{ab}dx^a dx^b,$$
-where $x^a=(t,r,\theta,\phi).$
+where $x^a=(t,r,\theta,\phi).$ This space is still flat, but the metric components have transformed with the coordinates.
 \end{exm}
 
 General relativity is thus motivated by a desire to understand how the laws of physics are invariant not just under Lorentz transformations but general coordinate transformations. It is also motivated by the \term{weak equivalence principle}, which states that inertial mass and gravitational mass are the same thing-- the $m$ in $F=ma$ and the $m$ in $F=-\frac{GMm }{r^2}$ are the same mass! This is closely related to the \term{Einstein equivalence principle}, which states that in a freely falling frame, the laws of physics are those of special relativity. One cannot distinguish between being in freefall under a gravitational field and simply being at rest in no gravitational field.
 
 We consider spacetime to be a 4-dimensional system ($3+1$ dimensions, if you like) and in particular it has a manifold structure. We may make an explicit choice of some coordinates $\set{x^a}$ that label points in (a coordinate patch of) $M$, but it would be nice to define vectors in a way that is independent of the coordinates. This will lead us to revisit vectors and covectors.
 
-Consider a parametrized curve $\lambda(\tau):\RR\to M$ sitting in $M$. Now take $f=f(x^a)$ to be a differentiable function of the coordinates, and define an operator that maps $f$ into the total derivative $df/dt$: by applying the chain rule, we have
-$$\frac{df}{dt}=\P{x^a}{t}\left(\P{}{x^a}f\right).$$
-Thus a vector $V$ is a linear differential operator that acts on $f$: explicitly, we can write $$V=\P{x^a}{t}\P{}{x^a},$$ where the $\P{x^a}{t}$ are called the components of the vector and denoted by $V^a$. The right way to think of a vector is as a coordinate-independent generalization of a directional derivative. The components will in general transform when we change coordinates, but the vector as an operator stays the same.
+Consider a parametrized curve $\lambda(\tau):\RR\to M$ sitting in $M$. Now take $f=f(x^a)$ to be a differentiable function of the coordinates, and define an operator that maps $f$ into the total derivative $df/d\tau$: by applying the chain rule, we have
+$$\frac{df}{d\tau}=\P{x^a}{\tau}\left(\P{}{x^a}f\right).$$
+Thus a vector $V$ is a linear differential operator that acts on $f$: explicitly, we can write $$V=\P{x^a}{\tau}\P{}{x^a},$$ where the values $\P{x^a}{\tau}$ are called the components of the vector and denoted by $V^a$. The right way to think of a vector is as a coordinate-independent generalization of a directional derivative. The components will in general transform when we change coordinates, but the vector as an operator stays the same.
 
 That said, a general vector can be written in its components in some coordinate basis $x^a$ as
 $$V= V^a \P{}{x^a}.$$
 
-Thinking back to our curve $\lambda(\tau)$, we may expand our coordinates locally as $x^a(\tau)=x^a (\tau_0)+V^a (\tau-\tau_0)+O((\tau-\tau_0)^2)$, where $V$ is the tangent vector to some curve through the point $\tau_0$. (Okay, we're being a bit careless with notation here-- the instructor has written $\lambda(t)$, but sometimes $t$ is a coordinate on the manifold.) Therefore we may also interpret (tangent) vectors as describing how our manifold curves locally about a point.
+Thinking back to our curve $\lambda(\tau)$, we may expand our coordinates locally about $\tau=\tau_0$ as 
+\begin{equation}x^a(\tau)=x^a (\tau_0)+V^a (\tau-\tau_0)+O((\tau-\tau_0)^2),
+\end{equation}
+where $V$ is interpreted as the tangent vector to some curve at the point $x^a(\tau_0)$. %(Okay, we're being a bit careless with notation here-- the instructor has written $\lambda(t)$, but sometimes $t$ is a coordinate on the manifold.) 
+Therefore we may also interpret (tangent) vectors as describing how our manifold curves locally about a point.
 
 Vectors (as the name suggests) form a vector space.\footnote{We get most of the vector space axioms for free. Commutativity and associativity follow from doing component-wise addition in a basis, as does distributivity of scalar sums. The additive identity is the vector where all components are zero. The additive inverse for a vector with components $V^a$ is just $-V^a$. The scalar multiplication identity is automatic.} 
 If $W, Y$ are vectors, $\alpha,\beta$ real numbers, then $\alpha W + \beta Y$ is another vector with components

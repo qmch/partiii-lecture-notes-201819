@@ -41,7 +41,7 @@ $$\nabla_c T^{a_1\ldots a_r}_{b_1\ldots b_s} = \p_c T^{a_1\ldots a_r}_{b_1\ldots
 
 So every upstairs indices we swap out gets a $+\Gamma$ and every downstairs index we swap gets a $-\Gamma$. Let's return to our expression for the transformation of $\Gamma,$
 $$\tilde \Gamma^{a'}_{b'c'}=\frac{\p \tilde x^{a'}}{\p x^a} \frac{ \p x^a}{\p \tilde x^{b'}}\frac{\p x^c}{\p \tilde x^c} \Gamma^a_{bc}-\frac{\p^2 \tilde x^{a'}}{\p x^b \p x^c}\frac{\p x^b}{\p \tilde x^{b'}}\frac{\p x^c}{\p\tilde x^{c'}}.$$
-Note that the second part is symmetric under the interchange of $b',c'$. Therefore take just the part antisymmetric in $b',c'$:
+Note that the second part is symmetric under the interchange of $b',c'$. Therefore let's consider just the part which is antisymmetric in $b',c'$:
 $$\Gamma^{a'}_{b'c'}-\Gamma^{a'}_{c'b'}=\frac{\p \tilde x^{a'}}{\p x^a}\frac{\p x^b}{\p \tilde x^{b'}}\frac{\p x^c}{\p \tilde x^{c'}}(\Gamma^a_{bc}-\Gamma^a_{cb}).$$
 \begin{defn}
 The antisymmetric part of $\Gamma$ transforms like a tensor, and so we define the \term{torsion tensor} as
@@ -58,11 +58,13 @@ Therefore the torsion measures how much covariant derivatives fail to commute on
 Now, we haven't yet actually found what the connection is in terms of things we actually care about, like say the metric $g_{ab}.$
 \begin{defn}
 Let us define the \term{metric connection} as the $\Gamma$ such that
-$$\nabla_c g_{ab}=0.$$
+\begin{equation}\label{metricconnection}
+\nabla_c g_{ab}=0.
+\end{equation}
 This will allow us to find a formula for $\Gamma$ in terms of the metric $g$.
 \end{defn}
 
-We'll work it out explicitly.
+We'll work it out explicitly. If Eqn. \ref{metricconnection} holds, then by the definition of the covariant derivative,
 \begin{align*}
 \nabla_a g_{bc}&=\p_a g_{bc}-\Gamma^d_{ab}g_{dc}-\Gamma^d_{ac}g_{bd}=0,\\
 \nabla_b g_{ca}&=\p_b g_{ca}-\Gamma^d_{bc} g_{da} - \Gamma^d_{ba}g_{cd}=0,\\
@@ -75,7 +77,9 @@ using the fact that $\Gamma^d_{bc}=\Gamma^d_{cb}$ since we want a torsion-free c
 Now we simply multiply by $g^{ce}$ to find that
 $$\frac{1}{2}g^{ce}(-\p_c g_{ab} +\p_a g_{bc} +\p_b g_{ca})=\Gamma^d_{ab} g_{dc} g^{ce} =\Gamma^d_{ab} \delta^e_d = \Gamma^e_{ab}.$$
 This gives us explicitly the metric connection, which we sometimes call the Christoffel connection or Christoffel symbols.\footnote{They are a pain to compute by hand, hence why one professor of mine once referred to them as the ``Christ-awful symbols.''} Thus after a quick relabeling of indices we get
-$$\Gamma^a_{bc}=\frac{1}{2} g^{ad}(-\p_d g_{bc}+\p_b g_{cd} + \p_c g_{bd}).$$
+\begin{equation}
+    \Gamma^a_{bc}=\frac{1}{2} g^{ad}(-\p_d g_{bc}+\p_b g_{cd} + \p_c g_{bd}).
+\end{equation}
 It is, as desired, symmetric under exchange $b\leftrightarrow c$ since the metric is symmetric, $g_{ab}=g_{ba}$.
 
 So now on scalars,

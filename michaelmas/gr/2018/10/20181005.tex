@@ -23,7 +23,7 @@ The \term{chronological future} of a point $p$ is the set of all points that can
 \caption{An illustration of the light cones from a point $p$, plus the chronological future $I^+$ and chronological past $I^-$. Also depicted in red is a timelike curve (e.g. a possible particle trajectory in spacetime).}
 \end{figure}
 
-Let $x^a(\tau)$ be a curve in spacetime.\footnote{Evidently we are not using the convention that Greek indices range from $0$ to $3$ and Latin indices range from $1$ to $3$. I have copied the lecturer's convention here, but may change to more traditional notation if it becomes relevant.} Then the tangent vector to the curve is $u^a=\frac{dx^a}{d\tau}$. For timelike curves, $u^a u^b \eta_{ab}=-1 \iff \tau$ is the proper time along the curve.
+Let $x^a(\tau)$ be a curve in spacetime.\footnote{Evidently we are not using the convention that Greek indices range from $0$ to $3$ and Latin indices range from $1$ to $3$. I have copied the lecturer's convention here, as we will be using Greek indices to refer to Lorentz indices when we introduce the vierbein fields, and Latin indices will then index over spacetime indices. However, we won't do this until Lecture 22, so you should be aware that many other authors including Sean Carroll and Harvey Reall use the other convention. Wald does something a bit different, using Latin indices to represent the entire tensor considered as a multilinear operator as opposed to its (basis-dependent) components.} Then the tangent vector to the curve is $u^a=\frac{dx^a}{d\tau}$. For timelike curves, $u^a u^b \eta_{ab}=-1 \iff \tau$ is the proper time along the curve.
 \footnote{The property that $U^\alpha U^\beta \eta_{\alpha\beta}=-1$ is easy to prove. See the Special Relativity catch-up sheet found \href{http://www.maths.cam.ac.uk/sites/www.maths.cam.ac.uk/files/grspecialrelativity.pdf}{here} for some nice exercises in SR: this is exercise 3. Assuming the result of exercise 2 which states that the four-velocity of a massive particle is $U^\mu=\gamma(1,v^i)$, we then have $U\cdot U =\gamma^2(-1+v^2)=\frac{v^2-1}{1-v^2}=-1$. Since this is a fully contracted expression (no indices floating around), it is true in all frames.}
 We also know that $\int_p^q d\tau = \Delta \tau$, which just says that the integral of $d\tau$ along a curve from $p$ to $q$ yields the proper time interval, what a clock actually measures.
 
@@ -80,7 +80,7 @@ A \term{scalar} is an object which is invariant under a Lorentz transformation. 
 
 More generally, a \term{tensor of type $(r,s)$} transforms with $r$ copies of the Lorentz transformation on the $r$ up indices and $s$ copies of the Lorentz transformation on the $s$ down indices, 
 \begin{equation}
-{T^{\mu_1 \mu_2\ldots \mu_r}}_{\nu_1 \nu_2 \ldots \nu_s} \to {T^{\alpha_1 \alpha_2\ldots \alpha_r}}_{\beta_1 \beta_2 \ldots \beta_s}=\Lambda^{\alpha_1}_{\mu_1} \ldots \Lambda^{\alpha_r}_{\mu_r} {T^{\mu_1 \mu_2\ldots \mu_r}}_{\nu_1 \nu_2 \ldots \nu_s} \Lambda^{\nu_1}_{\beta_1}\ldots \Lambda^{\nu_s}_{\beta_s}
+{T^{\mu_1 \mu_2\ldots \mu_r}}_{\nu_1 \nu_2 \ldots \nu_s} \to {T^{\alpha_1 \alpha_2\ldots \alpha_r}}_{\beta_1 \beta_2 \ldots \beta_s}=\Lambda^{\alpha_1}{}_{\mu_1} \ldots \Lambda^{\alpha_r}{}_{\mu_r} {T^{\mu_1 \mu_2\ldots \mu_r}}_{\nu_1 \nu_2 \ldots \nu_s} \Lambda^{\nu_1}{}_{\beta_1}\ldots \Lambda^{\nu_s}{}_{\beta_s}
 \end{equation}
 
 By this definition, a scalar may be thought of as a type $(0,0)$ tensor, a contravariant vector a type $(1,0)$ tensor, and a covariant vector a type $(0,1)$ tensor.

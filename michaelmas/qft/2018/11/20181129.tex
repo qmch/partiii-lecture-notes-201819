@@ -1,0 +1,109 @@
+We previously wrote down the coupling of the electromagnetic force to fermions, and said that the theory of quantum electrodynamics (QED) is therefore given by the Lagrangian
+\begin{equation}
+    \cL_{QED}=-\frac{1}{4} F_{\mu\nu} F^{\mu\nu}+\bar \psi (i\slashed{\p}-m)\psi -e \bar \psi \gamma^\mu A_\mu \psi
+\end{equation}
+where we have suppressed spinor indices. Note that gauge invariance in pure electromagnetism allowed us to get rid of the two extra degrees of freedom in the photon polarizations, leaving us with the two physical polarization states we expect from a massless spin 1 particle. Is the same true now that we have a coupling to fermions in $\cL_{QED}$? Let us rewrite $\cL_{QED}$ suggestively as
+\begin{equation}
+    \cL_{QED}=-\frac{1}{4} F_{\mu\nu} F^{\mu\nu}+\bar \psi (i\slashed{D}-m)\psi,
+\end{equation}
+where $D_\mu$ is the \emph{covariant} derivative given by
+\begin{equation}
+    D_\mu \psi \equiv (\p_\mu+ie A_\mu)\psi.
+\end{equation}
+This sort of construction should look really familiar from the last few \emph{Symmetries} lectures-- we can reasonably hope that our new covariant derivative $D_\mu$ will live up to its name and transform correctly under gauge transformations.
+
+In fact, it turns out that $\cL_{QED}$ is invariant under gauge transformations, but both the gauge field $A_\mu$ \emph{and} the spinor field $\psi$ have to transform:
+\begin{align}
+    A_\mu(x) &\to A_\mu(x)+\p_\mu \lambda(x)\\
+    \psi(x) &\to e^{-ie \lambda(x)}\psi(x)\\
+    \bar\psi(x) &\to e^{+ie \lambda(x)}\bar\psi(x).
+\end{align}
+Note that these are local symmetries, i.e. $\lambda(x)$ depends explicitly on the spacetime point $x$! This is different from the global symmetry, where the field is transformed everywhere in the same way (e.g. by a factor $e^{ie\tilde \lambda}$, with $\tilde \lambda$ a constant). Let us now show that the covariant derivative transforms like the spinor field under gauge transformations.
+
+\begin{proof}
+By direct computation, the covariant derivative transforms as follows:
+\begin{align*}
+    D_\mu \psi = (\p_\mu+ie A_\mu)\psi &\to (\p_\mu+ie (A_\mu+\p_\mu \lambda(x))(e^{-ie\lambda(x)}\psi)\\
+    &=(-ie \p_\mu \lambda e^{-ie\lambda} \psi + e^{-ie\lambda} \p_\mu \psi)+(ie A_\mu e^{-ie\lambda} \psi + ie \p_\mu \lambda e^{-ie\lambda}\psi)\\
+    &= e^{-ie\lambda} \p_\mu \psi+ie A_\mu e^{-ie\lambda} \psi\\
+    &= e^{-ie \lambda} (\p_\mu ie A_\mu)\psi = e^{-ie\lambda} D_\mu \psi.
+\end{align*}
+Therefore the covariant derivative $D_\mu \psi$ transforms like the spinor field $\psi$. Moreover $\slashed{D}$ is the same thing up to contraction with the gamma matrices $\gamma^\mu$, and the gamma matrices are independent of the gauge (they are just some representation of the Clifford algebra), so $\slashed{D}$ also transforms like $\psi$.
+\end{proof}
+
+We already checked that the Maxwell term was invariant since it only involves $A_\mu$, so now we see that $$\bar \psi (i(\slashed{D}-m)\psi \to (e^{ie\lambda}\bar \psi)(e^{-ie\lambda} (i\slashed{D}-m)\psi)=\bar \psi (i(\slashed{D}-m)\psi$$
+is also invariant under gauge transformations and therefore the entire QED Lagrangian is invariant, as we claimed.
+
+From the QED Lagrangian, we see that the coupling constant $e$ has the interpretation of electric charge since the equations of motion are
+$$\p_\mu F^{\mu\nu}= ej^{\nu}.$$
+In pure electromagnetism, $j^0$ was just the electric charge density, but as a quantum operator we have instead
+\begin{align*}
+    Q&=-e \int d^3 x \bar \psi \gamma^0 \psi \\
+    &= -e \int \frac{d^3p}{(2\pi)^3} (b_{\vec p}^{s\dagger} b_{\vec p}^{s} - c_{\vec p}^{s \dagger} c_{\vec p}^s)\\
+    &=-e(\text{\# of particles}-\text{\# of anti-particles}).
+\end{align*}
+Let us also note that while there is a single factor of $e$ in our Lagrangian, actual cross-sections depend on the squares of matrix elements and so we commonly define
+\begin{equation}
+    \alpha\equiv \frac{e^2}{4\pi}
+\end{equation}
+to be a factor we call the \term{fine-structure constant}, and it has a numerical value measured to be about $1/137$.\footnote{An interesting aside from dimensional analysis. Recall that $[\psi]=3/2$. Looking at the Maxwell term, we see that terms like $(\p_\mu A_\nu)^2$ must have mass dimension $4$, so the gauge field $A_\mu$ has mass dimension $[A_\nu]=1$ like the scalar field in the scalar Yukawa coupling. But then if we look at the QED coupling term $-e \bar \psi \gamma^\mu A_\mu \psi$, we see that the coupling constant $e$ must have mass dimension zero. (Of course, the gamma matrices are just collections of numbers so they do not contribute to the overall dimension). But this means that the fine structure constant $\alpha$ is itself a dimensionless number.
+
+Now, a question-- where did this value come from? It's dimensionless, so it is independent of our unit system, but it doesn't appear to be an integer or any mathematically significant constant like $\pi$ or $e$. In the words of Richard Feynman, ``It has been a mystery ever since it was discovered more than fifty years ago, and all good theoretical physicists put this number up on their wall and worry about it.''}
+
+We can now discuss a similar problem, a theory with a gauge field $A_\mu$ coupling to a complex scalar $\phi$. For a real scalar field, there is no suitable current to couple to, but for the complex scalar, introducing a coupling turns out to be doable. The appropriate covariant derivative is
+\begin{equation}
+    D_\mu \phi \equiv \p_\mu \phi - ieq A_\mu \phi,
+\end{equation}
+where $q$ is the charge of the scalar $\phi$ in units of $e$. For instance, the sup squark (supersymmetric partner of the up quark) has $q=+2/3$. Here, if the scalar field $\phi$ transforms as
+\begin{equation}
+    \phi(x) \to e^{ie q \lambda(x)}\phi(x),
+\end{equation}
+then it follows that
+\begin{equation}
+    D_\mu \phi=\p_\mu \phi - ieq A_\mu \phi \to \p_\mu (e^{ie q \lambda}\phi) - ieq A_\mu (e^{ie q\lambda}\phi) = e^{ie q \lambda} D_\mu \phi
+\end{equation}
+by a quick application of the Leibniz rule. Therefore the Lagrangian
+\begin{equation}
+    \cL = \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + (D_\mu \phi)(D_\mu \phi)^\dagger
+\end{equation}
+is gauge invariant (the dagger flips the sign on $e^{ie q \lambda}$). If we now look at the interacting part of this Lagrangian and expand out terms a bit, we have
+\begin{equation}
+    \cL_{int}= ieq (\phi^\dagger \p^\mu \phi -(\p^\mu \phi)^\dagger \phi)A_\mu + e^2 q^2 A_\mu A^\mu \phi^\dagger \phi.
+\end{equation}
+This sort of Lagrangian is a good model for photons interacting with charged pions at low energies, $E \lesssim \SI{100}{\mega\electronvolt}$. At these energies, the pion ``looks fundamental'' to the photon, which is only sensitive to length scales on the order of its de Broglie wavelength. In reality, the pion is made up of a quark and anti-quark (e.g. $\pi^+= u + \bar d$), and high-energy photons can ``see'' the component quarks with their fractional charges.
+
+The Lagrangian now has a conserved current
+$$j_\mu = ieq[(D_\mu \phi)^\dagger \phi - \phi^\dagger D_\mu \phi]],$$
+which is gauge invariant.
+
+%What Feynman rules emerge from this Lagrangian? We can see that since some of these couplings involve derivatives, we will pick up factors of momentum at some vertices.
+
+In general this process is known as minimal coupling-- in order to introduce a coupling between a $U(1)$ gauge field and any number of fields $\phi^a$ (which can be fermionic or bosonic), we consider how the fields transform under the gauge transformation and promote the partial derivatives in the kinetic terms to covariant derivatives so that
+$$\p_\mu \phi^a \to D_\mu \phi^a \equiv \p_mu \phi^a -ie q_{(a)} \lambda \phi^a,$$
+where $\lambda$ comes from the gauge transformation $A_\mu \to A_\mu + \p_\mu \lambda$.
+
+We may also consider Feynman diagrams with some external photons in them (picture later).%add picture!
+These diagrams end up giving ups polarization vectors in the final scattering amplitudes, $\epsilon_\mu^{(\lambda)}(k)$ for ingoing photons and $\epsilon_{\mu}^{(\lambda)*}(k)$ for outgoing photons. Typically we don't bother to resolve the polarization states (e.g. in the detectors of colliders), so we simply average over the initial polarizations and sum over the final polarizations. Here, $\lambda$ indexes over the polarization modes, though we should keep in mind that only two are physical (the two transverse modes).
+
+Moreover, when we perform the sum over polarizations, we sometimes need to compute sums of the form 
+$$\sum_\lambda \epsilon_{\mu}^{(\lambda)}(k) \epsilon_{\nu}^{(\lambda)}(k).$$ For instance, consider a matrix element corresponding to a diagram with one external outgoing photon with a momentum $k$,
+\begin{equation}
+    M(k)=\epsilon_\mu^{(\lambda)*} (k) M^\mu,
+\end{equation}
+where we have simply pulled out the polarization out of the matrix element $M$ and written the rest with some index to be contracted over as $M^\mu$. Then the physical amplitude corresponding to this process is the matrix element squared--
+\begin{align*}
+    |M|^2 &\propto \sum_\lambda |\epsilon_\mu^{(\lambda)*} (k)M^\mu (k)|^2\\
+    &= \sum_\lambda \epsilon_\mu^{(\lambda)*} \epsilon_\nu^{(\lambda)} M^\mu(k) M^{\nu *}(k)
+\end{align*}
+Now, it turns out that in QED amplitudes, we can simply replace this sum over polarizations with $-\eta_{\mu\nu}$. The reason for this is as follows. WLOG, let us take the photon to be traveling in the $x^3$ direction so that $k^\mu=(k,0,0,k)$ and then the transverse modes are simply
+\begin{align*}
+    \epsilon^{(1)\mu}=(0,1,0,0)\\
+    \epsilon^{(2)\mu}=(0,0,1,0).
+\end{align*}
+Then our sum over polarizations becomes
+\begin{align*}
+    \sum_\lambda |\epsilon_\mu^{(\lambda)*} (k)M^\mu (k)|^2 &= |M^1(k)|^2 + |M^2(k)|^2\\
+    &=-|M^0(k)|^2 + |M^1(k)|^2 + |M^2(k)|^2 + |M^3(k)|^2\\
+    &= \eta_{\mu\nu} M^\mu(k) M^{\nu*}(k),
+\end{align*}
+since the timelike and longitudinal polarizations cancel.%check this argument

@@ -9,7 +9,8 @@ In general all our equations of motion are second-order. One needs only to speci
 $$R_{ab}-\frac{1}{2}R g_{ab}+\Lambda g_{ab}=8\pi G T_{ab}.$$
 Note that
 $$\nabla_a(R^{ab}-\frac{1}{2} g^{ab}R)=0$$
-by the Bianchi identities, so $T^{ab}$ is indeed conserved up to $\Lambda$ the cosmological constant. Experimentally, we think that $\Lambda=111\times 10^{-56}$cm$^2$. Note that $\Lambda$ has the effect of globally modifying the Ricci scalar by a constant, which is equivalent to setting the background curvature of our spacetime.
+by the Bianchi identities, so $T^{ab}$ is indeed conserved.% up to $\Lambda$ the cosmological constant. 
+Experimentally, we think that $\Lambda=111\times 10^{-56}$cm$^2$. Note that $\Lambda$ has the effect of globally modifying the Ricci scalar by a constant, which is equivalent to setting the background curvature of our spacetime.
 
 \begin{defn}
 Let us introduce the Levi-Civita symbol (also known as the alternating symbol). For $n$ dimensions, we have the tensor
@@ -18,88 +19,135 @@ $$\eta_{a_1\ldots a_n}=\begin{cases}
 +1 &\text{if }a_1\ldots a_n\text{ is an even permutation of }1,\ldots n\\
 -1 &\text{if }a_1\ldots a_n\text{ is an odd permutation of }1,\ldots n.
 \end{cases}$$
-This is a generalization of our familiar $\epsilon_{ijk}$ tensor. Note that for any matrix $M^a_b,$ one can define the determinant in terms of
+This is a generalization of our familiar $\epsilon_{ijk}$ symbol. Note that for any matrix $M^a_b,$ one can define the determinant in terms of
 $\eta_{a_1\ldots a_n}\det M = \eta_{b_1\ldots b_n}M^{b_1}_{a_1} M^{b_2}_{a_2}\ldots M^{b_n}_{a_n}.$
 \end{defn}
 
-Let's suppose that $M^b_a=\frac{\p x^b}{\p \tilde x^a}$ now, e.g. for a change in coordinates. Then
-$$\eta_{a_1\ldots a_n}\left[\det \frac{\p x^c}{\p \tilde x^d}\right]=\eta_{b_1\ldots b_n}\frac{\p x^{b_1}}{\p \tilde x^{a_1}}\ldots \frac{\p x^{b_n}}{\p \tilde x^{a_n}}.$$
-Rearranging a bit, we have
-$$\eta_{a_1\ldots a_n}=\left[\det \frac{\p \tilde x^c}{\p x^d}\right]\eta_{b_1\ldots b_n}\frac{\p x^{b_1}}{\p \tilde x^{a_1}}\ldots \frac{\p x^{b_n}}{\p \tilde x^{a_n}}.$$
+Let us choose the specific matrix $$M^b_a=\frac{\p x^b}{\p \tilde x^a}$$ That is, $M$ now represents the tensor component transformation factors for some change in coordinates $x^a\to \tilde x^a$. Then
+%$$\eta_{a_1\ldots a_n}\left[\det \frac{\p x^c}{\p \tilde x^d}\right]=\eta_{b_1\ldots b_n}\frac{\p x^{b_1}}{\p \tilde x^{a_1}}\ldots \frac{\p x^{b_n}}{\p \tilde x^{a_n}}.$$
+$$\eta_{a_1\ldots a_n}\det M=\eta_{b_1\ldots b_n}\frac{\p x^{b_1}}{\p \tilde x^{a_1}}\ldots \frac{\p x^{b_n}}{\p \tilde x^{a_n}}.$$
+Rearranging a bit,\footnote{This follows since determinants are multiplicative-- all this says is that $1=\det(I)=\det(M^{-1} M)=\det(M^{-1})\det(M)\implies \det(M^{-1})= (\det M)^{-1}).$ Don't worry too much about the $c$ and $d$ indices floating around-- they are just there to remind us which coordinates we are taking the derivative with respect to.} we have
+%$$\eta_{a_1\ldots a_n}=\left[\det \frac{\p \tilde x^c}{\p x^d}\right]\eta_{b_1\ldots b_n}\frac{\p x^{b_1}}{\p \tilde x^{a_1}}\ldots \frac{\p x^{b_n}}{\p \tilde x^{a_n}}.$$
+$$\eta_{a_1\ldots a_n}=\det (M^{-1})\eta_{b_1\ldots b_n}\frac{\p x^{b_1}}{\p \tilde x^{a_1}}\ldots \frac{\p x^{b_n}}{\p \tilde x^{a_n}}.$$
 This last bit looks like a good tensorial transformation, but the factor of the determinant spoils it. Therefore $\eta$ is \emph{not a tensor}; rather, it is a tensor density.
 
 We can fix this, though. Consider the metric tensor $g_{ab}$. It transforms under an arbitrary coordinate transformation as
-$$g_{ab}\mapsto \tilde g_{ab}=\frac{\p x^c}{\p \tilde x^a}\frac{\p x^d}{\p\tilde x^b}g_{cd}.$$
-Taking determinants of both sides we get
-$$\det \tilde g = \left[\det \frac{\p x^c}{\p \tilde x^a}\right]^2 (\det g).$$
-Taking square roots of both sides (and taking the absolute value, since we don't know the sign of $\det g$) we get
-$$\sqrt{|\det \tilde g|}=|\det \frac{\p x^c}{\p \tilde x^a}|\sqrt{|\det g|}.$$
+$$g_{ab}\mapsto \tilde g_{ab}=\frac{\p x^c}{\p \tilde x^a}\frac{\p x^d}{\p\tilde x^b}g_{cd}=M^c_a M^d_b g_{cd}.$$
+Taking determinants of both sides\footnote{Just think of $g$ as a $4\times 4$ matrix.} we get
+%$$\det \tilde g = \left[\det \frac{\p x^c}{\p \tilde x^a}\right]^2 (\det g).$$
+$$\det \tilde g = (\det M)^2 (\det g).$$
+Taking square roots of both sides (and taking the absolute value of all terms, since we don't a priori know the sign of $\det g$) we get
+%$$\sqrt{|\det \tilde g|}=\left|\det \frac{\p x^c}{\p \tilde x^a}\right|\sqrt{|\det g|}.$$
+$$\sqrt{|\det \tilde g|}=|\det M|\sqrt{|\det g|}.$$
 Thus we see that
-$$\sqrt{|\det g|}\eta_{a_1\ldots a_n}$$ is a tensor since the determinant factors then cancel. We may therefore define the alternating tensor
-$$\epsilon_{a_1\ldots a_n}=g^{1/2}\eta_{a_1\ldots a_n}$$ where $g^{1/2}\equiv\sqrt{|\det g_{ab}|}.$
+$$\epsilon_{a_1,\ldots, a_n}\equiv \sqrt{|\det g|}\eta_{a_1\ldots a_n}$$ is a tensor since the factors of $\det M$ and $\det (M^{-1})$ then cancel. We call this the \term{alternating tensor} and equivalently write
+$$\epsilon_{a_1\ldots a_n}=g^{1/2}\eta_{a_1\ldots a_n},$$ where we have defined\footnote{It's important to note that $g^{1/2}$ is a numerical factor, but it obviously depends on what spacetime point you're looking at. Don't let the notation fool you into thinking it's a constant.}
+\begin{equation}
+    g^{1/2}\equiv\sqrt{|\det g_{ab}|}.
+\end{equation}
 
-Let's also recall that the volume element $d^x$ transforms as
-$$d^nx\mapsto d^n \tilde x =|\det \frac{\p \tilde x^a}{\p x^b}|d^n x.$$
-But $d^nx=dx^1 \wedge dx^2 \wedge \ldots \wedge dx^n,$ which is really a differential $n$-form-- it can be written
+Let's also recall that the volume element $d^n x$ transforms as
+$$d^nx\mapsto d^n \tilde x =\left|\det \frac{\p \tilde x^a}{\p x^b}\right|d^n x =|\det (M^{-1})| d^n x.$$
+But $d^nx=dx^1 \wedge dx^2 \wedge \ldots \wedge dx^n,$ which is really a differential $n$-form-- since it is totally antisymmetric (this just says the volume element is sensitive to orientation) it can be written\footnote{In changing to the tensor notation, we can throw in an $\eta$ almost free since the wedge product is by definition antisymmetric over all its indices, and when we antisymmetrize something that is already antisymmetric, we pick up a factor of $1/n!$.}
 $$\frac{1}{n!}\eta_{a_1\ldots a_n}dx^{a_1}\wedge \ldots \wedge dx^{a_n}.$$
 It's apparent that the volume element then transforms as a tensor density like $\eta$. To make it transform as a tensor, we could instead write
 $$\frac{1}{n!}\epsilon_{a_1\ldots a_n} dx^{a_1}\wedge \ldots \wedge dx^{a_n},$$
-where $\epsilon_{a_1\ldots a_n} dx^{a_1}\wedge \ldots \wedge dx^{a_n}=g^{1/2}d^nx$ is now invariant. As a result, we call $g^{1/2}d^n x$ the \term{invariant volume element} and we could integrate a scalar $\Phi$ as
+where $\epsilon_{a_1\ldots a_n} dx^{a_1}\wedge \ldots \wedge dx^{a_n}=g^{1/2}d^nx$ is now invariant. As a result, we call $g^{1/2}d^n x$ the \term{invariant volume element} and we can for instance integrate a scalar $\Phi$ as
 $$\int \Phi g^{1/2} d^n x,$$
 where the integral is now independent of the coordinate system.
 
-We'll now discuss Stokes's (or Gauss's, or Ostragradsky's) theorem. Consider the volume integral
-$$\int_{\Sigma}\nabla_a V^a g^{1/2}d^n x.$$
-We want to write it as an integral over the boundary $\p \Sigma$. We also choose coordinates such that $\p\Sigma$ is a surface of $x^n$ constant (we are in $n$ spacetime dimensions), and then take $g_{ab}$ to be of the form
+With our invariant volume element in hand, we'll now discuss Stokes's (or Gauss's, or Ostragradsky's) theorem. We want to write the volume integral
+$$\int_{\Sigma}\nabla_a V^a g^{1/2}d^n x$$
+over a region $\Sigma$ as an integral over the boundary $\p \Sigma$. Let us choose coordinates such that $\p\Sigma$ is a surface of $x^n$ constant (we are in $n$ spacetime dimensions), and then take $g_{ab}$ to be of the form
 $$g_{ab}=\begin{pmatrix}
 \gamma_{ij}&0\\
 0&N^2
 \end{pmatrix}$$
-where $i,\in=1,\ldots,n-1.$
-Now $n_a$ is a unit normal vector to $\p\Sigma,$
-$$n_a\equiv (0,0,\ldots, 0,N)$$ with $n^a=(0,0,\ldots,1/N)$. Clearly, the inverse metric is
-$$g_{ab}=\begin{pmatrix}
+where $i,j\in=1,\ldots,n-1.$
+Now define $n_a$ to be a unit normal vector to $\p\Sigma,$
+$$n_a\equiv (0,0,\ldots, 0,N)$$ with $n^a=(0,0,\ldots,1/N)$. Since the metric $g_{ab}$ is block diagonal, the inverse metric is then
+$$g^{ab}=\begin{pmatrix}
 \gamma^{ij}&0\\
 0&1/N^2
 \end{pmatrix}$$
+We can now state Stokes's theorem.
 
-Now
-$$\nabla_a V^a=\p_a V^a +\nabla^a_{ac} V^c,$$
-and since
-$$\Gamma^a_{bc}=\frac{1}{2}g^{ad}(-\p_d g_{bc}+\p_b g_{cd}+\p_c g_{bd})$$
-we find that
+\begin{thm}
+For a vector field $V^a$ defined over some region $\Sigma$ with boundary $\p \Sigma$,
+$$\int_\Sigma \nabla_a V^a g^{1/2} d^n x = \int_{\p \Sigma} n^a V^a \gamma^{1/2} d^{n-1}x.$$
+That is, the integral of the divergence $\nabla_a V^a$ over a region $\Sigma$ is equal to the integral of the flux $n_a V^a$ over the boundary $\p \Sigma$.
+\end{thm}
+
+Let's begin by evaluating the covariant derivative in the volume integral. It is just
+$$\nabla_a V^a=\p_a V^a +\Gamma^a_{ac} V^c,$$
+and since the Christoffel symbols are given by
+$$\Gamma^a_{bc}=\frac{1}{2}g^{ad}(-\p_d g_{bc}+\p_b g_{cd}+\p_c g_{bd}),$$
+we find that the relevant Christoffel is
 $$\Gamma^a_{ac}=\frac{1}{2}g^{ad}(-\p_d g_{ac}+\p_a g_{cd}+\p_c g_{ad}).$$
 These first two terms cancel by the symmetry of $g^{ad}$, so we're left with
-\begin{eqnarray*}
-\Gamma^a_{ac}&=& \frac{1}{2} g^{ad}\p_c g_{ad}\\
-&=&\frac{1}{2} \text{Tr} [g^{-1}\p_c g]\\
-&=& \frac{1}{2}\text{Tr}[\p_c \ln g]\\
-&=&\frac{1}{2} \p_c \ln \det g\\
-&=&\p_c \ln \sqrt{|\det g|}
-\end{eqnarray*}
-where to get from the third to fourth expression, we have used the identity
-$$\det g = \exp \text{Tr} \ln g$$
-and the fact that $\p_c$ and the trace commute (since $\p_c$ is linear).
-Suppose $g$ is symmetric. Then it can be diagonalized, $D=O^T g O$ with $O$ some orthogonal matrix and $D$ the diagonal matrix of the eigenvalues of $g$. Equivalently $g=O DO^T.$ Then
-\begin{eqnarray*}
-\exp \text{Tr}\ln ODO^T&=&\exp \text{Tr}(\ln O + \ln D + \ln O^T)\\
-&=&\exp \text{tr}(\ln (O O ^T)+\ln D)\\
-&=&\exp \text{Tr}(\ln I + \ln D)\\
-&=& \exp \text{Tr}(\ln D)\\
-&=&\exp \sum_i \ln \lambda_i\\
-&=&\Pi_i \lambda_i = \det D = \det O^T g O = \det g O O^T = \det g.
-\end{eqnarray*}
+\begin{equation}
+    \Gamma^a_{ac}= \frac{1}{2} g^{ad}\p_c g_{ad}.
+\end{equation}
+To evaluate this, we will need the following lemma:
+\begin{lem}\label{exptracelog}
+For a symmetric matrix $g$,
+$$\det g = \exp \Tr \ln g.$$
+This is sometimes written in terms of exponentials as $\exp (\Tr g)=\det (\exp g)$.
+\end{lem}
+\begin{proof}
+If $g$ is symmetric, then it can be diagonalized as $D=O^T g O$, with $O$ some orthogonal matrix and $D$ the diagonal matrix of the eigenvalues of $g$-- equivalently, $g=O DO^T.$ Note that $\det(g)=\det(O DO^T)=\det D \det(O)^2=\det D$ since $O$ is orthogonal ($\det O = \pm 1$). Then
+\begin{align*}
+\exp \Tr \ln g &=\exp \Tr\ln ODO^T\\
+&=\exp \Tr(\ln O + \ln D + \ln O^T)\\
+&=\exp \Tr(\ln (O O ^T)+\ln D)\\
+&=\exp \Tr(\ln I + \ln D)\\
+&= \exp \Tr(\ln D)\\
+&=\exp \sum_i \ln \lambda_i\\
+&=\Pi_i \lambda_i = \det D = \det g.
+\end{align*}
+Note that the matrix logarithm coincides with the ordinary element-wise logarithm for diagonal matrices. Therefore $\exp \Tr \ln g=\det g$.
+\end{proof}
 
-Using this identity\footnote{Okay, I'm really unsure about this proof. What does it even mean to take the log of a matrix? I guess we could take a power series expansion about the identity? From Symmetries we have the more reasonable version of this identity in terms of exponentials: $\det \exp(g)= \exp (\text{Tr } g)$, which is certainly true. So one can define the log of a matrix $A$ as $B=\log A$, where $B$ is defined such that $\exp B = A$. We've been too cavalier about applying the properties of this matrix logarithm I think, in assuming that all the regular properties of the log hold (although it seems that they do). If this makes you unhappy, repeat the proof with $g'=\exp g$ and then take the log at the end.}, 
-we see that
-$$\Gamma^a_{ac}=\p_c \ln \sqrt{|\det g|}=\p_c(\ln g^{1/2})=\frac{1}{2} \frac{\p_c \det g}{\det g}.$$ 
-We also need the following result:
-$$\p_a(g^{1/2} V^a)= g^{1/2} \p_a V^a + V^a \frac{1}{2 g^{1/2}} \p_a (\det g) = g^{1/2} (\p_a V^a + \Gamma^b_{ba} V^a)= \nabla_a V^a g^{1/2},$$
-which will let us turn a covariant derivative into an ordinary partial derivative.
+Now we can evaluate our Christoffel symbol:
+\begin{align*}
+\Gamma^a_{ac}&= \frac{1}{2} g^{ad}\p_c g_{ad}\\
+&=\frac{1}{2} \Tr [g^{-1}\p_c g]\\
+&= \frac{1}{2}\Tr[\p_c \ln g]\\
+&=\frac{1}{2} \p_c \ln \det g\\
+&=\p_c \ln \sqrt{|\det g|}
+\end{align*}
+where to get from the third to fourth line, we have used our lemma \ref{exptracelog}. Note that the partial derivative $\p_c$ and the trace commute since $\p_c$ is linear.
 
-Therefore
-$$\int_\Sigma \nabla_a V^a g^{1/2} d^n x=\int \p_a(g^{1/2} V^a) dx^1 dx^2 \ldots dx^n.$$
-Integrating over $x^n$ we get
+%\footnote{Okay, I'm really unsure about this proof. What does it even mean to take the log of a matrix? I guess we could take a power series expansion about the identity? From Symmetries we have the more reasonable version of this identity in terms of exponentials: $\det \exp(g)= \exp (\text{Tr } g)$, which is certainly true. So one can define the log of a matrix $A$ as $B=\log A$, where $B$ is defined such that $\exp B = A$. We've been too cavalier about applying the properties of this matrix logarithm in assuming that all the regular properties of the log hold-- since matrix multiplication is not commutative, our formulas for combining exponentials like $e^a e^b = e^{a+b}$ must in general be replaced by expressions with commutators in them, e.g. the Baker-Campbell-Hausdorff formula. If this makes you unhappy, repeat the proof with $g'=\exp g$ and then take the log at the end.}, 
+We now see that
+\begin{equation}\label{aacchristoffel}
+    \Gamma^a_{ac}=\p_c \ln \sqrt{|\det g|}=\frac{1}{2} \frac{\p_c \det g}{\det g},
+\end{equation}
+and therefore the divergence $\nabla_a V^a$ can be written as
+\begin{equation}\label{vectordivergence}
+    \nabla_a V^a = \p_a V^a + \frac{1}{2} \frac{\p_a \det g}{\det g} V^a.
+\end{equation}
+%\Gamma^a_{ac}=\p_c \ln \sqrt{|\det g|}%=\p_c(\ln g^{1/2})
+%=\frac{1}{2} \frac{\p_c \det g}{\det g}.$$ 
+\begin{lem}\label{divergencetopartial}
+$$\p_a(g^{1/2} V^a)= g^{1/2}(\nabla_a V^a).$$
+\end{lem}
+\begin{proof}
+By a quick computation,
+\begin{align*}
+    \p_a(g^{1/2} V^a)&= g^{1/2} \p_a V^a + V^a \p_a (g^{1/2})\\
+    &= g^{1/2} \p_a V^a + V^a \frac{1}{2 g^{1/2}} \p_a \det g\\
+    &= g^{1/2} \left(\p_a V^a + \frac{1}{2} \frac{\p_a \det g}{\det g} V^a\right)\\
+    &= g^{1/2} \nabla_a V^a.\qedhere
+\end{align*}
+\end{proof}
+%We also need the following result:
+%$$\p_a(g^{1/2} V^a)= g^{1/2} \p_a V^a + V^a \frac{1}{2 g^{1/2}} \p_a (\det g) = g^{1/2} (\p_a V^a + \Gamma^b_{ba} V^a)= \nabla_a V^a g^{1/2},$$
+%which will let us turn a covariant derivative into an ordinary partial derivative.
+
+Using Lemma \ref{divergencetopartial}, we %now write
+%$$\int_\Sigma \nabla_a V^a g^{1/2} d^n x=\int_\Sigma \p_a(g^{1/2} V^a) dx^1 dx^2 \ldots dx^n.$$
+can rewrite the volume integral and integrate over $dx^n$ using the ordinary divergence theorem, since we are now working with a regular partial derivative:
 \begin{eqnarray*}
 \int_\Sigma \nabla_a V^a g^{1/2} d^n x&=&\int_\Sigma \p_a(g^{1/2} V^a) dx^1 dx^2 \ldots dx^n\\
 &=& \int_{\p \Sigma} V^{``n''} g^{1/2} dx^1 \ldots dx^{n-1}\\
@@ -107,7 +155,7 @@ Integrating over $x^n$ we get
 &=& \int_{\p\Sigma} \left(\frac{1}{N} n_a V^a\right) N(\det \gamma)^{1/2} dx^1 \ldots dx^{n-1}\\
 &=& \int_{\p\Sigma} n_a V^a (\det \gamma)^{1/2} dx^1 \ldots dx^{n-1},
 \end{eqnarray*}
-where $V^{``n''}$ is the $n$th component of $V$.
-Here, we have just turned a covariant derivative into a regular partial derivative so we can apply the regular divergence theorem.
+where $V^{``n''}$ indicates the $n$th component of $V$.
+%Here, we have just turned a covariant derivative into a regular partial derivative so we can apply the regular flat-space divergence theorem.
 This equation is covariant, so it is true in general:
-$$\int_\Sigma \nabla_a V^a g^{1/2} d^n x = \int_{\p \Sigma} n^a V^a \gamma^{1/2} d^{n-1}x,$$ with $\gamma^{1/2}d^{n-1}x$ the volume element on $\p \Sigma.$\footnote{There is a very nice way to write Stokes's theorem in terms of differentials and differential forms. See Carroll Appendix E for the proof.}
+$$\int_\Sigma \nabla_a V^a g^{1/2} d^n x = \int_{\p \Sigma} n^a V^a \gamma^{1/2} d^{n-1}x,$$ with $\gamma^{1/2}d^{n-1}x$ the volume element on $\p \Sigma.$\footnote{There is a very nice way to write Stokes's theorem in terms of differentials and differential forms. See Carroll Appendix E for the proof.} \qed

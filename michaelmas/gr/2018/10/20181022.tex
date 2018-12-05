@@ -1,12 +1,14 @@
 Today we'll discuss \term{parallel transport.} Suppose $x^a(\lambda)$ is some parametrized curve in our space. Then we may take a point on that curve at $\lambda=\lambda_0$ and define a vector defined at $x^a(\lambda=\lambda_0),$ called $V^a(\lambda_0)$. Can we define a way to smoothly slide $V^a$ along this curve?
 
-Take the tangent vector to the curve $x^a(\lambda), l^a=\frac{dx^a}{d\lambda}.$ Then define the parallel transport of $V^a(\lambda_0)$ along the curve by the vector $V^b$ satisfying
-$$l^a \nabla_a V^b=0.$$
+For the curve $x^a(\lambda)$, take the tangent vector $l^a\equiv \frac{dx^a}{d\lambda}.$ Then define the parallel transport of $V^a(\lambda_0)$ along the curve to be the vector $V^b$ satisfying
+\begin{equation}
+    l^a \nabla_a V^b=0.
+\end{equation}
 
 One may think of this as being a generalization of a geodesic, the solution to the first-order differential equation
-\begin{equation*}
+\begin{equation}\label{paralleltransportorig}
 \frac{dx^a}{d\lambda}\frac{\p V^b(\lambda)}{\p x^a}+\frac{dx^a}{d\lambda}\Gamma^b_{ac}V^c(\lambda)=0
-\end{equation*}
+\end{equation}
 or equivalently
 \begin{equation}\label{paralleltransport}
 \frac{\p V^b(\lambda)}{\p \lambda}+\frac{dx^a}{d\lambda}\Gamma^b_{ac}V^c(\lambda)=0.
@@ -24,23 +26,27 @@ $$\delta x^a(\lambda) \equiv x^a(\lambda)-x^a(\lambda_0),$$
 the leading-order change in $x^a$ with respect to $\lambda$ about $\lambda_0.$
 
 Explicitly, we have
-$$V^a(\lambda)=V^a(\lambda_0) + \frac{\p V^a}{\p x^b}|_{\lambda_0} \delta x^b(\lambda)+O(\delta x^2)$$
+\begin{equation}\label{taylorexpv}
+    V^b(\lambda)=V^b(\lambda_0) + \frac{\p V^b}{\p x^a}|_{\lambda_0} \delta x^a(\lambda)+O(\delta x^2)
+\end{equation}
 and similarly
-$$\Gamma^a_{bc}(\lambda)=\Gamma^a_{bc}(\lambda_0)+\frac{\p \Gamma^a_{bc}}{\p x^d}|_{\lambda_0}\delta x^d(\lambda)+O(\delta x^2).$$
+\begin{equation}\label{taylorexpgamma}
+  \Gamma^a_{bc}(\lambda)=\Gamma^a_{bc}(\lambda_0)+\frac{\p \Gamma^a_{bc}}{\p x^d}|_{\lambda_0}\delta x^d(\lambda)+O(\delta x^2).  
+\end{equation}
 
-Now let's write the equation of parallel transport at $\lambda=\lambda_0.$ From our Taylor expansion, we have
-$$\frac{dx^a}{d\lambda}\frac{\p V^b}{\p x^a}|_{\lambda_0}+\frac{dx^a}{d\lambda}\Gamma^b_{ac}(\lambda_0)V^c(\lambda_0)=0$$
-which magically becomes\footnote{I'm not happy with this step yet. Is it because our path is arbitrary? The next equation seems to say that}
+Now let's write the equation of parallel transport, Eqn. \ref{paralleltransportorig}, at $\lambda=\lambda_0.$ It is just %From our Taylor expansion, we have
+$$\frac{dx^a}{d\lambda}\frac{\p V^b}{\p x^a}|_{\lambda_0}+\frac{dx^a}{d\lambda}\Gamma^b_{ac}(\lambda_0)V^c(\lambda_0)=0,$$
+and if the velocity $\frac{dx^a}{d\lambda}$ is nonzero at $\lambda=\lambda_0$, we can divide through to get%which magically becomes\footnote{I'm not happy with this step yet. Is it because our path is arbitrary? The next equation seems to say that}
 $$\frac{\p V^b}{\p x^a}|_{\lambda_0}+\Gamma^b_{ac}(\lambda_0)V^c(\lambda_0)=0.$$
 
-If we now substitute this into our Taylor expansion for $V$, to lowest order in $\delta x(\lambda)$ we have
+If we now substitute this expression for $\P{V^b}{x^a}$ into our Taylor expansion for $V^b$, to lowest order in $\delta x(\lambda)$ we have (after a quick relabeling of $a$ and $c$)
 \begin{equation}\label{lo-paralleltransport}
 V^b(\lambda)=V^b(\lambda_0)-\Gamma^b_{ac}(\lambda_0)V^a(\lambda_0)\delta x^c(\lambda).
 \end{equation}
-We can then plug this into our general solution to find
+We can then plug our expressions \ref{lo-paralleltransport} and \ref{taylorexpgamma} for $V$ and $\Gamma$ and into our general solution to find
 $$V^b(\lambda)=V^b(\lambda_0) - \int_{\lambda_0}^\lambda d\lambda' \frac{dx^a}{d\lambda'}\left[\Gamma^b_{ac}(\lambda_0)+\frac{\p \Gamma^b_{ac}}{\p x^d}|_{\lambda_0} \delta x^d(\lambda')+\ldots\right]\left[V^c(\lambda_0)-\Gamma^c_{ef} V^e(\lambda_0)\delta x^f(\lambda')\right]$$
 
-Evaluating this to lowest (interesting) order, i.e. terms linear in $x^a(\lambda')-x^a(\lambda_0)$, we get
+Evaluating this to lowest (interesting) order, i.e. terms linear in $\delta x^a(\lambda')$, we get
 $$V^b(\lambda)=V^b(\lambda_0)
 -\int_{\lambda_0}^\lambda d\lambda' \frac{dx^a}{d\lambda'}|_{\lambda_0}
 \left(\Gamma^b_{ac}(\lambda_0)V^c(\lambda_0)
@@ -65,8 +71,8 @@ We may interpret this equation as telling us that the change in the vector $V$ a
 Curvature therefore tells you how vectors change under a general parallel transport. In Minkowski space, we can pick coordinates where the $\Gamma^a_{bc}=0$, and then vectors do not change under parallel transport.
 
 We may note that the Riemann tensor obeys the \term{Bianchi identity} (technically the second Bianchi identity). Recall that the Riemann tensor takes the form
-$$R^a_{bcd}=\p_c \Gamma^a_{db}-\p_d \Gamma^a_{cb}+\Gamma^f_{bc} \Gamma^a_{fc}-\Gamma^f_{bc}\Gamma^a_{fd}.$$
-We might want to know how to compute derivatives of the Riemann tensor, e.g. $\nabla_c R^a_{bcd}=?$
+$$R^a{}_{bcd}=\p_c \Gamma^a_{db}-\p_d \Gamma^a_{cb}+\Gamma^f_{bc} \Gamma^a_{fc}-\Gamma^f_{bc}\Gamma^a_{fd}.$$
+We might want to know how to compute derivatives of the Riemann tensor, e.g. $\nabla_c R^a{}_{bcd}=?$
 
 This would be pretty awful to compute by hand, as it would have many terms as we expand out each of the $\Gamma$s. Let's be a little more clever. Choose normal coordinates so that $\Gamma^a_{bc}=0$. Note that this doesn't in general mean that the derivatives $\p_a \Gamma$ or $\p^2 \Gamma$ also vanish. Nevertheless, we can see schematically that $\nabla_e R^a_{bcd}$ will have terms like
 $$\nabla_e R^a_{bcd}=\p^2\Gamma,(\p \Gamma)\Gamma, \Gamma \p \Gamma, \Gamma^3.$$
@@ -80,16 +86,18 @@ Adding these up and using the fact that partial derivatives commute, we see that
 $$\nabla_e R^a_{bcd}+\nabla_c R^a_{bde}+\nabla_d R^a_{bec}=0.$$
 This vanishes in Gaussian normal coordinates and is a tensor, so it vanishes in all coordinate systems.
 
-We can also contract some indices, for instance $a$ and $c$. Recall we defined the Ricci tensor, $R_{bd}=R^a_{bad}$. Then contracting, we get
-$$\nabla_e R_{bd}+\nabla_a R^a_{bde}-\nabla_d R_{be}=0,$$
-where we've used the antisymmetry of the Riemann tensor in its last two indices, $R_{abcd}=-R_{abdc}.$ This... isn't great yet. Let's contract $b$ and $e$. The last term will give us the Ricci scalar $R=R_{ab}g^{ab},$ and so we'll get the final expression
-\begin{eqnarray*}
-0&=&\nabla_b R^b_d +\nabla_a R^a_d -\nabla_d R\\
-&=&\nabla_a R^a_b -\frac{1}{2}\nabla_b R\\
-&=& \nabla_a G^{ab},
-\end{eqnarray*}
+We can also contract some indices, for instance $a$ and $c$. Recall we defined the Ricci tensor, $R_{bd}=R^a{}_{bad}$. Then contracting, we get
+$$\nabla_e R_{bd}+\nabla_a R^a{}_{bde}-\nabla_d R_{be}=0,$$
+where we've used the antisymmetry of the Riemann tensor in its last two indices, $R_{abcd}=-R_{abdc}.$ This... isn't great yet. Let's contract $b$ and $e$, multiplying through by $g^{be}$ The last term will give us the Ricci scalar $R=R_{ab}g^{ab},$ and so we'll get the final expression
+\begin{align*}
+0&=\nabla_b R^b{}_d +\nabla_a R^a{}_d -\nabla_d R\\
+&=\nabla_a R^a{}_b -\frac{1}{2}\nabla_b R\\
+&=\nabla_a R^{ac} g_{bc} -\frac{1}{2}\nabla_a R g^{ac} g_{bc}\\
+&= g_{bc} \nabla_a G^{ac},
+\end{align*}
 where $G^{ab}$ is the Einstein tensor,
 $$G^{ab}\equiv R^{ab}-\frac{1}{2}Rg^{ab}.$$
+Thus we see that the Einstein tensor, as the name suggests, is a natural object to use when we are trying to link the energy content of space (as captured in the stress-energy tensor $T^{ab}$) with the curvature of space as described by $G^{ab}$. Since the stress-energy tensor obeys a conservation law, $\nabla_a T^{ab}=0$, we might na\"ively guess that the Einstein equations should take the form $G^{ab}\propto T^{ab}$ since $\nabla_a G^{ab}=0$. This turns out to be basically correct, except that we could also include something proportional to the metric $g_{ab}$ itself, since $\nabla_a g_{ab}=0$ by metric compatibility. The right expression is $G_{ab}+\Lambda g_{ab}= 8\pi T_{ab}$, where $\Lambda$ is known as the cosmological constant.
 
 \subsection*{Non-lectured aside: Riemann tensor and parallel transport around a loop}
 

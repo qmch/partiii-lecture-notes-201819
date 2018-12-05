@@ -93,7 +93,10 @@ We now introduce the metric, a very special rank two (i.e. two-index) symmetric 
 
 From prior experience with special (or general) relativity, we might have an intuition that the metric also has something to do with gravitation. The line element $ds$ (defined by $ds^2 = g_{ab}dx^a dx^b$) is invariant and is therefore a (symmetric) tensor. In a freely falling frame, the metric of Minkowski space is $$\tilde \eta_{a'b'} = \frac{\p x^a}{\p\tilde x^{a'}}\frac{\p x^b}{\p \tilde x^{b'} }g_{ab}.$$ Do such $\frac{\p x^a}{\p\tilde x^{a'}}$ always exist? The answer turns out to be yes-- $g_{ab}$ is not degenerate, so one may diagonalize it and then rescale the eigenvalues. Sylvester's theorem states that if $g$ has $r$ positive eigenvalues, $s$ negative eigenvalues, then diagonalizing preserves this.%it's super unclear how this all applies, TBH. 
 
-Therefore given a metric $g_{ab}$ that is non-degenerate, the inverse metric $g^{ab}$ can be defined such that $g^{ab}g_{bc}=\delta^a_c$ the Kronecker delta. One may then use the metric and the inverse metric to raise and lower indices:
+Therefore given a metric $g_{ab}$ that is non-degenerate, the inverse metric $g^{ab}$ can be defined such that 
+\begin{equation}
+g^{ab}g_{bc}=\delta^a_c,
+\end{equation} where $\delta^a_c$ is the Kronecker delta. One may then use the metric and the inverse metric to raise and lower indices:
 $V_b=g_{bc}V^c$ and $V^a = g^{ab}V_b$.
 
 \textit{``There are more unknowns than there are knowns.''} A brief summary of this course.

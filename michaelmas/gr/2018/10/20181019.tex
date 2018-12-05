@@ -5,7 +5,7 @@ we can equivalently write
 $$V^a\nabla_a V^b=0.$$
 
 What happens if we reparametrize the curve? For instance, we could change to some new variables $\tilde s=\tilde s(s).$
-Then $$\frac{d}{ds}=\frac{d\tilde s}{ds} \frac{d}{d\tilde s}\text{ and }\frac{d^2}{ds^2}=\frac{d^2 \tilde s}{ds^2}\frac{d}{d\tilde s^2} + \left(\frac{d\tilde s}{ds}\right)^2\frac{d^2}{d\tilde s^2}.$$
+Then $$\frac{d}{ds}=\frac{d\tilde s}{ds} \frac{d}{d\tilde s}\text{ and }\frac{d^2}{ds^2}=\frac{d^2 \tilde s}{ds^2}\frac{d}{d\tilde s} + \left(\frac{d\tilde s}{ds}\right)^2\frac{d^2}{d\tilde s^2}.$$
 
 By rewriting in terms of $\tilde s$, we get a new version of the geodesic equation.
 $$\left(\frac{d\tilde s}{ds}\right)^2 \frac{d^2}{d\tilde s^2} x^a+ \frac{d^2\tilde s}{ds^2} \frac{d}{d\tilde s} x^a + \left(\frac{d\tilde s}{ds}\right)^2 \Gamma^a_{bc} \frac{dx^b}{d\tilde s}\frac{dx^c}{d\tilde s}=0.$$
@@ -18,8 +18,8 @@ where $f(s)$ is now some arbitrary function.
 If $f(s)=0$, we say the geodesic is \term{affinely parametrized.} If a geodesic is affinely parametrized, then it remains so for $\tilde s$ such that $d^2\tilde s/ds^2=0$, e.g. for $\tilde s= as+b,$ $a,b$ constants.
 \end{defn}
 
-If a geodesic is affine, then
-$$V^a \nabla_a (V^b V_b)=2V_b V^a \nabla _a V^b=0$$ and so $V^b V_b$ is constant along the geodesic-- if a curve is initially timelike(/spacelike/null) it will remain timelike(/spacelike/null) along the geodesic.
+If a geodesic is affinely parametrized, then
+$$V^a \nabla_a (V^b V_b)=2V_b V^a \nabla _a V^b=0$$ and so $V^b V_b$ is constant along the geodesic. This comes from the directional derivative interpretation of the operator $V^a \nabla_a$. That is, if the tangent vector to the geodesic is initially timelike(/spacelike/null) it will remain timelike(/spacelike/null) all along the geodesic.\footnote{We can expand out this calculation a little bit-- write $V^b V_b$ as $V^b V^c g_{bc}$. Now $\nabla_a(V^b V^c g_{bc})=V^b V^c\nabla_a( g_{bc})+V^b g_{bc} \nabla_a (V^c) + V^c g_{bc} \nabla_a (V^b)= 2 V_b \nabla_a V^b$ since $\nabla_a (g_{bc})=0$ by the metric connection condition. Therefore $V^a \nabla_a (V^b V_b)= 2V_b (V^a \nabla_a V^b) = 0$ by the geodesic equation.}
 
 Recalling how the Christoffel symbol transforms under arbitrary changes of coordinates, we find that under $x^a \mapsto \tilde x^{a'}\equiv \tilde x^{a'}(x^b),$ we have
 $$\Gamma^{a'}_{b'c'}= \frac{\p \tilde x^{a'}}{\p x^a}\frac{\p x^b}{\p \tilde x^{b'}}\frac{\p x^c}{\p \tilde x^{c'}}\Gamma^a_{bc}-\frac{\p^2 \tilde x^{a'}}{\p  x^{b} \p  x^{c}}\frac{\p x^b}{\p \tilde x^{b'}}\frac{\p x^c}{\p \tilde x^{c'}}.$$
@@ -27,18 +27,18 @@ $$\Gamma^{a'}_{b'c'}= \frac{\p \tilde x^{a'}}{\p x^a}\frac{\p x^b}{\p \tilde x^{
 Is it possible to make the new Christoffel symbol vanish in the $\tilde x$ coordinates? This is equivalent to the condition that
 $$\frac{\p \tilde x^{a'}}{\p x^a} \Gamma^a_{bc}= \frac{\p^2 \tilde x^{a'}}{\p x^b \p x^c}.$$ Suppose we want it to vanish at $x^a_0$. Let us choose coordinates $\tilde x$ defined by
 $$\tilde x^{a'}=(x^a-x^a_0)+\frac{1}{2}\Gamma^a_{bc}(x^b-x_0^b)(x^c-x^c_0).$$
-Taking the first derivative with respect to the original coordinates yields
-$$\frac{\p \tilde x^a}{\p x^e}=\delta^a_e +\Gamma^a_{bc}(x^b-x^b_0)\delta^c_e+\ldots$$ where the $\ldots$ denotes derivatives of the Christoffel symbols, and similarly
-$$\frac{\p^2 \tilde x^a}{\p x^e \p x^f}=\Gamma^a_{ef}+\ldots$$
+Deriving with respect to the original coordinates yields
+$$\frac{\p \tilde x^a}{\p x^e}=\delta^a_e +\Gamma^a_{bc}(x^b-x^b_0)\delta^c_e+\ldots$$ where the $\ldots$ denotes derivatives of the Christoffel symbols and we have only included terms to leading order in $x^b-x^b_0$. Similarly
+$$\frac{\p^2 \tilde x^a}{\p x^e \p x^f}=\Gamma^a_{ef}+\text{derivatives of }\Gamma.$$
 
 We therefore see that
 $$\frac{\p \tilde x^{a'}}{\p x^a} \Gamma^a_{bc}= \Gamma^a_{bc} (\delta^{a'}_a +\Gamma^{a'}_{b'c'}(x^{b'}-x^{b'}_0)\delta^{c'}_a)=\Gamma^{a'}_{bc}= \frac{\p^2 \tilde x^{a'}}{\p x^b \p x^c}$$
-when $x^b=x^b_0$, so we have found coordinates where the Christoffel symbol vanishes at a point of our choosing.
+when $x^b=x^b_0$, so we have found coordinates where the Christoffel symbols vanish at a point of our choosing, $\Gamma^{a'}_{b'c'}(x_0)=0$.
 
 \begin{defn}
 If we choose coordinates so that $\Gamma^a_{bc}$ vanishes at a point, then those coordinates are called \term{Gaussian normal coordinates.} In normal coordinates, the metric takes the form
 $$g_{ab}=C_{ab}+O(x-x_0)^2,$$
-where $C_{ab}$ is some set of constants. These coordinates have forced the terms linear in $x-x_0$ to vanish, and by applying the Lorentz transform and rotations (and possibly a scale transformation) we can diagonalize $C_{ab}$ so that at $p$,
+where $C_{ab}$ is some set of constants. This choice of coordinates has forced the terms linear in $x-x_0$ to vanish, and by applying the Lorentz transform and rotations (and possibly a scale transformation) we can in general diagonalize $C_{ab}$ so that at $p$,
 $$C_{ab}=\eta_{ab}.$$
 \end{defn}
 What we have learned is that spacetime can always be made to look like Minkowski spacetime at a given point (up to higher-order corrections). We also call such a choice of coordinates \term{inertial coordinates}.
