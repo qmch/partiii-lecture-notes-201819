@@ -2,34 +2,34 @@ Last time, we introduced de Sitter space. de Sitter space is a hyperboloid in $\
 $$-V^2+W^2+X^2+Y^2+Z^2=3/\Lambda$$
 embedded in a space of metric
 $$ds^2=-dV^2+dW^2+dX^2+dY^2+dZ^2.$$
-To see geometrically what this is, take $V=$constant and this puts time as a constant,
-$$W^2+X^2+Y^2+Z^2=\text{const}=k^2,$$ a three-sphere $S^3$. We can introduce hyperspherical coordinates, which generalize spherical coordinates for $S^2$. They take the form
-\begin{eqnarray*}
-W&=&k\cos\chi\\
-X&=&k\sin\chi \cos\theta\\
-Y&=&k\sin\chi\sin\theta \cos\phi\\
-Z&=&k\sin\chi\sin\theta\sin\phi,
-\end{eqnarray*}
+To see geometrically what this is, take $V=$ constant, so that time becomes constant,
+$$W^2+X^2+Y^2+Z^2=\text{const}=k^2,$$ which is simply the equation for a three-sphere $S^3$. We can introduce hyperspherical coordinates, which generalize spherical coordinates for $S^2$. They take the form
+\begin{align*}
+W&=k\cos\chi\\
+X&=k\sin\chi \cos\theta\\
+Y&=k\sin\chi\sin\theta \cos\phi\\
+Z&=k\sin\chi\sin\theta\sin\phi,
+\end{align*}
 with $0\leq \chi \leq \pi, 0\leq \theta\leq \pi, 0\leq \phi \leq 2\pi.$
 
 The metric in this space is then
 $$d\sigma^2_{(S^2)}=d\chi^2 + \sin^2\chi (d\theta^2+\sin^2\theta d\phi^2).$$
-That is, spatial sections of de Sitter space are three-spheres.
+That is, spatial slices of de Sitter space are three-spheres.
 
 Thus we can invert the relationships to find
-\begin{eqnarray*}
-V&=&\sqrt{\frac{3}{\Lambda}}\cosh\tau \sqrt{\frac{\Lambda}{3}}\\
-W&=&\sqrt{\frac{3}{\Lambda}}\sinh\tau \sqrt{\frac{\Lambda}{3}}\cos\chi\\
-X&=&\sqrt{\frac{3}{\Lambda}}\sinh\tau \sqrt{\frac{\Lambda}{3}}\sin\chi\cos\theta\\
-Y&=&\sqrt{\frac{3}{\Lambda}}\sinh\tau \sqrt{\frac{\Lambda}{3}}\sin\chi\sin\theta\cos\phi\\
-Z&=&\sqrt{\frac{3}{\Lambda}}\sinh\tau \sqrt{\frac{\Lambda}{3}}\sin\chi\sin\theta\sin\phi.
-\end{eqnarray*}
+\begin{align*}
+V&=\sqrt{\frac{3}{\Lambda}}\cosh\tau \sqrt{\frac{\Lambda}{3}}\\
+W&=\sqrt{\frac{3}{\Lambda}}\sinh\tau \sqrt{\frac{\Lambda}{3}}\cos\chi\\
+X&=\sqrt{\frac{3}{\Lambda}}\sinh\tau \sqrt{\frac{\Lambda}{3}}\sin\chi\cos\theta\\
+Y&=\sqrt{\frac{3}{\Lambda}}\sinh\tau \sqrt{\frac{\Lambda}{3}}\sin\chi\sin\theta\cos\phi\\
+Z&=\sqrt{\frac{3}{\Lambda}}\sinh\tau \sqrt{\frac{\Lambda}{3}}\sin\chi\sin\theta\sin\phi
+\end{align*}
+in terms of a new time coordinate $\tau$.
 
 The full metric is then
 $$ds^2=-d\tau^2+\frac{3}{\Lambda}\cosh^2\tau \frac{\Lambda}{3}\left(d\chi^2 + \sin^2\chi (d\theta^2+\sin^2\theta d\phi^2)\right).$$
-de Sitter space thus shrinks from infinite size down to a minimum size $\sqrt{3/\Lambda}$, and then re-expands to infinite size.
-
-So our $T,x,y,z$ coordinates only worked for part of the spacetime, and the same is true of the $\tilde T,x,y,z$ coordinates. This is what led us to see only an expanding or contracting universe in the $T$ and $\tilde T$ parameters.
+Geometrically, de Sitter space thus shrinks from a $3$-sphere of infinite radius down to a minimum size $\sqrt{3/\Lambda}$, and then re-expands to infinite radius.
+Now we see that our $T,x,y,z$ coordinates only worked for part of the spacetime, and the same is true of the $\tilde T,x,y,z$ coordinates. This is what led us to see only an expanding or contracting universe in the $T$ and $\tilde T$ parameters.
 
 Let's also note that in Minkowski spacetime, if you wait long enough, you can see all of space. That is, the light from anywhere in space will eventually reach you (equivalently, null geodesics reach arbitrarily far away in finite time). However, this is not true in de Sitter space. As the universe expands, the light cone is forced to close up as $\tau\to \infty$. As a result, there are regions of space that can never be seen-- we call this a cosmological horizon, a boundary between what you can and cannot see.\footnote{This is somewhat clearer when we draw the Penrose/conformal diagram for de Sitter space, I think.}
 
@@ -69,6 +69,6 @@ Note that we've turned partial derivatives into covariant derivatives, since the
 $$\frac{d^2x^a}{ds^2}+\left[\Gamma^a_{bc}(g)+\frac{1}{\Omega}(-g_{bc}\nabla^a \Omega +\delta^a_c \nabla_b \Omega +\delta^a_b \nabla_c \Omega)\right]\frac{dx^b}{ds}\frac{dx^c}{ds}=0.$$
 If our geodesic $\frac{dx^b}{ds}$ is timelike or spacelike, then $g_{bc}\frac{dx^b}{ds}\frac{dx^c}{ds}=\pm 1$ and this will be hard to solve. But if $\frac{dx^b}{ds}$ is null, then $g_{bc}\frac{dx^b}{ds}\frac{dx^c}{ds}=0$ gives the geodesic equation
 $$\frac{d^2x^a}{ds^2}+\Gamma^a_{bc}(g)\frac{dx^b}{ds}\frac{dx^c}{ds}=-\frac{2}{\omega}\frac{dx^a}{ds}\left(\nabla_b \Omega \frac{dx^b}{ds}\right).$$
-But this is just the geodesic equation for a geodesic that is \emph{not affinely parametrized}. Therefore conformal transformations map null geodesics onto null geodesics.
+But this is just the geodesic equation for a geodesic that is \emph{not affinely parametrized}. Therefore conformal transformations map null geodesics onto null geodesics in the new coordinates.
 
 In general, spacelike and timelike geodesics are not mapped onto geodesics in the new metric, though they will still be spacelike and timelike curves respectively.

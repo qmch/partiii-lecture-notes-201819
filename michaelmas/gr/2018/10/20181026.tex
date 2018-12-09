@@ -75,8 +75,8 @@ $$\int_{\p M}d \Sigma (-\nabla^d h + \nabla_e h^{de})n_d.$$
 That is, the first two terms in our integral over all spacetime are total derivatives $\nabla_d$ evaluated on the ``boundary'' of our spacetime. Therefore we assume they are irrelevant and vanish as we take the space to be infinitely large.\footnote{This won't always be valid, but it is here.} Thus if we rewrite the traces as $h=h^{ab}g_{ab}$ and require that the variation of the action vanishes for all $h^{ab}$, we recover
 $$R_{ab}-\frac{1}{2}R g_{ab}+\Lambda g_{ab}=0,$$
 the Einstein equations in the absence of matter. Taking the variation of the matter term is much simpler:
-$$I_{matter}=\int L_{matter} g^{1/2}d^4x = \int \frac{1}{2} T_{ab} h^{ab} g^{1/2} d^4x,$$
-so we get a stress-energy term. This expression defines the energy-momentum tensor of any matter-- note that $T_{ab}$ is always symmetric since $h^{ab}$ is symmetric and the indices are fully contracted. In QFT, we defined the energy-momentum tensor a little differently using Noether's theorem for translations in time and space, but that energy-momentum tensor is not guaranteed to be symmetric. If $T_{ab}$ is symmetric, then taking the covariant derivative of the Einstein equations gives
+$$I_{matter}=\int L_{matter} g^{1/2}d^4x \implies \delta I_{matter}= \int \frac{1}{2} T_{ab} h^{ab} g^{1/2} d^4x,$$
+so we get a stress-energy term $T_{ab}$. This expression defines the energy-momentum tensor of any matter-- note that $T_{ab}$ is always symmetric since $h^{ab}$ is symmetric and the indices are fully contracted. In QFT, we defined the energy-momentum tensor a little differently using Noether's theorem for translations in time and space, but that energy-momentum tensor is not guaranteed to be symmetric. If $T_{ab}$ is symmetric, then taking the covariant derivative of the Einstein equations gives
 $$8\pi G \nabla_a T^a{}_b= \nabla^a(R_{ab}-\frac{1}{2} R g_{ab})+\nabla_b \Lambda = 0$$
 by the Bianchi identity and the fact that $\Lambda$ is a constant.
 
@@ -84,5 +84,5 @@ by the Bianchi identity and the fact that $\Lambda$ is a constant.
 One can write a specific action for the matter term. Consider
 $$I_{matter}=\int \left[-\frac{1}{2} g^{ab}\p_a \phi \p_b \phi-\frac{1}{2} m^2 \phi^2 -\frac{1}{4!} \lambda \phi^4 \right] g^{1/2} d^4x.$$
 Note we've chosen the signs here so that in Minkowski space ($g^{ab}=\eta^{ab}$), the kinetic term is positive, $\frac{1}{2} \dot \phi^2 >0.$ One can then derive the corresponding energy-momentum tensor,
-$$T_{ab}=\p_c \phi \p_b \phi -\frac{1}{2} g_{ab} \left[(\p\phi)^2+m^2\phi^2+\frac{\lambda}{4!}\phi^4\right],$$
+$$T_{ab}=\p_a \phi \p_b \phi -\frac{1}{2} g_{ab} \left[(\p\phi)^2+m^2\phi^2+\frac{\lambda}{4!}\phi^4\right],$$
 \end{exm}
