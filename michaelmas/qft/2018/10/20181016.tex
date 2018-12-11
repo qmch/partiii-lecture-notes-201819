@@ -2,9 +2,11 @@ We've been working in the Schr\"odinger picture where the states evolve in time,
 
 In the Schr\"odinger picture, it's not obvious how our theory is Lorentz invariant. We seem to have picked out time as a special dimension when we write things down (even though we started with a Lorentz invariant theory, so our final theory should still be Lorentz invariant). The operators $\phi(\vec x)$ don't depend on $t$, but the states evolve as
 $$i \frac{d\ket{p}}{dt}=H\ket{p} = E_p\ket{p} \implies \ket{p(t)}= e^{-i E_pt} \ket{p(0)}.$$
-In the Heisenberg picture, things are a bit better-- time dependence is moved into the operators. Denoting Heisenberg picture operators as $O_H$ and Schr\"odinger picture operators as $O_S$, we have\footnote{Here, the exponential of an operator is simply defined in terms of the power expansion of $e$, e.g. $e^{iHt}=\sum_{n=0}^\infty \frac{(iHt)^n}{n!}$.}
+In the Heisenberg picture, things are a bit better-- time dependence is moved into the operators. Denoting Heisenberg picture operators as $O_H$ and Schr\"odinger picture operators as $O_S$, we have%
+    \footnote{Here, the exponential of an operator is simply defined in terms of the power expansion of $e$, e.g. $e^{iHt}=\sum_{n=0}^\infty \frac{(iHt)^n}{n!}$.}
 $$O_H(t) \equiv e^{iHt}O_S e^{-iHt}.$$
-Taking the time derivative of each side, one finds that\footnote{Explicitly, $\frac{d O_H(t)}{dt}= iH e^{iHt} O_S e^{-iHt}+e^{iHt}O_S (-iH) e^{-iHt} = i e^{iHt} [H,O_S] e^{-iHt} = i[H,O_H]$ since $e^{iHt}H e^{-iHt}=H$. We also see from this that it doesn't matter to the Hamiltonian itself what picture we're in, since $H_S=H_H$.}
+Taking the time derivative of each side, one finds that%
+    \footnote{Explicitly, $\frac{d O_H(t)}{dt}= iH e^{iHt} O_S e^{-iHt}+e^{iHt}O_S (-iH) e^{-iHt} = i e^{iHt} [H,O_S] e^{-iHt} = i[H,O_H]$ since $e^{iHt}H e^{-iHt}=H$. We also see from this that it doesn't matter to the Hamiltonian itself what picture we're in, since $H_S=H_H$.}
 $$\frac{dO_H}{dt}=i[H,O_H].$$
 This is the general time evolution of operators in the Heisenberg picture. It's clear that $O_H(t=0)=O_S$, so our operators agree at $t=0$ (but in general nowhere else). The field commutators then become \emph{equal time commutation relations}:
 $$[\phi(\vec x,t),\phi(\vec y, t)]=[\pi(\vec x, t), \pi(\vec y,t)]=0$$
@@ -42,12 +44,15 @@ $$[\phi(\vec x,t),\phi(\vec y, t)]=\int \frac{d^3p}{(2\pi)^3 2E_p}(e^{i\vec p \c
 
 \begin{defn}
 We can then introduce the idea of a \term{propagator}-- if we initially prepare a particle at point $y$, what is the amplitude to find it at $x$? We can write this as
-\begin{eqnarray*}
-\bra{0}\phi(x) \phi(y)\ket{0}&=&\int \frac{d^3p d^3 p'}{(2\pi)^6\sqrt{4 E_p E_{p'}}} \bra{0} a_{\pv} a_{\pv'}^\dagger \ket{0}e^{-ip \cdot x +i p'\cdot y}\\
-&=&\int \frac{d^3p d^3 p'}{(2\pi)^6\sqrt{4 E_p E_{p'}}} \bra{0} [a_{\pv} a_{\pv'}^\dagger] \ket{0}e^{-ip \cdot x +i p'\cdot y}\\
-&=&\int \frac{d^3p}{(2\pi)^3 2 E_p}e^{-ip\cdot (x-y)} \equiv D(x-y),
-\end{eqnarray*}
-where we have used the fact that $a_{\pv}$ kills the ground state (so we can freely subtract off $a_{\pv'}^\dagger a_{\pv}$ to get a commutator) and used the resulting delta function to integrate over $d^3p'$.
+%
+\begin{align*}
+    \bra{0}\phi(x) \phi(y)\ket{0}&=\int \frac{d^3p d^3 p'}{(2\pi)^6 \sqrt{4 E_p E_{p'}}} \bra{0} a_{\pv} a_{\pv'}^\dagger \ket{0} e^{-ip \cdot x +i p'\cdot y}\\
+    &=\int \frac{d^3p d^3 p'}{(2\pi)^6\sqrt{4 E_p E_{p'}}} \bra{0} [a_{\pv}, a_{\pv'}^\dagger] \ket{0}e^{-ip \cdot x +i p'\cdot y}\\
+    &=\int \frac{d^3p d^3 p'}{(2\pi)^3\sqrt{4 E_p E_{p'}}} \delta^3 (\vec p- \vec p') e^{-ip \cdot x +i p'\cdot y}\\
+    &=\int \frac{d^3p}{(2\pi)^3 2 E_p}e^{-ip\cdot (x-y)} \equiv D(x-y),
+\end{align*}
+%
+where we have used the fact that $a_{\pv}$ kills the ground state (so we can freely replace $a_{\pv} a_{\pv'}^\dagger$ with the commutator $[a_{\pv},a_{\pv'}^\dagger]$) and used the resulting delta function to integrate over $d^3p'$.
 \end{defn}
 
 In fact, one can show\footnote{The easiest way to do this is to set $y=0$ and take $x$ and $y$ at equal times, $x^0=y^0=0$. This gets rid of $p^0$, and from here you can switch to spherical coordinates, rewriting $\vec p \cdot (x)$ as $|p||x|\cos\theta$.} that for spacelike separations $(x-y)^2<0,$ the propagator decays as $D(x-y)\sim e^{-m|\vec x-\vec y|}.$ The quantum field seems to ``leak'' out of the light cone. But we also computed that
