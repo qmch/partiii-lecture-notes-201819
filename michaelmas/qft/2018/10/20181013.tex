@@ -40,8 +40,8 @@ which means that the number of particles in a given state is conserved in the fr
 
 Let's also note that our momentum eigenstates are \emph{not} localized in space. We can describe a spatially localized state by a Fourier transform,
 $$\ket{\vec x} = \int \frac{d^3 p}{(2\pi)^3} e^{-i \vec p \cdot \vec x} \ket{\vec p}.$$
-More generally we describe a wavepacket partially localized in position and momentum space, e.g. by 
-$$\ket{\psi} = \int\frac{d^3p}{(2\pi)^3} e^{-i\vec p \cdot \vec x} \psi(\vec p)\ket{\pv}\bra{\pv}.$$
+More generally we describe a wavepacket partially localized in position and momentum space by a Fourier integral of the form
+$$\ket{\psi} = \int\frac{d^3p}{(2\pi)^3} e^{-i\vec p \cdot \vec x} \psi(\vec p)\ket{\pv}.$$
 Note that neither $\ket{\vec x}$ nor $\ket{\psi}$ are eigenstates of the Hamiltonian like in QM.
 
 We consider now relativistic normalization. We define the vacuum such that $\braket{0}{0}=1$, which certainly must be Lorentz invariant ($1$ is just a number). So in general our momentum eigenstates have the inner product
@@ -59,8 +59,8 @@ $$\int \frac{d^3p}{2E_{\pv}}$$ is Lorentz invariant.
 \begin{proof}
 First note that the integration measure $\int d^4p$ is Lorentz invariant, since $\Lambda \in SO(1,3)$ (i.e. $\det \Lambda=1$). Therefore the factor of $\det \Lambda$ we would normally pick up from doing the coordinate transformation is just $1$, so the four-volume element is Lorentz invariant, $\int d^4p = \int d^4 p'$. It's also true that the quantity $p_0^2= \vec{p}^2+m^2$ is Lorentz invariant (in particular, it expresses the length of a four-vector $p_\mu p^\mu = m^2$). The solutions for $p_0$ have two branches, positive and negative:
 $$p_0 = \pm \sqrt{\pv^2+m^2}.$$
-But our choice of branch is also Lorentz invariant (we can't go from the positive to negative solutions via Lorentz transformation). Therefore combining the last few facts, we find that
-$$\int d^4 p \delta(p_0^2-\pv^2-m^2)|_{p^0 >0} = \int \left.\frac{d^3 p}{2p_0}\right|_{p_0=E_p}=\int \frac{d^3p}{2E_p}$$
+But our choice of branch is also Lorentz invariant (we can't go from the positive to negative solutions via Lorentz transformation). This means that $p_0^2-\vec p^2 -m^2, p_0>0$ will be a Lorentz invariant quantity, and will remain so even if we put it inside, say, a delta function. Combining the last few facts, we find that
+$$\int d^4 p \delta(p_0^2-\pv^2-m^2)|_{p_0 >0} = \int \left.\frac{d^3 p}{2p_0}\right|_{p_0=E_p}=\int \frac{d^3p}{2E_p}$$
 is Lorentz invariant, where we have used the fact that $$\delta(g(x))=\sum_{x_i\text{ roots of g}} \frac{\delta(x-x_i)}{|g'(x_i)|}$$
 to perform the $dp_0$ integral.%\footnote{To see why this is true, consider Taylor expanding $\delta(g(x))$ around the roots of $g(x)$ to leading order. For instance, if $g(x_0)=0$ then near $x_0$, we have $g(x)\sim g'(x_0)(x-x_0)+O(x^2)$. Thus $\int dx \delta(g(x)) =\int dx \delta(g'(x_0)x -g'(x_0) x_0)=\int dx' \frac{\delta(x'-g'(x_0)x_0)}{g'(x_0)}$}
 \end{proof}
@@ -101,14 +101,15 @@ so that the conjugate momentum to the field $\psi$ is%
     so time derivatives will as promised produce a factor of $-iE_p$ for the $b_{\vec p}$ term and a factor of $+iE_p$ for the $c_{\vec p}^\dagger$ term.
     The signs in the exponents are correct here, since we're working in the mostly minus convention. For now, we assert that this is the correct conjugate momentum by fiat.}
 $$\pi(\vec x)=\int \frac{d^3p}{(2\pi)^3} i\sqrt{\frac{E_p}{2}} (b_{\pv}^\dagger e^{-i \pv \cdot \vec x}-c_{\pv} e^{i \pv \cdot \vec x}).$$
-The conjugate momentum to $\psi^\dagger$ is equivalently $\pi^\dagger$. The commutation relations are then (exercise)
+The conjugate momentum to $\psi^\dagger$ is equivalently $\pi^\dagger$. The commutation relations are then%
+    \footnote{Stated as an exercise in class. This computation is longer, see non-lectured aside.}
 $$[\psi(\vec x), \pi(\vec y)]=i\delta^3(\vec x - \vec y), \quad 
 [\psi(\vec x),\psi^\dagger(\vec y)]=0$$
 $$\implies [b_{\pv},b_{\vec q}^\dagger]=(2\pi)^3 \delta^3 (\pv - \vec q)=[c_{\pv},c_{\vec q}^\dagger].$$
 The interpretation of these equations is that different types of particle are created by the $b_{\pv}^\dagger$ and $c_{\pv}^\dagger$ operators. They are both spin $0$ and of mass $\mu$, so we should interpret them as a particle-antiparticle pair. This doesn't work for electrons, which have spin $1/2$ and therefore require a more sophisticated spinor treatment, but it would describe something like a charged pion.
 
 Indeed, if we compute the conserved charges in this theory by applying Noether's theorem, we get a conserved charge of the form
-$Q=i\int d^3 x \dot \psi^* \psi - \psi^* \dot \psi$ or equivalently in terms of the conjugate momentum (since $\pi = \P{\cL}{\dot \psi}=\dot \psi^*$)
+$Q=i\int d^3 x \, (\dot \psi^* \psi - \psi^* \dot \psi)$ or equivalently in terms of the conjugate momentum (since $\pi = \P{\cL}{\dot \psi}=\dot \psi^*$)
 $$Q=i\int d^3 x [\pi \psi - \psi^\dagger \pi^\dagger].$$
 After normal ordering (exercise) one can write
 $$Q=\int \frac{d^3 p}{(2\pi)^3} (c_{\pv}^\dagger c_{\pv}- b_{\pv}^\dagger b_{\pv})=N_c-N_b,$$
@@ -116,7 +117,91 @@ which shows that our conserved quantity has the interpretation of particle numbe
 
 Since there are two real scalar fields in this theory, the Hamiltonian for this theory takes the form
 $$H=\int \frac{d^3p}{(2\pi)^3} E_p(b_{\pv}^\dagger b_{\pv}+c_{\pv}^\dagger c_{\pv}).$$
-As an exercise one can check that $[Q,H]=0$ using the commutation relations, and therefore $Q$ is conserved. This is also true in the interacting theory. $N_c,N_b$ are individually conserved in the free theory, but in the interacting theory they aren't-- instead, they can be created and destroyed in particle-antiparticle pairs so that $N_c-N_b$ is constant.
+As an exercise one can check that $[Q,H]=0$ using the commutation relations,%
+    \footnote{Leaving off the integrals, we have
+    \begin{equation*}
+        [Q,H]\sim [c_{\vec p}^\dagger c_{\vec p}, b_{\vec q}^\dagger b_{\vec q}]+[c_{\vec p}^\dagger c_{\vec p}, c_{\vec q}^\dagger c_{\vec q}]-[b_{\vec p}^\dagger b_{\vec p},b_{\vec q}^\dagger b_{\vec q}]- [b_{\vec p}^\dagger b_{\vec p}, c_{\vec q}^\dagger c_{\vec q}].
+    \end{equation*}
+    The commutators of $b$s and $c$s are zero since $b$s and $c$s always commute. The other two terms with only $b$s or only $c$s must cancel since $b$ and $c$ have the same commutation relations, so any commutators of $c$s and $c^\dagger$s will be equal to those same commutators with $c$s replaced by $b$s and $c^\dagger$s replaced by $b^\dagger$s everywhere. We conclude that $[Q,H]=0.$
+    }
+and therefore $Q$ is conserved. This is also true in the interacting theory. $N_c,N_b$ are individually conserved in the free theory, but in the interacting theory they aren't-- instead, they can be created and destroyed in particle-antiparticle pairs so that $N_c-N_b$ is constant.
 
 \subsection*{Non-lectured aside: commutation relations and normal ordering}
-First, let's derive the commutation relations for our new creation and annihilation operators.%continue here-- integrate over y with the delta function
+First, let's derive the commutation relations for our new creation and annihilation operators. From the field commutation relations, we know that
+\begin{equation*}
+    [\psi(\vec x),\pi(\vec y)]=i\delta^3(\vec x-\vec y),
+\end{equation*}
+and if we write out this commutator explicitly in terms of the creation and annihilation operators, we find that it is
+\begin{multline}\label{psipicommutator}
+    [\psi(\vec x),\pi(\vec y)]=\frac{i}{2} \int \frac{d^3p\, d^3q}{(2\pi)^6} 
+    \left([b_{\vec p}, b_{\vec q}^\dagger] e^{i(\vec p \cdot \vec x -\vec q \cdot \vec y)} - [b_{\vec p},c_{\vec q}] e^{i(\vec p \cdot \vec x + \vec q \cdot \vec y)}\right.\\
+    \left.+[c_{\vec p}^\dagger, b_{\vec q}^\dagger] e^{-i(\vec p \cdot \vec x + \vec q \cdot \vec y)} - [c_{\vec p}^\dagger,c_{\vec q}] e^{-i(\vec p\cdot \vec x - \vec q \cdot \vec y)}\right).
+\end{multline}
+Proving that the field relations hold given the creation and annihilation commutation relations is easy-- if we know that $[b_{\vec p},b_{\vec q}^\dagger]=[c_{\vec p},c_{\vec q}^\dagger]=(2\pi)^3\delta^3(\vec p-\vec q)$ and all other commutators are zero, then Eqn. \ref{psipicommutator} reduces to
+\begin{align*}
+    [\psi(\vec x),\pi(\vec y)]&=\frac{i}{2} \int \frac{d^3p\, d^3q}{(2\pi)^3} 
+    \left(\delta^3(\vec p-\vec q) e^{i(\vec p \cdot \vec x -\vec q \cdot \vec y)}
+    +\delta^3(\vec q-\vec p) e^{-i(\vec p\cdot \vec x - \vec q \cdot \vec y)}\right)\\
+    &=i \int\frac{d^3p}{(2\pi)^3} e^{i\vec p\cdot(\vec x -\vec y)}\\
+    &=i \delta^3(\vec x- \vec y).
+\end{align*}
+Proving the other direction ($b,c$ commutation relations given the field relations) takes a little more work. We also know that the commutator of two different fields vanishes,
+\begin{equation*}
+    [\psi(\vec x),\psi^\dagger(\vec y)]=0.
+\end{equation*}
+Computing this commutator, we find that
+\begin{multline}
+    [\psi(\vec x),\psi^\dagger(\vec y)]=\int \frac{d^3p\,d^3q}{(2\pi)^6}\frac{1}{2\sqrt{E_{\vec p} E_{\vec q}}}
+    \left([b_{\vec p}, b_{\vec q}^\dagger] e^{i(\vec p \cdot \vec x -\vec q \cdot \vec y)} + [b_{\vec p},c_{\vec q}] e^{i(\vec p \cdot \vec x + \vec q \cdot \vec y)}\right.\\
+    \left.+ [c_{\vec p}^\dagger, b_{\vec q}^\dagger] e^{-i(\vec p \cdot \vec x + \vec q \cdot \vec y)} + [c_{\vec p}^\dagger,c_{\vec q}] e^{-i(\vec p\cdot \vec x - \vec q \cdot \vec y)}\right).
+\end{multline}
+Since this integral is identically zero, the integrand must vanish. The factor $\frac{1}{2\sqrt{E_{\vec p} E_{\vec q}}}$ is nonzero for any finite values of $E_{\vec p},E_{\vec q}$, so we learn that 
+\begin{equation}\label{complexfieldcommutator}
+    0=[b_{\vec p}, b_{\vec q}^\dagger] e^{i(\vec p \cdot \vec x -\vec q \cdot \vec y)} + [b_{\vec p},c_{\vec q}] e^{i(\vec p \cdot \vec x + \vec q \cdot \vec y)}
+    + [c_{\vec p}^\dagger, b_{\vec q}^\dagger] e^{-i(\vec p \cdot \vec x + \vec q \cdot \vec y)} + [c_{\vec p}^\dagger,c_{\vec q}] e^{-i(\vec p\cdot \vec x - \vec q \cdot \vec y)}.
+\end{equation}
+This is a useful combination, since we can for instance add it to the commutator in Eqn. \ref{psipicommutator} to find that
+\begin{equation}
+    [\psi(\vec x),\pi(\vec y)]=i \int \frac{d^3p\, d^3q}{(2\pi)^6} 
+    \left([b_{\vec p}, b_{\vec q}^\dagger] e^{i(\vec p \cdot \vec x -\vec q \cdot \vec y)} +[c_{\vec p}^\dagger, b_{\vec q}^\dagger] e^{-i(\vec p \cdot \vec x + \vec q \cdot \vec y)}\right),
+\end{equation}
+and since we know from the field relations that the left side is a delta function $i\delta^3(\vec x- \vec y)$, we can pass back to the integral form of the delta function to find
+\begin{equation*}
+    \int \frac{d^3p}{(2\pi)^3} e^{i \vec p\cdot (\vec x - \vec y)}=\int \frac{d^3p\, d^3q}{(2\pi)^6} 
+    \left([b_{\vec p}, b_{\vec q}^\dagger] e^{i(\vec p \cdot \vec x -\vec q \cdot \vec y)} +[c_{\vec p}^\dagger, b_{\vec q}^\dagger] e^{-i(\vec p \cdot \vec x + \vec q \cdot \vec y)}\right),
+\end{equation*}
+or with a little forethought,
+\begin{equation*}
+    \int \frac{d^3p\, d^3 q}{(2\pi)^3} \delta^3(\vec p-\vec q) 
+    e^{i (\vec p\cdot \vec x - \vec q \cdot\vec y)}
+    =\int \frac{d^3p\, d^3q}{(2\pi)^6} 
+    \left([b_{\vec p}, b_{\vec q}^\dagger] e^{i(\vec p \cdot \vec x -\vec q \cdot \vec y)} +[c_{\vec p}^\dagger, b_{\vec q}^\dagger] e^{-i(\vec p \cdot \vec x + \vec q \cdot \vec y)}\right).
+\end{equation*}
+Matching terms on left and right (which we can do since Fourier modes are orthogonal), we find that
+\begin{equation*}
+    [b_{\vec p},b_{\vec q}^\dagger]=(2\pi)^3 \delta^3(\vec p -\vec q), \quad [c_{\vec p}^\dagger,b_{\vec q}^\dagger]=0.
+\end{equation*}
+A basically identical calculation (subtracting Eqn. \ref{complexfieldcommutator} rather than adding it) yields the equivalent result for $[c_{\vec p},c_{\vec q}^\dagger]$ and $[b_{\vec p},c_{\vec q}]$. We find that
+\begin{equation*}
+    [b_{\vec p},b_{\vec q}^\dagger]=[c_{\vec p},c_{\vec q}^\dagger]=(2\pi)^3 \delta^3(\vec p -\vec q)
+\end{equation*}
+and all other commutators vanish. \qed
+
+Next we'll show some properties of the particle number operator $Q$. First, normal ordering. Explicitly, we can write $Q$ in terms of creation and annihilation operators as
+\begin{align*}
+    Q&= i\int d^3x [\pi(\vec x)\psi(\vec x)-\psi^\dagger (\vec x) \pi^\dagger (\vec x)]\\
+    &=i\int d^3x \frac{d^3p \, d^3q}{(2\pi)^6} \frac{i}{2} 
+    \left[(b_{\vec p}^\dagger e^{-i\vec p \cdot x}-c_{\vec p}e^{i\vec p\cdot \vec x})(b_{\vec q} e^{i\vec q \cdot \vec x}+c_{\vec q}^\dagger e^{-i\vec q \cdot \vec x})\right.\\
+    &{}\qquad\left.
+    -(b_{\vec p}^\dagger e^{-i\vec p \cdot x}+c_{\vec p}e^{i\vec p\cdot \vec x})(-b_{\vec q} e^{i\vec q \cdot \vec x}+c_{\vec q}^\dagger e^{-i\vec q \cdot \vec x})\right]\\
+    &= -\int d^3x \frac{d^3p \, d^3q}{(2\pi)^6} 
+    [b_{\vec p}^\dagger b_{\vec q} e^{-i(\vec p - \vec q) \cdot \vec x} - c_{\vec p} c_{\vec q}^\dagger e^{i(\vec p -\vec q) \cdot \vec x)}]\\
+    &= -\int \frac{d^3p \, d^3q}{(2\pi)^3}\delta^3(\vec p -\vec q) 
+    [b_{\vec p}^\dagger b_{\vec q} - c_{\vec p} c_{\vec q}^\dagger]\\
+    &= \int \frac{d^3p}{(2\pi)^3} [c_{\vec p} c_{\vec p}^\dagger-b_{\vec p}^\dagger b_{\vec p}].
+\end{align*}
+Applying normal ordering simply switches the $c$ and $c^\dagger$ so that
+\begin{equation*}
+    :Q:=\int \frac{d^3 p}{(2\pi)^3} (c_{\vec p}^\dagger c_{\vec p}- b_{\vec p}^\dagger b_{\vec p})=N_c-N_b,
+\end{equation*}
+as desired. \qed

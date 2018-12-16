@@ -1,37 +1,72 @@
-A brief correction: the time evolution operator should be defined
-$U(t,t_0)=e^{iH_0}e^{iH(t-t_0)}e^{-iH_0 t_0)}$ so that our time evolution relations all work out.
+%A brief correction: the time evolution operator should be defined
+%$U(t,t_0)=e^{iH_0}e^{iH(t-t_0)}e^{-iH_0 t_0)}$ so that our time evolution relations all work out.
 
-Now last time, we claimed that
-$$\bra{\Omega}T\set{\phi_{1,H}\ldots \phi_{m,H}}\ket{\Omega}=\frac{\bra{0}T \set{\phi_{1,I}\ldots \phi_{m,I}S]}\ket{0}}{\bra{0}S\ket{0}}.$$
+Last time, we claimed that
+$$\bra{\Omega}T\set{\phi_{1,H}\ldots \phi_{m,H}}\ket{\Omega}=\frac{\bra{0}T \set{\phi_{1,I}\ldots \phi_{m,I}S}\ket{0}}{\bra{0}S\ket{0}}.$$
 That is, it suffices to consider only connected diagrams, since the vacuum bubbles add up to a multiplicative factor (namely, the vacuum energy) that can be factored out of the overall correlation function.
-Let us expand the numerator on the RHS as
+\begin{proof}
+To prove this, let us expand the numerator on the RHS as
 $$\bra{0}U(\infty, t_1) \phi_{1,I} U(t_1,t_2)\phi_{2,I} \ldots U(t_{n-1},t_n)\phi_{n,I} U(t_n,-\infty)\ket{0},$$
-and WLOG we label the fields to already be time-ordered, with $x_1^0 > x_2^0 > \ldots > x_m^0$. That is, we've split up the overall time evolution operator $S=\lim_{t\to \infty, t_0\to-\infty} U(t,t_0)$ into intervals from $t_i=x_i^0$ to $t_{i+1}=x_{i+1}^0$. We can then break up the operators,
-$$U(t_1,t_2)=U(t_1,0)U(0,t_2)$$ so that the numerator becomes
+and WLOG we label the fields to already be time-ordered, with $x_1^0 > x_2^0 > \ldots > x_m^0$. That is, we've split up the overall time evolution operator $S=\lim_{t\to \infty, t_0\to-\infty} U(t,t_0)$ into intervals from $t_i=x_i^0$ to $t_{i+1}=x_{i+1}^0$ in order to write out the time ordering. We can then break up the time evolution operators as
+$$U(t_1,t_2)=U(t_1,0)U(0,t_2)$$ 
+so that the numerator becomes
 $$\bra{0}U(\infty, 0) \underbrace{[U(0,t_1)\phi_{1,I} U(t_1,0)]}_{\phi_{1,H}} [U(0,t_2)\phi_{2,I} U(t_2,0)]\ldots U(t_{n-1},0)[U(0,t_n)\phi_{n,I} U(t_n,0)]U(0,-\infty)\ket{0},$$
-which is a bunch of Heisenberg picture states sandwiched between the vacuum states and some $U$s.
-More compactly,
-$$\underbrace{\bra{0}U(\infty,0)\phi_{I,H}\ldots \phi_{m,H}}_{\bra\psi}U(0,-\infty)\ket{0}$$
-setting everything back to the Heisenberg picture at $t=0$. Consider now this same expression where instead of evolving the free theory ground state with the unitary operator $U(0,-\infty),$ we consider evolution from $t=t_0$ some finite time to $t=0$:
+or more compactly,
+\begin{equation}\label{greenfnnumerator}
+    \bra{0}U(\infty,0)\phi_{1,H}\ldots \phi_{n,H} U(0,-\infty)\ket{0},
+\end{equation}
+which is nothing more than a bunch of Heisenberg picture operators sandwiched between the vacuum states and a pair of time evolution operators.
+\begin{lem}
+For a general state $\ket{\psi}$,
+\begin{equation}
+    \lim_{t_0\to-\infty} \bra{\psi}U(0,t_0)\ket{0}=\braket{\psi}{\Omega}\braket{\Omega}{0}.
+\end{equation}
+\end{lem}
+%More compactly, let us define a state $\ket{\psi}$ with
+%\begin{equation}
+%    \underbrace{\bra{0}U(\infty,0)\phi_{I,H}\ldots \phi_{m,H}}_{\bra\psi}U(0,-\infty)\ket{0}
+%\end{equation}
+%setting everything back to the Heisenberg picture at $t=0$. Consider now this same expression where instead of evolving the vacuum of the free theory with the unitary operator $U(0,-\infty),$ we consider evolution from some finite time $t=t_0$ to $t=0$:
+\begin{proof}
+First, note that
 $$\bra{\psi}U(0,t_0)\ket{0}=\bra{\psi}e^{iHt_0}\ket{0}$$
-since $H_0\ket{0}=0.$ Insert a complete set of interacting states $\ket{p_1,\ldots, p_n}$. Then 
+since $U(0,t_0)= e^{iHt_0}e^{-iH_0t_0}$ and $H_0\ket{0}=0.$ Insert a complete set of interacting states $\ket{p_1,\ldots, p_n}$. Then 
+%
 \begin{align*}
-\lim_{t_0\to-\infty} \bra{\psi}U(0,t_0)\ket{0}&=
-\lim_{t_0\to-\infty}\bra{\psi}e^{iHt_0}\left[\ket{\Omega}\bra{\Omega}+\sum_{n=1}^\infty \int  \prod_{j=1}^n \frac{d^3p_j}{2E_{p_j}(2\pi)^3}\ket{p_1,\ldots,p_n}\bra{p_1,\ldots,p_n}\right]\ket{0}\\
-&=\braket{\psi}{\Omega}\braket{\Omega}{0}\\
-&\qquad {}+
-\lim_{t_0\to-\infty}\sum_{n=1}^\infty \int  \prod_{j=1}^n \frac{d^3p_j}{2E_{p_j}(2\pi)^3} e^{i\sum_{k=1}^n E_{p_k} t_0}\braket{\psi}{p_1,\ldots,p_n}\braket{p_1,\ldots,p_n}{0}.
+    \lim_{t_0\to-\infty} \bra{\psi}U(0,t_0)\ket{0}&=
+    \lim_{t_0\to-\infty}\bra{\psi}e^{iHt_0}\left[\ket{\Omega}\bra{\Omega}+\sum_{n=1}^\infty \int  \prod_{j=1}^n \frac{d^3p_j}{2E_{p_j}(2\pi)^3}\ket{p_1,\ldots,p_n}\bra{p_1,\ldots,p_n}\right]\ket{0}\\
+    &=\braket{\psi}{\Omega}\braket{\Omega}{0}\\
+    &\qquad {}+
+    \lim_{t_0\to-\infty}\sum_{n=1}^\infty \int  \prod_{j=1}^n \frac{d^3p_j}{2E_{p_j}(2\pi)^3} e^{i\sum_{k=1}^n E_{p_k} t_0}\braket{\psi}{p_1,\ldots,p_n}\braket{p_1,\ldots,p_n}{0}.
 \end{align*}
-Note that in the first term $\bra{\psi} e^{iHt_0}\ket{\Omega}\braket{\Omega}{0},$ all nonzero powers of $H$ from the exponential will kill the vacuum state $\ket{\Omega}$ by definition, so the only thing that survives is the zeroth order term, $\braket{\psi}{\Omega}\braket{\Omega}{0}.$ Luckily, the second term vanishes completely due to the Riemann-Lebesgue lemma: stated roughly, ``for reasonable $f(x)$ (i.e. square-integrable), $\lim_{\mu\to\infty} \int_a^b f(x)e^{i\mu x}dx=0.$'' Therefore we find that
-$$\lim_{t_0\to-\infty} \bra{\psi}U(0,t_0)\ket{0}=\bra{0}U(\infty,0)\phi_{1,H}\ldots \phi_{m,H}\ket{\Omega}\braket{\Omega}{0}$$
-where we have put back in the definition of $\bra{\psi}$. By the same token,
-$$\lim_{t_0\to\infty}\bra{0}e^{-iHt_0}\ket{\psi}=\bra{0}U(\infty,0)\ket{\psi},$$
-so our numerator becomes
-$$\bra{\Omega}\phi_{1,H}\ldots \phi_{m,H}\ket{\Omega}\braket{\Omega}{0}\braket{0}{\Omega}$$
-and the denominator is just $\braket{0}{\Omega}\braket{\Omega}{0}$.\footnote{It's literally the same calculation, but suppose there are no fields. Then the first factor is just $\braket{\Omega}{\Omega}=1$ by normalization of the interacting theory vacuum states.} Therefore
+%
+Note that in the first term $\bra{\psi} e^{iHt_0}\ket{\Omega}\braket{\Omega}{0},$ all nonzero powers of $H$ from the exponential will kill the (interacting) vacuum state $\ket{\Omega}$ by definition, so the only thing that survives is the zeroth order term, $\braket{\psi}{\Omega}\braket{\Omega}{0}.$ Luckily, the second term vanishes due to the Riemann-Lebesgue lemma: stated roughly, ``for reasonable $f(x)$ (i.e. square-integrable), $\lim_{\mu\to\infty} \int_a^b f(x)e^{i\mu x}dx=0.$'' With this second term gone, we conclude that
+\begin{equation*}
+  \lim_{t_0\to-\infty} \bra{\psi}U(0,t_0)\ket{0}=\braket{\psi}{\Omega}\braket{\Omega}{0}. \qedhere
+\end{equation*}
+\end{proof}
+%\bra{0}U(\infty,0)\phi_{1,H}\ldots \phi_{m,H}\ket{\Omega}\braket{\Omega}{0}$$
+%where we have put back in the definition of $\bra{\psi}$. 
+By the same reasoning,
+\begin{equation}
+    \lim_{t_0\to\infty} \bra{0} U(t_0,0)\ket{\psi}=\braket{0}{\Omega}\braket{\Omega}{\psi}.
+\end{equation}
+%$$\lim_{t_0\to\infty}\bra{0}e^{-iHt_0}\ket{\psi}=\bra{0}U(\infty,0)\ket{\psi},$$
+Now we can apply our lemma so that our numerator (Eqn. \ref{greenfnnumerator}) becomes
+\begin{equation}
+    \bra{0}U(\infty,0)\phi_{1,H}\ldots \phi_{n,H} U(0,-\infty)\ket{0}=
+        \bra{\Omega}\phi_{1,H}\ldots \phi_{m,H}\ket{\Omega}
+        \braket{\Omega}{0}\braket{0}{\Omega}
+\end{equation}
+%$$\bra{\Omega}\phi_{1,H}\ldots \phi_{m,H}\ket{\Omega}\braket{\Omega}{0}\braket{0}{\Omega}$$
+and the denominator is just $\braket{0}{\Omega}\braket{\Omega}{0}$.%
+    \footnote{It's literally the same calculation-- just take out the fields $\phi$. Then the first factor is just $\braket{\Omega}{\Omega}=1$ by normalization of the interacting theory vacuum states and we're left with $\braket{\Omega}{0}\braket{0}{\Omega}.$}
+%
+Therefore
 $$\frac{\bra{0}T \set{\phi_{1,I}\ldots \phi_{m,I}S]}\ket{0}}{\bra{0}S\ket{0}}=\frac{\bra{\Omega}\phi_{1,H}\ldots \phi_{m,H}\ket{\Omega}\braket{\Omega}{0}\braket{0}{\Omega}}{\braket{\Omega}{0}\braket{0}{\Omega}}=\bra{\Omega}T\set{\phi_{1,H}\ldots \phi_{m,H}}\ket{\Omega},
 $$
-as promised. Note we have put time ordering back in since we explicitly time-ordered the fields when we expanded out $S$. This completes the proof.\qed
+as promised. Note we have put time ordering back in since we explicitly time-ordered the fields when we expanded out $S$. This completes the proof.
+\end{proof}
 
 In words, this tells us that we can do our calculations relative to the vacuum of the interacting theory $\ket{\Omega}$ rather than the vacuum of the free theory $\ket{0}$, which means (in terms of our perturbative expansion) that we need not consider vacuum bubbles when we compute our correlation functions.
 
@@ -63,18 +98,20 @@ $$\ket{p_1p_2}_{in}=\int \frac{d^3 \tilde p_1}{(2\pi)^3 2E_{\tilde p_1}}\frac{d^
 where $\ket{\tilde p_1 \tilde p_2}$ are the real four-momentum eigenstates.
 
 If we suppose that the outgoing particles are also pure momentum eigenstates, then then our delta functions are soaked up by integrals when we try to compute the transition probability $W$. We then have
-\begin{eqnarray*}
-W&=&(2\pi)^8)\int \frac{d^3 \tilde p_1}{(2\pi)^3 2E_{\tilde p_1}} \frac{d^3 \tilde p_2}{(2\pi)^3 2E_{\tilde p_2}} \frac{d^3 p_1'}{(2\pi)^3 2E_{p_1'}} \frac{d^3 p_2'}{(2\pi)^3 2E_{p_2'}}\\ &&\times\set{|M|^2 f_1(\tilde p_1)f_1^* (p_1')f_2(\tilde p_2)f_2^*(p_2')\delta^4(\sum_i q_i -\tilde p_1 -\tilde p_2)\delta^4(\sum q_i-p_1' -p_2')}.
-\end{eqnarray*}
+\begin{align*}
+    W &= (2\pi)^8\int \frac{d^3 \tilde p_1}{(2\pi)^3 2E_{\tilde p_1}} 
+        \frac{d^3 \tilde p_2}{(2\pi)^3 2E_{\tilde p_2}} \frac{d^3 p_1'}{(2\pi)^3 2E_{p_1'}} \frac{d^3 p_2'}{(2\pi)^3 2E_{p_2'}}\\ 
+        &{}\qquad \times\left\{|M|^2 f_1(\tilde p_1)f_1^* (p_1')f_2(\tilde p_2)f_2^*(p_2')\delta^4(\sum_i q_i -\tilde p_1 -\tilde p_2)\delta^4(\sum q_i-p_1' -p_2')\right\}.
+\end{align*}
 Note that what we have written as the square of the matrix element here is really $$|M|^2=\braket{q_1\ldots q_n}{\tilde p_1 \tilde p_2}\braket{p_1'p_2'}{q_1\ldots q_n}.$$ We'll clean this up later to write everything in terms of the physical values $p$ and $q$ rather than dummy variables $p', \tilde p.$
 
 This expression for $W$ is the transition probability for $2\to n$ scattering to states of definite momentum $q_1\ldots q_n$.
 We can expand one of the delta functions in Fourier space to write 
-\begin{eqnarray*}
-W&=&\int d^4x \int \frac{d^3\tilde p_1}{(2\pi)^3 2E_{\tilde p_1}} f_1(\tilde p_1) e^{i\tilde p_1 \cdot x}\frac{d^3\tilde p_2}{(2\pi)^3 2E_{\tilde p_2}} f_2(\tilde p_2) e^{i\tilde p_2 \cdot x}\\
-&&\times \frac{d^3 p_1'}{(2\pi)^3 2E_{p_1'}} f_1^*(p_1') e^{ip_1' \cdot x} \frac{d^3 p_2'}{(2\pi)^3 2E_{p_2'}} f_2^*(p_2') e^{ip_2' \cdot x}\\
-&&\times\delta^4(\sum_i q_i - p_1'-p_2')
-\end{eqnarray*}
+\begin{align*}
+    W&=\int d^4x \int \frac{d^3\tilde p_1}{(2\pi)^3 2E_{\tilde p_1}} f_1(\tilde p_1) e^{i\tilde p_1 \cdot x}\frac{d^3\tilde p_2}{(2\pi)^3 2E_{\tilde p_2}} f_2(\tilde p_2) e^{i\tilde p_2 \cdot x}\\
+    &{}\qquad \times \frac{d^3 p_1'}{(2\pi)^3 2E_{p_1'}} f_1^*(p_1') e^{ip_1' \cdot x} \frac{d^3 p_2'}{(2\pi)^3 2E_{p_2'}} f_2^*(p_2') e^{ip_2' \cdot x}\\
+    &{}\qquad \times \delta^4(\sum_i q_i - p_1'-p_2').
+\end{align*}
 Using the normalization we define the Fourier transform of the wavepacket,
 $$\ket{\psi_i}\equiv \int \frac{d^3p}{(2\pi)^3\sqrt{2E_p}}f_i(p) e^{-ip\cdot x}\ket{p}.$$
 What we've called the matrix element $|M|^2$ is still a function of $\tilde p_1, \tilde p_2,p_1', p_2', q_i$, but one can use the notion of sharp peaks (i.e. in our distributions $f_i$) to approximate $|M^2|$ by its value where $\tilde p_i=p_i' = p_i.$ That is, our momentum distributions $f_i$ are localized around some values $p_i$, so they behave similarly to delta functions and we can set all the dummy variables to the physical momenta $p_1,p_2$. Then the transition probability becomes

@@ -33,7 +33,7 @@ The advanced propagator is similarly defined but for $x^0<y^0$. In any case, the
 \end{itemize}
 
 It's this third point which is not realistic-- we know in general that particles should interact and scatter. Therefore, we guess that interactions must come from higher-order terms in the Lagrangian $\cL$. For example, in a real scalar field $\phi$ we could more generally write
-$$\cL=\frac{1}{2}\p_\mu \phi \p^\mu \phi -\frac{1}{2}m^2 \phi^2 - \sum_{n=3} \frac{\lambda_n}{n!} \phi^n,$$ where the $\lambda_n$s are called coupling constants. Ideally, we'd like these corrections to be small so we can take a perturbative expansion about the free theory solutions, which already look like particles.
+$$\cL=\frac{1}{2}\p_\mu \phi \p^\mu \phi -\frac{1}{2}m^2 \phi^2 - \sum_{n=3} \frac{\lambda_n}{n!} \phi^n,$$ where the $\lambda_n$s are called \term{coupling constants}. Ideally, we'd like these corrections to be small so we can take a perturbative expansion about the free theory solutions, which already look like particles.
 
 Na\"ively, we might say that small perturbations means that $\lambda_n \ll 1$, but that only makes sense when $\lambda_n$ is dimensionless. So let's do some dimensional analysis to figure out what the dimensions of $\lambda_n$ are. Recall that the action $S$ is dimensionless, $[S]=0.$
 Since $S=\int d^4 x \cL$ and $[d^4x]=-4$, we find that $[\cL]=4.$ From looking at the kinetic term $\p_\mu \phi \p^\mu \phi$ and using the fact that $[\p_\mu]=+1$, we conclude that $[\phi]=1, [m]=1,$ and
@@ -51,15 +51,15 @@ Let's consider $\phi^4$ theory, with the Lagrangian
 $$\cL = \frac{1}{2}\p_\mu \phi \p^\mu \phi -\frac{1}{2}m^2\phi^2-\frac{\lambda\phi^4}{4!}; \lambda \ll 1.$$
 
 We can already guess at the effects of this final term-- in particular,
-$[H,N]\neq 0\implies$ particle number is no longer conserved.\footnote{Those of you with some familiarity with Feynman diagrams can probably cook up a simple diagram which goes from one to three particles using the $\phi^4$ interaction. The interaction has four lines so just put one on the left and three on the right (no need to worry about antiparticles since this is a scalar field).} Expanding the last term, we expect some big integrals which will have
+$[H,N]\neq 0\implies$ particle number is no longer conserved.\footnote{Those of you with some familiarity with Feynman diagrams can probably cook up a simple diagram which goes from one to three particles using the $\phi^4$ interaction. The interaction has four lines so just put one on the left and three on the right (no need to worry about antiparticles since this is a scalar field).} Expanding the last term, we expect some big integrals which will have terms like
 $$\int \ldots ((a_{\pv}^\dagger)^4 \ldots) +\int \ldots {a_{\pv}^\dagger}^3 a_{\pv}+\ldots$$
 which will destroy particles.
 \end{exm}
 
 \begin{exm}
-We could also consider scalar Yukawa theory, $\psi\in \CC,\phi \in \RR$ with the Lagrangian
+We could also consider scalar Yukawa theory with two fields, $\psi\in \CC,\phi \in \RR$, and the Lagrangian
 $$\cL=\p_\mu \psi^* \p^\mu \psi +\frac{1}{2}\p_\mu \phi \p^\mu \phi - \mu^2 \psi^*\psi -\frac{1}{2}m^2 \phi^2 - g\psi^* \psi \phi.$$
-In this theory, $[g]=1$ and we take $g\ll m, g\ll \mu$. We get a Noether current from noticing that the Lagrangian is invariant under $\psi\to e^{i\theta}\psi$, and this current has the interpretation of charge conservation-- the number of $\psi$ particles $-$ the number of $\psi$ anti-particles is conserved, but there is no such conservation law for the number of $\phi$s.
+In this theory, $[g]=1$ and we take $g\ll m, g\ll \mu$. We get a Noether current by noticing that the Lagrangian is invariant under $\psi\to e^{i\theta}\psi$, and this current has the interpretation of charge conservation-- the number of $\psi$ particles minus the number of $\psi$ anti-particles is conserved, but there is no such conservation law for the number of real scalar $\phi$s.
 \end{exm}
 
 \subsection*{The interaction picture} Previously, we saw the familiar Schr\"odinger picture where operators are time-independent and states evolve in time by the Schr\"odinger equation,
@@ -68,6 +68,7 @@ We then introduced the Heisenberg picture, where we moved the explicit time depe
 $$\ket{\psi}_H = e^{iHt}\ket{\psi}_S, O_H(t)=e^{iHt} O_S e^{-iHt}.$$
 The interaction picture is a hybrid of the Heisenberg and Schr\"odinger pictures. It splits the Hamiltonian into a free theory part and an interaction part:
 $$H=H_0+H_{\text{int}}.$$
+In the interaction picture, states evolve with the interacting Hamiltonian $H_{int}$ and operators evolve by the free Hamiltonian $H_0$.
 \begin{exm}
 In $\phi^4$ theory, we have $\cL_{int}=-\lambda \phi^4/4!$ with $$H_{int}=-\int d^3x \cL_{int}=+\lambda \int \phi^4/4!$$
 and $H_0$ the standard free theory Hamiltonian

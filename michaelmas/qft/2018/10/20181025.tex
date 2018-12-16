@@ -1,11 +1,10 @@
-Last time, we began computing the amplitude for meson decay to first order in $g$. Now let's apply Wick's theorem to nucleon scattering, $\psi(p_1)\psi(p_2)\to \psi(p_1')\psi(p_2').$
+Last time, we computed the amplitude for meson decay to first order in $g$. Now let's apply Wick's theorem to nucleon scattering, $\psi(p_1)\psi(p_2)\to \psi(p_1')\psi(p_2').$
 Our initial state looks like
 $$\ket{i}=\sqrt{4 E_{p_1} E_{p_2}}b_{\vec p_1}^\dagger b_{\vec p_2} \ket{0} \equiv \ket{p_1,p_2}$$
 and our final state is
 $$\ket{f}=\sqrt{4 E_{p_1'} E_{p_2'}}b_{\vec p_1'}^\dagger b_{\vec p_2'} \ket{0} \equiv \ket{p_1',p_2'}.$$
-We aren't interested where there's no scattering (i.e. the zeroth order term where the nucleons just go on their way without any interaction). So what we're really interested in is the $O(g^2)$ term
-$$\bra{f}(S-1)\ket{i}.$$
-(In the context of Feynman diagrams, it's pretty clear that any single interaction $O(g)$ would produce a meson we don't want in our final state. The leading order term will be $O(g^2)$.)
+We aren't interested in the trivial case where there's no scattering (i.e. the zeroth order term where the nucleons just go on their way without any interaction). Moreover, any single interaction $O(g)$ would produce a meson we don't want in our final state, so there is no order $g$ contribution. What we're really interested in is the $O(g^2)$ term in $\bra{f}(S-1)\ket{i}.$
+%(In the context of Feynman diagrams, it's pretty clear that any single interaction $O(g)$ would produce a meson we don't want in our final state. The leading order term will be $O(g^2)$.)
 
 The amplitude takes the form
 $$\frac{(-ig)^2}{2!}\int d^4x_1 d^4x_2 \bra{p_1',p_2'}T\set{\psi^*(x_1)\psi(x_1) \phi(x_1) \psi^*(x_2) \psi(x_2)\phi(x_2)}\ket{p_1,p_2}.$$
@@ -32,7 +31,7 @@ If we now integrate over this, our delta functions give us several exponential t
 \end{align*}
 Writing this all out, one can perform the $x_1,x_2$ integrals to get (surprise) even more delta functions. We also integrate over the internal momentum $k$ and find as our final result
 $$(-ig)^2 \left\{\frac{i}{(p_1-p_1')^2-m^2+i\epsilon}+\frac{i}{(p_2'-p_1)^2-m^2+i\epsilon}\right\} (2\pi)^4\delta^4(p_1+p_2-p_1'-p_2').$$
-In fact, there are two terms here-- one where the $\psi$s exchange a meson and go on their ways, and one where the $\psi$s exchange a meson and then cross over (so that what we thought was the first nucleon was actually the second). The meaning of this will be more obvious when we draw the Feynman diagrams. It should be clear that the delta function imposes conservation of overall momentum (i.e. the outgoing momentum is equal to the ingoing momentum, $p_1+p_2=p_1'+p_2'$).
+In fact, there are two terms here-- one where the $\psi$s exchange a meson and go on their ways, and one where the $\psi$s exchange a meson and then cross over (so that what we thought was the first nucleon was actually the second). The meaning of this will be more obvious when we draw the Feynman diagrams, but we need both terms in order to ensure that the particles obey Bose-Einstein statistics (i.e. are indistinguishable). It should be clear that the delta function imposes conservation of overall momentum (i.e. the outgoing momentum is equal to the ingoing momentum, $p_1+p_2=p_1'+p_2'$).
 
 %\feynmandiagram [horizontal=a to b] {
 %i1 -- [fermion] a -- [fermion] i2,
@@ -45,7 +44,7 @@ In fact, there are two terms here-- one where the $\psi$s exchange a meson and g
 Here are the rules.
 \begin{itemize}
     \item Draw an external line for each particle in the initial and final states $\ket{i},\ket{f},$ assigning a four-momentum to each. 
-    \item For $\CC$ fields we ought to add an arrow to label the flow of charge. Choose an in(out) going arrow for (anti-)particles in $\ket{i}$, and the opposite for $\ket{f}$.
+    \item For $\CC$ fields we ought to add an arrow to label the flow of charge. Choose an in(out)-going arrow for (anti-)particles in $\ket{i}$, and the opposite convention holds for $\ket{f}$.
     \item Join the lines together with vertices as prescribed by the Lagrangian, i.e. making sure that the interaction has a corresponding term and that charge is conserved in each vertex.
     \item Assign a momentum $k$ to each internal line $i$.
     \item Add a delta function corresponding to each vertex for momentum conservation, $(-ig)(2\pi)^4 \delta^4(\sum_i k_i)$, where $\sum_i k_i$ is the sum of all 4-momenta flowing into the vertex and $g$ is the coupling constant in the Lagrangian.
@@ -56,7 +55,7 @@ Here are the rules.
     \end{cases}$$
 \end{itemize}
 
-Using the Feynman rules, we can immediately write down the amplitude for our nucleon scattering process: it is
+Using the Feynman rules, we can draw the two $O(g^2)$ diagrams and immediately write down the amplitude for our nucleon scattering process: it is
 \begin{align*}
 \bra{f}(S-1)\ket{i}={}&(-ig)^2\int \frac{d^4k}{(2\pi)^4} \frac{i}{k^2-m^2+i\epsilon} (2\pi)^8 \{\delta^4(p_1-p_1' -k)\delta^4(p_2-p_2' +k)\\
 &+\delta^4(p_1-p_2'-k)\delta^4(p_2+k-p_1')\}\\

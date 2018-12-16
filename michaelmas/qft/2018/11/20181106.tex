@@ -21,7 +21,7 @@ then the property that $\Lambda$ preserves the inner product on four-vectors imp
 We may introduce a basis of six $4\times 4$ matrices, which we will label by four indices
 $$(M^{\rho\sigma})^{\mu\nu}=\eta^{\rho\mu}\eta^{\sigma\nu}-\eta^{\sigma\mu}\eta^{\rho\nu},$$
 where these matrices are antisymmetric in $\rho,\sigma$ and in $\mu,\nu$. We take $\rho,\sigma$ to specify which matrix we are looking at. Lowering the index $\nu$, we take $\mu,\nu$ to specify the row and column respectively. Therefore
-$$(M^{\rho\sigma})^\mu_\nu=\eta^{\rho\mu}\delta^\sigma_\nu-\eta^{\sigma\mu}\delta^\rho_\nu.$$
+$$(M^{\rho\sigma})^\mu{}_\nu=\eta^{\rho\mu}\delta^\sigma{}_\nu-\eta^{\sigma\mu}\delta^\rho{}_\nu.$$
 \begin{exm}
 The basis vector ${(M^{01})^\mu}_\nu$ is given by
 $${(M^{01})^\mu}_\nu=
@@ -44,10 +44,10 @@ $${(M^{12})^\mu}_\nu=
 This generates rotations in the $(x^1-x^2)$ plane.
 \end{exm}
 Note that when we lower $\nu$ in order to write the generators as matrices, the matrix may not explicitly look antisymmetric! We can now write
-$$\omega^{\mu\nu}=\frac{1}{2}(\Omega_{\rho\sigma}M^{\rho\sigma})^\mu_\nu$$
+$$\omega^{\mu\nu}=\frac{1}{2}(\Omega_{\rho\sigma}M^{\rho\sigma})^\mu{}_\nu$$
 where these $M$s are the generators of the group of Lorentz transformations and $\Omega$ is some set of antisymmetric parameters.
 \begin{defn}
-The \term{Lorentz algebra} is defined by the bracket
+The \term{Lorentz algebra} is a set of relations between matrices $M$ defined by the bracket
 $$[M^{\rho\sigma},M^{\tau\nu}]=\eta^{\sigma\tau}M^{\rho\nu}-\eta^{\rho\tau}M^{\sigma\nu}+\eta^{\rho\nu}M^{\sigma\tau}-\eta^{\sigma\nu}M^{\rho\tau}.$$
 \end{defn}
 
