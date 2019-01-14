@@ -54,13 +54,15 @@ $$g_{ab}=g_{ab}^{(0)}+h_{ab},$$
 and let's work in linear order in $h$.
 
 Then we can expand the Einstein equations accordingly. For instance,
-$$\delta R_{ab}=-\frac{1}{2}\Box h_{ab}+\frac{1}{2}\nabla_d \nabla_a h^d_b +\frac{1}{2}\nabla_d \nabla_b h^d_a -\frac{1}{2}\nabla_a \nabla_b h,$$
+$$\delta R_{ab}=-\frac{1}{2}\Box h_{ab}+\frac{1}{2}\nabla_d \nabla_a h_b{}^d +\frac{1}{2}\nabla_d \nabla_b h_a{}^d -\frac{1}{2}\nabla_a \nabla_b h,$$
 with $h=h_{ab}{g^{(0)}}^{ab}$. Note that the covariant derivatives $\nabla$ are taken with respect to the original unperturbed metric $g^{(0)}$. The variation of the Einstein equations is therefore
 $$\delta R_{ab}-\frac{1}{2}\delta R g_{ab}^{(0)} -\frac{1}{2}R h_{ab}=8\pi T_{ab}.$$
  Here, we think of $T_{ab}$ as the source of gravitational radiation, so $T_{ab}$ is of order $h$.
 
 To simplify somewhat, we take $g^{(0)}$ to be Minkowski space and work in $t,x,y,z$ coordinates. Thus $\nabla_a$ becomes a partial derivative and $\Box$ is just the flat space wave operator. Our equations simplify to
-$$-\Box h_{ab}+\p_d \p_a h^d_b +\p_d \p_b h^b_a -\p_a \p_b h=16\pi T_{ab},$$
+$$-\Box h_{ab}+\p_d \p_a h_b{}^d +\p_d \p_b h_a{}^d -\p_a \p_b h%correction here!
++\eta_{ab}\Box h -\eta_{ab} \p_c \p_d h^{cd}
+=16\pi T_{ab},$$
 which is the analog of Maxwell's equation-- written in terms of a vector potential, that looks like
 $$\Box A^a -\p_b \p^a A^b=-\mu_0 j^a.$$
 It is often convenient to solve Maxwell's equations with an appropriate choice of gauge. Let us try to find something equivalent for our Einstein equations.

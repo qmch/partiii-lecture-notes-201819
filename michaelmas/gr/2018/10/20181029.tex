@@ -42,7 +42,36 @@ Here, the Maxwell tensor is given as usual by $F_{ab}\equiv \p_a A_b -\p_b A_a$ 
 $$\delta I_{em}=-\frac{1}{4} \int d^4x g^{1/2} [-2 h^{ac} g^{bd} F_{ab} F_{cd} + \frac{1}{2} g_{ab} F_{cd} F^{cd} h^{ab}].$$
 We find that the corresponding stress-energy tensor is
 $$T_{ab}=F_{ac} {F_b}^c - \frac{1}{4} g_{ab} F_{cd} F^{cd}.$$
-It's a simple exercise to check that $\nabla_a T^{ab}=0$ if $\nabla_a F_{bc} + \nabla_b F_{ca} + \nabla_c F_{ab}=0$ (the Bianchi identity) and $\nabla_a F^{ab}=0$.
+It's a simple exercise to check that $\nabla_a T^{ab}=0$ if $\nabla_a F_{bc} + \nabla_b F_{ca} + \nabla_c F_{ab}=0$ (the Bianchi identity) and $\nabla_a F^{ab}=0$.%
+    \footnote{Let's check this explicitly. First, we raise the indices on $T^{ab}$ to get
+    \begin{align*}
+        T^{ab}&=F^a{}_c F^{bc} -\frac{1}{4}g^{ab} F_{cd} F^{cd}\\
+        &= F^{ac} F^b{}_c-\frac{1}{4}g^{ab} F_{cd} F^{cd}.
+    \end{align*}
+    When we take the derivative, we find that this first term becomes
+    \begin{equation*}
+        \nabla_a (F^{ac} F^b{}_c)= F^{ac} \nabla_a F^b{}_c,
+    \end{equation*}
+    since Maxwell's equations say that $\nabla_a F^{ab}=0$. We find that 
+    \begin{equation*}
+        \nabla_a T^{ab} = F^{ac} \nabla_a F^b{}_c -\frac{1}{4}g^{ab} \nabla_a (F_{cd} F^{cd}).
+    \end{equation*} The $-1/4$ term will take a bit of massaging to get what we want-- we'll need Bianchi to compute it. This becomes
+    \begin{align*}
+        -\frac{1}{4}g^{ab} \nabla_a (F_{cd} F^{cd}) &= -\frac{1}{4} g^{ab} [(\nabla_a F_{cd})F^{cd} +F_{cd} \nabla_a F^{cd}]\\
+        &= -\frac{1}{2} g^{ab} (\nabla_a F_{cd})F^{cd}\\
+        &= -\frac{1}{2} g^{ab} (-\nabla_c F_{da} - \nabla_d F_{ac})F^{cd}\\
+        &= -\frac{1}{2} (-\nabla_c F_d{}^b -\nabla_d F^b{}_c)F^{cd}.
+    \end{align*}
+    Note the only real free index here is $b$, so everything else can be relabeled and reshuffled. This first term becomes 
+    \begin{equation*}
+        -\frac{1}{2} (\nabla_c F^b{}_d) F^{cd} = -\frac{1}{2} F^{ac} \nabla_a F^b{}_c,
+    \end{equation*}
+    which is $-1/2$ of the original first term. Similarly, this second term becomes
+    \begin{equation*}
+        \frac{1}{2}(\nabla_d F^b{}_c)F^{cd} = -\frac{1}{2}(\nabla_d F^b{}_c) F^{dc} = -\frac{1}{2} F^{ac} \nabla_a F^b{}_c,
+    \end{equation*}
+    after some index shuffling and relabeling, which is simply another $-1/2$ of the original first term. Thanks to Bianchi, we see that it all cancels and $\nabla_a T^{ab} = 0$, so the stress-energy tensor is conserved for the Maxwell Lagrangian, as it must be.
+    }
 
 Let's now examine some symmetries of the Einstein equation. In the absence of matter, we have
 $$R_{ab}-\frac{1}{2} R g_{ab} +\Lambda g_{ab}=0.$$

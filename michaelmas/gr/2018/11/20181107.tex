@@ -63,9 +63,10 @@ This is equivalent to saying that near a massive body, a light ray travels in a 
 \begin{equation}
 \frac{d^2u}{d\phi^2}+u-3Mu^2=0.
 \end{equation}
-To solve the perturbed equation, we make the ansatz that $u=u_0+u_1$ where $u_0$ solves the original equation and $u_1$ is a small perturbation. To leading order in $u_1$, we get
+To solve the perturbed equation, we make the ansatz that $u=u_0+u_1$ where $u_0$ solves the original equation and $u_1$ is a small perturbation. To leading order in $u_1$, we get%
+    \footnote{What happened to the $2u_0u_1$ cross-term here? We don't know.}
 \begin{equation}\label{perturbedu1}
-\frac{d^2u_1}{d\phi^2}+u_1=\frac{3M\sin^2\phi}{b^2}
+    \frac{d^2u_1}{d\phi^2}+u_1=\frac{3M\sin^2\phi}{b^2}
 \end{equation}
 where we have put back in the explicit solution for $u_0$.
 We've therefore simplified our problem to a linear equation for $u_1$, and the quickest way to solve this is the method of variation of parameters. That is, we take the solution to the homogeneous equation and assume that the solution to the inhomogeneous equation \ref{perturbedu1} is the homogenous solution multiplied by some function. More concretely, we make the ansatz that $$u_1=f(\phi)\sin\phi,$$ where $u_1=\sin\phi$ solves the homogenous equation $\frac{d^2u_1}{d\phi^2}+u_1=0$.\footnote{Strictly, we should also include the $\cos$ solution when we do variation of parameters. I haven't yet worked out the consequences of including this in our analysis.} Then
@@ -100,7 +101,9 @@ Now we again treat the $u^3$ term as a perturbation, writing
 $$u=u_0+u_1$$
 so that
 $$2\frac{du_0}{d\phi}\frac{du_1}{d\phi}=\frac{2Mu_1}{L^2}-2u_0u_1+2Mu_0^3$$
-to first order in the perturbation. Substituting in for $u_0,$ we get
+to first order in the perturbation.%
+    \footnote{It seems we have again neglected a cross-term of $2Mu_0^2 u_1$. Again, no idea why.}
+Substituting in for $u_0,$ we get
 \begin{align*}
     \frac{2M^4}{L^6}(1+e\cos\phi)^3&= -\frac{2Me\sin\phi}{L^2}\frac{du_1}{d\phi}+\frac{2M}{L^2}(1+e\cos\phi)u_1-\frac{2Mu_1}{L^2}\\
     &=-\frac{2Me\sin\phi}{L^2}\frac{du_1}{d\phi}+\frac{2M}{L^2}e\cos\phi u_1.

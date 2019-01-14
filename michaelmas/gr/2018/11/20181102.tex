@@ -1,15 +1,16 @@
 Let's consider how various quantities of interest transform under conformal transformations,
 $g_{ab}\to \hat g_{ab}=\Omega^2 g_{ab}.$
 The Christoffels transform as
-$$\Gamma^a_{bc}(\hat g)=\Gamma^a_{bc}(g)+\frac{1}{\Omega}(-g_{bc}\nabla^a \Omega +\delta^a_c \nabla_b \Omega +\delta^a_b \nabla_c \Omega),$$
+$$\Gamma^a_{bc}(\hat g)=\Gamma^a_{bc}(g)+\frac{1}{\Omega}(-g_{bc}\nabla^a \Omega +\delta^a{}_c \nabla_b \Omega +\delta^a{}_b \nabla_c \Omega),$$
 as we saw last time. The Riemann tensor transforms as
-$${R^{ab}}_{cd}(\hat g)=\Omega^{-2}{R^{ab}}_{cd}(g)+\frac{1}{4}[\delta^a_c \Omega^b_d - \delta^a_d \Omega^b_c -\delta^b_c \Omega^a_d +\delta^b_d \Omega^a_c,$$
-with $$\Omega^a_b\equiv \frac{4}{\Omega}\nabla^a \nabla_b (1/\Omega)-2\delta^a_b \nabla_c(1/\Omega) \nabla^c(1/\Omega).$$
-The Ricci tensor is also complicated:
-$$R^a_b(\hat g)=\Omega^{-2}R^a_b(g) +\frac{1}{2\Omega}\nabla_b \nabla^a (1/\Omega)-\frac{1}{2\Omega^4}\Box (\Omega^2)\delta^a_b$$
+$${R^{ab}}_{cd}(\hat g)=\Omega^{-2}{R^{ab}}_{cd}(g)+\frac{1}{4}[\delta^a{}_c \Omega^b{}_d - \delta^a{}_d \Omega^b{}_c -\delta^b{}_c \Omega^a{}_d +\delta^b{}_d \Omega^a{}_c],$$
+with $$\Omega^a_b\equiv \frac{4}{\Omega}\nabla^a \nabla_b (1/\Omega)-2\delta^a{}_b \nabla_c(1/\Omega) \nabla^c(1/\Omega).$$
+The Ricci tensor is also complicated:%
+    \footnote{In fact, this expression is also probably wrong. If you contract this to get $R(\hat g)$, it doesn't give you the next equation, though the next equation is certainly correct. Fortunately, it's not used anywhere else. See the solutions to Example Sheet 2 for the calculation worked out correctly.}
+$$R^a{}_b(\hat g)=\Omega^{-2}R^a{}_b(g) +\frac{1}{2\Omega}\nabla_b \nabla^a (1/\Omega)-\frac{1}{2\Omega^4}\Box (\Omega^2)\delta^a{}_b$$
 with $\Box\equiv \nabla_d \nabla^d.$ However, the Ricci scalar and the Weyl tensor transform more nicely:
 \begin{equation}\label{ricciconformal}
-R(\hat g)=\Omega^{-2}R(g)-6\Omega^{-3}\Box \Omega \quad\text{and}\quad C^a_{bcd}(\hat g)=C^a_{bcd}(g).
+R(\hat g)=\Omega^{-2}R(g)-6\Omega^{-3}\Box \Omega \quad\text{and}\quad C^a{}_{bcd}(\hat g)=C^a{}_{bcd}(g).
 \end{equation}
 So in fact the Weyl tensor is invariant under conformal transformations.
 

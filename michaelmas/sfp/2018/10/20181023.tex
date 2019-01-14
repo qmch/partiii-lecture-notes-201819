@@ -75,7 +75,7 @@ For all $X\in \fg$, we define a linear map
 $$ad_X:\fg \to \fg$$
 by
 $$Y\in \fg \mapsto ad_X(Y) = [X,Y]\in \fg.$$
-Since $ad_X$ is a linear map between vector spaces of dimension $D$, it is equivalent to a $D\times D$ matrix. Choosing a basis
+We call this the ``ad map'' for short. Since $ad_X$ is a linear map between vector spaces of dimension $D$, it is equivalent to a $D\times D$ matrix. Choosing a basis
 $$B=\set{T^a,a=1,\ldots,D}$$
 for $\fg$ and setting
 $X=X_a T^a, Y=Y_a T^a,$
@@ -90,25 +90,26 @@ where $R_X$ is a $D\times D$ matrix.
 We can then define the \term{adjoint representation} by
 $$d_{adj}(X)=ad_X \forall X\in \fg,$$
 or with respect to a basis,
-$$[d_{adj}(X)]^b_c = (R_X)^b_c \forall X\in \fg, b,c=1,\ldots, D.$$
+$$[d_{adj}(X)]^b_c = (R_X)^b_c \quad \forall X\in \fg, b,c=1,\ldots, D.$$
+That is, the adjoint representation of an element $X$ is simply the ad map considered as a $D\times D$ matrix.
 \end{defn}
 
-We can then check the defining properties of a representation.
+We can then check that the adjoint representation satisfies the defining properties of a representation.
 \begin{enumerate}
     \item[i)] $$\forall X, Y\in \fg, [d_{Adj}(X),d_{Adj}(Y)]=d_{adj}([X,Y]).$$
     Proof: $d_{Adj}(X)=ad_X,d_{Adj}(Y)=ad_Y.$
-    The $\forall Z\in \fg,$, composing the ad maps gives us
-    $$(d_{adj}(X) \circ d_{Adj}(Y))(Z)=[X,[Y,Z]]$$
+    Then $\forall Z\in \fg$, composing the ad maps gives us
+    $$(d_{Adj}(X) \circ d_{Adj}(Y))(Z)=[X,[Y,Z]]$$
     and in the other order,
-    $$(d_{adj}(Y) \circ d_{Adj}(X))(Z)=[Y,[X,Z]].$$
+    $$(d_{Adj}(Y) \circ d_{Adj}(X))(Z)=[Y,[X,Z]].$$
     Evaluating the RHS of our expression, we have
     $$d_{Adj}([X,Y])(Z)=ad_{[X,Y]}Z=[[X,Y],Z].$$
     Subtracting the LHS from the RHS, we can rewrite as
-    \begin{eqnarray*}
-    (\text{LHS}-\text{RHS})(Z)&=&[X,[Y,Z]]-[Y,[X,Z]]-[[X,Y,Z]\\
-    &=&[X,[Y,Z]]+[Z,[X,Y]]+[Y,[Z,X]]\\
-    &=&0
-    \end{eqnarray*}
+    \begin{align*}
+        (\text{LHS}-\text{RHS})(Z) &= [X,[Y,Z]]-[Y,[X,Z]]-[[X,Y],Z]\\
+            &= [X,[Y,Z]]+[Z,[X,Y]]+[Y,[Z,X]]\\
+            &= 0
+    \end{align*}
     using the antisymmetry property of the bracket and the Jacobi identity.
     \item[ii)] $\forall X,Y\in \fg, \alpha,\beta\in F$ we have
     $$d_{Adj}(\alpha X+\beta Y)=\alpha d_{Adj}(X)+\beta d_{Adj}(Y),$$

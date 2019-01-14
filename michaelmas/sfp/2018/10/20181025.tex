@@ -1,13 +1,13 @@
 Today, we'll consider the consequences of some specific representations and their structures.
 
 \begin{defn}
-Two representations $R_1$ and $R_2$ are isomorphic if $\exists$ a matrix $S$ such that
-$$R_2(X)=S R_1(X)S^{-1} \forall X\in \fg.$$
+Two representations $R_1$ and $R_2$ are \term{isomorphic} if $\exists$ a matrix $S$ such that
+$$R_2(X)=S R_1(X)S^{-1} \, \forall X\in \fg.$$
 Note this must be the same matrix $S$: that is, $R_2$ and $R_1$ are related by a change of basis. If so, we denote this as $$R_1\cong R_2.$$
 \end{defn}
 \begin{defn}
 A representation $R$ with representation space $V$ has an \term{invariant subspace} $U\subset V$ if
-$$R(X)u\in U \forall X\in \fg, u\in U.$$
+$$R(X)u\in U \, \forall X\in \fg, u\in U.$$
 (This is equivalent to our ideals in Lie algebras and normal subgroups in group theory.)
 
 Any representation has two trivial invariant subspaces: they are the vector $U=\set{0}$ and $U=V$ the whole representation space.
@@ -20,35 +20,40 @@ With these definitions in hand, let's look at the representation theory of $L(SU
 $$\set{T^a=-\frac{1}{2}i\sigma_a,a=1,2,3}$$
 with $\sigma_a$ the Pauli matrices. We calculated the structure constants:
 $$[T^a,T^b]=f^{ab}_c T^c$$ with $f^{ab}_c=\epsilon_{abc}$ (the alternating tensor/symbol) and $a,b,c=1,2,3$. Let's do something kind of strange-- we'll write a new complex basis,
-\begin{eqnarray*}
-H&\equiv &\sigma_3 =\begin{pmatrix}
-1&0\\0&-1
-\end{pmatrix}\\
-E_+ &\equiv& \frac{1}{2}(\sigma_1+i\sigma_2) =\begin{pmatrix}
-0&1\\0&0
-\end{pmatrix}\\
-E_-&\equiv&\frac{1}{2}(\sigma_1 - \sigma_2)=\begin{pmatrix}
-0&0\\1&0
-\end{pmatrix}.
-\end{eqnarray*}
+\begin{align*}
+    H&\equiv \sigma_3 = 
+        \begin{pmatrix}
+            1&0\\0&-1
+        \end{pmatrix}\\
+    E_+ &\equiv \frac{1}{2}(\sigma_1+i\sigma_2) = 
+        \begin{pmatrix}
+            0&1\\0&0
+        \end{pmatrix}\\
+    E_-&\equiv\frac{1}{2}(\sigma_1 - i\sigma_2)= 
+        \begin{pmatrix}
+            0&0\\1&0
+        \end{pmatrix}.
+\end{align*}
 This is really a basis for a somewhat bigger space, the complexified Lie algebra
 $$L_\CC (SU(2))=\text{Span}_\CC\set{T^a, a=1,2,3}.$$
 
 For now, we'll simply note that for $X\in L(SU(2))$, we can certainly rewrite $X$ as
 $$X=X_H H + X_+ E^++ X_- E^-,$$
-where $X_H\in i\RR$ and $X_+=(\bar X_-).$ This is called the Cartan-Weyl basis for $L(SU(2))$.\footnote{We've been writing $L(G)$ to distinguish the Lie algebra from the corresponding Lie group $G$, but other texts may use the convention of writing $su(2)$ using lowercase letters or the Fraktur script $\mathfrak{su}(2)$ for the Lie algebra. Just a convention to be aware of.}
+where $X_H\in i\RR$ and $X_+=-(\bar X_-)$ (where bar indicates complex conjugation, as usual). This is called the Cartan-Weyl basis for $L(SU(2))$.\footnote{We've been writing $L(G)$ to distinguish the Lie algebra from the corresponding Lie group $G$, but other texts may use the convention of writing $su(2)$ using lowercase letters or the Fraktur script $\mathfrak{su}(2)$ for the Lie algebra. Just a convention to be aware of.}
 In this basis, a general element takes the form
+%
 $$X=\begin{pmatrix}
-X_H & X_+\\
-X_-&-X_H
+    X_H & X_+\\
+    X_-&-X_H
 \end{pmatrix}.$$
+%
 This is certainly traceless, and $X\in L(SU(2))\iff$ $X$ is antihermitian, i.e. $X_H\in i\RR, X_+ = -(\bar X_-)$.
 
 This basis has some nice properties. For instance, we see that
-\begin{eqnarray*}
-[H,E_\pm] &=& \pm 2 E_\pm\\
-\text{ and } [E_+,E_-] &=& H.
-\end{eqnarray*}
+\begin{align*}
+    [H,E_\pm] &= \pm 2 E_\pm\\
+    \text{ and } [E_+,E_-] &= H.
+\end{align*}
 Hence the ad map takes a very simple form:
 $\ad_H(E_\pm)=\pm 2 E_\pm, \ad_H(H)=0.$
 We also have $ad_H(X)=[H,X]\forall X \in L_\CC(SU(2))$. This describes a general $X$, but note that in this basis, our basis vectors $\set{E_+,E_-,H}$ are eigenvectors of
@@ -63,27 +68,28 @@ The eigenvalues $\lambda$ are called \term{weights} of the representation $R$.
 \begin{defn}
 For such a representation, we call $E_\pm$ the \term{step operators} (cf. the ladder operators from quantum mechanics).
 \end{defn}
-In particular,
-\begin{eqnarray*}
-R(H)R(E_\pm)v_\lambda &=& (R(E_\pm)R(H) + [R(H),R(E_\pm)]) v_\lambda\\
-&=&(\lambda \pm 2) R(E_\pm)v_\lambda.
-\end{eqnarray*}
-We see that the vectors $R(E_\pm)v_\lambda$ we got from acting on eigenvectors of $R(H)$ with the step operators are also eigenvectors of $R(H)$ with new eigenvalues $\lambda \pm 2$.
+The step operators are so named because their representations take eigenvectors of $R(H)$ with eigenvalue $\lambda$ to new eigenvectors of $R(H)$ with new eigenvalues $\lambda \pm 2$. That is, if $R(H)v_\lambda = \lambda v_\lambda$, then
+\begin{align*}
+    R(H)R(E_\pm)v_\lambda &= (R(E_\pm)R(H) + [R(H),R(E_\pm)]) v_\lambda\\
+    &=(\lambda \pm 2) R(E_\pm)v_\lambda.
+\end{align*}
+%We see that the vectors $R(E_\pm)v_\lambda$ we got from acting on eigenvectors of $R(H)$ with the step operators are also 
 
 Note that a finite dimensional representation $R$ of $L(SU(2))$ must have a highest weight $\Lambda \in \CC$, or else we could just keep acting with the raising operator $E_+$ to get more linearly independent vectors. (We can play a similar trick assuming only a lowest weight-- this is what led us to the ladder of harmonic oscillator states.)
-If there is a highest state, we have
-\begin{eqnarray*}
-R(H)v_\Lambda&=&\Lambda v_\Lambda\\
-R(E_+)v_\Lambda &=&0
-\end{eqnarray*}
-If $R$ is irreducible, then all the remaining basis vectors of $V$ can be generated by acting with $R(E_-)$ (that is, there is only one ladder of states to construct). We get
+If there is a highest weight, then we have
+\begin{align*}
+    R(H)v_\Lambda &= \Lambda v_\Lambda\\
+    R(E_+)v_\Lambda &= 0.
+\end{align*}
+If $R$ is irreducible, then all the remaining basis vectors of $V$ can be generated by acting on the highest-weight eigenvector $v_\Lambda$ with $R(E_-)$ (that is, there is only one ladder of states to construct). By doing this $n$ times, we get some new lowered states
 $$V_{\Lambda-2n}=(R(E_-))^n v_\Lambda, n\in \NN.$$
 What happens if we now try to raise the lowered states back up? The result is as nice as we could have hoped-- we will get back our old states, up to some normalization.
-\begin{eqnarray*}
-R(E_+)v_{\Lambda-2n} &=&R(E_+) R(E_-)v_{\Lambda-2n+2}\\
-&=&(R(E_-)R(E_+)+[R(E_+),R(E_-)]) v_{\Lambda -2n + 2}\\
-&=& R(E_-)R(E_+)v_{\Lambda -2n+2} + (\Lambda -2n+2) v_{\Lambda-2n+2}.
-\end{eqnarray*}
+\begin{align*}
+    R(E_+)v_{\Lambda-2n} &= R(E_+) R(E_-)v_{\Lambda-2n+2}\\
+    &= (R(E_-)R(E_+)+[R(E_+),R(E_-)]) v_{\Lambda -2n + 2}\\
+    &= (R(E_-)R(E_+)+R(H)) v_{\Lambda -2n + 2}\\
+    &= R(E_-)R(E_+)v_{\Lambda -2n+2} + (\Lambda -2n+2) v_{\Lambda-2n+2}.
+\end{align*}
 where we have used the fact that the representation preserves the bracket structure.
 
 Looking at the lowest-$n$ cases, we can now take $n=1$ to find
@@ -102,8 +108,13 @@ with the single boundary condtion that $R(E_+)v_\Lambda =0$. This implies that $
 $$r_n=(\Lambda+1-n)n.$$
 
 In addition, a finite-dimensional representation must also have a lowest weight $\Lambda-2N$ (recall $N$ is the dimension of the representation). That is, we have some lowest weight vector $v_{\Lambda-2N}\neq 0$ such that
+%
 $$R(E_-)v_{\Lambda-2N}=0\implies v_{\Lambda-2N-2}=0 \implies r_{N+1}=0.$$
-But that vanishing means that $$(\Lambda - N)(N+1)=0 \implies \Lambda= N \in \ZZ_{\geq 0}.$$
+%
+But using the recurrence relation, $r_{N+1}$ vanishing means that 
+%
+$$(\Lambda - N)(N+1)=0 \implies \Lambda= N \in \ZZ_{\geq 0}.$$
+%
 This completes the characterization of the representation theory of $L(SU(2))$. We conclude that a finite dimensional irrep $R_\Lambda$ of $L(SU(2))$ can be described totally by a highest weight $\Lambda \in \ZZ_{\geq 0}$ and it comes with a remaining set of weights
 $$S_{R_\Lambda}=\set{-\Lambda, -\Lambda+2,\ldots \Lambda-2,\Lambda}\subset \ZZ,$$
 where $$\dim(R_\Lambda)=\Lambda+1.$$

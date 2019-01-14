@@ -55,7 +55,7 @@ where $\otimes$ is the tensor product (not just a direct product!).\footnote{Ten
 \end{defn}
 
 The tensor $T$ (not the components!) is coordinate invariant, so in a coordinate basis the components of $T$ transform as
-$${{\tilde T}^{a_1'\ldots a_r'}}_{b_1'\ldots b_s'}=\frac{\p \tilde x^{a_1'}}{\p x^{a_1}} \ldots \frac{\p \tilde x^{a_r'}}{\p x^{a_r}} \frac{\p x^{b_1}}{\tilde x^{b_1'}} \ldots \frac{\p x^{b_s}}{\tilde x^{b_s'}} {T^{a_1\ldots a_n}}_{b_1\ldots b_s}.$$
+$${{\tilde T}^{a_1'\ldots a_r'}}{}_{b_1'\ldots b_s'}=\frac{\p \tilde x^{a_1'}}{\p x^{a_1}} \ldots \frac{\p \tilde x^{a_r'}}{\p x^{a_r}} \frac{\p x^{b_1}}{\tilde x^{b_1'}} \ldots \frac{\p x^{b_s}}{\tilde x^{b_s'}} {T^{a_1\ldots a_n}}_{b_1\ldots b_s}.$$
 In a non-coordinate basis, these $\frac{\p \tilde x^{a'}}{\p x^a}$ are replaced by some general functions $\Phi ^{a'}_a$ where $\tilde x^{a'}=\Phi^{a'}_a x^a$.
 
 We can perform the symmetrization operation, denoted by putting indices to be symmetrized in parentheses:
@@ -75,7 +75,14 @@ The \term{wedge product} is a special kind of antisymmetrizing multiplication of
 $$(A\wedge B)_{a_1\ldots a_p b_1 \ldots b_q}\equiv A_{[a_1\ldots a_p}B_{b_1\ldots b_q]}.$$
 For instance $A\wedge B = (-1)^{pq}B \wedge A$ (this is easy to prove-- we simply switch the $q$ indices of $B$ past the $p$ indices of $A$ and pick up the appropriate $pq$ sign flips along the way).
 \end{defn}
-As an invariant object, the $p$-form $A$ can be written as $$A=A_{a_1\ldots a_p} E^{a_1}\wedge \ldots \wedge E^{a_p},$$ where $A_{a_1\ldots a_p}$ are now the components of the $p$-form $A$.
+As an invariant object, the $p$-form $A$ can be written as $$A=A_{a_1\ldots a_p} E^{a_1}\wedge \ldots \wedge E^{a_p},$$ where $A_{a_1\ldots a_p}$ are now the components of the $p$-form $A$.%
+    \footnote{It's nice to prove here that $A\wedge B=(-1)^{pq} B\wedge A$ in a basis. We can see that
+    \begin{align*}
+        (A\wedge B)_{a_1\ldots a_p b_1 \ldots b_q} &= A_{a_1\ldots a_p} B_{b_1\ldots b_q} E^{a_1}\wedge \ldots \wedge E^{a_p} \wedge E^{b_1} \wedge \ldots \wedge E^{b_q}\\
+        &= (-1)^{pq} B_{b_1 \ldots b_q} A_{a_1\ldots a_p} E^{b_1} \wedge \ldots \wedge E^{b_q} \wedge E^{a_1} \wedge \ldots \wedge E^{a_p}\\
+        &= (-1)^{pq} B\wedge A,
+    \end{align*}
+    since the components themselves are just numbers and we pick up $pq$ sign flips from commuting the $p$ basis one-forms $E^{a_1}\ldots E^{a_p}$ with the $q$ basis one-forms $E^{b_1}\ldots E^{b_q}$.}
 
 \begin{defn}
 We also define the exterior derivative, a generalization of the usual derivative $\p_\mu$:
@@ -89,7 +96,9 @@ Note that $ddA=0$, so $d$ is nilpotent (it kills all exact differentials).\footn
 The gradient is a simple example of an exterior derivative of a 0-form (AKA a scalar):
 $$(d\phi)_\mu=\p_\mu \phi.$$
 
-We now introduce the metric, a very special rank two (i.e. two-index) symmetric tensor usually denoted $g_{\mu\nu}$.\footnote{So far, we have been using Latin indices everywhere. In most GR contexts, Greek indices $\mu,\nu,\sigma,$ etc. are used to range over $0,1,2,3$ and Latin indices $i,j,k$ over $1,2,3$ (the spatial components). Here, we follow the lecturer's convention of using Latin $a,b,c,d$ for all indices but note that it is nonstandard.} The metric generalizes the idea of distance from Euclidean geometry to curved spaces. Unlike the Euclidean metric, the scalar which the metric spits out is not guaranteed to be non-negative-- recall from special relativity that a timelike four-vector $V^\mu$ has a ''length'' given by $\eta_{\mu\nu} V^\mu V^\nu <0$. However, it is a scalar invariant and therefore preserved under arbitrary coordinate transformations.
+We now introduce the metric, a very special rank two (i.e. two-index) symmetric tensor usually denoted $g_{\mu\nu}$.%
+    \footnote{So far, we have been using Latin indices everywhere. In most GR contexts, Greek indices $\mu,\nu,\sigma,$ etc. are used to range over $0,1,2,3$ and Latin indices $i,j,k$ over $1,2,3$ (the spatial components). Here, we follow the lecturer's convention of using Latin $a,b,c,d$ for all indices but note that it is nonstandard. There is a sense in which Latin indices are used in an ``abstract tensor notation'' to serve as placeholders and simply indicate the type of the tensor (i.e. a $(p,q)$ tensor) rather than the components, but that is a little different.} 
+The metric generalizes the idea of distance from Euclidean geometry to curved spaces. Unlike the Euclidean metric, the scalar which the metric spits out is not guaranteed to be non-negative-- recall from special relativity that a timelike four-vector $V^\mu$ has a ''length'' given by $\eta_{\mu\nu} V^\mu V^\nu <0$. However, it is a scalar invariant and therefore preserved under arbitrary coordinate transformations.
 
 From prior experience with special (or general) relativity, we might have an intuition that the metric also has something to do with gravitation. The line element $ds$ (defined by $ds^2 = g_{ab}dx^a dx^b$) is invariant and is therefore a (symmetric) tensor. In a freely falling frame, the metric of Minkowski space is $$\tilde \eta_{a'b'} = \frac{\p x^a}{\p\tilde x^{a'}}\frac{\p x^b}{\p \tilde x^{b'} }g_{ab}.$$ Do such $\frac{\p x^a}{\p\tilde x^{a'}}$ always exist? The answer turns out to be yes-- $g_{ab}$ is not degenerate, so one may diagonalize it and then rescale the eigenvalues. Sylvester's theorem states that if $g$ has $r$ positive eigenvalues, $s$ negative eigenvalues, then diagonalizing preserves this.%it's super unclear how this all applies, TBH. 
 

@@ -81,7 +81,8 @@ The energy flux is then given by the $00$ component of the effective energy-mome
 \end{align*}
 We might like to write this in a more obviously covariant way, so suppose the radiation is coming at us in a direction $n_i$ where $n_i$ is a unit spacelike vector with $n_0=0$. Then the energy flux is
 $$t_{00}=\frac{1}{36 \pi r^2}\left[(\dddot Q_{ij} n_i n_j)^2+2 \dddot Q_{ij} \dddot Q_{ij} -4\dddot Q_{ik} \dddot Q_{jk} n_i n_j\right].$$
-This formula reduces to our original formula in $x,y,z$ coordinates for $n_i=(0,0,1)$.
+This formula reduces to our original formula in $x,y,z$ coordinates for $n_i=(0,0,1)$.%
+    \footnote{Having discussed with my study group, we have... doubts. This formula in terms of $n_i$ appears to be correct, since it yields the right energy flux at the end, but it does not seem to reduce to the previous expression in terms of $Q_{11},Q_{22},Q_{12}$. We suspect that the previous expression is wrong, since it also does not result from the time-averaged expression. The resolution is unclear.}
 
 To find the total radiation, we now integrate over the sphere at infinity, noting that the surface area provides a factor of $r^2$ to cancel the $1/r^2$ in the energy flux. Note also that $$\int_\Sigma dS n_i n_j = \delta_{ij}4\pi/3,$$ where $\Sigma$ is the sphere at infinity. A similar computation yields
 $$\int dS n_i n_j n_k n_l = \frac{4\pi}{15}(\delta_{ij}\delta_{kl}+\delta_{ik} \delta_{jl}+\delta_{il}\delta_{jk}),$$
