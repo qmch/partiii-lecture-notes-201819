@@ -44,7 +44,7 @@ We say that $X\in \fg$ is \term{ad-diagonalizable} (AD) if
 $$\text{ad}_X:\fg \to \fg$$
 is diagonalizable.
 \end{defn}
-For a matrix, this meant that we could write the map as a diagonal matrix by a similarity transformation. More generally, a map is diagonal if we can construct a complete basis for the space out of eigenvectors of that map.
+For a matrix, this meant that we could write the map as a diagonal matrix by a similarity transformation. More generally, a map is diagonal if we can construct a complete basis for the space it acts on out of eigenvectors of that map.
 
 \begin{defn}
 A \term{Cartan subalgebra} $\mathfrak{h}$ of $\fg$ is a maximal abelian subalgebra containing only AD elements.
@@ -83,7 +83,7 @@ $$H^1=\begin{pmatrix}
 We now claim that the diagonal elements $H^i, i=1,\ldots, n-1$ are generators of the Cartan subalgebra, i.e.
 $$\mathfrak{h}=\text{span}_\CC\set{H^i, i=1,\ldots n-1}.$$
 It's clear that the diagonal elements $H^i$ commute and therefore have vanishing bracket,
-$$[H^i,H^j]=0\forall i,j=1,\ldots,r.$$
+$$[H^i,H^j]=0 \quad \forall i,j=1,\ldots,r.$$
 But passing to the adjoint representation, this means that
 $$(\text{ad}_{H^i}\circ \text{ad}_{H^j} - \text{ad}_{H^j}\circ \text{ad}_{H^i})=0,$$
 so our basis elements $H^i$ naturally define $r$ linear maps

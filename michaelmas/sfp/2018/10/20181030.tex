@@ -58,24 +58,30 @@ R_1(X) &  & & \\
 $$
 \end{defn}
 
-It's an important fact that if $R_i, i=1,\ldots, m$ are finite-dimensional irreps of a simple Lie algebra then
+It's an important fact that if $R_i, i=1,\ldots, m$ are finite-dimensional irreps of a simple Lie algebra, then the tensor product
 $$R_1\otimes R_2 \otimes \ldots \otimes R_m$$ is fully reducible as some direct sum
 $$R_1\otimes R_2 \otimes \ldots \otimes R_m\cong \tilde R_1 \oplus \tilde R_2 \oplus \ldots \oplus \tilde R_{\tilde m}.$$
 
 Practically speaking, let's consider tensor products of $L(SU(2))$ representations. Let $R_\Lambda,R_{\Lambda'}$ be two irreps of $L(SU(2))$ with highest weights $\Lambda,\Lambda'$ and representation spaces $V_\Lambda,V_{\Lambda'}$, where $\Lambda,\Lambda' \in \ZZ_{\geq 0}$. We defined these last time-- these are just the spin states of particles with total spin $\Lambda/2,\Lambda'/2$. They have dimension
 $$\dim(R_\Lambda)=\Lambda+1,\dim(R_{\Lambda'})=\Lambda'+1.$$
-We can then form the tensor product representation $R_\Lambda \otimes R_{\Lambda'}$ with representation space spanned by the tensor products of basis vectors:
+We can then form the tensor product representation $R_\Lambda \otimes R_{\Lambda'}$ with representation space $V_{\Lambda}\otimes V_{\Lambda'}$ spanned by the tensor products of basis vectors:
+%
 $$V_{\Lambda}\otimes V_{\Lambda'}=\text{span}_\RR \set{v\otimes v'; v\in V_\Lambda, v'\in V_{\Lambda'}}.$$
+%
 Now $\forall X\in L(SU(2))$ we have
-$$(R_\Lambda \otimes R_{\Lambda'})(X)\cdot (V\otimes v') = (R_\Lambda(X) v)\otimes v'+ v \otimes (R_{\Lambda'}(X)v').$$
-Since $L(SU(2))$ is simple, this gives a fully reducible representation of $L(SU(2))$ of dimension
+%
+$$(R_\Lambda \otimes R_{\Lambda'})(X)\cdot (v\otimes v') = (R_\Lambda(X) v)\otimes v'+ v \otimes (R_{\Lambda'}(X)v').$$
+%
+Since $L(SU(2))$ is simple, taking this tensor product gives us a fully reducible representation of $L(SU(2))$ of dimension
+%
 $$\dim(R_\Lambda \otimes R_{\Lambda'}) = (\Lambda+1)(\Lambda'+1)$$
+%
 Then we can rewrite the tensor product as a direct product:
-$$R_\Lambda \otimes R_{\Lambda'}=\bigoplus_{\Lambda'' \in \ZZ_{\geq 0}} L^{\Lambda''}_{\Lambda,\Lambda'}R_{\Lambda''}$$ for some non-negative integers $L^{\Lambda''}_{\Lambda,\Lambda'}$, which we call ``Littlewood-Richardson coefficients.'' That is, the various irreps appear in the direct sum with some multiplicity given by these coefficients.
+$$R_\Lambda \otimes R_{\Lambda'}=\bigoplus_{\Lambda'' \in \ZZ_{\geq 0}} L^{\Lambda''}_{\Lambda,\Lambda'}R_{\Lambda''}$$ for some non-negative integers $L^{\Lambda''}_{\Lambda,\Lambda'}$, which we call ``Littlewood-Richardson coefficients.'' That is, the various irreps of $L(SU(2))$ will appear in the direct sum decomposition with some multiplicity given by these coefficients.
 
-Now recall that $V_\Lambda$ has a basis $\set{v_\lambda}$ where $\lambda$ specifies the weights,
+Now recall that the representation space $V_\Lambda$ has a basis $\set{v_\lambda}$ where $\lambda$ specifies the weights
 $$\lambda \in S_\Lambda = \set{-\Lambda,-\Lambda+2,\ldots,+\Lambda}$$
-where these $v_\lambda$ are eigenvectors of $R_\Lambda(H)$ such that
+of the eigenvectors $v_\lambda$ of $R_\Lambda(H)$ such that
 $$R_\Lambda(H)v_\lambda = \lambda v_\lambda.$$
 Similarly $V_{\Lambda'}$ is equipped with a basis
 $\set{v'_{\lambda'}}$ where 
@@ -86,10 +92,10 @@ Therefore a basis for the representation space $V_\Lambda \otimes V_{\Lambda'}$ 
 $$B_{\Lambda \otimes \Lambda'} = \set{v_\lambda \otimes v'_{\lambda'}; \lambda \in S_\lambda, \lambda' \in S_{\Lambda'}}.$$
 
 Acting on a particular basis vector, we find that
-\begin{eqnarray*}
-(R_\Lambda \otimes R_{\Lambda'})(H)(v_\lambda \otimes v'_{\lambda'}&=&(R_\Lambda(H)v_\lambda) \otimes v'_{\lambda'}+v_\lambda \otimes (R_{\Lambda'}(H)v'_{\lambda'})\\
-&=& (\lambda + \lambda')(v_\lambda \otimes v'_{\lambda'}).
-\end{eqnarray*}
+\begin{align*}
+    (R_\Lambda \otimes R_{\Lambda'})(H)(v_\lambda \otimes v'_{\lambda'}         &=(R_\Lambda(H)v_\lambda) \otimes v'_{\lambda'}+v_\lambda \otimes           (R_{\Lambda'}(H)v'_{\lambda'})\\
+        &= (\lambda + \lambda')(v_\lambda \otimes v'_{\lambda'}).
+\end{align*}
 What we find is that the possible weights are therefore just sums of the individual $\lambda,\lambda'$. That is, the weight set of $R_\Lambda \otimes R_{\Lambda'}$ is simply
 $$S_{\Lambda,\Lambda'}=\set{\lambda+\lambda': \lambda\in S_{\Lambda},\lambda'\in S_{\Lambda'}}.$$
 Note that elements of this set can have degeneracy-- the same number can appear more than once!\footnote{Consider $\lambda=2,\lambda'=0$ and $\lambda=0,\lambda'=2$. Both of these will appear as terms in the set so the weight $2$ can appear twice. We'll see this concretely in a minute.} However, it's also true that if we look for the highest weight of the new tensor product representation, it is exactly $\Lambda+\Lambda'$, appearing with multiplicity one:
@@ -97,11 +103,11 @@ $$L^{\Lambda+\Lambda'}_{\Lambda,\Lambda'}=1.$$
 
 Thus we may write
 $$R_\Lambda \otimes R_{\Lambda'}=R_{\Lambda+\Lambda'}\oplus \tilde R_{\Lambda,\Lambda'}$$
-where we have written the tensor product in terms of a new irrep $R_{\Lambda+\Lambda'}$ and also a \term{remainder} $\tilde R_{\Lambda,\Lambda'}$. This has a new weight set $\tilde S_{\Lambda, \Lambda'}$ such that
+where we have written the tensor product in terms of a new irrep $R_{\Lambda+\Lambda'}$ and also a \term{remainder} $\tilde R_{\Lambda,\Lambda'}$. The remainder has some new weight set $\tilde S_{\Lambda, \Lambda'}$ such that
 $$S_{\Lambda,\Lambda'}=S_{\Lambda+\Lambda'} \cup \tilde S_{\Lambda,\Lambda'}.$$
 Equivalently $\tilde S_{\Lambda,\Lambda'}=S_{\Lambda,\Lambda'}\setminus S_{\Lambda+\Lambda'}.$
 
-What does this look like? Consider the case $\Lambda=\Lambda'=1.$ Then
+Let's see an example of this decomposition into a direct sum. Consider the case $\Lambda=\Lambda'=1.$ Then we have the weight set
 $$S_1=\set{-1,+1},$$
 so the weight set of the tensor product is
 \begin{align*}

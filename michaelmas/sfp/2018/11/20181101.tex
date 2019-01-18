@@ -8,28 +8,29 @@ Tensor products are important because multi-particle spaces are described in gen
 
 Let us now define something called the \emph{Killing form.}
 \begin{defn}
-Given a vector space $V$ over $F$ ($=\RR,\CC$) an \term{inner product} $i$ is a symmetric bilinear map
+Given a vector space $V$ over a field $F$ ($=\RR,\CC$), an \term{inner product} $i$ is a symmetric bilinear map
 $$i:V\times V \to F.$$
-In particular, $i$ is \term{non-degenerate} if for every $v\in V$ ($v\neq 0$), there is a $w\in V$ such that
-$$i(v,w)\neq 0.$$ That is, there is no vector that is orthogonal to all the others under the inner product, or equivalently it has no zero eigenvalues considered as a linear map.
+In particular, we say that $i$ is \term{non-degenerate} if for every $v\in V$ ($v\neq 0$), there is a $w\in V$ ($w\neq v$) such that
+$$i(v,w)\neq 0.$$ That is, there is no vector that is orthogonal to all the others under the inner product, or equivalently it has no zero eigenvalues considered as a linear map.%
+    \footnote{This definition is easily flipped. An inner product $i$ is degenerate if there exists $v\in V$ ($v\neq 0$) such that $\forall w\in V, i(v,w)=0$ when $w\neq v$.}
 \end{defn}
 
 Question: is there a ``natural'' inner product on a Lie algebra $\fg$? The answer is yes-- it is called the \term{Killing form}, an inner product $\kappa$ with
 $$\kappa:\fg \times \fg \to F.$$
 We'll define the formula first and then explore why it makes sense.
 \begin{defn}
-The Killing form $K$ is defined such that $\forall X,Y \in \fg$,
+The Killing form $\kappa$ is defined such that $\forall X,Y \in \fg$,
 $$\kappa(X,Y)\equiv \text{Tr}(\text{ad}_X \circ \text{ad}_Y).$$
-That is, $K$ is the trace of the linear map
+That is, $\kappa$ is the trace of the linear map
 $$\text{ad}_X \circ \text{ad}_Y: \fg \to \fg$$
 which takes
 $$Z\in \fg \mapsto [X,[Y,Z]] \in \fg.$$
 \end{defn}
-Why is this a sensible choice? Suppose we choose a basis $\set{T^a},a=1,\ldots D$ for $\fg$ with dimension $D$. Then
-$$X=X_a T^a,\quad Y=Y_a T^a, \quad Z=Z_a T^a.$$
-We also have some structure constants associated to the basis,
+Why is this a sensible choice? Suppose we choose a basis $\set{T^a},a=1,\ldots D$ for a Lie algebra $\fg$ with dimension $D$. Then we can expand in this basis,
+$$X=X_a T^a, \quad Y=Y_a T^a, \quad Z=Z_a T^a.$$
+We also have some structure constants associated to our choice of basis,
 $$[T^a,T^b]=f^{ab}_c T^c.$$
-Thus the composition of the ad maps is some $D\times D$ matrix, and we can work out in this basis the components of this matrix.
+Thus the composition of the ad maps is some $D\times D$ matrix, and we can explicitly work out in this basis the components of this matrix.
 \begin{align*}
 [X,[Y,Z]]&= X_a Y_b Z_c [T^a,[T^b,T^c]]\\
 &= X_a Y_b Z_c [T^a,f^{bc}_d T^d]\\
@@ -52,16 +53,20 @@ Now what do we mean by saying that the Killing form is a ``natural'' inner produ
 $$\kappa([Z,X],Y)+\kappa(X,[Z,Y])=0$$ for all $Z\in \fg, X,Y \in \fg.$ This is the equivalent of invariance under a conjugation by a Lie algebra element, $g X g^{-1}.$
 
 Let's show that this property holds for this inner product.
+\begin{proof}
 \begin{align*}
-\kappa([Z,X],Y) &=\text{Tr}[\text{ad}_{[Z,X]}\circ \text{ad}_Y]\\
-&=\text{Tr}[(\text{ad}_Z \circ \text{ad}_X - \text{ad}_X \circ \text{ad}_Z)\circ \text{ad}_Y]\\
-&=\text{Tr}[\text{ad}_Z \circ \text{ad}_X \circ \text{ad}_Y] - \text{Tr}[\text{ad}_X \circ \text{ad}_Z \circ \text{ad}_Y]
+    \kappa([Z,X],Y) &=\text{Tr}[\text{ad}_{[Z,X]}\circ \text{ad}_Y]\\
+    &=\text{Tr}[(\text{ad}_Z \circ \text{ad}_X - \text{ad}_X \circ \text{ad}_Z)\circ \text{ad}_Y]\\
+    &=\text{Tr}[\text{ad}_Z \circ \text{ad}_X \circ \text{ad}_Y] - \text{Tr}[\text{ad}_X \circ \text{ad}_Z \circ \text{ad}_Y]
 \end{align*}
 where in going from the first to the second line, we have used the fact that the ad map is also a representation and can therefore be rewritten by linearity in its argument $[Z,X]$.
 Similarly,
 $$\kappa(X,[Z,Y])=\text{Tr}[\text{ad}_X\circ \text{ad}_Z \circ \text{ad}_Y]-\text{Tr}[\text{ad}_X \circ \text{ad}_Y \circ \text{ad}_Z].$$
 However, if we now compare these two expressions we see that by the cyclic property of the trace (i.e. interpreting the ad maps as matrices on the vector space), their sum vanishes\footnote{Explicitly, this means that $\text{Tr}[\text{ad}_X \circ \text{ad}_Y \circ \text{ad}_Z]=\text{Tr}[\text{ad}_Z \circ \text{ad}_X \circ \text{ad}_Y]$.}, and so
-$$\kappa([Z,X],Y)+\kappa(X,[Z,Y])=0. \qed$$
+\begin{equation*}
+    \kappa([Z,X],Y)+\kappa(X,[Z,Y])=0. \qedhere
+\end{equation*}
+\end{proof}
 
 We may next ask under what conditions $\kappa$ is non-degenerate, i.e. the map $\kappa^{ab}$ is invertible. 
 \begin{thm}
@@ -69,7 +74,7 @@ We may next ask under what conditions $\kappa$ is non-degenerate, i.e. the map $
 \end{thm}
 In the specific case, if $\fg$ is simple, then the Killing form $\kappa$ is the unique invariant inner product on $\fg$ up to an overall scalar multiple.
 \begin{defn}
-A Lie algebra is \term{semi-simple} if it has no abelian ideals. (This is a little weaker than simple, clearly.)
+A Lie algebra is \term{semi-simple} if it has no abelian ideals. (This is a weaker condition than simple, clearly.)
 \end{defn}
 \begin{ex}
 From Example Sheet 2, Question 9b: Show that a finite dimensional semi-simple Lie algebra can be written as the direct sum of a finite number of simple Lie algebras,
