@@ -1,0 +1,88 @@
+\begin{note}
+Some very important admin for this course! Lectures will be Monday, Wednesday, \emph{Thursday}, and Friday, with M/W/F lectures from 12:00-13:00 and Thursday lectures from 13:00-14:00. There will be no classes from 4th February to 15th February, due to Prof. Santos anticipating a baby.
+
+Some useful readings include
+\begin{itemize}
+    \item Harvey Reall's notes on black holes and general relativity
+    \item Wald's ``General Relativity''
+    \item Witten's review, ``Light Rays, Singularities and All That''
+\end{itemize}
+\end{note}
+
+To begin with, some conventions. Naturally, we set $c=G=1$. We use the $-+++$ sign convention for the Minkowski metric. We shall use the abstract tensor notation where tensor expressions with Greek indices $\mu,\nu,\sigma$ are only valid in a particular coordinate basis, while Latin indices $a,b,c$ are valid in any basis, e.g. the Riemann scalar is defined to be $R=g^{ab}R_{ab},$ whereas the Christoffel connection takes the form $\Gamma^\mu_{\nu\rho}=\frac{g^{\mu\epsilon}}{2}(g_{\epsilon \nu,\rho}+g_{\epsilon \rho, \nu}-g_{\nu\rho,\epsilon}).$ We also define $R(X,Y)Z=\nabla_X \nabla_Y Z -\nabla_Y \nabla_X Z - \nabla_{[X,Y]}Z$.
+
+\subsection*{Stars} Black holes are one possible endpoint of a star's life cycle. Let's start by assuming spherical stars. Now, stars radiate energy and burn out. However, even very cold stars can avoid total gravitational collapse because of \term{degeneracy pressure}. If you make a star out of fermions (e.g. electrons) then the Pauli exclusion principle says they can't be in the same state (or indeed get too close), and it might be that the degeneracy pressure is enough to balance the gravitational forces. When this happens, we call the star a \term{white dwarf}. It turns out this can only happen for stars up to $1.4 M_\odot$ (solar masses). If a star is instead made of neutrons (naturally we call these \term{neutron stars}) then the pressure of the neutrons can prevent gravitational collapse in a mass range from $1.4 M_\odot < 3 M_\odot$.
+%You will find that my view on stars is very rudimentary. This is because I do not like chemistry.
+\emph{Beyond $3 M_{\odot},$ stars are doomed to collapse into black holes.} We'll spend some time understanding this limit.
+
+\subsection*{Spherical symmetry} A normal sphere is invariant under rotations in $3$-space, $SO(3)$. The line element on the $2$-sphere of unit radius is
+\begin{equation*}
+    d\Omega_2^2 = d\theta^2 +\sin^2\theta d\phi^2.
+\end{equation*}
+It is also invariant under reflections sending $\theta\to \pi-\theta$ (the full group $O(3)$), and perhaps some other symmetries.
+
+\begin{defn}
+A spacetime $(M,g)$ is \term{spherically symmetric} if it possesses the same group of isometries as the round two-sphere $d\Omega_2^2$. Important remark-- there are spacetimes such as Taub-NUT spacetime which enjoy $SO(3)$ symmetry but are \emph{not} spherically symmetric.
+\end{defn}
+
+In a spherically symmetric spacetime, we shall define a ``radius'' $r:M\to \RR^+$ defined by 
+\begin{equation*}
+    r(p) =\sqrt{\frac{A(p)}{4\pi}},
+\end{equation*}
+where $A(p)$ is the area of the $S^2$ orbit from a point $p$. This only makes good sense to define under spherical symmetry, but the idea is that we invert the old relationship $A=4\pi r^2$ to define a radius given an area.
+
+\begin{defn}
+    A spacetime $(M,g)$ is \term{stationary} if it admits a Killing vector field $K^a$ which is everywhere timelike. That is,
+    \begin{equation*}
+        K^a K^b g_{ab} < 0.
+    \end{equation*}
+\end{defn}
+
+Using the assumptions of time independence and spherical symmetry, we'll show some constraints on the resulting spacetime. Let us pick a hypersurface $\Sigma$ which is nowhere tangent to the Killing vector $K$. We assign coordinates $t,x^i$ where $x^i$ is defined on the hypersurface, and $t$ then describes a distance along the integral curves of $K^a$ through each point on $\Sigma$. That is, we follow the curves such that $\frac{dx^a}{dt}=K^a$.
+
+But in this coordinate system, $K^a$ now takes the wonderfully simple form \begin{equation*}
+    K^a= \left(\P{}{t}\right)^a
+\end{equation*}
+%or else you could go back in time and kill your own grandmother... which would make you a weirdo.
+Since $K^a$ is a Killing vector, the Lie derivative of the metric with respect to $K$ vanishes,
+$\cL_K g=0$. (See Harvey Reall's notes for the definition of a Lie derivative-- it's just a derivative, ``covariant-ized.'') In this case, $K^c \p_c g_{ab}+K^c{}_{,a} g_{cb}+K^c{}_{,b}g_{ac}=0.$
+
+With these assumptions, our metric takes the form
+\begin{equation*}
+    ds^2 = g_{tt}(x^k)dt^2 +2g_{ti}(x^k) dt dx^i+ g_{ij}(x^k)dx^i dx^j,
+\end{equation*}
+where $g_{tt}(x^k)<0$ (stationarity).
+
+We shall also consider \term{static spacetimes}. Take $\Sigma$ to be a hypersurface defined by $f(x)=0$ for some function $f:M\to \RR, df\neq 0$. Then $df$ is orthogonal to $\Sigma$. Let's prove this.
+\begin{proof}
+Take $Z^a$ to be tangent to $\Sigma$. Thus
+\begin{equation*}
+    (df)(Z)=Z(f)=Z^\mu \p_\mu f = 0
+\end{equation*}
+on $\Sigma$. A useful example might be to compute this for the two-sphere.
+
+Now take a general $1$-form normal to $\Sigma$. This $1$-form can be written as
+\begin{equation}
+    m= gdf +f m'.
+\end{equation}
+That is, on the surface $\Sigma$ the one-form $m$ is precisely normal to $\Sigma$, but if we go off $\Sigma$ a little bit then we can smoothly extend $m$ off by a bit. We require that $g$ is a smooth function and that $m'$ is smooth but otherwise arbitrary.
+
+Then the differential of $m$ is
+\begin{equation*}
+    dm=dg\wedge df + df \wedge m' + f \wedge dm' \implies dm|_\Sigma = (dg-m') \wedge df.
+\end{equation*}
+We find that $m|_\Sigma= g\, df \implies (m\wedge dm)|_\Sigma =0$-- this follows since $df\wedge df$ is zero. So if $\Sigma$ is a hypersurface with $m$ orthogonal then $(m\wedge dm)_\Sigma =0$.
+\end{proof}
+
+The converse is also true (a theorem due to Frobenius)-- if $m$ is a non-zero $1$-form such that $m\wedge dm=0$ everywhere, then there exists $f,g$ such that $m=g\, df$.
+
+\begin{defn}
+    A spacetime is \term{static} if it admits a hypersurface-orthogonal timelike Killing vector field. In particular, static $\implies$ stationary.
+\end{defn}
+
+In practice, for a static spacetime, we know that $K^a$ is hypersurface orthogonal, so when defining coordinates we shall choose $\Sigma$ to be orthogonal to $K^a$. Equivalently, this means that we can choose a hypersurface $\Sigma$ to be the surface $t=0,$ which implies that $K_\mu \propto (1,0,0,0)$. Of course, this means that $K_i=0$. But recall that
+\begin{equation*}
+    K^a= \left(\P{}{t}\right)^a \implies g_{ti}=K_i=0.
+\end{equation*}
+
+So our generic metric simplifies considerably-- the cross-terms $g_{ti}$ go away and spherical symmetry will further constrain the spatial $g_{ij}$ terms.

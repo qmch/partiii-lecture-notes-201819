@@ -1,0 +1,95 @@
+\begin{note}
+    This is a 24 lecture course with lectures at 11 AM M/W/F. There will be PDF notes available online somehow (TBD), and also $3+1$ problem sets plus a revision in Easter. The instructor can be reached at \url{rar31@cam.ac.uk}. Some recommended course readings%
+        \footnote{Most of these are published by Cambridge University Press. Conspiracy-- string theory was invented by CUP to sell textbooks?
+        }
+    include ``easier'' text:
+    \begin{itemize}
+        \item Schomerus (A Primer on String Theory)
+        \item (Becker)${}^2$ and Schwarz
+    \end{itemize}
+    and ``harder'' texts:
+    \begin{itemize}
+        \item Polchinski, Vol 1.
+        \item Lurt and Thiesen
+        \item Green, Schwarz, and Witten.
+    \end{itemize}
+\end{note}
+
+\subsection*{Introduction} Here are some of the major topics we'll be covering in this course.
+\begin{itemize}
+    \item Classical theory and canonical quantization
+    \item Path integral quantization
+    \item Conformal field theory (CFT) and BRST quantization
+    \item Scattering amplitudes
+    \item Advanced topics (more on this later).
+\end{itemize}
+
+Historically, string theory emerged from ideas in QCD, the theory of the strong force. However, it really took hold as a theory of quantum gravity in the quest to reconcile quantum mechanics with general relativity. A bit of expectation management, first. Some of the motivating ideas which string theory attempts to address are as follows:
+\begin{itemize}
+    \item What sets the parameters of the Standard Model?
+    \item What sets the cosmological constant?
+    \item Failure of perturbative GR (problems in the UV-- gravity is non-renormalizable)
+    \item The black hole information paradox (quantum information in gravitational systems)
+    \item How do you quantize a theory in the absence of an existing causal structure? (Most of the causal structure of spacetime is encoded in the metric. But what if it's the metric itself you're trying to quantize?)
+\end{itemize}
+
+There are alternatives to string theory-- for instance, one can do QFT in curved spacetime to learn about some limit of quantum gravity. There's also loop quantum gravity and causal set theory, among others, but we won't really discuss those in this course.
+
+\subsection*{What is string theory?} We just don't know.
+
+In some sense, string theory is a set of rules which, given a 10-dimensional classical spacetime vacuum, allows us to do quantum perturbation theory around this vacuum. By doing perturbation theory, we seem to arrive at a unique quantum theory (details of this to be discussed more later).
+
+In the popular science conception of string theory, we imagine replacing particles with strings, and the harmonics of these strings correspond to different particles, including the graviton. How do we reconcile this with the idea that gravity is just a function of the curvature of space time? Answer: we assume that we are close to some well-understood solution with metric $\eta_{\mu\nu}$ and take the new metric to be a perturbation,
+\begin{equation*}
+    g_{\mu\nu}(x)=\eta_{\mu\nu}+h_{\mu\nu}(x).
+\end{equation*}
+Now that we have some spacetime structure, we can start to talk about interactions. We might have a propagator for strings, and also interaction vertices with some rules. We might think that an equivalent of Feynman diagrams emerges to tell us how strings can mingle and talk to each other.
+
+In QFT, we were given some Lagrangian and from that Lagrangian, we derived interactions and Feynman rules. But in string theory, the situation is a bit backwards. It's as though we've been given some Feynman rules which do seem to reduce to the particle interactions in some limit, but we don't in some sense know the underlying theory where these rules come from.%
+    \footnote{``There are many reasons to study string theory. I suppose for you lot, you've got nothing better to do between the hours of 11 to 12.'' --R.A. Reid-Edwards}
+
+\subsection*{Classical theory} In quantum mechanics, we have time $t$ as a parameter and position $\hat{\vec x}$ as an operator. Of course, when we started learning quantum field theory, we were motivated to take our quantum fields $\hat \phi(\vec x,t)$ as operators and demote $\vec x$ to a simple label, so that $(\vec x,t)$ are both parameters. Space and time are on equal footing. This is the ``second quantization'' approach.
+
+However, this isn't the only way we could do it. We could look for a formalism in which $\hat x^\mu=(\hat{\vec x},\hat t)$ are operators.
+\begin{exm}
+    Consider the \term{worldline formalism}. Imagine we have a massive particle propagating on a flat spacetime with metric $\eta_{\mu\nu}$. A suitable action for this theory might be
+    \begin{equation}
+        S[x]=- m\int_{s_1}^{s_2}ds,
+    \end{equation}
+    where we use natural units of $\hbar = c=1$ and the $m$ is some mass due to dimensional concerns. This has a sort of geodesic interpretation for some integration measure $ds$. We can parametrize the worldline (e.g. in terms of proper time) such that
+    \begin{equation}\label{worldsheetaction}
+        S[x]=-m \int_{\tau_1}^{\tau_2} d\tau\sqrt{-\eta_{\mu\nu}\dot x^\mu \dot x^\nu}.
+    \end{equation}
+    Here, dots indicate derivatives with respect to proper time. The conjugate momentum is then
+    \begin{equation}
+        P_\mu (\tau)= -\frac{m\dot x_\mu}{\sqrt{-\dot x^2}},
+    \end{equation}
+    which obeys $P^2+m^2=0$, so this is an ``on-shell'' formalism. We could then vary $S[x]$ with respect to trajectories $x^\mu(\tau)$ to find the equations of motion. We could imagine doing the same for an extended object and tracing out a ``worldsheet'' instead.
+    
+    However, before we do that, let us revisit our action \ref{worldsheetaction}. In particular, we shall rewrite it as
+    \begin{equation}
+        S[x,e]=\frac{1}{2}\int d\tau \left(e^{-1} \eta_{\mu\nu} \dot x^\mu \dot x^\nu-e m^2\right).
+    \end{equation}
+    This new action has a sensible massless limit, unlike the previous action. For our new action, the $x^\mu(\tau)$ equation of motion is then
+    \begin{equation*}
+        \frac{d}{d\tau}(e^{-1}\dot x^\mu)=0
+    \end{equation*}
+    and the $e(\tau)$ equation of motion gives
+    \begin{equation*}
+        \dot x^2 + e^2m^2=0.
+    \end{equation*}
+    Now $e(\tau)$ appears algebraically, so we can substitute it back into the action to recover our previous formulation \ref{worldsheetaction}.
+    
+    Our theory also has some symmetry. If we shift the proper time by a function $\tau\to \tau+\zeta(\tau)$, then $x$ and $e$ change as 
+    \begin{align*}
+        \delta x^\mu &= \zeta \dot x^\mu\\
+        \delta e &= \frac{d}{d\tau}(\zeta e).
+    \end{align*}
+    We can use the one arbitrary degree of freedom to gauge fix $e(\tau)$ to a convenient value.
+    
+    There's also a \emph{rigid symmetry} which takes
+    \begin{equation*}
+        x^\mu(\tau)\to \Lambda^\mu{}_\nu x^\nu(\tau)+a^\mu,
+    \end{equation*}
+    which we may recognize as Poincar\'e invariance in the background spacetime.
+\end{exm}

@@ -1,0 +1,118 @@
+\begin{note}
+Here are some preliminary administrative notes on the course. Lecture notes and example sheets are available online at \url{http://www.damtp.cam.ac.uk/user/cet34/teaching/}. There are four example sheets and classes, plus a revision class in Easter Term. The instructor's email is \url{c.e.thomas@damtp.cam.ac.uk}. This course requires as prerequisites the Quantum Field Theory and Symmetries, Fields and Particles courses from Michaelmas term.
+
+Some useful references are mentioned in the official course notes, including
+\begin{itemize}
+    \item Peskin and Schroeder
+    \item Aitchinson and Hey
+    \item Halzen and Martin
+    \item Donoghue, Golowich, and Holstein.
+\end{itemize}
+The sign conventions will be mostly in line with the Tong QFT notes, though note the sign of $\gamma^5$.
+\end{note}
+
+Quantum field theory was originally formulated to reconcile special relativity with quantum mechanics. The prototype for modern quantum field theories is quantum electrodynamics (QED), the quantum theory of light and charge. The \term{Standard Model} (SM) describes three fundamental forces (EM, weak, and strong) but does not include gravity. The model is an incredibly successful theory, having survived experimental tests up to the $\SI{1e8}{\giga\electronvolt}$ level. However, we know that because it does not include gravity, it must break down somewhere-- perhaps at the Planck scale ($\SI{1e19}{\giga\electronvolt}$).
+
+In the SM, forces are mediated by gauge bosons (spin $=1$).
+\begin{itemize}
+    \item EM (QED): photon, $\gamma$ (massless)
+    \item Weak force: W boson and Z boson (massive)
+    \item Strong force: gluon (massless)
+\end{itemize}
+Of course, our theory wouldn't be very good if we only had forces and no matter. In the SM, matter content is described by spin-$1/2$ fermions:
+\begin{itemize}
+    \item neutrinos: $\nu_e, \nu_\mu, \nu_\tau$ (weak)
+    \item charged leptons: $e,\mu,\tau$ (weak and EM)
+    \item quarks: $
+        \begin{pmatrix} u\\ d \end{pmatrix},
+        \begin{pmatrix} c\\ s \end{pmatrix},
+        \begin{pmatrix} t\\ b \end{pmatrix}.
+    $
+\end{itemize}
+We notice that there are three ``generations'' of matter particles where the properties of particles between generations are mostly the same, except the mass goes up in each generation.
+
+Finally, we've got the Higgs boson, H (scalar, spin$=0$). The Higgs is responsible for generating mass of the W and Z bosons as well as all the fermions. This was famously discovered at the Large Hadron Collider in 2012.%
+    \footnote{Strictly, a Higgs-like particle which we have since verified many of the other properties of.}
+
+Gauge bosons are manifestations of \emph{local} symmetries (as opposed to global symmetries)-- we discussed this towards the end of Symmetries last term. The Standard Model gauge group is
+\begin{equation*}
+    SU(3)_C \times SU(2)_L \times U(1)_Y.
+\end{equation*}
+Here, $SU(3)_C$ is the ``colour'' symmetry of the strong interaction, $QCD$. The $SU(2)_L$ symmetry is a chiral (handedness) symmetry. And $U(1)_Y$ corresponds to something called hypercharge. It's actually a combination of the $SU(2)_L\times U(1)_Y$ symmetries that gives rise to the $U(1)_{EM}$ gauge symmetry of QED-- these two symmetries together govern the electroweak interactions.
+
+\subsection*{Chiral and gauge symmetries} As always, we will use natural units in which $\hbar = c = 1$. To discuss \term{chiral symmetries}, let us consider a spin-$1/2$ Dirac fermion with a spinor field $\psi$ satisfying the Dirac equation,
+\begin{equation}
+    (i\slashed{\p}-m)\psi=0.
+\end{equation}
+We use the Feynman slash notation, such that
+\begin{equation*}
+    \slashed{\p}=\p_\mu \gamma^\mu.
+\end{equation*}
+The (Dirac) adjoint (bar notation) is defined $\bar \psi = \psi^\dagger \gamma^0$, and satisfies
+\begin{equation}
+    \bar \psi(-i \slashed{\p}^{\leftarrow}-m)=0,
+\end{equation}
+where $\slashed{\p}^{\leftarrow}$ acts to the left. The Dirac matrices $\gamma^\mu$ are a set of $4\times 4$ matrices which satisfy the Lorentz algebra,
+\begin{equation}
+    \set{\gamma^\mu,\gamma^\nu}=2g^{\mu\nu}I,
+\end{equation}
+where we will take $g^{\mu\nu}=\text{diag}(1,-1,-1,-1)$ (the Minkowski metric with the mostly minus convention) and curly braces denote anticommutators as usual. We also define the $\gamma^5$ matrix to be
+\begin{equation}
+    \gamma^5= +i\gamma^0 \gamma^1 \gamma^2 \gamma^3
+\end{equation}
+so that $(\gamma^5)^2=I,\set{\gamma^5,\gamma^\mu}=0$. In the \term{chiral/Weyl basis}, the gamma matrices take the form
+\begin{equation}
+    \gamma^0=\begin{pmatrix}
+        0&1\\
+        1&0
+    \end{pmatrix},
+    \gamma^i=\begin{pmatrix}
+        0&\sigma^i\\
+        -\sigma^i&0
+    \end{pmatrix},
+    \gamma^5=\begin{pmatrix}
+        -1&0\\
+        0&1
+    \end{pmatrix}.
+\end{equation}
+This basis is so named because $\gamma^5$ picks out the left- and right-handed components.
+
+Consider the massless limit of the Dirac equation,
+\begin{equation}
+    \slashed{\p}\psi = 0 \implies \slashed{\p}(\gamma^5 \psi)=0.
+\end{equation}
+Then we can define the \term{projection operators},
+\begin{equation}
+    P_{R,L}=\frac{1}{2}(1\pm \gamma^5)..
+\end{equation}
+This allows us to describe the components of a Dirac spinor:
+\begin{equation}
+    \psi_{R,L}\equiv P_{R,L}\psi \implies \gamma^5 \psi_{R,L}=\pm \psi_{R,L}.
+\end{equation}
+These are eigenstates of the chirality operator, and are called ``right-handed'' or ``left-handed'' depending on whether they change sign under application of $\gamma^5$.
+
+These are only properly eigenstates in the massless limit-- if the particles are massive, then right-handed and left-handed states can mix (e.g. under Lorentz boosts). In chiral bases, $\psi_{R}$ ($\psi_L$) only contains lower (upper) 2-component spinor degrees of freedom.
+
+The effect of the field after projection is that $\psi_L$ ($\psi_R$) annihilates left-handed (right-handed) chiral particles. Note also that the Dirac adjoint is
+\begin{equation}
+    \bar \psi_{R,L}=(P_{R,L}\psi)^\dagger \gamma^0 = \psi^\dagger \frac{1}{2} (1\pm \gamma^5)\gamma^0 = \bar \psi P_{L,R}.
+\end{equation}
+
+We now observe that a massless Dirac fermion has a \emph{global} $U(1)_L\times U(1)_R$ chiral symmetry:
+\begin{equation*}
+    U(1)_{R,L}: \psi_{R,L}\to e^{i\alpha_{R,L}} \psi_{R,L},
+\end{equation*}
+as can be seen from the Dirac Lagrangian:
+\begin{equation*}
+    \cL= \bar \psi(i\slashed{\p}-m)\psi= \bar \psi_L i \slashed{\p}\psi_L + \bar \psi_R i \slashed{\p}\psi_R-m(\bar \psi_R \psi_L +\bar \psi_L \psi_R).
+\end{equation*}
+However, the mass term explicitly breaks this chiral symmetry (it couples the left- and right-handed eigenstates together). It changes our chiral symmetry to a vector symmetry where $\alpha_L=\alpha_R = \alpha$ so the the field as a whole transforms to
+\begin{equation*}
+    U(1)_L \times U(1)_R \to U(1)_V: \psi \to e^{i\alpha}\psi.
+\end{equation*}
+
+\subsection{Review of Dirac field} Recall that we can write the Dirac field $\psi$ as a sum over momenta and spin states,
+\begin{equation}
+    \psi(x)=\sum_{p,s}\left[ b^s(p) u^s(p) e^{-ip\cdot x}+d^{s\dagger}v^s(p) e^{+ip\cdot x}\right],
+\end{equation}
+where $s=\pm 1/2$ and $\sum_p\equiv \int \frac{d^3p}{(2\pi)^3 \sqrt{2E_{\vec p}}}$. The relativistic normalization of momentum eigenstates is $\braket{p}{q}=(2\pi)^3 (2E_{\vec p}\delta^{(3)}(\vec p - \vec q)$. Here, $b^\dagger,d^\dagger$
