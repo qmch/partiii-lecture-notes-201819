@@ -22,6 +22,39 @@ latexmk -pdf sfp-notes-partiii.tex
 latexmk -c
 mv sfp-notes-partiii.pdf ../../pdfs
 
+#return to home directory
+cd ../..
+
+#move to lent term and TeX the AQFT notes
+cd ./lent/aqft
+latexmk -pdf aqft-notes-partiii.tex
+latexmk -c
+mv aqft-notes-partiii.pdf ../../pdfs
+
+#black holes
+cd ../bh
+latexmk -pdf bh-notes-partiii.tex
+latexmk -c
+mv bh-notes-partiii.pdf ../../pdfs
+
+#quantum information
+cd ../qi
+latexmk -pdf qi-notes-partiii.tex
+latexmk -c
+mv qi-notes-partiii.pdf ../../pdfs
+
+#standard model
+cd ../sm
+latexmk -pdf sm-notes-partiii.tex
+latexmk -c
+mv sm-notes-partiii.pdf ../../pdfs
+
+#and string theory
+cd ../str
+latexmk -pdf str-notes-partiii.tex
+latexmk -c
+mv str-notes-partiii.pdf ../../pdfs
+
 echo "PDFs made. Pushing to the remote."
 #finally, return to the home directory, git add, and git commit.
 cd ../.. #to the main directory
