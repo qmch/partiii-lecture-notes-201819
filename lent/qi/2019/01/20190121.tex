@@ -1,0 +1,137 @@
+Last time, we introduced Shannon's Source Coding Theorem:
+\begin{thm}
+    For an i.i.d (memoryless) source, the optimal rate of reliable data compression (i.e. the data compression limit) is precisely the Shannon entropy $H(X)$ of the source.
+\end{thm}
+
+We started by saying that if we have an iid source, we can model it by a collection of $n$ sources $U_1,U_2\ldots, U_n$ which outputs a length-$n$ vector $\underline{u}^{(n)}=(u_1,\ldots, u_n) u_i \in J$. For an iid source, all the sources have the same probability mass function,
+\begin{equation*}
+    U_i \sim p(u), u\in J,
+\end{equation*}
+which means that we can equivalently model the source as a single source,
+\begin{equation*}
+    U\sim p(u), u\in J; p(\underline{u}^{(n)}) =\prod_{i=1}^n P(U_i=u_i)= \p(u_1)\ldots p(u_n).
+\end{equation*}
+The Shannon entropy of the source is given as usal by
+\begin{equation}
+    H(U)=-\sum_{j\in J} p(u)\log p(u).
+\end{equation}
+
+Now let us define a compression map.
+\begin{defn}
+    A \term{compression map} of \term{rate $R$} is a map $\mathcal C$ with
+    \begin{equation}
+        \mathcal{C}^n : \underline{u}^{(n)}=(u_1,\ldots, u_n) \mapsto \underline{x}^{m_n}=(x_1,\ldots, x_{m_n}) \in \set{0,1}^{m_n}.
+    \end{equation}
+    That is, $\mathcal{C}$ maps our output string of length $n$ to a compressed (encoded) string $\underline x$ of length $m_n$. We say that the \term{rate} of encoding is then
+    \begin{equation}
+        R=\frac{m_n}{n}=\frac{\text{number of bits in codeword}}{\text{number of uses of source}}.
+    \end{equation}
+    If a compression scheme has rate $R$, then we assign unique codewords to $2^{\ceil{nR}}$ messages.
+\end{defn}
+
+Question: when is such a map $\mathcal{C}^n$ a compression map? If our source outputs $n$ values in the alphabet $J$, then we have total possibilities
+\begin{equation}
+    |J|^n=2^{n\log |J|}.
+\end{equation}
+These can be stored in $n\log |J|$ bits. Thus $c^n$ is a compression map if $m_n < n\log |J|$, i.e. if we encode the output in fewer bits than it would take to uniquely encode every single string in the naive binary way.
+
+We can of course also define a decompression map:
+\begin{defn}
+    A decompression map $\mathcal{D}^n$ is a map
+    \begin{equation}
+        \mathcal{D}^n: \underline{x}^{m_n}\in \set{0,1}^{m_n} \mapsto \underline u^{(n)} = (u_1,\ldots, u_n),
+    \end{equation}
+    i.e. which takes us back to the original length-$n$ strings of source outputs.
+\end{defn}
+
+Now we can ask what the probability of a successful decoding is-- namely,
+\begin{equation}
+    \sum p(\underline{u}^{(n)}) P\paren{\mathcal{D}^n(\mathcal{C}^n(\underline{u}^{(n)})) \neq \underline{u}^{(n)}}
+\end{equation}
+is the average probability of error of the compression process. We write this as $P_{av}^{(n)}(C_n)$, where $C_n$ denotes an encoding and decoding scheme.
+\begin{defn}
+    $C_n$ is a triple defined $C_n=(\mathcal{C}^n, \mathcal{D}^n,R)$ which represents a choice of code. We say that a code is \term{reliable} if $P_{av}^{(n)}\to 0$ in the limit as $n\to\infty$. That is, $\forall \epsilon\in (0,1) \exists n$ such that $p_{AV}^{(n)} \leq \epsilon$.
+\end{defn}
+Then there is an optimal rate of data compression,
+\begin{equation}
+    R_\infty = \inf \set{R : \exists C_n(\mathcal{C}^n, \mathcal{D}^n,R)\text{s.t.} p_{AV}^{(n)}(C_n)\to 0\text{ as }n\to \infty}.
+\end{equation}
+What Shannon's source coding thm tells us is that $R_\infty = H(U).$ The most we can reliably compress an iid source is the Shannon entropy.
+
+\begin{defn}
+    An $\epsilon$-typical sequence is a sequence defined as follows. Fix $\epsilon\in(0,1)$ and take an iid source with $U\sim p(u), u\in J$ which gives us an output $\underline{u}^{(N)}=(u_1,\ldots, u_n).$ Then if
+    \begin{equation}\label{epsilontypicalseq}
+        2^{-n(H(U)+\epsilon)}\leq p(\underline{u}^{(n)}) \leq 2^{-n(H(U)-\epsilon)},
+    \end{equation}
+    we say that $\underline{u}^{(n)}$ is an $\epsilon$-typical sequence.
+\end{defn}
+An $\epsilon$-typical set is then defined to be the set $T_\epsilon^{(n)}=\set{\underline{u}^{(n)}\in J^n\text{ such that }\ref{epsilontypicalseq}\text{ holds}}.$
+
+In the asymptotic limit let us observe that
+\begin{equation}
+    p(\underline{u}^{(n)})\approx 2^{-nH(U)}
+\end{equation}
+are almost equiprobable since $\epsilon$ gets arbitrarily small. Does this agree with our intuitive notion of a typical sequence? Yes-- take a sequence $\underline{u}^{(n)}=(u_1,\ldots, u_n), u_i \in J$. Then the probability of $u$ is 
+\begin{equation*}
+    p(u)\approx \frac{\text{number of times} u\text{ occurs in } \underline{u}^{(u)}}{n}.
+\end{equation*}
+SO the number of times we expect to have some $u\in J$ appearing in the string $\underline{u}^{(n)}$ is simply $np(u)$.
+
+We see that The probability of a typical sequence is then
+\begin{align*}
+    p(\underline{u}^{(n)}) &= \prod_{u\in J} \underbrace{p(u)\ldots p(u)}_{n p(u)\text{ times}}\\
+    &= \prod_{u\in J} p(u)^{np(u)}\\
+    &\approx \prod_u 2^{np(u) \log p(u)}\\
+    &\approx 2^{n\sum p(u) \log p(u)}\\
+    &\approx 2^{-n H(U)}.
+\end{align*}
+So this agrees well with our notion of a typical sequence.%
+    \footnote{There is a difference between typical and high-probability-- we'll investigate this further on the example sheet.}
+    
+Now, typical sequences have some nice properties. $\forall \delta > 0$ and large $n$,
+\begin{itemize}
+    \item $H(U)-\epsilon \leq -\frac{1}{n}\log p(\underline{u}^{(n)}) \leq H(u)+\epsilon$
+    \item $P(T_\epsilon^{(n)} := \sum_{\underline {u}^{(n)}\in T_\epsilon^{(n)}} p(\underline{u}^{(n)}) > 1-\delta$.
+    \item $2^{n(H(U)-\epsilon)}(1-\delta \leq |T_\epsilon^{(n)}| \leq 2^{n(H(U)+\epsilon)}$, where $|T_\epsilon^{(n)}|$ is the number of typical (length $n$) sequences.%
+        \footnote{By the definition of a typical set, the probability of any typical sequence is bounded by
+        \begin{equation*}
+            2^{-n(H(U)+\epsilon)} |T_\epsilon^{(n)} \leq \sum_{\underline{u}^{(n)}\in T_\epsilon^{(n)}} p(\underline{u}^{(n)}) < 1.
+        \end{equation*}
+        This leads us to conclude that $|T_\epsilon^{(n)}| < 2^{n(H(U)+\epsilon)}.$
+        }
+\end{itemize}
+All these properties are collectively known as the \term{typical sequence theorem}.
+
+Since $\epsilon>0,$ we see that in the limit $\epsilon\to 0$
+\begin{equation}
+    |T_{\epsilon}^{(n)}| \approx 2^{nH(U)}.
+\end{equation}
+
+Now we can state Shannon's theorem formally.
+\begin{enumerate}
+    \item (Achievability) Suppose $R>H(U)$. Then $\exists$ a reliable compression-decompression scheme of rate $R.$
+    \item (Converse) For $R< H(U)$, any compression-decompression scheme is not reliable.
+\end{enumerate}
+
+\subsection*{Constructive proof of (a)} Let us suppose that $R>H(U)$. We fix $\epsilon \in (0,1)$ such that $R>U(U)+\epsilon$. Then choose $n$ large enough (i.e. the asymptotic limit) such that $T_\epsilon^{(n)}$ satisfies the conditions of the typical sequence theorem. Then we can write
+\begin{equation}
+    |T_\epsilon^{(n)}| \leq 2^{n(H(U)+\epsilon)}< 2^{nR}.
+\end{equation}
+Now we divide our set of sequences $J^n$ into the typical set $T_\epsilon^{n}$ and its complement $A_\epsilon^{n}=J^n \setminus T_\epsilon^{n}.$ Let us then order the elements of our typical set, i.e. we apply some labels/indices to all the elements. Since $|T_\epsilon^n| < 2^{nR}$, we need at most $nR$ bits to store all the labels of the typical sequences (i.e. the ones we always want to recover reliably).%
+    \footnote{As $nR$ may not be an integer, we'll practically need at most $\ceil{nR}$ bits.}
+
+With our encoding scheme for the typical set in hand, let us preface our encoding with a $1$, i.e. a \term{flag bit}. So the typical set elements will be encoded as
+\begin{equation}
+    \underline{u}^{(n)} \in T_\epsilon^n \mapsto 1\underbrace{011\ldots 1}_{\ceil{nR}}.
+\end{equation}
+Our codewords will be of length $\ceil{nR}+1$, and we can assign the complement $A_\epsilon^n$ to some random codewords beginning with a $0$ instead. So our rate of success when we decompress will not be exactly $1$-- there is some loss when we encode elements outside the typical set. However, things are not so bad. Let us take the limit as $n\to \infty$ and look at the success probability.
+\begin{align*}
+    p_{av}^{(n)} &:=\sum p(\underline{u}^{(n)}) P\paren{\mathcal{D}^n(\mathcal{C}^n(\underline{u}^{(n)})) \neq \underline{u}^{(n)}}\\
+    &= \sum_{\underline u^{(n)}\in T_\epsilon^n} p(\underline{u}^{(n)}P(\underline{u}'{}^{(n)}\neq \underline u^{(n)}) + \sum_{\underline{u}^{(n)}\in A_\epsilon^n}p(\underline{u}^{(n)}P(\underline{u}'{}^{(n)}\neq \underline u^{(n)}.
+\end{align*}
+But the first term is zero since we can always decode typical set elements, and the second part can be made to be arbitrarily small ($<\delta$) by the typical sequence theorem.
+
+\begin{lem}
+    Suppose we have a set $S^n$ which has size $|S^n|=2^{nR}$, with $R< H(U).$ $\forall \delta>0, S_n \subset J^n$ s.t. $|S^n|=2^{nR}$ with $R<H(U)$, we have $P(S^n)< \delta$ for $n$ large enough.
+\end{lem}
+This implies the converse, and is in the couse notes (but is useful to think on oneself).

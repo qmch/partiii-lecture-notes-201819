@@ -1,0 +1,132 @@
+Today we will continue the review of the Dirac field (cf. \href{David Tong's QFT notes}{http://www.damtp.cam.ac.uk/user/tong/qft.html}).
+
+\subsection*{Review of Dirac field} Recall that we can write the Dirac field $\psi$ as a sum over momenta and spin states,
+\begin{equation}
+    \psi(x)=\sum_{p,s}\left[ b^s(p) u^s(p) e^{-ip\cdot x}+d^{s\dagger}v^s(p) e^{+ip\cdot x}\right],
+\end{equation}
+where $s=\pm 1/2$ and $\sum_p\equiv \int \frac{d^3p}{(2\pi)^3 \sqrt{2E_{\vec p}}}$. Momentum eigenstates are defined as
+\begin{equation*}
+    \ket{p}=b^\dagger(p)\ket{0},
+\end{equation*}
+and the relativistic normalization of these momentum eigenstates is $\braket{p}{q}=(2\pi)^3 (2E_{\vec p})\delta^{(3)}(\vec p - \vec q)$. The identity can be written as $I=\sum_p \ket{p}\bra{p}.$ Here, $b^\dagger,d^\dagger$ are creation operators for positive and negative frequency modes and $u,v$ are our plane wave solutions to the Dirac equation.
+
+That is, instead of writing a full four-component spinor we can write solutions
+\begin{align*}
+    (\slashed{p}-m)u &=0,\\
+    (\slashed{p}+m)v &=0,
+\end{align*}
+so that in the chiral basis, our plane wave solutions take the form
+\begin{equation}
+    u^s(p) = \begin{pmatrix}
+        \sqrt{p\cdot \sigma} \xi^s\\
+        \sqrt{p\cdot \bar \sigma} \xi^s
+    \end{pmatrix},
+    \quad
+    u^s(p) = \begin{pmatrix}
+        \sqrt{p\cdot \sigma} \eta^s\\
+        -\sqrt{p\cdot \bar \sigma} \eta^s
+    \end{pmatrix}.
+\end{equation}
+Here, $\sigma^\mu=(I_2,\sigma^i)$ and $\bar \sigma^\mu=(I_2,-\sigma^i)$. (I write the $2\times 2$ identity matrix as $I_2$ here to avoid confusion.)
+
+\term{Helicity} is defined as the projection of angular momentum onto a linear momentum direction. That is, the helicity operator takes the form
+\begin{equation}
+    h=\vec J \cdot \hat {\vec p} = \vec s \cdot \hat {\vec p}
+\end{equation}
+where the angular momentum operator is 
+\begin{equation}
+    \vec J = \vec r \times \vec p + \vec s
+\end{equation}
+with
+\begin{equation}
+    s_i = \frac{i}{4} \epsilon_{ijk}\gamma^j \gamma^k
+    =\frac{1}{2} \begin{pmatrix}
+    \sigma_i & 0\\
+    0 & \sigma_i
+    \end{pmatrix}
+\end{equation}
+in the chiral basis.
+
+A massless spinor $u$ then satisfies $\slashed{p}u=0$, which means that
+\begin{align*}
+    h u(p) &= \frac{\gamma^5}{2} u(p)\\
+    h u_{R,L} &=\frac{\gamma^5}{2} u_{R,L}= \pm\frac{1}{2} u_{R,L}.
+\end{align*}
+Thus $u$ can be decomposed into a basis of eigenstates $u_R,u_L$ of the chirality operator, where $u_R$ has positive helicity and $u_L,$ negative helicity.
+
+A few notes on chirality:
+\begin{itemize}
+    \item Chiral states are only eigenstates of the Dirac equation when $m=0$ (i.e. they don't mix).
+    \item Helicity is defined for $m=0$ and $m\neq 0$, but it is not Lorentz invariant when $m\neq 0$. This is because for a massive spinor, we could always imagine Lorentz boosting into a frame where the particle appears to be going the other way (while the direction of its angular momentum is unchanged).
+    \item There is only a 1-1 correspondence between helicity and chirality when $m=0$.
+\end{itemize}
+
+\subsection*{Review of gauge symmetry (local symmetry)}
+Recall that we had a global symmetry where $\psi \to e^{i\alpha}\psi,$ with $\alpha\in \CC$. Now suppose we promote $\alpha$ to a function of $x$, $\alpha=\alpha(x)$ and
+\begin{equation}
+    \psi\to e^{i\alpha(x)}\psi.
+\end{equation}
+Under this \emph{local} transformation, the old kinetic term is no longer invariant, as it becomes
+\begin{equation}
+    \bar \psi i \slashed{\p}\psi \to \bar \psi i \slashed{\p}\psi - (\bar \psi \gamma^\mu \psi)(\p_\mu \alpha(x)).
+\end{equation}
+The way around this is to introduce a \term{covariant derivative} $D_\mu$ such that
+\begin{equation}
+    D_\mu\psi(x) \to \exp(i\alpha(x))D_\mu \psi(x).
+\end{equation}
+That is, the derivative transforms like the field itself under a gauge transformation so that our kinetic terms are preserved.
+
+To do this, let us introduce a gauge field $A_\mu(x)$ such that
+\begin{equation}
+    D_\mu\psi = (\p_\mu + i g A_\mu)\psi\quad
+    \text{where }A_\mu(x)\to A_\mu(x)-\frac{1}{g} \p_\mu \alpha
+\end{equation}
+so that $\bar \psi i \slashed{D}\psi$ \emph{is} invariant.
+
+We could also introduce a kinetic term for the gauge fields,
+\begin{equation}
+    \cL_{\text{gauge}}=-\frac{1}{4} F_{\mu\nu} F^{\mu\nu}, \quad
+    F_{\mu\nu}\equiv\p_\mu A_\nu - \p_\nu A_\mu.
+\end{equation}
+Equivalently $F_{\mu\nu}$ can be defined by a condition on $g$,
+\begin{equation}
+    ig F_{\mu\nu}=[D_\mu,D_0].
+\end{equation}
+
+What other gauge theories can we discuss? The theory of QED has a $U(1)$ gauge symmetry that treats LH and RH fields equivalently ($\alpha_L(x)=\alpha_R(x)$). However, the weak gauge bosons only couple to LH fields, but $U(1)$ is actually not the appropriate symmetry-- we will need $SU(2)$. This completes the review of abelian gauge symmetries. We will review non-abelian gauge symmetries a little later.
+
+\subsection*{Types of symmetry}
+Symmetries may manifest themselves in a variety of ways.
+\begin{enumerate}
+    \item[(1)] We can have a symmetry that is \term{intact} (unbroken), e.g. the $U(1)_{EM}$ and $SU(3)_C$ gauge symmetries.
+    \item[(2)] The symmetry of $\cL$ is broken by an \term{anomaly} (i.e. it holds classically but when we quantize, something breaks). Not a true symmetry. For example, the global axial $U(1)$ symmetry in the SM.
+    \item[(3)] A symmetry can hold for some terms in the Lagrangian but not others (i.e. the terms which break the symmetry might be small at some relevant energy scale, so we can treat them perturbatively). This is an \term{explicitly broken} symmetry, though it may be an approximate symmetry if the breaking terms are small. For example, the global \term{isospin} symmetry relating $u$ and $d$ quarks in QCD.
+    \item[(4)] We might have a \term{hidden symmetry} which is respected by the Lagrangian but not by the vacuum.
+    \begin{enumerate}
+        \item A \term{spontaneously broken symmetry} results in a vacuum expectation value (VEV) for one or more scalar fields (cf. Higgs mechanism). In the SM, the $SU(2)_L \times U(1)_\gamma \to U(1)_{EM}$ is a spontaneously broken symmetry.
+        \item Even without scalar fields, we can have \term{dynamical breaking} from quantum effects, e.g. the $SU(2)_L\times SU(2)_R$ global symmetry in QCD (massless quarks).
+    \end{enumerate}
+\end{enumerate}
+
+\subsection*{Discrete symmetries}
+Some discrete symmetries we should be familiar with include
+\begin{itemize}
+    \item Parity $(P)$: $(t,\vec x) \to (t,-\vec x)$
+    \item Time reversal $(T)$: $(t,\vec x) \to (-t,\vec x)$
+    \item Charge conjugation $(C)$: exchanges particles $\leftrightarrow$ antiparticles.
+\end{itemize}
+These first two are spacetime symmetries, while the last is a bit different.
+\begin{exm}
+    Let's look at some examples of these symmetries in the Standard Model.
+    \begin{itemize}
+        \item The $\bar \psi \gamma^\mu \psi$ couplings between gauge bosons and fermions, e.g. QED and QCD, are invariant under $P$ and $C$ separately.
+        \item $\bar \psi \gamma^\mu(1-\gamma^5) \psi$ couplings to fermions, e.g. the weak interaction, are not.
+        \item The weak interaction violates $CP$, which implies that $T$-symmetry is also violated from the $CPT$ theorem (i.e. a system must be invariant under the combination of $C$, $P,$ and $T$).
+    \end{itemize}
+\end{exm}
+To understand these statements, it will be useful to investigate the consequences of these $C,P,T$ symmetries individually and together.
+\subsection*{Symmetry operators}
+We will start by quoting a result proven by Wigner. 
+\begin{thm}
+If physics is invariant under some transformation $\Psi\to \Psi'$ (with $\Psi,\Psi'\in$ some Hilbert space), then there is an operator $W$ such that $\Psi'=W\Psi$ and where either $W$ is linear and unitary, or \emph{anti}linear and \emph{anti}-unitary.
+\end{thm}

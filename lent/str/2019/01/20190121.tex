@@ -1,0 +1,135 @@
+Last time, we introduced a \term{worldline action} with an einbein $e$ (auxiliary field).
+\begin{equation*}
+    S[x,e]=\frac{1}{2}\int d\tau \left(e^{-1} \eta_{\mu\nu} \dot x^\mu \dot x^\nu-e m^2\right).
+\end{equation*}
+In the massless limit, this reduces to
+\begin{equation}
+    S[X,e]=\frac{1}{2} d\tau e^{-1} g_{\mu\nu} \dot x^\mu \dot x^\nu,
+\end{equation}
+where we have replaced the Minkowski metric with some generic metric. The classical equations of motion for $X^\mu(\tau)$ then give the geodesic equation,
+\begin{equation}
+    \ddot X^\mu +\Gamma^\mu_{\nu\lambda} \dot X^\nu \dot X^\lambda = 0.
+\end{equation}
+The $e(\tau)$ equations of motion would give some constraints. However, if we attempted to quantize this theory, we would find that the background metric $g_{\mu\nu}$ is not actually deformed in the solutions. Rather than being dynamic as in general relativity, it's sort of a thing that is given to us and sits in the background, unchanging, which is why for a particle this is not a theory of quantum gravity. As we'll see, this is \emph{not} the case for strings.
+
+\subsection*{Strings} As a string moves through some flat spacetime $\cM$ with metric $\eta_{\mu\nu}$, it sweeps out a worldsheet $\Sigma.$ Assume that the string is closed, so it has a coordinate $\sigma$ (along the length of the string, if you like):
+\begin{equation*}
+    \sigma \sim \sigma + 2n\pi, n\in \ZZ.
+\end{equation*}
+And it moves through time as parametrized by a proper time $\tau$, so the embedding of the worldsheet is given by $X^\mu(\sigma,\tau)$. That is, $\sigma$ and $\tau$ provide good coordinates for the worldsheet in $\cM$.
+\begin{defn}
+    We call these $X^\mu$ embedding fields. They are maps
+    $X:\Sigma \to \cM$ from the worldsheet to the background spacetime manifold.
+\end{defn}
+We also say that the area of the worldsheet $\Sigma$ is given by
+\begin{equation}
+    \text{area}=\int d\tau d\sigma \sqrt{-\det(\eta_{\mu\nu} \p_a X^\mu \p_0 X^\nu)}
+\end{equation}
+where $\sigma^a =(\tau, \sigma)$ so that $\p_a = \P{}{\sigma^a}.$ In fact, we shall introduce an extra factor know (for historical reasons) as $\alpha'$ and write
+\begin{equation}\label{nambugoto}
+    S[X]=-\frac{1}{2\pi \alpha'}\int d\tau d\sigma \sqrt{-\det(\eta_{\mu\nu} \p_a X^\mu \p_b X^\nu)},
+\end{equation}
+where $\alpha'$ is a free parameter. We often refer to the \term{string length},
+\begin{equation}
+    l_s \equiv 2\pi\sqrt{\alpha'}
+\end{equation}
+or the \term{tension}
+\begin{equation}
+    T \equiv \frac{1}{2\pi \alpha'}.
+\end{equation}
+
+\begin{defn}
+    The object
+    \begin{equation}
+        G_{ab}\equiv \eta_{\mu\nu} \p_a X^\mu \p_b X^\nu
+    \end{equation}
+    is an induced metric on $\Sigma$, and the action \ref{nambugoto} is called the \term{Nambu-Goto action}.
+\end{defn}
+Having just defined this, we won't really do anything with it for the rest of the course. Bummer. However, to make up for it, let's write down a new and improved action, the \term{Polyakov action}.
+
+\begin{defn}
+    Consider the action
+    \begin{equation}\label{polyakovaction}
+        S[X,h]=-\frac{1}{4\pi \alpha'} \int_\Sigma d^2\sigma \sqrt{-h}\,h^{ab} \eta_{\mu\nu} \p_a X^\mu \p_b X^\nu.
+    \end{equation}
+    This should remind us of what we did with the einbein last lecture, where we introduced $e$ into our action.
+    
+    This \term{Polyakov action} is classically equivalent to the Nambu-Goto action, since this auxiliary $h$ which we have introduced will turn out to be non-dynamical.
+\end{defn}
+
+The $h_{ab}$ equations of motion are given by a weird variation of the action,
+\begin{equation}
+    -\frac{2\pi}{\sqrt{-h}}\frac{\delta S}{\delta h^{ab}}=0.
+\end{equation}
+These equations of motion give the vanishing of the stress tensor, $T_{ab}=0$, where
+\begin{equation}
+    T_{ab}=-\frac{1}{\alpha'}\paren{\p_a X^\mu \p_b X_\mu - \frac{1}{2} h_{ab} \p_c X^\mu \p_d X_\mu h^{cd}}.
+\end{equation}
+
+Note that in two dimensions, $T_{ab}h^{ab}=0$, i.e. $T_{ab}$ is traceless. This is our first indication that something is different about two dimensions.
+
+The $X^\mu$ equations of motion are
+\begin{equation}
+    \frac{1}{\sqrt{-h}}(\p_a \sqrt{-h}\, h^{ab} \p_b X^\mu)=0, \quad
+    \Box X^\mu =0.
+\end{equation}
+Now we could imagine adding a cosmological constant (which would cause the trace of the stress tensor to change) or perhaps some sort of Einstein-Hilbert term to our metric $h_{ab}$. But we'll see why this might be more complicated than it initially seems.
+
+\subsection*{Symmetries} The Polyakov action \ref{polyakovaction} has the following symmetries:
+\begin{itemize}
+    \item Rigid (global) symmetry, $X^\mu(\sigma,\tau)\to \Lambda^\mu{}_\nu X^\nu(\sigma,\tau) + a^\mu$ (Poincar\'e invariance).
+    \item Local symmetries-- the physics should be invariant under reparametrizations of the coordinates of the worldsheet, so under transformations $\sigma^a \to \sigma'{}^a (\sigma,\tau).$ The fields themselves transform as
+    \begin{align*}
+        X'^\mu(\sigma',\tau')&= X^\mu(\sigma,\tau)\\
+        h_{ab}(\sigma,\tau)&= \P{\sigma'{}^c}{\sigma^a} \P{\sigma'{}^d}{\sigma^b} h'_{cd}(\sigma',\tau').
+    \end{align*}
+    Infinitesimallly, this means that $\sigma^a \to \sigma^a - \xi^a(\sigma,\tau)$, which gives us the variations
+    \begin{align*}
+        \delta X^\mu &= \xi^a \p_a X^\mu\\
+        \delta h_{ab} &= \xi^c \p_c h_{ab}+\p_a \xi^c h_{cb} +\p_b \xi^c h_{ca} =\nabla_a \xi_b +\nabla_b \xi_a\\
+        \delta \sqrt{-h} &=\p_a(\xi^a \sqrt{-h}).
+    \end{align*}
+    Note this second variation, $\delta h_{ab}$, can be written in terms of some covariant derivatives for an appropriate connection, but we won't usually bother.
+    \item Weyl transformations-- we send
+    \begin{align*}
+        X'{}^\mu (\sigma,\tau) &= X^\mu(\sigma, \tau)\\
+        h'_{ab}(\sigma,\tau)&=e^{2\Lambda(\sigma,\tau)}h_{ab}(\sigma,\tau).
+    \end{align*}
+    Thus $\delta X^\mu=0$ and $\delta h_{ab}=2\Lambda h_{ab}$.
+    Under such transformations, we have three arbitrary degrees of freedom in $(\xi^a,\Lambda)$ (two from the two components of $\xi$ plus one from $\Lambda$), and we can use them to fix the three degrees of freedom in $h_{ab}$ (there are three, since $h$ is symmetric and $2\times 2$).
+\end{itemize}
+
+\subsection*{Classical solutions} Let us now use reparametrization invariance to fix
+\begin{equation}
+    h_{ab}=e^{2\phi} \eta_{ab}, \quad \eta_{ab}=\begin{pmatrix}
+    -1 & 0\\
+    0 & 1
+    \end{pmatrix}.
+\end{equation}
+The Polyakov action then becomes
+\begin{equation}
+    S[X]=-\frac{1}{4\pi \alpha'} \int_\Sigma d^2 \sigma(-\dot X^2 + X'{}^2),
+\end{equation}
+where
+\begin{equation}
+    \dot X^\mu \equiv \P{X^\mu}{\tau},\quad X'{}^\mu \equiv \P{X^\mu}{\sigma}
+\end{equation}
+and squares are taken by contracting with the metric $h_{ab}$. In that case, the $X^\mu(\sigma,\tau)$ equation of motion becomes the wave equation in 2D, %check this?
+so solutions are of the form
+\begin{equation}
+    X^\mu(\sigma,\tau)= X^\mu_R (\tau-\sigma)+X^\mu_L(\tau + \sigma).
+\end{equation}
+Moreover, since we have a wave equation it is useful to introduce modes $(\alpha^\mu_n, \bar \alpha^\mu_n)$ where
+\begin{equation}
+    X^\mu_R(T-\sigma)=\frac{1}{2}x^\mu +\frac{\alpha'}{2}p^\mu(\tau-\sigma) +i\sqrt{\frac{\alpha'}{2}}\sum_{n\neq 0} \frac{1}{n}
+    \alpha^\mu_n e^{-in(\tau-\sigma)},
+\end{equation}
+where $x^\mu, p^\mu$ are some constants in $(\tau,\sigma)$ and  similarly the left-going modes are
+\begin{equation}
+    X^\mu_L(T+\sigma)=\frac{1}{2}x^\mu +\frac{\alpha'}{2}p^\mu(\tau+\sigma) +i\sqrt{\frac{\alpha'}{2}}\sum_{n\neq 0} \frac{1}{n}
+    \bar\alpha^\mu_n e^{-in(\tau+\sigma)}.
+\end{equation}
+It's sometimes useful to define a zero-mode,
+\begin{equation}
+    \alpha_0^\mu = \bar \alpha_0^\mu = \sqrt{\frac{\alpha'}{2}}p^\mu.
+\end{equation}
