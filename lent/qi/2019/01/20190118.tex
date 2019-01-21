@@ -22,6 +22,12 @@ Here's a quick overview now of the structure of the course.
 \end{itemize}
 When we say open quantum systems, we mean quantum systems which interact with a broader environment. If we prepare a state and allow it to interact, what happens to the information stored in that state?
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{2019/01/20190118_opensystem.png}
+    \caption{A sketch of the sort of systems we will be interested in in this class. We have an open system $S$ which will naturally interact with its environment $E$.}
+    \label{fig:opensystem}
+\end{figure}
 \subsection*{Classical information theory} Historically, CIT was invented in 1948 with a pioneering paper by Claude Shannon. In this paper, he asked two critical questions.
 \begin{itemize}
     \item[Q1.] What is the limit to which information can be \emph{reliably} compressed?
@@ -40,7 +46,7 @@ We also define the following quantity.
 \begin{equation}
     \gamma(x)=-\log p(x).
 \end{equation}
-When an event is very unlikely and it happens anyway... you are very surprised. For example, $p(x)=1\implies \gamma(x)=0$ (certainties are not very surprising) while $p(x)\approx 0 \implies \gamma(x)$ large.
+When an event is very unlikely and it happens anyway... you are very surprised. For example, $p(x)=1\implies \gamma(x)=0$ (certainties are not very surprising) while $p(x)\approx 0 \implies \gamma(x)$ large. See Fig. \ref{fig:surprisal} for a plot of $\gamma$ versus $p$.
 \end{defn}
 This quantity has some features:
 \begin{itemize}
@@ -57,27 +63,49 @@ when $X,Y$ are independent. Then
     \gamma(x,y)=-\log P_{XY}(x,y)=\gamma(x)+\gamma(y).
 \end{equation*}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{2019/01/20190118_surprisal.png}
+    \caption{The surprisal $\gamma(p)\equiv -\log_2 p$ as a function of $p$, the probability of some event. Certainties ($p=1$) are not very surprising, whereas very rare events ($p\ll 1$) are surprising, and so get $\gamma=0$ and $\gamma$ large respectively.}
+    \label{fig:surprisal}
+\end{figure}
+
 \begin{defn}
     We can now define the \term{Shannon entropy} of $X$ to be
     \begin{equation}
-        H(X)\equiv \mathbb{E}(\gamma(X))=\sum_{x\in J}(-\log(p(x))p(x),
+        H(X)\equiv \mathbb{E}(\gamma(X))=\sum_{x\in J}(-\log p(x))p(x),
     \end{equation}
     the expected value of the surprisal. We see again that $H(X)$ does not depend on the actual outcomes themselves but only on the probability distribution $P(X)$.
 \end{defn}
-As a matter of convention we will take logs to be $\log{} \equiv \log_2{}$, and for events which are impossible $P(x)=0$ we have $0\log 0 = 0$ (which one can prove by taking the limit $\lim_{u\to 0}u\log u =0.$
+As a matter of convention we will take logs to be $\log{} \equiv \log_2{}$, and for events which are impossible, $P(x)=0$, we have $0\log 0 = 0$ (which one can prove by taking the limit $\lim_{u\to 0}u\log u =0$).
 
 \subsection*{Binary entropy} Consider an event which has two possible outcomes, $X\sim P(x), x\in J =\set{0,1}$ where $P(X=0)=p$ and $P(X=1)=1-p$. Then the Shannon entropy is
 \begin{equation}
     H(X)=-p\log p - (1-p)\log(1-p)\equiv h(p).
 \end{equation}
-We see that if the probability is $p=1/2$, then we have no information a priori about this systems-- the entropy is maximized. $h(p)$ is a continuous function of $P$, and it is concave.
+We see that if the probability is $p=1/2$, then we have no information a priori about this systems-- the entropy is maximized. $h(p)$ is a continuous function of $p$, and it is concave. See the illustration in Fig. \ref{fig:binaryshannon}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{2019/01/20190118_binaryshannon.png}
+    \caption{The Shannon entropy of a binary event where there are two possible outcomes, one of which happens with probability $p$ and the other with $1-p$. When $p=0.5$, our ignorance is at a maximum-- we know nothing a priori about what our generator will spit out.}
+    \label{fig:binaryshannon}
+\end{figure}
 
 \begin{defn}
-    We can also define a different entropy, the Renyi entropy, which is
+    We can also define a different entropy, the R\'enyi entropy, which is
     \begin{equation}
-        H_\alpha(X)=\frac{1-\alpha}\log (\sum_{x\in J}P(x)^\alpha),
+        H_\alpha(X)=\frac{1}{1-\alpha}\log \paren{\sum_{x\in J}p(x)^\alpha},
     \end{equation}
-    with $\alpha \in (1,2]$. As an exercise, we can verify that $\lim_{\alpha \to 1} H_\alpha(X) = H(X)$, i.e. the Renyi entropy reduces to the Shannon entropy.
+    with $\alpha \in (1,2]$. As an exercise, we can verify that $\lim_{\alpha \to 1} H_\alpha(X) = H(X)$, i.e. the Renyi entropy reduces to the Shannon entropy.%
+        \footnote{The proof is fairly quick. First note that as $\alpha\to 1$, the denoninator $1-\alpha$ goes to zero and the log becomes $\log (\sum_{x\in J}p(x))=\log 1 =0$, so we can apply L'H\^opital's rule and take some derivatives. Note also that $\frac{d}{dx}a^x = \frac{d}{dx} e^{\log a^x}= \frac{d}{dx} e^{x\log a} = \log a e^{x\log a}= a^x \log a$. Thus by L'H\^opital's rule,
+        \begin{align*}
+            \lim_{\alpha\to 1} H_\alpha(X)&= \lim_{\alpha\to 1} \frac{1}{1-\alpha}\log \paren{\sum_{x\in J}p(x)^\alpha}\\
+            &= \lim_{\alpha\to 1} \frac{1}{(-1)} \frac{\sum_{x\in J} (p(x)^\alpha \log p(x)) }{\sum_{x\in J} p(x)^\alpha}\\
+            &= - p(x) \log p(x) =H(X).
+        \end{align*}
+        Technically I have done this calculation with a natural log rather than a base 2 log, but the result is the same, since the numerical factor from taking the derivative of the log cancels with the factor from rewriting the derivative of $p(x)^a$ in terms of a base 2 log. \qed
+        }
 \end{defn}
 
 Why do we choose to work with the Shannon entropy? It has to do with the operational interpretation-- the Shannon entropy represents an optimal rate of data compression, i.e. the data compression limit.
@@ -94,12 +122,12 @@ We could study a signal emitted by $n$ uses of the source to get some sequence $
 \begin{defn}
     Moreover, if the probability mass function takes the form
     \begin{align*}
-        p(\underline{u^{(n)}}) &=P(U_1,\ldots,U_n= u_n)\\
+        p(\underline{u}^{(n)}) &=P(U_1,\ldots,U_n= u_n)\\
         &= p(u_1)\ldots p(u_n).
     \end{align*}
 \end{defn}
 
-If the source is indeed independent and identically distributed, then it makes sense to describe it by a sincle probability mass function, $U\sim p(u)$, so that the Shannon entropy of the source can be siad to be
+If the source is indeed independent and identically distributed, then it makes sense to describe it by a sincle probability mass function, $U\sim p(u)$, so that the Shannon entropy of the source can be said to be
 \begin{equation}
     H(U)=-\sum_{u\in J} p(u) \log p(u).
 \end{equation}
@@ -111,7 +139,7 @@ This sort of scheme is known as variable length coding, e.g. we might encode the
 \begin{exm}
     Suppose we have a horse race with eight horses. They have labels $1,2\ldots, 8$, and the message we would like to encode is the label of the winning horse. A priori, we only need $3$ bits to encode the label since $2^n$ different messages can be stored in $n$ bits.
     
-    However, what if the horses are of different abilities? Realistically, they won't all be equally fast. Suppose that $p_i$ is the probability of the $i$th horse winning, such that
+    However, what if the horses are not all equally fast (i.e. likely to win)? Suppose that $p_i$ is the probability of the $i$th horse winning, such that
     \begin{equation*}
         p_i=1/2,1/4,1/8,1/16,1/64,\ldots,1/64.
     \end{equation*}
@@ -123,7 +151,15 @@ This sort of scheme is known as variable length coding, e.g. we might encode the
         C(4)&=1110\\
         C(5)&=111100\\
         C(6)&=111101\\
-        \vdots&
+        C(7)&=111110\\
+        C(8)&=111111.
     \end{align*}
-    Let $l_i$ be the length of the $i$th codeword, e.g. $l_5=6$. We can show that the average length of a code is then $\sum p_i l_i = 2$, and we've chosen a prefix-free code so that e.g. a sequence like 10011001110 can be uniquely decoded to a sequence of winners from our code words.
+    Let $l_i$ be the length of the $i$th codeword, e.g. $l_5=6$. We can compute that the average length of a code is then $\sum p_i l_i = 2$, and we've chosen a ``prefix-free code'' so that a sequence like 10011001110 can be uniquely decoded to a sequence of winners from our code words. That is, no codeword is a prefix of any other code.%
+        \footnote{For the sequence 10011001110, we know that the first winner was the horse corresponding to 10, horse 2. The next winner was horse 1 with code 0. This sequence breaks up as $10|0|110|0|1110$, so the winners were 2, 1, 3, 1, and 4 in that order.}
+        
+    Let's compute the expected length of the codeword-- it is
+    \begin{equation}
+        \sum_i p_i l_i=1\times \frac{1}{2}+2\times \frac{1}{4}+3\times \frac{1}{8} + 4 \times \frac{1}{16}+4 \times \frac{1}{64}\times 6=2,
+    \end{equation}
+    and this is exactly the Shannon entropy of the system, as expected.
 \end{exm}

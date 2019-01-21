@@ -2,16 +2,21 @@
     This is a 24 lecture course with lectures at 11 AM M/W/F. There will be PDF notes available online somehow (TBD), and also $3+1$ problem sets plus a revision in Easter. The instructor can be reached at \url{rar31@cam.ac.uk}. Some recommended course readings%
         \footnote{Most of these are published by Cambridge University Press. Conspiracy-- string theory was invented by CUP to sell textbooks?
         }
-    include ``easier'' text:
+    include ``easier'' texts:
     \begin{itemize}
-        \item Schomerus (A Primer on String Theory)
-        \item (Becker)${}^2$ and Schwarz
+        \item Schomerus%
+            \footnote{Available here for users with access to Cambridge University Press online: \url{https://doi.org/10.1017/9781316672631}}
+        \item (Becker)${}^2$ and Schwarz%
+            \footnote{Ditto: \url{https://doi.org/10.1017/CBO9780511816086}}
     \end{itemize}
     and ``harder'' texts:
     \begin{itemize}
-        \item Polchinski, Vol 1.
-        \item Lurt and Thiesen
-        \item Green, Schwarz, and Witten.
+        \item Polchinski, Vol 1.%
+            \footnote{Here: \url{https://doi.org/10.1017/CBO9780511816079}}
+        \item L\"ust and Theisen%
+            \footnote{Possibly available through Springer Link but not a CUP publication. \url{https://link.springer.com/book/10.1007/BFb0113507}}
+        \item Green, Schwarz, and Witten.%
+            \footnote{Here: rl{https://doi.org/10.1017/CBO9781139248563}}
     \end{itemize}
 \end{note}
 
@@ -53,11 +58,11 @@ In QFT, we were given some Lagrangian and from that Lagrangian, we derived inter
 However, this isn't the only way we could do it. We could look for a formalism in which $\hat x^\mu=(\hat{\vec x},\hat t)$ are operators.
 \begin{exm}
     Consider the \term{worldline formalism}. Imagine we have a massive particle propagating on a flat spacetime with metric $\eta_{\mu\nu}$. A suitable action for this theory might be
-    \begin{equation}
+    \begin{equation}\label{worldsheetaction}
         S[x]=- m\int_{s_1}^{s_2}ds,
     \end{equation}
     where we use natural units of $\hbar = c=1$ and the $m$ is some mass due to dimensional concerns. This has a sort of geodesic interpretation for some integration measure $ds$. We can parametrize the worldline (e.g. in terms of proper time) such that
-    \begin{equation}\label{worldsheetaction}
+    \begin{equation}
         S[x]=-m \int_{\tau_1}^{\tau_2} d\tau\sqrt{-\eta_{\mu\nu}\dot x^\mu \dot x^\nu}.
     \end{equation}
     Here, dots indicate derivatives with respect to proper time. The conjugate momentum is then
@@ -67,18 +72,25 @@ However, this isn't the only way we could do it. We could look for a formalism i
     which obeys $P^2+m^2=0$, so this is an ``on-shell'' formalism. We could then vary $S[x]$ with respect to trajectories $x^\mu(\tau)$ to find the equations of motion. We could imagine doing the same for an extended object and tracing out a ``worldsheet'' instead.
     
     However, before we do that, let us revisit our action \ref{worldsheetaction}. In particular, we shall rewrite it as
-    \begin{equation}
+    \begin{equation}\label{reparamaction}
         S[x,e]=\frac{1}{2}\int d\tau \left(e^{-1} \eta_{\mu\nu} \dot x^\mu \dot x^\nu-e m^2\right).
     \end{equation}
     This new action has a sensible massless limit, unlike the previous action. For our new action, the $x^\mu(\tau)$ equation of motion is then
-    \begin{equation*}
+    \begin{equation}\label{eomworldsheetxmu}
         \frac{d}{d\tau}(e^{-1}\dot x^\mu)=0
-    \end{equation*}
+    \end{equation}
     and the $e(\tau)$ equation of motion gives
-    \begin{equation*}
+    \begin{equation}\label{eomworldsheete}
         \dot x^2 + e^2m^2=0.
-    \end{equation*}
-    Now $e(\tau)$ appears algebraically, so we can substitute it back into the action to recover our previous formulation \ref{worldsheetaction}.
+    \end{equation}
+    Now $e(\tau)$ appears algebraically, so we can substitute it back into the action to recover our previous formulation \ref{worldsheetaction}.%
+        \footnote{Explicitly, we see that
+        \begin{align*}
+            S[x,e] &=\frac{1}{2}\int d\tau(e^{-1}\dot x^2 -em^2)\\
+                &=\frac{1}{2}\int d\tau(e^{-1}(-e^2m^2) -em^2)\\
+                &=\int d\tau (-em^2)
+        \end{align*}
+        and by setting $e=1/m$ we recover \ref{worldsheetaction}.}
     
     Our theory also has some symmetry. If we shift the proper time by a function $\tau\to \tau+\zeta(\tau)$, then $x$ and $e$ change as 
     \begin{align*}
@@ -91,5 +103,47 @@ However, this isn't the only way we could do it. We could look for a formalism i
     \begin{equation*}
         x^\mu(\tau)\to \Lambda^\mu{}_\nu x^\nu(\tau)+a^\mu,
     \end{equation*}
-    which we may recognize as Poincar\'e invariance in the background spacetime.
+    which we may recognize as Poincar\'e invariance in the background spacetime.%
+        \footnote{We can see that the action respects this symmetry, since it only depends on $\dot x^\mu$ and not $x^\mu$ (so translational symmetry is preserved) and $\eta_{\mu\nu}\dot x^\mu \dot x^\nu\to \eta_{\mu\nu}\Lambda^\mu{}_\sigma \dot x^\sigma \Lambda^\nu{}_\tau \dot x^\tau = \eta_{\sigma\tau} \dot x^\sigma \dot x^\tau$, so $\dot x^2$ is also preserved under Lorentz transformations as it should be.}
 \end{exm}
+
+\subsection*{Non-lectured aside: reparameterization invariance}
+Here, we'll explicitly show that the action \ref{reparamaction} is invariant under the transformation
+\begin{equation}
+    \tau\to \tau+\xi(\tau).
+\end{equation}
+For some reason, this is not spelled out in either David Tong's notes or the standard textbooks I've consulted so far.
+
+We make the assumption as in lecture that $x$ and $e$ change as 
+\begin{align*}
+    \delta x^\mu &= \zeta \dot x^\mu\\
+    \delta e &= \frac{d}{d\tau}(\zeta e).
+\end{align*}
+If so, then note that
+\begin{equation}
+    \delta(\dot x^\mu)=\frac{d}{d\tau}(\delta x^\mu)=\frac{d}{d\tau}(\lambda \dot x^\mu)
+\end{equation}
+and
+\begin{equation}
+    \frac{1}{e+\delta (e)}\sim \frac{1}{e}-\frac{1}{e^2}\delta(e) \implies \delta(e^{-1})=-\frac{1}{e^2}\delta(e).
+\end{equation}
+To perform this calculation, we'll also need the equations of motion from lecture, \ref{eomworldsheetxmu} and \ref{eomworldsheete}, reproduced here:
+\begin{equation*}
+    \frac{d}{d\tau}(e^{-1}\dot x^\mu)=0
+\end{equation*}
+and
+\begin{equation*}
+    \dot x^2 + e^2m^2=0.
+\end{equation*}
+
+Let's vary the action!
+\begin{align*}
+    \delta S[x,e]&= \frac{1}{2}\int d\tau \left[\delta(e^{-1}) \eta_{\mu\nu} \dot x^\mu \dot x^\nu +e^{-1} \eta_{\mu\nu} \delta(\dot x^\mu) \dot x^\nu +e^{-1} \eta_{\mu\nu} \dot x^\mu \delta(\dot x^\nu) - \delta(e) m^2 \right]\\
+    &= \frac{1}{2} \int d\tau \left[ -\frac{1}{e^2} \delta(e) \dot x^2 +2 e^{-1} \eta_{\mu\nu} \frac{d}{d\tau} (\lambda \dot x^\mu) \dot x^\nu  -\delta(e) m^2\right]\\
+    &=\frac{1}{2} \int d\tau \left[ -\frac{1}{e^2} \delta(e) (\dot x^2+m^2 e^2) +2 (e^{-1}\dot x^\nu) \eta_{\mu\nu} \frac{d}{d\tau} (\lambda \dot x^\mu)  \right]\\
+    &=\frac{1}{2} \int d\tau \frac{d}{d\tau} (\lambda e^{-1} \dot x^2)\\
+    &=0.
+\end{align*}
+In going from the first to the second line, we have explicitly substituted the variations for $e^{-1}$ and for $\dot x^\mu$. In going from the second to the third, we simply regrouped terms into $\dot x^2+m^2 e^2$, which is zero by the equations of motion, and into $e^{-1}\dot x^\nu$, which is constant by the other equation of motion and therefore can be moved inside the total time derivative $\frac{d}{d\tau}$. 
+
+We see that after variation, what remains is simply an integral $\int d\tau$ of a total derivative, which is zero when evaluated at the endpoints of the action integral by the boundary conditions. Therefore the action is indeed invariant under reparametrization. \qed

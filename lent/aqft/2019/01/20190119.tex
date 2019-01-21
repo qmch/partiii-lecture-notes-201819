@@ -1,0 +1,131 @@
+\begin{note}
+There will not be official typed course notes, but there will be scanned handwritten notes (which I will link here as they become available). Previous lecturers' notes are currently online (Skinner, Osborn).
+\end{note}
+
+Today we introduce path integrals in a QFT context. There are some benefits to working with path integrals-- some computations are simplified or more straightforward, and Lorentz invariance is manifest (unlike in the canonical formalism).
+
+\subsection*{Path integrals in quantum mechanics} Rather than trying to tackle the full machinery of QFT, we'll start with $0+1$ dimensional non-relativistic quantum mechanics (cf. Osborn $\mathsection$ 1.2. We'll set $\hbar = 1$ for now, though we may restore it later in order to make arguments when $\hbar \ll 1$ in a classical limit. In these units,
+\begin{equation*}
+    [E][t]=[\hbar]=[p][x]
+\end{equation*}
+using uncertainty relations.
+
+Let us consider a Hamiltonian in $1$ spatial dimension,
+\begin{equation*}
+    \hat H=H(\hat x, \hat p)\quad \text{with }[\hat x,\hat p]=i.
+\end{equation*}
+We'll further assume for simplicity that the Hamiltonian has a kinetic term and a potential based only on position,
+\begin{equation*}
+    \hat H= \frac{\hat p^2}{2m}+V(\hat x).
+\end{equation*}
+
+Now the Schr\"odinger equation takes the form
+\begin{equation}
+    i\P{}{t}\ket{\psi(t)}=\hat H \ket{\psi(t)}
+\end{equation}
+which has formal solution
+\begin{equation}\label{schrodingerformal}
+    \ket{\psi(t)}=e^{-i\hat H t}\ket{\psi(0)}.
+\end{equation}
+Let us consider some position eigenstates $\ket{x,t}$ such that
+\begin{equation*}
+    \hat x(t)\ket{x,t}=x \ket{x,t},\quad x\in \RR,
+\end{equation*}
+where these states obey some normalization
+\begin{equation*}
+    \braket{x',t}{x,t}=\delta(x'-x).
+\end{equation*}
+In the Schr\"odinger picture, states depend on time, while operators are constant. In terms of fixed (time-independent) eigenstates $\set{\ket{x}}$ of the position operator $\hat x$, we may write the wavefunction as
+\begin{equation}
+    \psi(x,t)=\braket{x}{\psi(t)},
+\end{equation}
+so that applying the Hamiltonian to the wavefunction $\psi(x,t)$ yields
+\begin{equation}
+    \hat H \psi(x,t)=(-\frac{1}{2m}\frac{\p^2}{\p x^2} + V(x))\psi(x,t).
+\end{equation}
+
+This is the traditional presentation of quantum mechanics and the wavefunction. In the path integral formalism, we'll consider a more particle-like treatment, where we express time evolution as a sum over all trajectories (meeting some boundary conditions) appropriately weighted (by an action).
+
+Recall that our formal solution \ref{schrodingerformal} tells us what $\ket{\psi(t)}$ is-- we can therefore rewrite the wavefunction as
+\begin{equation}
+    \psi(x,t)\bra{x}e^{-i\hat Ht} \ket{\psi(0)}.
+\end{equation}
+By inserting a complete set of (position eigen)states, $1=\int dx_0 \ket{x_0}\bra{x_0}$, we get
+\begin{align*}
+    \psi(x,t) &=\int dx_0 \bra{x} e^{-i\hat Ht}\ket{x_0} \braket{x_0}{\psi(0)}\\
+        &= \int dx_0\, K(x,x_0; t) \psi(x_0,0),
+\end{align*}
+where we have defined $K(x,x_0;t) \equiv \bra{x} e^{-i\hat Ht}\ket{x_0}$. Let us further consider time evolution in discrete steps, with $0\equiv t_0 < t_1 < t_2 < \ldots < t_n < t_{n+1} \equiv T$ so that
+\begin{equation*}
+    e^{-i\hat H T}= e^{-i\hat H(t_{n+1}-t_n)} \ldots e^{-i\hat H (t_1-t_0)}.
+\end{equation*}
+As before, we insert complete sets of states, finding that our generic time evolution from any $x_0$ to an $x$ of our choosing:
+\begin{equation}
+    K(x,x_0;T) = \int \left[ \prod_{r=1}^n dx_r \bra{x_{r+1}} e^{-i\hat H(t_{r+1}-t_r)}\ket{x_r}\right] \bra{x_1}e^{-i\hat H t_1}\ket{x_0}.
+\end{equation}
+That is, we integrate over all intermediate positions $x_r$ for each $t_r$. Naturally, $dx_{n+1}$ must be $x$.
+
+Let's look at the free theory first to understand what we've done, $V(x)=0$. Now this weird $K_0$ object we've defined takes the form
+\begin{equation}
+    K_0(x,x'; t)=\bra{x}e^{-i \frac{\hat p^2}{2m} t}\ket{x'}.
+\end{equation}
+We'll instead insert a complete set of momentum eigenstates $\ket{p}$ with the normalization
+\begin{equation*}
+    \int \frac{dp}{2\pi}\ket{p}\bra{p}=1,
+\end{equation*}
+recalling that $\braket{x}{p}=e^{ipx}$ are simply plane waves. Then
+\begin{equation*}
+    K_0 (x,x'; t)=\int \frac{dp}{2\pi} e^{-i p^2 t/2m} e^{ip (x-x')}.
+\end{equation*}
+We can compute this-- completing the square with a change of variables to $p'=p- \frac{m(x-x')}{t}$, $K_0$ becomes a gaussian integral,
+\begin{align*}
+    K_0(x,x';t) &= e^{im(x-x')^2/2t} \int_{-\infty}^\infty \exp \left[-\frac{i(p')^2 t}{2m}\right]\\
+    &= e^{im(x-x')^2/2t} \sqrt{\frac{m}{2\pi i t}}.
+\end{align*}
+Note that as $t\to 0$,%
+    \footnote{This was more obvious from the original expression for $K_0$ where $K_0(x,x'; t=0)= \int \frac{dp}{2\pi} e^{ip(x-x')}.$}
+\begin{equation*}
+    \lim_{t\to 0} K_0(x,x'; t)=\delta(x-x'),
+\end{equation*}
+which agrees with the fact that $\braket{x'}{x}=\delta(x-x')$.
+
+For $V(\hat x)\neq 0$, we still need small time steps but since operators generically do not compute, exponentials don't add in the usual way:
+\begin{equation*}
+    e^{\hat A} e^{\hat B} = \exp(\hat A + \hat B + \frac{1}{2}[\hat A, \hat B] + \ldots) \neq e^{\hat A + \hat B}\quad \text{when }[\hat A, \hat B] \neq 0.
+\end{equation*}
+This is the Baker-Campbell-Hausdorff (BCH) formula. However, for small $\epsilon$ we can write
+\begin{equation*}
+    e^{\epsilon \hat A} e^{\epsilon \hat B} = \exp(\epsilon \hat A + \epsilon \hat B +O(\epsilon^2)),
+\end{equation*}
+or equivalently
+\begin{equation*}
+    e^{\epsilon(\hat A + \hat B)} = e^{\epsilon \hat A} e^{\epsilon \hat B}(1+O(\epsilon^2)),
+\end{equation*}
+so we conclude that
+\begin{equation*}
+    e^{\hat A +\hat B}=\lim_{n\to \infty} \left(e^{\hat A/n}e^{\hat B/n}\right)^n.
+\end{equation*}
+
+Suppose now that we divide our time into $n$ time steps so that $t_r-1-t_r=\delta t$, with $T=n\delta t$. Then one of the intermediate time evolution steps looks like
+\begin{align*}
+    \bra{x_{r+1}} e^{-i\hat H \delta t}\ket{x_r}
+        &= e^{-iV(x_r)\delta t} \bra{x_{r+1}} e^{-i\hat p^2 \delta t/2m} \ket{x_r}\\
+        &= \sqrt{\frac{m}{2\pi i \delta t}} \exp\left[\frac{i}{2} m\left(\frac{x_{r+1}-x_r}{\delta t}\right)^2 \delta t - i V(x_r)\delta t\right].
+\end{align*}
+Taking $T=n\delta t,$ we find that the entire $K$ becomes
+\begin{equation}
+    K(x,x_0; T) =\int \left( \prod^n_{r=1} dx_r\right) \left(\frac{m}{2\pi i \delta t}\right)^{\frac{n+1}{2}} \exp \left( i\sum_{r=0}^n \left[\frac{m}{2}\left(\frac{x_{r+1}-x_r}{\delta t}\right)^2 -V(x_r)\right]\delta t\right).
+\end{equation}
+Now we take the limit as $n\to \infty, \delta t\to 0$ with $T$ fixed. Then the argument of the exponential becomes
+\begin{equation}
+    \int_0^T \frac{m}{2} \dot x^2 - V(x)] dt = \int_0^t L dt,
+\end{equation}
+where $L(x,\dot x)$ is the classical Lagrangian and this integral is nothing more than the action. We conclude that
+\begin{equation}
+    K(x,x_0;T) = \bra{x} e^{-i\hat H t}\ket{x_0} = \int \mathcal{D}x\, e^{iS[x]},
+\end{equation}
+where $S[x]=\int_0^T L(x, \dot x) dt$ is the classical action and the $\mathcal{D}$ conceals all our sins (the continuum limit) in a cute integration measure. Note that the action has units of energy$\times$ time, so if we restore $\hbar$, we see that this integral becomes
+\begin{equation}
+    K(x,x_0 ; T) = \int \mathcal{D}x\, e^{iS/\hbar},
+\end{equation}
+and in the $\hbar \to 0$ limit (the classical limit), the integral is dominated by paths $x$ which minimize the classical action, and we recognize this as Hamilton's principle from classical mechanics.
