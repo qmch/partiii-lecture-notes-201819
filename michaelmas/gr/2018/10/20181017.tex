@@ -6,11 +6,10 @@ $$(\nabla_a \nabla_b - \nabla_b \nabla_a)\phi = \p_a \p_b \phi - \Gamma^c_{ab} \
 where we used the fact that our Christoffel symbols are torsion-free (and therefore symmetric in $a,b$) to cancel the second and fourth terms.
 We might then ask if this is true for the covariant derivatives on a $1$-form as well.
 \begin{align*}
-(\nabla_a \nabla_b - \nabla_b \nabla_a)V_c ={}&
-\nabla_a(\p_b V_c - \Gamma^e_{bc} V_e) - (a\leftrightarrow b)\\
-={}&\p_a\p_b V_c - \Gamma^e_{bc} \p_a V_e - (\p_a \Gamma^e_{bc})V_e \\
-&- \Gamma^f_{ab} (\p_f V_c- \Gamma^e_{fc} V_e) -\Gamma^f_{ac}(\p_b V_f - \Gamma^e_{bc}V_e) +\Gamma^f_{bc}(\p_a V_f -\Gamma^e_{af})\\
-&-\p_b\p_a V_c + \Gamma^e_{ac}\p_b V_e + (\p_b \Gamma^e_{ac})V_e +\Gamma^f_{ba}(\p_f V_c - \Gamma^e_{fc} V_e)
+    (\nabla_a \nabla_b - \nabla_b \nabla_a)V_c ={}&
+    \nabla_a(\p_b V_c - \Gamma^e_{bc} V_e) - (a\leftrightarrow b)\\
+    ={}&\p_a\p_b V_c - \Gamma^e_{bc} \p_a V_e - (\p_a \Gamma^e_{bc})V_e - \Gamma^f_{ab} (\p_f V_c- \Gamma^e_{fc} V_e) -\Gamma^f_{ac}(\p_b V_f - \Gamma^e_{bf}V_e) \\
+    &-\p_b\p_a V_c + \Gamma^e_{ac}\p_b V_e + (\p_b \Gamma^e_{ac})V_e +\Gamma^f_{ba}(\p_f V_c - \Gamma^e_{fc} V_e) +\Gamma^f_{bc}(\p_a V_f -\Gamma^e_{af} V_e)
 \end{align*}
 %check the Sean Carroll notes or Harvey Reall for the expression and/or work it out carefully.
 

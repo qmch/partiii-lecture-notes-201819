@@ -1,0 +1,87 @@
+We begin with admin notes, as usual. The instructor for this course is David Skinner (\url{http://www.damtp.cam.ac.uk/people/dbs26/}). The main text of this course will be Mirror Symmetry (ed. Vafa), the PDF of which is available for free here: \url{https://www.claymath.org/library/monographs/cmim01c.pdf}.
+
+\subsection*{What is SUSY and why do we care?} In any quantum theory involving fermions, we can divide the Hilbert space into a bosonic and a fermionic part,
+\begin{equation}
+    \cH= \cH_B \oplus \cH_F,
+\end{equation}
+where the bosonic part includes an even number of fermionic excitations and the fermionic part has an odd number of fermionic excitations.
+\begin{defn}
+    A theory is \term{supersymmetric} if $\exists$ a fermionic operator $Q$ which maps between the bosonic and fermionic parts of the Hilbert space,
+    \begin{equation*}
+        Q: \cH_B \to \cH_F, \cH_F \to \cH_B,
+    \end{equation*}
+    such that
+    \begin{equation}
+        \set{Q,Q^\dagger}=2H,\quad Q^2=(Q^\dagger)^2 = 0.
+    \end{equation}
+    where $H$ is the Hamiltonian of the theory and $Q^\dagger$ represents the adjoint of $Q$ with respect to the inner product on $\cH$.
+\end{defn}
+
+This algebra has some immediate consequences:
+\begin{itemize}
+    \item $2[H,Q]=\bkt{\set{Q,Q^\dagger},Q}=(QQ^\dagger +Q^\dagger Q)Q - Q(QQ^\dagger + Q^\dagger Q).$ But the $Q^2$ terms are zero by definition and the $QQ^\dagger Q$ terms cancel. Therefore $[H,Q]=0\implies Q$ is conserved, and the transformations it generates will be symmetries. These symmetries are parametrized by fermionic parameters, and are called \term{supersymmetries}. $Q$ is known as the \term{supercharge}.
+    \item For any state $\ket{\psi}\in \cH$, the expectation value of the Hamiltonian in this state, $\bra{\psi}H\ket{\psi}$, is given by
+    \begin{align*}
+        \bra{\psi}H\ket{\psi} &= \bra{\psi}QQ^\dagger + Q^\dagger Q \ket{\psi}\\
+        &= ||Q^\dagger \ket{\psi}||^2 + ||Q\ket{\psi}||^2 \geq 0.
+    \end{align*}
+    Therefore all states have non-negative energy, with equality iff the ground state $\ket{\Omega}$ obeys $Q\ket{\Omega}=Q^\dagger \ket{\Omega}=0.$ That is, $\ket{\Omega}$ has $E=0$ iff it is supersymmetric.
+\end{itemize}
+
+Why is such a theory interesting? There are a few reasons to care.
+\begin{itemize}
+    \item Phenomenology-- in the Standard Model, the coupling strength of different forces depends on the energy scale we are interested in. The EM coupling constant $\alpha$ and the equivalent for QCD meet at some energy scale, and the weak force meets these couplings at some other coupling scale. Based on only SM particles, the unification scales are different. But adding SUSY particles could allow for all three forces to unify at a single energy scale.
+    \item Matter in the Standard Model transforms in representations of $SO(1)\subset SU(5) \subset SU(3)\times SU(2) \times U(1)$.
+    \item Previously, it was thought that SUSY could address the ``hierarchy problem,'' i.e. why quantum loop corrections don't conspire to make the Higgs mass incredibly large, rather than the value it was discovered at ($\sim \SI{125}{\giga\eV}$). However, the LHC has found no evidence for supersymmetric particles in most of the configurations that would solve this problem.
+    \item Most importantly for this course, SUSY helps us to better understand QFT. In quantum mechanics, we learned about some toy models like the harmonic oscillator, the infinite square well, and the hydrogen atom. These toy models were necessarily simplified and exhibited a lot of symmetry-- it was only later that we introduced perturbative methods to find approximate solutions to more complicated (and more realistic) problems. But in QFT, the only exactly solvable model we've seen so far is the free theory. SUSY will provide us with other QFTs in which we can compute some quantities exactly. Moreover, these quantities often reveal connections between QFT, geometry, and topology (cf. mirror symmetry).
+\end{itemize}
+This course will be more focused on the mathematical structure of supersymmetric theories rather than the phenomenological concerns of how we might observe e.g. superpartners at colliders like the LHC.
+
+\subsection*{Path integrals in QFT} The path integral formalism in QFT centers around an expression which looks like
+\begin{equation*}
+    \int_{\cC} e^{-S[X]/\hbar}\cD X,
+\end{equation*}
+where $X$ is some field and $\cC$ is the space of all field configurations. We have written this path integral in Euclidean signature; otherwise, the exponent would be $-iS[X]/\hbar$.
+
+However, there are some problems with this setup. This integral is not well-defined (what is the integration measure $\cD X$?) and is formidably hard to compute. As a toy model, suppose the whole universe is a single point, $M=$ point (zero-dimensional QFT, if you like). Then a field on $M$ could be $X: \text{pt}\to \RR$ and the path integral becomes
+\begin{equation}
+    \int_\RR e^{-S[X]/\hbar} dX,
+\end{equation}
+where $dX$ is now just the ordinary integration measure on the real line. To compute this integral, we also need an action. Suppose we had an action of the form
+\begin{equation}
+    S[X]=\frac{mX^2}{2}+\frac{\lambda}{6}+ \frac{gX^6}{6!}.
+\end{equation}
+Since there is only one point in our spacetime, we have no way to take derivatives and therefore no kinetic term in our action. But it turns out that even with this relatively simple-looking action, this integral
+\begin{equation*}
+    Z=\int_\RR e^{-S[X]/\hbar} dX
+\end{equation*}
+is still hard to do. As $\hbar \to 0$ (the semi-classical limit), we can obtain an asymptotic series. If $S[X]$ has an isolated minimum at some $X_0\in \RR$ (that is, $\p_X S[X]=0, \p_X^2 S[X]>0$), then we can apply a steepest-descent approach and say that the integral will be dominated by its value at the minimum $S[X_0]$, plus some higher-order corrections. Thus
+\begin{equation}
+    Z \sim_{\hbar \to 0} \frac{e^{-S[x_0]/\hbar}}{\sqrt{\frac{\p^2 S}{\p X^2}(x_0)}}\paren{1+A\hbar +B\hbar^2 +\ldots},
+\end{equation}
+where the numerator $e^{-S[X_0]/\hbar}$ represents tree-level Feynman diagrams, the denominator represents one-loop diagrams, and the asymptotic series represents high-energy corrections. However, we should be careful about the radius of convergence of this series. If the asymptotic series $\paren{1+A\hbar +B\hbar^2 +\ldots}$ converges for $\hbar > 0$, it certainly must converge under sending $\hbar \to -\hbar$.%
+    \footnote{Strictly, this is because the function must converge within some disc in the complex plane. I believe this is also what allows us to perform Wick rotations when calculating path integrals.}
+But going back to our path integral, if $\hbar < 0$, then our exponential factor $e^{-S[X]/\hbar}$ blows up for large actions $S[X]$, and so this integral has no chance of converging for any $\hbar < 0$, which means that our asymptotic series cannot converge as a Taylor series.
+
+\subsection*{SUSY in $d=0$}
+Let us introduce some quantities we will call Grassman variables.
+\begin{defn}
+    \term{Grassman variables} are a set of $n$ elements $\psi^a$ obeying the algebra
+    \begin{equation}
+        \psi^a \psi^b = -\psi^b \psi^a.
+    \end{equation}
+    In particular, note that $(\psi^a)^2 = 0$.
+\end{defn}
+These elements might look familiar-- for the fermionic spinor field in QFT, we had equal time anti-commutation relations, $\set{\psi^\alpha(\vec x),\psi^\beta(\vec y)}=0$, and similarly in general relativity we saw that the appropriate multiplication law on one-forms was the wedge product, $dx^a \wedge dx^b = -dx^b \wedge dx^a$. These similarities are not a coincidence, but it will take us some time to unravel the implications.
+
+Now consider some operator $F(\psi)$ which is polynomial in our Grassman variables $\psi^a$. We can write it as
+\begin{equation}
+    F(\psi)=f+\rho_a \psi^a + \phi_{ab} \psi^a \psi^b + \ldots + g_{a_1 \ldots a_n} \psi^{a_1}\ldots \psi^{a_n}.
+\end{equation}
+However, note that this expansion \emph{must} terminate! Since $(\psi^a)^2=0$, once we try to write down a term like $\psi^{a_1}\ldots \psi^{a_{n+1}}$, we run out of distinct $\psi^a$s to multiply together (there are only $n$ of them) and as soon as we get a $(\psi^a)^2,$ the whole term goes to zero. n.b. since $\psi^a \psi^b$ is antisymmetric by definition, we may as well take its coefficient $\phi_{ab}$ to be antisymmetric as well, $\phi_{ab}=-\phi_{ba}$.
+
+If $F(\psi)$ is bosonic (commuting), then $f, \phi$, and the other even coefficients must also be bosonic, whereas $\rho_a$ and the other odd-$\psi$ coefficients must be fermionic. For strings of Grassman variables, we define derivatives by
+\begin{equation}
+    \P{}{\psi^a}(\psi^b \ldots)=\delta^b{}_a (\ldots)-\psi^b \P{}{\psi^a}(\ldots),
+\end{equation}
+so that derivatives must also anticommute with the Grassman variables in our version of the Leibniz rule.
