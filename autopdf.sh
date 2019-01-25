@@ -5,25 +5,25 @@ git pull
 
 echo "Beginning PDF-making!"
 #TeX the GR notes and copy them to the PDFs folder
-cd ./michaelmas/gr
-latexmk -pdf gr-notes-partiii.tex
-latexmk -c
-mv gr-notes-partiii.pdf ../../pdfs
+#cd ./michaelmas/gr
+#latexmk -pdf gr-notes-partiii.tex
+#latexmk -c
+#mv gr-notes-partiii.pdf ../../pdfs
 
 #same thing for QFT
-cd ../qft
-latexmk -pdf qft-notes-partiii.tex
-latexmk -c
-mv qft-notes-partiii.pdf ../../pdfs
+#cd ../qft
+#latexmk -pdf qft-notes-partiii.tex
+#latexmk -c
+#mv qft-notes-partiii.pdf ../../pdfs
 
 #and for Symmetries!
-cd ../sfp
-latexmk -pdf sfp-notes-partiii.tex
-latexmk -c
-mv sfp-notes-partiii.pdf ../../pdfs
+#cd ../sfp
+#latexmk -pdf sfp-notes-partiii.tex
+#latexmk -c
+#mv sfp-notes-partiii.pdf ../../pdfs
 
 #return to home directory
-cd ../..
+#cd ../..
 
 #move to lent term and TeX the AQFT notes
 cd ./lent/aqft
