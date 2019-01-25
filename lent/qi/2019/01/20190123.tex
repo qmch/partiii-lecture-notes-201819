@@ -1,0 +1,122 @@
+Let's recall the statement of Shannon's source coding theorem. Shannon tells us that if we have an iid source $U\sim p(u); u\in J$ with Shannon entropy $H(U)$, then there is a fundamental limit on data compression given by $H(U)$ such that for any rate $R>H(U)$, there exists a reliable compression-decompression scheme of rate $R,$ and conversely for any rate $R<H(U)$, any scheme of rate $R$ will not be reliable.
+
+See my notes from last lecture for a heuristic argument of the converse. The formal argument can be made with $\epsilon$s and $\delta$s-- for example, my statement that we need not consider elements in $A_\epsilon^{(n)}$ is equivalent to $\sum_{\underline{u}^{(n)}\in S^n \cap A_\epsilon^n} p(\underline{u}^{(n)}) \leq P(A_\epsilon^n \to 0$.
+
+\subsection*{Entropies} Consider a pair of random variables $X,Y$ with \term{joint probability}
+\begin{equation}
+    P(X=x,Y=y)=P_{XY}(x,y)=p(x,y).
+\end{equation}
+Here, $x\in J_X$ some alphabet and similarly $y\in J_Y$. We can also define the conditional probability
+\begin{equation}
+    P(Y=y|X=x)=p(y|x),
+\end{equation}
+the probability of $y$ given $x$.
+
+\begin{defn}
+    Now we have the \term{joint entropy}, which is
+    \begin{equation}
+        H(X,Y)\equiv -\sum_{x\in J_X,y\in J_Y} p(x,y)\log p(x,y).
+    \end{equation}
+\end{defn}
+\begin{defn}
+    We also have the \term{conditional entropy}, which is
+    \begin{align*}
+        H(Y|X) &\equiv \sum_x p(x) H(Y|X=x)\\
+        &= -\sum_x p(x) \sum_y p(y|x) \log p(y|x).
+    \end{align*}
+\end{defn}
+But we can simplify this to write
+\begin{equation}
+    H(Y|X)=-\sum p(x,y) \log p(y|x),
+\end{equation}
+which implies that
+\begin{equation}
+    p(x,y)= p(x) p(y|x) = p(y)p(x|y).
+\end{equation}
+This leads us to a chain rule,
+\begin{equation}
+    H(X,Y)= H(Y|X) + H(X).
+\end{equation}
+
+We also have the notion of a relative entropy, which measures a ``distance'' between two probability distributions. Suppose we have distributions $p=\set{p(x)}_{x\in J}$ and $q=\set{q(x)}_x\in J$, Let us assume that the $\text{supp}p \subseteq \text{supp} q$, with $\text{supp} p = \set{x\in J: p(x) >0}$. This implies that $q(x)=0\implies p(x)=0$, which we denote $p\ll q$.
+\begin{defn}
+    Thus we define the \term{relative entropy} to be
+    \begin{equation}
+        D(p||q)  \equiv \sum_{x\in J} p(x) \log \frac{p(x)}{q(x)}.
+    \end{equation}
+    If $p\ll q$, then this is well-defined (otherwise we might have $q\to 0$ with $p$ nonzero). Taking $0\log \frac{0}{q(x)}=0$ we see that this represents a sort of distance,
+    \begin{equation}
+        D(p||q) \geq 0
+    \end{equation}
+    with equality iff $p=q$.
+\end{defn}
+This is not quite a true metric, since it is not symmetric, $D(p||q)\neq D(q||p)$, and moreover it does not satisfy a triangle inequality, i.e. $D(p||r)\not\leq D(p||q) +D(q||r)$.
+
+Using the relative entropy, we can now define a useful quantity known as the mutual information.
+\begin{defn}
+    The mutual information between two sources $X$ and $Y$ is
+    \begin{align*}
+        I(X;Y) &= H(X)+ H(Y) - H(X,Y)\\
+        &= H(X)- H(X|Y).
+    \end{align*}
+\end{defn}
+The mutual information has some intuitive properties.
+\begin{itemize}
+    \item $I(X:X)=H(X)$, since $I(X;X)=H(X)+H(X)-H(X,X)= H(X)$.
+    \item $I(X;Y) = I(Y;X)$
+    \item if $X,Y$ independent, then $I(X;Y)=0$.
+\end{itemize}
+
+Suppose now we have $P,Q$ taking non-negative real values, with $Q(x)=0 \implies P(X)=0$. THus the relative entropy is
+\begin{equation*}
+    D(P||Q)=\sum P(x) \log \frac{P(x)}{Q(x)}.
+\end{equation*}
+What if $P(x)=p(x), x\in J$ and $Q(x)=1 \forall x \in J$? Then
+\begin{equation}
+    D(P||Q)=\sum_x p(x) \log p(x) = -H(X).
+\end{equation}
+It's almost trivial to check that if $Q(x)=\frac{1}{|J|}$ instead, then we would get an additional factor of $-\log |J|.$
+
+\begin{ex}
+Check that the mutual information satisfies
+\begin{equation}
+    I(X;Y)=D(p(x,y)|| p(x) p(y)).
+\end{equation}
+\end{ex}
+
+Let's take a minute to prove the non-negativity of the relative entropy. That is, $D(p||q) \geq 0$.
+\begin{proof}
+By definition,
+\begin{equation}
+    D(p||q) = \sum_{x\in J}p(x) \log\frac{p(x)}{q(x)}.
+\end{equation}
+Let us define a set $A$ such that
+\begin{equation*}
+    A=\set{x\in J \text{ s.t. } p(x) > )}.
+\end{equation*}
+Thus $A$ is the support of $J$.
+We can compute
+\begin{align}
+    -D(p||q) &= \sum p(x) \log \frac{q(x)}{p(x)}\\
+    &= \mathbb{E}_p \paren{\log \frac{q(X)}{p(X)}}.
+\end{align}
+Note that $X$s denote random variables, while $x$s indicate the values they take.
+
+Jensen's inequality from probability theory tells us that for convave functions $f$, $\mathbb{E}(f(X)) \leq f(\mathbb{E}(X)).$
+
+We conclude that 
+\begin{align*}
+    -D(p||Q)&\leq \log (\mathbb{E}_p \frac{q(X)}{p(X)})\\
+    &= \log \sum_{x\in A} p(x) \frac{q(x)}{p(x)}\\
+    &\leq \log \sum_x\in J q(x)\\
+    &= \log 1 =0\\
+    &\implies D(p||Q)\geq 0.
+\end{align*}
+\end{proof}
+
+Suppose we had a distribution $p=\set{p(x)}, q(x)\frac{1}{|J|}\forall x\in J$ as before. Then
+\begin{align}
+    0\leq D(p||q) &= \sum p(x) \log \frac{p(x)}{(1/|J|)}\\
+    &= -H(X)+ \sum p(x) \log |J|\\
+    \implies H(X) &\leq \log|J|.
+\end{align}

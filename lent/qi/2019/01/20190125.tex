@@ -1,0 +1,148 @@
+Last time, we introduced many important classical concepts. We talked about the mutual (common) information $I(x:Y)$ between two sources, arguing that
+\begin{align*}
+    I(X:Y) &= H(X) + H(Y) - H(X,Y)\\
+        &= H(X) - H(X|Y)\\
+        &= H(Y)- H(Y|X).
+\end{align*}
+In particular we find that $I(X:X)=H(X), I(X:Y)=I(Y:X),$ and $I(X:Y)=0$ iff $X,Y$ are independent.
+
+We can also prove that the mutual information is non-negative,
+\begin{equation}
+    I(X:Y) \geq 0,
+\end{equation}
+which follows from writing in terms of the conditional entropy as $H(X)-H(X|Y) \geq 0$. Equivalently we should show that
+\begin{equation}
+    H(X|Y) \leq H(X).
+\end{equation}
+That is, \emph{conditioning reduces entropy}.
+
+We may describe the concavity of $H(X)$-- that is, for two sources with $X,Y; J$ with $\lambda\in [0,1]$
+\begin{equation}
+    H(\lambda p_X +(1-\lambda)p_Y) \geq \lambda H(p_x) + (1-\lambda) H(p_Y),
+\end{equation}
+which we will prove on the first examples sheet. This is analogous to what we showed in a few lines about the binary entropy.
+
+The Shannon entropy of $H(X,Y)$ (where we simply replace $p(x)$s in the definition of $H(X)$ with $p(x,y)$) is constrained by the following inequality:
+\begin{equation}
+    H(X,Y) \geq H(X) + H(Y).
+\end{equation}
+This property is known as \term{subadditivity}.
+
+We also have the property that the conditional entropy is non-negative--
+\begin{equation}
+    H(X|Y) \geq 0.
+\end{equation}
+Equivalently, $H(X,Y) - H(Y) \geq 0$
+We shall see that once we introduce quantum correlations, this will no longer be true.
+
+\subsection*{Data processing inequality}
+Suppose we have some variables $X_1,X_2,\ldots$. In a Markov chain, we say that the probability of some outcome $X_n=x_n$ in a chain is
+\begin{equation}
+    P(X_n=x_n | X_1=x_1 \ldots X_{n-1} = x_{n-1}) = P(X_n = x_n | X_{n-1} = x_{n-1}).
+\end{equation}
+That is, the value of a Markov chain at a position $n$ depends only on its value at $n-1$.
+
+Consider a simple Markov chain with three variables, $X\to Y \to Z$. Then by the definition of a Markov chain, $P(Z=z| X=x, Y=y) = P(Z=z| Y=y)$, and we can prove that
+\begin{equation}
+    I(X:Z) \leq I(X:Y),
+\end{equation}
+known as the \term{data processing inequality} (DPI). That is, there is no data processing that can increase the correlation between two random variables.
+
+\subsection*{Chain rules} Chain rules are relations between different entropy quantities, e.g. $H(X,Y)=H(X)+ H(Y|X)$. Suppose we have three random variables $X,Y,Z$ with a joint probability of $p(x,y,z)$.
+\begin{ex}
+    Prove that
+    \begin{equation}
+        H(X,Y,Z)=H(X) + H(Y|X) + H(Z|X,Y).
+    \end{equation}
+\end{ex}
+\begin{defn}
+    Now one can define the \term{conditional mutual information} as follows:
+    \begin{equation}
+        I(X:Y | Z) := H(X|Z) - H(X|Y,Z) \geq 0,
+    \end{equation}
+    with equality when $X-Y-Z$ forms a Markov chain.
+\end{defn}
+
+We have one more topic for classical information theory-- it is \term{Shannon's Noisy Channel Coding Theorem.} As usual, let us work in the asymptotic iid limit.
+
+Suppose we have some source $X$ producing outputs in an alphabet $J_X$, and some received signals $Y\in J_Y$. We also have a noisy channel $\mathcal{N}:J_X \to J_Y$, and a stochastic map, defined to be a set of probabilities $\set{p(y|x)}$.
+
+Here's the setup. Alice wants to send a message $m$ to her friend Bob. To do this, she takes her message $m\in \cM$ a set of messages and runs an encoding process $\mathcal{E}_n$ to produce a codeword $x^{(n)}_m$. She uses the (possibly noisy) channel $\mathcal{N}$ multiple times, say $n$ times, to send a transmitted message $y_m^{(n)}\neq x_m^{(n)}$, which Bob then runs a decoding process $\mathcal{D}_n$ on to get a final decoded message $m'$.
+
+If $m'\neq m,$ we have gotten an error. In the $n\to \infty$ limit, we would like the probability of error $p_err^{(n)}=p(m'\neq m) \to 0$.
+
+In some sense, encoding is like the dual process of compression. In encoding, we add redundancy in a controlled manner to account for the potential noise of the channel $\mathcal{N}$.
+
+\begin{defn}
+    We define a \term{discrete channel} to be the following:
+    \begin{itemize}
+        \item An input alphabet $J_X$
+        \item An output alphabet $J_Y$
+        \item A set of conditional probabilities (dependent on the number of uses $n$) $\set{p(\underline y^{n}| \underline x^{n})}$.
+    \end{itemize}
+\end{defn}
+The input to $n$ uses of the channel sends $n$ uses of the source, $\underline{x}^{(n)}=(x_1,\ldots, x_n)\in J_X^n$ to an output $\underline{y}^{(n)}=(y_1\ldots y_n)\in J_Y^n$ with probability $p(\underline y^{n}| \underline x^{n})$.
+
+We can consider memoryless channels, i.e. where the probability of $n$ uses completely separates into $n$ independent uses of the channel as
+\begin{equation}
+    p(\underline y^{n}| \underline x^{n}) = \prod_{i=1}^n p(y_i | x_i).
+\end{equation}
+
+For a memoryless channel, we may write the transition probabilities as a \term{channel matrix},
+\begin{equation}
+    \begin{bmatrix}
+    p_{11} & \ldots & p_{1|J_Y|}\\
+    \vdots & & \vdots\\
+    p_{|J_X|1} & \ldots &p_{|J_X||J_Y|}
+    \end{bmatrix}.
+\end{equation}
+If the rows are permutations, then the channel matrix is symmetric.
+
+\begin{exm}
+    Consider a memoryless binary symmetric channel (m.b.s.c). Thus $J_X=J_Y=\set{0,1}.$ If the channel sends $0\mapsto 1$ with probability $p$ and $0\mapsto 0$ with probability $1-p$ (that is, $p(0|1)=p$), then the channel matrix takes the form
+    \begin{equation}
+        \begin{pmatrix}
+            1-p & p\\
+            p & 1-p
+        \end{pmatrix}.
+    \end{equation}
+    
+    Now consider the following encoding scheme. We encode $0\to 000$ and $1\to 111$. Suppose we got $010$ as the output. What do we think the input was?
+    
+    Probably $0$, since it could have come from $000$ with the middle bit flipped. But it could have come from $111$ with the first and last bits flipped, too.
+    
+    Now, a simple exercise. For what $p$ is this encoding-decoding scheme better than just sending the original message? Intuitively, we might guess $p=1/2$, and this is correct. But we should prove it.
+\end{exm}
+
+Moreover, what is the correspondence between the input and output of the channel? We see that it's certainly not one-to-one, from the last example. So we might have to guess what the original message was. However, what Shannon realized was that for certain elements of $J_X^n$, their images under the noisy channel map will be disjoint, so these elements will make very good codewords since we can always decode the output even after noise is introduced.
+
+We won't do the full proof of the theorem today, but we can introduce the setup. Suppose Alice has a message $[M]=\set{1,2,\ldots, M}$. She has a noisy channel $\mathcal{N}:J_X \to J_Y$ with some transition probabilities $p(\underline y^{n}| \underline x^{n})$.
+
+Alice can choose an encoding scheme $\mathcal{E}_n:[M]\to J_X^n$ where $\forall m\in [M], \mathcal{E}_n(m)=\underline x^{(n)} \in J_X^n$. She then sends her message through the channel $\mathcal{N}^{(n)}:x^{(n)}\to y^{(n)}$, producing $y^{(n)}$ with some given probabilities.
+
+Bob receives the message and performs the decoding with $\mathcal{D}_n(\mathcal{N}^{(n)}(\mathcal{E}_n(M)))=m'$. Thus the \term{maximum probability of error} is
+\begin{equation}
+    \max{m\in [M]} P(\mathcal{D}_n(\mathcal{N}^{(n)}(\mathcal{E}_n(M))) \neq m) = p(\mathcal{E}_n,\mathcal{D}_n).
+\end{equation}
+We say that the \term{rate} is the number of the bits of the message transmitted per use of the channel. That is,
+\begin{equation}
+    R= \frac{\log M}{n}
+\end{equation}
+since $M \approx 2^{\lfloor nR \rfloor}.$
+
+\begin{defn}
+    We say that a rate is $R$ is \term{achievable} if there exists a sequence $(\mathcal{E}_n, \mathcal{D}_n)$ with $M=2^{nR}$ such that
+    \begin{equation}
+        \lim_{n\to \infty} p(\mathcal{E}_n,\mathcal{D}_n)= 0,
+    \end{equation}
+    i.e. the maximum probability of error tends to zero as $n$ goes to $\infty$.
+\end{defn}
+
+We make one final definition for today.
+\begin{defn}
+    The \term{channel capacity} is defined to be
+    \begin{equation}
+        C(\mathcal{N})=\sup \set{R: R\text{ is an achievable rate}},
+    \end{equation}
+    the maximum achievable rate for a channel.
+\end{defn}

@@ -1,0 +1,141 @@
+Today we'll discuss the consequences of discrete symmetries (CPT).
+\subsection*{Symmetry operators}
+We will start by quoting a result proven by Wigner. 
+\begin{thm}
+If physics is invariant under some transformation $\Psi\to \Psi'$ (with $\Psi,\Psi'\in$ some Hilbert space), then there is an operator $W$ such that $\Psi'=W\Psi$ and where either $W$ is linear and unitary, or \emph{anti}linear and \emph{anti}-unitary.
+\end{thm}
+That is, writing the inner product on the hilbert space as $(\cdot,\cdot)$, we have either
+\begin{itemize}
+    \item $W$ is unitary and linear,
+    \begin{equation}
+        (W\Phi,W\Psi)=(\Phi,\Psi) \text{ and }W(\alpha \Phi+\beta \Psi)=\alpha W\Phi + \beta W \Psi \, (\alpha,\beta \in \CC)
+    \end{equation}
+    \item or $W$ is antiunitary and antilinear, 
+    \begin{equation}
+        (W\Phi,W\Psi)=(\Phi,\Psi)^*\text{ and } W(\alpha \Phi+\beta \Psi)=\alpha^* W\Phi + \beta^* W \Psi.
+    \end{equation}
+\end{itemize}
+Note that $W$ being antiunitary as an operator is not the same as $W$ being an antiunitary matrix ($W^{-1} = -W^\dagger$).
+
+Now, let us recall the Poincar\'e transformations, which take
+\begin{equation}
+    x^\mu \to \Lambda^\mu{}_\nu x^\nu + a^\mu.
+\end{equation}
+In particular we have some improper Lorentz transformations (not of $\det = +1$) which are of special importance. There's the parity transformation,
+\begin{equation}
+    \Lambda^\mu{}_\nu=\mathbb{P}^\mu{}_\nu = \begin{pmatrix}
+        1 &&& 0 \\
+        & -1 && \\
+        && -1 &\\
+        0 &&& -1
+    \end{pmatrix}
+\end{equation}
+and also time reversal,
+\begin{equation}
+    \mathbb{T}^\mu{}_\nu = \begin{pmatrix}
+        -1 &&& 0 \\
+        & 1 && \\
+        && 1 &\\
+        0 &&& 1
+    \end{pmatrix}.
+\end{equation}
+Consider an infinitesimal transformation
+\begin{equation}
+    \Lambda^\mu{}_\nu + \delta^\mu{}_\nu + \omega^\mu{}_\nu, a_\mu = \epsilon_\mu.
+\end{equation}
+Then the corresponding operator can be expanded as
+\begin{equation}\label{wexpansion}
+    W(\Lambda,a) = W(1+\omega, \epsilon) = 1+\frac{i}{2} \omega_{\mu\nu} J^{\mu\nu} -i\epsilon_\mu P^\mu,
+\end{equation}
+where $J^{\mu\nu}$ is the generator of boosts and rotations and $P^\mu$ is a four-momentum operator with $P^0=H$ the Hamiltonian and $p^i=$ the three-momentum operator.
+
+Thus we can write the parity and time reversal operators as
+\begin{align*}
+    \hat P &= W(\mathbb{P},0)\\
+    \hat T &= W(\mathbb{T},0).
+\end{align*}
+From the general composition rule, we can write
+\begin{equation}
+    \hat P W(\Lambda, a) \hat P^{-1} = W(\mathbb{P} \Lambda \mathbb{P}^{-1}, \mathbb{P} a).
+\end{equation}
+If we now insert the expansion of $W$ \ref{wexpansion} on both sides of the equation and compare the coefficients of $\epsilon_0$, we find that
+\begin{equation}\label{p-hathamiltonian}
+    \hat P iH \hat P^{-1} = iH,
+\end{equation}
+where we recall that $H=P^0$.
+Similarly,
+\begin{equation}
+    \hat T W(\Lambda, a)\hat T^{-1} = W(\mathbb{T} \Lambda \mathbb{T}^{-1},\mathbb{T} a),
+\end{equation}
+which implies that
+\begin{equation}\label{t-hathamiltonian}
+    \hat T i H \hat T^{-1}= - iH.
+\end{equation}
+We've been careful not to move the $i$ through the operator $\hat T$, since we don't yet know whether the operator is unitary or anti-unitary.
+
+Suppose now $\Psi$ is an energy eigenstate,
+\begin{equation*}
+    (\Psi, iH \Psi)=i E.
+\end{equation*}
+If $\hat P$ and $\hat T$ are symmetries, then $\hat P \Psi$ and $\hat T \Psi$ should also be energy eigenstates with energy $E.$
+
+Suppose $\hat P$ is linear. Then we have
+\begin{equation}
+    (\hat P \Psi, iH \hat P \Psi)=(\hat P \Psi, \hat P iH \Psi) = (\hat P \Psi, \hat P i E \Psi) = iE (\hat P \Psi, \hat P \Psi) = iE,
+\end{equation}
+by \ref{p-hathamiltonian} and linearity. We could have also run this argument with unitarity instead.
+
+Similarly, suppose $\hat T$ is linear. Then
+\begin{equation}
+    (\hat T \Psi, i H \hat T \Psi) = -(\hat T \Psi, \hat T iH \Psi) = -iE
+\end{equation}
+by an equivalent argument using \ref{t-hathamiltonian}. But this tells us that $\hat T$ has produced an energy eigenstate with energy $-iE$, which is wrong.
+
+Therefore, suppose $\hat T$ is anti-linear. Then
+\begin{equation}
+    (\hat T \Psi, iH \hat T \Psi)=-(\hat T \Psi, \hat T i H \Psi) = -(\hat T \Psi, \hat T iE \Psi)= + iE(\hat T \Psi, \hat T \Psi)=+iE.
+\end{equation}
+Therefore $\hat T$ must be anti-linear and anti-unitary.
+
+To sum up, the parity operator $\hat P$ is unitary and linear, while the time reversal operator $\hat T$ is antiunitary and antilinear.
+
+\subsection*{Parity} Now that we've defined some basic properties of these symmetries, let's consider what parity does to different fields.
+
+For a complex scalar field, 
+\begin{equation}
+    \phi(x) = \sum_p \bkt{a(p)e^{-ip\cdot x} + c^\dagger(p) e^{+ip\cdot x}},
+\end{equation}
+where the operator $a$ annihilates a particle and $c^\dagger$ creates an antiparticle.
+
+The operator $\hat P$ maps momentum eigenstates $\ket{p}\mapsto \eta^{a*}\ket{p_P}$ where
+\begin{align}
+    p_P &= (p^0,-\vec p)\\
+    X_P &= (x^0, - \vec x)
+\end{align}
+and $\eta^{a*}$ is a complex phase.
+
+Thus
+\begin{equation}
+    \hat P a^\dagger(p)\ket{0} = \eta^{a*} a^\dagger (p_P) \ket{0}.
+\end{equation}
+Since $\hat P \hat P^{-1}= I$ and assuming $\hat P\ket{0}=\ket{0}$ (the vacuum is invariant under $\hat P$), we conclude that
+\begin{equation}
+    \hat P a^\dagger(p) \hat P^{-1} = \eta^{a*} a^\dagger (p_P).
+\end{equation}
+To preserve the normalization, we must have
+\begin{equation}
+    \hat P a(p) \hat P^{-1} = \eta^a a(p_P).
+\end{equation}
+Similarly, we can work out that
+\begin{equation}
+    \hat P c^\dagger(p) \hat P^{-1} = \eta^{c*}c^\dagger (p_P).
+\end{equation}
+Now since $\hat P$ is linear and unitary, we can write $\hat P \phi(x) \hat P^{-1}$ as follows:
+\begin{align*}
+    \hat P \phi(x) \hat P^{-1} &= \sum_p \bkt{ \hat P a(p) \hat P^{-1} e^{-ip\cdot x}+ \hat P c^\dagger (p) \hat P^{-1} e^{+ip\cdot x}}\\
+    &= \sum_p \bkt{ \eta^a a(p_P) e^{-ip \cdot x} + \eta^{c*} c^\dagger(p_P) e^{+ip\cdot x}}\\
+    &= \sum_{p_P} \bkt{ \eta^a a(p) e^{-ip_P \cdot x} + \eta^{c*} c^\dagger(p) e^{+i p_P \cdot x}}\text{ relabeling }p \leftrightarrow p_P\\
+    &= \sum_{p_P} \bkt{ \eta^a a(p) e^{-ip \cdot x_P} + \eta^{c*} c^\dagger(p) e^{+i p \cdot x_P}}\text{ using } p_P\cdot x = p\cdot x_P\\
+    &= \sum_{p} \bkt{ \eta^a a(p) e^{-ip \cdot x_P} + \eta^{c*} c^\dagger(p) e^{+i p \cdot x_P}}\text{ relabeling }\sum_p = \sum_{p_P.}
+\end{align*}
+Note that this does not ``look like'' $\phi(x_P)$ unless $\eta^a = \eta^{c*} \equiv \eta_p$ (if you like, we're matching the coefficients of Fourier modes). If you're not convinced by this, notice that we would not in general find the commutator $[\phi(x),\hat P \phi^\dagger(y) \hat P^{-1}]$ vanishes for spacelike $x-y$.

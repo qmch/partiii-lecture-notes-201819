@@ -1,0 +1,127 @@
+\begin{quote}
+    \textit{``If anyone starts calculating geodesics from here [the geodesic equation], I will give you a zero! You should pay for your own stupidity.''} --Jorge Santos
+\end{quote}
+
+Today is an exciting class! For the first time, we will look at the Schwarzschild line element. We will not actually define what a black hole is for another ten lectures, but we'll plow ahead and learn some thing about them anyway.
+
+In Schwarzschild coordinates $t,r, \theta,\phi)$, the line element of a Schwarzschild black hole takes the form
+\begin{equation}
+    ds^2=-\paren{1-\frac{2M}{r}} dt^2 +\paren{1-\frac{2M}{r}} ^{-1} dr^2+r^2 d\Omega^2_2.
+\end{equation}
+For stars, we said this solution was only valid for $r>2M$, but as you may already know, the $r=2M$ singularity is just a coordinate singularity and can be defined away by a good choice of coordinates (as we'll do today). We take the parameter $M$ to be a physical mass right now, and thus $M>0$ (we will treat the case $M<0$ later). The radius $r=2M$ is known as the \term{Schwarzschild radius.}
+
+Last time, we assumed our solutions were both spherically symmetric and stationary. What if we drop the assumption that the solution is stationary? The answer is the following theorem by Birkhoff.
+
+\begin{thm}[Birkhoff's theorem]
+    Any spherically symmetric solution of the vacuum Einstein equations is isometric to Schwarzschild.
+\end{thm}
+\begin{proof}
+    What could the spherically symmetric line element look like? The angular bit must look like $r^2 d\Omega_2^2$. The rest of it is unconstrained-- we can have $dt^2, dr^2,$ and $drdt$ cross terms.
+    Thus
+    \begin{equation}
+        ds^2 = -f(t,r)\bkt{dt+\chi dr}^2 + \frac{dr^2}{g} + r^2 d\Omega^2_2.
+    \end{equation}
+    Here, $\chi, f,$ and $g$ can all depend on $t,r.$ Let us begin by rescaling time $t$ to set the factor $\chi=0$. If you like, $dt+\chi dr= dt'$. We can still send $t\to p(t)$ a function of $t$. Now our line element reduces to
+    \begin{equation}
+        ds^2 = -f(t,r)dt^2 + \frac{dr^2}{g(t,r)} + r^2 d\Omega^2_2.
+    \end{equation}
+    From the $tr$ component of the vacuum Einstein equations, we find that
+    \begin{equation}
+        0=R_{tr}-g_{tr}\frac{R}{2} \implies \P{}{t}g = 0 \implies g(r),
+    \end{equation}
+    $g$ does not depend on time. Looking at the $tt$ component we get
+    \begin{equation}
+        1-g -rg'=0 \implies g(r)=1-\frac{2M}{r},
+    \end{equation}
+    where $M$ is an integration parameter. From the $rr$ component we get instead
+    \begin{equation}
+        1-\frac{1}{g}+r \frac{f'}{f} =0 \implies f(t,r)=C(t)\bkt{1-\frac{2M}{r}}.
+    \end{equation}
+    This is almost good-- all we need to do is reparametrize $t$ and we can set this function $C(t)=1.$ We find that with $f,g$ defined in this way, our general spherically symmetric metric has been put into the form
+    \begin{equation*}
+        ds^2=-\paren{1-\frac{2M}{r}} dt^2 +\paren{1-\frac{2M}{r}} ^{-1} dr^2+r^2 d\Omega^2_2.\qedhere
+    \end{equation*}
+\end{proof}
+
+\subsection*{Gravitational redshift} Suppose we have two observers Alice and Bob. They sit at some constant coordinates $(r_A,\theta,\phi)$ and $(r_B,\theta,\phi)$ respectively. Now Alice sends some signals (light pulses) to Bob, separated by a coordinate time $\Delta t$. Because $\P{}{t}$ is a Killing vector, our scenario has time translation symmetry-- each pulse will be the same as the last, just translated in time, so Alice and Bob agree on the difference in coordinate time $\Delta t$.
+
+Let us notice that Alice measures the photons as being separated by a proper time
+\begin{equation}
+    \Delta \tau_{A}=\sqrt{1-\frac{2M}{r_A}}\Delta t.
+\end{equation}
+An equivalent expression is true for Bob at $r_B$. Eliminating $\Delta t$, we find that
+\begin{equation}
+    \frac{\Delta \tau_B}{\Delta \tau_A}=\sqrt{\frac{1-\frac{2M}{r_B}}{1-\frac{2M}{r_A}}} >1
+\end{equation}
+for $r_B > r_A$. This interval is a proxy for a perceived wavelength, $\lambda_B > \lambda_A$. If Bob is far away, $R_B \gg 2M$, then the measured redshift $z$ is given by
+\begin{equation}
+    1+z \equiv \frac{\lambda_B}{\lambda_A}= \frac{1}{\sqrt{1-\frac{2M}{r_A}}}.
+\end{equation}
+For an observer outside a physical star, $R=9M/4$, $Z=2$ is the maximum redshift Bob can measure as Alice gets close to the surface of the star. But $R=2M$ represents a surface of infinite redshift, so it seems to represent something very strange. This is the \term{event horizon}. We'll explore the consequences of this calculation more as we go on.
+
+\subsection*{Geodesics of Schwarzschild} We'll introduce some nice coordinates to let us cross the event horizon. Let $x^\mu(\lambda)$ be an affinely parametrized geodesic with tangent vector
+\begin{equation*}
+    U^\mu \equiv \frac{dx^\mu}{d\tau}.
+\end{equation*}
+Since we have two Killing vectors $K=\P{}{t}$ and $m=\P{}{\phi}$, we get two conserved charges,
+\begin{align}
+    E &= -K\cdot U=\paren{1-\frac{2M}{r}}\frac{dt}{d\tau}\\
+    h &= m\cdot U=r^2\sin^2\theta \frac{d\phi}{d\tau}.
+\end{align}
+Note that $U^a\nabla_a U_b=0$ defines an affinely parametrized geodesic, and Killing vectors obey $\nabla_a K_b \nabla_b K_a =0$. These two facts are enough to prove the existence of a conserved charge:
+\begin{equation}
+    U^c \nabla_C(U^a K_a) = (U^c\nabla_c U^a)K_a + U^c U^a \nabla_C K_a.
+\end{equation}
+But this first term vanishes by the definition of an affinely parametrized geodesic, and the second can be symmetrized since $U^c$ and $U^a$ commute, so the second term vanishes by Killing's equation. Thus $\nabla_U (U^a K_a)=0.$
+
+For timelike particles, if $\tau$ is the proper time, then $E$ has the interpretation of energy per unit mass, and $h$ is the angular momentum per unit mass. For null geodesics, the quantity
+\begin{equation*}
+    b=\abs*{\frac{h}{E}}
+\end{equation*}
+is the physical impact factor.
+
+Note that there is a third conserved charge-- it is the value $U^a U_a = \pm 1,0$ depending on if the geodesic is spacelike, timelike, or null.
+
+We can write an action
+\begin{equation}
+    S=\int d\tau \dot x^a \dot x^b g_{ab}.
+\end{equation}
+which naturally gives us a Lagrangian that we can apply our conserved charges to and calculate Euler-Lagrange equations for.
+%If anyone starts calculating geodesics from here [the geodesic equation], I will give you a zero! You should pay for your own stupidity.
+In Schwarzschild, the action takes the form
+\begin{equation}
+    S=\int d\tau\bkt{
+        g_{tt}\dot t^2 +g_{rr}\dot r^2 +\dot \theta^2 r^2+ +\dot\theta^2 r^2+r^2\sin^2\theta \dot \phi^2
+    }.
+\end{equation}
+Note also that
+\begin{equation}
+    \frac{d}{d\tau}\paren{\P{L}{\dot \theta}} -\P{L}{\theta}=0 \implies r^2 \frac{d}{d\tau}(r^2 \dot \theta)-\frac{\cos\theta}{\sin^3 \theta}h^2=0.
+\end{equation}
+WLOG we can always set $\theta(0)=\pi/2$ and $\dot \theta(0)=0$, which means that $\ddot \theta=0 \implies \theta(\tau)=\pi/2$ for all $\tau$.
+
+Substituting in our conserved quantities, we have only one equation which we need to consider: $\dot r$. For a geodesic such that
+\begin{equation}
+    g_{\mu\nu} \dot x^\mu \dot x^\nu = -\tilde v,
+\end{equation}
+we have
+\begin{equation}
+    \dot r^2/2 + V(r)=E^2/2,\text{ with} V(r)=\frac{1}{2}\paren{\tilde v+\frac{h^2}{r^2}}\paren{1-\frac{2M}{r}}.
+\end{equation}
+
+What are the radial free-fall paths of Schwarzschild? For radial trajectories, $h=0$, so that 
+\begin{equation}
+    E=1 \implies \dot t=\frac{1}{1-\frac{2M}{r}}, \dot r= \pm 1.
+\end{equation}
+For the upper sign, $\dot r=+1,$ we have $\dot t/\dot r >0, r> 2M$, which represents outgoing trajectories. For the lower sign, $\dot t/\dot r < 0, r> 2M$ (ingoing). In any case, from $\dot r=-1$ we see that we can reach $r=2M$ without a problem.%
+    \footnote{At least from a pure gravity perspective. Once we introduce quantum mechanical effects, we have to worry about firewalls and such, and all bets are off.}
+    
+In Schwarzschild, we can then write
+\begin{equation}
+    \frac{dt}{dr}=\pm\paren{1-\frac{2M}{r}}^{-1}.
+\end{equation}
+We define Regge-Wheeler coordinates (AKA tortoise coordinates) as follows:
+\begin{equation}
+    dr_* = \frac{dr}{1-\frac{2M}{r}}\implies r_* =r+2M \log \abs*{\frac{r}{2M}-1}.
+\end{equation}
+We will show that in classical gravity, we can indeed cross the horizon in finite proper time.

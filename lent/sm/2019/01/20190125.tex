@@ -1,0 +1,113 @@
+Last time, we argued that the parity transformation takes the form
+\begin{equation}
+    \hat P \phi(x) \hat P^{-1} = \sum_p \bkt{
+        \eta_p a(p) e^{-ip\cdot x_p} + \eta_p c^\dagger(p) e^{+ip \cdot x_p}
+    },
+\end{equation}
+with $\eta_p$ the \term{intrinsic parity} of $\phi$. In this notation, we found that
+\begin{equation}
+    \hat P \phi(x) \hat P^{-1}=\eta_p \phi(x_p),
+\end{equation}
+with $x_P=(x^0,-\vec x)$.
+
+Let us make some comments on the parity transformation.
+\begin{itemize}
+    \item For a real scalar field, $a=c$ (the particle and antiparticle operators are the same) and so $\eta^a = \eta^{a*}=\eta_p$, which tells us that $\eta_p=\pm 1$. We say that $\eta_p = +1$ is a scalar and $-1$ a pseudoscalar.
+    \item For a complex scalar field, $\eta_p$ may not be real, but if there is a conserved charge then we can redefine the operator $\hat P$ so that $\eta_p = \pm 1$ (not obvious, but cf. Weinberg \textsection 3.3 and 2.2).
+    \item For a vector field,
+    \begin{equation}
+        V^\mu(x) = \sum_{p,\lambda} \bkt{
+            \epsilon^\mu (\lambda,p) a^\lambda(p) e^{-ip\cdot x} + \epsilon^{\mu*}(\lambda,p) c^{\lambda \dagger}(p) e^{+ip\cdot x}
+        },
+    \end{equation}
+    where $\lambda=-1,0,+1$ is the helicity (for a massive particle, or else we would not get the zero helicity state). The $\epsilon$s are polarization vectors, like for photons. If we use
+    \begin{equation}
+        \mathbb{P}^\mu{}_\nu \epsilon^\nu(\lambda,p)=-\epsilon^\mu(\lambda, p_P),
+    \end{equation}
+    then by a similar argument as above,
+    \begin{equation}
+        \hat P V^\mu(x) \hat P^{-1} = -\eta_p \mathbb{P}^\mu{}_\nu V^\nu (x_P).
+    \end{equation}
+    Vectors have $\eta_p = -$ and axial vectors have $\eta_p = +1$.
+\end{itemize}
+
+\subsection*{The Dirac field}
+For the Dirac field, creation and annihilation operators should behave like those for bosons. The three-momentum reverses direction, but the spin component is unchanged, so
+\begin{equation}
+    \hat P b^s(p) \hat P^{-1} = \eta^b b^s (p_P)
+\end{equation}
+and
+\begin{equation}
+    \hat P d^{s\dagger}(p) \hat P^{-1} = \eta^{d*} d^{s\dagger} (p_P).
+\end{equation}
+Recalling that
+\begin{equation}
+    \psi(x) =\sum_{p,s} \bkt{
+        b^s(p) u^s (p) e^{-ip\cdot x} + d^{s\dagger}(p)  v^s(p) e^{+ip\cdot x}
+    },
+\end{equation}
+we notice that the spinors are just a set of four complex numbers, and four-vector inner products are unchanged by parity, so only the operators $b^s, d^{s\dagger}$ are hit by the parity operator, giving
+\begin{align*}
+    \hat P \psi(x) \hat P^{-1} 
+        &= \sum_{p,s} \bkt{
+            \eta^b b^s(p_P) u^s (p) e^{-ip\cdot x} + \eta^{d*} d^{s\dagger}(p_P) v^s(p) e^{+ip\cdot x}
+        }\\
+        &= \sum_{p,s} \bkt{
+            \eta^b b^s(p) u^s (p_P) e^{-ip\cdot x_P} + \eta^{d*} d^{s\dagger}(p) v^s(p_P) e^{+ip\cdot x_P}
+        }
+    ,
+\end{align*}
+We leave it as an exercise to check that $u^s(p_P)=\gamma^0 u^s(p), v^s(p_P)=-\gamma^0 v^s(p).$
+Using these relations, it follows that
+\begin{equation}
+    \sum_{p,s} \bkt{
+            \eta^b b^s(p) \gamma^0 u^s (p) e^{-ip\cdot x_P} - \eta^{d*} d^{s\dagger}(p) \gamma^0 v^s(p) e^{+ip\cdot x_P}
+        }\implies \eta^b = -\eta^{d*}\equiv \eta_p
+\end{equation}
+so that
+\begin{equation}
+    \psi^P(x) \equiv \hat P \psi(x) \hat P^{-1} = \eta_p \gamma^0 \psi(x_P).
+\end{equation}
+Thus
+\begin{equation}
+    \bar \psi^P(x)\equiv \hat P \bar \psi(x) \hat P^{-1}=\eta_p^* \bar \psi(x_P)\gamma^0.
+\end{equation}
+Thus for the Dirac field, parity sends left-handed fields to right-handed fields under
+\begin{equation}
+    \hat P \psi_L(x) \hat P^{-1}= \eta_p \gamma^0 \psi_R(x_P).
+\end{equation}
+One should also check that $\psi^P(x)$ satisfies the Dirac equation if $\psi(x)$ does. Thus we can determine the transformation properties of fermion bilinears, e.g.
+\begin{equation}
+    \bar \psi(x) \psi(x) \to \hat P \bar \psi(x) \hat P \hat P^{-1} \bar \psi(x) \hat P^{-1}= \bar \psi(x_P)\psi (x_P).
+\end{equation}
+Since we don't pick up a sign flip, we call this a scalar fermion bilinear.
+Similarly a bit of direct computation yiels the pseudoscalar case:
+\begin{equation}
+    \bar \psi(x) \gamma^5 \psi(x) \to -\bar \psi (x_P)\gamma^5 \psi(x_P),
+\end{equation}
+the vector case:
+\begin{equation}
+    \bar \psi(x) \gamma^\mu \psi(x) \to \mathbb{P}^\mu{}_\nu \bar \psi (x_P)\gamma^\nu \psi(x_P),
+\end{equation}
+and the axial vector case:
+\begin{equation}
+    \bar \psi(x) \gamma^\mu \gamma^5 \psi(x) \to -\mathbb{P}^\mu{}_\nu \bar \psi (x_P)\gamma^\nu \gamma^5 \psi(x_P),
+\end{equation}
+
+\subsection*{Charge conjugation}
+Having thoroughly discussed parity, let us now talk about charge conjugation, $\hat C$. The operator $\hat C$ is unitary and linear, and it sends particles to antiparticles. Note that Lorentz symmetry constrains the phases, so
+\begin{equation}
+    \hat C a(p) \hat C^{-1} = \eta_c c(p), \quad \hat C c(p) \hat C^{-1} = \eta_c^* a(p).
+\end{equation}
+Thus
+\begin{equation}
+    \hat C \ket{\text{particle},p}=\hat C a^\dagger (p) \ket{0} = \eta_c^* c^\dagger(p) \ket{0} = \eta_c^* \ket{\text{antiparticle},p}.
+\end{equation}
+From the decomposition of the field, we find that
+\begin{align*}
+    \hat C \phi(x) \hat C^{-1} &= \eta_c \phi^\dagger (x)\\
+    \hat C \phi^\dagger(x) \hat C^{-1} &= \eta_c^*\phi (x).
+\end{align*}
+For a real scalar field, $\phi^\dagger =\phi$ and so $\eta_C=\pm 1$.
+
+This has some important consequences. For instance, the photon field must obey $\hat C A_\mu(x) \hat C^{-1}=-A_\mu(x)$. Note that the $\pi^0$ meson can decay to $2\gamma$, which tells us that $\eta_c^{\pi^0} = (-1)^2 = +1$.

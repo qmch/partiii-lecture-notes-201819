@@ -1,0 +1,99 @@
+Last time we introduced the light cone coordinates on $\Sigma$, defined as $\sigma^\pm = \tau \pm \sigma$. Recall also that we want to work with modes rather than embedding fields, and for $\tau=0$, the modes are given by
+\begin{align*}
+    l_n &= -\frac{1}{2\pi}\int_0^{2\pi} d\sigma T_{--}(\sigma) e^{-in\sigma}\\
+    \bar l_n &= -\frac{1}{2\pi}\int_0^{2\pi} d\sigma T_{++}(\sigma) e^{+in\sigma},
+\end{align*}
+with $T_{+-}=0$.
+
+We shall see that $l_m,\bar l_m$ are conserved quantities on the space $T_{ab}=0$. Using
+\begin{equation*}
+    \p_- X^\mu (\sigma) =\sqrt{\frac{\alpha'}{2}}\sum_n \alpha_n^\mu e^{-in\sigma},\text{ where } \alpha_0^\mu = \sqrt{\frac{\alpha'}{2}} p^\mu,
+\end{equation*}
+we would like to get expressions for the stress tensor modes $l_n$ in terms of the string modes $\alpha_m^\mu$. We postulated some Poisson brackets on the modes, which will hopefully help us out in this calculation.
+
+For instance,
+\begin{align*}
+    l_n &= \frac{1}{2\pi \alpha'} \int_0^{2\pi} d\sigma \p_- X \cdot \p_- X e^{in\sigma}\\
+        &= \frac{1}{4\pi} \sum_{m,p} \alpha_m \cdot \alpha_p \int_0^{2\pi} d\sigma e^{i(m+p-n)\sigma}\\
+        &= \frac{1}{4\pi} \sum_{m,p} \alpha_m \cdot \alpha_p (2\pi \delta_{m+p,n})\\
+        \implies l_n &= \frac{1}{2} \sum \alpha_{n-m} \cdot \alpha_m, \quad \bar l_n =\frac{1}{2} \sum_m \bar \alpha_{n-m} \cdot \bar \alpha_m.
+\end{align*}
+
+Using these expressions and the PB relations for the $\alpha$s, one can (and should) show that the $l_n$ satisfy the following Poisson brackets:
+\begin{align*}
+    \set{l_m,l_n}_{PB} &= (m-n) l_{m+n}\\
+    \set{\bar l_m,\bar l_n}_{PB} &= (m-n) \bar l_{m+n}\\
+    \set{l_m,\bar l_n}_{PB} &= 0. l_{m+n}
+\end{align*}
+This is often called the \term{Wit algebra}, and it is related to the Virasoro algebra in the quantum theory. n.b. the stress tensor modes $l_0,l_{\pm 1}, \bar l_0, \bar l_{\pm 1}$ generate the Lie algebra of $SL(2,\CC)$.
+
+Now, the Hamiltonian may be written as
+\begin{align}
+    H&= \frac{1}{2\pi \alpha'} \int_0^{2\pi} d\sigma\paren{ (\p_+ X)^2 + (\p_- X)^2}\\ 
+    &=\frac{1}{2} \sum_n \paren{\alpha_{-n} \cdot \alpha_n + \bar \alpha_{-n} \cdot \bar \alpha_n}\\
+    &= l_0 + \bar l_0.
+\end{align}
+Anticipating the quantum case, we will call these $l$ modes \term{Virasoro generators}.
+
+On the constraint surface $l_n \approx 0$, one can show that $\set{H,l_n}\approx 0,$ since
+\begin{equation}
+    \frac{dl_n}{d\tau}=\set{H,l_n}_{PB} = -n l_n.
+\end{equation}
+
+\subsection*{Canonical quantization} We have been working entirely with the classical string so far, and our main approach will be the path integral formalism. However, it may be enlightening for us to consider how to canonically quantize the string.
+
+In the classical theory, we have $\set{X^\mu,P_\nu}_{PB}$ the Poisson bracket, with $T_{ab}=0$. In going to a quantum theory, we could \emph{impose} $T_{ab}=0$ and promote variables to operators, $\set{q^\mu,\pi_\nu}_{PB}$, and then promote the Poisson bracket to a commutator of quantum operators, $i[q^\mu, \pi_\nu]$. That is, we first constrain the phase space and then quantize. This gives us a Hilbert space $\cH_{l.c.}$ on the light cone.
+
+On the other hand, our approach will be a little different. We can quantize first, $\set{\cdot,\cdot}_{PB} \to i[\cdot,\cdot]$, giving us commutators $[X^\mu,P_\nu]$, and \emph{then} impose $T_{ab}=0$, where $T_{ab}$ is now an operator and the constraint is $T_{ab}\ket{\psi}=0 \forall \ket{\psi}$. This will yield another Hilbert space $\cH_Q$, which we hope (and could prove, although it is non-trivial) is equivalent to the light cone Hilbert space.
+
+Thus in our approach, we start by replacing \emph{fundamental} Poisson bracket relations with canonical commutation relations,
+\begin{equation}
+    \set{X^\mu,P_\nu} \to -i \bkt{X^\mu,P_\nu},
+\end{equation}
+and can do something equivalent for the $\alpha_n^\mu, \bar \alpha_n^\mu$ modes.
+
+We now introduce the \term{Virasoro operators}
+\begin{equation}
+    L_n=\frac{1}{2} \sum_m \alpha_{n-m} \cdot \alpha_m, n\neq 0,
+\end{equation}
+where we distinguish the $L_n$s from the classical $l_n$ since the quantum $L$s do not quite satisfy the Wit algebra. $\bar L_n$ is defined equivalently.
+
+We also introduce a vacuum state $\ket{0}$, which we will define as the state annihilated by all $\alpha$ modes,
+\begin{equation}
+    \alpha_n^\mu \ket{0} =0 \text{ for }n\geq 0.
+\end{equation}
+
+We think of $\alpha_n^\mu, n > 0$ as annihilation operators analogous to those of the harmonic oscillator, and $n<0$ as creation operators.%
+    \footnote{$\alpha_0$ is a little special and has to do with the center of mass of the string, though it does annihilate the vacuum.}
+What are these operators creating and annihilating? Harmonics of the string, essentially.
+
+We now notice an ambiguity in the definition of $L_0$ and $\bar L_0$. We have
+\begin{equation}
+    L_0=\frac{1}{2} \alpha_0^2 + \sum_{n>0} \alpha_{-n} \cdot \alpha_n,
+\end{equation}
+but note that the $\alpha_{-n} \cdot \alpha_n$ terms have an ordering ambiguity.
+
+To resolve this, we define normal ordering (denoted by $: :$) in the usual way, moving all creation operators to the left and all annihilation operators to the right. We then define composite operators using this ordering, e.g.
+\begin{equation}
+    T_{--}(\sigma^-)=-\frac{1}{\alpha'} :\p_- X^\mu \p_- X_\mu :.
+\end{equation}
+
+\subsection*{Physical state conditions}
+We define the number operators $N_n, \bar N_n$ by
+\begin{equation}
+    nN_n = \alpha_{-n} \cdot \alpha_n,\quad n \bar N_n = \bar \alpha_{-n} \cdot \bar \alpha_n,
+\end{equation}
+and the total number operators as
+\begin{equation}
+    N=\sum_n n N_n, \quad \bar N = \sum_n n \bar N_n.
+\end{equation}
+%
+The $L_0,\bar L_0$ may be written as
+\begin{equation}
+    L_0=\frac{\alpha'}{4} p^2 +N, \quad L_0=\frac{\alpha'}{4} p^2 +\bar N.
+\end{equation}
+Next time, we will impose the conditions
+\begin{equation}
+    L_n\ket{\phi}=0, n>0 \text{ and }(L_0-a)\ket{\phi}=0
+\end{equation}
+for $\ket{\phi}$ to be a physical state, with $a\in \RR$.

@@ -1,0 +1,137 @@
+Two announcements. First, the official course notes will be released this weekend (I'll link them here soon). Second, today's colloquium is being given by Johanna Erdmenger, a Part III alumna working on AdS/CFT (gauge-gravity duality). The ideas in AdS/CFT were motivated by stringy concepts, and so should be relevant to our course.
+
+Last time, we introduced the Polyakov action,
+\begin{equation}
+    S[X,h]=-\frac{1}{4\pi \alpha'} \int_\Sigma d^2\sigma \sqrt{-h}\,h^{ab} \eta_{\mu\nu} \p_a X^\mu \p_b X^\nu.
+\end{equation}
+Note that $h=\det(h_{ab})$ with $h_{ab}$ considered as a $2\times 2$ matrix. The equations of motion for $h_{ab}$ gave the requirement that the stress tensor vanishes, $T_{ab}=0$, with
+\begin{equation}\label{polyakovstresstensor}
+    T_{ab}=\p_a X^\mu \p_b X_\mu -\frac{1}{2} h_{ab}\p^c X^\mu \p_c X_\mu.
+\end{equation}
+Here, $a,b$ indices are raised and lowered with the appropriate metric $h_{ab}$ and $\mu\nu$ indices are raised and lowered with $\eta_{\mu\nu}$.
+
+Now, how does the Polyakov action relate to the Nambu-Goto action? Let us define the quantity
+\begin{equation}
+    G_{ab} \equiv \p_a X^\mu \p_b X_\mu.
+\end{equation}
+If $T_{ab}=0$, then by \ref{polyakovstresstensor},
+\begin{equation}
+    G_{ab}=\frac{1}{2} h_{ab}(h^{cd} G_{cd}).
+\end{equation}
+Taking determinants of both sides yields
+\begin{equation}
+    \det(G_{ab})=\paren{\frac{1}{2} h^{cd} G_{cd}}^2 \det (h_{ab})=\frac{1}{4}\paren{h^{cd}G_{cd}}^2 h.
+\end{equation}
+Therefore
+\begin{equation}
+    2\sqrt{-\det(G_{ab})}=(h^{ab} G_{ab})\sqrt{-h} =\sqrt{-h} h^{ab} \p_a X^\mu \p_b X_\mu.
+\end{equation}
+Substituting this back into the Polyakov action now gives us
+\begin{equation*}
+    S[X]=-\frac{1}{2\pi \alpha'}\int_\Sigma d^2 \sigma \sqrt{-\det G_{ab}},
+\end{equation*}
+the Nambu-Goto action. However, the Polyakov action is nicer to work with since it does not involve square roots of the coordinates $X$.
+
+\subsection*{The stress tensor} Recall that the conjugate momentum to $X^\mu$ is
+\begin{equation}
+    P_\mu=\frac{1}{2\pi \alpha'} \dot X_\mu,
+\end{equation}
+where a dot is a derivative with respect to proper time $\tau$. We can define a Hamiltonian density $\cH$ as
+\begin{equation}
+    \cH = P_\mu \dot X^\mu -\cL =\frac{1}{4\pi \alpha'}(\dot X^2 + X'{}^2).
+\end{equation}
+\begin{defn}
+    For our Hamiltonian formalism, we'll also need some \term{Poisson brackets} which we denote $\set{\, , \,}_{PB}$ (to contrast with another use of brackets later in the quantum theory). Given $F,G$ defined on the phase space, we have
+    \begin{equation}
+        \set{F,G}_{PB}\equiv \int_0^{2\pi} d\sigma \paren{
+            \frac{\delta F}{\delta X^\mu(\sigma)} \frac{\delta G}{\delta P_\mu(\sigma)}-\frac{\delta F}{\delta P_\mu(\sigma)} \frac{\delta G}{\delta X^\mu(\sigma)}
+        }.
+    \end{equation}
+    In particular, $\set{X^\mu(\tau,\sigma),P_\nu(\tau,\sigma')}_{PB}=\delta^\mu_\nu \delta(\sigma-\sigma').$
+\end{defn}
+
+Last time, we introduced a mode expansion
+\begin{equation}
+    X^\mu(\sigma, \tau)=X^\mu_R (\tau-\sigma)+X_L^\mu (\tau+\sigma),
+\end{equation}
+writing e.g. the right-going mode in terms of modes $\alpha^\mu_n$,
+\begin{equation}
+    X^\mu_R(\tau-\sigma)=\frac{1}{2}x^\mu +\frac{\alpha'}{2}p^\mu(\tau-\sigma) +i\sqrt{\frac{\alpha'}{2}}\sum_{n\neq 0} \frac{1}{n}
+    \alpha^\mu_n e^{-in(\tau-\sigma)},
+\end{equation}
+and something similar holds for $X_L^\mu$ using the modes $\bar \alpha^\mu_n$.
+
+Let's try to work in terms of modes rather than the embedding fields $X^\mu$. We assert that the Poisson brackets acting on the modes $\alpha_n^\mu, \bar \alpha_n^\mu$ are
+\begin{align}
+    \set{\alpha^\mu_m,\alpha^\nu_n}_{PB} &=-im \delta_{m,-n} \eta^{\mu\nu}\\
+    \set{\alpha^\mu_m,\bar\alpha^\nu_n}_{PB} &= 0\\
+    \set{\bar\alpha^\mu_m,\bar\alpha^\nu_n}_{PB} &= -im \delta_{m,-n} \eta^{\mu\nu}
+\end{align}
+for $n\neq 0,m\neq 0$.
+If we define $\alpha_0^\mu = \bar \alpha^\nu_0 =\sqrt{\frac{a'}{2}}p^\mu,$ we see that $\set{x^\mu, p_\nu}_{PB}=\delta^\mu_\nu$.
+
+Let's see why this might be reasonable. We will set $\tau=0$ so that
+\begin{align*}
+    X^\mu(\sigma) &= x^\mu +i\sqrt{\frac{\alpha'}{2}}\sum_{n\neq 0} \frac{1}{n}\paren{
+        \alpha_n^\mu e^{i n\sigma}+\bar \alpha^\mu_n e^{-in\sigma}
+    },\\
+    P^\nu(\sigma') &= \frac{p^\nu}{2\pi}+\frac{1}{2\pi} \sqrt{\frac{1}{2\alpha'}} \sum_{m\neq 0} \paren{
+        \alpha_m^\nu e^{im\sigma'}+\bar \alpha_m^\nu e^{-im\sigma'}
+    }.
+\end{align*}
+Recall that we get $P^\nu$ by deriving $X^\mu(\tau,\sigma)$ with respect to $\tau$ and dividing by a factor of $2\pi$. (Check this expression for $P^\nu(\sigma,\tau=0)$!)
+
+Now we can compute the Poisson bracket:
+it is
+\begin{equation}
+    \set{X^\mu(\sigma),P_\nu(\sigma')}_{PB} =\frac{1}{2\pi}\set{x^\mu, p^\nu}-\frac{1}{4\pi}\sum_{n,m\neq 0} \frac{1}{2m}\paren{
+        \set{\alpha_m^\mu,\alpha_n^\nu} e^{i(m\sigma+n\sigma')} + \set{\bar \alpha^\mu_m, \bar \alpha^\nu_n} e^{-i(m\sigma+n\sigma')}
+    }.
+\end{equation}
+Using the Poisson bracket relations on the modes and the ``periodic delta function''
+\begin{equation}
+    \delta(\sigma-\sigma')=\frac{1}{2\pi} \sum_{m=-\infty}^\infty e^{im(\sigma-\sigma')},
+\end{equation}
+one can show that
+\begin{equation}
+    \set{X^\mu(0,\tau),P^\nu(0,\sigma')}_{PB}=\eta^{\mu\nu}\delta(\sigma-\sigma').
+\end{equation}
+
+\subsection*{The Wit algebra} We'll quickly introduce the following concept. On our worldsheet, it will be useful to use light-cone (null) coordinates
+\begin{equation}
+    \sigma^\pm = \tau \pm \sigma.
+\end{equation}
+Thus the metric becomes
+\begin{equation}
+    ds^2 = -d\tau^2 +d\sigma^2 =(d\sigma^+,d\sigma^-)\begin{pmatrix}
+        0& -\frac{1}{2}\\
+        -\frac{1}{2} & 0
+    \end{pmatrix} 
+    \begin{pmatrix}d\sigma^+ \\ d\sigma^-\end{pmatrix}.
+\end{equation}
+Derivatives become
+\begin{equation}
+    \p_\pm \equiv \P{}{\sigma^\pm}=\frac{1}{2}(\p_\tau \pm \p_\sigma).
+\end{equation}
+
+In these new coordinates, the action and equations of motion become
+\begin{equation}
+    S[X]=-\frac{1}{2\pi \alpha'} \int_\Sigma d\sigma^+ d\sigma^- \, \p_+ X^\mu \p_- X_\mu, \quad \p_+ \p_- X^\mu =0.
+\end{equation}
+The stress tensor becomes
+\begin{equation}
+    T_{++}=-\frac{1}{\alpha'} \p_+ X^\mu \p_+ X_\mu, \quad T_{--}=-\frac{1}{\alpha'} \p_- X^\mu \p_- X_\mu,
+\end{equation}
+with $T_{+-}=0$ since this is nothing more than the trace of $T_{ab}$.
+
+We can introduce modes $l_m, \bar l_m$ for the stress tensor, writing
+\begin{align*}
+    l_n &= -\frac{1}{2\pi}\int_0^{2\pi} d\sigma T_{--} e^{-in\sigma}\\
+    \bar l_n &= -\frac{1}{2\pi}\int_0^{2\pi} d\sigma T_{++} e^{+in\sigma}.
+\end{align*}
+Again, our goal is to work with modes rather than the entire solutions.
+
+For instance,
+\begin{equation*}
+    \p_- X^\mu =\sqrt{\frac{\alpha'}{2}}\sum_n \alpha_n^\mu e^{-in\sigma},\text{ where } \alpha_0^\mu = \sqrt{\frac{\alpha'}{2}} p^\mu.
+\end{equation*}

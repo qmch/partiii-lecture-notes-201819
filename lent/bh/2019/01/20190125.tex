@@ -1,0 +1,110 @@
+Last time, we made the proposition that the Schwarzschild spacetime really does feature a black hole region, i.e. a region where any future-directed causal curves with $r(\lambda)\leq 2M$ are forced to have $r(\lambda)\leq 2M \forall \lambda \geq \lambda_0$. We proved last time that if you are inside the horizon, $r(\lambda_0) < 2M$, the $r(\lambda)$ is monotonically decreasing for $\lambda \geq \lambda_0$. 
+
+Formally, we must consider the case $r(\lambda_0)=2M$. Note that if $\frac{dr}{d\lambda}<0|_{\lambda=\lambda_0},$ then we're done. In the next $\epsilon$ time later, we'll be inside the horizon and our proof holds. If $\frac{dr}{d\lambda}=0$, then we sit at $r=2M$ forever and we're also done.
+
+So there's only one case we have to consider, $dr/d\lambda > 0$ at $\lambda=\lambda_0$.
+
+We've seen that
+\begin{equation*}
+    -2\paren{\frac{dv}{d\lambda}}\paren{\frac{dr}{d\lambda}}=-V^2 +\paren{\frac{2M}{r}-1} \paren{\frac{dv}{d\lambda}}^2 + r^2 \paren{\frac{d\Omega}{d\lambda}}^2.
+\end{equation*} (\ref{dvdlambdacondition} from last time). At $\lambda=\lambda_0$, this vanishes, so $\frac{d\Omega}{d\lambda}=V^2=0$. This means that $\frac{dv}{d\lambda}\neq 0$, or else $V^\mu = 0$ (which is a contradiction). Then 
+\begin{equation*}
+    \frac{dv}{d\lambda}|_{\lambda=\lambda_0} >0,
+\end{equation*}
+since we proved last time that $\frac{dv}{d\lambda}\geq 0$.
+
+Hence at least near $|lambda =\lambda_0$, we can use $v$ instead of $\lambda$ as a parameter along the curve with $r=2M$ at $v= v_0=v(\lambda_0)$. Dividing \ref{dvdlambdacondition} by $\paren{\frac{dv}{d\lambda}}^2$ gives
+\begin{equation}
+    -2\frac{dr}{dv} \geq \frac{2M}{r}-1 \implies 2\frac{dr}{dv} \leq 1-\frac{2M}{r}.
+\end{equation}
+Hence for $v_2,v_1$ greater than $v_0$ with $v_2> v_1$, we have
+\begin{equation}
+    2 \int_{r(v_1)}^{r(v_2)} \frac{dr}{1-\frac{2M}{r}} \leq v_2 - v_1.
+\end{equation}
+This completes the $r=2M$ case. %cf notes
+\qed
+
+Technically, this doesn't prove that we have a black hole because it is a local statement. To establish a global event horizon will take more work.
+%This might be the last physics you see for a while. After this, it is hardcore math. So enjoy the physics now.
+
+\subsection*{Detecting black holes} Note the following facts.
+\begin{enumerate}
+    \item There is no upper bound on the mass of a black hole.
+    \item Black holes are very small. For instance, a black hole with the mass of the Earth would have a radius of $\SI{0.9}{\centi\meter}.$
+\end{enumerate}
+We observe black holes by noticing their gravitational pull on stars, for instance, and considering their incredible compactness. Fun fact-- there are massive and supermassive (billions of solar mass) black holes in the universe which we have detected astrophysically, and we have no idea where they came from. It seems like there isn't enough time in the age of the universe for them to have formed.
+
+\subsection*{Orbits around a black hole} Consider a timelike geodesic around a black hole. The turning points of the potential are given by points $\dot r=0$ in the potential
+\begin{equation}
+    V(r)=\frac{E^2}{2}= \frac{1}{2}\paren{\tilde v + \frac{h^2}{r^2}}\paren{1-\frac{2M}{r}},
+\end{equation}
+and where 
+\begin{equation}
+    V'(r)=0 \implies r_\pm =\frac{h^2 \pm \sqrt{h^4-12 h^2 \tilde v M^2}}{2M\tilde v}, \tilde v=1.
+\end{equation}
+If $h^2 < 12m,$ then we are in free-fall-- there are no turning points. However, if $h^2>12M^2$, then there is a local minimum of the potential at $r_+$, and a local maximum at $r_-$. One can show that
+\begin{equation}
+    3M < r_- < 6M < r_+,
+\end{equation}
+where $r=6M$ is known as the ISCO (innermost stable circular orbit). There is no Newtonian analogue to this-- $r=6M$ lies well within the star.
+
+The energy of the orbit is then
+\begin{equation}
+    E_\pm = \frac{r_\pm - 2M}{r_\pm^{1/2} (r_\pm - 3M)^{1/2}},
+\end{equation}
+and for $r_+\gg M$, we find that
+\begin{equation}
+    E_+ \approx 1-\frac{M}{2r_+} \to m-\frac{Mm}{(2r_+,)}
+\end{equation}
+tells us that the energy at this orbit is the relativistic mass-energy $E=m$ minus a correction for the gravitational energy.
+
+Let us approximate the accretion disk of the black hole as non-interacting so that particles basically travel along geodesics. Orbits will radiate off energy, decreasing towards $r\to 0$. When a particle hits $r=6M$, it will suddenly turn towards the singularity, releasing a burst of energy (cf. brehmsstrahlung). It is these bursts of energy that we can detect in astrophysical systems.
+%It's like a norovirus. Nothing can stay in. Everything has to come out.
+
+\subsection*{White holes} We looked at ingoing null geodesics in EF coordinates. What about outgoing (radial) null geodesics? We have the outgoing EF coordinate
+\begin{equation}
+    u\equiv t-r_*,
+\end{equation}
+which is constant along radial outgoing null geodesics. Here, $\frac{dt}{dr_*}=1$. Then the metric takes the form
+\begin{equation}
+    ds^2=-\paren{1-\frac{2M}{r}}du^2 -2 du dr + r^2 d\Omega_2^2.
+\end{equation}
+Importantly, this is \emph{not} the same region that we found before! We have a new $r<2M$ region, but outgoing null geodesics are forced to leave this region. However, we just spent all that time proving that geodesics inside the event horizon were trapped inside, so this cannot possibly be the same region as in the ingoing coordinates. For constant $u$ (outgoing null radial geodesics), the metric tells us that 
+\begin{equation}
+    \frac{dr}{d\tau}=1.
+\end{equation}
+
+So these can propagate from the curvature singularity at $r=0$ through the surface $r=2M$. Weak cosmic censorship says that naked singularities are forbidden in nature, and to define a white hole we must have an initial singularity, so this seems to be unphysical. Another argument for this involves time reversal-- it has been proved in some generality that black holes are stable to perturbations, so after perturbation they will settle down to another black hole state. If we take the time reversal of this statement, this suggests that white holes will be highly unstable to perturbation, so they are probably not physical.
+
+\subsection*{The Kruskal extension} Can we get both the black and white hole regions in a single set of coordinates? Yes! We start in the exterior region $r>2M$, and define \term{Kruskal-Szekeres} coordinates $(U,V,\theta,\phi)$, defining
+\begin{equation}
+    U= -e^{-u/4M}, \quad V= e^{v/4M}
+\end{equation}
+in terms of the EF coordinates from before. So for $r>2M, U<0$ and $V>0$.
+
+Now we can directly compute
+\begin{equation}
+    UV=-e^{\frac{+r}{2M}}\paren{
+        \frac{r}{2M}-1
+        }.
+\end{equation}
+Let us observe that the RHS of this equation is a monotonic function of $r$, and hence determines $r(U,V)$ uniquely. We also have
+\begin{equation}
+    \frac{V}{U}=-e^{t/2M},
+\end{equation}
+which determines $t(U,V)$.
+
+Computing the differentials, we find that
+\begin{equation}
+    dU=\frac{1}{4M} e^{-u/4M}du,\quad dV =\frac{1}{4M}e^{v/4M} dv.
+\end{equation}
+Therefore
+\begin{align*}
+    dU dV &=\frac{1}{16 M^2} \exp\paren{\frac{v-u}{4M}} dudv\\
+    &= \frac{1}{16M^2} \exp\paren{\frac{r_*}{2M}}(dt^2 -dr_*^2)\\
+    &= \frac{1}{16M^2} \exp\paren{\frac{r_*}{2M}}\bkt{dt^2 -\frac{dr^2}{\paren{1-\frac{2M}{r}}^2}}.
+\end{align*}
+This is almost what we want-- now we just multiply by the appropriate factors to find that our new line element is
+\begin{equation}
+    ds^2=-32M^3 \frac{\exp\paren{-\frac{r(U,V)}{2M}}}{r(U,V)} dU dV + r^2 (U,V) d\Omega_2^2.
+\end{equation}

@@ -1,0 +1,154 @@
+Last time, we introduced the Grassman variables. They are a set of elements which anticommute and obey a variation of the Leibniz rule,
+\begin{equation*}
+    \P{}{\psi^a}(\psi^b \ldots)=\delta^b{}_a (\ldots)-\psi^b \P{}{\psi^a}(\ldots).
+\end{equation*}
+Of course, now that we've defined differentiation we'd naturally like to define integration as well. Since $(\psi)^2=0$, we only need to define
+\begin{equation*}
+    \int 1\,d\psi\text{ and } \int \psi d\psi.
+\end{equation*}
+We want our integral to be ``translation-invariant,'' i.e.
+\begin{equation}
+    \int (\psi+\eta)d\psi = \int \psi d\eta \implies \int 1 \, d\psi = 0
+\end{equation}
+for $\eta \in \RR$. We then normalize by choosing
+\begin{equation}
+    \int \psi d\psi := 1,
+\end{equation}
+known as \term{Berezin integration}. Suppose we have $n$ fermions $\psi^1, \ldots, \psi^n$, with
+\begin{equation}
+    \int \psi^1 \psi^2 \ldots \psi^2 \underbrace{d\psi^n d\psi^{n-1}\ldots d \psi^1}_{d^n \psi}=1.
+\end{equation}
+We must have the $d\psi$s in this order in order to perform each of the integrals, so that
+\begin{equation}
+    \int \psi^{a_1}\ldots \psi^{a_n}d^n\psi= \epsilon^{a_1a_2\ldots a_n},
+\end{equation}
+with $\epsilon$ the totally antisymmetric $\epsilon$-symbol.
+
+Now let
+\begin{equation}
+    \psi'{}^{a}=N^a{}_b \psi^b \text{ for }N\in GL(n).
+\end{equation}
+We have
+\begin{equation}
+    \int \psi'{}^a \psi'{}^b \ldots \psi'{}^d d^n \psi = N^a{}_e N^b{}_f \ldots N^d{}_g \int \psi^e \psi^f \ldots \psi^g d^n \psi,
+\end{equation}
+where we have brought the $N$ ($n\times n$ matrices) by the linearity of the integral-- their entries are just numbers). But indeed we can perform the integral now-- it is
+\begin{align*}
+    \int \psi'{}^a \psi'{}^b \ldots \psi'{}^d d^n \psi &= N^a{}_e N^b{}_f \ldots N^d{}_g \epsilon^{ef\ldots g}\\
+        &= \det(N) \e^{ab\ldots d}\\
+        &= \det(N) \int \psi'{}^a \psi'{}^b \ldots \psi'{}^d d^n \psi'.
+\end{align*}
+Comparing, we see that if $\psi'{}^a=N^a{}_b \psi^b$, then
+\begin{equation}
+    d^n \psi' = \frac{1}{\det(N)}d^n \psi,
+\end{equation}
+which is the opposite of the usual convention.
+
+\begin{exm}
+    If we have $\chi = a\psi$, then 
+    \begin{equation}
+        \int \chi d\chi = 1 = a\int \psi d\chi \implies d\chi = \frac{d\psi}{a},
+    \end{equation}
+    recalling that $\int \psi d\psi =1.$
+\end{exm}
+
+For QFT, we often need Gaussian integrals. Suppose $\psi^1,\psi^2$ are fermionic and let
+\begin{equation}
+    S(\psi)=\frac{1}{2}\psi^1 M \psi^2,
+\end{equation}
+some sort of action in terms of the fermionic fields $\psi^1,\psi^2$. There are no kinetic terms since we're still working in zero dimensions. Then an integral we might like to calculate is
+\begin{equation}
+    \int e^{-S(\psi^a)}d \psi^1 d\psi^2.
+\end{equation}
+But in fact, this integral will be dead simple to calculate. If we Taylor expand the exponential, the expansion actually terminates at the first non-trivial term since the order $(\psi^1 M \psi^2)^2$ term would contain a $(\psi^1)^2$, which vanishes.
+
+Therefore our integral becomes
+\begin{equation}
+    \int e^{-S(\psi^a)}d \psi^1 d\psi^2 = \int \paren{ (1-\frac{1}{2} \psi^1 M \psi^2
+    } d\psi^1 d\psi^2 = \frac{1}{2}M.
+\end{equation}
+More generally, for $2m$ fermions with ``action'' 
+\begin{equation}
+    S(\psi^a)=\frac{1}{2} \psi^a M_{ab} \psi^b,
+\end{equation}
+where we shall take $M_{ab}=-M_{ba}$ to be antisymmetric WLOG, our action integral becomes
+\begin{align*}
+    \int e^{-S(\psi)}d^{2m}\psi &= \int \sum_{k=0}^\psi \frac{(-1)^k}{k!} \frac{1}{2^k} \paren{\psi^a M_{ab} \psi^b
+    }^k d^{2m}\psi\\
+        &= \frac{(-1)^k}{2^m m!} \int \paren{\psi^a M_{ab} \psi^b
+        }^m d^{2m}\psi\\
+        &= \frac{(-1)^m}{2^m m!} \epsilon^{a_1 b_1 \ldots a_m b_m}M_{a_1b_1} M_{a_2b_2} \ldots M_{a_m b_m}\\
+        &= \sqrt{\det M},
+\end{align*}
+sometimes called the Pfaffian of the matrix $M$. (For ``bosons,'' we would have instead $\int e^{-\frac{1}{2} x^a M_{ab} x^b}d^{2m}x = \frac{(2\pi)^m}{\sqrt{\det M}}.$)
+%aside-- why do we only get the order m term? Everything higher terminates and the lower integrals vanish, I suppose.
+
+\subsection*{Supersymmetric integrals and localization} Consider a $d=0$ theory of one bosonic variable $x$ and two fermions $\psi^1,\psi^2$. We certainly need at least two fermions in order to have something quadratic in the fermions that is non-vanishing. Take
+\begin{equation}
+    S(x,\psi^i)=V(x) - \psi^a \psi^2 U(x)
+\end{equation}
+as our action.
+Our $V$ captures some sort of interactions between bosons in our theory, and any nontrivial terms in $U$ will likewise result in some sort of interactions between the fermions and the boson. We see that even in $d=0$, for generic $V,U$ the integral
+\begin{equation*}
+    \int e^{-S(x,\psi^i)}dx d\psi^1 d\psi^2
+\end{equation*}
+is difficult.
+
+Let's specialize and see if there's a case we can solve. Suppose we choose a polynomial $W(x)$ and take
+\begin{equation}
+    S(x,\psi^i)=\frac{1}{2}(\p W)^2 - \bar \psi \psi \p^2 W
+\end{equation}
+where $\psi=\psi_1 +i \psi_2, \bar \psi= \psi_1 -i\psi_2$. Derivatives are clearly taken with respect to $x$. What we've done is constructed a specific relation between the two terms in the action.
+
+Now we observe that this action $S(x,\psi,\bar \psi)$ is invariant under
+\begin{align*}
+    \delta x &= \epsilon \psi - \bar \epsilon \bar \psi\\
+    \delta \psi &= \bar \epsilon \p W\\
+    \delta \bar \psi &= -\epsilon \p W,
+\end{align*}
+where $\epsilon,\bar \epsilon$ are fermionic parameters. This gives us variations of the right type (e.g. $\epsilon \psi$ is bosonic).
+
+Let us check the variation of the action. We'll just check the $\epsilon$ terms-- the $\bar \epsilon$ terms are similar.
+\begin{equation*}
+    \delta_\epsilon S= \p W \p^2 W \epsilon \psi - \epsilon \p W \psi \p^2 W - \bar \psi \psi (\epsilon \psi \p^3 W),
+\end{equation*}
+where the last term comes from taking the chain rule since $W$ depends on $x$ which has some variation. But these first two terms clearly cancel ($\epsilon$ and $W$ are just numbers, so they commute with fields) and the last term is zero because we have a $\psi^2$.
+
+Since we have a symmetry of the action, we get some charges. We write $\delta = \epsilon Q + \bar \epsilon \bar Q$, where $Q,\bar Q$ are called \term{supercharges}, and
+\begin{align*}
+    Q x &= \psi \quad \bar Q x = -\bar \psi\\
+    Q\psi &= 0 \quad \bar Q \psi = \p W\\
+    Q\bar \psi &= \p W \quad \bar Q \bar \psi = 0.
+\end{align*}
+
+We may write
+\begin{align*}
+    Q &= \psi \P{}{x} +\p W \P{}{\bar \psi}\\
+    \bar Q &= -\bar \psi \P{}{x} + \p W \P{}{\psi}.
+\end{align*}
+
+These generators obey $\set{Q,\bar Q}=0$. Note that there is no Hamiltonian $H$ since the Hamiltonian is the generator of time translations and we are still in $d=0.$
+
+Let's observe now that the supersymmetric ``path'' integral $\int e^{-S(x,\psi,\bar \psi)} dx d\psi d\bar \psi$ is in fact really easy to compute. Suppose we rescale $W\to \lambda W, \lambda \in \RR_+$ both in the action, $S\to S_\lambda$ and in the SUSY transformation, $Q\to Q_\lambda, \bar Q \to \bar Q_\lambda$ (replacing $W$ with $\lambda W$ everywhere).
+
+Now we have an action which appears to be parametrized by $\lambda$,
+\begin{equation}
+    I(\lambda)=\int e^{-S_\lambda(x,\psi,\bar \psi)} dx d^2 \psi.
+\end{equation}
+But note that this in fact obeys $\frac{dI}{d\lambda}=0$.
+\begin{proof}
+\begin{align*}
+    \frac{dI}{d\lambda} &= \int \P{}{\lambda} e^{-S_\lambda} dx d^2 \psi\\
+    &= -\int \paren{\lambda (\p W)^2 -\bar \psi \psi \p^2 W)
+    } e^{-S_\lambda} dx d^2 \psi\\
+    &= -\int \bar Q_\lambda(\p W \psi) e^{-S_\lambda} dx d^2 \psi\\
+    &= -\int \bar Q_\lambda (\p W \psi e^{-S_\lambda}) dx d^2\psi.
+\end{align*}
+But since $\bar Q_\lambda = -\bar \psi \P{}{x}+(\lambda \p W) \P{}{\psi}$, this vanishes. The entire term in the parentheses is at most linear in $\psi$, so after taking the $\p_\psi$ derivative in $\bar Q$, we have the integral of something constant in $\psi$ with respect to $d^2\psi$, which is zero. The $\p_x$ term vanishes because what remains is a total derivative of something being evaluated at the boundaries.
+\end{proof}
+
+We conclude that
+\begin{equation}
+    I(1)=\lim_{\lambda \to \infty} I(\lambda),
+\end{equation}
+which means that as $\lambda \to \infty,$ the $e^{-\frac{\lambda^2}{2}(\p W)^2}$ term suppresses the action integral everywhere except where $\p W=0.$ Thus the integral \emph{localizes} to critical points of $W(x)$.
