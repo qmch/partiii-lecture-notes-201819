@@ -1,0 +1,17 @@
+%encoding-decoding Tikz figure
+\begin{center}
+    \begin{tikzpicture}[scale=2, node distance = 2.5cm]
+        %make nodes
+        \node [] (start) {};
+        \node [block, right of=start] (encoding) {$\mathcal{E}_n$};
+        \node [block, right of=encoding] (channel) {$\mathcal{N}$};
+        \node [block, right of=channel] (decoding) {$\mathcal{D}_n$};
+        \node [right of=decoding] (end) {};
+        
+        %make lines
+        \path [line] (start) -- node[below] {$m\in M$} (encoding);
+        \path [line] (encoding) -- node[below] {$x_m$} (channel);
+        \path [line] (channel) -- node[below] {$y_m$} (decoding);
+        \path [line] (decoding) -- node[below] {$m'$} (end);
+    \end{tikzpicture}
+\end{center}

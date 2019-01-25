@@ -42,7 +42,9 @@ Suppose we have some variables $X_1,X_2,\ldots$. In a Markov chain, we say that 
 \end{equation}
 That is, the value of a Markov chain at a position $n$ depends only on its value at $n-1$.
 
-Consider a simple Markov chain with three variables, $X\to Y \to Z$. Then by the definition of a Markov chain, $P(Z=z| X=x, Y=y) = P(Z=z| Y=y)$, and we can prove that
+Consider a simple Markov chain with three variables, $X\to Y \to Z$.
+\input{2019/01/tikz/20190125_tikzdpi.tex}
+Then by the definition of a Markov chain, $P(Z=z| X=x, Y=y) = P(Z=z| Y=y)$, and we can prove that
 \begin{equation}
     I(X:Z) \leq I(X:Y),
 \end{equation}
@@ -98,14 +100,16 @@ For a memoryless channel, we may write the transition probabilities as a \term{c
 \end{equation}
 If the rows are permutations, then the channel matrix is symmetric.
 
-\begin{exm}
-    Consider a memoryless binary symmetric channel (m.b.s.c). Thus $J_X=J_Y=\set{0,1}.$ If the channel sends $0\mapsto 1$ with probability $p$ and $0\mapsto 0$ with probability $1-p$ (that is, $p(0|1)=p$), then the channel matrix takes the form
+\begin{exm}\label{exm:mbsc}
+    Consider a memoryless binary symmetric channel (m.b.s.c). Thus the set of inputs and the set of outputs are $J_X=J_Y=\set{0,1}.$ If the channel sends $0\mapsto 1$ with probability $p$ and $0\mapsto 0$ with probability $1-p$ (that is, $p(0|1)=p$), then the channel matrix takes the form
     \begin{equation}
         \begin{pmatrix}
             1-p & p\\
             p & 1-p
-        \end{pmatrix}.
+        \end{pmatrix},
     \end{equation}
+    which we can represent in the following diagram (with initial states on the left and final states on the right).
+    \input{2019/01/tikz/20190125_tikzmbsc.tex}
     
     Now consider the following encoding scheme. We encode $0\to 000$ and $1\to 111$. Suppose we got $010$ as the output. What do we think the input was?
     
@@ -114,13 +118,27 @@ If the rows are permutations, then the channel matrix is symmetric.
     Now, a simple exercise. For what $p$ is this encoding-decoding scheme better than just sending the original message? Intuitively, we might guess $p=1/2$, and this is correct. But we should prove it.
 \end{exm}
 
-Moreover, what is the correspondence between the input and output of the channel? We see that it's certainly not one-to-one, from the last example. So we might have to guess what the original message was. However, what Shannon realized was that for certain elements of $J_X^n$, their images under the noisy channel map will be disjoint, so these elements will make very good codewords since we can always decode the output even after noise is introduced.
+Moreover, what is the correspondence between the input and output of the channel? We see that it's certainly not one-to-one, from the last example. So we might have to guess what the original message was. However, what Shannon realized was that for certain elements of $J_X^n$, their images under the noisy channel map will be disjoint, so these elements will make very good codewords since we can always decode the output even after noise is introduced-- see Fig. \ref{fig:noisychannel}.
 
-We won't do the full proof of the theorem today, but we can introduce the setup. Suppose Alice has a message $[M]=\set{1,2,\ldots, M}$. She has a noisy channel $\mathcal{N}:J_X \to J_Y$ with some transition probabilities $p(\underline y^{n}| \underline x^{n})$.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.35\textwidth]{lent/qi/2019/01/20190125_noisychannel1.png}
+    \includegraphics[width=0.35\textwidth]{lent/qi/2019/01/20190125_noisychannel2.png}
+    \caption{In a noisy channel, it might be the case that multiple inputs map to the same output, as in the left set of ovals. Both $\underline{x}^n$ and $\underline{x}^n{}'$ have been mapped to the same $\underline{y}^n$ with some probability. However, Shannon tells us that certain codewords will be transmitted as disjoint regions (red ovals) after being sent through the channel, so those codewords can be reliably decoded after transmission.}
+    \label{fig:noisychannel}
+\end{figure}
 
-Alice can choose an encoding scheme $\mathcal{E}_n:[M]\to J_X^n$ where $\forall m\in [M], \mathcal{E}_n(m)=\underline x^{(n)} \in J_X^n$. She then sends her message through the channel $\mathcal{N}^{(n)}:x^{(n)}\to y^{(n)}$, producing $y^{(n)}$ with some given probabilities.
+We won't do the full proof of the theorem today, but we can introduce the setup. Suppose Alice has a message $[M]=\set{1,2,\ldots, M}$ she would like to send to Bob. She has a noisy channel $\mathcal{N}:J_X \to J_Y$ with some transition probabilities $p(\underline y^{n}| \underline x^{n})$.
 
-Bob receives the message and performs the decoding with $\mathcal{D}_n(\mathcal{N}^{(n)}(\mathcal{E}_n(M)))=m'$. Thus the \term{maximum probability of error} is
+\input{2019/01/tikz/20190125_tikzencoding.tex}
+
+\begin{enumerate}
+    \item First, Alice can choose an encoding scheme $\mathcal{E}_n:[M]\to J_X^n$ where $\forall m\in [M], \mathcal{E}_n(m)=\underline x^{(n)} \in J_X^n$.
+    \item She then sends her message through the channel $\mathcal{N}^{(n)}:x^{(n)}\to y^{(n)}$, producing some transmitted messages $y^{(n)}$ with some given probabilities.
+    \item Bob receives the message and performs the decoding with $\mathcal{D}_n$ to get some decoded message $\mathcal{D}_n(\mathcal{N}^{(n)}(\mathcal{E}_n(M)))=m'$.
+\end{enumerate}
+
+Thus the \term{maximum probability of error} is
 \begin{equation}
     \max{m\in [M]} P(\mathcal{D}_n(\mathcal{N}^{(n)}(\mathcal{E}_n(M))) \neq m) = p(\mathcal{E}_n,\mathcal{D}_n).
 \end{equation}
@@ -146,3 +164,31 @@ We make one final definition for today.
     \end{equation}
     the maximum achievable rate for a channel.
 \end{defn}
+
+\subsection*{Non-lectured: m.b.s.c encoding}
+
+For Example \ref{exm:mbsc}, we were asked to consider a binary channel $N$ with error probability $p$. That is, if we give it an input $x\in \set{0,1}$, we get an output $N(x)=y\in \set{0,1}$ such that $p(N(x)\neq x)=p$.
+
+We came up with the following encoding scheme: send $0\mapsto 000$ and $1\mapsto 111$. To decode, we simply take a majority vote, e.g. $010$ was ``probably'' $000$, so the original message was $0$. Now how much better can we do with this redundancy? Let's consider the possible inputs, how they would be encoded, and how often they would be correct.
+
+Suppose we want to send $0\mapsto 000$.
+\begin{itemize}
+    \item With probability $(1-p)^3$, none of the three bits are flipped and we get $000$ as the output. The process succeeds.
+    \item With probability $3\times p(1-p)^2$, exactly one of the three bits is flipped. (The factor of $3$ comes from the fact that we could have flipped any of the three.) We still succeed.
+    \item If two or three bits are flipped, we definitely fail.
+\end{itemize}
+By the symmetry of the problem, the success and failure probabilities are the same for $1\mapsto 111$.
+
+Let's add this up to get the total success probability:
+\begin{equation}
+    (1-p)^3+3p(1-p)^2=(1+2p)(1-p)^2.
+\end{equation}
+When $p=1/2$, the success probability of our scheme is
+\begin{equation}
+    (1+2p)(1-p)^2=(2)(1/2)^2=1/2.
+\end{equation}
+We can nicely visualize this with the following graphic:
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{2019/01/20190125_redundancy.png}
+\end{center}
+Here, the curved blue line is our three-bit scheme and the red line is the single-bit success probability $1-p$. For completeness, we can explicitly show that the crossover points occur when $P(\text{three bits})-P(\text{one bit})=(1+2p)(1-p)^2-(1-p)=0.$ Rewriting, we have $(1-p)(1-2p)p=0$, which clearly has zeroes at $p=0,1/2,1$. If we now take a derivative, we see that $\frac{d}{dp}\paren{P(\text{three bits})-P(\text{one bit})}|_{p=1/2}=1-6(1/2)+6(1/2)^2=-1/2,$ so $P(\text{three bits})>P(\text{one bit})$ for $p<1/2$.

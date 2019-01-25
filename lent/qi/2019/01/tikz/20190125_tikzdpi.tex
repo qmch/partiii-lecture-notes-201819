@@ -1,0 +1,12 @@
+\begin{center}
+    \begin{tikzpicture}[scale=2, node distance = 3.5cm, auto]
+        \node [] (start) {};
+        \node [block, right of=start] (noisy) {noisy channel};
+        \node [block, right of=noisy, node distance=4cm] (process) {data processing};
+        \node [right of=process] (end) {};
+        
+        \path [line] (start) -- node[above] {$X$} node[below] {input} (noisy);
+        \path [line] (noisy) -- node[above] {$Y$} node[below] {output} (process);
+        \path [line] (process) -- node[above] {$Z$} node[below] {processed} (end);
+    \end{tikzpicture}
+\end{center}
