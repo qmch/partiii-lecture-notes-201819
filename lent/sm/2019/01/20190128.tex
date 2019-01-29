@@ -1,0 +1,121 @@
+Last lecture, we finished parity and began charge conjugation. We said that
+\begin{equation*}
+    \hat C a(p) \hat C^{-1} = \eta_c c(p), \quad \hat C c(p) \hat C^{-1} = \eta_c^* a(p).
+\end{equation*}
+For a real scalar field, we have $\phi^\dagger = \phi$ and thus $\eta_c=\pm 1$. On the other hand, for a complex field, $\eta_c$ is arbitrary. Say
+\begin{equation}
+    \eta_c=e^{2i\beta},
+\end{equation}
+with $\beta\in \RR$. We can do a global $U(1)$ transformation sending
+\begin{equation*}
+    \phi \to \phi' = e^{-i\beta} \phi
+\end{equation*}
+so that $\eta'_c= 1$. We can do this for a single field, though we can't quite repeat it for arbitrary numbers of fields.
+
+\subsection*{Dirac field}
+For Dirac fields, define a matrix $C$ s.t. 
+\begin{equation}
+    (\gamma^\mu C)^T = \gamma^\mu C.
+\end{equation}
+In the chiral basis where $\gamma^0{}^T= \gamma^0, \gamma^2{}^T = \gamma^2. \gamma^1{}^T=\-\gamma^1, \gamma^3{}^T=-\gamma^T$, a suitable choice for $C$ is
+\begin{equation}
+    C=-i\gamma^0 \gamma^2 =\begin{pmatrix}
+        i\sigma^2 & 0\\
+        0 & -i\sigma^2
+    \end{pmatrix}.
+\end{equation}
+We observe that $C=-C^T = -C^\dagger =-C^{-1}.$ In addition,
+\begin{equation}
+    (\gamma^\mu)^T= -C^{-1} \gamma^\mu C, \quad \gamma^5{}^T = +C^{-1} \gamma^5 C.
+\end{equation}
+
+Similarly to the bosonic operators, the fermion operators $b^s, d^s$ are transformed as
+\begin{align*}
+    \hat C b^s(p) \hat C^{-1}&= \eta_c d^s(p)\\
+    \underbrace{\hat C d^{s\dagger}(p) \hat C^{-1}}_{\text{in }\psi} &= \underbrace{\eta_c b^{s\dagger}(p)}_{\text{in }\bar\psi}.
+\end{align*}
+So charge conjugation indeed has the interpretation of sending particles to antiparticles and vice versa.
+
+Now consider the conjugation of the whole $\psi$ field:
+\begin{equation}
+    \hat C \psi(x) \hat C^{-1}=\eta_c \sum_{p,s} \bkt{
+        d^s(p) u^s(p) e^{-ip\cdot x} + b^{s\dagger}(p) v^s(p) e^{+ip\cdot x}
+    }.
+\end{equation}
+We can compare this with
+\begin{equation}
+    \bar \psi^T(x)= \eta_c \sum_{p,s} \bkt{
+        b^{s\dagger}(p) \bar u^{sT} (p) e^{+ip\cdot x} + d^{s}(p) \bar v^{sT}(p) e^{-ip\cdot x}
+    }.
+\end{equation}
+This almost looks like our previous equation, except for the spinor parts. Consider the spinors and take $\eta^s=i\sigma^2 \xi^{s*}$ (choose a basis). We can write $V^s(p)= C \bar u^{ST}$ and $u^S(p) = C\bar v^{sT}(p)$. Therefore
+\begin{equation}
+    \psi^c (x) \equiv \hat C \psi(x) \hat C^{-1} = \eta_c C \bar \psi^T (x)
+\end{equation}
+By a similar computation,
+\begin{equation}
+    \bar \psi^C (x) \equiv \hat C \bar \psi(x) \hat C^{-1} = \eta_c^* \psi^T(x) C = -\eta_c^* \psi^T(x) C^{-1}.
+\end{equation}
+
+Note that if $\psi(x)$ satisfies the Dirac equation, then so does $\psi^C(x).$ In particular, for \term{Majorana fermions}, we have $b^s(p)=d^s(p) \implies$ the particle is its own antiparticle. In this case, $\psi^C = \psi$. This means the particle cannot have charge, and it turns out that the only candidates for Majorana fermions in the SM are neutrinos, but it is not known whether neutrinos are in fact Majorana fermions. A signature of this would be neutrinoless double $\beta$ decay, which we'll revisit later in the course.
+
+\subsection*{Fermion bilinears} Note that we will want to be careful about what is an operator ($\hat C$) and what's a matrix in spinor space ($C$). How do our bilinears transform under charge conjugation?
+\begin{exm}
+    Consider the bilinear $j^\mu(x) = \bar \psi(x) \gamma^\mu \psi(x)$.
+    We can conjugate by $\hat C$, noting that the $\gamma^\mu$ are just numbers and so unaffected by conjugation. Thus
+    \begin{align*}
+        \hat C j^\mu(x)\hat C^{-1} &= \hat C \bar \psi(x) \hat C^{-1} \gamma^\mu \hat C \psi(x) \hat C^{-1}\\
+        &= -\eta_C^* \eta_C \psi^T C^{-1} \gamma^\mu C \bar \psi^T,
+    \end{align*}
+    passing to the matrix notation. Adding back the Dirac indices and noting that $|\eta_c|^2=1$, we have
+    \begin{align*}
+        \hat C j^\mu(x)\hat C^{-1} &=  -\psi_\alpha (C^{-1} \gamma^\mu C)_{\alpha\beta} \bar \psi_\beta\\
+        &= + \bar \psi_\beta ( C^{-1} \gamma^\mu C)_{\alpha \beta} \psi_\alpha\\
+        &= \bar \psi_\beta (C^{-1} \gamma^\mu C)^T_{\beta \alpha} \psi_\alpha\\
+        &= \bar \psi (C^{-1} \gamma^\mu C)^T \psi,
+    \end{align*}
+    where we used the fact that fermions anticommute in going from the first to second line, took a transpose to make the indices line up, and then dropped the spinor indices. We recognize $(C^{-1} \gamma^\mu C)^T=-\gamma^\mu$, and conclude that
+    \begin{equation}
+        \hat C j^\mu(x)\hat C^{-1} = -\bar \psi \gamma^\mu \psi = -j^\mu(x).
+    \end{equation}
+    By the transformation properties of $A_\mu$ under charge conjugation, we see that $j^\mu A_\mu$ is $C$-invariant.
+    
+    By a similar calculation, we can show that
+    \begin{equation}
+        \hat C j^{\mu 5} \hat C^{-1} = + j^{\mu 5},
+    \end{equation}
+    where
+    \begin{equation}
+        j^{\mu 5}= \bar \psi \gamma^\mu \gamma^5 \psi.
+    \end{equation}
+\end{exm}
+
+\subsection*{Time reversal} $T$-symmetric theories leave physics unchanged if time runs backwards. That is,
+\begin{equation}
+    x^\mu_T = (-x^0,\vec x), p_T^\mu = (p^0,-\vec p).
+\end{equation}
+Note that $\hat T$ is anti-unitary and antilinear! So we will have to be careful about signs.
+
+For the boson field, we have
+\begin{equation}
+    \hat T a(p) \hat T^{-1} = \eta_T a(p_T), \quad \hat T c^\dagger (p) \hat T^{-1} = \eta_T c^\dagger (p_T).
+\end{equation}
+Note that by antiunitarity, $\hat T a(p) e^{-ip\cdot x} \hat T^{-1}=\hat T a(p) \hat T^{-1} e^{+ip\cdot x}$.
+From the decomposition of $\phi$, we see that the full field transforms as
+\begin{equation}
+    \hat T \phi(x) \hat T^{-1} = \sum_p \bkt{
+        \hat T a(p) \hat T^{-1} e^{+ip\cdot x} + \hat T c^\dagger (p) \hat T^{-1} e^{-ip\cdot x}
+    }.
+\end{equation}
+One can use the same steps as for the parity transformation and the identity $p_T \cdot x = -p\cdot x_T$ to rewrite the field as 
+\begin{equation}
+    \hat T \phi(x) \hat T^{-1} = \eta_T \sum_p \bkt{
+        a (p) e^{-ip\cdot x_T} + c^\dagger(p) e^{+ip\cdot x_T}
+    } = \eta_T \phi(x_T).
+\end{equation}
+
+\subsection*{Dirac field} The operator $\hat T$ flips the sign of the angular momentum ($\vec r \times \vec p$). Therefore the creation and annihilation operators can be taken to transform as
+\begin{align}
+    \hat T b^s(p) \hat T^{-1} &= \eta_T (-1)^{\frac{1}{2} - s} b^{-s} (p_T)\\
+    \hat T d^{s\dagger}(p) \hat T^{-1} &= \eta_T (-1)^{\frac{1}{2} - s} d^{-s \dagger} (p_T).
+\end{align}

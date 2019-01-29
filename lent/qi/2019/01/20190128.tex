@@ -1,0 +1,122 @@
+Last time, we introduced the setup of Shannon's second key theorem, the noisy channel theorem.
+
+Recall our problem-- Alice has a message she wants to send to Bob, but she only has access to a noisy channel (defined by a stochastic map) which has some probability of corrupting her message when she sends it. Therefore Alice selects a codeword, translating her message $m\in [M]$ to a codeword $x^{(n)}$ which she then sends through the noisy channel $\mathcal{N}$.
+
+The channel then outputs a transmitted (still encoded) message $y^{(n)}$ with probability
+\begin{equation}
+    p(y^{(n)}|x^{(n)}) \equiv \prod_{i=1}^n p(y_i| x_i),
+\end{equation}
+and Bob then decodes this transmission to get a decoded message $m'$.
+
+We say that a code $(\mathcal{E}_n,\mathcal{D}_n)$ (i.e. an encoding-decoding scheme) has rate $R$ if $\ceil{M}\approx 2^{nR}$. Thus $R =\frac{\log |M|}{n}$. A rate is \term{achievable} if there exists a code with that rate such that 
+
+Shannon's theorem tells us that the capacity $C(\mathcal{N})$ (i.e. the supremum of all achievable rates) is precisely related to the mutual information between the inputs and outputs of the noisy channel:
+\begin{equation}
+    C(\mathcal{N}=\max_{\set{p(x)}_{x\in J_X}} I(X: Y).
+\end{equation}
+
+\begin{exm}
+    Consider our m.b.s.c. from last time. Recall the mutual information is defined
+    \begin{equation}
+        I(X:Y)=H(Y)-H(Y|X),
+    \end{equation}
+    where $H(Y|X)=\sum_{x\in J_X} p(x) H(Y|X=x)$, with $H(Y|X=x)=-\sum_{y\in J_Y} p(y|x) \log p(y|x).$
+    But of course we can explicitly compute these entropies (I will do it in an aside later) and we can check that
+    \begin{equation}
+        H(Y|X=x)=h(p) \forall x\in \set{0,1}.
+    \end{equation}
+    Thus
+    \begin{align*}
+        I(X:Y)&=H(Y)-\sum p(x) h(p)\\
+        &= H(Y) - h(p) \leq \log |J_Y|-h(p),
+    \end{align*}
+    so
+    \begin{align*}
+        C(\mathcal{N})=\max_{\set{ p(x)}} I(X:Y)\\
+        &= H(Y)-h(p)\\
+        &\leq \log |J_Y|-h(p).
+    \end{align*}
+    Could we have equality? That is, $\set{p(y)}$ such that $H(Y)=\log|J_Y|$. This happens if we have outcomes $y$ in a uniform distribution. What are the initial probabilities $\set{p(x)}$? Well,
+    \begin{equation}
+        p(y)=\sum_x p(y|x) \cdot p(x),
+    \end{equation}
+    and we find that $p(x)=1/2$ for $x=0$ and $1/2$ for $x=1$, with $p(y) = 1/2$ for $y=0$ and $1/2$ for $y=1$.
+    
+    We therefore find that the capacity of an m.b.s.c is
+    \begin{equation}
+        C(\mathcal{N}_{mbsc})=\log|J_Y|-h(p) = 1 - h(p).
+    \end{equation}
+\end{exm}
+
+As a quick note, the input and output alphabets need not be of equal size. Consider the \term{binary erasure channel}, which transmits the input with probability $1-p$ and erases the input with probability $p$. Thus $J_X=\set{0,1}$ and $J_Y=\set{0,1,e}$.
+
+Recall the intuitive picture of the theorem. Shannon realized that for certain codewords, their images after applying the channel map $\mathcal{N}^n$ will represent disjoint subsets in $J_Y^n$ in the asymptotic limit. The maximal rate is then the number of codewords with this property we can choose divided by $n$ the codeword length, or equivalently the number of disjoint subsets we can pack into $J_Y^n$.
+
+Now for each input sequence $\ul x^{(n)}$ of length $n$, how many typical $Y$ sequences will we get? Recall that there are $|T_n| \approx 2^{nH(X)}$ typical sequences for our variable $X\sim p(x)$. So translating this formula through our channel, we expect to get
+\begin{equation}
+    |T_n|\approx 2^{nH(Y|X)}
+\end{equation}
+typical sequences in $J_Y^n$ for each typical input sequence $X$. The total number of possible typical $Y$ sequences is $2^{nH(Y)}$ using the induced distribution $\set{p(y)}$. Therefore we expect to be able to partition the set of typical $Y$ sequences into a number of disjoint typical sets given by
+\begin{align}
+    \frac{2^{nH(Y)}}{2^{nH(Y|X)}} &\approx 2^{n(H(Y)-H(Y|X))}\\
+    &= 2^{nI(X:Y)},
+\end{align}
+so heuristically, $C(\mathcal{N})=\max_{\set{p(x)}} I(X:Y).$
+
+Note that this theorem \emph{does not} translate directly to the quantum case. The classical proof relies on a notion of joint probability of two typical sequences, which has no analogue in QI.%
+    \footnote{I suspect this, as many quantum things do, is due to entanglement.}
+    
+\subsection*{QIT preliminaries} Consider a quantum system $A$. Its states are described by a Hilbert space $\cH_A$, where we will take $\dim H$ to be finite. That is, a finite-dimensional Hilbert space is a complex inner product space, i.e. a set with a vector space structure over the field $\CC$ equipped with an inner product $(\cdot,\cdot):\cH \times \cH \to \CC$.
+
+An inner product is a bilinear function obeying the following properties:
+\begin{itemize}
+    \item $(v,v')=(v',v)^* \forall v,v' \in \cH$
+    \item $(v,av')=a(v,v')$ and $(v,v_1+v_2)=(v,v_1)+(v,v_2)$.
+    \item $(v,v)\geq 0$  (positive semidefinite), with equality when $v=0.$
+\end{itemize}
+The inner product induces a norm on $\cH$, defined
+\begin{equation}
+    ||v||=\sqrt{(v,v)}, \cH \to \RR.
+\end{equation}
+The norm defines a distance between two vectors,
+\begin{equation}
+    d(v,v')=||v-v'||,
+\end{equation}
+which has the properties of being symmetric, with $d(v,v')=0$ iff $v=v'$, and obeying the triangle inequality, $d(u,v) \leq d(u,v') + d(v,v').$
+
+The Cauchy-Schwarz inequality also holds, i.e.
+\begin{equation}
+    \forall v, v' \in \cH, |(v,v')|\leq \sqrt{(v,v) (v',v')}.
+\end{equation}
+
+\subsection*{Linear maps/operators on $\cH$}
+\begin{itemize}
+    \item We call a map $A:\cH \to \cH'$ a homomorphism, with the set $A\in B(\cH, \cH')=\text{Homo}(\cH, \cH').$
+    \item When $\cH = \cH$, we call such a map an endomorphism and denote the set of such maps $\text{End}(\cH)$.
+    \item The simplest operator we can define is the identity map, $1\in B(\cH)$ such that $1v = v \forall v\in \cH$.
+    \item We may also define the adjoint of a homomorphism, $A^\dagger: \cH' \to \cH$. Thus if $A\in B(\cH, \cH'),$ then $A^\dagger \in B(\cH',\cH).$ Thus $A^\dagger$ is defined to be the unique operator satisfying
+    \begin{equation}
+        (v',AAv) = (A^\dagger v',v)
+    \end{equation}
+    with $(A^\dagger)^\dagger = A$, where $v\in \cH, v' \in \cH'.$ Note that the set of homomorphisms and endomorphisms can be promoted to Hilbert spaces by defining an inner product, the \term{Hilbert-Schmidt inner product}, defined as
+    \begin{equation}
+        (A,B)_{HS}=\Tr(A^\dagger B).
+    \end{equation}
+\end{itemize}
+
+\subsection*{Matrix representation} Since $\cH$ is finite-dimensional by assumption, it can be given a basis $\set{v_i}^d_{i=1}$ where $d=\dim \cH$ Thus an element $A\in B(\cH)$ can be represented by a matrix $A$ with elements
+\begin{equation}
+    A_{ij}=(v_i,A v_j).
+\end{equation}
+If $\cH=\CC^d$, for instance, then $B(\cH)=B(\CC^d) \equiv \cM_d$, the set of $d\times d$ complex matrices. In $d=2,$ we would have
+\begin{equation}
+    A=\begin{pmatrix}
+        a & b\\
+        c & d
+    \end{pmatrix}, A^\dagger = \begin{pmatrix}
+        a^* & c^* \\
+        b^* & d^*
+    \end{pmatrix}.
+\end{equation}
+
+Now maps $A$ have the property that if $A=A^\dagger$, then $A\geq 0$, i.e. $A$ is positive semidefinite, so that $\forall v\in \cH, (v,Av)\geq 0.$ If $A\geq 0, A^2=A$.

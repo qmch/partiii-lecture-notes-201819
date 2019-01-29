@@ -1,0 +1,101 @@
+Last time, we began discussing the quantization of the string. We said that our approach would be to quantize the unconstrained first and then apply the quantum-ized constraint $T_{ab}=0$ on all physical states in the Hilbert space. We do this by imposing the conditions
+\begin{equation}
+    L_n \ket{\phi}=0, \quad n>0
+\end{equation}
+for $\ket{\phi}$ to be physical. Note that $\bar L_n\ket{\phi}=0$ as well-- for most of our theory, we'll get an exact copy of the behavior of the right-handed modes $L_n$ in the left-handed modes $\bar L_n$.
+
+We also observed that our definition of $L_0$ was ambiguous in the quantum theory. In the other operators, we always had products of modes $\alpha_n$ with different harmonics $n$, but for $L_0$ there is an ordering ambiguity. We therefor impose the physical condition that
+\begin{equation}
+    (L_0-a)\ket{\phi}=0, \quad (\bar L_0 -a)\ket{\phi}=0
+\end{equation}
+where $a\in \RR$ quantifies this ordering ambiguity. We will see later (cf. BRST invariance) that the theory is consistent only if $D=26,a=1$. From now on we shall assume $a=1$.
+
+It will be useful to define
+\begin{equation}
+    L_0^\pm = L_0 \pm \bar L_0,
+\end{equation}
+so that we have
+\begin{equation}
+    (L_0^+ -2)\ket{\psi}=0,\quad L_0^- \ket{\psi} = 0, \quad L_n \ket{\psi}=\bar L_n \ket{\psi}=0, n>0.
+\end{equation}
+These three conditions characterize physical states. Recall that $L_0=\frac{\alpha'}{4} p^2 + N, \bar L_0=\frac{\alpha'}{4} p^2 + \bar N$.
+
+\subsection*{The spectrum} We'll start by looking at the lowest-lying modes of the theory. We haven't yet discussed the creation or destruction of strings, so the following discussion will, if you like, be centered on free propagators.
+
+We begin by remarking that in our version of the theory, there are problems in the infrared which have to do with \term{tachyons}. These problems can be addressed in superstring theory, which is beyond the scope of this course.
+
+The simplest state we can write down is the momentum eigenstate,
+\begin{equation}
+    \ket{k}=e^{ik\cdot x}\ket{0},
+\end{equation}
+with $k_\mu$ some four-vector of our choice and $x$ the center of mass coordinate for the string (i.e. the $x$ such that $X^\mu(\sigma, \tau)=x^\mu+p^\mu \tau+{}$oscillations).
+The action of the center of mass momentum $p_\mu$ is then
+\begin{equation}
+    p_\mu \ket{k}= k_\mu \ket{k}.
+\end{equation}
+
+We could define a general state by a weighted sum of these momentum eigenstates,
+\begin{equation}
+    \ket{T}=\int d^Dk\, T(k) \ket{k},
+\end{equation}
+where $T(k)$ is a function of our choosing and we are working in $D$ dimensions. Now the $L_0^-\ket{\phi}=0$ condition imposes $N=\bar N$. This is called the ``level-matching'' condition. It turns out to be the only condition that relates the left-going and right-going modes-- otherwise, they are totally uncoupled.
+
+If we look at $L_0^+$, we get the condition
+\begin{equation}
+    (L_0^+ -2)T(k)\ket{k}= \paren{ \frac{\alpha'}{2}p^2 + N +\bar N -2} T(k) \ket{k}=0,
+\end{equation}
+which tells us that $N=\bar N = 0$. Therefore
+\begin{equation}
+    (L_0^+ -2)T(k)\ket{k}= \paren{ \frac{\alpha'}{2}p^2-2} T(k) \ket{k}=0,
+\end{equation}
+which we can rewrite as a mass-shell condtion on the momentum space field $T(k)$:
+\begin{equation}
+    (k^2+M^2) T(k)=0\quad\text{where } M^2=-\frac{4}{\alpha'}.
+\end{equation}
+We notice that the field $T(k)$ is tachyonic, i.e. its mass squared is negative. (We use the mostly $+$ sign convention for the Minkowski metric.) Note that
+\begin{equation}
+    L_n\ket{T}=0 =\bar L_n\ket{T} \text{ for }n>0
+\end{equation}
+is satisfied trivially. A priori, tachyons need not sink our theory. It could be that we're just working relative to the wrong vacuum. This is an open question, though there are other reasons the bosonic string might not be quite the right model for our universe's physics. Having declared that superstring theory does provide some solution to this problem, we will pay it no more thought and move on.
+
+\subsection*{Massless states}
+Next, we consider states of the form
+\begin{equation}
+    \ket{\epsilon}=\epsilon_{\mu\nu}(k) \alpha_{-1}^\mu \bar \alpha_{-1}^\nu \ket{k},
+\end{equation}
+where we have included both $\alpha$ and $\bar \alpha$ to satisfy level-matching, and we have thrown in an $\epsilon$ in order to kill the free indices.
+
+The condition $(L_0^+-2) \ket{\epsilon}=0$ gives $M^2=0$ since $N=\bar N = 1$. Note that $L_n \ket{\epsilon}=0$ is satisfied trivially for $n>1$ (and so is $\bar L_n \ket{\epsilon}=0$).
+
+What about $L_1\ket{\epsilon}=0$? We have
+\begin{align*}
+    L_a \ket{\epsilon} &= \frac{1}{2} \sum_n \alpha_{1-n} \cdot \alpha_n \epsilon_{\mu\nu} \alpha_{-1}^\mu \bar \alpha_{-1}^\nu \ket{k}\\
+    &= \epsilon_{\mu\nu}(k) \alpha_0 \cdot \alpha_1 \alpha_{-1}^\mu \bar \alpha_{-1}^\nu \ket{k}\\
+    &=\sqrt{\frac{2}{\alpha'}} \epsilon_{\mu\nu} (k) k_\lambda \a_1^\lambda \a_{-1}^\mu \bar \a_{-1}^\nu \ket{k}\\
+    &=\sqrt{\frac{2}{\a'}} \epsilon_{\mu\nu} (k) k_\lambda \paren{[\a_1^\lambda, \a_{-1}^\lambda]+\a_{-1}^\mu \a_1^\lambda} \bar \a_{-1}^\nu\ket{k}.
+\end{align*}
+We conclude that
+\begin{equation}
+    \epsilon_{\mu\nu}(k)k^\mu =0,
+\end{equation}
+so two states related by
+\begin{equation}
+    \epsilon_{\mu\nu}(k)\to \epsilon_{\mu\nu}(k) + k_\mu \xi_\nu
+\end{equation}
+are physically equivalent since $k^2=0$, with $\xi$ arbitrary. Similarly,
+\begin{equation}
+    \bar L_1\ket{\epsilon}=0 \implies k^\nu \epsilon_{\mu\nu}(k)=0.
+\end{equation}
+It is useful to decompose $\epsilon_{\mu\nu}(k)$ as follows:
+\begin{equation}
+    \epsilon_{\mu\nu}(k)=\tilde g_{\mu\nu}(k) + \tilde B_{\mu\nu}(k)+\eta_{\mu\nu} \tilde \phi(k),
+\end{equation}
+where $\tilde g_{\mu\nu}$ is traceless symmetric and $\tilde B_{\mu\nu}$ is antisymmetric. Now $\tilde g_{\mu\nu}(k)$ has the interpretation of a momentum space metric perturbation,
+\begin{equation}
+    \tilde g_{\mu\nu}(k) \sim \tilde g_{\mu\nu}(k) + k_\mu \xi_\nu + \xi_\mu k_\nu,
+\end{equation}
+which is simply (linearized) diffeomorphism invariance. What about this antisymmetric guy? We get a ``$B$-field'' which corresponds to a momentum spacetime field $\tilde B_{\mu\nu}=-\tilde B_{\nu\mu}$, where
+\begin{equation}
+    \tilde B_{\mu\nu} (k) \sim \tilde B_{\mu\nu}(k)+k_\mu \lambda_\nu - k_\nu \lambda_\mu.
+\end{equation}
+In spacetime this is a gauge invariance, where $B_{\mu\nu}\sim B_{\mu\nu} + \p_\mu \lambda_\nu - \p_\nu \lambda_\mu.$ Some older textbooks call this the notoph (which is nearly ``photon'' backwards).
