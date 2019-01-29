@@ -1,4 +1,4 @@
-Last time, we introduced many important classical concepts. We talked about the mutual (common) information $I(x:Y)$ between two sources, arguing that
+Last time, we introduced many important classical concepts. We talked about the mutual (common) information $I(X:Y)$ between two sources, arguing that
 \begin{align*}
     I(X:Y) &= H(X) + H(Y) - H(X,Y)\\
         &= H(X) - H(X|Y)\\
@@ -71,7 +71,7 @@ Suppose we have some source $X$ producing outputs in an alphabet $J_X$, and some
 
 Here's the setup. Alice wants to send a message $m$ to her friend Bob. To do this, she takes her message $m\in \cM$ a set of messages and runs an encoding process $\mathcal{E}_n$ to produce a codeword $x^{(n)}_m$. She uses the (possibly noisy) channel $\mathcal{N}$ multiple times, say $n$ times, to send a transmitted message $y_m^{(n)}\neq x_m^{(n)}$, which Bob then runs a decoding process $\mathcal{D}_n$ on to get a final decoded message $m'$.
 
-If $m'\neq m,$ we have gotten an error. In the $n\to \infty$ limit, we would like the probability of error $p_err^{(n)}=p(m'\neq m) \to 0$.
+If $m'\neq m,$ we have gotten an error. In the $n\to \infty$ limit, we would like the probability of error $p_{err}^{(n)}=p(m'\neq m) \to 0$.
 
 In some sense, encoding is like the dual process of compression. In encoding, we add redundancy in a controlled manner to account for the potential noise of the channel $\mathcal{N}$.
 

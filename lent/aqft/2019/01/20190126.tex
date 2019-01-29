@@ -1,0 +1,102 @@
+The official course notes from this class will be available from \url{www.damtp.cam.ac.uk/user/wingate/AQFT}.
+
+Last time, we computed the $\phi^2$ correlation function, $\avg{\phi^2}$. In principle this sum also includes disconnected diagrams%
+    \footnote{Disconnected means that part of the diagram is not connected to any of the external legs. There are diagrams which look ``disconnected'' in the informal sense, but in which every line is still connected to an external line (real particle).
+    }
+with ``vacuum bubbles.'' As it turns out, the source-free partition function $Z(0)$ is exactly the sum of the vacuum bubble diagrams, so that when we compute the correlation function, it suffices to consider only connected diagrams.
+
+\subsection*{Effective actions}
+Let's introduce now the \term{Wilsonian effective action} (named for Ken Wilson of the renormalization group).
+\begin{defn}
+    The Wilsonian effective action $W$ is defined to be
+    \begin{equation}
+        Z=e^{-W/\hbar}.
+    \end{equation}
+    Schematically,
+    \begin{equation}
+        \sum(\text{all vacuum diagrams})=\exp\paren{-\frac{1}{\hbar} \sum(\text{connected diagrams})}.
+    \end{equation}
+\end{defn}
+
+To understand this, note that any diagram $D$ is a product of connected diagrams $C_I$, such that
+\begin{equation}
+    D=\frac{1}{S_D} \prod_I (C_I)^{n_I},
+\end{equation}
+where $I$ indexes over connected diagrams, $C_I$ includes its own internal symmetry factors, $n_I$ is the number of $C_I$s in $D,$ and $S_D$ is the number of rearranging the identical $C_Is$ in $D$. That is,
+\begin{equation}
+    S_D=\prod_I (n_I)!.
+\end{equation}
+
+Therefore we have
+\begin{align*}
+    \frac{Z}{Z_0}&= \sum_{\set{n_I}}D \\
+        &= \sum_{\set{n_I}} \prod_I \frac{1}{n_I!} (C_I)^{n_I}\\
+        &= \prod_I \sum_{n_I} \frac{1}{n_I!} (C_I)^{n_I}\\
+        &= \exp\paren{\sum_I C_I}\\
+        &= e^{-(W-W_0)/\hbar},
+\end{align*}
+where $W=W_0-\hbar \sum_I C_I$ is a sum over connected diagrams.
+
+Why is $W$ an ``effective'' action? Consider a theory with two real scalar fields $\phi,\chi$. Our theory has an action
+\begin{equation}
+    S(\phi,\chi)=\frac{m^2}{2}\phi^2 + \frac{M^2}{2}\chi^2 +\frac{\lambda}{4}\phi^2 \chi^2.
+\end{equation}
+Note there's no factorial in the $\lambda$ term because the fields are distinguishable.
+
+We can associate some Feynman rules to the theory. Then there are some vacuum bubbles we can draw (see figure) associated to these rules to produce a sum
+\begin{equation}
+    -\frac{W}{\hbar}=-\frac{\hbar \lambda}{m^2 M^2}\paren{\frac{1}{4}}+\paren{\frac{\hbar \lambda}{m^2M^2}}^2 \paren{\frac{1}{16}+\frac{1}{16}+\frac{1}{8}}+O(\lambda^3).
+\end{equation}
+Similarly for the connected loop diagrams, we have
+\begin{equation}
+    \avg{\phi^2}=\frac{\hbar}{m^2}\paren{1-\frac{\hbar\lambda}{m^2 M^2}\frac{1}{2}
+    +\paren{\frac{\hbar \lambda}{m^2M^2}}^2 \bkt{\frac{1}{4}+\frac{1}{4}+\frac{1}{2}}+O(\lambda^3)}.
+\end{equation}%I think this second term is a minus-- check?
+
+This is well and good. We can write down the Feynman rules for the full theory, draw the diagrams, and in principle compute any cross section we like. But now say we want to remove the explicit $\chi$ dependence from our theory. That is, maybe the $\chi$ particle is very massive, $M\gg m$, and so we are unlikely to see it in our collider. We say that we ``integrate out'' the heavy field.
+
+For this toy theory, define $W$ such that
+\begin{equation}
+    e^{-W(\phi)/\hbar} =\int d\chi e^{-S(\phi,\chi)/\hbar}.
+\end{equation}
+Returning to our action, we see that the $\phi^2 \chi^2$ term acts like a source term for $\chi^2$.
+
+Correlation functions can then be expressed as
+\begin{equation}
+    \avg{f(\phi)}=\frac{1}{Z} \int d\phi d\chi f(\phi) e^{-S(\phi,\chi)/\hbar}=\frac{1}{Z} \int d\phi f(\phi)e^{-W(\phi)/\hbar},
+\end{equation}
+with $W$ our new effective action.
+
+In our example, the integral can be done exactly.
+\begin{equation}
+    \int d\chi e^{-S(\phi,\chi)/\hbar}= e^{-m^2 \phi^2/2} \sqrt{\frac{2\pi\hbar}{M^2+\frac{\lambda\phi^2}{2}}},
+\end{equation}%maybe an hbar missing from the phi term
+and taking the log we find that
+\begin{equation}
+    W(\phi)=\frac{1}{2}m^2 \phi^2 +\frac{\hbar}{2}\log \paren{1+\frac{\lambda}{2M^2}\phi^2} +\frac{\hbar}{2}\log \frac{M^2}{2\pi\hbar}.
+\end{equation}
+For our purposes, this constant piece won't affect QFT correlation functions since it appears both in $Z$ and $Z_0$. However, these constant energy shifts are important where gravity is concerned, and in principle they should contribute to the cosmological constant of the universe. It's an open problem why the observed $\Lambda$ is so small compared to the quantum fluctuations that should be contributing to it.
+
+Now in our effective action we can expand the logarithm to get
+\begin{align}
+    W(\phi)&=\paren{\frac{m^2}{2}+\frac{\hbar \lambda}{4M^2}}\phi^2 -\frac{\hbar \lambda^2}{16M^4} \phi^4 +\frac{\hbar \lambda^3}{48 M^6}\phi^6+\ldots\\
+    &= \frac{m_{\text{eff}}^2}{2}\phi^2 + \frac{\lambda_4}{4!} \phi^4 + \frac{\lambda_6}{6!} \phi^6+ \ldots + \frac{\lambda_{2k}}{(2k)!}\phi^{2k}+\ldots
+\end{align}
+where
+\begin{gather*}
+    m_{\text{eff}}^2 = m^2 +\frac{\hbar \lambda}{2M^2}\\
+    \lambda_{2k}=(-1)^{k+1} \hbar \frac{(2k)!}{2^{k+1}k} \frac{\lambda^k}{M^{2k}},
+\end{gather*}
+This tells us that all new terms are $\propto \hbar$, so these are quantum corrections, and they are also suppressed by $1/M^{2p}$. In a sense, this is very good for our ability to make predictions about the low-energy theory. We can treat these higher order corrections as small and do calculations in our effective theory. But conversely, it will be hard to probe the high energy theory because the corrections are suppressed.
+
+Our toy model was very nice because it had an exact solution, but usually we must find $W(\phi)$ perturbatively. That is, we construct Feynman rules with $\frac{\lambda}{4}\phi^2 \chi^2$ as a source term, so that our effective action goes as
+\begin{equation}
+    W(\phi) \sim \frac{m^2 \phi^2}{2} +\frac{1}{2} \frac{\hbar \lambda}{2M^2} \phi^2 -\frac{1}{4} \frac{\hbar \lambda^2}{4M^4}\phi^4 + \frac{1}{3!} \frac{\hbar \lambda^3}{8M^6} \phi^6 + \ldots,
+\end{equation}
+as before.
+
+Either way, with our effective action we can then compute correlation functions for $\phi$ with our effective action, e.g.
+\begin{equation}
+    \avg{\phi^2}=\frac{1}{Z}\int d\phi\, \phi^2 e^{-W/\hbar} =\frac{\hbar}{m_{\text{eff}} -\frac{\lambda_4 \hbar^2}{2m_{\text{eff}}^6}}+\ldots,
+\end{equation}
+as before.
