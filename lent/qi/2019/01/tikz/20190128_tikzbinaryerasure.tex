@@ -1,0 +1,18 @@
+%encoding-decoding Tikz figure
+\begin{center}
+    \begin{tikzpicture}[scale=2, node distance = 2cm]
+        %make nodes
+        \node [] (startzero) {$0$};
+        \node [right of=startzero] (endzero) {$0$};
+        \node [below of=endzero, node distance = 1cm] (enderase) {$e$};
+        \node [below of=enderase, node distance = 1cm] (endone) {$1$};
+        \node [left of=endone] (startone) {$1$};
+        
+        %make lines
+        \path [line, dashed] (startzero) -- node[above] {$1-p$} (endzero);
+        \path [line, dashed] (startone) -- node[below] {$1-p$} (endone);
+        \path [line] (startzero) -- node[below, near start] {$p$} (enderase);
+        \path [line] (startone) -- node[above, near start] {$p$} (enderase);
+        %\path [line] (start) -- node[below] {$m\in M$} (encoding);
+    \end{tikzpicture}
+\end{center}

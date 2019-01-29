@@ -1,0 +1,102 @@
+Last time, we saw our first QFT example of an effective action. We introduced the Wilson effective action $W(J)$, where we averaged over the quantum fluctuations of some degrees of freedom (e.g. a heavy particle). We showed explicitly that we can construct an effective action for a two-particle theory by integrating out one of the fields and treating it as a source,
+\begin{equation*}
+    e^{-W(\phi)/\hbar}=\int d\chi e^{-S(\phi,\chi)/\hbar}.
+\end{equation*}
+
+Today, we'll show that we can take this further and construct a quantum effective action $\Gamma(\Phi)$ and average over all quantum fluctuations. This will lead us to defined an effective potential $V(\Phi)$. Effective actions of this form help us to determine the true vacuum of a theory and answer questions like ``Do quantum effects induce spontaneous symmetry breaking?''
+
+Let us define an average field in the presence of some source $J$,
+\begin{align}
+    \Phi\equiv \P{W}{J} &= -\frac{\hbar}{Z(J)}\P{}{J}\int d\phi e^{-(S[\phi]+J\phi)/\hbar}\\
+    &= \avg{\phi}_J,
+\end{align}
+where $W$ is the Wilson effective action and $J\neq 0$.
+
+Thus $\Gamma(\Phi)$ is defined to be the Legendre transform of $W(J)$, i.e.
+\begin{equation}\label{wjlegendre}
+    \Gamma(\Phi)=W(J)-\Phi J.
+\end{equation}
+Note that
+\begin{align*}
+    \P{\Gamma}{\Phi} &=\P{W}{\Phi} -J -\Phi \P{J}{\Phi}\\
+    &= \underbrace{\P{W}{J}}_\Phi \P{J}{\Phi} - J - \Phi \P{J}{\Phi}\\
+    &= -J,
+\end{align*}
+by applying the chain rule and the definition of $\Phi$.
+We conclude that
+\begin{equation}
+    J=-\P{\Gamma}{\Phi}.
+\end{equation}
+Note also that
+\begin{equation*}
+    \P{\Gamma}{\Phi}|_{J=0}=0,
+\end{equation*}
+i.e. in the absence of sources, $J=0,$ the average field $\Phi=\avg{\phi}_{J=0}$ corresponds to an extremum of $\Gamma(\Phi).$
+
+In higher dimensions, we write
+\begin{equation}
+    \Gamma(\Phi)=\int d^dx \bkt{-V(\Phi)-\frac{1}{2}\p^\mu \Phi \p_\mu \Phi + \ldots},
+\end{equation}
+where the $\ldots$ indicate higher derivatives and the first term $V(\Phi)$ is called the \term{effective potential}.
+
+To make contact with statistical field theory, consider an Ising model, some spins $s(x)$ with an external magnetic field $h$ and a Hamiltonian $\cH$. The partition function is
+\begin{equation}
+    Z(h)=e^{-\beta F(h)}=\int \cD s \exp\bkt{-\beta \int d^d x(\cH(s)-hs)}.
+\end{equation}
+The magnetization is
+\begin{equation}
+    M=-\P{F}{h}=\int d^dx \avg{s(x)},
+\end{equation}
+and under a Legendre transform we have the Gibbs free energy
+\begin{equation}
+    G=F+hM,\quad \P{G}{M}=h.
+\end{equation}
+When $h\to 0$, the equilibrium magnetization is given by the minimum of $G$.
+
+Returning to QFT, let us try to perturbatively calculate $\Gamma(\Phi)$. We will treat $\Phi$ as we did $\phi,$ i.e. as a proper field. A quantum path integral over $\Phi$ then takes the form
+\begin{equation}\label{gammapathintegral}
+    e^{-W_\Gamma(J)/g}= \int d\Phi e^{-(\Gamma(\Phi)+J\Phi)/g,}
+\end{equation}
+where $g$ is some ``fictional'' new Planck constant.
+
+Schematically, $W_\Gamma(J)$ is the sum of connected diagrams with $\Phi$ propagators and vertices. Expanding in $g$ (i.e. in loops), we see that
+\begin{equation}
+    W_\Gamma(J)=\sum_{l=0}^\infty g^l W_\Gamma^{(l)}(J)
+\end{equation}
+where $W_\Gamma^{(l)}$ has all the $l$-loop diagrams.
+
+Tree diagrams are those composing $W_\Gamma^{(0)}(J)$. In the $g\to 0$ (semi-classical?) limit, only tree-level diagrams contribute, so
+\begin{equation}
+    W_\Gamma(J) \approx W_\Gamma^{(0)}(J)
+\end{equation}
+as $g\to 0$. In addition, as $g\to 0$, our path integral \ref{gammapathintegral} over $\Phi$ will be dominated by the minimum of the exponent (steepest descent), i.e. the average field $\Phi$ such that
+\begin{equation*}
+    \P{\Gamma}{\Phi}=-J.
+\end{equation*}
+
+We learn that
+\begin{equation}
+    W_\Gamma(J)=W_\Gamma^{(0)}(J) = \Gamma(\Phi)+J\Phi =W(J),
+\end{equation}
+where the last equality follows from our earlier definition \ref{wjlegendre}. Therefore the sum of connected diagrams $W(J)$ (with action $S(\phi)+J\phi$) can be obtained as the sum of tree diagrams $W_\Gamma^{(0)}(J)$ (with action $\Gamma(\Phi)+J\Phi$).
+
+\begin{defn}
+    A line (edge) of a connected graph is a \term{bridge} if removing it would make the graph disconnected.
+\end{defn}
+\begin{defn}
+    A connected graph is said to be one-particle irreducible (1PI) if it has no bridges.
+\end{defn}
+The quantum effective action $\Gamma(\Phi)$ sums the 1PI graphs of the theory with action $S(\phi)$ yielding many vertices.%
+    \footnote{??? I think this means we get modified Feynman rules for computing correlation functions.}
+Then correlation functions can be found using tree graphs with vertices from $\Gamma(\Phi)$.
+
+For example, an $N$-component field $\phi$ has a correlation function
+\begin{equation}
+    \avg{\phi_a \phi_b}^{\text{conn}}=\avg{\phi_a \phi_b}-\avg{\phi_a}\avg{\phi_b},
+\end{equation}
+where the correlation function over connected diagrams is
+\begin{align*}
+    -\hbar \frac{\p^2 W}{\p J_a \p J_b} &= \avg{\phi_a \phi_b}^{\text{conn}}\\
+    &= \hbar \paren{\frac{\p^2 \Gamma}{\p \Phi_a \p \Phi_b}}^{-1},
+\end{align*}
+which is $\hbar$ times the ivnerse of the quadratic part of $\Gamma$.

@@ -1,0 +1,118 @@
+Last time, we wrote down a particular action for our (zero-dimensional) theory:
+\begin{equation*}
+    S(x,\psi^i)=\frac{1}{2}(\p W)^2 - \bar \psi \psi \p^2 W,
+\end{equation*}
+with $W(x)$ a polynomial.
+What we found via a scaling argument was that the integral
+\begin{equation*}
+    I=\int e^{-S(x,\psi, \bar \psi} dxd^2 \psi
+\end{equation*}
+in fact localizes to the critical points of $W(x)$.
+
+Now suppose we have a group $G$ acting freely on our space of fields $\mathcal{C}$, and suppose the action and integration measure are $G$-invariant. For example,
+\begin{equation*}
+    \int_{\RR^2\setminus \set{0}} e^{-S(x,y)} dx dy
+\end{equation*}
+with $G=SO(2)$ and $S$ just a function of $r=\sqrt{x^2+y^2}$. In this case, we would recognize that by changing to polar coordinates, we can make the angular integral trivial and just worry about an integral over $dr$.
+
+More generally, we should decompose our integration domain $\mathcal{C}$ into the orbits of $G$, $G\times \mathcal{C}/G$, and then integrate over $G$ to obtain $\text{vol}(G)$. However, if $G$ is a fermionic group, then $\text{vol}(G)=0$ since $0\int_G 1 d^{\dim G}\theta$. More generally, if $G:\cC \to \cC$ has some fixed points we can only get contributions to the integral from neighborhoods of these fixed points.
+
+In our case, we have
+\begin{equation}
+    \delta \psi = \bar \epsilon \p W, \quad \delta \bar \psi = -\epsilon \p W,
+\end{equation}
+so fixed points of our SUSY theory are critical points of $W(x)$. Away from such critical points, let us define some new fields
+\begin{equation}
+    y=x - \frac{\bar \psi \psi}{\p W}, \quad \chi = \psi \sqrt{\p W},\quad \bar \chi = \bar \psi.
+\end{equation}
+
+\begin{ex}
+    Show that $dx d^2\psi = \sqrt{\p W(y)}dy d^2\chi$, where $W$ is considered as a function of $y$.
+\end{ex}
+If we work this out, we find that
+\begin{equation}
+    \delta y = \epsilon \psi -\bar \epsilon \bar \psi -\frac{\epsilon \p W \psi}{\p W}+\frac{\bar \psi \bar \epsilon \p W}{\p W}=0
+\end{equation}%check the signs
+away from critical points. Thus $S(y,0,0)=\frac{1}{2}(\p W(y))^2- \frac{1}{2}(\p W(x))^2 -\p W \p^2 W \frac{\bar \psi \psi}{\p W}=S(x,\psi,\bar \psi).$
+We conclude that
+\begin{equation}
+    \int_{U^C} e^{-S(x,\psi,\bar \psi)}dx d^2 \psi = \int e^{-S(y,0,0)}\sqrt{\p W(y)}dy d^2 \chi =0,
+\end{equation}
+where $U$ is an open neighborhood of $\set{\p W =0}$ with $U^C = \cC \setminus U$ the complement in $\cC$. This is a different way of seeing what we computed last time-- the integral localizes to (a neighborhood of) fixed points of SUSY transformations.
+
+Near any isolated critical point $x_*,$ we have $W(x)=W(x_*)+\frac{c_*}{2}(x-x_*)^2+\ldots$, so our action becomes
+\begin{equation}
+    S^{(2)}(x,\psi,\bar \psi)=\frac{c_*^2}{2}(x-x_*)^2 + \bar \psi \psi c_*.
+\end{equation}
+Hence
+\begin{align*}
+    I &= \int e^{-S(x, \psi,\bar \psi)}\frac{dx}{\sqrt{2\pi}} d^2 \psi\\
+    &= \int e^{-\frac{c_*^2}{2} (x-x_*)^2} (-1 +\bar \psi \psi c_*)dx d^2\psi\\
+    &= \frac{c_*}{\sqrt{2\pi}}\int_\RR e^{-\frac{c_*^2}{2}(x-x_*)^2} dx\\
+    &= \frac{c_*}{\abs{c_*}} = \pm 1.
+\end{align*}
+If $W$ has several critical points, $I=\sum_{c_*| \p W(c_*)=0} \frac{c_*}{\abs{c_*}}.$
+
+This is a remarkably simplifying fact. This tells us that for each local maximum of $W$, we get $-1$ and for each local minimum, we get $-1$. Thus
+\begin{itemize}
+    \item $I=0$ if $W$ is an odd degree polynomial
+    \item $I=-1$ if $W$ is an even degree polynomial and $W\to -\infty$ as $|x|\to \infty$
+    \item $I=+1$ if $W$ is an even degree polynomial and $W\to +\infty$ as $|x|\to \infty$.
+\end{itemize}
+Whereas we might have thought that this integral a priori could have been arbitrarily hard to compute and depend on the form of $W$ in some complicated way, it turns out that the integral takes only three discrete values and is determined by some sort of topological property of $W$.
+
+\subsection*{Landau-Ginzburg theory}
+Let's do one more example in $d=0$. Consider a complex bosonic variable $z\in \CC$ and two complex fermions $\psi_1,\psi_2$. Choose holomorphic $W(z)$ with an action
+\begin{equation}
+    S(z,\psi_1,\psi_2)= \abs{\p W}^2 + \p^2 W \psi_1 \psi_2 -\overline{\p^2 W} \bar \psi_1 \psi_2.
+\end{equation}
+We claim this is invariant under
+\begin{gather*}
+    \delta z = \epsilon_1 \psi_1 + \epsilon_2 \psi_2, \quad \bar \delta \bar z = \bar \epsilon_1 \bar \psi_1 + \bar \epsilon_2 \bar \psi_2,\\
+    \delta \psi_1 = \epsilon_2 \overline{\p W}, \quad \bar \delta \bar \psi_1 = \bar \epsilon_2 \p W,\\
+    \delta \psi_2 = -\epsilon_1 \overline{\p W}, \quad \bar \delta \bar \psi_2 = \bar \epsilon_1 \p W.
+\end{gather*}
+We also have $\bar \delta z = \bar \delta \psi_i =0, \delta \bar z = \delta \bar \psi_i =0.$
+
+One can now check that our SUSY operators satisfy
+\begin{equation*}
+    \set{Q_i,\bar Q_j}=0,
+\end{equation*}
+but $\set{Q_i,Q_j}=0=\set{\bar Q_i, \bar Q_j}$ hold only ``on-shell,'' i.e. for $\p^2 W = 0 = \overline{\p^2 W}.$ Again, by rescaling $W\to \lambda W$ for $\lambda \in \RR_+,$ we can localize our integral to critical points of $W(z)$, where
+\begin{equation}
+    W(z)\approx W(z_*)+\frac{\alpha_*}{2}(z-z_*)^2+\ldots
+\end{equation}
+and our integral therefore becomes
+\begin{equation}
+    S^{(2)}(z,\psi_i)\simeq \abs{\alpha_*}^2 \abs{z-z_*}^2 + \alpha_* \psi_1 \psi_2 - \bar \alpha_* \bar \psi_1 \bar \psi_2
+\end{equation}
+near critical points $z_*$. So our integral becomes
+\begin{align*}
+    I &= \frac{1}{2\pi} \int e^{-(z,\psi_i)}d^2 z d^4 \psi = \sum_{z_*} \frac{1}{2\pi} \int e^{-\abs{\alpha(z-z_*)}^2} \abs{\alpha_*}^2 \psi_1 \psi_2 \bar \psi_1 \bar \psi_2 d^2z d^4 \psi\\
+    &= \sum_{z_*} \frac{\abs{\alpha_*}^2}{\abs{\alpha_*}^2}=\sum_{z_*} 1,
+\end{align*}
+counting (not with sign) the number of critical points $\set{z_*}$ of $S$. More generally, let $f(z)$ be any holomorphic function. Then the (unnormalized) expectation value of $f(z)$ is
+\begin{equation*}
+    \avg{f(z)}=\int e^{-S(z,\psi_i)}f(z) d^2z d^4 \psi.
+\end{equation*}
+But this expression is still invariant under $\bar \delta$ transformations, so it again localizes to the critical points of $\bar W(\bar z)$. The expectation value of $f$ therefore reduces to
+\begin{align*}
+    \avg{f(z)}&=\sum_{z_*} f(z_*) \frac{1}{2\pi} \int e^{-S^{(2)}(z,\psi_1)} d^2z d^4 \psi\\
+    &= \sum_{z_*} f(z_*).
+\end{align*}
+This relies crucially on the fact that $\bar f =0$. Now since $\bar Q_i^2=0,$ one way to construct any $\bar Q_i$-invariant function is to take $\bar Q_i$ of something, e.g. $\bar Q_i \Lambda(z,\bar z,\psi_j, \bar \psi_k)$ for some general $\Lambda$.
+
+However, if $F=\bar Q \Lambda,$ then the expectation value of $F$ is
+\begin{equation}
+    \avg{F}=\avg{\bar Q \Lambda}=\int \paren{\bar Q \Lambda} e^{-S} \frac{d^2 z d^4 \psi}{2\pi} =\int \bar Q\paren{\Lambda e^{-S}} \frac{d^2z d^4 \psi}{2\pi}=0,
+\end{equation}
+where we have again moved $e^{-S}$ into the $\bar Q$ (since it is $\bar Q$-invariant) and observed as before that since $\bar Q \sim \bar \psi \P{}{z}+\p W \P{}{\bar \psi},$ the second term vanishes by the Berezin integration rules and the first term is a total derivative w.r.t $z$, and therefore is a vanishing boundary term.
+
+Therefore interesting functions are in $H+_{\bar Q}=\frac{\text{ker}\bar Q}{\text{im}\bar Q},$ where $\text{ker} \bar Q$ is the set of functions $F$ with $\bar Q F=0$ and $\text{im} \bar Q$ is the set of functions $F=\bar Q \Lambda$ for any function $\Lambda$. Thus we can always decompose a general function into
+\begin{equation}
+    \avg{F+\bar Q \Lambda}=\avg{F}+\avg{\bar Q \Lambda}=\avg{F}.
+\end{equation}
+Suppose $F_i= \bar Q \Lambda.$ Then
+\begin{equation}
+    \avg{\prod_{i=1}^n F_i}=\avg{\bar Q \Lambda \prod_{i=1}^n F_i}=\avg{\bar Q(\Lambda \paren{\prod_{i=1}^n F_i})}=0.
+\end{equation}

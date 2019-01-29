@@ -30,13 +30,21 @@ Thus our path integral computation using the gamma function is
     Z=\frac{\sqrt{2\pi \hbar}}{m} \sum_{n=0}^N \paren{-\frac{\lambda \hbar}{m^4}
     }^n \underbrace{\frac{1}{(4!)^n n!}}_{(1)} \underbrace{\frac{(4n)!}{2^{2n}(2n)!}}_{(2)}.
 \end{equation}
-Note that from Stirling's approximation, $n!\approx e^{n\log n}$, Thus these two combinatorial-looking terms scale roughly as $e^{n\log n}\approx n!$. The factorial growth of the coefficients means that this path integral actually has zero radius of convergence. This is an asymptotic series-- it looks like it is getting better and better, and then everything goes to hell.
+Note that from Stirling's approximation, $n!\approx e^{n\log n}$, Thus these two combinatorial-looking terms scale roughly as $e^{n\log n}\approx n!$. The factorial growth of the coefficients means that this path integral actually has zero radius of convergence. This is an asymptotic series-- it looks like it is getting better and better, and then everything goes to hell.%
+    \footnote{What we mean by an asymptotic series is that it converges not in the limit as the number of terms in the power series gets very large but rather as the expansion parameter gets very small.}
 
 In practice the ``true'' function can differ from the truncated series by some transcendental function which might be small. Cf. Skinner Ch. 2 for more discussion of asymptotic series.
 
 Note that term (1) in the path integral series expansion \ref{zerodpathintegralphi4} comes from expanding the $\frac{\lambda]{4!}\hbar}\phi^4$ term in the exponent, while term (2) is the number of ways of joining $4n$ elements in distinct pairs (compare our discussion at the end of the previous lecture). We can associate some Feynman diagrams to this-- a propagator and a four-point vertex.
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{2019/01/20190124_fourpointfeynman.png}
+\end{center}
 
 Note also that $Z$ has no $\phi$ dependence, meaning that the Feynman diagrams have no external legs. Let $D_n$ be the set of \emph{labelled} vacuum diagrams with $n$ vertices, so that $D_1$ is the following set of diagrams, with $|D_1|=3$.
+
+\begin{center}
+    \includegraphics[width=0.75\textwidth]{2019/01/20190124_labeledfourpoint.png}
+\end{center}
 
 Then let $G_n$ be the group which permutes each of the 4 fields at each vertex ($(S_4)^n$) and also permutes the $n$ vertices ($S_n$). The size of this group is
 \begin{equation*}
