@@ -1,0 +1,152 @@
+Today, we shall begin our discussion of quantum information theory. First, a quick review of Dirac's bra-ket notation-- we denote a vector in Hilbert space $\cH =\CC^d$ by
+\begin{equation}
+    \ket{v} = \begin{pmatrix}
+    v_1\\ \vdots \\ v_d
+    \end{pmatrix},
+\end{equation}
+and call this a \term{ket}. We also have the dual vectors (row vectors, if you like), called \term{bras}. such that
+\begin{equation}
+    \bra{v}=(v_1^*, \ldots, v_d^*).
+\end{equation}
+The braket notation provides us with a natural inner product:
+\begin{equation}
+    (u,v)=\braket{u}{v}=\sum_{i=1}^d u_i^* v_i.
+\end{equation}
+This space also comes equipped with an outer product, $\ket{u}\bra{v}$, which is the matrix
+\begin{equation}
+    \ket{u}\bra{v} =\begin{pmatrix}
+    u_1 v_1^* &\ldots&\\
+    \vdots\\
+    u_d v_1^* &\ldots &u_d v_d^*
+    \end{pmatrix}.
+\end{equation}
+We can then take an orthonormal basis (onb) for $\cH$, which we denote by $\set{\ket{e_i}}$ with $\braket{e_i}{e_j}=\delta_{ij}$. Note that for any basis of $\cH$, we can write the identity matrix as
+\begin{equation}
+    I=\sum_{i=1}^d \ket{e_i}\bra{e_i}.
+\end{equation}
+There is a nice basis $\ket{e_1}=\begin{pmatrix}1\\0\\\vdots\\0\end{pmatrix}$ we can write down,
+so that for a general basis $\set{\ket{f_i}}_{i=1}^d$ related to the original by a unitary $U$, we find that
+\begin{equation}
+    \sum_{i=1}^d \ket{f_i}\bra{f_i}=\sum_{i=1}^d U \ket{e_i} \bra{e_i} U^\dagger = U I U^\dagger =UU^\dagger = I.
+\end{equation}
+
+Now in classical information, our simplest system was a binary bit, a system taking values $0$ and $1$. For quantum information theory, we have a \term{qubit}, a two-level system represented by a Hilbert space with $\cH=\CC^2$ and basis vectors $\set{\ket{0},\ket{1}}$ or equivalently $\set{\ket{\uparrow},\ket{\downarrow}}.$ Physically, these could be the spin states of an electron or perhaps the polarizations of a photon.
+
+Now, it is obvious that any state in Hilbert space can be decomposed in the basis of our choice, i.e.
+\begin{equation}
+    \ket{\psi}=a\ket{0}+b\ket{1},
+\end{equation}
+with $a,b\in \CC$. We shall require that our states are normalized under this inner product, so that
+\begin{equation}
+    1=\braket{\psi}{\psi}=|a|^2+|b|^2,
+\end{equation}
+which means that $|a|^2$ and $|b|^2$ have the interpretation of probabilities.
+
+We also have some important operators on Hilbert space. These are the Pauli matrices%fill in the pauli matrices
+$\sigma_0,\sigma_x,\sigma_y,\sigma_z$. As it turns out, these operators form a basis. Note that we have a set of self-adjoint $2\times 2$ complex matrices
+\begin{equation}
+    B_{SA}(\CC^2)=\set{A\in B(\cH): A=A^\dagger},
+\end{equation}
+and we can write a general matrix $M\in M_2 /M_{sa}$ in terms of the Pauli matrices,
+\begin{equation}
+    M=\frac{1}{2}(x_0 \sigma_0 +\vec x \cdot \gv \sigma),
+\end{equation}
+where $\vec x=(x_1,x_2,x_3)\in \RR^3$.
+
+\subsection*{Spectral decomposition}
+The spectral decomposition says that we can write a matrix in terms of its eigenvalues,
+\begin{equation}
+    A=\sum_{i=1}^d \lambda_i \ket{e_I}\bra{e_i},
+\end{equation}
+such that $A\ket{e_i}=\lambda_i \ket{e_i}$. Sometimes, we say that the eigenvalue decomposition is written in terms of projectors instead,
+\begin{equation}
+    A=\sum_{i=1}^m \lambda_i \Pi_i
+\end{equation}
+where $\Pi_i$ projects onto some basis.
+
+Given a self-adjoint operator $A=A^\dagger$ and a nice function $f$, what is the value $f(A)$? Note that $A$, being self-adjoint, can be diagonalized by a unitary. Thus
+\begin{equation}
+    A_d = UAU^\dagger \implies A = U^\dagger A_d U,
+\end{equation}
+so that
+\begin{equation}
+    f(A)=U^\dagger \begin{pmatrix}
+    f(\lambda_1) && \\
+    & \ddots & \\
+    && f(\lambda_d)
+    \end{pmatrix}.
+\end{equation}
+Thus for example
+\begin{equation*}
+    f(A)=e^{iA}=I + iA +\frac{i^2}{2!}+\ldots.
+\end{equation*}
+
+\subsection*{QM postulates}
+We consider the following postulates of quantum mechanics, which will in fact be qualified by the fact we are working in an open system.
+\begin{enumerate}
+    \item The state of a (closed) system is given by a ray in $\cH$, i.e. a vector defined up to a global phase. Thus we cannot distinguish a state $\ket{\psi}$ and $e^{i\phi}\ket{\psi}$ by any physical measurement. We traditionally take a representative of this equivalence class, $\ket{\psi}.$
+\end{enumerate}
+For an open system $A$, consider a system which is in states $\ket{\psi_i}$ with some coefficients $p_i, i=1,\ldots, m$. The state is characterized by an ensemble
+\begin{equation}
+    \set{p_i,\ket{\psi_i}}_{i=1}^m.
+\end{equation}
+Note that these $\ket{\psi_i}$s need not be mutually orthogonal,
+\begin{equation}
+    \braket{\psi_i}{\psi_j}\neq \delta_{ij},
+\end{equation}
+and moreover this is \emph{not} a superposition but a statistical mixture. A superposition is a pure state where the state is normalized and can be written as 
+\begin{equation}
+    \ket{\Psi}=\sum_{i=1}^d a_i \ket{\phi_i}.
+\end{equation}
+
+So a statistical mixture is instead described by a \term{density matrix} (or density operator). We could write our ensemble as
+\begin{equation}
+    \rho \equiv \sum_{i=1}^m p_i \ket{\psi_i} \bra{\psi_i},
+\end{equation}
+noting that the $\ket{\psi_i}$s in general \emph{need not be orthogonal}.
+\begin{defn}
+    A \term{density matrix} on $\cH$ ($\dim \cH = d$) is an operator $\rho$ with the following properties:
+    \begin{itemize}
+        \item $\rho \geq 0$, i.e. $\rho$ is positive semi-definite, $\bra{\phi}\rho \ket{\phi}\geq 0,$ which implies that $\rho=\rho^\dagger$.
+        \item $\Tr \rho =1$ (which gives it a probabilistic interpretation).
+    \end{itemize}
+\end{defn}
+Let us remark that $\rho$ is hermitian and therefore admits a spectral decomposition, i.e.
+\begin{equation}
+    \rho = \sum_{j=1}^d \lambda_j \ket{e_j}\bra{e_j}
+\end{equation}
+in terms of an orthonormal basis. Thus
+\begin{equation}
+    \rho=\sum_{i=1}^m p_i \ket{\psi_i}\bra{\psi_i} = \sum_{j=1}^d \lambda_j \ket{e_j} \bra{e_j}.
+\end{equation}
+We will prove on Examples Sheet 2 that the set
+$\mathcal{D}(\cH)$ of density matrices is a complex set.
+
+\subsection*{Pure and mixed states} 
+Consider a density matrix
+\begin{equation}
+    \rho = \sum p_i \ket{\psi_i}\bra{\psi_i},
+\end{equation}
+and suppose for example that $p_2=1, p_i=0 \forall i\neq 2$. Then
+\begin{equation}
+    \rho=\ket{\psi_2}\bra{\psi_2}.
+\end{equation}
+This is very nice, because we know precisely the state of the system (or equivalently the outcome of applying the operator $\rho$). We call this a \term{pure state}, referring either to the vector $\ket{\psi_2}$ or the operator $\ket{\psi_2}\bra{\psi_2}$. Otherwise, $\rho$ is a \term{mixed state}.
+
+A pure state will have $\rho^2 = \rho$, so we can define the \term{purity} of a state by $\Tr \rho^2$. Conversely, we can define a completely mixed state by
+\begin{equation}
+    \rho = I/d=\frac{1}{d} \sum_{i=1}^d \ket{e_i} \bra{e_i},
+\end{equation}
+such that a completely mixed state has purity $1/d$ (where we get a factor of $d$ from taking the trace of $I$).
+
+In classical probability, we remark that the convex set of probability distributions forms a \term{simplex}.
+
+Now let's briefly discuss the expectation value of an observable (self-adjoint operator) in $B(\cH)$. For a state $\rho$, we define the expectation value to be
+\begin{equation}
+    \phi(A) \equiv \avg{A}_\rho =\Tr(A \rho).
+\end{equation}
+This is a linear normalized functional--
+\begin{itemize}
+    \item $\phi(aA +b B) = a\phi(A) + b\phi(B)$
+    \item $\phi(A)\geq 0$ with equality when $A=I$.
+\end{itemize}

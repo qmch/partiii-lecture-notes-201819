@@ -1,0 +1,176 @@
+Last time, we introduced the extrinsic curvature,
+\begin{equation}
+    K_{ab} h_a{}^c h_b{}^d \nabla_c n_d,
+\end{equation}
+where $n^a n_a= \pm1$, with $n^a$ the unit normal to the hypersurface $\Sigma$. We also define the projection
+\begin{equation}
+    h_{ab}=g_{ab} \mp n_a n_b.
+\end{equation}
+\begin{lem}
+    $K_{ab}=K_{ab}$, so $K$ is a symmetric $2$-tensor.
+\end{lem}
+\begin{proof}
+    Let $f:\cM \to \RR$ be constant on $\Sigma$ with $df\neq 0$ on $\Sigma$. Let $X^a$ be tangent to $\Sigma$. Thus
+    \begin{equation}
+        X(f)=X^a \nabla_a f=0.
+    \end{equation}
+    This implies that $(df)^a$ is normal to $\Sigma$.
+    Thus on $\Sigma$ we can write
+    \begin{equation}
+        n_a = \alpha(df)_{a},
+    \end{equation}
+    where $\alpha$ is chosen such that $n_a n^a = \pm 1$. It follows that
+    \begin{equation}
+        \nabla_c n_d = \alpha \nabla_c \nabla_d f +\frac{(\nabla_c \alpha)}{\alpha} n_d.
+    \end{equation}
+    But this tells us that
+    \begin{equation}
+        K_{ab}=h_a{}^c h_b{}^d \nabla_c n_d = \alpha h_a{}^c h_b{}^d \nabla_c \nabla_d f,
+    \end{equation}
+    and for all torsion-free spacetimes, covariant derivatives commute on scalars, so $K_{ab}$ is symmetric.
+\end{proof}
+
+As it turns out, the property that
+\begin{equation}
+    K_{ab}=\frac{1}{2}(\cL_m h)_{ab}
+\end{equation}
+means that the extrinsic curvature has the right form for an initial condition in the initial value problem of general relativity.
+%I know that you all really hate my handwriting. And our equations have hundreds of indices. So today I will receive threatening emails by the end of the day.
+
+\subsection*{The Gauss-Coducci equation} A tensor at a point $p\in \Sigma$ is invarinat under projection $h_a{}^b$ if
+\begin{equation}
+    T^{a_1\ldots a_n}{}_{b_1 \ldots b_s}= h_{c_1}{}^{a_1}\ldots h_{c_n}{}^{a_n} h_{b_1}{}^{d_1}\ldots h_{b_s}{}^{d_s}T^{c_1\ldots c_n}{}_{d_1}\ldots {d_s}.
+\end{equation}
+\begin{prop}
+A covariant derivative $D$ on $\Sigma$ can be identified by projection of the covariant derivative on $\cM$. Thus
+\begin{equation}
+    D_a \Gamma^{b_1 \ldots b_n}{}_{c_1\ldots c_s}=h_a{}^d h_{e_1}{}^{b_1} \ldots h_{e_n}{}^{b_n} h_{c_1}{}^{f_1} \ldots h_{c_s}{}^{f_s} \nabla_d T^{e_1 \ldots e_n}{}_{f_1\ldots f_s}.
+    \end{equation}
+\end{prop}
+\begin{lem}
+    The covariant derivative $D$ is precisely the Levi-Civita (metric) connection associated to the metric $h_{ab}$ on the submanifold $\Sigma$:
+    \begin{equation}
+        D_a h_{bc}=0,
+    \end{equation}
+    and $D$ is torsion-free.
+\end{lem}
+\begin{proof}
+    Let's expand out the following derivative:
+    \begin{equation}
+        \nabla_a h_{bc}=\mp n_c \nabla_a n_b \mp n_b \nabla_a n_c.
+    \end{equation}
+    But recall that $h_a{}^c n_c =0,$ so $D_a h_{bc}=0$.
+    
+    To prove it is torsion-free, let $f:\Sigma \to \RR$, and extend to a function $f:\cM \to \RR$. Then consider $D_a D_b f$. This is
+    \begin{align*}
+        D_a D_b f &= h_a{}^c h_b{}^d \nabla_c(h_d{}^e \nabla_e f)\\
+        &= h_a{}^c h_b{}^e \nabla_c \nabla_e f + h_a{}^c h_b{}^d \nabla_c h^e{}_d \nabla_e f.
+    \end{align*}
+    This first term is already manifestly symmetric in $a$ and $b$ since the original connection was torsion free, so let us rewrite the second term as follows:
+    \begin{align*}
+        h_a{}^c h_b{}^d \nabla_c h_d{}^e 
+            &= g^{ef} h_a{}^c h_b{}^d \nabla_c h_{df}\\
+            &= \mp g^{ef}h_a{}^c h_b{}^d n_f \nabla_c n_d\\
+            &= \mp n^e K_{ab},
+    \end{align*}
+    where we have grouped together $h_a{}^c h_b{}^d \nabla_c n_d =K_{ab}$. We conclude that
+    \begin{equation}
+        D_{[a}D_{b]} f=0.\qedhere
+    \end{equation}
+\end{proof}
+
+We'd like to relate the extrinsic curvature to our old-fashioned Riemann curvature. How do we do this?
+\begin{prop}
+    Denote the Riemann tensor associated with $D_a$ on $\Sigma$ by $r'{}^a{}_{bcd}$. This is given by Gauss's equation:
+    \begin{equation}
+        R'{}^a{}_{bcd}=h^a{}_e h_b{}^f h_c{}^g h_d{}^h R^e{}_{fgh} \pm 2K_{[c}{}^a K_{d]b}.
+    \end{equation}
+\end{prop}
+\begin{proof}
+    Let $x^a$ be tangent to $\Sigma$. Then the Ricci identity for $D$ is
+    \begin{equation}
+        R'{}^a_{bcd} X^b = 2 D_{[c}D_{d]}X^a.
+    \end{equation}
+    Let us compute the RHS of this equation.
+    \begin{align}
+        D_c D_d X^a &= h_c{}^e h_d{}^f h_g{}^a \nabla_e(D_f X^g)\\
+        &= h_c{}^e h^f{}_d h^a{}_g \nabla_e (h_f{}^h h_i{}^g \nabla_h X^i)\\
+        &=h_c{}^e h^f{}_d h^a{}_g \nabla_e \nabla_h X^i 
+        + h_c{}^e h^f{}_d h^a{}_g (\nabla_e h^h{}_f) \nabla_h X^i 
+        + h_c{}^e h^f{}_d h^a{}_g (\nabla_e h^g{}_i) \nabla_h X^i.\label{lotsofprojectors}
+    \end{align}
+    This first term is already looking good. Note that we have to project the indices everywhere, so in the first line we project $c,d,a$ indices, and in the second line we project $f,g$ indices, and in the final line we expand out the covariant derivative.
+    
+    We have seen that
+    \begin{equation}\label{projectorsandcurvature}
+        h^c{}_d h^d{}_b \nabla_c h^e{}_d = \mp n^e K_{ab}.
+    \end{equation}
+    We can use this identity in the last two terms of \ref{lotsofprojectors} to get
+    \begin{equation}
+        D_c D_d X^a = h^e{}_c h_d{}^h h^a{}_i \nabla_e \nabla_h X^i \mp K_{cd} h^a{}_i n^h \nabla_h X^i \mp K_c{}^a n_a h^h{}_d \nabla_h X^i.
+    \end{equation}
+    This second term already drops out since $K_{cd}$ is symmetric and we're antisymmetrizing over $c$ and $d$ in the final expression. The last term can be recast as
+    \begin{equation}
+        K_c{}^a h^h{}_d \nabla_h(n_i X^i)\pm K^a{}_c X^i h^h{}_d \nabla_h n_i = \pm K_c{}^a K_{bd}X^b.
+    \end{equation}
+    Antisymmetrizing, we find that
+    \begin{align*}
+        R'{}^a{}_{bcd} X^b &= 2h_{[c}{}^e h_{d]}{}^f h^a{}_g \nabla_e \nabla_f X^g \pm 2 K_{[c}{}^a K_{d]b} X^b\\
+        &= h_c{}^e h_d{}^f h_g{}^a h^a{}_b R^g{}_{hef} x^b \pm 2 K_{[c}{}^a K_{a]b}X^b.
+    \end{align*}
+    Since $X^b$ is arbitrary, this holds as a tensor identity.
+\end{proof}
+\begin{lem}
+    The Ricci scalar of $\Sigma$ is 
+    \begin{equation}
+        R'=R\mp 2 R_{ab} n^a n^b \pm K^2 \mp K^{ab}K_{ab},
+    \end{equation}
+    where $K=g^{ab}K_{ab}$, the trace of $K_{ab}$.
+\end{lem}
+\begin{prop}[Codacci's equation]
+    $D_aK_{bc}-D_b K_{ac}=h_a{}^d h_b{}^e h_c{}^f n^a R_{defg}.$
+\end{prop}
+The proof of Codacci's equation is homework but simple compared to Gauss's equation.
+\begin{lem}
+    $D_a K^a{}_b-D_b K = h_b{}^c R_{cd} n^d$.
+    This is sometimes referred to as the Codacci equation, though we will call it the contracted Codacci equation (if we refer to it by name at all).
+\end{lem}
+
+\subsection*{The constraint equations} We now have several definitions and identities. What are they good for? Assume the hypersurface $\Sigma$ is spacelike, with a timelike normal $n^a$. The Einstein equation is just
+\begin{equation*}
+    R_{ab}-\frac{R}{2}g_{ab}\equiv G_{ab}=8\pi T_{ab}.
+\end{equation*}
+We're going to contract it with $n^a n^b$. Using the same notation as before, the Einstein equation takes the form
+\begin{equation}\label{hamiltonianconstraint}
+    R'-K^{ab}K_{ab} +K^2 = 16\pi \rho.
+\end{equation}
+A priori, we might have thought that we had two free choices for our initial conditions on $\Sigma$-- we could have chosen a metric on $\Sigma$ and also an extrinsic curvature (like a first derivative of the metric moving off of $\Sigma$). But in fact the choice is not entirely free.
+
+The equation \ref{hamiltonianconstraint} is known as the \term{Hamiltonian constraint}. Contracting with $n^a$ and projecting with $h$ gives us instead
+\begin{equation}
+    D_b K^b{}_a - D_a K = 8\pi h_a{}^b T_{bc} n^c,
+\end{equation}
+which is sometimes called the momentum constraint.%
+    \footnote{It's diffeomorphism invariance that gives us this constraint, analogous to the constraint on trying to solve QED in Coulomb gauge.}
+    
+\begin{thm}[Choquet-Bruhat and Geroch (1969]
+    Let $(\Sigma, h, K)$ be initial data satisfying the vacuum Hamiltonian and momentum constraints ($T_{ab}=0$). Then there exists a unique (up to diffeomorphism) spacetime $(\cM, g_{ab})$ called the maximal Cauchy development of $(\Sigma,h,K)$ such that
+    \begin{enumerate}
+        \item[(i)] $(\cM,g)$ satisfies the Einstein equation,
+        \item[(ii)] $(\cM, g)$ is globally hyperbolic with Cauchy surface $\Sigma$,
+        \item[(iii)] the induced metric and the extrinsic curvature of $\Sigma$ are $h$ and $K$, respectively,
+        \item[(iv)] and any other spacetime satsfying (i), (ii), and (iii) is isometric to a subset of $(\cM,g)$.
+    \end{enumerate}
+\end{thm}
+
+Analogous conditions exist for matter that obeys reasonable energy conditions. However, \emph{it is possible that the maximal Cauchy development is extendible.} In that case, the region of the manifold in the complement of the maximal Cauchy development is not unique. Physics is not predictable outside the maximal Cauchy development, and the boundary of this region is called a \term{Cauchy horizon.} Note that in order to avoid trivial Cauchy horizons from poor choices of $\Sigma$, we require the initial data to be inextendible.
+
+A final note. Look at the Schwarzschild solution with negative $M$, such that the line element is
+\begin{equation}
+    ds^2=-\paren{1+\frac{2|M|}{r}}dt^2 +\frac{dr^2}{1+\frac{2|M|}{r}}+r^2 d\Omega_2^2.
+\end{equation}
+But if we take any $t=0$ surface, it is impossible for us to avoid the $r=0$ singularity. Our initial data should not be singular! Look at outgoing geodesics,
+\begin{equation}
+    \frac{dt}{dr}=\frac{1}{1+\frac{2|M|}{r}} \implies t\simeq t_0 +\frac{r^2}{4|M|}.
+\end{equation}
+This tells us that a Cauchy horizon has appeared, and this one we cannot avoid by picking a different Cauchy surface.

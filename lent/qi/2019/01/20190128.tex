@@ -59,7 +59,7 @@ Shannon's theorem tells us that the capacity $C(\mathcal{N})$ (i.e. the supremum
 
 As a quick note, the input and output alphabets need not be of equal size. Consider the \term{binary erasure channel}, which transmits the input with probability $1-p$ and erases the input with probability $p$. Thus $J_X=\set{0,1}$ and $J_Y=\set{0,1,e}$.
 
-\input{lent/qi/2019/01/tikz/20190128_tikzbinaryerasure.tex}
+\input{2019/01/tikz/20190128_tikzbinaryerasure.tex}
 
 Recall the intuitive picture of the theorem. Shannon realized that for certain codewords, their images after applying the channel map $\mathcal{N}^n$ will represent disjoint subsets in $J_Y^n$ in the asymptotic limit. The maximal rate is then the number of codewords with this property we can choose divided by $n$ the codeword length, or equivalently the number of disjoint subsets we can pack into $J_Y^n$.
 
@@ -79,12 +79,14 @@ Note that this theorem \emph{does not} translate directly to the quantum case. T
     
 \subsection*{QIT preliminaries} Consider a quantum system $A$. Its states are described by a Hilbert space $\cH_A$, where we will take $\dim H$ to be finite. That is, a finite-dimensional Hilbert space is a complex inner product space, i.e. a set with a vector space structure over the field $\CC$ equipped with an inner product $(\cdot,\cdot):\cH \times \cH \to \CC$.
 
-An inner product is a bilinear function obeying the following properties:
-\begin{itemize}
-    \item $(v,v')=(v',v)^* \forall v,v' \in \cH$
-    \item $(v,av')=a(v,v')$ and $(v,v_1+v_2)=(v,v_1)+(v,v_2)$.
-    \item $(v,v)\geq 0$  (positive semidefinite), with equality when $v=0.$
-\end{itemize}
+\begin{defn}
+    An \term{inner product} is a bilinear function obeying the following properties:
+    \begin{itemize}
+        \item $(v,v')=(v',v)^* \,\forall v,v' \in \cH$
+        \item $(v,av')=a(v,v')$ and $(v,v_1+v_2)=(v,v_1)+(v,v_2)$.
+        \item $(v,v)\geq 0$  (positive semidefinite), with equality when $v=0.$
+    \end{itemize}
+\end{defn}
 The inner product induces a norm on $\cH$, defined
 \begin{equation}
     ||v||=\sqrt{(v,v)}, \cH \to \RR.
@@ -93,7 +95,10 @@ The norm defines a distance between two vectors,
 \begin{equation}
     d(v,v')=||v-v'||,
 \end{equation}
-which has the properties of being symmetric, with $d(v,v')=0$ iff $v=v'$, and obeying the triangle inequality, $d(u,v) \leq d(u,v') + d(v,v').$
+which has the properties of being symmetric, with $d(v,v')=0$ iff $v=v'$, and obeying the triangle inequality, 
+\begin{equation}
+    d(u,v) \leq d(u,v') + d(v,v').
+\end{equation}
 
 The Cauchy-Schwarz inequality also holds, i.e.
 \begin{equation}

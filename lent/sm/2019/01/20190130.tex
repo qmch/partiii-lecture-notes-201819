@@ -1,0 +1,94 @@
+This lecture, we're going to finish our discussion of time reversal symmetry, culminating in the CPT theorem next lecture.
+
+\subsection*{Dirac field} The operator $\hat T$ flips the sign of the angular momentum ($\vec r \times \vec p$). Therefore the creation and annihilation operators can be taken to transform as
+\begin{align}
+    \hat T b^s(p) \hat T^{-1} &= \eta_T (-1)^{\frac{1}{2} - s} b^{-s} (p_T)\\
+    \hat T d^{s\dagger}(p) \hat T^{-1} &= \eta_T (-1)^{\frac{1}{2} - s} d^{-s \dagger} (p_T).
+\end{align}
+Since $s$ takes values $\pm 1/2$, this just says that the spin-up and spin-down states pick up a relative minus sign. It can be shown that the plane wave solutions themselves transform as
+\begin{align}
+    (-1)^{1/2-s}u^{-s*} (p_T)&=-B u^s(p)\label{planewavetsymm1}\\
+    (-1)^{1/2-s}v^{-s*} (p_T)&=-B v^s(p)\label{planewavetsymm2}
+\end{align}
+where
+\begin{equation*}
+    B\equiv C^{-1}\gamma^5 = \begin{pmatrix}
+        i\sigma^2 & 0\\
+        0 & i\sigma^2
+    \end{pmatrix}.
+\end{equation*}
+Then
+\begin{equation}
+    \hat T \psi(x) \hat T^{-1} = \eta_T \sum_{p,s} (-1)^{\frac{1}{2} -s}\bkt{b^{-s}(p_T)u^{s*}(p) e^{ip\cdot x}+d^{-s\dagger}(p_T)v^{s*}(p) e^{-ip\cdot x}}.
+\end{equation}
+We can relabel $s$ to $-s$ in order to get the spinor indices on $b$ and $d^\dagger$ back to $s$. By playing our usual game of relabeling $p$ and $p_T$ and then changing $p_T \cdot x= -p \cdot x_T,$ we get
+\begin{align*}
+    \hat T \psi(x) \hat T^{-1} &= \eta_T \sum_{p,s} (-1)^{\frac{1}{2} -s+1}\bkt{b^{s}(p_T)u^{-s*}(p) e^{-ip\cdot x_T}+d^{s\dagger}(p_T)v^{-s*}(p) e^{+ip\cdot x_T}}\\
+    &= \eta_T B \psi(x_T),
+\end{align*}
+where this final result has come from applying \ref{planewavetsymm1}-\ref{planewavetsymm2}. Similarly,
+\begin{equation}
+    \hat T \bar \psi(x) \hat T^{-1} = \eta_T^* \bar \psi(x_T) B^{-1}.
+\end{equation}
+
+What about our bilinears? 
+A quick aside: we can show that $B^{-1} \gamma^{0*} B= \gamma^0, B^{-1}\gamma^{i*} B = -\gamma^i$, which tells us that in general 
+\begin{equation}
+    B^{-1}\gamma^{\mu *} B = -\mathbb{T}^\mu{}_\nu \gamma^\nu.
+\end{equation}
+Using the previous computations, we find that
+\begin{align*}
+    \hat T \bar \psi(x) \psi(x) \hat T^{-1} &= \bar \psi(x_T) \psi (x_T)\\
+    \hat T \bar \psi(x) \gamma^\mu \psi(x) \hat T^{-1} &= \bar \psi(x_T) B^{-1} \gamma^{\mu*} B \psi (x_T)\\
+        &= -\mathbb{T}^\mu{}_\nu \bar \psi(x_T) \gamma^\nu \psi(\gamma_T)
+\end{align*}
+Note that $\mu=0$ has the interpretation of a charge density, while $\mu=i$ has the interpretation of a current density.
+
+\subsection*{Scattering S-matrix}
+From Quantum Field Theory, we recall that the $S$-matrix relates initial and final states by
+\begin{equation*}
+    \bra{p_1,p_2,\ldots}S \ket{k_A,k_B,\ldots}={}_\text{out}\braket{p_1,p_2,\ldots}{k_A,k_B,\ldots}_{in},
+\end{equation*}
+where the RHS quantities are asymptotic out and in states. We can expand this in terms of time evolution, i.e.
+\begin{equation*}
+    \bra{p_1,p_2,\ldots}S \ket{k_A,k_B,\ldots} = \lim_{T\to\infty} \bra{p_1,p_2,\ldots} \mathcal{T} e^{-i\int_{-T}^T V(t)dt} \ket{k_A,k_B,\ldots}
+\end{equation*}
+where the $\mathcal{T}$ here indicates time-ordering and $V(t)=-\int d^3x \cL_I (x)$ is the potential energy term.
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{c|c|c|c}
+         & $\hat P\ldots \hat P^{-1}$ & $\hat C \ldots \hat C^{-1}$ & $\hat T \ldots \hat T^{-1}$ \\ \hline
+         $\cL_I(x)$ & $\cL_I(x_P)$ & $\cL_I(x)$ & $\cL_I(x_T)$\\
+         $V(t)$ & $V(t)$ & $V(t)$ & $V(-t)$\\
+         $S$ & $S$ & $S$ & ?
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:qedsymmetries}
+\end{table}
+For the QED Lagrangian $\cL_I(x)=-e \bar \psi(x) \gamma^\mu A_\mu (x) \psi(x)$, we get the results in Table \ref{tab:qedsymmetries}. What happens to the time-ordered exponential in $S$ under time reversal, though?
+\begin{equation}
+    S=\sum_{n=0}^\infty (-i)^n \int_{-\infty}^\infty dt_1 \int_{-\infty}^{t_1}dt_2 \ldots \int_{-\infty}^{t_{n-1}} dt_n V(t_1) V(t_2)\ldots V(t_n),
+\end{equation}
+so then
+\begin{equation}
+    S_T\equiv \hat T S \hat T^{-1} =\sum_{n=0}^\infty (+i)^n \int_{-\infty}^\infty dt_1 \int_{-\infty}^{t_1}dt_2 \ldots \int_{-\infty}^{t_{n-1}} dt_n V(-t_1) V(-t_2)\ldots V(-t_n).
+\end{equation}
+That is, time reversal has switched the sign on $t$ in all the potential terms, and we have picked up factors of $i$ because $\hat T$ is anti-unitary. Under the substitution $\tau_i = -t_{n+1-i}$, this string of integrals becomes
+\begin{equation*}
+    \int_{+\infty}^{-\infty} (-d\tau_n) \int_{+\infty}^{-t_1} (-d\tau_{n-1}) \ldots \int_{+\infty}^{-t_{n-1}} (-d\tau_1) V(\tau_n) V(\tau_{n-1})\ldots V(\tau_1).
+\end{equation*}
+Switching the limits of integration, we can get rid of all the minus signs. Finally, we relabel $-t_1=\tau_n, \ldots, -t_{n-1}=\tau_2$ to find our integrals become
+\begin{equation*}
+    \int_{-\infty}^\infty d\tau_n \int_{\tau_n}^\infty d\tau_{n-1} \ldots \int_{\tau_2}^\infty d\tau_1.
+\end{equation*}
+Recognizing that (geometrically, for example) $\int_{-\infty}^\infty \int_{\tau_n}^\infty d\tau_{n-1}=\int_{-\infty}^\infty d\tau_{n-1} \int_{-\infty}^{\tau_{n-1}}d\tau_n$, we can put everything back in the right order in our new $\tau$ variables and find that
+\begin{equation}
+    S_T = \sum_{n=0}^\infty (+1)^n \int_{-\infty}^\infty d\tau_1 \int_{-\infty}^{\tau_1}d\tau_2 \ldots \int_{-\infty}^{\tau_{n-1}} d\tau_n V(\tau_n) V(\tau_{n-1})\ldots V(\tau_1).
+\end{equation}
+By comparing, we see that
+\begin{align*}
+    S^\dagger &= \sum_{n=0}^\infty (+1)^n \int_{-\infty}^\infty dt_1 \int_{-\infty}^{t_1}dt_2 \ldots \int_{-\infty}^{t_{n-1}} dt_n \bkt{V(t_1) V(t_2)\ldots V(t_n)}^\dagger\\
+    &=\sum_{n=0}^\infty (+1)^n \int_{-\infty}^\infty dt_1 \int_{-\infty}^{t_1}dt_2 \ldots \int_{-\infty}^{t_{n-1}} dt_n \bkt{V(t_n) V(t_{n-1})\ldots V(t_1)},
+\end{align*}
+so we conclude that $S_T=S^\dagger$. Conside
