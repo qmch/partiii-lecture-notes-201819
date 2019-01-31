@@ -49,6 +49,12 @@ latexmk -pdf sm-notes-partiii.tex
 latexmk -c
 mv sm-notes-partiii.pdf ../../pdfs
 
+#supersymmetry
+cd ../susy
+latexmk -pdf susy-notes-partiii.tex
+latexmk -c
+mv susy-notes-partiii.pdf ../../pdfs
+
 #and string theory
 cd ../str
 latexmk -pdf str-notes-partiii.tex
