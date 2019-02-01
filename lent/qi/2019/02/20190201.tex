@@ -1,0 +1,148 @@
+Last time, we introduced the density matrix formulation of a statistical ensemble of states. For some arbitrary set of states $\set{\ket{i}},$ we describe a statistical mixture by
+\begin{equation}
+    \set{p_i,\ket{\phi_i}}_{i=1}^m \leftrightarrow \rho =\sum_{i=1}^m p_i \ket{\phi_i}\bra{\phi_i}.
+\end{equation}
+These $\ket{\phi_i}$s need not be mutually orthogonal, though the $p_i$s must form a probability distribution. In particular, if none of the $p_i$s are equal to $1$, then the state is called a mixed state. Conversely, if one of the $p_i$s are equal to $1$, then we call it a pure state.
+
+We introduced the density matrix because we were interested in open (interacting) quantum systems. Let's take a minute to discuss the structure of composite systems. Suppose we have systems $A,B$ with corresponding Hilbert spaces $\cH_A,\cH_B$. Then the composite system is the tensor product space
+\begin{equation}
+    \cH_{AB}=\cH_{A} \otimes \cH_B.
+\end{equation}
+For instance, if $\cH_A,\cH_b \simeq \CC^2,$ then for vectors
+\begin{equation*}
+    \ket{v_A}=\begin{pmatrix} a_1 \\ a_2
+    \end{pmatrix},
+    \ket{v_B}=\begin{pmatrix} b_1 \\ b_2
+    \end{pmatrix}
+\end{equation*}
+then their tensor product is
+\begin{equation*}
+    \ket{v_A}\otimes \ket{v_B} \begin{pmatrix} a_1b_1 \\ a_1 b_2 \\ a_2b_1 \\ a_2b_2
+    \end{pmatrix}.
+\end{equation*}
+
+More generally if $\dim \cH_A =m, \dim\cH_B=n$, then the tensor product of a matrix $A$ with $m\times m$ entries $a_{ij}$ and a matrix $B$ is a new $mn\times mn$ matrix where each of the entries $a_{ij}$ in $A$ are replaced by an $m\times m$ matrix, $a_{ij} B$.
+
+In particular an orthonormal basis can be constructed by simply taking tensor products of the bases for each of the individual Hilbert spaces.
+
+\subsection*{States and the density matrix}
+Suppose we have the density matrix for a state in a composite system,
+\begin{equation}
+    \rho_{AB}=\sum_{i,j,\alpha,\beta} a_{i\alpha,j\beta}(\ket{i_A}\otimes \ket{\alpha_B})(\bra{j_A}\otimes \bra{\beta_B}).
+\end{equation}
+Then the state of system $A$ is described by the \term{partial trace} over the subsystem $B$:
+\begin{align}
+    \rho_A &= \Tr_B \rho_{AB}\\
+    &=\Tr_B \sum_{i,j,\alpha,\beta} a_{i\alpha,j\beta}(\ket{i_A}\otimes \ket{\alpha_B})(\bra{j_A}\otimes \bra{\beta_B})\\
+    &= \sum a_{i\alpha,j\beta}\ket{i_A}\bra{j_A} (\Tr\ket{\alpha_B}\bra{\beta_B}).
+\end{align}
+Note that $\Tr \ket{\alpha_B}\bra{\beta_B}=\sum_{\gamma_B} \braket{\gamma_B}{\alpha_B}\braket{\beta_B}{\gamma_B}=\delta_{\alpha_\beta},$ and similarly, $\Tr\ket{i}\bra{j}=\braket{i}{j}=\delta_{ij}.$
+
+We conclude that the density matrix after taking the partial trace is
+\begin{align}
+    \rho_A =\Tr_B \rho_{AB} = \sum_{i\alpha j\beta} a_{i\alpha,j\beta}\ket{i_A}\bra{j_A}\delta_{\alpha\beta}\\
+    &=\sum-{ij\alpha} a_{i\alpha,j\alpha} \ket{i_A}\bra{j_A} \in B(\cH_A).
+\end{align}
+One can then show that $\rho_A \geq 0$ (is positive semi-definite) and $\Tr \rho_A=0$, so $\rho_A$ is in fact a density matrix. We call it the \term{reduced density matrix} or a reduced state.
+
+Recall that the ordinary trace is cyclic, $\Tr(ABC)=\Tr(CAB)$. However, the partial trace $\Tr_A$ is \emph{not} in  general cyclic. It may be an interesting exercise to try to figure out when the partial trace is cyclic. It's also easy to prove that the complete trace is given by taking the partial traces,
+\begin{equation}
+    \Tr(\cdot)=\Tr_A \Tr_B(\cdot) = \Tr_B \Tr_A(\cdot).
+\end{equation}
+
+Now let us consider an observable $M_{AB} \in B(\cH_A \otimes \cH_B)$. In particular, let
+\begin{equation}
+    M_{AB}=M_A \otimes I_B.
+\end{equation}
+The expectation value of this observable is given by
+\begin{align*}
+    \avg{M_{AB}}_{\rho_{AB}} &= \Tr (M_{AB} \rho_{AB})\\
+    &= \Tr((M_A\otimes I_B) \rho_{AB}))\\
+    &= \Tr_A \Tr_B ((M_A \otimes I_B)\rho_{AB})\\
+    &= \Tr(M_A \rho_A).
+\end{align*}
+For this reason, the partial trace is often defined such that for any $M_{AB}$ of this form, $\Tr_B(M_{AB}\rho_{AB})=\Tr(M_a \rho_A).$
+
+\begin{exm}
+Consider a system with two qubits, so $\cH = \CC^2 \otimes \CC^2$. The full denisty matrix is
+\begin{equation}
+    \rho_{AB}=\rho_1 \otimes \rho_2,
+\end{equation}
+where
+\begin{equation}
+    \rho_A = \Tr_B \rho_{AB}=\rho_1, \quad \rho_B = \Tr_A \rho_{AB}=\rho_2.
+\end{equation}
+\end{exm}
+
+\begin{exm}
+    Consider the same Hilbert space as before, but consider the system in a pure state,
+    \begin{equation}
+        \ket{\phi_{AB}^+}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}).
+    \end{equation}
+    Here, we're using a fairly intuitive shorthand where $\ket{00}=\ket{0_A}\otimes \ket{0_B}$. Then the density matrix is
+    \begin{equation}
+        \rho = \ket{\phi_{AB}^+}\bra{\phi_{AB}^+} = \frac{1}{2} \bkt{\ket{0_A}\bra{0_A}\otimes \ket{0_B}\bra{0_B}+\ldots}.
+    \end{equation}
+    Now we can check as an exercise that $\rho_A$ takes on a simple form--
+    \begin{equation}
+        \rho_A =\Tr_B \rho_{AB} = \frac{1}{2}\bkt{\ket{0_A}\bra{0_A}+\ket{1_A}\bra{1_A}}=\frac{I_A}{2},
+    \end{equation}
+    and similarly
+    \begin{equation}
+        \rho_B = \Tr_A \rho_{AB}=\frac{I_B}{2}.
+    \end{equation}
+    This should strike us as a bit strange-- after taking the partial traces, we just get the identity matrix of each subsystem, i.e. a completely mixed state. In this way, we have information about the complete system but no information about the subsystems. This is the purely quantum phenomenon we call \term{entanglement}.
+\end{exm}
+
+\begin{defn}
+    To state this more precisely, for a state $\ket{\psi_{AB}}$, if there exist $\ket{\psi_a},\ket{\psi_b}$ such that
+    \begin{equation}
+        \ket{\psi_{AB}}=\ket{\psi_A}\otimes \ket{\psi_B},
+    \end{equation}
+    then we call $\ket{\psi_{AB}}$ a \term{product state}. Otherwise, it is \term{entangled}.
+\end{defn}
+
+In fact, there are four entangled states which are special:
+\begin{gather}
+    \ket{\phi^\pm_{AB}}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})\\
+    \ket{\psi^\pm_{AB}} = \frac{1}{\sqrt{2}}(\ket{01}\pm \ket{10}).
+\end{gather}
+These are the so-called \term{maximally entangled} states, i.e. bipartite pure states such that their reduced states are completely mixed,
+\begin{equation}
+    \rho_{AB}=\ket{\psi_{AB}}\bra{\psi_{AB}}\text{ such that }\rho_B=I_B/2.
+\end{equation}
+
+We then say that for a mixed state, if its density matrix can be written
+\begin{equation}
+    \rho_{AB} = \sum p_i \omega_i^A \otimes \sigma_i^B,
+\end{equation}
+we say it is \term{separable}. Otherwise, it is entangled.
+
+Last time, we also referred to the Pauli matrices $\sigma_0,\sigma_x,\sigma_y,\sigma_z$, and remakred that their real span (i.e. sums with real coefficients) is then the set of $2\times 2$ self-adjoint matrices,
+\begin{equation*}
+    A=x_0\sigma_0 +\vec x \cdot \gv \sigma
+\end{equation*}
+where $x_0,x_1,x_2,x_3\in \RR$. If $A=\rho$ a density matrix, then $\Tr \rho=1 \implies x_0=1/2$ since $\rho=I/2 + \vec x \cdot \gv \sigma/2$, and the $\sigma_i$ are traceless.
+
+Next lecture, we will talk about three concepts:
+\begin{itemize}
+    \item Schmidt decomposition
+    \item Purification
+    \item No-cloning theorem
+\end{itemize}
+We'll briefly state the first of these: for any state $|ket{\psi_{AB}}\in \cH_A \otimes \cH_B$, then there exists an orthonormal basis
+\begin{equation}
+    \set{\ket{i_A}}_{i=1}^{d_A},\set{\ket{i_B}}_{i=1}^{d_B}
+\end{equation}
+such that
+\begin{equation}
+    \ket{\psi_{AB}}=\sum_{i=1}^{\min\set{d_A,d_B}}\lambda_i \ket{i_A}\otimes \ket{i_B},
+\end{equation}
+with $\lambda_i \geq 0, \sum \lambda_i^2 = 1$. Then the density matrix is
+\begin{equation}
+    \rho_{AB}=\ket{\psi_{AB}}\bra{\psi_{AB}} = \sum \lambda_i \lambda_j \ket{i_A}\bra{j_A}\otimes \ket{i_B} \bra{j_B}.
+\end{equation}
+Taking the partial trace over $B$, we get a $\delta_{ij}$ and therefore find that
+\begin{equation}
+    \rho_A= \sum_{i=1}^{\min(d_A,d_B)} \lambda_i^2 \ket{i_A}\bra{i_A}.
+\end{equation}

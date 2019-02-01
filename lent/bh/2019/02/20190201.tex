@@ -1,0 +1,117 @@
+\begin{quote}
+    \textit{``Look at this word, the most naughty word in mathematics. `Generically.'{}''--Jorge Santos}
+\end{quote}
+
+Last time, we formulated the initial value problem in general relativity. We said that some initial data is bad-- we require that it is at a minimum inextendible and geodesically complete. However, something else bad can happen. See the figure:
+%draw the figure
+if our initial data is prescribed on an asymptotically null surface, then it could be our domain of dependence is cut off by a light cone. Therefore, we requre that the initial data is also \emph{asymptotically flat}. We haven't yet defined what this means, though.
+
+\begin{defn}
+    An initial data set $(\Sigma,h,K)$ has an asymptotically flat end if
+    \begin{itemize}
+        \item[(i)] $\Sigma$ is diffeomorphic to $\RR^3 \setminus B$, where $B$ is a closed ball centered on the origin in $\RR^3$,
+        \item[(ii)] If we pull back the $\RR^3$ coordinates to define coordinates $x^i$ on $\Sigma$, then $h_{ij}=\delta_{ij}+O(1/r)$ (the Euclidean metric plus $1/r$ terms) and $K_{ij}=O(1/r^2)$ as $r\to +\infty$, where $r=\sqrt{x^i x_i}$.
+        \item[(iii)] Derivatives of the latter expression also hold, e.g.
+        \begin{equation*}
+            \p_k h_{ij}=O(1/r^2).
+        \end{equation*}
+    \end{itemize}
+\end{defn}
+\begin{defn}
+    An initial data set is asymptotically flat with $N$ ends if it is the union of a compact set with $N$ asymptotically flat ends (e.g. the Kruskal spacetime has two asymptotically flat ends).
+\end{defn}
+%Look at this word, the most naughty word in mathematics. ``Generically.''
+Having defined our wish list for an initial data set, it would be extremely disturbing if we made this data set as nice as we like, and yet ended up with an extendible spacetime as our maximal Cauchy development. That such spacetimes do not (generically) occur is the content of the strong cosmic censorship conjecture.
+\begin{thm}
+    Let $(\Sigma,h,K)$ be a geodesically complete, asymptotically flat, initial data set for the vacuum Einstein equations. Then generically the maximal Cauchy development if the initial data is inextendible.
+\end{thm}
+This has been proved (with much work) that strong cosmic censorship is true in asymptotically flat space (i.e. Minkowski space is stable to small perturbations). It has nearly been proved (by Dafermos et al) for the Kerr black hole. And violations are known for Reissner-Nordstr\"om solution in de Sitter space.
+
+\subsection*{Singularity theorems}
+
+Now, in Newtonian gravity the formation of singularities is generally avoidable. If we drop a bit of matter in a Newtonian potential, it will fall straight to $r=0.$ But if we add a bit of angular momentum, the angular momentum will prevent the matter from falling straight in, and so our chunk of stuff cannot actually hit the $r=0$ singularity. This is \emph{not} true in general relativity.
+
+It is the focus of an amazing set of theorems originally due to Penrose, and later generalized in conjunction with Hawking,%
+    \footnote{It's kind of great to learn about black holes from a guy who's on a first-name basis with Stephen Hawking.}
+that the formation of singularities is generic in general relativity given a set of very reasonable conditions.%
+    \footnote{I gave a talk on this last term!}
+    
+\begin{defn}
+    A \term{null hypersurface} is a hypersurface whose normal is everywhere null. For example, take the metric
+    \begin{equation}
+        g^{\mu\nu}=\begin{bmatrix}
+            0 & 1 &0 & 0\\
+            1& 1-\frac{2M}{r} & 0 &0\\
+            0& 0& 1/r^2 & 0\\
+            0 & 0 & 0 & 1
+        \end{bmatrix}.
+    \end{equation}
+    The $1$-form $n=dr$ is normal to the surfaces of constant $\Omega$. Thus note that
+    \begin{equation}
+        n^2 = g^{\mu\nu}n_\mu n_\nu=g^{rr}=\paren{1-\frac{2M}{r}}.
+    \end{equation}
+    So the surface $r=2M$ is a null hypersurface.
+\end{defn}
+
+Now let $n_a$ be normal to a null hypersurface $\mathcal{N}$. Then any nonzero vector $X^a$ tangent to the hypersufrace obeys
+\begin{equation}
+    X^a n_a =0.
+\end{equation}
+But in particular we could have $X^a= n_a$, which implies that either $X^a$ is spacelike or $X^a$ is parallel to $n^a$. In partuclar, note that $n^a$ is tangent to the hypersurface. Hence on $\mathcal{N}$, the integral curves of $n^a$ lie within $\mathcal{N}$.
+
+\begin{prop}
+    The integral curves of $n^a$ are null geodesics. These are called the generators of $\mathcal{N}$.
+\end{prop}
+\begin{proof}
+    Let $\mathcal{N}$ be given by an equation $f=$constant for some function $f$ with $df\neq 0$. $df$ is everywhere normal to $\mathcal{N}$, so we must have $n=h \,df$. Define $N\equiv df$. Since $\mathcal{N}$ is null, we must have
+    \begin{equation}
+        N_a N^a =0\text{ on }\mathcal{N}.
+    \end{equation}
+    Hence the function $(N^a N_a)$ is constant on $\mathcal{N}$. This implies that the gradient of this function is normal to $\mathcal{N}$. Thus
+    \begin{equation}
+        \nabla_a(N_b N^b)|_{\mathcal{N}}=2\alpha N_a
+    \end{equation}
+    for some proportionality constant $\alpha$. Now, we also have that
+    \begin{equation*}
+        \nabla_a N_a = \nabla_a \nabla_b f = \nabla_b \nabla_a f =\nabla_b N_a,
+    \end{equation*}
+    where we have used the assumption that our spacetime is torsion-free. But then we conclude that
+    \begin{equation}
+        N^b \nabla_b N_a|_{\mathcal{N}}=\alpha N_a,
+    \end{equation}
+    which tells us that $N_a$ is a non-affinely parametrized geodesic. We conclude that the integral curves are null geodesics.
+\end{proof}
+
+\subsection*{Geodesic deviation} We saw this last term in \emph{General Relativity}-- for ``nearby'' geodesics, we can define relative ``velocities'' and ``accelerations'' leading to tidal forces. We'll make this notion more precise now.
+\begin{defn}
+    A $1$-parameter family of geodesics is a map $\gamma:I\times I'\to \cM$, where $I,I'$ are both open intervals in $\RR$, such that
+    \begin{itemize}
+        \item[(i)] for fixed $s$, $\gamma(s,\lambda)$ is a geodesic with affine parameter $\lambda$,
+        \item[(ii)] the map $(s,\lambda)\mapsto \gamma(s,\lambda)$ is smooth and one-to-one with smooth inverse. Thus $\gamma$ defines a surface in $\cM$.
+    \end{itemize}
+\end{defn}
+
+Let $U^a$ be the tangent vector to the geodesics and $S^a$ be the vector tangent to curves of constant $\lambda$ (i.e. takes us between neighboring geodesics). In a chart $x^\mu$, the geodesics are specified in coordinates $x^\mu(s,\lambda)$ where $S^\mu=\P{x^\mu}{s}$. Hence
+\begin{equation*}
+    x^\mu(s+\delta s,\lambda)=x^\mu(s,\lambda)+\delta s S^\mu + O(\delta s^2),
+\end{equation*}
+where $S^\mu$ points towards the next geodesic at $s+\delta s$. For this reason, we call $S^\mu$ the \term{deviation vector}.
+
+On the surface (i.e. the image of $\gamma$), we can use $s$ and $\lambda$ coordinates. This gives a coordinate chart in which
+\begin{equation}
+    S^\mu = \paren{\P{}{s}}^\mu, \quad U^\mu =\paren{\P{}{\lambda}}^\mu
+\end{equation}
+on the surface. But in this coordinate system, these are just partial derivatives, so they automatically commute, and the commutator is covariant, so $S^a$ and $U^a$ commute in general, independent of basis. Thus
+\begin{equation}
+    0=[S,U] \iff U^b \nabla_b S^a = S^b \nabla_b U^a.
+\end{equation}
+This implies that
+\begin{equation}\label{jacobifields}
+    U^c \nabla_c (U^b \nabla_b S^a)=R^a{}_{bcd} U^b U^c S^d.
+\end{equation}
+Solutions of \ref{jacobifields} are called \term{Jacobi fields}.
+
+\subsection*{Geodesic congruence} We'll introduce a final definition for today.
+\begin{defn}
+    Let $U\subset \cM$ be open. A \term{geodesic congruence} on $U$ is a family of geodesics such that exactly one geodesic passes through each $p\in U$.
+\end{defn}

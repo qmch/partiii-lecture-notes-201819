@@ -137,7 +137,9 @@ A pure state will have $\rho^2 = \rho$, so we can define the \term{purity} of a 
 \begin{equation}
     \rho = I/d=\frac{1}{d} \sum_{i=1}^d \ket{e_i} \bra{e_i},
 \end{equation}
-such that a completely mixed state has purity $1/d$ (where we get a factor of $d$ from taking the trace of $I$).
+such that a completely mixed state has purity $1/d$ (where we get a factor of $d$ from taking the trace of $I$).%
+    \footnote{Explicitly, the trace is $\Tr \rho^2 = \sum_{i=1}^d \sum_{j=1}^d \frac{1}{d^2} \braket{e_j}{e_i}\braket{e_i}{e_j}=\frac{1}{d^2}\sum_{i=1}^d \sum_{j=1}^d \delta_{ij} \delta_{ij} = \frac{1}{d^2}\sum_{i=1}^d 1 = 1/d.$
+    }
 
 In classical probability, we remark that the convex set of probability distributions forms a \term{simplex}.
 

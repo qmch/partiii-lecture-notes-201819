@@ -1,0 +1,60 @@
+\subsection*{S-matrix, continued} Recall that we computed $S_T \equiv \hat T S \hat T^{-1}=S^\dagger$, so equivalently $S=S_T^\dagger$. Consider time-reversed states
+\begin{equation}
+    \ket{\xi_T}=\hat T \ket{\xi}, \quad \ket{\eta_T} = \hat T \ket{\eta}.
+\end{equation}
+The the inner product is
+\begin{align*}
+    \bra{\eta_T}S \ket{\xi_T} &= (\hat T \eta, S_T^\dagger \hat T \xi)\\
+        &= (\hat T \eta, \hat T S^\dagger \xi)\\
+        &=(\eta,S^\dagger \xi)^*\\
+        &=(S^\dagger \xi, \eta)\\
+        &=(\xi,S \eta)\\
+        &= \bra{\xi}S \ket{\eta}.
+\end{align*}
+Therefore if $\hat T \cL_I(x) \hat T^{-1} = \cL (x_T)$, $S$ matrix elements are equal for time-reversed processes where the initial and final states are swapped.
+
+\subsection*{CPT theorem}
+\begin{thm}
+    Any Lorentz-invariant Lagrangian $\cL$ with a hermitian Hamiltonian should be invariant under the product of $P, C$, and $T.$
+\end{thm}
+We won't prove this theorem, but details are in Streater and Wightman, ``PCT, spin and statistics, and all that'' (1989). All observations suggest that CPT is respected in nature. This implies that a particle (positive charge, spin up) propagating forward in time cannot be distinguished from an antiparticle (negative charge, spin down) propagating backwards in time.
+
+\subsection*{Baryogenesis} \term{Baryogenesis} is the generation of a matter-antimatter asymmetry in the universe (i.e. the question of why there is more matter than antimatter in the universe today). According to Sakharov, there are three necessary conditions for baryogenesis:
+\begin{enumerate}
+    \item Baryon number violation, i.e. processes like $X\to Y+B$ where $B$ represents excess baryons (or leptogenesis: lepton number asymmetry $\to$ baryon no. asymmetry through $B+L$ violation)
+    \item Non-equilibrium (otherwise $\Gamma(Y+B\to X)=\Gamma(x\to Y+B)$, where $\Gamma$ is the rate of the process)
+    \item $C$ and $CP$ violation, otherwise
+    \begin{equation*}
+        \frac{dB}{dt} \propto \Gamma(X\to Y+B) -\Gamma(\bar X \to \bar Y +\bar B)=0
+    \end{equation*}
+    under $C$-symmetry, and
+    \begin{equation*}
+        \Gamma(x\to n q_L)+\Gamma(x\to n q_R) = \Gamma(\bar x \to n \bar q_R)+ \Gamma(\bar x \to n \bar q_L)
+    \end{equation*}
+    under $CP$ symmetry, with $n$ some number of quarks.
+\end{enumerate}
+
+\subsection*{Spontaneous symmetry breaking (SSB)}
+Spontaneous symmetry breaking is a hidden symmetry or symmetries which are present in the Lagrangian $\cL$ but not in observables. Let us first discuss the SSB of a discrete symmetry.
+
+Consider a real scalar field $\phi(x)$ with a symmetric  potential $V(\phi)$, i.e. $V(\phi)=V(-\phi),$ with a Lagrangian
+\begin{equation}
+    \cL =\frac{1}{2} \p_\mu \phi \p^\mu \phi - V(\phi),
+\end{equation}
+and let us take $\phi^4$ theory, with
+\begin{equation}
+    V(\phi)=\frac{1}{2} m^2 \phi^2 + \frac{\lambda}{4}\phi^4, \quad \lambda >0.
+\end{equation}
+In the usual case, we take $m^2>0$ (i.e. massive scalar field). Thus $V(\phi)$ has a minimum at $\phi=0$, and we solve by considering perturbations around the state  $\phi=0$ (for small $\lambda$).
+
+However, if $m^2 <0$, then we can rewrite the potential as
+\begin{equation}
+    V(\phi)=\frac{\lambda}{4}(\phi^2-V^2)^2
+\end{equation}
+where $V\equiv \sqrt{-m^2/\lambda}$ up to an unimportant constant. Now $\phi=0$ is an \emph{unstable} vacuum and there are two degenerate vacua (minima) at $\phi=\pm V$.
+
+In the $m^2 <0$ case, we see that $\phi$ has acquired a non-zero vacuum expectation value (VEV). WLOG, let us study small excitations about the $\phi=+V$ vacuum. Thus we write $\phi(x)=V+f(x)$ in terms of a shifted field $f$. The Lagrangian in terms of $f$ is then
+\begin{equation}
+    \cL = \frac{1}{2} \p_\mu f \p^\mu f - \lambda (V^2 f^2+Vf^3 +\frac{1}{4} f^4)+\text{const}.
+\end{equation}
+We therefore see that $f$ is a scalar field with mass $m_f^2 = 2\lambda V^2 >0$. However, note that this $\cL$ is \emph{not} invariant under $f\to -f$. The $\phi\to -\phi$ symmetry which the original Lagrangian enjoyed is thus broken by the VEV of $\phi$.
