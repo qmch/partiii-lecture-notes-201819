@@ -1,0 +1,76 @@
+\subsection*{SSB of a continuous (global) symmetry} Consider a real $N$-component scalar field $\phi=(\phi_1,\phi_2,\ldots,\phi_N)^T$, with the Lagrangian
+\begin{equation}
+    \cL=\frac{1}{2}(\p_\mu \phi)\cdot (\p^\mu \phi)-V(\phi),
+\end{equation}
+where
+\begin{equation}
+    V(\phi)=\frac{1}{2}m^2 \phi^2 +\frac{\lambda}{4}\phi^4, \quad \phi^2=\phi \cdot \phi, \phi^4=(\phi^2)^2, \lambda >0.
+\end{equation}
+This Lagrangian is invariant under global $O(N)$ symmetry, $\phi \to O \phi$ where $O^TO=I$. If $m^2>0$ we can expand about the $\phi=0$ minimum, so here we'll be interested in $m^2<0$ again.
+
+In this case,
+\begin{equation}
+    V(\phi)=\frac{\lambda}{4}(\phi^2-V^2)^2
+\end{equation}
+up to an irrelevant constant factor, where $V^2=-m^2/\lambda >0$. This is alternately known as the ``sombrero,'' ``Mexican hat,'' or ``wine bottle potential.''%
+    \footnote{Savvy readers may already know this is connected to the Higgs mechanism.}
+    
+The minima of $V(\phi)$ now trace out a circle (or a sphere in higher dimensions), $\phi^2=V^2$. As before, the $\phi=0$ vacuum is unstable, so we must expand about a stable vacuum in order to study the field. WLOG we'll choose $\phi_0=(0,0,\ldots,V)^T$ (so that $V(\phi_0)=0$) and study small fluctuations about this,
+\begin{equation}
+    \phi(x)=(\pi_1(x),\pi_2(x),\ldots,V+\sigma(x))^T
+\end{equation}
+where $\pi(x)$ is a real scalar field with $N-1$ components and $\sigma(x)$ has one component.
+
+In terms of our new fields, the Lagrangian becomes
+\begin{equation}
+    \cL = \frac{1}{2} (\p_\mu \pi)\cdot (\p^\mu \pi)+\frac{1}{2}(\p^\mu\sigma)(\p_\mu \sigma)-V(\pi,\sigma).
+\end{equation}
+Our potential is now modified so that only the field $\sigma$ has a mass while the other $\pi$ fields remain massless:
+\begin{equation}
+    V(\pi,\sigma)=\frac{1}{2} m_\sigma^2 \sigma^2 + \lambda V(\sigma^2 +\pi^2)\sigma +\frac{\lambda}{4}(\sigma^2+\pi^2)^2.
+\end{equation}
+The $\sigma$ field has a mass
+\begin{equation*}
+    m_\sigma^2 =2\lambda V^2
+\end{equation*}
+as before, but the $N-1$ $\pi$ fields are massless. We also observe the that potential has a third-order term $O(\sigma^3)$, which tells us that the new Lagrangian does not have the old $\phi\to-\phi$ symmetry when expanded about a stable vacuum. The $\sigma$ field gives radial excitations in $V(\phi)$, while the $\pi$ fields are excitations in the azimuthal (angular) direction, i.e. flat directions.
+
+Let's now generalize this analysis to a symmetry group $G$ of a Lagrangian $\cL$ which is broken to a subgroup $H\subset G$ by the vacuum. We'll generally be considering normal subgroups. That is, let us transform the field $\phi\to g\phi$ with $g\in G$ in some representation, so that $\cL(\phi)=\cL(g\phi)\forall g\in G$. Thus $g$ is a symmetry of the entire Lagrangian (and therefore the action).
+
+Assume that $G$ is spontaneously broken, and hence the vacuum is not unique but a manifold%
+    \footnote{I think we basically get this for free since we are imposing an algebraic constraint on the fields of the form $f(\phi)={}$constant, and the fields without the constraint formed a manifold ($\RR^n$, $\CC^n$, etc.).}
+\begin{equation}
+    \Phi_0=\set{\phi_0: V(\phi_0)=V_{\min{}}}.
+\end{equation}
+The invariant subgroup (or stability group) $H\subset G$ is
+\begin{equation}
+    H=\set{h\in G: h\phi_0 = \phi_0}.
+\end{equation}
+That is, choose a vacuum state $\phi_0$ and consider all the elements which leave $\phi_0$ unchanged. Different vacua are related by $\phi_0'=g\phi_0$, with $\phi_0,\phi_0'\in \Phi_0$. Note that the stability groups for different vacua are isomorphic, i.e. for $\phi_0'$ the stability group is all elements $h'=ghg^{-1}$, i.e. $H'\simeq gH g^{-1}$.
+
+The group elements that map one vacuum to another are in the coset space $G/H$ and fall into the equivalence classes,
+\begin{equation}
+    g_1 \sim g_2 \text{ if }\exists \,h\in H \text{ s.t. } g_1=g_2h.
+\end{equation}
+That is, two elements of the group are equivalent if they are in the same left coset. Thus
+\begin{equation}
+    \phi_0'=g_1 \phi_0 = g_2 \phi_0 \implies g_2^{-1} g_1\in H.
+\end{equation}
+That is, this element is in the stabilizer, and so there is one equivalence class (coset) for each $\phi_0'\in \Phi_0: \Phi_0 \simeq G/H$. This is itself a group if $H$ is a normal subgroup. That is, if we quotient out by the stabilizer, we get just the elements which take us between vacua.
+
+Let's now consider Lie groups (i.e. groups with manifold structure). In the context of Lie groups, we can look at infinitesimal transformations:
+\begin{equation}
+    g\phi=\phi+\delta \phi, \quad \delta \phi = i\alpha^a t^a \phi
+\end{equation}
+where $a=1,\ldots, \dim G$, $t^a$ are the generators of the Lie algebra in the representation acting on $\phi$, and $\alpha^a$ are small parameters. The invariance of the potential under $G$ now means that $V(\phi+\delta \phi)=V(\phi)$, or expanding out,
+\begin{equation}
+    V(\phi+\delta \phi)-V(\phi)= i\alpha^a (t^a \phi)r \P{V}{\phi_r}=0
+\end{equation}
+to first order, where $r=1,2,\ldots, N$ indexes over components of $\Phi$ in its representation. If $\phi_0$ is a minimum of $V$, then by looking at the second-order terms we get
+\begin{equation}
+    V(\phi+\delta \phi)-V(\phi)= \frac{1}{2} \delta \phi_r \frac{\p^2 V}{\p \phi_r \p \phi_s}\delta \phi_s+\ldots,
+\end{equation}
+where this second derivative is defined to be the ``mass matrix,''
+\begin{equation}
+    M_{rs}^2 \equiv \frac{1}{2} \delta \phi_r \frac{\p^2 V}{\p \phi_r \p \phi_s}\delta \phi_s.
+\end{equation}
