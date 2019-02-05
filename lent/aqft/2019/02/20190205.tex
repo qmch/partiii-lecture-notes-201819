@@ -1,0 +1,131 @@
+Today we will begin our discussion of scalar field theory in the path integral formalism. Let us begin with a preliminary note that we can trivially shift time variables from $i t\to \tau$ and thereby go from a Minkowski to Euclidean metric. Thus in Minkowski (with signature $+---$) we have a Lagrangian
+\begin{equation*}
+    \cL=\frac{1}{2} \p_\mu \phi \p^\mu \phi -V(\phi)
+\end{equation*}
+(so the kinetic term has a $+$ sign) and in Euclidean signature ($++++$) we have
+\begin{equation*}
+    \cL=\frac{1}{2} \p_\mu \phi \p^\mu \phi+ V(\phi).
+\end{equation*}
+For instance, we might have some potential like $V(\phi)=\frac{1}{2} m^2 \phi^2 +sum_{n>2} \frac{1}{n!} V^{(n)} \phi^n$.
+
+Our path integral is then
+\begin{equation}
+    Z=\int \cD \phi e^{i\int dx^0 d^3x \cL}= \int \cD \phi e^{-\int dx_4 d^3x \cL},
+\end{equation}
+where we have defined $ix^0=x_4$ and work in units with $\hbar =1$.
+
+The Minkowski propagator takes the form
+\begin{equation}
+    \frac{i}{k^2-m^2+i\epsilon} = \frac{i}{(k^0)^2 -|\vec k|^2 -m^2 +i\epsilon},
+\end{equation}
+whereas in Euclidean signature we have instead
+\begin{equation}
+    \frac{1}{k^2+m^2}.
+\end{equation}
+In Euclidean signature, we do not need to move the poles since they no longer lie on the real axis.
+
+\subsection*{Generating functional}
+We have written down a free field action with a source (cf. Srednicki \textsection 8):
+\begin{equation}
+    S_0[\phi,J] = \int d^4x (\frac{1}{2} \p_\mu \phi \p^\mu \phi =\frac{1}{2} m^2 \phi^2 +J(x) \phi(x)).
+\end{equation}
+Taking the Fourier transform of the field we have
+\begin{equation}
+     \phi(x) =\int \frac{d^4k}{(2\pi)^4} e^{ikx} \tilde \phi(k).
+\end{equation}
+In terms of the Fourier transformed field, we get an action
+\begin{equation}
+    S_0[\tilde \phi, \tilde J]=\frac{1}{2} \int \frac{d^4k}{(2\pi)^4} \bkt{
+        \tilde \phi(-k)(k^2+m^2)\tilde \phi(k) + \tilde J(-k) \tilde \phi(k) + \tilde J(k) \tilde \phi(-k)
+    }.
+\end{equation}
+Our aim will be to construct a partition function $Z[J],$ integrating out $\phi$. To do this, let us rewrite our action in terms of the shifted field
+\begin{equation}
+    \tilde \chi(k)\equiv \tilde \phi(K)+\frac{\tilde J(k)}{k^2+m^2},
+\end{equation}
+completing the square. If we make this change of variables we get
+\begin{equation}
+    S_0[\tilde \phi, \tilde J] =\frac{1}{2} \int \frac{d^4k}{(2\pi)^4} \bkt{
+        \tilde \chi(-k) (k^2+m^2) \tilde \chi(k)+\frac{\tilde J(-k) \tilde J(k)}{k^2+m^2}
+    }.
+\end{equation}
+The $\chi$ path integral is just over a Gaussian. If we assume normalization such that $Z_0[0]=1$, we find that
+\begin{equation}
+    Z_0[\tilde J]=\exp \bkt{
+        -\frac {1}{2}\int \frac{d^4k}{(2\pi)^4} \frac{\tilde J(-k) \tilde J(k)}{k^2 +m^2}
+    }
+\end{equation}
+and Fourier transforming back, we have
+\begin{equation}
+    Z_0[J]= \exp \bkt{
+        -\frac{1}{2} \int d^4x d^4 x' J(x) \Delta (x-x') J(x')
+    },
+\end{equation}
+where the Feynman propagator is
+\begin{equation}
+    \Delta(x-x') \equiv \int \frac{d^4k}{(2\pi)^4} \frac{ e^{ik\cdot(x-x')}}{k^2+m^2}.
+\end{equation}
+Recall that the Feynman propagator is a Green's function of the Klein-Gordon equation, such that
+\begin{equation*}
+    (\p_x^2 +m^2)\Delta(x-x')=\delta^{(4)}(x-x'),
+\end{equation*}
+and (cf. Tong QFT \textsection 2.7.1) the Feynman propagator is also related to the time-ordered product
+\begin{equation*}
+    \Delta(x-x')=\bra{0} \mathcal{T} \phi(x) \phi(x') \ket{0}.
+\end{equation*}
+
+With these facts in mind, we observe that
+\begin{equation}
+    \bra{0} \mathcal{T} \phi(x) \phi(x') \ket{0} =\paren{-\frac{\delta}{\delta J(x)}} \paren{-\frac{\delta}{\delta J(x')}} Z_0[J]|_{J=0}.
+\end{equation}
+Here, we use the functional derivative notation that $\frac{\delta}{\delta f(x_1)}f(x_2)=\delta(x_1-x_2).$ This is naturally the continuous generalization of $\P{}{x_i}x_j = \delta_{ij}.$
+
+Similarly, the four-point function (still in free theory) is the sum of the three unique Wick contractions of the four fields,
+\begin{equation}
+    \bra{0}\mathcal{T}\phi(x_1)\phi(x_2)\phi(x_3)\phi(x_4)\ket{0} = \bkt{
+        \Delta(x_1-x_2)\Delta(x_3-x_4) + \Delta(x_1-x_3)\Delta(x_2-x_4)+\Delta(x_1-x_4)\Delta(x_2-x_3)
+    }.
+\end{equation}
+The results of our $0$-dimensional calculation apply, with the slight complication that the propagator $\Delta(x-x')$ is non-trivial.
+To complete the story, let us now turn on interactions and see what happens (cf. Srednicki \textsection 10). We write the full, exact propagator as 
+\begin{equation}
+    \gv \Delta(x_1-x_2) \equiv \bra{0} \mathcal{T} \phi(x_1)\phi(x_2) \ket{0}.
+\end{equation}
+Note that $\ket{0}$ is the interacting vacuum, not the free theory vacuum from before. Using the Wilsonian effective action $W[J]=-\log Z[J]$ and the notation that
+\begin{equation}
+    \delta_i\equiv -\frac{\delta}{\delta J(x_i)},
+\end{equation}
+we see that the propagator now takes the form
+\begin{equation}
+    \gv \Delta(x_1-x_2) = \delta_1 \delta_2 Z[J]|_{J=0} = -\delta_1 \delta_2 W[J]|_{J=0} +(\delta_1 W[J])(\delta_2 W[J])|_{J=0}.
+\end{equation}
+If we assume that $\bra{0}\phi(x_1)\ket{0}=-\delta_i W[J]|_{J=0}=0$ (i.e. the field has no VEV), the result is therefore just the first term:
+\begin{equation}
+    \gv \Delta(x_1-x_2) = -\delta_1 \delta_2 W[J]|_{J=0}.
+\end{equation}
+If we consider the interacting theory four-point function, we find that
+\begin{align*}
+    \bra{0}\mathcal{T}\phi(x_1)\phi(x_2)\phi(x_3)\phi(x_4)\ket{0} ={}& \delta_1 \delta_2 \delta_3 \delta_4 Z[J]|_{J=0}\\
+    ={}&[-\delta_1 \delta_2 \delta_3 \delta_4 W + (\delta_1 \delta_2 W)(\delta_3\delta_4 W) \\
+    &+ (\delta_1\delta_3W)(\delta_2\delta_4W) + (\delta_1\delta_4W)(\delta_2\delta_3 W)]_{J=0}.
+\end{align*}
+
+We now show that these last three terms are either zero or trivial (non-interacting). Consider the LSZ formula for $2\to 2$ scattering:
+\begin{align*}
+    \braket{f}{i}={}&(i)^4 \int d^4 x_1 d^4 x_2 d^4x_{1'} d^4x_{2'} e^{-ik_1\cdot x_1} e^{-ik_2 \cdot x_2} e^{ik_{1'}\cdot x_{1'}} e^{ik_{2'} \cdot x_{2'}}\\
+        &\times (\p_1^2 +m^2)(\p_{1'}^2+m^2)(\p_2^2+m^2)(\p_{2'}^2 +m^2)
+        \bra{0}\mathcal{T} \phi(x_1)\phi(x_2)\phi(x_{1'})\phi(x_{2'})\ket{0},
+\end{align*}
+where we have Wick rotated back to Minkowski signature. Consider the term $(\delta_1\delta_3W)(\delta_2\delta_4W)$. This term can be rewritten as $\gv \Delta(x_1-x_{1'})\gv \Delta(x_2-x_{2'}).$ We use the notation 
+\begin{equation*}
+    F(x_{ij})=(\p_i^2 +m^2)(\p_j^2 +m^2)\gv \Delta^{(m)}(x_{ij}),
+\end{equation*} 
+where the superscript $m$ indicates the propagator is being computed in Minkowski signature. We define $x_{ij'}=x_i-x_{j'}, \bar k_{ij}=\frac{1}{2}(k_i +k_{j'}$, and $\tilde F(k)$ indicates the Fourier transform of $F$. Thus the contribution of the $(13)(24)$ terms to $\braket{f}{i}$ is
+\begin{align*}
+    int d^4 x_1 d^4 x_2 d^4x_{1'} d^4x_{2'} e^{(\ldots)} F(x_{11'}) F(x_{22'}) = (2\pi)^8 \delta^{(4)}(k_1 -k_{1'})\delta^{(4)} (k_2-k_{2'}) \tilde F (\bar k_{11'}) \tilde F(\bar k_{22'})
+\end{align*}
+But looking at these delta functions, we see that they set $k_1=k_{1'},k_2=k_{2'}\implies$ there is no scattering. The other terms are similar. We conclude that the interesting bit is
+\begin{equation}
+    \bra{0}\mathcal{T}\phi(x_1)\ldots \phi(x_n) \ket{0}_C \equiv -\delta_1 \ldots \delta_n W[J]|_{J=0},
+\end{equation}
+where the $C$ on the left indicates connected diagrams and the RHS is fully connected diagrams.

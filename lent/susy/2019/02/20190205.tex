@@ -1,0 +1,122 @@
+Recall that we have non-negative energy states in SUSY since
+\begin{equation*}
+    \bra{\Psi}H\ket{\Psi}=||Q\ket{\Psi}||^2+||\bar Q \ket{\Psi}||^2 \geq 0.
+\end{equation*}
+Thus we argued that the supersymmetric ground states must be annihilated by both $Q$ and $\bar Q$, and are either $e^{-h(x)}\ket{0}$ or $e^{+h(x)}\ket{1}$ if $h(x)$ is a polynomial of even degree, and no SUSY ground state exists if $h(x)$ is of odd degree.
+
+Meanwhile, excited states in our theory, $E>0$, come in pairs. If $\cH=\bigoplus \cH_n,$ where $H\ket{\Psi_n}=E_n\ket{\Psi_n} \, \forall \ket{\Psi_n}\in \cH_n,$ then we can further split each of the Hilbert spaces $\cH_n = \cH_{B,n}\oplus \cH_{F,n}$ into bosonic and fermionic parts. In particular $Q:\cH_{n,F}\to \cH_{n,B}$ (since $[Q,H]=0$) and annihilates $\cH_{n,B}.$ Thus given $\ket{b}\in \cH_{n,B}$ a bosonic state at energy level $n$, we have 
+\begin{equation}
+    2E_n\ket{b}=(Q \bar Q +\bar Q Q)\ket{b}=Q(\bar Q\ket{b}).
+\end{equation}
+For $E_n>0$, the RHS of this equation cannot be zero, so
+\begin{equation}
+    \ket{b}=\frac{1}{2E_n} Q \bar Q \ket{b}=Q\ket{f}
+\end{equation}
+where
+\begin{equation}
+    \ket{f} \equiv \frac{\bar Q \ket{b}}{2E_n}\in \cH_{n,F}.
+\end{equation}
+That is, a bosonic state is $Q$ of something (namely, a fermionic state). Similarly, any state in $\cH_{n,F}$ with $n>0$ can be written as $\bar Q\ket{g}$ for some $\ket{g}\in \cH_{n,B}$. Thus
+\begin{equation}
+    \cH_{n,B}\cong \cH_{n,F}\text{ when }n>0
+\end{equation}
+and each excited state comes in pairs, with a bosonic and fermionic partner.
+
+\begin{defn}
+    We define the \term{Witten index} to be the difference between the number of fermionic and bosonic ground states,
+    \begin{equation}
+        I_W=\dim \cH_{0,B}-\dim \cH_{0,F}=\Tr_\cH (-1)^F = \Tr_\cH\paren{(-1)^F e^{-\beta H}},
+    \end{equation}
+    where the last two expressions follow because excited states come in pairs and $F$ is the eigenvalue of the fermionic number operator.
+\end{defn}
+
+Note the final expression is independent of $\beta$. One may ask why we add on this $e^{-\beta H}$ factor if $(-1)^F$ already counts the Witten index properly. One reason is to regularize the trace-- while it is true that the excited states do come in pairs, the trace may be a bit ill-defined if the terms we are adding do not go to zero. Another reason is to make a connection to the path integral.
+
+\subsection*{Path integrals in QM} Consider a particle traveling on $\RR$. The time evolution operator $e^{-iHt}$ becomes $e^{-H\tau}$ under a Wick rotation (i.e. imaginary time) $t_{\text{Mink}}\to i\tau$. If our particle is at $y_0$ at $\tau=0,$ the amplitude to find it at $y_1$ at some later time $\tau=\beta$ is
+\begin{equation}
+    \bra{y_1}e^{-\beta H} \ket{y_0}=K_\beta(y_1,y_0)=\frac{1}{\sqrt{2\pi \beta}}\exp\paren{-\frac{(y_0-y_1)^2}{2\beta}}.
+\end{equation}
+This is sometimes known as the \term{heat kernel}. If we break this evolution in to steps of length $\Delta \tau=\beta/N,$ we can rewrite the heat kernel as an integral over complete sets of states,
+\begin{equation}
+    \bra{y_1}e^{-\beta H} \ket{y_0} = \int \bra{y_1}e^{-\Delta \tau H}\ket{x_{N-1}}\bra{x_{N-1}}e^{-\Delta \tau H}\ket{x_{N-2}}\ldots
+    \bra{x_2}e^{-\Delta \tau H}\ket{x_1}\bra{x_1}e^{-\Delta \tau H}\ket{y_0} d^{N-1}x.
+\end{equation}
+However, this is none other than a set of heat kernels:
+\begin{align*}
+    \bra{y_1}e^{-\beta H} \ket{y_0} &= \int K_{\Delta\tau}(y_1,x_{N-1})\ldots K_{\Delta\tau}(x_2,x_1)K_{\Delta\tau}(x_1,y_0)d^{N-1}x\\
+    &=\frac{1}{\sqrt{2\pi\Delta \tau}} \int \exp\bkt{ -\sum_{i=0}^n \frac{\Delta \tau}{2}\paren{\frac{x_{i+1}-x_i}{\Delta\tau}}^2} \prod_{i=1}^{N-1} \frac{dx_i}{\sqrt{2\pi \Delta \tau}}.
+\end{align*}
+Taking the limit $\Delta \tau\to 0, N\to \infty$ with fixed $\beta$, we define
+\begin{equation}
+    \exp\paren{-\int_0^\beta \frac{1}{2} \dot x^2 d\tau} \cD x \equiv \lim_{\Delta \tau\to 0, N\to \infty} \prod_i \frac{dx_i}{\sqrt{2\pi \Delta \tau}}\exp \bkt{  
+        -\frac{\Delta\tau}{2} \sum_i \paren{\frac{x-{i+1}-x_i}{\Delta \tau}}^2
+    },
+\end{equation}
+where we (heuristically) obtain the path integral representation
+\begin{equation}
+    \bra{y_1}e^{-\beta H}\ket{y_0}=\int_{\cC[y_1,y_0]} e^{-\int_0^\beta \frac{1}{2} \dot x^2 d\tau} \cD x,
+\end{equation}
+where $\cC[y_1,y_0]$ is the space of continuous maps $x:[0,\beta]\to \RR$ s.t. $x(0)=y_0,x(\beta)=y_1$. We can also show that this derivation works for a Hamiltonian with a potential, $H=\frac{p^2}{2}+V(x)$ in which case the action becomes $S=\int \bkt{\frac{1}{2}\dot x^2 +V(x)} d\tau.$
+
+Now, the partition function $Z(\beta)$ is closely related to the heat kernel:
+\begin{align}
+    Z(\beta)&=\Tr_\cH (e^{-\beta H})=\int_\RR \bra{y}e^{-\beta H}\ket{y}dy\\
+    &=\int \bkt{ \int {\cC [y,y]} e^{-S[x]}\cD x} dy\\
+    &= \int_{\cC_{S^1}} e^{-S[x]} \cD x,
+\end{align}
+where we consider continuous maps $x:S^1 \to \RR$ since the start and endpoints are the same $y$.
+
+\subsection*{Path integrals for fermions} 
+We have fermionic coherent states defined analogous to the harmonic oscillator coherent states, as
+\begin{equation}
+    \ket{\eta}=e^{\hat{\bar \psi}\eta}\ket{0}, 
+\end{equation}
+where $\eta$ is just a number and the chief property of such a state is that it is an eigenstate of the lowering operator, $\hat \psi\ket{\eta}=\eta \ket{\eta}.$ These obey
+\begin{equation}
+    1_{\cH}=\int e^{-\bar \eta \eta} \ket{\bar \eta}\bra{\eta} d^2 \eta
+\end{equation}
+and
+\begin{equation}
+    \Tr(\hat A)=\int \bra{-\bar \eta}\hat A \ket{\eta}e^{-\bar \eta \eta}d^2 \eta,
+\end{equation}
+such that the supertrace (i.e. a modified trace which accounts for fermionic and bosonic parts of the Hilbert space) obeys
+\begin{equation}
+    \text{STr}(A)=\Tr_\cH ((-1)^F A) = \int\bra{\bar \eta} \hat A \ket{\eta} e^{-\bar \eta \eta}d^2 \eta.
+\end{equation}
+Using these and following the same procedure as for bosons, we can define a heat kernel on fermions. For eigenstates $\ket{\chi},\ket{\bar \chi'},$ we have
+\begin{align*}
+    \bra{\bar \chi'}e^{-\beta H}\ket{\chi} &= \int \bar{\bar \chi'} e^{-\Delta \tau H}\ket{\eta_{N-1}}\bra{\bar \eta_{N-1}} e^{-\Delta \tau H} \ket{\eta_{N-2}}\ldots \bra{\bar \eta_n}e^{-\Delta \tau H}\ket{\eta_1}\bra{\bar \eta_1}e^{-\Delta \tau H}\ket{\chi} \prod_{k=1}^{N-1} e^{-\bar \eta_k \eta_k} d^2 \eta_k.
+\end{align*}
+Let's now order the Hamiltonian (using commutators if necessary) so that all $\hat \psi$s appear to the right of all $\hat{\bar \psi}$s (sort of like normal ordering). Take one of these heat kernel factors. In the limit as $\Delta\tau\to 0$, we only need the first-order term in the exponential,
+\begin{align*}
+    \bra{\bar \eta_{k+1}} e^{-\Delta \tau H(\hat{\bar \psi},\hat \psi)} \ket{\eta_k} &= \bra{\bar \eta_{k+1}} 1-\Delta \tau H(\hat{\bar \psi},\hat \psi) \ket{\eta_k}\\
+    &= \bra{\bar \eta_{k+1}} 1-\Delta \tau H(\bar \eta_{k+1},\eta_k) \ket{\eta_k}\\
+    &= e^{-\Delta \tau H(\bar \eta_{k+1},\eta_k)} \braket{\bar \eta_{k+1}}{\eta_k}\\
+    &= e^{-\Delta \tau H(\bar \eta_{k+1},\eta_k)} e^{+\bar \eta_{k+1} \eta_k}.
+\end{align*}
+Using this, we can evaluate our fermionic heat kernel. It is
+\begin{align}
+    \bra{\bar \chi'}e^{-\beta H} \ket{\chi} &=\lim_{N\to \infty,\Delta \tau \to 0} \int \exp \paren{
+        \sum_{k=1}^N \bar \eta_k \eta_{k-1} -\Delta \tau H(\bar \eta_k,\eta_{k-1})
+    }
+    \prod_{k=1}^{N-1} e^{-\bar \eta_k \eta_k} d^2 \eta_k\\
+    &= \lim_{N\to \infty, \Delta \tau\to 0} \int \exp \paren{
+        -\sum_{k=1}^N \bkt{\bar \eta_k \frac{(\eta_k - \eta_{k-1})}{\Delta \tau} -H(\bar \eta_k,\eta_{k-1})}\Delta \tau 
+    } e^{\bar \eta_N \eta_N} \prod_{k=1}^{N-1} d^2 \eta_k,
+\end{align}
+where this extra factor $e^{\bar \eta_N \eta_N}$ has come from us rewriting the exponent in to look more like a discretized derivative of $\eta$.
+
+Therefore
+\begin{equation}
+    \bra{\bar\chi'}e^{-\beta H}\ket{\chi}= \int e^{-S[\bar \eta,\eta]}e^{\bar \eta(\beta)\eta(\beta)}\cD \eta \cD \bar \eta
+\end{equation}
+where $\eta(0)=\chi,\eta(\beta)=\bar\chi'$ and  $S[\bar \eta,\eta]$ is the action $\int_0^\beta \bar \eta \dot \eta - H(\bar \eta,\eta)$. When we compute the partition function, we find that
+\begin{equation}
+    Z(\beta)=\Tr_\cH (e^{-\beta H})=\int \bra{-\bar \chi} e^{-\beta H}\ket{\chi} e^{-\bar \chi \chi} d^2 \chi = \exp(-S[\bar \psi,\psi]) \cD \psi \cD \bar \psi
+\end{equation}
+where we now have \emph{antiperiodic} boundary conditions, $\psi(\tau+\beta)=-\psi(\tau)$. Equivalently to the bosonic case we have a supertrace
+\begin{align*}
+    \text{STr}(e^{-\beta H}) &=\Tr((-1)^F e^{-\beta H}) = \int \bra{\bar \chi}e^{-\beta H}\ket{\chi} e^{-\bar \chi\chi}d^2 \chi \\
+    &=\int e^{-S[\bar \psi,\psi]} \cD \psi \cD \bar \psi
+\end{align*}
+with periodic boundary conditions.
