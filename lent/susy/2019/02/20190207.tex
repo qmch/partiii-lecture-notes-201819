@@ -1,0 +1,108 @@
+Last time, we defined the Witten index as the difference between the number of fermionic and bosonic ground states, and we wrote it in terms of a ``supertrace'' over (Boltzmann-like) factors $\text{STr}(e^{-\beta H})$. We found that it admitted a path integral expression,
+\begin{equation}
+    I_W=\int_{\text{periodic}} e^{-S_E[x,\psi,\bar \psi]}\cD x \cD \psi \cD \bar \psi,
+\end{equation}
+where $S_E$ is the Euclidean action
+\begin{equation}
+    S_E=\oint \bkt{
+        \frac{1}{2} \dot x^2 + \bar \psi \dot \psi + \frac{1}{2} (\p h)^2 + \p^2 h \bar \psi \psi
+    }d\tau
+\end{equation}
+where dots now indicate $d/d\tau$ (i.e. with respect to Euclidean time). Note this action is invariant under the SUSY transformations
+\begin{gather}
+    \delta x = \epsilon \bar \psi -\bar \epsilon \psi\\
+    \delta\psi = \epsilon(-\dot x + \p h)\\
+    \delta \bar \psi = \bar \epsilon (\dot x + \p h).
+\end{gather}
+Note that these transformations only make sense globally on $S^1$ since $(x,\psi,\bar \psi)$ are all periodic and $\epsilon,\bar \epsilon$ are all constants. If we try to make this a local transformation, allowing $\epsilon(\tau+2\pi)=-\epsilon(\tau)$ requires that we \term{gauge} these transforms, which leads to \term{supergravity}.
+
+Let's now compute the Witten index $I_W$ using the path integral. As in $d=0$, we shall consider rescaling $h\to \lambda h$ for $\lambda \in \RR_+$, and we expect that $I_W$ is actually independent of this rescaling. Let's see this explicitly:
+\begin{align*}
+    \frac{d}{d\lambda} I_W(\lambda)=-\int_P \bkt{
+        \oint_{S^1} \lambda(\p h)^2 + \p^2 h \bar \psi \psi
+    } e^{-S_E [x,\bar \psi,\psi]} \cD x \cD \psi \cD \bar \psi.
+\end{align*}
+However, note that
+\begin{align*}
+    Q_\lambda (\oint \p h \psi \,d\tau)&=\oint \bkt{\p^2 h \bar \psi \psi + \lambda(\p h)^2 -\p h \frac{dx}{d\tau}}d\tau\\
+        &= \oint_{S^1} \lambda (\p h)^2 +\bar \psi \psi \p^2 h\, d\tau- \oint_{S^1} dh.
+\end{align*}
+But this last term is zero since it is a total derivative integrated around a closed loop. Therefore this insertion is $Q_\lambda$-exact, and we conclude that
+\begin{equation}
+    \frac{dI_W(\lambda)}{d\lambda}=0,
+\end{equation}
+as expected from the canonical calculation. In particular, as $\lambda\to\infty$ the term $\exp\paren{-\frac{\lambda^2}{2} \oint (\p h)^2 d\tau}$ suppresses all maps $x:S^1 \to \RR$ except in a neighborhood of constant maps to critical points of $h$.
+
+Near such critical points, we may expand $x(\tau)=x_* + \delta x(\tau)$ so that to quadratic order,
+\begin{equation}
+    S_E^{(2)}=\oint \frac{1}{2}\delta x\paren{-\frac{d^2}{d\tau^2}+h''(x_*)^2} \delta x + \bar \psi \paren{\frac{d}{d\tau}+h''(x_*)}\psi d\tau.
+\end{equation}
+
+Since $\delta x(\tau)$ and the fermions $\psi,\bar \psi$ must each be periodic, we can expand them as Fourier series,
+\begin{equation}
+    \delta x(\tau) \sum_{n\in \ZZ} \delta x_n \exp \paren{\frac{2\pi i n\tau}{\beta}},\quad \psi(\tau)=\sum_{n\in \ZZ} \psi_n \exp\paren{\frac{2\pi i n \tau}{\beta}}
+\end{equation}
+where the $\psi_n$ are Grassmann quantities, as they must be,  and $\delta x_{-n}= (\delta x_n)^*$ since $\delta x(\tau)\in \RR$. We now find near a critical point $x_*$ that we can explicitly perform the path integral:
+\begin{align}
+    \int e^{-S_E^{(2)}} \cD \delta x \cD \psi \cD \bar \psi 
+        &= \frac{\det (\p_\tau +h''(x_*))}{\sqrt{\det (-\p_\tau^2 + h''(x_*)^2}}\\
+        &= \frac{\prod_{n\in \ZZ} \paren{2\pi i n/\beta +h''(x_*)} }{\sqrt{\prod_{n\in \ZZ} \paren{\paren{2\pi n/\beta}^2 +h''(x_*)^2}}}.
+\end{align}
+But because we observed that the Fourier modes are paired up by $\delta x_{-n}=(\delta x_n)^*$, only the $n=0$ terms will not cancel. We find that a single critical point therefore has
+\begin{equation}
+    \int e^{-S_E^{(2)}} \cD \delta x \cD \psi \cD \bar \psi =\frac{h''(x_*)}{|h''(x_*)|}
+\end{equation}
+or summing over critical points,
+\begin{equation}
+    I_W = \sum_{x_*: \p h(x_*)=0} \frac{h''(x_*)}{|h''(x_*)|}.
+\end{equation}
+This agrees precisely with our notion that the Witten index counts a topological property of $h$, namely the net number of critical points (counting $h''>0$ as 1 and $h''<0$ as $-1$).
+
+\subsection*{Non-linear sigma models} In the bosonic case, we let our field describe a map $x:M\to N$ from our worldline $M([0,\beta],S^1)$ to a compact Riemannian manifold $(N,g)$. Often we let $x^a$ be coordinates on some subset $U\subset N$, and $x^a(\tau)$ be the corresponding fields where $a=1,\ldots,n=\dim (N)$.
+
+We choose the following action
+\begin{equation}
+    S[x]=\int_M \frac{1}{2} g_{ab}(x) \dot x^a \dot x^b \,d\tau.
+\end{equation}
+Note that this metric $g_{ab}(x)$ generically depends on $x(\tau)$, so this is an interacting (worldline) QFT. That is, the zeroth order behavior would be a simple kinetic term, but we expect nonlinear corrections. Varying this action $S[x]$, we get
+\begin{align}
+    \delta S &= \int_M \bkt{
+        g_{ab}(x) \dot x^a \frac{d\delta x^b}{d\tau} + \frac{1}{2} \p_c g_{ab} \dot x^a \dot x^b \delta x^c
+    } d\tau\\
+        &= \int \bkt{-\frac{d}{d\tau}(g_{ac} \dot x^a +\frac{1}{2} \p_c g_{ab} \dot x^a \dot x^b)} \delta x^c d\tau + g_{ab}(x) \dot x^a \delta x^b |_{\p M}.
+\end{align}
+However, notice that the equations of motion are the geodesic equations
+\begin{equation}
+    \frac{d^2 x^a}{d\tau^2}+\Gamma^a_{bc} \dot x^b \dot x^c = 0,
+\end{equation}
+where $\Gamma$ is the Levi-Civita connection on $(N,g)$. This is a nice classical result. Can we make it quantum?
+
+To quantize, notice that
+\begin{equation}
+    p_a =\frac{\delta L}{\delta \dot x^a}=g_{ab} \dot x^b,
+\end{equation}
+so we get canonical commutation relations
+\begin{equation*}
+    [\hat x^a, \hat p_b]=i\delta^a{}_b.
+\end{equation*}
+We can moreover choose the Hilbert space to be $\cH=L^2(N,\sqrt{g}d^n x),$ square integrable functions under the standard Riemannian volume element $\sqrt{g}d^n x$ on the manifold $N$.
+
+We appear to have constructed a theory of a free particle moving on a curved manifold. However, there's no preferred choice of Hamiltonian when we quantize. Classically, we have (as usual)
+\begin{equation}
+    H=p_a \dot x^a - L =\frac{1}{2} g^{ab}(x) p_a p_b,
+\end{equation}
+but there's an ordering ambiguity when we turn this into a quantum operator because our metric depends on $x$.
+
+We can start to address this by reasonably requiring the following:
+\begin{itemize}
+    \item $\hat H$ should be generally covariant.
+    \item $\hat H$ should reduce to $-\frac{1}{2} \frac{p^2}{\p x^2}$ in the case $(N,g)=(\RR^n,d^n x)$.
+    \item $\hat H$ should contain no more than two derivatives acting either on the wavefunction $\Psi\in H$ or $g$.
+\end{itemize}
+In fact, there's a $1$-parameter family of such $\hat H$s given by
+\begin{equation}
+    \hat H =-\frac{1}{2}\paren{\frac{1}{\sqrt{g}} \P{}{x^a} \paren{g^{ab}\sqrt{g}\P{}{x^b}} + \alpha R[g] }
+\end{equation}
+for $\alpha \in \RR$, where $R[g]$ is the Ricci scalar corresponding to the metric on our target space.
+
+Beyond this, there is no preferred choice of $\alpha$, and different regularizations of the path integral will give different values of $\alpha$. To do better, we need to supersymmetrize this worldline model, and we'll do this next week.

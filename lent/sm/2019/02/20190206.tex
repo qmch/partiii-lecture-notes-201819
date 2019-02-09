@@ -1,0 +1,58 @@
+Suppose we have a symmetry (Lie) group $G$ of the Lagrangian $\cL$. Moreover, suppose it is broken to a subgroup $H$ by the vacuum state, so that the vacuum manifold is a set of states described by $\Phi_0 \simeq G/H$. We can write an infinitesimal transformation in terms of the generators of the Lie algebra, i.e.
+\begin{equation}\label{ssbinfinitesimal}
+    \delta \phi = i\alpha^i t^i \phi, \quad V(\phi+\delta\phi)-V(\phi)=i\alpha^a (t^a \phi)_r \P{v}{\phi_r}=0.
+\end{equation}
+If we differentiate this equation and evaluate at $\phi=\phi_0,$ then
+\begin{equation}
+    \P{}{\phi_s}\bkt{(t^a\phi)_r \P{V}{\phi_r}}=\P{}{r_s}(t^a\phi)_r \P{V}{\phi_r}|_{\phi_0}+(t^a\phi_0)_r M^2_{sr}=0.
+\end{equation}
+This first term in the product rule is zero by \ref{ssbinfinitesimal}, while the second term is the mass matrix as defined last time. Thus we have some cases to consider:
+\begin{itemize}
+    \item Unbroken symmetry: $g\phi_0=\phi_0 \forall g\in G \implies \delta \phi=0 \implies t^a \phi_0=0 \forall a$.
+    \item Broken symmetry: there is some $g\in G$ s.t. $\exists a$ with $(t^a \phi_0)\neq 0$. Thus $t^a \phi_0)$ is an eigenstate of $M^2_{rs}$ with eigenvalue $0$. Generators of $H\subset G$ are $\tilde t^i$ with $i=1,\ldots, \dim H$ and $(\tilde t^i \phi_0)=0.$
+\end{itemize}
+
+Recall now from \emph{Symmetries, Fields and particles} that for a compact, semi-simple Lie algebra of $G$, we can define a group invariant inner product and orthogonality. If we choose a basis for the Lie algebra
+\begin{equation*}
+    t^a=\set{\tilde t^i, \theta^{\tilde a}}
+\end{equation*}
+where the $\theta^{\tilde a}$ are orthogonal to $\tilde t^i$ (i.e. $\Tr \tilde t^i \theta^{\tilde a}=0$). We therefore learn that $(\theta^{\tilde a}\phi_0)$ is a unique zero eigenvector of $M_{sr}^2$ for $\tilde a=1,2,\ldots,\dim G-\dim H \implies$ there are $\dim G-\dim H$ massless modes of our theory, which we call \term{Goldstone bosons} or \term{Nambu-Goldstone bosons}, and in general there will be $N-(\dim G-\dim H)$ massive modes (at least, these modes are not guaranteed to be massless).
+
+This is the \emph{classical} proof of Goldstone's theorem. For instance, for the $O(N)$ model where we go from $O(N)\to O(N-1)$, the remaining symmetries are $\Phi_0=S^{N-1}$. Comparing dimensions, we have $\dim O(N)=\frac{1}{2}N(N-1),\dim O(N-1)=\frac{1}{2}(N-1)(N-2)$. We therefore expect $\frac{1}{2}(N-1)(N-(N-2))=N-1$ massless modes, which is what we found: $N-1$ $\pi$ fields.
+
+\begin{exm}
+    Suppose a $\cL$ written in terms of a complex $N\times N$ matrix field $M$ is invariant under the transformation
+    \begin{equation}
+        M\to A M B^{-1}\quad \text{where }A\in U(N),B\in U(N).
+    \end{equation}
+    These are still global symmetries, rather than gauge symmetries. Is the symmetry group of $\cL$ $U(N)\times U(N)$? There should only be one identity element in the group, e.g. $(I_A,I_B)\in U(N)\times U(N)$ such that $M=I_A M I_B^{-1}$. This must be true when $M=I$, so $I_AI_B^{-1}=I \implies I_A =I_B$. Therefore 
+    \begin{equation*}
+        I_AM=MI_A
+    \end{equation*} for arbitrary $M$.
+    
+    However, we can then apply Schur's lemma from group theory, which tells us that if $SD(g)=D(g)S \forall g\in G$ where $D(g)$ is an irrep of $G$, then $S\propto I$. Thus $I_A\propto I$, i.e.
+    \begin{equation*}
+        I_A = e^{i\theta}I\text{ with }\theta \in \RR.
+    \end{equation*}
+    The proportionality constant must be a complex phase since the matrix $I_A$ is unitary. These $I_A$s form a $U(1)$ normal subgroup of $U(N),$ so by the uniqueness of the identity, the symmetry group of this system is in fact
+    \begin{equation*}
+        \frac{U(N)\times U(N)}{U(1)}.
+    \end{equation*}
+    Note that running this argument for $SU(N)$ fails because the phase $e^{i\theta}$ is then fixed to be $+1$.
+\end{exm}
+
+\subsection*{Goldstone's theorem}
+Having presented a classical proof of Goldstone's theorem, let us consider SSB in a fully quantum way. As before, we have a symmetry group $G$ of $\cL$ which is spontaneously broken to $H\subset G$. That is, our field $\phi$ attains a non-zero VEV, $\bra{0}\phi(x)\ket{0}=\phi_0 \neq 0.$ This VEV is invariant under $h\in H$, $\bra{0}h\phi(x)\ket{0}=\phi_0$, but not under a general $g'\in G$ where $g'\notin H$.
+
+We can then write the Lie algebras of $G$ and $H$ in terms of their generators $t^a, a\in [1,\ldots, \dim G]$ and $\tilde t^i, i\in[1,\ldots, \dim H]$ respectively. However, recall that if $G$ is a symmetry of $\cL$, then by Noether's theorem there exist some conserved currents in our system,
+\begin{equation}
+    j^{a\mu}(x)=i\P{\cL}{\p_\mu \phi}t_a \phi,
+\end{equation}
+and also charges
+\begin{equation}
+    Q^a = \int d^3x j^{a0}(x)=\int d^3x \pi(x) t_a \phi(x).
+\end{equation}
+These charges ``induce a representation'' of the Lie algebra. The variation of the field can then be computed to be
+\begin{equation}
+    \delta \phi(0) = i\alpha^a t^a \phi(0) = i[Q^a, \phi(0)] \alpha^a.
+\end{equation}

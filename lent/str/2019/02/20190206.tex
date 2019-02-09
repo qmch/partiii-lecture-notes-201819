@@ -1,0 +1,97 @@
+The official course notes and the first example sheet are online now. Note that David Tong's notes may also supplement the notes for this course. In addition, note that problems 4 and 5 are eligible for marking, while problem 6 has a typo and therefore the instructor asks that we ignore problem 6 entirely.
+
+Last time, we introduced the Faddeev-Popov determinant. We found that
+\begin{equation}
+    \Delta_{FP}^{-1}(\hat h) = \int_{\mathcal{T}} d^s t \int \cD \omega \cD v \paren{d^\kappa \zeta^i_a \cD \beta \exp(i(\beta|Pv+2\bar \omega h + t^I \mu_I))+i\sum_{i=1}^k \zeta^i_a v^a (\hat \sigma_i)}
+\end{equation}
+
+\subsection*{Grassmann quantities} If you're keeping up with my \emph{AQFT} and \emph{Supersymmetry} notes, this will be your third time seeing Grassmann quantities/variables. These are a set of quantities $\theta$ such that any two of them anticommute,
+\begin{equation*}
+    \theta_1 \theta_2 = -\theta_2 \theta_1.
+\end{equation*}
+Equivalently their anticommutator vanishes,
+\begin{equation*}
+    \set{\theta_1,\theta_2}=0.
+\end{equation*}
+Objects (such as wavefunctions) that obey Fermi statistics can naturally be described by Grassmann numbers. One bit of motivation for this is the fact that for any $\theta,$ we have $\theta^2=-\theta^2=0$, which is reminiscent of the Pauli exclusion principle. This anticommuting property also holds for integration measures,
+\begin{equation*}
+    d\theta_1d\theta_2 = -d\theta_2 d\theta_1.
+\end{equation*}
+
+One can show (e.g. by considering $(\int d\theta)^2$) that
+\begin{equation*}
+    \int d\theta=0,
+\end{equation*}
+and we can consistently define
+\begin{equation*}
+    \int d\theta\, \theta = 1.
+\end{equation*}
+The Dirac delta function for Grassman quantities is then $\delta(\theta)=\theta$, which leads to the somewhat unusual conclusion that integration and differentiation of Grassmann variables are essentially the same process.
+
+Note that Taylor expansions are very easy for Grassman variables, since we cannot have anything of higher degree than 1 because $\theta^2=0$. Thus we can write some function $f(x,\theta)$ as
+\begin{equation*}
+    f(x,\theta)=f_0(x)+\theta f_1(x),
+\end{equation*}
+and so an integral can be written
+\begin{equation}
+    \int d\theta\, f(x,\theta)=f_1(x)=\P{f(x,\theta)}{\theta}.
+\end{equation}
+\begin{exm}
+    Let $\theta^a= \begin{pmatrix}\theta_1 \\ \theta_2 \end{pmatrix}$ and $\bar \theta^a =(\bar \theta_1,\bar \theta_2)$. Consider the integral
+    \begin{equation}
+        \int d^2 \theta d^2 \bar \theta \exp \paren{-\bar \theta^a M_{ab} \theta^b},
+    \end{equation}
+    where $M_{ab}$ is some normal $2\times 2$ matrix. This exponential has a few terms but not too many. The first term is just $1$, while the last term has $4$ thetas and two $M$s. Recalling that integration is like differentiation, we write the integral as
+    \begin{equation}
+        \frac{\p^4}{\p \theta_1 \p\theta_2 \p \bar \theta_1 \p \bar \theta_2} \set{(\bar \theta_1 M_{11} \theta_1)(\bar \theta_2 M_{22}\theta_2)+(\bar \theta_1 M_{12}\theta_2)(\bar \theta_2 M_{21} \theta_1},
+    \end{equation}
+    noting that the only nonzero term must have all four of $\theta_1,\theta_2,$ and their barred versions.
+    
+    Equivalently this integral is
+    \begin{equation}
+        \int d^2 \theta d^2 \bar \theta \exp \paren{-\bar \theta^a M_{ab} \theta^b} =(M_{11}M_{22}-M_{12}M_{21})=\det (M_{ab}).
+    \end{equation}
+    
+    This result generalizes-- the equivalent of a Gaussian for Grassmann variables is
+    \begin{equation}
+        \int d^n\theta d^n\bar\theta \exp(-\bar \theta^a M_{ab} \theta^b)=\det(M_{ab}).
+    \end{equation}
+    Note that this is a bit different from the result for $z,\bar z$ real, where
+    \begin{equation}
+        \int d^2 z d^2 \bar z \exp(-\bar z Mz) =\frac{1}{\det (M_{ab})}.
+    \end{equation}
+\end{exm}
+
+This effect of inverting the determinant when we replace commuting (bosonic) variables with Grassmann (fermionic) variables carries over to the functional case, which we will just state but not prove.
+
+With our ``new'' Grassmann variables in hand, we will now rewrite the Faddeev-Popov determinant in terms of Grassmann quantities to perform these crazy path integrals. That is, promote
+\begin{equation}
+    v^a \to c^a, \beta^{ab}\to b^{ab}, t^I \to \xi^I, \zeta^i_a \to \eta^i_a,
+\end{equation}
+where $c^a$ and $b^{ab}=b^{ba}$ are Grassmann fields on $\Sigma$.
+
+Note also that we can apparently get rid of the $\cD\omega$ integral by writing
+\begin{align*}
+    \Delta^{-1}_{FP}&\sim \int \cD \omega \exp\bkt{ i(\beta|2\bar \omega h)}\\
+    &\sim \int \cD \bar \omega \exp\bkt{ i \int_\Sigma d^2 \sigma \sqrt{h}\beta^{ab} 2\bar \omega h_{ab}}.
+\end{align*}
+But we can do this $\bar \omega$ integral-- it looks like a delta function, and fixes $\beta^{ab}h_{ab}=0$. Thus $\beta^{ab}$ is traceless.
+
+Thus we rewrite the Fadeev-Popov determinant in terms of our shiny new Grassmann variables as
+\begin{equation}
+    \Delta_{FP}(\hat h)=\int d^s \xi \int \cD c \cD b d^k\eta \exp(i(b|Pc + \xi^I \mu_I)+i\sum_{i=1}^k \eta_a^i c^a(\hat \sigma_i)),
+\end{equation}
+having done the $\omega$ integral as above. Note that this is really just the Faddeev-Popov determinant and not its inverse, since we have promoted everything to Grassmann variables. We can also do the $\eta_a^i$ and $\xi^I$ integrals to get
+\begin{align*}
+    \Delta_{FP} (\hat h) &= \int \cD c \cD b\, e^{i(b|Pc)} \prod_{I=1}^S \delta [(b|\mu_I)] \prod_{i=1}^K \delta(c^a(\hat \sigma_i))\\
+        &= \int \cD c \cD b \, e^{i(b|Pc)} \prod (b|\mu_I) \prod_{i=1}^k c^a (\hat \sigma_i).
+\end{align*}
+After all this computation, we therefore have
+\begin{equation}
+    \Delta_{FP}(\hat h) = \int \cD c \cD b \, e^{iS[b,c]} \prod (b|\mu_I) \prod_{i=1,a=1,2}^k c^a (\hat \sigma_i)
+\end{equation}
+where we have something that looks like an action,
+\begin{equation}
+    S[b,c]=\int_\Sigma d^2\sigma \,\sqrt{h} b^{ab}(Pc)_{ab}=2\int_\Sigma d^2\sigma\,\sqrt{h} b^{ab} (\nabla_a c_b).
+\end{equation}
+Note that $c^a,b_{ab}$ are Grassmann fields and therefore obey Fermi statistics. However, it turns out they also have integer ``spin'' (for some notion of spin we have not defined precisely yet). Fortunately, this is allowed because these quantities are not observables. We should think of them a bit like constraints on the observable variables of our theory, and we call them \term{Faddeev-Popov ghosts}.

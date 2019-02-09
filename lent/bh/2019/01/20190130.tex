@@ -11,8 +11,15 @@ Today, we will introduce the initial value problem in general relativity. In cla
     The \term{future domain of dependence} of $\Sigma$, denoted $D^+(\Sigma)$, is the set $p\in \cM$ such that every past-inextendible causal curve through $p$ intersects $\Sigma$. The past domain of dependence $D^-(\Sigma)$ is defined equivalently for future-inextendible causal curves, and the domain of dependence is then $D(\Sigma)=D^+(\Sigma)\cup D^-(\Sigma)$.
 \end{defn}
 \begin{exm}
-    Consider Minkowski space, with a partial Cauchy surface $\Sigma:t=0,x >0$. Then the domain of dependence $D(\Sigma)$ is the 45-degrees region with $x\geq |t|$.
+    Consider Minkowski space, with a partial Cauchy surface $\Sigma:t=0,x >0$. Then the domain of dependence $D(\Sigma)$ is the 45-degrees region with $x\geq |t|$-- see Fig. \ref{fig:domainofdependence} for an illustration.
 \end{exm}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{2019/01/20190130_domainofdependence.png}
+    \caption{In Minkowski space, we select the partial Cauchy surface $\Sigma:t=0,x>0$ (in red). Given initial conditions on $\Sigma$, we can predict physics in the shaded region $D^+(\Sigma)$ and retrodict in the region $D^-(\Sigma)$. However, $\Sigma$ is not a Cauchy surface because there are points in spacetime which lie outside the domain of dependence $D(\Sigma)$. Note also that the boundary of $D^+(\Sigma)$ (i.e. the Cauchy horizon) coincides with the boundary of the causal future of points outside $\Sigma$.}
+    \label{fig:domainofdependence}
+\end{figure}
 \begin{defn}
     As far as we (as physicists) are concerned, a \term{hyperbolic partial differential equation} (second order) is defined to be a differential equation of the form
     \begin{equation}

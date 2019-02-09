@@ -1,0 +1,103 @@
+Today, we'll wrap up our discsussion of global physics on the worldsheet. Let us return to the schematic path integral expression
+\begin{equation}
+    Z=\frac{1}{\abs{\text{Diff}} \times \abs{\text{Weyl}}} \int \cD X \cD h \, e^{iS[h,X]}.
+\end{equation}
+We will insert a factor of $1$ using our expression for the Faddeev-Popov determinant:
+\begin{equation}
+    1=\Delta_{FG}(\hat h) \int_{\mathcal{T}_g} d^s t \int \cD \bar \omega \cD v \delta[h-\hat h] \prod_{i,a} \delta(v^a (\hat \sigma_i)).
+\end{equation}
+The delta functional will do the $\cD h$ integral for us, at the cost of introducing some other integrals into the picture. We rewrite
+\begin{equation}
+    Z=\frac{1}{\abs{\text{Diff}} \times \abs{\text{Weyl}}} \int \cD X e^{iS[X,\hat h]} \int_{\mathcal{T}_g} d^st \int \cD \bar \omega \cD v \prod_{i,a} \delta(v^a (\hat \sigma)) \Delta_{FP}(\hat h).
+\end{equation}
+But now notice that
+\begin{equation*}
+    \abs{\text{Weyl}}\times \frac{\abs{\text{Diff}_0}}{\abs{\text{CKG}}}=\int \cD \bar \omega \int \cD v \prod \pi_{i,a} \delta(v^a (\hat \sigma_i)).
+\end{equation*}
+That is, the delta functions are equivalent to quotienting out by the symmetries of the conformal Killing vectors, and these other integrals are taken over diffeomorphisms connected to the identity and related by Weyl transformations. This is still extremely schematic but we can ``cancel'' the Weyl groups and recognize $\abs{\text{Diff}_0}/\abs{\text{Diff}}=1/\abs{\cM_g}$ so that
+\begin{equation}
+    \frac{1}{\abs{\text{Diff}} \times \abs{\text{Weyl}}} \times \abs{\text{Weyl}}\times \frac{\abs{\text{Diff}_0}}{\abs{\text{CKG}}}=\frac{1}{\abs{\cM_g}\times \abs{\text{CKG}}}.
+\end{equation}
+With this notation,
+\begin{equation}
+    Z=\frac{1}{\abs{\cM_g} \abs{\text{CKG}}} \int_{\mathcal{T}_g} d^s t \int \cD X e^{iS[x,\hat h]} \Delta_{FP}(\hat h).
+\end{equation}
+We take this to mean an integral over the Teichm\"uller space quotiented by the modular group, i.e. over the moduli space $M_g$. Thus
+\begin{equation*}
+    \frac{1}{\abs{\cM_g}}\int_{\mathcal{T}_g}d^s t \equiv \int_{\mathcal{T}_g/\cM_g} d^s t = \int_{M_g} d^s t,
+\end{equation*}
+and our full path integral is now an integral over the moduli space and the Grassmann fields $b,c$ (substituting in our expression for $\Delta_{FG}$ explicitly):
+\begin{equation}
+    Z=\frac{1}{\abs{\text{CKG}}} \int_{M_g} d^s t \int \cD X \cD b \cD c\, e^{iS[\hat h, X,b,c]} \prod_{I=i}^s (b|\mu_I) \prod_{i,a} c^a (\hat \sigma i).
+\end{equation}
+As before, our inner product is given by $(b|\mu_I)=\int_\Sigma d^\sigma \sqrt{|h|}b^{ab}\mu_{Iab}$ with $\mu_{Iab}=\p_I h_{ab} -\text{trace}.$ We shall choose to define $b,c$ such that the action takes the form
+\begin{equation}
+    S[\hat h, X, b,c ]=-\frac{1}{4\pi \alpha'} \int_\Sigma d^s\sigma \sqrt{|\hat h|} \hat h^{ab}\p_a X^ \mu \p_b X^\nu \eta_{\mu\nu}+\frac{1}{2\pi} \int_\Sigma d^2\sigma \sqrt{|\hat h|}b^{ab} \nabla_a c_b.
+\end{equation}
+It may be useful to consider the ghosts ($b$s and $c$s) as an integral part of the theory, rather than a hack we've added to make sense of these infinite-dimensional spaces of metrics. As we've said, these ghosts will represent important constraints, particularly when we try to figure out the dimensionality of the bigger spacetime in which our worldsheet lives.
+
+\subsection*{Introduction to conformal field theory}
+Conformal field theories (CFTs) are among the best-understood quantum field theories we have. Outside of string theory, they also have applications in condensed matter physics and other areas, and we'll see that our action as given above defines a CFT in two dimensions, which turns out to be a very special case.
+
+We are interested in theories that are invariant under Weyl transformations. We can ask the following question: what is the natural generalization of the Poincar\'e group that preserves a metric up to Weyl transformations? In a general dimension $d>1$, we are interested in transformations such that
+\begin{equation}
+    \eta_{\rho\sigma} \P{x'{}^\rho}{x^\mu}\P{x'{}^\sigma}{x^\nu}=\Lambda(x) \eta_{\mu\nu},
+\end{equation}
+where infinitesimally, $x^\mu \to x'{}^\mu = x^\mu + V^\mu(x)+\ldots$. Morally, we are combining Lorentz boosts and rotations with local scale transformations.
+
+We find that if $\Lambda(x)=e^{\omega(x)}$, then $\omega(x)$ and $v^\mu(x)$ are related by
+\begin{equation}
+    \omega(x)=\frac{2}{d} \p_\mu v^\mu (x),
+\end{equation}
+so $v^\mu(x)$ satisfies
+\begin{equation}\label{conformalgeneratorcondition}
+    \p_\mu v_\nu + \p_\nu v_\mu =\frac{2}{d} \eta_{\mu\nu} \p_\lambda v^\lambda(x).
+\end{equation}
+We say that $V^\mu(x)$ satisfying this condition generates conformal transformations.%
+    \footnote{Note that $v^\mu$ looks a lot like the conformal Killing vectors we defined earlier.}
+
+\subsection*{Two dimensional CFTs} Let us take
+\begin{equation*}
+    h_{ab}=\begin{pmatrix}1&0\\0&1\end{pmatrix},
+\end{equation*}
+a metric up to a conformal factor (Wick rotation) where we have sent $t\to i\tau$ if you like. That is, we've switched from Lorentzian signature to Euclidean signature. Not a problem. We have some coordinates on the manifold given by
+\begin{equation}
+    x^\mu \to \sigma^a=(\tau,\sigma).
+\end{equation}
+The condition \ref{conformalgeneratorcondition} now becomes
+\begin{equation}
+    2\p_\tau v_\tau = \p_\tau v_\tau +\p_\sigma v_\sigma \implies \p_\tau v_\tau = \p_\sigma v_\sigma,
+\end{equation}
+in the case where $\mu=\nu$, and 
+\begin{equation}
+    \p_\sigma v_\tau +\p_\tau v_\sigma =0
+\end{equation}
+for $\mu\neq \nu$. We write these as
+\begin{equation}
+    \P{v_\tau}{\tau}=\P{v_\sigma}{\sigma},\quad \P{v_\tau}{\sigma}=-\P{v_\sigma}{\tau}.
+\end{equation}
+But these are just the Cauchy-Riemann equations for a complex function $v=v^\tau+iv^\sigma$, i.e. the requirement that $v$ is holomorphic.
+
+We conclude that in $d=2$, the condition on $v=v^\tau +i v^\sigma$ given by \ref{conformalgeneratorcondition} is that $v$ is holomorphic,
+\begin{equation}
+    \P{}{\bar z} v = 0 = \bar \p v
+\end{equation}
+where $z= \tau+i\sigma, \bar z = \tau-i\sigma$. This tells us that it's natural to work not in worldsheet coordinates $\tau,\sigma$ but in the variables $z,\bar z$. However, we can do better-- we also want variables which vary in some natural way under conformal transformations. Since all holomorphic transformations preserve our metric up to Weyl transformations, a better choice is
+\begin{equation}
+    z=e^{\tau +i\sigma},\quad \bar z= e^{\tau-i\sigma}.
+\end{equation}
+In these variables, the worldsheet is mapped to the complex plane, with the infinite future mapped to the point at infinity. We can think of the worldsheet $\Sigma$ as the Riemann sphere with two points removed.
+
+In these new coordinates $(z,\bar z)$, we find that the Polyakov action (remember that?) takes the form
+\begin{equation}
+    S=-\frac{1}{4\pi \alpha'} \int_\Sigma d^2\sigma \p_a X^\mu \p^a X^\nu \eta_{\mu\nu}=\frac{i}{2\pi \alpha'}\int_\Sigma d^2 z \p X^\mu \bar \p X^\mu \eta_{\mu\nu},
+\end{equation}
+where we have denoted $\p\equiv \P{}{z},\bar \p=\P{}{\bar z}$.
+The stress tensor $T_{ab}$ now has two non-trivial components:
+\begin{align}
+    T_{zz}\equiv T &=-\frac{1}{\alpha'} \p X^\mu \p X^\nu \eta_{\mu\nu},\\
+    T_{\bar z \bar z} \equiv \bar T = -\frac{1}{\alpha'} \bar \p X^\mu \bar \p X^\nu \eta_{\mu\nu},
+\end{align}
+and $T_{z\bar z}=0$ identically.
+
+Finally, a quick note. In QFT we had a notion of time-ordering. For our theory, we see almost trivially that time ordering will be replaced by a ``radial'' ordering, i.e. curves at larger ``time'' $\tau$ correspond to larger radii in the complex plane.

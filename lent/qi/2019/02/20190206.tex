@@ -1,0 +1,152 @@
+Last time, we introduced maximally entangled states. As it turns out, these states have a few interesting properties. Recall that such states are defined on composite Hilbert spaces such that for
+\begin{equation}
+    \cH_a \otimes \cH_B \simeq \CC^d \otimes \CC^d
+\end{equation}
+equipped with a (fixed) onb for $\CC^d$ given by $\set{\ket{i}}_{i=1}^d$, a maximally entangled state is then a state which is written
+\begin{equation}
+    \ket{\Omega}=\frac{1}{\sqrt{d}} \sum_{i=1}^d \ket{i}\ket{i}.
+\end{equation}
+\begin{itemize}
+    \item Every MES $\ket{\Phi}\in \CC^d \otimes \CC^d$ can be written in the form
+    \begin{equation}
+        \ket{\Phi}=(i\otimes U) \ket{\Omega}
+    \end{equation}
+    for some unitary $U$. One should check explicitly that
+    \begin{equation}
+        \Tr_2 \ket{\Phi}\bra{\Phi}=\frac{I}{d},\Tr_1 \ket{\Phi}\bra{\Phi}=\frac{I}{d}.
+    \end{equation}
+    \item Lemma: for any $A,B\in B(\CC^d),$
+    \begin{itemize}
+        \item $\bra{\Omega}A\otimes B\ket{\Omega}=\frac{1}{d}\Tr(A^T B)$, where transposition is done in the basis $\set{\ket{i}}_{i=1}^d$.
+        \item $(A\otimes I)\ket{\Omega}=(I\otimes A^T)\ket{\Omega}$. It's an exercise to prove this-- see my footnote later.
+        %prove it!
+        We can do this by writing
+        \begin{gather*}
+            A=\sum_{i,j} a_{ij}\ket{i}\bra{j}\\
+            B=\sum_{k,l} a_{kl}\ket{k}\bra{l}\\
+            A=\sum_{i,j} a_{ji}\ket{i}\bra{j}
+        \end{gather*}
+        and computing explicitly.
+    \end{itemize}
+    \item We can write down a purification $\rho$ of $\ket{\Omega}$: we claim it is
+    \begin{equation}
+        \ket{\Psi}=\sqrt{d}(\sqrt{\rho}\otimes I) \ket{\Omega}.
+    \end{equation}
+    Let us check:
+    \begin{align*}
+        \ket{\psi}\bra{\psi}&=d\sqrt{\rho} \otimes I \ket{\Omega}\bra{\Omega} \sqrt{\rho}\otimes I\\
+            &= \sum_{i,j}\sqrt{\rho}\ket{i}\bra{j}\sqrt{\rho} \ket{i}\bra{j}.
+    \end{align*}
+    Tracing over the second system, $\ket{i}\bra{j}=\delta_{ij}$, so the partial trace is then
+    \begin{equation}
+        \Tr_2 \ket{\psi}\bra{\psi} = \sqrt{\rho} \sum_i \ket{i}\bra{i} \sqrt{\rho} = \rho.
+    \end{equation}
+    \item Every bipartite pure state $\ket{\psi}\in \cH_A \otimes \cH_B$ can be written in the form
+    \begin{equation}\label{bipartitedecomp}
+        \ket{\psi}=(I\otimes R) \ket{\Omega}
+    \end{equation}
+    for some operator $R$.
+    \begin{proof}
+        Let $\ket{\psi}=\ket{\psi_{AB}}=\sum \lambda_i \ket{i_A}\ket{i_B},$ by the Schmidt decomposition. Let $V,W$ be isometries such that
+        \begin{gather}
+            V\ket{i}=\ket{i_A}\forall i ; \quad V:\CC^d \to \cH_A\\
+            W\ket{i}=\ket{i_B}\forall i; \quad W:\CC^d \to \cH_B.
+        \end{gather}
+        The proof is constructive. Choose $R \equiv W Q V^T$, where $Q$ is defined in terms of the Schmidt coefficients,
+        \begin{equation}
+            Q=\sum \sqrt{d} \lambda_j \ket{j}\bra{j}.
+        \end{equation}
+        Let us look at the RHS of \ref{bipartitedecomp}. For this choice of $R$, it is
+        \begin{align*}
+            &=(I\otimes WQV^T) \ket{\Omega}\\
+            &=(I\otimes W)(I\otimes Q)(I\otimes V^T)\ket{\Omega}\\
+            &=(I\otimes W)(I\otimes Q)(V\otimes I)\ket{\Omega}\\
+            &= (V\otimes W)(I\otimes Q) \ket{\Omega}\\
+            &= (V\otimes W) \frac{1}{\sqrt{d}} \sum_i \ket{ i}\otimes Q\ket{i} \sum_j \sqrt{d} \lambda_j \ket{j}\bra{j}\bra{i}\\
+            &=(V\otimes W) \sum_i \lambda_i \ket{i}\otimes \ket{i}\\
+            &= \sum \lambda_i \ket{i_A} \ket{i_B}.\qedhere
+        \end{align*}
+        Here, we have used the ``ricochet'' property to interchange $I\otimes V^T$ to $V\otimes I$, and moved $V\otimes I$ through $I\otimes Q$ since they act on independent parts of the composite system.
+    \end{proof}
+\end{itemize}
+
+\subsection*{Time evolution of open systems}
+Question: what is the most general description of the dynamics of an \emph{open} quantum system? Answer: it is given by a linear \term{completely positive trace-preserving} (CPTP) map. The advantage of such a map is that it gives us a description of the effect of \emph{any} allowed physical process on your system, including operations like measurement. In particular, it also allows us to describe discrete state changes.
+
+As all reasonable evolution operators should be linear, we will usually omit this from the description and just speak of a CPTP map. We can also reasonably call this a \term{quantum operator} or a \term{quantum channel}. That is, we have a map $\Lambda:\cD(\cH)\to \cD(\cH)$, e.g. it takes the density matrix $\rho$ from $\rho\mapsto \Lambda(\rho)=\rho'$. We call this a \term{superoperator} because it is a map from operators to operators.
+
+\begin{exm}
+    We've constructed a general description of open quantum systems, but it should include our previous description of closed quantum systems as a special case. Take $\Lambda$ to be a unitary transformation, such that
+    \begin{equation}
+        \rho'=\Lambda(\rho)=U\rho U^\dagger.
+    \end{equation}
+    
+    
+\end{exm}
+Let us now unpack some of the properties of CPTP maps.
+\begin{itemize}
+    \item This map satisfies linearity:
+    \begin{equation*}
+        \Lambda(a\rho_1 +b\rho_2) = a\Lambda(\rho_1) + b\Lambda(\rho_2).
+    \end{equation*}
+    We want our CPTP maps to be linear so that we can interpret mixed state density matrices in a probabilistic way. That is, if we have some distribution of density matrices $\rho_i$ given with some probabilities $p_i$ (i.e. a set $\set{p_i,\rho_i}_{i=1}^m$, then we can describe the system as a new density matrix
+    \begin{equation*}
+        \sigma=\sum_{i=1}^m p_i \rho_i,
+    \end{equation*}
+    and thus the map $\Lambda$ should also represent a valid map on the full system $\sigma$:
+    \begin{equation*}
+        \Lambda(\sigma)=\sum_{i=1}^m p_i \Lambda(\rho_i).
+    \end{equation*}
+    \item Positivity: for $\rho\geq 0, \rho' = \Lambda(\rho) \geq 0$. We say $\Lambda$ is a positive (or positivity-preserving) map if
+    \begin{equation}
+        \Lambda(A)\geq 0 \forall A \geq 0.
+    \end{equation}
+    \item $\Lambda$ must be trace-preserving, i.e. for $\rho$ with $\Tr \rho =1$, we want 
+    \begin{equation}
+        \Tr (\Lambda \rho)=\Tr \rho'=1.
+    \end{equation}
+\end{itemize}
+These conditions are necessary, but not sufficient. In fact we require $\Lambda$ to be \term{completely positive}. 
+\begin{defn}
+    Let $\Lambda:\cD(\cH_A)\to \cD(\cH_A')$, where $\cH_A$ is the Hilbert space of this system. Consider an extension of $\cH_A$ to the bigger space $\cH_A \otimes \cH_B$. That is, we add another system $B,$ called the ancilla or (for obvious reasons) the environment. 
+
+    A note on notation: $I_B$ is the identity operator on $B$, i.e. $I_B\in B(\cH_B)$, whereas $id_B$ is the superoperator $B(\cH_B)\to B(\cH_B)$ such that $id_B Q=Q \forall Q\in B(\cH_B).$ We then say that $\Lambda$ is \term{completely positive} if $\Lambda \otimes id_B$ is positive for all such extensions.
+\end{defn}
+For instance, suppose the composite system $AB$ is initially in a state $\rho_A\otimes \omega_B$. Thus a completely positive map yields a state
+\begin{equation}
+    (\Lambda \otimes id_B)(\rho_A \otimes \omega_B)=\sigma_{AB},
+\end{equation}
+where $\sigma_{AB}$ is guaranteed to be a legitimate state of the composite system $AB$.
+
+\begin{exm}
+    Let $\Lambda$ be the transposition map. This is certainly positive:
+    \begin{equation}
+        \Lambda \equiv T: \rho \to \rho^T.
+    \end{equation}
+    That is, if $\rho$ had no negative eigenvalues, then transposition will preserve the eigenvalues and therefore preserve positivity.
+    
+    We will now show that there exists a composite state which is positive, but not positive after the application of $\Lambda \otimes id_B$. Let the composite system $\cH_A\otimes \cH_B$ with $\cH_A,\cH_B\simeq \CC^d$ be described by the density matrix
+    \begin{equation}
+        \rho_{AB}=\ket{\Omega}\bra{\Omega}
+    \end{equation}
+    where
+    \begin{equation}
+        \ket{\Omega}=\frac{1}{\sqrt{d}} \sum_{i=1}^d \ket{i}\ket{i}
+    \end{equation}
+    is a MES. Now we hit the first part with the transpose:
+    \begin{align*}
+        (\Lambda \otimes id_B)\ket{\Omega}\bra{\Omega} &= \frac{1}{d} \sum T(\ket{i}\bra{j}\otimes \ket{i}\bra{j}\\
+        &= \frac{1}{d} \sum \ket{j}\bra{i} \otimes \ket{i}\bra{j} \equiv \tilde \rho.
+    \end{align*}
+    Now we ask whether $\tilde \rho \geq 0.$ The factor $d$ certainly doesn't change the positivity of the state, so take $Q\equiv d\tilde \rho$ and consider its action on some states $\ket{\phi}=\sum_k a_k \ket{k},\ket{\psi}=\sum_l b_l \ket{l}.$ Then
+    \begin{align*}
+        Q(\ket{\phi}\otimes \ket{\psi}) &= \paren{\sum \ket{j}\bra{i} \otimes \ket{i}\bra{j}}\paren{\sum a_k \ket{k} \otimes \sum b_l \ket{l}}\\
+        &= \sum_{i,j} a_i \ket{j} \otimes b_j \ket{i}\\
+        &=\sum_j b_j \ket{j} \otimes \sum_i a_i \ket{i} = \ket{\psi}\otimes \ket{\phi}.
+    \end{align*}
+    What we see is that $Q$ has swapped the states between the Hilbert spaces,
+    \begin{equation}
+        Q(\ket{\phi}\otimes \ket{\psi}) =\ket{\psi}\otimes \ket{\phi} \implies Q^2=I.
+    \end{equation}
+    This tells us that the eigenvalues of $Q$ are $\pm 1$, which means that we have constructed an operator which is positive but not completely positive.
+\end{exm}

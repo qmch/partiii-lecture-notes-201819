@@ -1,0 +1,99 @@
+Today we'll turn on interactions and try to understand path integrals/generating functionals in an interacting theory, cf. Osborn \textsection 2.2.
+\subsection*{Feynman rules}
+We start by stating the following identity: for functions $F,G$,
+\begin{equation}
+    G(-\P{}{J})F(-J) = F(\P{}{\phi}G(\phi)e^{-J\phi}|_{\phi=0}.
+\end{equation}
+
+\begin{exm}
+    Here's an example. Let $F(J)=e^{\beta J}$ and $G(\phi)=e^{\alpha \phi}$. Evaluating the LHS of our identity, we have
+    \begin{align*}
+        G(-\P{}{J})F(-J) &= e^{-\alpha \P{}{J}}e^{-\beta J}\\
+            &= \sum_{n=0}^\infty \frac{1}{n!} (-\alpha \P{}{J})^n e^{-\beta J}\\
+            &= e^{\alpha \beta} e^{-\beta J} = F(\alpha-J).
+    \end{align*}
+    On the RHS we have instead
+    \begin{align*}
+        F(\P{}{\phi}) G(\phi)e^{-J\phi}|_{\phi=0} &= e^{\beta \P{}{\phi}}e^{\alpha \phi - J \phi}|_{\phi = 0}\\
+            &= e^{-\beta(\alpha-J)} =F(\alpha-J).
+    \end{align*}
+    Really, this is a notational abuse-- we are using these functions both as maps on some values/fields $\phi,J$ and also on differential operators. But the result is valid%
+        \footnote{At least for sufficiently nice functions, I assume.}
+    and for general $F,G$ we may write these as Fourier series and proceed as above.
+\end{exm}
+
+We will employ this identity in interacting scalar field theory in the form
+\begin{equation}\label{interactinglagrangianidentity}
+    e^{-\cL_{int} (-\P{}{J})} e^{-\frac{1}{2} J\Delta J} = e^{-\frac{1}{2}\P{}{\phi} \Delta \P{}{\phi}} e^{-\cL_{int}(\phi)-J\phi}|_{\phi=0},
+\end{equation}
+where we will promote $J,\phi$ to fields.
+
+In interacting scalar field theory, we can separate the Lagrangian into a free part and an interacting part,
+\begin{equation}
+    \cL = \cL_0 +\cL_{int},\quad \cL_0 =\frac{1}{2} \p_\mu \phi \p^\mu \phi +\frac{1}{2} m^2 \phi^2.
+\end{equation}
+Now the generating functional for this theory (possibly in the presence of a source $J$) takes the form
+\begin{align}
+    Z[J] &= \int \cD \phi \exp \bkt{ - \int d^4 x(\cL_0 + \cL_{int} + J\phi)}\\
+        &= \exp \set*{ -\int d^4 y \cL_{int}\bkt{-\P{}{J}}}
+            \underbrace{\int \cD \phi \exp \bkt{-\int d^4 x (\cL_0+J\phi)}}_{Z_0[J]} \label{expseriesexp}\\
+        &= \exp \set*{ -\int d^4 y \cL_{int}\bkt{-\P{}{J}}} \exp \bkt{ -\frac{1}{2} \int d^4 x d^4 x' J(x) \Delta (x-x')J(x')}\\
+        &= \exp \bkt{
+            -\frac{1}{2} \int d^4x d^4 x' \frac{\delta}{\delta \phi(x)} \Delta(x-x') \frac{\delta}{\delta \phi(x')}
+        }
+        \exp \bkt{
+            -\int d^4y (\cL_{int}[\phi]+J(y) \phi(y)
+        }|_{\phi=0}.
+\end{align}
+In line \ref{expseriesexp}, we have used the fact that $\paren{\frac{\delta}{\delta J(y)}} e^{-d^4 x J \phi}=\phi(y) e^{-\int d^4 x J \phi}$. In the next line, we used our free theory result for $Z_0[J]$. In the last line, we have used our identity, Eqn. \ref{interactinglagrangianidentity}.
+
+The (position space) Feynman rules are then based on the series expansion of exponentials in $Z[J]$.
+\begin{itemize}
+    \item Propagators come with factors of $\Delta(x-x')$.
+    \item Vertices with $n$ lines come from $\paren{\frac{\delta}{\delta \phi(y)}}^n(-\cL_{int}[\phi])|_{\phi=0} \equiv v^{(n)}$.
+    \item Integrate over the positions of all internal vertices.
+    \item Add symmetry factors as before.
+\end{itemize}
+
+Of course, it's usually more illuminating to do our calculations in momentum space instead. A Fourier transform will take us there. We can write down a momentum space propagator
+\begin{equation}
+    \tilde \Delta (k)=\int d^4y \Delta(y) e^{-ik \cdot y}=\frac{1}{k^2+m^2}.
+\end{equation}
+Our integrals over position now become $\delta$ functions which conserve momentum at each vertex, and we will always get an overall factor $(2\pi)^4 \delta^{(4)}(\sum_j p_j)$ where the sum is taken over external momenta. The momentum space Feynman rules are as follows:
+\begin{itemize}
+    \item Propagators get factors of $\frac{1}{k^2+m^2}$.
+    \item Vertices get factors of $(2\pi)^4 \delta^{(4)}(\sum p_i)$ where $p_i$ is taken over momenta going into a vertex (or out, if you prefer)
+    \item Integrate over all internal momenta with $\int \frac{d^4k}{(2\pi)^4}$.
+\end{itemize}
+
+For fully connected diagrams%
+    \footnote{In David Tong's notes, he refers to connected diagrams where every point is connected to an external line, and \emph{fully connected diagrams}, where all points are connected to all other points. This distinction was previously missed in these lectures.}
+we have a nice graph theory property due to Euler:
+\begin{equation}
+    L=I-V+1,
+\end{equation}
+where $L$ is the number of loops, $I$ is the number of internal lines, and $V$ is the number of vertices. We can use this to simplify some integrals by
+\begin{equation}
+    \int \bkt{\prod_{i=1}^I \frac{d^4k_i}{(2\pi)^4}}
+        \bkt{ \prod_{v=1}^V (2\pi)^4 \delta^{(4)}(\sum_j p_{j,v})}\ldots
+\end{equation}
+where $\ldots$ indicates some integrand. We can therefore factor out the momentum-conserving delta function and do $V-1$ integrals over the rest of the $\delta$ functions, so we are left with $L$ nontrivial integrals. The factors of $2\pi$ work out too: $\paren{\frac{1}{(2\pi)^4}}^I (2\pi)^{4V} = \frac{1}{(2\pi)^{4(L-1)}}.$
+
+We get the following simplified rules:
+\begin{itemize}
+    \item External lines get $\frac{1}{p^2+m^2}$ factors
+    \item Internal lines get $\frac{1}{k^2+m^2}$ factors
+    \item $n$-point vertices get factors of $v^{(n)}$
+    \item Impose momentum conservation at each vertex
+    \item Integrate over each undetermined loop momentum ($1$ for each loop)
+    \item Strip off the overall momentum conserving delta function $(2\pi)^4 \delta^{(4)}(\sum_j p_j)$.
+\end{itemize}
+
+For example, if $\cL_{int}$ contains a $\frac{\lambda}{4!}\phi^4$ term, then we get a one-loop diagram, resulting in 
+\begin{equation}
+    \frac{1}{2} \frac{1}{(p_1^2+m^2)(p_2^2 +m^2)} (2\pi)^4 \delta^{(4)}(p_1-p_2)(-\lambda) \int \frac{d^4k}{(2\pi)^4} \frac{1}{k^2+m^2}.
+\end{equation}
+Unfortunately, this is infinity. We'll see what to do with this a little later. If $\cL_{int}$ instead contains $\frac{g}{3!}\phi^3$, we get a matrix element
+\begin{equation}
+    \frac{1}{2} \frac{1}{(p_1^2+m^2)(p_2^2+m^2)} (2\pi)^4 \delta^{(4)}(p_1-p_2)(-g)^2 \int \frac{d^4k}{(2\pi)^4} \frac{1}{k^2+m^2} \frac{1}{(k-p_1)^2 +m^2}
+\end{equation}

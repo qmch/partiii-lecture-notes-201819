@@ -59,25 +59,35 @@ A covariant derivative $D$ on $\Sigma$ can be identified by projection of the co
     and $D$ is torsion-free.
 \end{lem}
 \begin{proof}
-    Let's expand out the following derivative:
+    The covariant derivative $D$ acting on the metric $h_{ab}$ is the projection
     \begin{equation}
-        \nabla_a h_{bc}=\mp n_c \nabla_a n_b \mp n_b \nabla_a n_c.
+        D_a h_{bc}=h_e{}^a h_f{}^b h_g{}^c \nabla_a h_{bc}.
     \end{equation}
-    But recall that $h_a{}^c n_c =0,$ so $D_a h_{bc}=0$.
+    Recalling that $h_{ab}=g_{ab}\mp n_a n_b$, let's expand the ordinary covariant derivative:
+    \begin{equation}
+        \nabla_a h_{bc}=\mp n_c \nabla_a n_b \mp n_b \nabla_a n_c,
+    \end{equation}
+    where the $\nabla_a g_{bc}$ term is zero by metric compatibility.
+    But recall that $h_a{}^c n_c =0$ (i.e. the projection of a normal vector onto the submanifold is zero), so when we compute the projection of $\nabla_a h_{bc}$ onto $\Sigma,$ we find that
+    \begin{equation}
+        D_a h_{bc}=h_e{}^a h_f{}^b h_g{}^c(\mp n_c \nabla_a n_b \mp n_b \nabla_a n_c)=0,
+    \end{equation}
+    which tells us that $D$ is metric compatible with respect to $h_{ab}$.
     
-    To prove it is torsion-free, let $f:\Sigma \to \RR$, and extend to a function $f:\cM \to \RR$. Then consider $D_a D_b f$. This is
+    To prove it is torsion-free, let $f:\Sigma \to \RR$ be a scalar function on $\Sigma$, and extend it off $\Sigma$ to a function $f:\cM \to \RR$ so that $\nabla_a f$ is well-defined. Then consider $D_a D_b f$. This is
     \begin{align*}
-        D_a D_b f &= h_a{}^c h_b{}^d \nabla_c(h_d{}^e \nabla_e f)\\
-        &= h_a{}^c h_b{}^e \nabla_c \nabla_e f + h_a{}^c h_b{}^d \nabla_c h^e{}_d \nabla_e f.
+        D_a D_b f &= D_a h_b{}^e \nabla_e f\\
+        &= h_a{}^c h_b{}^d \nabla_c(h_d{}^e \nabla_e f)\\
+        &= h_a{}^c h_b{}^e \nabla_c \nabla_e f + h_a{}^c h_b{}^d (\nabla_c h^e{}_d) (\nabla_e f).
     \end{align*}
-    This first term is already manifestly symmetric in $a$ and $b$ since the original connection was torsion free, so let us rewrite the second term as follows:
+    This first term is already manifestly symmetric in $a$ and $b$ since the original connection was torsion free (i.e. covariant derivatives $\nabla_c\nabla_e$ commute on scalars), so let us rewrite the second term (neglecting the $\nabla_e f$ part) as follows:
     \begin{align*}
         h_a{}^c h_b{}^d \nabla_c h_d{}^e 
             &= g^{ef} h_a{}^c h_b{}^d \nabla_c h_{df}\\
-            &= \mp g^{ef}h_a{}^c h_b{}^d n_f \nabla_c n_d\\
+            &= \mp g^{ef}h_a{}^c h_b{}^d (n_f \nabla_c n_d+ n_d \nabla_c n_f)\\
             &= \mp n^e K_{ab},
     \end{align*}
-    where we have grouped together $h_a{}^c h_b{}^d \nabla_c n_d =K_{ab}$. We conclude that
+    where we have grouped together $h_a{}^c h_b{}^d \nabla_c n_d =K_{ab}$ and gotten rid of the $n_d \nabla_c n_f$ term by projection with $h_b{}^d$. But $K_{ab}$ is symmetric, so it also vanishes under antisymmetrization. We conclude that
     \begin{equation}
         D_{[a}D_{b]} f=0.\qedhere
     \end{equation}
@@ -98,12 +108,14 @@ We'd like to relate the extrinsic curvature to our old-fashioned Riemann curvatu
     Let us compute the RHS of this equation.
     \begin{align}
         D_c D_d X^a &= h_c{}^e h_d{}^f h_g{}^a \nabla_e(D_f X^g)\\
-        &= h_c{}^e h^f{}_d h^a{}_g \nabla_e (h_f{}^h h_i{}^g \nabla_h X^i)\\
+        &= h_c{}^e h^f{}_d h^a{}_g \nabla_e (h_f{}^h h_i{}^g \nabla_h X^i)\label{someprojectors}\\
         &=h_c{}^e h^f{}_d h^a{}_g \nabla_e \nabla_h X^i 
         + h_c{}^e h^f{}_d h^a{}_g (\nabla_e h^h{}_f) \nabla_h X^i 
         + h_c{}^e h^f{}_d h^a{}_g (\nabla_e h^g{}_i) \nabla_h X^i.\label{lotsofprojectors}
     \end{align}
-    This first term is already looking good. Note that we have to project the indices everywhere, so in the first line we project $c,d,a$ indices, and in the second line we project $f,g$ indices, and in the final line we expand out the covariant derivative.
+    This first term is already looking good. Note that we have to project the indices everywhere, so in the first line we project $c,d,a$ indices, and in the second line we project $f,g$ indices, and in the final line we expand out the covariant derivative.%
+        \footnote{As a rule of thumb, all free indices (i.e. that are not contracted over) must be projected in \emph{each} covariant derivative. In my (limited) experience, I have found it most useful to begin with the innermost covariant derivative and work my way out. So for instance we know that $D_d X^a$ will come with two projectors, one with $d$ as the free index and another with $a$ as the free index. Our final expression (say, $\overline{D_d X^a}$) still has two free indices $d,a$ but it also has two projectors, so that when we take the covariant derivative $D_c (\overline{D_d X^a}),$ there are three free indices to project. Hence we get three projectors outside all the derivatives and two inside a first derivative, as in Eqn. \ref{someprojectors}.
+        }
     
     We have seen that
     \begin{equation}\label{projectorsandcurvature}
