@@ -40,7 +40,7 @@ Note that $\Tr \ket{\alpha_B}\bra{\beta_B}=\sum_{\gamma_B} \braket{\gamma_B}{\al
 
 We conclude that the density matrix after taking the partial trace is
 \begin{align}
-    \rho_A =\Tr_B \rho_{AB} = \sum_{i\alpha j\beta} a_{i\alpha,j\beta}\ket{i_A}\bra{j_A}\delta_{\alpha\beta}\\
+    \rho_A =\Tr_B \rho_{AB} &= \sum_{i\alpha j\beta} a_{i\alpha,j\beta}\ket{i_A}\bra{j_A}\delta_{\alpha\beta}\\
     &=\sum-{ij\alpha} a_{i\alpha,j\alpha} \ket{i_A}\bra{j_A} \in B(\cH_A).
 \end{align}
 One can then show that $\rho_A \geq 0$ (is positive semi-definite) and $\Tr \rho_A=0$, so $\rho_A$ is in fact a density matrix. We call it the \term{reduced density matrix} or a reduced state.
@@ -64,7 +64,7 @@ The expectation value of this observable is given by
 For this reason, the partial trace is often defined such that for any $M_{AB}$ of this form, $\Tr_B(M_{AB}\rho_{AB})=\Tr(M_a \rho_A).$
 
 \begin{exm}
-Consider a system with two qubits, so $\cH = \CC^2 \otimes \CC^2$. The full denisty matrix is
+Consider a system with two qubits, so $\cH = \CC^2 \otimes \CC^2$. The full density matrix is
 \begin{equation}
     \rho_{AB}=\rho_1 \otimes \rho_2,
 \end{equation}
@@ -118,7 +118,7 @@ We then say that for a mixed state, if its density matrix can be written
 \end{equation}
 we say it is \term{separable}. Otherwise, it is entangled.
 
-Last time, we also referred to the Pauli matrices $\sigma_0,\sigma_x,\sigma_y,\sigma_z$, and remakred that their real span (i.e. sums with real coefficients) is then the set of $2\times 2$ self-adjoint matrices,
+Last time, we also referred to the Pauli matrices $\sigma_0,\sigma_x,\sigma_y,\sigma_z$, and remarked that their real span (i.e. sums with real coefficients) is then the set of $2\times 2$ self-adjoint matrices,
 \begin{equation*}
     A=x_0\sigma_0 +\vec x \cdot \gv \sigma
 \end{equation*}

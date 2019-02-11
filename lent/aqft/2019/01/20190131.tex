@@ -62,7 +62,7 @@ Note that this is the opposite of the convention for scalars, where
 
 \subsection*{Free fermion field theory} Consider $d=0$, with two fermion fields $\theta_1,\theta_2$. The action must be bosonic (scalar), so the only possible nonconstant action is
 \begin{equation}
-    S(\theta)=\frac{1}{2}A \theta_a \theta_2, A\in \RR
+    S(\theta)=\frac{1}{2}A \theta_1 \theta_2, A\in \RR
 \end{equation}
 Then the path integral is
 \begin{equation}
@@ -76,7 +76,7 @@ Suppose now we have $n=2m$ fermion fields $\theta_a$. Then our action might be q
 \end{equation}
 with $A$ an antisymmetric matrix, and the path integral is then
 \begin{align*}
-    Z_0 &= \int d^{2m}\theta\, e^{-S(\theta)/\hbar} = \int d^{2m} \theta \sum{j=0}^{m} \frac{(-1)^j}{(2\hbar)^j j!} (A_{ab}\theta_a \theta_b)^j\\
+    Z_0 &= \int d^{2m}\theta\, e^{-S(\theta)/\hbar} = \int d^{2m} \theta \sum_{j=0}^{m} \frac{(-1)^j}{(2\hbar)^j j!} (A_{ab}\theta_a \theta_b)^j\\
     &= \frac{(-1)^m}{(2\hbar)^m m!} \int d^{2m}\theta A_{a_1 a_2} A_{a_3 a_4} \ldots A_{a_{2m-1} a_{2m}} \theta_{a_1} \theta_{a_2} \ldots \theta_{2m}\\
     &= \frac{(-1)^m}{(2\hbar)^m m!} \epsilon^{a_1 a_2 \ldots a_{2m}} A_{a_1 a_2} A_{a_3 a_4} \ldots A_{a_{2m-1} a_{2m}}\\
     &= \frac{(-1)^m}{\hbar^m} \text{Pf}(A),

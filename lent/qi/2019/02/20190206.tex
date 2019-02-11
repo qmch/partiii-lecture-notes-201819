@@ -11,9 +11,20 @@ equipped with a (fixed) onb for $\CC^d$ given by $\set{\ket{i}}_{i=1}^d$, a maxi
     \begin{equation}
         \ket{\Phi}=(i\otimes U) \ket{\Omega}
     \end{equation}
-    for some unitary $U$. One should check explicitly that
+    for some unitary $U$. One should check explicitly%
+        \footnote{The proof is quick.
+        \begin{align*}
+            \Tr_2(\kb{\Phi}{\Phi})&= \Tr_2 \paren{(I\otimes U) \frac{1}{\sqrt{d}}\sum_i \ket{i}\ket{i}}\paren{\frac{1}{\sqrt{d}} \sum_j \bra{j} \bra{j} (I\otimes U^\dagger)}\\
+                &= \frac{1}{d}\sum_{i,j} \kb{i}{j} \Tr(U\kb{i}{j} U^\dagger)\\
+                &= \frac{1}{d}\sum_{i,j} \kb{i}{j} \Tr(\kb{i}{j} U^\dagger U)\\
+                &=\frac{1}{d} \sum_{i,j} (\kb{i}{j} \delta_{ij}\\
+                &= \frac{I}{d}.
+        \end{align*}
+        The proof for tracing over the first subsystem is almost the same. 
+        }
+    that
     \begin{equation}
-        \Tr_2 \ket{\Phi}\bra{\Phi}=\frac{I}{d},\Tr_1 \ket{\Phi}\bra{\Phi}=\frac{I}{d}.
+        \Tr_2 \ket{\Phi}\bra{\Phi}=\frac{I}{d}\text{ and }\Tr_1 \ket{\Phi}\bra{\Phi}=\frac{I}{d}.
     \end{equation}
     \item Lemma: for any $A,B\in B(\CC^d),$
     \begin{itemize}

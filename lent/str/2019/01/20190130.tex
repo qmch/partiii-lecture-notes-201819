@@ -52,7 +52,13 @@ gives a Weyl-invariant quantum theory results in what we might call equations of
 \end{equation*}
 If you like, the worldsheet theory couples to the metric of the background spacetime. Now, we could have just written down this action to start with. But deriving it from the worldsheet allows us to argue that any higher order terms are suppressed by the length scale of $\alpha'$.
 
-What happens if spacetime has some weird topology? Consider a theory where spacetime has the topology of $\RR^2\times S^1$. %see figure
+What happens if spacetime has some weird topology? Consider a theory where spacetime has the topology of $\RR^2\times S^1$, as in Fig. \ref{fig:stringtopology}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{2019/01/20190130_stringtopology.png}
+    \caption{A spacetime with the topology $\RR^2\times S^1$. A particle (red) can move along the length of the cylinder and around its circumference. A string on the surface (black) can do the same. But this spacetime also admits the string configuration (blue) which wraps around the circumference.}
+    \label{fig:stringtopology}
+\end{figure}
 Then a string can move around the spacetime just like a particle, but it can also wrap around the compact $S^1$ direction and probe the topology of the spacetime. Therefore something else interesting is happening which the modes we've currently defined seem totally insensitive to.
 
 \subsection*{Path integral quantization}
@@ -68,4 +74,11 @@ That is, given some initial and final string states $\Psi_{i,f}$, the path integ
 \begin{equation}
     \braket{\Psi_f}{\Psi_i}=\int_i^f \cD x \cD h e^{iS[h,x]},
 \end{equation}
-with $S[h,x]$ the Polyakov action. But now by analogy with QFT we will have to deal with strings splitting and merging in our path integral. There will be new complications when we try to compute the path integral.
+with $S[h,x]$ the Polyakov action. But now by analogy with QFT we will have to deal with strings splitting and merging in our path integral, as shown in Fig. \ref{fig:stringpathintegral}. There will be new complications when we try to compute the path integral.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{2019/01/20190130_stringpathintegral.png}
+    \caption{Two worldsheet configurations we might need to sum over in the path integral from $\Psi_i$ (left) to $\Psi_f$ (right). One worldsheet (blue) has the string propagating directly from $\Psi_i$ to $\Psi_f$, while the other (red) has the string pinching off and splitting into two before merging back (the equivalent of a scattering process in QFT).}
+    \label{fig:stringpathintegral}
+\end{figure}

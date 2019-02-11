@@ -34,13 +34,14 @@ Today we shall discuss the Schmidt decomposition, purification, and the no-cloni
     \end{equation}
     Since $d_{i\beta}=\delta_{i\beta}d_{ii}$, we rewrite our state as
     \begin{equation}
-        \ket{\psi_{AB}}=\sum_{i=1}^{\min(d_A,d_B)}\underbrace{\paren{\sum_r^{d_A} u_{ri}\ket{r_A}}}_{\ket{i_A}} \underbrace{\paren{\sum_\alpha^{d_B} v_{i\alpha}\ket{\alpha_B}}}_{\ket{i_B}},
+        \ket{\psi_{AB}}=\sum_{i=1}^{\min(d_A,d_B)} \lambda_i \underbrace{\paren{\sum_r^{d_A} u_{ri}\ket{r_A}}}_{\ket{i_A}} \underbrace{\paren{\sum_\alpha^{d_B} v_{i\alpha}\ket{\alpha_B}}}_{\ket{i_B}},
     \end{equation}
     where we recognize $d_{ii}=\lambda_i.$ Thus we have written the state as
     \begin{equation}
-        \ket{_{AB}}=\sum_{i=1}^{\min(d_A,d_B)}\lambda_i \ket{i_A}\ket{i_B}.
+        \ket{\psi_{AB}}=\sum_{i=1}^{\min(d_A,d_B)}\lambda_i \ket{i_A}\ket{i_B}.
     \end{equation}
-    We can check that $\braket{j_A}{i_A}=\delta_{ij}$ by using unitarity:
+    We can check that $\braket{j_A}{i_A}=\delta_{ij}$ by using unitarity:%
+        \footnote{A slightly quicker way to do this is to recognize that we're just taking $\braket{j_A}{i_A}=\braket{U r'_A}{U r_A}=\braket{r'_A}{U^\dagger U r_A}=\braket{r'_A}{r_A}$.}
     \begin{align*}
         \braket{j_A}{i_A}&= \sum_{r,r'} (u_{r'j}^* \bra{r_A'})(u_{ri}\ket{r_A})\\
         &=\sum_r u_{rj}^* u_{ri}\\
@@ -105,14 +106,14 @@ $R$ is a purifying ``reference'' system.
     since the $\lambda_i$s satisfy $\sum \lambda_i^2 =\sum p_i =1$ and $\Tr \rho_A = 1.$
 \end{proof}
 
-Let's also remark that if we have a system $AB$ in a state $\Omega_{AB}$ such that $\Tr_B \Omega_{AB}=\psi_A$ is a pure state, then $\Omega_{AB}$ must be itself a product state, $\Omega-{AB}=\psi_A \otimes \omega_B$, where $\psi_A=\ket{\psi_A}\bra{\psi_A}$.
+Let's also remark that if we have a system $AB$ in a state $\Omega_{AB}$ such that $\Tr_B \Omega_{AB}=\psi_A$ is a pure state, then $\Omega_{AB}$ must be itself a product state, $\Omega_{AB}=\psi_A \otimes \omega_B$, where $\psi_A=\ket{\psi_A}\bra{\psi_A}$.
 %There are some really beautiful YouTubes.
 
-This also tells us that correlations contains in a pure state are \term{monogamous}, i.e. for a bipartite state $A=A_1 A_2$, with $\ket{\psi}=\ket{\psi_{A_1A_2}},$ then the bigger system $AB=A_1 A_2 B$ will hae a state of the form
+This also tells us that correlations contains in a pure state are \term{monogamous}, i.e. for a bipartite state $A=A_1 A_2$, with $\ket{\psi}=\ket{\psi_{A_1A_2}},$ then the bigger system $AB=A_1 A_2 B$ will have a state of the form
 \begin{equation}
     \Omega_{A_1A_2B} = \psi_{A_1A_2} \otimes \omega_B
 \end{equation}
-\subsection*{No-cloning theorem} In popular language, the no-cloning theorem sasy that there does not exist a quantum copier. More formally, $\not\exists$ a unitary operator which can perfectly copy an unknown $\ket{\psi}$.
+\subsection*{No-cloning theorem} In popular language, the no-cloning theorem says that there does not exist a quantum copier. More formally, $\not\exists$ a unitary operator which can perfectly copy an unknown $\ket{\psi}$.
 
 \begin{proof}
     Suppose there exists such a unitary $U$. That is, we can take a reference state $\ket{\psi}$ and a ``blank'' state $\ket{s}$ and get out two copies of $\ket{\psi}$. Thus
