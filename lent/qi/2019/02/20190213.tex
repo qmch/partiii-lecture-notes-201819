@@ -1,0 +1,142 @@
+Last time, we continued our discussion of quantum operations as linear CPTP maps. We proved that a map $\Lambda$ is CP $\iff$ $J(\Lambda)=(\Lambda \otimes \id)\kb{\Omega}{\Omega}\geq 0$, so it suffices to check positivity on the maximally entangled state. We mentioned the Stinespring Dilation Theorem from operator theory, and showed that from Stinespring we can get the Kraus Rep. Theorem. Finally, we started setting up the C-J isomorphism, which establishes an isomorphism between linear maps and positive operators.
+
+The C-J isomorphism says that for
+\begin{equation}\label{cjdef}
+    J\equiv (\Lambda \otimes \id)\kb{\Omega}{\Omega},
+\end{equation}
+we have
+\begin{equation}\label{cjdef2}
+    \Tr(A\Lambda(B))=d\Tr(J(A\otimes B^T)).
+\end{equation}
+We proved last time that $\Lambda$ is CP $\iff J\geq 0$. Next, we will show that $|Lambda$ is TP $\iff \Tr_A J =I_d/d$.
+\begin{proof}
+    $\Tr \Lambda(B)=\Tr(I_{d'}\Lambda(B))=\Tr(\Lambda^*(I_d')B)=\Tr B\forall B$,
+    so
+    \begin{equation}
+        \Lambda^*(I_{d'})=I_d.
+    \end{equation}
+    Now
+    \begin{align*}
+        \Tr J &= \Tr((\Lambda \otimes \id_d)\Omega)\\
+            &=\Tr((I_A\otimes I_B)(\Lambda \otimes \id)\Omega)\\
+            &=\Tr((\Lambda^* I_{d'} \otimes I_d)\Omega)
+    \end{align*}
+    We can now break the trace up into the partial traces:
+    \begin{align*}
+        \Tr_B(\Tr_A J) &= \Tr_B \Tr_A((\Lambda^* (I_{d'})\otimes I_d) \Omega)\\
+            &= \Tr_B \Tr_A((I_d\otimes I_d) \Omega)\\
+            &= \Tr_B(I_d/d) \implies \Tr_A J = I_d/d.\qedhere
+    \end{align*}
+\end{proof}
+We now claim that \ref{cjdef} and \ref{cjdef2} define an isomorphism, i.e. a map that is both injective and surjective.
+
+\subsection*{CJ$\to$ Kraus}
+Suppose we have $\Lambda$ a linear CP map. Thus CJ tells us that
+\begin{equation*}
+    J(\Lambda)=(\Lambda\otimes \id)\kb{\Omega}{\Omega} \geq 0.
+\end{equation*}
+We know that $\Tr J(\Lambda)=1$, and we also know that we can decompose a state $\ket{\psi_i}$ as
+\begin{equation}
+    \ket{\psi_i}=(R_i\otimes I)\ket{\Omega}
+\end{equation}
+for some $R_i$.%
+    \footnote{Previously, this was $\ket{\psi}=(I\otimes R)\ket{\Omega}$. But by ricochet, we can just move this over to some $(R^T \otimes I)\ket{\Omega}$ and relabel $R^T=R_i.$}
+These operators are $R_i\in \cB(\CC^d,\CC^{d'})$, and thus we get a decomposition
+\begin{equation}
+    J=\sum p_i \kb{\psi_i}{\psi_i} = \sum_i p_i (R_i\otimes I)\kb{\Omega}{\Omega} (R_i^\dagger \otimes I).
+\end{equation}
+Thus with $A_i := \sqrt{p_i}R_{i'}$, we get
+\begin{equation}
+    J(\Lambda) = \sum_{i'} (A_i \otimes I)\kb{\Omega}{\Omega} (A^\dagger_i \otimes I).
+\end{equation}
+Comparing to the original definition of $J(\Lambda)$ in terms of $\Lambda$, we see that
+\begin{equation}
+    \Lambda(\rho)=\sum_{I=1}^r A_i \rho A_i^\dagger.\qed
+\end{equation}
+
+\subsection*{Kraus $\to$ Stinespring}
+We want to show that we can get Stinespring (a linear map $\Lambda$ written in terms of unitaries $U$, a reference state $\phi$, and a partial trace over the ancilla) from Kraus. One possible isometry is
+\begin{equation}
+    \ket{\Psi} \equiv U(\ket{\psi}\otimes \ket{\phi}) = \sum_{k=1}^r A_k \ket{\psi}\otimes \ket{k}
+\end{equation}
+where $\set{\ket{k}}$ is an onb in $\cH'$. One may check that $U$ is indeed an isometry, i.e.
+\begin{equation}
+    \braket{\Psi}{\Psi}=\braket{\psi}{\psi}
+\end{equation}
+using $\set{\ket{k}}$ an onb and $\sum A_k^\dagger A_k=I$.
+
+We see that
+\begin{equation}
+    U(\rho\otimes \kb{\phi}{\phi})U^\dagger =\sum p_i (U\ket{\psi_i}\otimes \ket{\phi})(\ldots)^\dagger.
+\end{equation}
+Taking the partial trace over $H'$ we see that 
+
+\begin{equation}
+    \sum A_k \rho A_k^\dagger =\Lambda(\rho)=\Tr_{\cH'}(U(\rho\otimes \phi)U^\dagger).
+\end{equation}
+
+\subsection*{Measurement}
+Here is the third postulate of quantum mechanics, the ``von Neumann/projective'' measurement formalism. In a closed system, we have:
+\begin{itemize}
+    \item A system in state $\ket{\psi}$
+    \item Measure an observable $A$
+    \item The outcome is an eigenvalue of $A$, some $\set{a}$.
+    \item The probability of outcome $a$ is given by a projection,
+    \begin{equation}
+        p(a)=\bra{\psi}P_a \ket{\psi}
+    \end{equation}
+    where $A=\sum a P_a = \sum a \kb{e_a}{e_a}.$
+    \item The post-measurement state if the outcome was $a$ is then
+    \begin{equation}
+        \ket{\psi}\to \ket{\psi'}=\frac{P_a \ket{\psi}}{\sqrt{\bra{\psi}P_a \ket{\psi}}}.
+    \end{equation}
+\end{itemize}
+\begin{exm}
+    Suppose your friend goes the the lab and prepares an electron in the spin state $\ket{\psi}$, where
+    \begin{equation}
+        \gv \sigma \cdot \hat n \ket{\psi}=\ket{\psi}
+    \end{equation}
+    where $\gv \sigma =(\sigma_x,\sigma_y,\sigma_z)$ and $\hat n$ is a unit vector.
+    For instance, if $\hat n=(0,0,1)$, then $\ket{\psi}=\ket{0}$ the up-spin state.
+    
+    We can ask the reasonable question: ``What is the direction of $\hat n$?'' This is a perfectly legitimate question, but $\hat n$ does not represent an observable (i.e. a Hermitian operator), so we cannot answer this question with the existing measurement formalism.
+\end{exm}
+
+Note that these projection operators $P_a$ had better be positive semidefinite in order to have a probabilistic outcome, and 
+\begin{equation}
+    \sum p(a)=1 \implies 1 = \sum_a \bra{\psi} P_a \ket{\psi} \implies \sum_a P_a = I.
+\end{equation}
+Since we measure with some self-adjoint operator $A$, it must be that
+\begin{equation}
+    P_a P_b = \delta_{ab} P_a.
+\end{equation}
+That is, our projections are orthogonal. It is this postulate we will drop.
+\subsection*{Generalized measurement postulate}
+In our broader formalism, measurements are described by some operators $\set{M_a}$. We assume nothing about these $M_a$. The $a$s label possible outcomes, such that
+\begin{equation}
+    \sum_a M_a M^\dagger_a = I,
+\end{equation}
+a completeness relation. Now if the system is in a state $\ket{\psi}$, then we say the probability of getting $a$ is
+\begin{equation}
+    p(a) =\bra{\psi}M_a^\dagger M_a \ket{\psi}.
+\end{equation}
+The post-measurement state is then
+\begin{equation}
+    \ket{\psi}\to \ket{\psi'}=\frac{M_a \ket{\psi}}{\sqrt{\bra{\psi}M^\dagger_a M_a\ket{\psi}}}.
+\end{equation}
+We see that in the special case where $M_a=P_a$, since $M_a^\dagger M_a = P_a^\dagger P_a = P_a^2 =P_a$, we get back the old projective measurement postulate,
+\begin{equation*}
+    \ket{\psi'}=\frac{P_a \ket{\psi}}{\sqrt{\bra{\psi}P^\dagger_a P_a\ket{\psi}}}=\frac{P_a \ket{\psi}}{\sqrt{\bra{\psi}P_a\ket{\psi}}}.
+\end{equation*}
+
+\subsection*{POVMs}
+We now introduce \term{positive operator-valued measures}, or POVMs. We had $p(a)=\bra{\psi} M_a^\dagger M_a \ket{\psi}$, so let us define $E_a := M_a ^\dagger M_a \geq 0$. $\sum_a E_a = \sum_a M_a^\dagger M_a =I$, and clearly $E_a^\dagger = E_a$.
+
+Of course, it follows that $E_a \geq 0 \implies p(a) \geq 0$. One may define that $p(a)=\Tr(E_a \rho).$ In addition, since $\sum_a E_a=I\implies \sum p(a) =1$. We call these $E_a$ POVM elements.
+
+\begin{defn}
+    A POVM is defined by any partition of the identity $I$ into a finite set of positive semi-definite operators $\set{E_a}$ acting on the Hilbert space $\cH$ of the system to be measured, i.e.
+    \begin{equation*}
+        E_a \geq 0, \quad \sum_a E_a = I.
+    \end{equation*}
+\end{defn}

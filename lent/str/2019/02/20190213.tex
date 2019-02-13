@@ -1,0 +1,91 @@
+Last time, we started looking at correlation functions in trying to understand how classical symmetries are promoted to quantum symmetries. We showed quite generally that a symmetry of the quantum theory means that the correlation functions are left invariant,
+\begin{equation*}
+    \avg{\delta S[\phi]\phi_1\ldots \phi_n}=\sum_{k=1}^n \avg{\phi_1 \ldots \delta \phi_k \ldots \phi_n},
+\end{equation*}
+and we saw that under conformal transformations,
+\begin{equation}
+    \delta S[\phi]=\frac{1}{2\pi} \int_\Sigma d^2\sigma (\p^a v^b)T_{ab}
+\end{equation}
+with $T_{ab}$ the stress tensor.
+
+Substituting this into our expression relating correlation functions, we have
+\begin{equation}
+    \frac{1}{2\pi} \int_\Sigma d^2\sigma (\p^a v^b) \avg{T_{ab}\phi_1\ldots \phi_n}=\sum_{k=1}^n \avg{\phi_1 \ldots \delta \phi_k \ldots \phi_n}.
+\end{equation}
+We choose our $\Sigma$ to select a single $\delta_V \phi_k$ on the RHS, i.e. define two curves $C_1,C_2$ with $\omega=z_k$ inside $C_1,$ $v^a=0$ outside and on $C_2$, and $v^a=(v^z(z,\bar z),v^{\bar z}(z,\bar z))$ inside and on $C_1.$ Thus with this choice of $\Sigma$,
+\begin{equation}
+    \frac{1}{2\pi} \int_\Sigma d^2\sigma (\p^a v^b)\avg{T_{ab} \phi_1 \ldots \phi_n}=\avg{\phi_1 \ldots \delta_v \phi(\omega,\bar \omega)\ldots \phi_n}.
+\end{equation}
+We denote $v^z(z,\bar z)=v(z)$ and $v^{\bar z}(z,\bar z)=\bar v(\bar z)$, though this notation is a little misleading since $\bar v$ is not necessarily the conjugate of $v$. It is just the part of $v^a$ that depends only on $\bar z$.
+
+Integrating by parts we get
+\begin{align*}
+    \frac{1}{2\pi} \int_\Sigma d^2\sigma (\p^a v^b)\avg{T_{ab} \phi_1 \ldots \phi_n}
+        &=\frac{1}{2\pi} \int_\Sigma d^2\sigma \p^a(v^b \avg{T_{ab} \phi_1\ldots \phi_n})-\frac{1}{2\pi}\int_\Sigma d^2\sigma v^b \p^a \avg{T_{ab} \phi_1 \ldots \phi_n}\\
+        &= \frac{1}{2\pi i} \oint_{\p_\Sigma=C_1} dz v^z (z,\bar z) \avg{T_{zz}(z,\bar z) \phi_1\ldots \phi_n}
+        -\frac{1}{2\pi i} \oint_{\p\Sigma=C_2} d\bar z v^{\bar z} (z,\bar z)\avg{\bar T(\bar z) \phi_1 \ldots \phi_n}\\
+        &-\frac{1}{2\pi}\int_\Sigma d^2\sigma v^b \p^a \avg{T_{ab}\pi_1 \ldots \phi_n},\\
+        &= \frac{1}{2\pi i} \oint_{\p_\Sigma=C_1} dz v(z) \avg{T_{zz}(z,\bar z) \phi_1\ldots \phi_n}
+        -\frac{1}{2\pi i} \oint_{\p\Sigma=C_2} d\bar z \bar v (\bar z)\avg{\bar T(\bar z) \phi_1 \ldots \phi_n}\\
+        &-\frac{1}{2\pi}\int_\Sigma d^2\sigma v^b \p^a \avg{T_{ab}\pi_1 \ldots \phi_n},\\
+\end{align*}
+where we've denoted $T_{zz}(z,\bar z)\equiv T(z,\bar z= T(z)$ and $T_{\bar z \bar z}(z,\bar z)\equiv \bar T (\bar z).$
+
+We see that
+\begin{equation}
+    \p^a \avg{T_{ab}\phi_1 \ldots \phi_n}=0,
+\end{equation}
+leaving
+\begin{equation}
+    \avg{\phi_1 \ldots \delta_v \phi(\omega,\bar \omega)\ldots \phi_n} = \oint_{C_1} \frac{dz}{2\pi i} v(z) \avg{T(z)\phi_1 \ldots\phi(\omega,\bar \omega)\ldots \phi_n}
+        -\oint_{C_2} \frac{d\bar z}{2\pi i} \bar v(\bar z) \avg{\bar T(\bar z)\phi_1 \ldots\phi(\omega,\bar \omega)\ldots \phi_n}.
+\end{equation}
+
+Abstractly, we have the variation
+\begin{equation}
+    \delta_v \phi(\omega, \bar \omega)=\oint_{C(\omega)}\frac{dz}{2\pi i }v(z) T(z) \phi(\omega,\bar \omega)-\oint_{C(\omega)} \frac{d\bar z}{2\pi i} \bar v(\bar z) \bar T (\bar z)\phi(\omega,\bar \omega),
+\end{equation}
+which we always think of as being inserted into a correlation function.
+
+There are a few subtle points here. We need to take care to define the ordering of operators in this expression, since $T,\phi$ are operators. In addition, we can see that $T(z)$ ($\bar T(\bar z)$) generates holomorphic (resp. anti-holomorphic) conformal transformations. Moreover, these are contour integrals, so our calculation reveals that it's the pole structure of $\lim_{z\to \omega} T(z)\phi(\omega,\bar \omega)$ which governs the conformal transformations.
+
+If we are interested in multiple variations $\avg{\delta \phi_1 \delta\phi_2 \delta\phi_3 \phi_4,\ldots \phi_n},$ then we could choose some complicated region encircling just the corresponding points $z_1,z_2,z_3$.
+
+\subsection*{Radial ordering} Recall that we can map our worldsheet coordinates into
+\begin{equation}
+    z=e^{\tau+i\sigma},
+\end{equation}
+where $e^\tau$ is the radial part of $z$, such that ``time ordering'' on the cylinder corresponds to radial ordering on $\CC$. Thus $\tau_1 > \tau_2 \iff \abs{z_1} >\abs{z_2}.$
+
+Last term in \emph{Quantum Field Theory}, we computed expectation values of time-ordered objects, e.g. time-ordered correlation functions. Here, we will be interested in radially-ordered correlation functions. We define radial ordering as
+\begin{equation}
+    \mathcal{R}\paren{A(z),B(\omega)} \equiv \begin{cases}
+        A(z)B(\omega) & |z|>|\omega|\\
+        B(\omega)A(z) & |\omega| > |z|.
+    \end{cases}
+\end{equation}
+But how should we radially order when we are integrating over some weird contour in the complex plane? For example,
+\begin{equation*}
+    \oint_{C(\omega)} R(a(z) b(\omega)
+\end{equation*}
+with the contour as shown in the image. %figure here
+
+The answer is as follows. We can compute the answer in two regions where the ordering is clear, around a circle of some radius $R >|z-\omega|$ where $|z|>|\omega|$ and another circle oriented in the opposite direction with radius $R'<|z-\omega|$ where $|z|<|\omega|$.
+Thus we have the radial ordering
+\begin{equation}
+    \oint_{C(\omega)}dz\, R(a(z) b(\omega))=\oint_{C_1} dz\, R(a(z)b(\omega))-\oint_{C_2}dz\, R(a(z)b(\omega)) = \oint_{C_1} dz\, a(z) b(\omega)-\oint_{C_2} dz\, b(\omega) a(z).
+\end{equation}
+So our expression for $\delta_v \phi(\omega,\bar \omega)$ is (once we include radial ordering)
+\begin{equation}
+    \delta_v \phi(\omega)= \oint_{|\omega|<|z|} \frac{dz}{2\pi i} v(z) T(z) \phi(\omega) -\oint_{|\omega|>|z|} \frac{dz}{2\pi i } \phi(\omega) v(z) T(z)
+\end{equation}
+(for a chiral field) where we only look at the $\omega$ dependence.
+
+If we define
+\begin{equation}
+    Q=\oint_{C(\omega)} \frac{dz}{2\pi i} v(z) T(z),
+\end{equation}
+then we could define a bracket $[\cdot,\cdot]$ as
+\begin{equation}
+    \delta_v \phi(\omega)=[Q,\phi(\omega)].
+\end{equation}
