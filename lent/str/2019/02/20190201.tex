@@ -1,4 +1,4 @@
-Let us now continue our discussion of path integral quantization. Heuristically, we'll \begin{verbatim}import\end{verbatim} the details of path integral quantization and see what works out. We want to understand how to make sense of expressions like
+Let us now continue our discussion of path integral quantization. Heuristically, we'll \verb|import| the details of path integral quantization and see what works out. We want to understand how to make sense of expressions like
 \begin{equation}
     \int \cD h \cD X \,e^{iS[h,X]}
 \end{equation}
@@ -15,11 +15,11 @@ where $\mathcal{J}$ is a Jacobian factor whose importance we'll see in the follo
     \begin{equation*}
         \int dxdy\, e^{-(x^2 +y^2)}.
     \end{equation*}
-    But notice that $x^2+y^2$ is invariant under rotations about the origin. When we pass to polar coordinates, the $\theta$ angular integral becomes totally trivial, so we might really be interested in this integral modulo rotations. Thus our integral can be rewritten
+    This isn't too hard to do-- it separates into two Gaussian integrals readily. But notice that $x^2+y^2$ is invariant under rotations about the origin. When we pass to polar coordinates, the $\theta$ angular integral becomes trivial, so we might really be interested in this integral modulo rotations. Thus our integral can be rewritten
     \begin{equation*}
         \int d\theta \int dr \, re^{-r^2}.
     \end{equation*}
-    This $\int d\theta$ will always give us a factor of $2\pi$ (the  ``volume'' of an orbit of the rotation group)-- the real interest is in the $dr$ integral.
+    This $\int d\theta$ will always give us a factor of $2\pi$ (the  ``volume'' of an orbit of the rotation group)-- our real interest is in the $dr$ integral.
 \end{exm}
 
 In this example, we needed the Jacobian of the coordinate transformation: $dxdy=rdr d\theta$. The same is true of our path integral. Formally, we will take
