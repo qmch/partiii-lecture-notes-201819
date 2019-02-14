@@ -1,0 +1,121 @@
+We've been looking at supersymmetric nonlinear sigma models. Previously, our fields were maps from $x:M\to N$ where $M$ was a worldline and $N$ was some target space, a Riemannian manifold with a metric $g$. But it's clear that $M$ could be some bigger manifold, in general ``our universe.''
+
+We said the Hilbert space for our theory was
+\begin{equation}
+    \cH = \cH_x \otimes \cH_\psi = \Omega^\cdot (N,\CC),
+\end{equation}
+the space of differential forms up to $p$-forms on $N$ equipped with inner product
+\begin{equation}
+    \braket{\alpha}{\beta} = \int_N \bar \alpha \wedge * \beta,
+\end{equation}
+where $*$ is the Hodge star operator taking $\Omega^p(N)\to \Omega^{n-p}(N)$. Explicitly, if 
+\begin{equation*}
+    \omega=\omega_{a_1a_2\ldots a_p}dx^{a_1}\wedge dx^{a_2}\wedge \ldots \wedge dx^{a_p},
+\end{equation*} then $*\omega$ is given by
+\begin{equation*}
+    *\omega =\frac{\sqrt{g}}{(n-p)!} \epsilon^{a_1\ldots a_p}{}_{b_{p+1} \ldots b_n} \omega_{a_1\ldots a_p} dx^{b_{p+1}}\wedge \ldots \wedge dx^{b_n},
+\end{equation*}
+with indices raised by the inverse metric. We saw that our SUSY operator $Q$ then has the geometric interpretation of an exterior derivative,
+\begin{equation}
+    \hat Q = i\hat{\bar \psi}^a \hat p_a \leftrightarrow d,
+\end{equation}
+and similarly $\hat{\bar Q}$ has the interpretation of the adjoint of the exterior derivative,
+\begin{equation}
+    \hat {\bar Q} = -i\hat{ \psi}^a \hat p_a \leftrightarrow d^\dagger,
+\end{equation}
+where $\avg{\alpha,d^\dagger \beta}=\avg{d\alpha,\beta}$.
+
+We can now fix the ordering ambiguity in $|hat H$ by demanding the SUSY algebra
+\begin{equation}
+2\hat H=\set{\hat Q,\hat{\bar Q}}
+\end{equation}
+still holds in the quantum theory. This fixes
+\begin{equation}
+    H=\frac{1}{2} (d^\dagger d+ dd^\dagger)=-\frac{1}{2} \Delta,
+\end{equation}
+where $\Delta$ is the Laplacian acting on forms. Since $d:\Omega^p \to \Omega^{p+1}, d^\dagger: \Omega^p \to \Omega^{p-1},$ it follows that $-\Delta=d^\dagger d+dd^\dagger: \Omega^p \to \Omega^p$.
+
+To see this concretely, when acting on a function $f\in \Omega^0(N)$ (i.e. a zero-form), $d^\dagger$ simply annihilates the function (since there are no $-1$-forms) so we get
+\begin{align*}
+    -\Delta f &= d^\dagger d f\\
+        &= d^\dagger(\p_a f dx^a)\\
+        &= *d(*df)\\
+        &=*d \paren{
+            \frac{\sqrt{g}}{(n-1)!} g^{ab} \p_a f \epsilon_{bc\ldots d} \underbrace{dx^c \wedge \ldots \wedge dx^d}_{n-1}
+        }\\
+        &=\frac{*}{(n-1)!} \p_m (\sqrt{g}g^{ab} \p_a f) \epsilon_{bc\ldots d} \underbrace{dx^m \wedge dx^c \wedge \ldots \wedge dx^d}_n.
+\end{align*}
+But we see that there are now $n$ one-forms being wedged together, which means we must have all the $dx^1$ through $dx^n$ in some order. We can rewrite this as a totally antisymmetric tensor, with a factor of $1/g$ the determinant of the metric. Using this fact, our expression becomes
+\begin{align*}
+    -\Delta f&=\frac{1}{g} \p_b(g^{ab}\sqrt{g} \p_a f)*(dx^1 \wedge \ldots \wedge dx^n)\\
+    &= -\frac{1}{\sqrt{g}} \p_a(\sqrt{g} g^{ab} \p_b f).
+\end{align*}
+What we learn is that the generalized Laplacian acting on forms reduces to the ordinary Laplacian with respect to the metric when acting on functions.
+
+However, we now observe that acting on any form $\omega$, 
+\begin{align*}
+    2\bra{\omega} \hat H \ket{\omega} &= \braket{\omega}{dd^\dagger \omega} + \braket{\omega}{d^\dagger d\omega}\\
+        &= ||d^\dagger \omega||^2 + ||d\omega||^2 \geq 0.
+\end{align*}
+A form which has equality here, $\Delta \omega = 0$, is said to be \term{harmonic}. Therefore supersymmetric ground states are in $1:1$ correspondence with $\text{Harm}^\cdot (N) = \oplus_{p=0}^n \text{Harm}^p(N)$, the space of harmonic $0$- through $p$-forms on $N$. Notice that any form $\omega \in \text{Harm}^p$ must be closed ($d\omega=0$) and co-closed ($d^\dagger \omega=0$).
+
+\begin{thm}[Hodge's theorem] The space of harmonic $p$-forms on $N$ is in correspondence with the de Rham $p$-cohomology group,
+\begin{equation}
+    \text{\emph{Harm}}^p(N) \cong H^p_{dR}(N)
+\end{equation}
+where
+\begin{equation}
+    H^p_{dR}(N)=\set{\omega \in \Omega^p(N)\text{ s.t. }d\omega=0}/\set{\omega=d\alpha} = \text{\emph{ker}}(d:\Omega^p\to \Omega^{p+1})/\text{\emph{im}}(d:\Omega^{p-1}\to \Omega^p).
+\end{equation}
+\end{thm}
+In de Rham cohomology, $\omega$ is specified up to $\omega \sim \omega +d\alpha$ (i.e. we only care about $\omega$ up to the addition of some exact $d\alpha$). The role of the co-closure condition, $d^\dagger \omega=0$, is to select a unique representative. If $d\omega = d^\dagger \omega=0$, then we our freedom becomes $\omega \sim \omega +d\alpha$ where $d^\dagger d\alpha =0$, and the only solutions are $\alpha=0$.%
+    \footnote{This is equivalent to the procedure in electromagnetism where we have a potential with a gauge symmetry $A\sim A+d\lambda$, and we fix the gauge by requiring that $d^\dagger A = \p^\mu A_\mu =0$.}
+Thus the space of SUSY ground states is $\cong H^\cdot_{dR}(N)$.
+
+Thinking back to our discussion of the Witten index, we see that
+\begin{equation}
+    I_W = \Tr((-1)^F e^{-\beta H}) = n_B -n_F =\sum_{p=0}^n (-1)^p \dim(H^p_{dR}(N)).
+\end{equation}
+But this is very interesting because this final expression is precisely $\chi(N)$, the \term{Euler character} of $N$. Thus the space of SUSY ground states has a close relation to some topological information about the space our states live in.
+
+To motivate de Rham cohomology a bit more, suppose $C_p$ is a $p$-cycle in $N$ without boundary. Stokes's Theorem in the vector calculus language says that 
+\begin{equation*}
+    \int_S(\curl \vec A) \cdot d\vec S=\oint_C \vec A \cdot d\vec l.
+\end{equation*}
+But we can generalize this to $p$-forms:
+\begin{equation}
+    \int_{D_{p+1}} d\omega = \int_{C_p} \omega
+\end{equation}
+if $\p D_{p+1}=C_p$. That is, we can relate the integral in some region $D_{p+1}$ to the value of the form integrated over the boundary $C_p$. However, if $\omega\in H^p_{dR},$ then $d\omega=0 \implies \int \omega=0$ if $C_p$ is the boundary of some $D_{p+1}$.
+
+Furthermore,
+\begin{equation}
+    \int_{C_p} \omega +d\alpha =\int_{D_{p+1}} d\omega + \int_{D_{p+1}} d^2 \alpha,
+\end{equation}
+where this second term vanishes since $d$ is nilpotent. Thus we arrive at de Rham's theorem:
+\begin{thm}[de Rham]
+    \begin{equation}
+        H_{dR}^p(N) \cong H_p(N),
+    \end{equation}
+    where $H_p(N)$ denotes the $p$th homology group, the set \{$p$-cycles in $N$ with no boundary$\}/\{p$-cycles that are the boundary of some $(p+1)$-cycle\}.
+\end{thm}
+
+For instance, if $N=S^n$, then $\dim(H_{dR}^0(S^n))=1$. We can also find that  $\dim(H^p_{dR}(S^n))=0$ for $p\neq 0,n$ since we can contract any loop (e.g. an $S^1$) to a point on $S^n$. And then we have $\dim(H^n_{dR}(S^n))=1$, i.e. there is one non-trivial  ``wrapping'' of $S^n$ by an $S^n$.
+
+For $n=\Sigma_g$ a handlebody with genus $n$ (i.e. $n$ donuts glued together) we have instead $H^0(\Sigma_g)=\CC$, $H^1(\Sigma_g)=\CC^{2g}$ and $H^2(\Sigma_g)=\CC$ (dimensions $1,2g,$ and $1$).
+
+The Euler character for the $n$-sphere is
+\begin{equation}
+    \chi(S^n)=\begin{cases}
+        2 & \text{if $n$ even}\\
+        0 & \text{if $n$ odd},
+    \end{cases}
+\end{equation}
+and for $\Sigma_g$ it is $\chi(\Sigma_g)=2-2g$.
+
+For the path integral, $\chi(N)=\int e^{-S[x,\psi}\cD x \cD \psi \cD \bar \psi$, where all fields are periodic with period $\beta$. Now if we take the whole action, we see that our whole action is supersymmetrically trivial:
+\begin{align}
+    S &= \int \frac{1}{2} g_{ab} \dot x^a \dot x^b+\frac{1}{2} g_{ab} \bar \psi^a \nabla_t \psi^b + \frac{1}{4} R_{abcd} \bar \psi^a \psi^b \bar \psi^c \psi^d dt\\
+    &= \bar Q \bkt{ \oint \frac{g_{ab} \bar \psi^a}{2}(i\dot x^b +\Gamma^b_{cd} \bar \psi^c \psi^d) dt.}
+\end{align}
+We therefore learn that the path integral is independent of $\beta$.

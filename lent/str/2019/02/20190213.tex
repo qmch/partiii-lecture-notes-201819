@@ -18,18 +18,18 @@ We choose our $\Sigma$ to select a single $\delta_V \phi_k$ on the RHS, i.e. def
 \end{equation}
 We denote $v^z(z,\bar z)=v(z)$ and $v^{\bar z}(z,\bar z)=\bar v(\bar z)$, though this notation is a little misleading since $\bar v$ is not necessarily the conjugate of $v$. It is just the part of $v^a$ that depends only on $\bar z$.
 
-Integrating by parts we get
+Integrating by parts and applying Stokes's theorem we get
 \begin{align*}
     \frac{1}{2\pi} \int_\Sigma d^2\sigma (\p^a v^b)\avg{T_{ab} \phi_1 \ldots \phi_n}
-        &=\frac{1}{2\pi} \int_\Sigma d^2\sigma \p^a(v^b \avg{T_{ab} \phi_1\ldots \phi_n})-\frac{1}{2\pi}\int_\Sigma d^2\sigma v^b \p^a \avg{T_{ab} \phi_1 \ldots \phi_n}\\
-        &= \frac{1}{2\pi i} \oint_{\p_\Sigma=C_1} dz v^z (z,\bar z) \avg{T_{zz}(z,\bar z) \phi_1\ldots \phi_n}
-        -\frac{1}{2\pi i} \oint_{\p\Sigma=C_2} d\bar z v^{\bar z} (z,\bar z)\avg{\bar T(\bar z) \phi_1 \ldots \phi_n}\\
-        &-\frac{1}{2\pi}\int_\Sigma d^2\sigma v^b \p^a \avg{T_{ab}\pi_1 \ldots \phi_n},\\
-        &= \frac{1}{2\pi i} \oint_{\p_\Sigma=C_1} dz v(z) \avg{T_{zz}(z,\bar z) \phi_1\ldots \phi_n}
-        -\frac{1}{2\pi i} \oint_{\p\Sigma=C_2} d\bar z \bar v (\bar z)\avg{\bar T(\bar z) \phi_1 \ldots \phi_n}\\
-        &-\frac{1}{2\pi}\int_\Sigma d^2\sigma v^b \p^a \avg{T_{ab}\pi_1 \ldots \phi_n},\\
+        ={}&\frac{1}{2\pi} \int_\Sigma d^2\sigma \p^a(v^b \avg{T_{ab} \phi_1\ldots \phi_n})-\frac{1}{2\pi}\int_\Sigma d^2\sigma v^b \p^a \avg{T_{ab} \phi_1 \ldots \phi_n}\\
+        %={}& \frac{1}{2\pi i} \oint_{\p_\Sigma=C_1} dz v^z (z,\bar z) \avg{T_{zz}(z,\bar z) \phi_1\ldots \phi_n}\\
+        %&-\frac{1}{2\pi i} \oint_{\p\Sigma=C_2} d\bar z v^{\bar z} (z,\bar z)\avg{\bar T(\bar z) \phi_1 \ldots \phi_n}
+        %-\frac{1}{2\pi}\int_\Sigma d^2\sigma v^b \p^a \avg{T_{ab}\pi_1 \ldots \phi_n}\\
+        ={}& \frac{1}{2\pi i} \oint_{\p \Sigma=C_1} dz\, v(z) \avg{T(z) \phi_1\ldots \phi_n}
+        -\frac{1}{2\pi i} \oint_{\p\Sigma=C_2} d\bar z\, \bar v (\bar z)\avg{\bar T(\bar z) \phi_1 \ldots \phi_n}\\
+        &-\frac{1}{2\pi}\int_\Sigma d^2\sigma \,v^b \p^a \avg{T_{ab}\phi_1 \ldots \phi_n},
 \end{align*}
-where we've denoted $T_{zz}(z,\bar z)\equiv T(z,\bar z= T(z)$ and $T_{\bar z \bar z}(z,\bar z)\equiv \bar T (\bar z).$
+where we've denoted $T_{zz}(z,\bar z)\equiv T(z,\bar z= T(z)$ and $T_{\bar z \bar z}(z,\bar z)\equiv \bar T (\bar z).$ We see that the boundary term can be rewritten as two contour integrals over the boundary of our region $\Sigma$, and moreover the integral over $C_2$ vanishes since $v^a=0$ outside and on $C_2.$
 
 We see that
 \begin{equation}
