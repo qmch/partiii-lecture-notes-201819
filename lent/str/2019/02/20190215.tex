@@ -1,0 +1,140 @@
+%We argued last time that the interesting physics lies in the pole structure of $T(z)\phi(\omega,\bar \omega)$. 
+\subsection*{Mode expansions} Recall we had the expansion in $\sigma,\tau$ coordinates
+\begin{equation}
+    X^\mu(\sigma^+,\sigma^-)= x^\mu + p^\mu \alpha' \tau+i\sqrt{\frac{\alpha}{2}}\sum_{n\neq 0} \frac{1}{n}\paren{
+        \alpha_n^\mu e^{-in\sigma^-}+\bar \alpha_n^\mu e^{-in\sigma^+}
+    },
+\end{equation}
+and taking a derivative with respect to $\sigma^-$ gives us
+\begin{equation}
+    \p_- X^\mu(\sigma^-) = \sqrt{\frac{\alpha'}{2}} \sum_n \alpha_n^\mu e^{-in\sigma^-},
+\end{equation}
+where $\alpha_0^\mu$ is defined as before in terms of $p^\mu$. We could look at the same object for a worldsheet with Euclidean signature, i.e. $\omega=\tau+i\sigma$, so that
+\begin{equation}
+    \p_\omega X^\mu(\omega)=-i\sqrt{\frac{ \alpha'}{2}}\sum_n \alpha_n^\mu e^{-n\omega}.
+\end{equation}
+But what we really want to consider is the theory on $\CC\cup \set{\infty}$ with coordinates 
+\begin{equation}
+    z=e^\omega =e^{\tau+\sigma}.
+\end{equation}
+Consider a chiral primary $\phi_{cyl}(\omega)$ of weight $(h,\bar h)=(h,0)$ deifned on the cylinder. We expand
+\begin{equation}
+    \phi_{cyl}(\omega)=\sum_n \phi_n e^{-n\omega}.
+\end{equation}
+On the plane, we use the primary transformation law to get
+\begin{equation}
+    \phi(z)=\paren{\P{z}{\omega}}^h \phi_{cyl}(\omega)= z^{-h} \phi_{cyl}(\omega)=z^{-h}\sum_n \phi_n z^{-n}.
+\end{equation}
+Thus a natural mode expansion for $\phi(z)$ is
+\begin{equation}
+    \phi(z)=\sum_n \phi_n z^{-n - h}.
+\end{equation}
+More generally, a (primary) field of weight $(h,\bar h)$ takes the form
+\begin{equation}
+    \phi(z,\bar z)=\sum_{m,n} \phi_{mn} z^{-m-h}\bar z^{-n-\bar h}.
+\end{equation}
+For instance, $T(z)$ and $\bar T(\bar z)$ (which are holomorphic and antiholomorphic) have $(h,\bar h)$ of $(2,0)$ and $(0,2)$ respectively, so
+\begin{equation}
+    T(z)=\sum_n L_n z^{-n-2},\quad \bar T(\bar z)= \sum_n \bar L_n \bar z^{-n-2}.
+\end{equation}
+Note also that
+\begin{equation}
+    \p X^\mu(z)=-i\sqrt{\frac{\alpha'}{2}} \sum_n \alpha_n^\mu z^{-n-1},
+\end{equation}
+where $\p$ indicates a derivative with respect to $z$. Note also that
+\begin{equation}
+    X^\mu(z,\bar z)=x^\mu - i\frac{\alpha'}{2} p^\mu \ln|z|^2
+    + i\sqrt{\frac{\alpha'}{2}}\sum_{n\neq 0} \frac{1}{n} (\alpha_n^\mu z^{-n} + \bar \alpha_n^\mu \bar z^{-n}).
+\end{equation}
+
+\subsection*{States and operators} For a given physical operator $\Phi(z)$, there is a physical state $\ket{\Phi}$ given by
+\begin{equation}
+    \lim_{z\to 0} \Phi(z) \ket{0}=\ket{\Phi}.
+\end{equation}
+We shall take this as a definition for now. In the complex plane, we could imagine ``inserting an operator'' at the origin to produce some string state. With $\p X^\mu(z)$ as before, consider
+\begin{equation}
+    i\sqrt{\frac{2}{\alpha'}} \p X^\mu (z) \ket{0}= \paren{\ldots + \alpha_{-2}^\mu z +\alpha_{-1}^\mu +\frac{\alpha_0}{z}^\mu +\frac{\alpha_1}{z^2} +\ldots
+    }\ket{0}.
+\end{equation}
+For this limit to make sense, we see that some of these $\alpha_n^\mu$s must annihilate the vacuum as we postulated earlier,
+\begin{equation}
+    \alpha_n^\mu\ket{0}=0, n\geq 0.
+\end{equation}
+Then
+\begin{equation}
+    \lim_{z=\to 0} i\sqrt{\frac{2}{\alpha'}}\p X^\mu(z)\ket{0}=\alpha_{-1}^\mu \ket{0}.
+\end{equation}
+For a more interesting example, we could look at
+\begin{equation}
+    \lim_{z\to 0,\bar z\to 0} -\paren{\frac{2}{\alpha'}} h_{\mu\nu} \p X^\mu(z) \bar \p X^\nu(\bar z) e^{ik\cdot X(z,\bar z)}\ket{0}
+\end{equation}
+whre $k_\mu$ is a momentum vector in spacetime and $h_{\mu\nu}=h_{\nu\mu}$ is a spacetime tensor. In this limit we have
+\begin{equation}
+    h_{\mu\nu} \alpha_{-1}^\mu \bar \alpha_{-1}^\nu\ket{k}
+\end{equation}
+our graviton state. Note that for a field of weight $(h,\bar h)$ we require that
+\begin{equation}
+    \phi_n\ket{0}=0\text{ for }n > -h.
+\end{equation}
+
+\subsection*{Normal ordering and radial ordering}
+We shall focus on the chiral field, which we shall call 
+\begin{equation}
+    j^\mu(z) \equiv \p X^\mu(z)=-i\sqrt{\frac{\alpha'}{2}} \sum_n \alpha_n^\mu z^{-n-1}.
+\end{equation}
+Let us now split $j^\mu(z)$ into creation and annihilation parts. We won't be too careful about the zero mode, since it will drop out in the end. Thus we define
+\begin{gather}
+    j_+^\mu =-i\sqrt{\frac{\alpha'}{2}}
+    \sum_{n>0} \alpha_n^\mu z^{-n-1},\\
+    j_-^\mu =-i\sqrt{\frac{\alpha'}{2}}
+    \sum_{n\geq 0} \alpha_{-n}^\mu z^{n-1}
+\end{gather}
+so that $j^\mu=j^\mu_+ + j^\mu_-.$ Remember that normal ordering is denoted by pairs of colons, $:(\ldots):$, as in QFT. For our chiral field, normal ordering is defined in an analogous way,
+\begin{align}
+    :j^\mu(z) j^\nu(\omega): &= j_+^\mu(z) j_+^\nu(\omega) + j_-^\mu(z) j_+^\nu(\omega)
+    + j_-^\nu(\omega) j_+^\mu(z) + j_-^\mu(z) j_-^\nu(\omega)\\
+    &= j^\mu(z) j^\nu(\omega) + [j_-^\nu(\omega),j_+^\mu (z)].
+\end{align}
+We can evaluate the commutator (as on the first examples sheet) to find
+\begin{equation}
+    [j_-^\nu(\omega,j_+^\mu(z)] =-\frac{\alpha'}{2} \frac{\eta^{\mu\nu}}{(z-\omega)^2}.
+\end{equation}
+However, in order to evaluate this commutator, we needed to sum a series, and that series only converged for $|z|>|\omega|$. Thus we see that normal ordering comes with a radial ordering requirement for the commutator to make sense. We find that
+\begin{equation}
+    R(j^\mu(z) j^\nu(\omega)=:j^\mu(z) j^\nu(\omega): -\frac{\alpha'}{2} \frac{\eta^{\mu\nu}}{(z-\omega)^2}.
+\end{equation}
+As in QFT, it is useful to introduce the ``contraction'' notation
+\begin{equation}
+    \overbrace{j^\mu(z) j^\nu(\omega)}=-\frac{\alpha'}{2} \frac{\eta^{\mu\nu}}{(z-\omega)^2}.
+\end{equation}
+If you like, this is a Green's function on $\Sigma$. On the examples sheet, we computed
+\begin{equation}
+    \p_z X^\mu(z) \p_\omega X^\nu(\omega)=-\frac{\alpha'}{2} \frac{\eta^{\mu\nu}}{(z-\omega)^2}.
+\end{equation}
+Up to arbitrary functions of $z,\bar z$ we integrate to find
+\begin{equation}
+    \overbrace{X^\mu(z)X^\nu(\omega)}=-\frac{\alpha'}{2} \ln(z-\omega)\eta^{\mu\nu}
+\end{equation}
+Splitting $X$ into its holomorphic and antiholomorphic parts,
+\begin{equation*}
+    X^\mu(z,\bar z)=X^\mu(z)+\bar X^\mu(\bar z),
+\end{equation*}
+we can also show that
+\begin{gather}
+    \overbrace{\bar X^\mu(\bar z) \bar X^\nu(\bar \omega)} = -\frac{\alpha'}{2} \ln(\bar z-\bar \omega)\eta^{\mu\nu},\\
+    \overbrace{X^\mu(z) \bar X^\nu(\bar \omega)}=0.
+\end{gather}
+In total, we find that
+\begin{align*}
+    \overbrace{X^\mu(z,\bar z)X^\nu(\omega,\bar \omega)}&=(X^\nu(z)+\overbrace{\bar X^\mu(\bar z))(X^\nu(\omega)+\bar X^\nu(\bar \omega)})\\
+    &=\paren{-\frac{\alpha'}{2} \ln(z-\omega)-\frac{\alpha'}{2} \ln(\bar z-\bar \omega)} \eta^{\mu\nu}
+\end{align*}
+where the $X^\mu(z),X^\nu(\omega)$ are also contracted over. We therefore learn that
+\begin{equation}\label{xmucontraction}
+    \overbrace{X^\mu(z,\bar z)X^\nu(\omega,\bar \omega)}=-\frac{\alpha'}{2} \eta^{\mu\nu}\ln |z-\omega|^2,
+\end{equation}
+which tells us the Green's function immediately:
+\begin{equation}
+    \avg{R(X^\mu(z,\bar z)X^\nu(\omega,\bar \omega)}=-\frac{\alpha'}{2} \eta^{\mu\nu}\ln|z-\omega|^2.
+\end{equation}
+We can use \ref{xmucontraction} to build contractions of more complicated operators constructed from $X^\mu$ via Wick's theorem. Notice that this Green's function diverges as $z\to\omega$, however, and its divergence also depends on this string parameter $\alpha'$. This tells us that some interesting physics is captured in the particle limit as the string tension becomes infinite, $T\to\infty$, and $\alpha'\to 0$ since $T=-\frac{1}{2\pi\alpha'}$

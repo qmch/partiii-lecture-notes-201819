@@ -1,0 +1,143 @@
+Last time, we introduced the measurement formalism with our generalized measurement postulate. Thus for a set of operators $\set{M_a}$ acting on a state $\ket{\psi}$ or equivalently a density matrix $\rho$, we can define a probability of an outcome $a$ by
+\begin{equation}
+    p(a)=\bra{\psi}M_a^\dagger M_a \ket{\psi},\quad p(a)=\Tr(M_a^\dagger M_a \rho).
+\end{equation}
+Unlike in the previous formalism, $M_a$ need not be self-adjoint. Thus the post-measurement state is given by
+\begin{equation}
+    \ket{\psi}\to \ket{\psi'}=\frac{M_a\ket{\psi}}{\bra{\psi}M_a^\dagger M_a \ket{\psi}}, \quad \rho\to\rho'=\frac{M_a \rho M_a^\dagger}{\Tr(M_a^\dagger M_a \rho}.
+\end{equation}
+
+\subsection*{Naimark's Theorem} We shall discuss the implementation of a general measurement, following Stinespring.
+Consider a system $\cH_A$ with initial state $\ket{\psi}$, and some measurement operators $\set{M_a}$.
+\begin{enumerate}
+    \item Add an ancilla $B$ with Hilbert space $\cH_B$ such that $\dim \cH_B=|\set{M_a}|={}$\# of posssible outcomes. Equip $B$ with an onb $\set{\ket{e_a}}.$
+    \item Consider $B$ to be in some state $\ket{\phi}$ so that the initial combined state is
+    \begin{equation}
+        \ket{\psi}\otimes \ket{\phi},
+    \end{equation}
+    where the states of $A,B$ are initially uncorrelated.
+    \item Stinespring tells us we will need a unitary $U$ acting on $\cH_A \otimes \cH_B$ to implement our measurement. Let us define
+    \begin{equation}
+        \ket{\Psi_{AB}}=U(\ket{\psi}\otimes \ket{\phi}) := \sum_a M_a \ket{\psi}\otimes \ket{e_a}.
+    \end{equation}
+    One may check that $U$ preserves inner products on states of $AB$ of the form $\ket{\psi}\otimes \ket{\phi}$, i.e. for
+    \begin{equation}
+        \ket{\Phi}=U(\ket{\varphi}\otimes \ket{\phi}=\sum_a M_a \ket{\varphi}\otimes \ket{e_a},
+    \end{equation}
+    we have
+    \begin{equation}
+        \braket{\Phi}{\Psi}=\braket{\varphi}{\psi}
+    \end{equation}
+    using only the properties that $\set{\ket{e_a}}$ form an onb and $\sum M_a^\dagger M_a=I$.
+    Vecotrs of the form $\ket{\chi}\otimes \ket{\phi}$ for a fixed $\ket{\phi}$ span a subspace $\cH_S$ of $\cH_A\otimes \cH_B$. Thus
+    \begin{equation}
+        U:\cH_S \to \cH_A \otimes \cH_B.
+    \end{equation}
+    Note that such an operator $U$ can be extended to a unitary on the full Hilbert space $\cH_A\otimes \cH_B$, i.e. $\exists$ some $U'$ unitary with
+    \begin{equation}
+        U': \cH_A\otimes \cH_B \to \cH_A \otimes \cH_B \quad\text{s.t. } U'(\ket{\chi}\otimes \ket{\phi}) \equiv U(\ket{\chi}\otimes\ket{\phi}.
+    \end{equation}
+    That is, $U'$ agrees with $U$ on all the states in $\cH_S$.
+    \item To finish the theorem, we make a projective measurement on the state $\ket{\Psi}\in \cH_A \otimes \cH_B$ to get back to the system $A$. A projective measurement consistes of a set of projection operators $\set{P_a}$ where
+    \begin{equation}
+        P_a = I_A \otimes \kb{e_a}{e_a}.
+    \end{equation}
+    Note that $a$ is an index and not summed over!
+    One may check these are indeed projective, i.e. $P_a P_{a'}=\delta_{aa'} P_a.$ Now the probability of an ouctome $a$ is given by
+    \begin{equation}
+        p(a) =\bra{\Psi}P_a \ket{\Psi}.
+    \end{equation}
+    Substituting directly, we see that
+    \begin{align*}
+        p(a) &= \bra{\psi}\otimes \bra{\phi} U^\dagger P_a \underbrace{U \ket{\psi} \otimes \ket{\phi}}_{\sum_{a'} M_{a'}\ket{\psi}\otimes \ket{e_{a'}}}\\
+            &= \bra{\psi}M_a^\dagger M_a \ket{\psi}.
+    \end{align*}
+    Moreover, the post-measurement state will be
+    \begin{align*}
+        \ket{\Psi}&\to \ket{\Psi'}\propto P_a \ket{\Psi}\\
+            &\sim M_a \ket{\psi}\otimes \ket{e_a}
+    \end{align*}
+    up to a normalization factor. Once we trace over the ancilla, we get
+    \begin{equation}
+        \Tr_B \ket{\Psi'}\bra{\Psi'} \propto M_a \ket{\psi}\bra{\psi} M_a^\dagger,
+    \end{equation}
+    which is exactly the correct post-measurement state we expected from applying $M_a$ directly.
+\end{enumerate}
+Thus our procedure can be summed up as follows. Add an ancilla $B$. Define unitary dynamics (depending on $\set{M_a}$). Perform the projective measurement in $AB$. Finally, take a partial trace over the ancilla $B$ to get the post-measurement state.
+
+\begin{exm}
+    Let's return to our previous example of trying to find the direction of the spin of an electron. Someone prepares a spin in a state
+    \begin{equation}
+        \gv \sigma \cdot \hat n \ket{\psi}=\psi
+    \end{equation}
+    where $\hat n\in \set{\hat n_a}$ is some finite set such that $\exists \set{\lambda_a}$ with $\sum \lambda_a \hat n_a =0, \lambda_a \geq 0, \sum_a \lambda_a =1$.
+    
+    Recall we defined POVMs, which were measurements $\set{E_a}$ where we don't care about the post-measurement state. They obeyed $E_a\geq 0$ and $\sum_a E_a=I$, such that for a density matrix $\rho$, $p(a)=\Tr(E_a \rho)$.
+    
+    In this case, we see that this measurement admits a POVM:
+    \begin{equation}
+        E_a := \lambda_a(I+\hat n_a \cdot \gv \sigma).
+    \end{equation}
+    We now claim that 
+    \begin{equation}
+        E_a=2\lambda_a P_{\hat n_a},
+    \end{equation}
+    where $P_{\hat n_a}=\kb{\uparrow_{\hat n_a}}{\uparrow_{\hat n_a}}$ is a projective operator. Thus
+    \begin{gather}
+        \hat n_a \cdot \gv \sigma\ket{\uparrow_{\hat n_a}}=\ket{\uparrow_{\hat n_a}}\\
+        \hat n_a \cdot \gv \sigma \ket{\downarrow_{\hat n_a}}=\ket{\downarrow_{\hat n_a}}.
+    \end{gather}
+    It follows that
+    \begin{align*}
+        E_a \ket{\uparrow_{\hat n_a}} &=\lambda_a(I+\hat n_{a'} \gv \sigma)\ket{\uparrow_{\hat n_a}}\\
+        &=2\lambda_a \ket{\uparrow_{\hat n_a}}.
+    \end{align*}
+    We have $P_{\hat n_a}\ket{\uparrow_{\hat n_a}}=\ket{\uparrow_{\hat n_a}}$ and $P_{\hat n_a}\ket{\downarrow_{\hat n_a}}=0$ with our choice of $P$ as above.
+    
+    Thus $E_a \geq 0$, and
+    \begin{align*}
+        \sum E_a &= \sum \lambda_a I + \sum_a \lambda_a \hat n_a \cdot \gv \sigma\\
+        &= I,
+    \end{align*}
+    where the second term is zero. Thus the $\set{E_a}$ form a POVM.
+    
+    Consider the case where $\hat n\in \set{\hat n_1,\hat n_2}$,  with $\lambda_1=\lambda_2=1/2$. Then $\hat n_1 +\hat n_2=0$. It follows that
+    \begin{gather}
+        E_1 =2\lambda P_{\hat n_1}=P_{\hat n_1}\\
+        E_2 = I-P_{\hat n_1}.
+    \end{gather}
+    Thus our POVM is really a projective measurement. One should check thatgiven an initial state $\ket{\psi}$ such that $\gv \sigma \cdot \hat n_1 \ket{\psi}=\ket{\psi},$
+    \begin{equation}
+        p(\hat n_1)=\bra{\psi}E_1 \ket{\psi}, \quad p(\hat n_2)=0.
+    \end{equation}
+    In the example sheet, we will consider the case of three spin states and $E_a=\frac{2}{3} \hat P_{n_a}.$
+\end{exm}
+
+In a similar vein, we can consider the case where Alice prepares a state $\ket{\psi}$ which is either $\ket{0}$ or $\ket{+}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$. For this setup, we can actually prepare a POVM such that we never make an error of misidentification-- our POVM may tell us that the state is $\ket{0},$ and it is definitely correct, or $\ket{+}$, and it is definitely correct. But sometimes it will conclude that we can't decide what the state is. A pure projective measurement could not have told us this.
+
+We may also define a \term{pure POVM}, which is some $E_a$ of the form
+\begin{equation*}
+    E_a=\kb{\psi_a}{\psi_a}.
+\end{equation*}
+
+\subsection*{Bipartite entanglement}
+Consider a pure state $\ket{\psi_{AB}}\in \cH_A \otimes \cH_B$. We call a pure state a \term{product state} if $\exists \ket{\chi_A} \in \cH_A, \ket{\phi_B}\in\cH_B$ such that
+\begin{equation}
+    \ket{\psi_{AB}}=\ket{\chi_A}\otimes \ket{\phi_B}.
+\end{equation}
+Otherwise, the state is \term{entangled.}
+
+Similarly, consider a mixed state $\rho_{AB}\in \cD(\cH_A \otimes \cH_B).$ If
+\begin{equation}
+    \exists \omega_A\in \cD(\cH_A), \sigma_B \in \cD(\cH_B)\text{ s.t. }\rho_{AB} =\omega_A \otimes \sigma_B,
+\end{equation}
+we call the state a (mixed) \term{product state}. On the other hand, if
+\begin{equation}
+    \exists \set{p_i}, \rho_i^A \in \cD(\cH_A), \rho_i^B \in \cD(\cH_B) \text{ s.t. } \rho_{AB}=\sum_i p_i \rho_i^A \otimes \rho_i^B,
+\end{equation}
+we call this state \term{separable}. Clearly, product states are a subset of separable states where just one of the $p_i$s is nonzero. Otherwise, the state is \term{entangled}.
+\begin{itemize}
+    \item Product states have no correlation between the two systems. Alice and Bob prepare their systems separately and never coordinate.
+    \item Separable states have \emph{classical} correlations. Alice and Bob use a classical communication channel, e.g. A and B share a random number generator that produces outcome $i$ with probability $p_i$. They decide to construct by local operations (LO) the state $\rho_i^A \otimes \rho_i^B$.
+    \item Otherwise the state is entangled and exhibits purely quantum correlations.
+\end{itemize}

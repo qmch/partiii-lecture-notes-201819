@@ -1,0 +1,130 @@
+Last time, we computed an effective coupling $g_{\text{eff}}$ to be
+\begin{equation*}
+    g_{\text{eff}}(\mu)=g(\mu)-\frac{3g^2(\mu)}{32\pi^2} \log \frac{\mu^2}{m^2}+\ldots,
+\end{equation*}
+and in particular since $g_{\text{eff}}$ is the coefficient of $\frac{1}{4!}\phi^4$ in the quantum effective action $\Gamma[\phi]$, it should be independent of $\mu$. Thus
+\begin{align}
+    0&=\frac{dg_{\text{eff}}}{d\log \mu}\\
+        &= \mu\frac{dg_{\text{eff}}}{d\mu}\\
+        &=\mu \frac{d}{d\mu} \bkt{g(\mu)-\frac{3g^2(\mu)}{32\pi^2} \log \frac{\mu^2}{m^2}
+        }.
+\end{align}
+This tells us the ``running'' of the renormalized coupling $g(\mu)$, which we refer to as the \term{beta function},%
+    \footnote{
+        It takes a little algebra to get here. Explicitly, we have
+        \begin{align*}
+            \beta(g) \equiv \mu \frac{dg}{d\mu}&= \mu \frac{d}{d\mu}\bkt{ \frac{3g^2(\mu)}{32\pi^2} \log \frac{\mu^2}{m^2}
+            }\\
+            &=\mu \bkt{\frac{3(2g'(\mu) g(\mu))}{32\pi^2} \log \frac{\mu^2}{m^2}
+            +\frac{3g^2}{32\pi^2} \paren{\frac{2}{\mu}}
+            }\\
+            &= \frac{3g}{16\pi^2}\log \frac{\mu^2}{m^2} \paren{\mu \frac{dg}{d\mu}}-\frac{3g^2}{16\pi^2},
+        \end{align*}
+        so rearranging we find that
+        \begin{equation*}
+            \mu \frac{dg}{d\mu}=\frac{3g^2}{16\pi^2} \paren{1-\frac{3g}{16\pi^2}\log \frac{\mu^2}{m^2}}= \frac{3\hbar g^2}{16\pi^2}+O(\hbar^2),
+        \end{equation*}
+        restoring $\hbar$.
+    }
+\begin{equation}
+    \beta(g)\equiv \mu\frac{dg}{d\mu}=\frac{3\hbar g^2}{16\pi^2} + O(\hbar^2),
+\end{equation}
+restoring $\hbar$ which counts the loop order of the corrections. Note that $\beta(g)>0$ for this coupling in this theory.
+
+Integrating the ODE between $\mu,\mu'$, we find that
+\begin{align}
+    \frac{1}{g(\mu')}={}&\frac{1}{g(\mu)}+\frac{3\hbar}{16\pi^2} \log\frac{\mu}{\mu'}\\
+    &\implies g(\mu')=\frac{g(\mu)}{1+\frac{3\hbar g(\mu)}{16 \pi^2} \log \frac{\mu}{\mu'}} = g(\mu)-\frac{3\hbar g^2(\mu)}{16\pi^2} \log\frac{\mu}{\mu'}+O(\hbar^2).
+\end{align}
+For $\mu'>\mu,$ we see that $g(\mu')>g(\mu)$. Note that there is a special scheme-dependent mass scale $\Lambda_{\phi^4}$ such that when $\mu'\to \Lambda_{\phi^4}, g(\mu')\to \infty$. For our scheme, this happens when
+\begin{equation}
+    \frac{3\hbar g(\mu)}{16\pi^2} \log \frac{\mu}{\Lambda_{\phi^4}} = -1
+\end{equation}
+at one loop. Thus, knowing this scale allows us to write our coupling as
+\begin{equation}
+    g(\mu)=\frac{16\pi^2}{3\hbar} \frac{1}{\log(\Lambda_{\phi^4}/\mu)}.
+\end{equation}
+Exchanging our dimensionless coupling for a dimensionful scale ($\Lambda_{\phi^4}$) is called \term{dimensionful transmutation.} All we're saying is that $\Lambda_{\phi^4}$ is the scale at which perturbation theory breaks down-- perturbation theory works for $\mu \ll \Lambda_{\phi^4}.$
+
+\subsection*{Quantum electrodynamics}
+We'll begin our discussion of QED and the photon in the path integral formalism (cf. Skinner Ch. 5, Peskin \& Schroeder). In Euclidean space, we have the classical action
+\begin{equation}
+     S[\psi,\bar \psi,A]=\int d^4x \bkt{\frac{1}{4} F_{\mu\nu}F^{\mu\nu} + i\bar \psi(\slashed{D}+m)\psi}
+\end{equation}
+where $\slashed{D}=\gamma^\mu(\p_\mu - ieA_\mu)$ is a covariant derivative and $\psi,\bar \psi$ are four-spin-component Grassmann fields. $F_{\mu\nu}=\p_\mu A_\nu - \p_\nu A_\mu$ is just the electromagnetic field strength tensor.
+
+The partition function for our theory is
+\begin{equation}
+    Z=\int \cD \psi \cD \bar \psi \cD A \, e^{-S[\psi,\bar \psi,A]}.
+\end{equation}
+Let us consider the first novel feature of our theory, the electromagnetic field. We write the Fourier transform
+\begin{equation}
+    A_\mu(x)=\int \frac{d^4k}{(2\pi)^4} e^{ik\cdot x}\tilde A_\mu(k).
+\end{equation}
+A few steps of algebra%
+    \footnote{}
+reveals that
+\begin{equation}
+    \frac{1}{4}\int d^4x F_{\mu\nu}F^{\mu\nu} = \frac{1}{2}\int\frac{d^4k}{(2\pi)^4} \tilde A_\mu(-k)(k^2\delta^{\mu\nu}-k^\mu k^\nu)\tilde A_\nu(k),
+\end{equation}
+where derivatives have brought down $k$s and the integral over $d^4x$ has related the momenta in $\tilde A_\mu,\tilde A_\nu$.
+
+Note that for a field $\tilde A_\mu(k)=k_\mu \tilde \alpha(k)$ with $\tilde \alpha$ a scalar function, this integral vanishes. This is bad-- $Z$ diverges badly. In position space, this bad choice of $\tilde A_\mu$ corresponds to $A_\mu(x)=\p_\mu\alpha(x)$.
+Recall under gauge transformations,
+\begin{equation}
+    A_\mu(x)\mapsto A_\mu(x) +\frac{1}{e} \p_\mu \alpha(x).
+\end{equation}
+Therefore these troublesome modes are gauge-equivalent to $A_\mu(x)=0$, and so the solution will come from a gauge fixing procedure.
+
+\subsection*{Faddeev-Popov method for gauge-fixing} Before we do the whole procedure, let's take a simple example. Consider a function $f:\RR^2\to \RR$ that is rotationally invariant,
+\begin{equation}
+    f(r;\rho)\text{ with }r^2=x^2+y^2,\rho\text{ another parameter}.
+\end{equation}
+Start with the integral
+\begin{align*}
+    Z(\rho)&=\int d^2x\, f(r;\rho)\\
+        &= \int_0^{2\pi} d\phi \int rdr f(r;\rho) =2\pi \int dr\, r f(r;\rho),
+\end{align*}
+where we used a change of coordinates to do the integral. But let's say we want to integrate only along a line, say the $x$-axis. Then we introduce a delta function, $\delta(y)$.
+
+Under a rotation by $\theta$, $y\mapsto y_\theta = y\cos\theta -x\sin\theta$, so
+\begin{equation}
+    \delta(y) \mapsto \delta(y_\theta) = \frac{\delta(\theta-\tan^{-1}\frac{y}{x}}{\abs{y\sin\theta +x\cos\theta}}
+\end{equation}
+using the composition rule of the $\delta$ function ($\delta(f(x))=\frac{\delta(x-x_0)}{|f'(x)|}$ for $f(x_0)=0$).
+Then
+\begin{align*}
+    1 &= \int_0^\pi d\theta\, \delta(\theta-\tan^{-1}\frac{y}{x})\\
+        &= \int_0^\pi d\theta \, \delta(y\cos\theta-x\sin\theta)\abs{y\sin\theta +x\cos\theta}\\
+        &= \int_0^\pi d\theta\, \delta(y_\theta) \abs*{\P{y_\theta}{\theta}}.
+\end{align*}
+Then
+\begin{equation}
+    Z(\rho)=\int d^2x \int_0^\pi d\theta\, \delta(y_\theta) \abs*{\P{y_\theta}{\theta}} f(r;\rho).
+\end{equation}
+The factor of $\abs*{\P{y_\theta}{\theta}}$ is a simple example of a \term{Faddeev-Popov determinant}, which we have already met in \emph{String Theory}.
+
+We are now free to change integration variables $y\to y_\theta$ and relabel to $y$ so that our integral becomes
+\begin{equation}
+    Z(\rho) = \int d^2x\int_0^\pi d\theta\, \delta(y)\abs*{\P{y}{\theta}}_{\theta=0} f(r;\rho),
+\end{equation}
+where the integral is now $\theta$-independent.
+In particular, notice that
+\begin{align*}
+    \abs*{\P{y}{\theta}}_{\theta=0} =|x| \implies Z(\rho) &= \pi \int_{\RR^2} d^2x \,\delta(y) |x| f(r;\rho)\\
+    &= 2\pi \int_0^\infty dx\, x f(x;\rho)
+\end{align*}
+as before.
+If we had $N$ variables and $N-1$ rotations with angles $\theta_{1i},i=2,\ldots, N$, then we would have instead the determinant
+\begin{equation}
+    1=\int d\theta_{1i} \delta(x_{\theta i}^i) \abs*{\frac{dx_{\theta_{1i}}^i}{d\theta_{1i}}}.
+\end{equation}
+This approach generalizes-- in our gauge theory, we fix the gauge with some functional of $A_\mu(x)$, i..e $G[A]=0$. For example, $G[A]=\p_\mu A^\mu$ in Lorenz [sic] gauge. Consider now gauge transformations
+\begin{equation}
+    A_\mu^\alpha(x)=A_\mu (x) +\frac{1}{e} \p_\mu \alpha(x).
+\end{equation}
+We now use the identity
+\begin{equation}
+    1= \int \cD \alpha(x) \delta (G[A]) \det \paren{\frac{\delta G[A]}{\delta \alpha}},
+\end{equation}
+where this last factor is a functional determinant. We'll see how the gauge-fixing procedure modifies the photon propagator next time.
