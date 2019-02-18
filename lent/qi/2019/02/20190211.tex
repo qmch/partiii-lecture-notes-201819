@@ -1,4 +1,4 @@
-Admin note: there was no lecture (and hence no notes) for Friday, February 8, as Prof. Datta sustained some injury which prevented her from giving the lecture.
+Admin note: there was no lecture (and hence no notes) for Friday, February 8, as Prof. Datta sustained an injury which prevented her from giving the lecture.
 
 \subsection*{Quantum operations and CPTP maps}
 To recap from last time, any allowed physical process on a quantum system is given by a quantum operation. The map must be completely positive (CP) in order to allow us to properly couple an ancilla (environment) to our system, and it must be linear and trace-preserving in order to take density matrices to other density matrices.
@@ -22,14 +22,14 @@ Consider a map $\Lambda:B(\cH)\to B(\mathcal{K}),$ where $\cH\simeq \CC^m,\mathc
     The map $\Lambda$ is completely positive (CP) if it is $k$-positive $\forall k\in \ZZ^+$, positive integers.
 \end{defn}
 \begin{thm}[Necessary and sufficient condition for CP]
-    A linear map $\Lambda:\cB(\CC^d)\to \cB(\CC^{d'})$ is completly positive $\iff (\Lambda \otimes \text{id}_d)(\kb{\Omega}{\Omega})\geq 0$, where
+    A linear map $\Lambda:\cB(\CC^d)\to \cB(\CC^{d'})$ is completely positive $\iff (\Lambda \otimes \text{id}_d)(\kb{\Omega}{\Omega})\geq 0$, where
     \begin{equation}
         \ket{\Omega}=\frac{1}{\sqrt{d}}\sum_{i=1}^d \ket{i}\ket{i} \in \CC^d \otimes \CC^d.
     \end{equation}
 \end{thm}
 That is, it suffices to check positivity on the density matrix corresponding to the maximally entangled $d$-dimensional state.
 \begin{proof}
-    Necessity follows immediately from the definition of CP. To show sufficiency, consider an arbitrary $k\geq 1$. For a state $\rho \in \cD(\CC^d \otimes s\CC^k$, we have a spectral decomposition
+    Necessity follows immediately from the definition of CP. To show sufficiency, consider an arbitrary $k\geq 1$. For a state $\rho \in \cD(\CC^d \otimes \CC^k)$, we have a spectral decomposition
     \begin{equation}
         \rho =\sum \lambda_i \kb{\phi_i}{\phi_i}
     \end{equation}
@@ -49,18 +49,22 @@ That is, it suffices to check positivity on the density matrix corresponding to 
     \end{equation}
     Note that with the following definition
     \begin{equation}
-        (\id_d \otimes f)(\omega := (I\otimes R_i)(\omega(I\otimes R_i^\dagger),
+        (\id_d \otimes f_i)(\omega) := (I\otimes R_i)(\omega(I\otimes R_i^\dagger)),
     \end{equation}
     our inequality becomes
     \begin{equation}
-        (\Lambda \otimes \id_k)(\id_d \otimes f_i)(\kb{\Omega]{\Omega}}) \geq 0.
+        (\Lambda \otimes \id_k)(\id_d \otimes f_i)(\dyad{\Omega}) \geq 0.
     \end{equation}
     Rewriting, this expression becomes
     \begin{equation}
         (\id_{d'}\otimes f_i)(\Lambda \otimes \id_d)\kb{\Omega}{\Omega} = \underbrace{(I_{d'}\otimes R_i)}_A\underbrace{(\Lambda \otimes \id_d)(\kb{\Omega}{\Omega})}_{B}\underbrace{(I_{d'}\otimes R_i^\dagger)}_{A^\dagger}.
     \end{equation}
     This is equivalent to the condition on matrices that $ABA^\dagger \geq 0$, and it turns out that for $ABA^\dagger \geq 0$, it suffices to have $B\geq 0$.%
-        \footnote{Exercise.}
+        \footnote{Basically, if $B\geq 0$ then $\bra{v}B \ket{v}\geq 0\forall v$. But then define $A^\dagger v' = v,$ and we see that 
+        \begin{equation*}
+            \bra{v}B\ket{v}=\bra{A^\dagger v'}B\ket{A^\dagger v'}=\bra{v'}A BA^\dagger \ket{v'}\geq 0 \,\forall v'.
+        \end{equation*}
+        }
     Thus
     \begin{equation}
         (\Lambda \otimes \id)\kb{\Omega}{\Omega} \geq 0. \qedhere
@@ -144,7 +148,7 @@ We call the $A_k$ Kraus operators. Some of the details are an exercise to fill i
         \text{RHS}&=d\Tr (J(A\otimes B^T))\\
         &= d\Tr((\Lambda\otimes \id)(\Omega)(A\otimes B^T)).
     \end{align*}
-    Note we will need the \term{adjoint} $\Lambda^*$ of a map $\Lambda$ w.r.t. the Hilbert-Schmidt inner product. That is, if $\Lambda:\cB(\cH)\to \cB(\mathcal{K}),$ then $\Lambda^*(\cB(\mathcal{K})\to \cB(\cH)$ where
+    Note we will need the \term{adjoint} $\Lambda^*$ of a map $\Lambda$ w.r.t. the Hilbert-Schmidt inner product. That is, if $\Lambda:\cB(\cH)\to \cB(\mathcal{K}),$ then $\Lambda^*:\cB(\mathcal{K})\to \cB(\cH)$ where
     \begin{equation}
         \Tr(A\Lambda(B)) = \Tr (\Lambda^*(A) B).
     \end{equation}

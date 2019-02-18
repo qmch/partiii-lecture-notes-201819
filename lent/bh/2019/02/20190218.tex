@@ -1,0 +1,155 @@
+\begin{quote}
+    \textit{``We'll see that the shear in AdS tells us amazing things. Well, we won't see the AdS. But we'll see the amazing thing.'' --Jorge Santos}
+\end{quote}
+It's been 15 days since the last lecture. Where did we leave off? We introduced null surfaces, and suggested that null surfaces will be important to our understanding of singularity theorems.
+%Today will be the second hardest class of the whole course.
+
+Last time, we talked about geodesic congruences (families of geodesics which cover some submanifold of the spacetime). Consider a congruence where all geodesics are of the same type,
+\begin{equation*}
+    U^a U_a = \pm 1,
+\end{equation*}
+in affine parametrization or $U^a U_a =0$ for null congruences.
+Now consider a 1-parameter family of geodesics in such congruences where
+\begin{equation}
+    [S,U]=0\iff U^b \nabla_b S^a = B^a{}_b S^b
+\end{equation}
+where
+\begin{equation}
+    B^a{}b \equiv \nabla_b U^a.
+\end{equation}
+That is, $B$ measures the failure of $S^a$ to be parallel propagated along $U^b$. This tensor has some nice properties:
+\begin{equation}
+    B^a_b U^b =0, \quad U_a B^a{}_b = \frac{1}{2} \nabla_b(U^2)=0.
+\end{equation}
+The first follows from the geodesic equation and the latter from $U^2=$constant. Look now at
+\begin{equation}
+     U\cdot \nabla(U\cdot S) = (U\cdot \nabla U^a) S_a + U^a U\cdot S_a.
+\end{equation}
+But this first term is zero by the geodeisc equation, and the second is zero by the property $U^a B_{ab}=0$ from above. Thus $U\cdot S$ is constant along geodesics $U$.
+
+The existence of some quantity along geodesics suggests to us there might be some gauge freedom we get to fix. In particular, we can make a very nice choice:
+\begin{equation}
+    \lambda'=\lambda - a(s)
+\end{equation}
+where $a$ is some function of our choice. In particular this makes
+\begin{equation}
+    S'{}^a\equiv S^a +\frac{da}{ds} U^a \implies U\cdot S'=U\cdot S +\frac{da}{ds}U^2.
+\end{equation}
+What's nice about this? $U^2=\pm 1$ for timelike or spacelike coordinates, which means that WLOG we can set $U\cdot S'=0$. But for the null case, $U^2=0$ means that the reparametrization cannot be fixed by a choice of $a$-- we just get $U\cdot S'=U\cdot S$.
+
+\subsection*{Gauge fixing, the easy way}
+For null geodesic congruences, we have $U^2=0$ and thus
+\begin{equation*}
+    U\cdot S'= U\cdot S,
+\end{equation*}
+so $a$ doesn't help us pick a nice reparametrization. Instead, we pick a spacelike hypersurface $\Sigma$ which intersects each geodesic once-- we can do this since we're looking at a congruence. Now let $N^a$ be a vector field defined on $\Sigma$ obeying $N^2=0, N\cdot U=-1$ on $\Sigma$.
+
+Now extend $N^a$ off $\Sigma$ by parallel transport along the geodesic
+\begin{equation}
+    U\cdot \nabla N^a=0.
+\end{equation}
+There's a nice discussion of equivalence classes and the full freedom we have to fix the gauge, but we'll leave it to Wald. For our purposes, notice that we have the three properties
+\begin{equation}
+    N^2 = 0, \quad U\cdot N=-1,\quad U\cdot \nabla N^a=0.
+\end{equation}
+Take a deviation vector $S^a$ and decompose it as follows:
+\begin{equation}
+    S^a= \alpha U^a +\beta N^a + \hat S^a,
+\end{equation}
+where
+\begin{equation}
+    U\cdot \hat S = N\cdot \hat S=0.
+\end{equation}
+This is a bit like a Gram-Schmidt process-- we can subtract off the bits parallel to the geodesic $U^a$ and also the bit parallel to $N^a$.
+Note that $U\cdot S=-\beta$, where $\beta$ is constant, as we found at the start of the calculation. It's also important to observe that any vector which is orthogonal to two null vectors is either spacelike or the zero vector.%
+    \footnote{To see this, try the calculation in Minkowski space. I haven't worked out the details myself yet.}
+
+So we can write a deviation vector $S^a$ as the sum of a part
+\begin{equation*}
+    \alpha U^a + \hat S^a
+\end{equation*}
+which is orthogonal to $U^a$ and a part
+\begin{equation*}
+    \beta N^a
+\end{equation*}
+that is parallel transported along each geodesic.
+We are interested in a congruence containing the generators of a null hypersurface $\mathcal{N}$. In this case, if we pick a 1-parameter family of geodesics contained in $\mathcal{N},$ then the deviation vector $S^a$ will be tangent to $\mathcal{N}$ and hence $U\cdot S=0$. Since $U^a$ is normal to $\mathcal{N},$ we have $\beta=0.$
+
+We can write
+\begin{equation}
+    \hat S^a = P^a{}_b S^b
+\end{equation}
+under the projection
+\begin{equation}
+    P^a{}b = \delta^a{}_b + N^a U_b + U^a N_b,
+\end{equation}
+where it's a quick exercise to check that $P^a{}_b P^b{}_e = P^a{}_e.$ This projection projects the tangent space at $p$ onto the spacelike $T_\perp$, the space perpendicular to both null vectors $N^a$ and $U^a$.
+One can also check that
+\begin{equation}
+    U\cdot \nabla P^a{}_b =0,
+\end{equation}
+so $P$ is parallel-propagated trivially along geodesics $U^a$.
+
+\begin{prop}
+    A deviation vector for which $U\cdot S=0$ satisfies
+    \begin{equation}
+        U\cdot \nabla \hat S^a = \hat B^a{}_b \hat S^b,
+    \end{equation}
+    where $\hat B^a{}_b$ is a projected version of $B^a{}_b$ into the perpendicular space,
+    \begin{equation}
+        \hat B^a{}_b=P^a{}_c B^c{}_d P_b{}^d.
+    \end{equation}
+\end{prop}
+\begin{proof}
+    \begin{align*}
+        U\cdot \nabla \hat S^a &= U\cdot \nabla(P^a{}_c S^c)\\
+            &= P^a{}c U\cdot \nabla S^c\\
+            &= P^a{}_c B^c{}_d S^d\\
+            &= P^a{}c B^c_d P^d{}_e S^e,
+    \end{align*}
+    where we used $U\cdot S=0$ and $B^c{}d U^d=0$. Finally, we can use the fact that $P$ is a projector so that $P^2=P$. So we replace $P^d{}e=P^d{}_f P^f{}_e$ and this gives us the projectors to write everything with hats.
+\end{proof}
+
+\subsection*{Expansion, rotation, and shear}
+We've proved some nice properties about this $B^a{}_b$ matrix. But what exactly is it? As it turns out, $\hat B^a{}_b$ can be regarded as a matrix that acts on the $2$D space $T_\perp$. It's very natural for us to decompose such a matrix into its symmetric (trace-free) part, its antisymmetric part, and its trace part.
+\begin{defn}
+    Let us define
+    \begin{equation}
+        \theta \equiv \hat B^a{}_a, \hat \sigma_{ab} \equiv \hat B_{(ab)}-\frac{1}{2} P_{ab} \theta, \hat \omega-{ab} = \hat B_{[ab]}.
+    \end{equation}
+    Note that the factor of $1/2$ works for $3+1$ spacetime dimensions because the trace of $P_{ab}$ is $2$ here. This then implies that
+    \begin{equation}
+        \hat B^a{}_b = \frac{1}{2} \theta P^a{}_b +\hat {\tilde v}^a{}_b +\hat \omega^a{}_b.
+    \end{equation}
+\end{defn}
+With this definition, notice that
+\begin{equation}
+    \theta \equiv g^{ab} \hat B_{ab} = g^{ab} B_{ab} =\nabla_a U^a,
+\end{equation}
+which does not depend on the choice of $N$. In fact, this is true for any scalar like the eigenvalues of the rotation matrix.
+
+\begin{prop}
+    If the congruence contains the generators of a null hypersurface $\mathcal{N}$, then $\hat \omega_{ab}=0$ on $\mathcal{N}$. Conversely, if $\hat \omega_{ab}=0$ everywhere on $\mathcal{N},$ then $U^a$ is everywhere hypersurface orthogonal.%
+        \footnote{This is not quite true in some extensions of general relativity, but it is exact in pure GR.}
+\end{prop}
+\begin{proof}
+    The definition of $\hat B$ and the fact that $U\cdot U = B\cdot U=0$ implies htat
+    \begin{equation}
+        \hat B^b{}_c = B^c{}_c + U^b N_d B^d{}_c + U_c B^b{}_d N^d + U^b U_c N_d B^d{}_e N^e.
+    \end{equation}
+    Using this we have
+    \begin{equation}\label{nullgeneratorsformnotation}
+        U_{[a}\hat \omega_{bc]}=U_{[a}\nabla_c U_{b]} =-\frac{1}{6} (U\wedge dU)_{abc},
+    \end{equation}
+    where we have just rewritten the expression in form notation. If $U^a$ is normal to $\mathcal{N}$, then $U\wedge dU=0$ on $\mathcal{N}$, and hence on $\mathcal{N},$
+    \begin{equation}
+        0=U_{[a}\hat \omega_{bc]}=\frac{1}{3} (U_a \hat \omega-{bc}+U_b \hat \omega-{ca}+ U_c \hat \omega_{ab}),
+    \end{equation}
+    where we've just opened up the antisymmetrization and used the fact that $\hat \omega_{bc}$ is already antisymmetric to absorb factors of 2.
+    
+    Contracting with $N^a$ gives
+    \begin{equation}
+        \hat \omega_{bc}=0
+    \end{equation}
+    on $\mathcal{N},$ where $U\cdot N=-1$ and $\hat \omega \cdot N=0$. Conversely if $\hat \omega =0$ everywhere, then \ref{nullgeneratorsformnotation} implies that $U$ is hypersurface orthogonal by the Frobenius theorem.
+\end{proof}
