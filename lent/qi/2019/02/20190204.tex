@@ -70,43 +70,75 @@ Today we shall discuss the Schmidt decomposition, purification, and the no-cloni
     \end{equation}
     The state itself can therefore be written as
     \begin{equation}
-        \ket{\psi_{AB}}=\sum_{i=1}^{\min(\text{rk}\rho_A,\text{rk}\rho_B)} \lambda_i \ket{i_A} \ket{i_B}.
+        \ket{\psi_{AB}}=\sum_{i=1}^{\min(\text{rk}\rho_A,\text{rk}\rho_B)} \lambda_i \ket{i_A} \ket{i_B},
     \end{equation}
+    which is exactly the Schmidt decomposition as claimed.
 \end{proof}
 
-Note that the Schmidt decomposition is unique if all the eigenvalues of $\rho_A$ and $\rho_B$ are nondegenerate. We say that the \term{Schmidt rank} of $\ket{\psi_{AB}}$ is then $n(\psi_{AB})={}$ the number of positive Schmidt coefficients, where the $\lambda_i$s are the Schmidt coefficients.
+Note that the Schmidt decomposition is unique if all the eigenvalues of $\rho_A$ and $\rho_B$ are nondegenerate. 
+\begin{defn}
+    We say that the \term{Schmidt rank} of $\ket{\psi_{AB}}$ is then $n(\psi_{AB})={}$ the number of positive Schmidt coefficients, where the $\lambda_i$s are the Schmidt coefficients.
+\end{defn}
 
 \begin{thm}
-    A state $\ket{\psi_{AB}}$ is entangled iff $n(\psi_{AB}) >1$.
+    A state $\ket{\psi_{AB}}$ is entangled iff $n(\psi_{AB}) >1$, where $n(\psi_{AB})$ is the Schmidt rank of $\ket{\psi_{AB}}$.
 \end{thm}
 n.b. if $n(\psi_{AB})=1,$ then $\ket{\psi_{AB}}=\ket{i_A}\otimes \ket{i_B}$.
 
 \subsection*{Purification} Generally, it is nicer to work with pure states than mixed states. We would therefore like to be able to associate a pure state (perhaps in a larger Hilbert space) with any mixed state.
 
-That is, we would like to define an $\cH_R$ and a state $\ket{\psi_{AR}}\in \cH_A \otimes \cH_R$ such that
+That is, given a density matrix $\rho_A\in \cH_A$, we would like to define a purifying reference system $R$ with Hilbert space $\cH_R$ and a new state $\ket{\psi_{AR}}\in \cH_A \otimes \cH_R$ such that
 \begin{equation}
     \rho_A=\Tr_R \ket{\psi_{AR}}\bra{\psi_{AR}}.
 \end{equation}
-$R$ is a purifying ``reference'' system.
+We claim that this is always possible, and will explicitly construct the purified state.
+%$R$ is a purifying ``reference'' system.
 \begin{proof}
-    Let us first take $\cH_R \simeq \cH_A$. Look at the spectral decomposition of our state,
+    Let us take $\cH_R \simeq \cH_A$. Look at the spectral decomposition of our state,
     \begin{equation}
-        \rho_A =\sum_{i=1}^{d_A} p_r \ket{i_A}\bra{i_A}
+        \rho_A =\sum_{i=1}^{d_A} p_i \ket{i_A}\bra{i_A}
     \end{equation}
-    where $\set{\ket{i_A}}$ is an onb for $\cH_A$ and similarly $\set{\ket{i_R}}$ is an onb for $\cH_R$. Since $\cH_R$ is a copy of $\cH_A$, we can define a bigger state $\ket{\psi_{AR}}$ as
+    where $\set{\ket{i_A}}$ is an onb for $\cH_A$. We can equivalently take a set of elements $\set{\ket{i_R}}$ to be an onb for $\cH_R$. Since $\cH_R$ is a copy of $\cH_A$, we can define a bigger state $\ket{\psi_{AR}}$ as
     \begin{equation}
         \ket{\psi_{AR}}\equiv \sum_{i=1}^d \sqrt{p_i}\ket{i_A} \ket{i_R},
     \end{equation}
-    where $d=\dim \cH_A = \dim \cH_R$. However, this is none other than the Schmidt decomposition we just defined.
+    where $d=\dim \cH_A = \dim \cH_R$. However, note that this is none other than the Schmidt decomposition we just defined, with $\lambda_i=\sqrt{p_i}$.
     
-    We can then check that
+    We now claim that
+    \begin{equation}
+        \rho_{AB}=\dyad{\psi_{AR}}
+    \end{equation}
+    is a pure state, since the Schmidt coefficients $\lambda_i$s of this state satisfy $\sum \lambda_i^2 =\sum p_i =1$.%and $\Tr \rho_A = 1.$
+        \footnote{
+            The state $\ket{\psi_{AR}}$ is normalized, since
+            \begin{equation*}
+                \braket{\psi_{AR}}{\psi_{AR}}=\sum_{i,j}\sqrt{p_i p_j} \braket{j_A}{i_A}\braket{j_R}{i_R} =\sum_i p_i =1,
+            \end{equation*}
+            so it follows that
+            \begin{equation*}
+                \rho_{AB}^2= \ket{\psi_{AR}}\braket{\psi_{AR}}{\psi_{AR}}\bra{\psi_{AR}}=\dyad{\psi_{AR}}=\rho_{AB},
+            \end{equation*}
+            i.e. $\rho_{AB}$ is a pure state.
+        }
+    A quick computation%
+        \footnote{Explicitly,
+        \begin{equation*}
+            \dyad{\psi_{AR}}=\sum_{i,j} \sqrt{p_i p_j} \ket{i_A} \ket{i_R} \bra{j_A}\bra{j_R},
+        \end{equation*}
+        so
+        \begin{align*}
+            \Tr_R \dyad{\psi_{AR}} &= \sum_{i,j} \sqrt{p_i p_j} \ket{i_A} \bra{j_A} \underbrace{\braket{j_R}{i_R}}_{\delta_{ij}}\\
+                &=\sum_i p_i \dyad{i_A} = \rho_A.
+        \end{align*}
+        }
+    confirms that
     \begin{equation}
         \Tr_R \ket{\psi_{AR}}\bra{\psi_{AR}}= \rho_A,
     \end{equation}
-    since the $\lambda_i$s satisfy $\sum \lambda_i^2 =\sum p_i =1$ and $\Tr \rho_A = 1.$
+    Thus $\rho_{AB}$ is a purification of $\rho_A$.
 \end{proof}
 
-Let's also remark that if we have a system $AB$ in a state $\Omega_{AB}$ such that $\Tr_B \Omega_{AB}=\psi_A$ is a pure state, then $\Omega_{AB}$ must be itself a product state, $\Omega_{AB}=\psi_A \otimes \omega_B$, where $\psi_A=\ket{\psi_A}\bra{\psi_A}$.
+Let's also observe that if we have a system $AB$ in a state $\Omega_{AB}$ such that $\Tr_B \Omega_{AB}=\psi_A$ is a pure state, then $\Omega_{AB}$ must be itself a product state, $\Omega_{AB}=\psi_A \otimes \omega_B$, where $\psi_A=\ket{\psi_A}\bra{\psi_A}$.
 %There are some really beautiful YouTubes.
 
 This also tells us that correlations contains in a pure state are \term{monogamous}, i.e. for a bipartite state $A=A_1 A_2$, with $\ket{\psi}=\ket{\psi_{A_1A_2}},$ then the bigger system $AB=A_1 A_2 B$ will have a state of the form
@@ -116,12 +148,13 @@ This also tells us that correlations contains in a pure state are \term{monogamo
 \subsection*{No-cloning theorem} In popular language, the no-cloning theorem says that there does not exist a quantum copier. More formally, $\not\exists$ a unitary operator which can perfectly copy an unknown $\ket{\psi}$.
 
 \begin{proof}
-    Suppose there exists such a unitary $U$. That is, we can take a reference state $\ket{\psi}$ and a ``blank'' state $\ket{s}$ and get out two copies of $\ket{\psi}$. Thus
+    Let $\ket{\psi}\in \cH$ with $\cH$ some Hilbert space, and suppose there exists such a unitary $U\in\cB(\cH\otimes \cH)$. That is, we can take an arbitrary reference state $\ket{\psi}$ and a ``blank'' state $\ket{s}$ and get out two copies of $\ket{\psi}$. Thus
     \begin{gather}
-        U(\ket{\phi}\otimes \ket{s})=\ket\phi \otimes \ket\phi\\
-        U(\ket{\psi}\otimes \ket{s})= \ket{\psi}\otimes \ket{\psi}.
+        U(\ket{\phi}\otimes \ket{s})=\ket\phi \otimes \ket\phi\label{nocloning1}\\
+        U(\ket{\psi}\otimes \ket{s})= \ket{\psi}\otimes \ket{\psi}\label{nocloning2}
     \end{gather}
-    Let us now take the inner products of the LHS and RHS of each equation. We get
+    for two distinct but otherwise arbitrary reference states $\ket{\psi}, \ket{\phi}.$
+    Let us now take the inner products of the LHS and RHS of \ref{nocloning1} and \ref{nocloning2}. We get
     \begin{equation}
         (\bra{\phi}\otimes \bra{s})U^\dagger U (\ket{\psi}\otimes \ket{s}) =(\bra{\phi} \otimes \bra{\phi})(\ket{\psi}\otimes \ket{\psi}).
     \end{equation}
@@ -129,9 +162,10 @@ This also tells us that correlations contains in a pure state are \term{monogamo
     \begin{equation}
         \braket{\phi}{\psi}\braket{s}{s}=\braket{\phi}{\psi}^2.
     \end{equation}
-    But we can certainly take $\braket{s}{s}=1$, so $x=x^2$ when $x=0,x=1$. That is, either the states are orthogonal or they are identical.
-    
-    Let's see a concrete example of this: suppose we take $\ket{\psi}\in \CC^2$, where $\ket{\psi}= \ket{0} + b\ket{1}$ and take the reference state $\ket{s}=\ket{0}$. Then we would like a unitary such that
+    WLOG, we can choose our blank state to be normalized, $\braket{s}{s}=1$. But so $\braket{\phi}{\psi}=\braket{\phi}{\psi}^2\implies \braket{\phi}{\psi}=0$ or $1$. That is, either the states are orthogonal or they are identical. Therefore our copier does not work on arbitrary reference states, and we have reached a contradiction.
+\end{proof}
+\begin{exm}
+    Let's see a concrete example of this: suppose we take $\ket{\psi}\in \CC^2$, where $\ket{\psi}= a\ket{0} + b\ket{1}$, and take the ``blank'' state $\ket{s}=\ket{0}$. Then we would like a unitary operator $U$ such that
     \begin{equation}
         U(\ket{\psi}\otimes \ket{0})=\ket{\psi}\otimes \ket{\psi}.
     \end{equation}
@@ -139,18 +173,18 @@ This also tells us that correlations contains in a pure state are \term{monogamo
     \begin{equation}
         a U\ket{00}+b U\ket{10}.
     \end{equation}
-    We can certainly prepare a unitary such that $U\ket{0}\otimes \ket{0}=\ket{00}$ and $U\ket{1}\otimes \ket{0}=\ket{11}$. However, when we now operate on an arbitrary state, we see that
+    We can certainly prepare a unitary such that $U\ket{0}\otimes \ket{0}=\ket{00}$ and $U\ket{1}\otimes \ket{0}=\ket{11}$. However, when we now operate on an arbitrary state $\ket{\psi}\otimes \ket{0}$, we see that
     \begin{equation}
         U(\ket{\psi}\otimes \ket{0})=aU \ket{00}+b U\ket{10} = a\ket{00} +b\ket{11}.
     \end{equation}
-    But this is an \emph{entangled state}, and in particular it is most certainly not $\ket{\psi}\otimes \ket{\psi}$, since
+    But this is an \emph{entangled state}, and in particular it is certainly not $\ket{\psi}\otimes \ket{\psi}$, since
     \begin{equation}
         \ket{\psi}\otimes \ket{\psi} =a^2 \ket{00} + b^2 \ket{11} + ab\ket{01} +ba \ket{10}.
     \end{equation}
-    It's because of linearity and the tensor product structure of composite quantum systems that our unitary operator cannot copy a generic unknown state.
-\end{proof}
+    We see that it's because of linearity and the tensor product structure of composite quantum systems that our unitary operator cannot copy a generic unknown state.
+\end{exm}
 
-Some concluding remarks: observe that if we have a single unknown state, we cannot make copies by the no-cloning theorem, but if we already have many copies, we could measure those copies in some bases and then prepare new copies of the state. In addition, the process of quantum teleportation does not contradict no-cloning because the original state becomes inaccessible to us-- its information is all in the teleported state after the measurement procedure.
+Some concluding remarks: observe that if we have a single unknown state, we cannot make copies by the no-cloning theorem, but if we already have many copies, we could measure those copies in some bases and then prepare new copies of the state. In addition, the process of quantum teleportation does \emph{not} contradict no-cloning because the original state becomes inaccessible to us-- its information is all in the teleported state after the measurement procedure.
 
 We've now shown that the first postulate of QM in a closed system (states as rays in Hilbert space) is replaced by the density matrix formalism, with some important consequences. Soon we'll consider the second postulate, that the dynamics of a quantum system are determined by a unitary operator.
 
@@ -158,4 +192,4 @@ We've now shown that the first postulate of QM in a closed system (states as ray
 \begin{equation}
     \ket{\psi_{AB}}=\sum_{i=1}^{d_m} \lambda_i \ket{i_A} \ket{i_B},
 \end{equation}
-with $m=\min(\dim A,\dim B)$ as before. If $\lambda_i=1/\sqrt{d_m}$, we call this a maximally entangled state. A maximally entangled state is a state such that is partial trace yields a completely mixed state-- cf. the state $\ket{\phi^+}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}).$
+with $m=\min(\dim A,\dim B)$ as before. If $\lambda_i=1/\sqrt{d_m}$, we call this a maximally entangled state. A maximally entangled state is a state such that its partial trace yields a completely mixed state-- cf. the Bell state $\ket{\phi^+}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}).$

@@ -20,10 +20,10 @@ then their tensor product is
     \ket{v_A}\otimes \ket{v_B} \begin{pmatrix} a_1b_1 \\ a_1 b_2 \\ a_2b_1 \\ a_2b_2
     \end{pmatrix}.
 \end{equation*}
-
+%
 More generally if $\dim \cH_A =m, \dim\cH_B=n$, then the tensor product of a matrix $A$ with $m\times m$ entries $a_{ij}$ and a matrix $B$ is a new $mn\times mn$ matrix where each of the entries $a_{ij}$ in $A$ are replaced by an $m\times m$ matrix, $a_{ij} B$.
 
-In particular an orthonormal basis can be constructed by simply taking tensor products of the bases for each of the individual Hilbert spaces.
+In particular, an orthonormal basis can be constructed by simply taking tensor products of the basis elements for each of the individual Hilbert spaces.
 
 \subsection*{States and the density matrix}
 Suppose we have the density matrix for a state in a composite system,
@@ -36,14 +36,14 @@ Then the state of system $A$ is described by the \term{partial trace} over the s
     &=\Tr_B \sum_{i,j,\alpha,\beta} a_{i\alpha,j\beta}(\ket{i_A}\otimes \ket{\alpha_B})(\bra{j_A}\otimes \bra{\beta_B})\\
     &= \sum a_{i\alpha,j\beta}\ket{i_A}\bra{j_A} (\Tr\ket{\alpha_B}\bra{\beta_B}).
 \end{align}
-Note that $\Tr \ket{\alpha_B}\bra{\beta_B}=\sum_{\gamma_B} \braket{\gamma_B}{\alpha_B}\braket{\beta_B}{\gamma_B}=\delta_{\alpha_\beta},$ and similarly, $\Tr\ket{i}\bra{j}=\braket{i}{j}=\delta_{ij}.$
+Note that $\Tr \ket{\alpha_B}\bra{\beta_B}=\sum_{\gamma_B} \braket{\gamma_B}{\alpha_B}\braket{\beta_B}{\gamma_B}=\delta_{\alpha \beta},$ and similarly, $\Tr\paren{\ket{i}\bra{j}}=\braket{i}{j}=\delta_{ij}.$
 
 We conclude that the density matrix after taking the partial trace is
 \begin{align}
     \rho_A =\Tr_B \rho_{AB} &= \sum_{i\alpha j\beta} a_{i\alpha,j\beta}\ket{i_A}\bra{j_A}\delta_{\alpha\beta}\\
     &=\sum-{ij\alpha} a_{i\alpha,j\alpha} \ket{i_A}\bra{j_A} \in B(\cH_A).
 \end{align}
-One can then show that $\rho_A \geq 0$ (is positive semi-definite) and $\Tr \rho_A=0$, so $\rho_A$ is in fact a density matrix. We call it the \term{reduced density matrix} or a reduced state.
+One can then show that $\rho_A \geq 0$ (is positive semi-definite) and $\Tr \rho_A=0$, so $\rho_A$ is in fact a density matrix. We call $\rho_A$ the \term{reduced density matrix}, or a reduced state.
 
 Recall that the ordinary trace is cyclic, $\Tr(ABC)=\Tr(CAB)$. However, the partial trace $\Tr_A$ is \emph{not} in  general cyclic. It may be an interesting exercise to try to figure out when the partial trace is cyclic. It's also easy to prove that the complete trace is given by taking the partial traces,
 \begin{equation}
@@ -61,7 +61,10 @@ The expectation value of this observable is given by
     &= \Tr_A \Tr_B ((M_A \otimes I_B)\rho_{AB})\\
     &= \Tr(M_A \rho_A).
 \end{align*}
-For this reason, the partial trace is often defined such that for any $M_{AB}$ of this form, $\Tr_B(M_{AB}\rho_{AB})=\Tr(M_a \rho_A).$
+For this reason, the partial trace is often defined such that for any $M_{AB}$ of this form,
+\begin{equation}
+    \Tr_B(M_{AB}\rho_{AB}) \equiv \Tr(M_A \rho_A).
+\end{equation}
 
 \begin{exm}
 Consider a system with two qubits, so $\cH = \CC^2 \otimes \CC^2$. The full density matrix is
@@ -81,9 +84,25 @@ where
     \end{equation}
     Here, we're using a fairly intuitive shorthand where $\ket{00}=\ket{0_A}\otimes \ket{0_B}$. Then the density matrix is
     \begin{equation}
-        \rho = \ket{\phi_{AB}^+}\bra{\phi_{AB}^+} = \frac{1}{2} \bkt{\ket{0_A}\bra{0_A}\otimes \ket{0_B}\bra{0_B}+\ldots}.
+        \rho = \ket{\phi_{AB}^+}\bra{\phi_{AB}^+} = \frac{1}{2} \paren{\ket{0_A}\bra{0_A}\otimes \ket{0_B}\bra{0_B}+\ldots}.
     \end{equation}
-    Now we can check as an exercise that $\rho_A$ takes on a simple form--
+    Now we can check as an exercise%
+        \footnote{The full expansion of $\rho_{AB}$ is
+            \begin{equation*}
+                \rho_{AB}=\frac{1}{2}\paren{\ket{00}\bra{00}+\ket{00}\bra{11}+\ket{11}\bra{00}+\ket{11}\bra{11}},
+            \end{equation*}
+            so taking the partial trace over $B$, we have
+            \begin{align*}
+                \Tr_B \rho_{AB} &= \frac{1}{2} \paren{\ket{0_A}\bra{0_A}(\braket{0_B}{0_B}) 
+                +\ket{0_A}\bra{1_A}(\braket{1_B}{0_B}) 
+                +\ket{1_A}\bra{0_A}(\braket{0_B}{1_B}) 
+                +\ket{1_A}\bra{1_A}(\braket{1_B}{1_B})
+                }\\
+                    &= \frac{1}{2} (\dyad{0_A} +\dyad{1_A}) = \frac{I_A}{2}.
+            \end{align*}
+            A similar calculation holds for the trace over $A$.
+        }
+    that $\rho_A$ takes on a simple form--
     \begin{equation}
         \rho_A =\Tr_B \rho_{AB} = \frac{1}{2}\bkt{\ket{0_A}\bra{0_A}+\ket{1_A}\bra{1_A}}=\frac{I_A}{2},
     \end{equation}
@@ -95,7 +114,7 @@ where
 \end{exm}
 
 \begin{defn}
-    To state this more precisely, for a state $\ket{\psi_{AB}}$, if there exist $\ket{\psi_a},\ket{\psi_b}$ such that
+    To state this more precisely, for a state $\ket{\psi_{AB}}$, if there exist $\ket{\psi_A},\ket{\psi_B}$ such that
     \begin{equation}
         \ket{\psi_{AB}}=\ket{\psi_A}\otimes \ket{\psi_B},
     \end{equation}
@@ -107,7 +126,7 @@ In fact, there are four entangled states which are special:
     \ket{\phi^\pm_{AB}}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})\\
     \ket{\psi^\pm_{AB}} = \frac{1}{\sqrt{2}}(\ket{01}\pm \ket{10}).
 \end{gather}
-These are the so-called \term{maximally entangled} states, i.e. bipartite pure states such that their reduced states are completely mixed,
+These are the so-called \term{maximally entangled} states or ``Bell states,'' i.e. bipartite pure states such that when we take the partial traces, their reduced states are completely mixed:
 \begin{equation}
     \rho_{AB}=\ket{\psi_{AB}}\bra{\psi_{AB}}\text{ such that }\rho_B=I_B/2.
 \end{equation}

@@ -109,11 +109,15 @@
 \newcommand{\avg}[1]{\left< #1 \right>}
 \newcommand{\?}{\overset{?}{=}}
 \newcommand{\Int}{\int_{-\infty}^\infty}
-\newcommand{\ket}[1]{\left| #1 \right>} % for Dirac bras
-\newcommand{\bra}[1]{\left< #1 \right|} % for Dirac kets
-\newcommand{\braket}[2]{\left< #1 \vphantom{#2} \right|
- \left. #2 \vphantom{#1} \right>} % for Dirac brackets
+%\newcommand{\ket}[1]{\left| #1 \right>} % for Dirac bras
+%\newcommand{\bra}[1]{\left< #1 \right|} % for Dirac kets
+%\newcommand{\braket}[2]{\left< #1 \vphantom{#2} \right|
+% \left. #2 \vphantom{#1} \right>} % for Dirac brackets
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1 \delimsize\vert #2}
 \newcommand{\kb}[2]{\left| #1 \right>\left< #2 \right|}
+\newcommand{\dyad}[1]{\left\lvert{#1}\middle\rangle\!\middle\langle{#1}\right\rvert}%{\left| #1 \right>\left< #1 \right|}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \newcommand{\ul}[1]{\underline{#1}}
 

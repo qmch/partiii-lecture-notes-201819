@@ -1,6 +1,6 @@
 Last time, we introduced maximally entangled states. As it turns out, these states have a few interesting properties. Recall that such states are defined on composite Hilbert spaces such that for
 \begin{equation}
-    \cH_a \otimes \cH_B \simeq \CC^d \otimes \CC^d
+    \cH_A \otimes \cH_B \simeq \CC^d \otimes \CC^d
 \end{equation}
 equipped with a (fixed) onb for $\CC^d$ given by $\set{\ket{i}}_{i=1}^d$, a maximally entangled state is then a state which is written
 \begin{equation}
@@ -9,7 +9,7 @@ equipped with a (fixed) onb for $\CC^d$ given by $\set{\ket{i}}_{i=1}^d$, a maxi
 \begin{itemize}
     \item Every MES $\ket{\Phi}\in \CC^d \otimes \CC^d$ can be written in the form
     \begin{equation}
-        \ket{\Phi}=(i\otimes U) \ket{\Omega}
+        \ket{\Phi}=(I_d \otimes U) \ket{\Omega}
     \end{equation}
     for some unitary $U$. One should check explicitly%
         \footnote{The proof is quick.
@@ -17,10 +17,10 @@ equipped with a (fixed) onb for $\CC^d$ given by $\set{\ket{i}}_{i=1}^d$, a maxi
             \Tr_2(\kb{\Phi}{\Phi})&= \Tr_2 \paren{(I\otimes U) \frac{1}{\sqrt{d}}\sum_i \ket{i}\ket{i}}\paren{\frac{1}{\sqrt{d}} \sum_j \bra{j} \bra{j} (I\otimes U^\dagger)}\\
                 &= \frac{1}{d}\sum_{i,j} \kb{i}{j} \Tr(U\kb{i}{j} U^\dagger)\\
                 &= \frac{1}{d}\sum_{i,j} \kb{i}{j} \Tr(\kb{i}{j} U^\dagger U)\\
-                &=\frac{1}{d} \sum_{i,j} (\kb{i}{j} \delta_{ij}\\
+                &=\frac{1}{d} \sum_{i,j} \kb{i}{j} \delta_{ij}\\
                 &= \frac{I}{d}.
         \end{align*}
-        The proof for tracing over the first subsystem is almost the same. 
+        The proof for tracing over the first subsystem is almost the same. Strictly, what this shows is that every state of this form is maximally entangled. We haven't shown that every maximally entangled state admits this form.
         }
     that
     \begin{equation}
@@ -29,15 +29,14 @@ equipped with a (fixed) onb for $\CC^d$ given by $\set{\ket{i}}_{i=1}^d$, a maxi
     \item Lemma: for any $A,B\in B(\CC^d),$
     \begin{itemize}
         \item $\bra{\Omega}A\otimes B\ket{\Omega}=\frac{1}{d}\Tr(A^T B)$, where transposition is done in the basis $\set{\ket{i}}_{i=1}^d$.
-        \item $(A\otimes I)\ket{\Omega}=(I\otimes A^T)\ket{\Omega}$. It's an exercise to prove this-- see my footnote later.
-        %prove it!
-        We can do this by writing
-        \begin{gather*}
-            A=\sum_{i,j} a_{ij}\ket{i}\bra{j}\\
-            B=\sum_{k,l} a_{kl}\ket{k}\bra{l}\\
-            A=\sum_{i,j} a_{ji}\ket{i}\bra{j}
-        \end{gather*}
-        and computing explicitly.
+        \item $(A\otimes I)\ket{\Omega}=(I\otimes A^T)\ket{\Omega}$, a property we shall call ``ricochet.'' The proofs of these lemmas are an exercise, and are done at the end of this lecture's notes.
+        %We can do this by writing
+        %\begin{gather*}
+        %    A=\sum_{i,j} a_{ij}\ket{i}\bra{j}\\
+        %    B=\sum_{k,l} a_{kl}\ket{k}\bra{l}\\
+        %    A^T=\sum_{i,j} a_{ji}\ket{i}\bra{j}.
+        %\end{gather*}
+        %and computing explicitly.
     \end{itemize}
     \item We can write down a purification $\rho$ of $\ket{\Omega}$: we claim it is
     \begin{equation}
@@ -117,11 +116,11 @@ Let us now unpack some of the properties of CPTP maps.
         \Tr (\Lambda \rho)=\Tr \rho'=1.
     \end{equation}
 \end{itemize}
-These conditions are necessary, but not sufficient. In fact we require $\Lambda$ to be \term{completely positive}. 
+These conditions are necessary, but not sufficient. In fact we, require $\Lambda$ to be \term{completely positive}, as we'll define now. 
 \begin{defn}
     Let $\Lambda:\cD(\cH_A)\to \cD(\cH_A')$, where $\cH_A$ is the Hilbert space of this system. Consider an extension of $\cH_A$ to the bigger space $\cH_A \otimes \cH_B$. That is, we add another system $B,$ called the ancilla or (for obvious reasons) the environment. 
 
-    A note on notation: $I_B$ is the identity operator on $B$, i.e. $I_B\in B(\cH_B)$, whereas $id_B$ is the superoperator $B(\cH_B)\to B(\cH_B)$ such that $id_B Q=Q \forall Q\in B(\cH_B).$ We then say that $\Lambda$ is \term{completely positive} if $\Lambda \otimes id_B$ is positive for all such extensions.
+    Note that $I_B$ is the identity operator on $B$, i.e. $I_B\in \cB(\cH_B)$, whereas $id_B$ is the superoperator $\cB(\cH_B)\to \cB(\cH_B)$ such that $id_B Q=Q \,\forall Q\in B(\cH_B).$ We then say that $\Lambda$ is \term{completely positive} if $\Lambda \otimes id_B$ is positive for all such extensions.
 \end{defn}
 For instance, suppose the composite system $AB$ is initially in a state $\rho_A\otimes \omega_B$. Thus a completely positive map yields a state
 \begin{equation}
@@ -161,3 +160,43 @@ where $\sigma_{AB}$ is guaranteed to be a legitimate state of the composite syst
     \end{equation}
     This tells us that the eigenvalues of $Q$ are $\pm 1$, which means that we have constructed an operator which is positive but not completely positive.
 \end{exm}
+
+\subsection*{Non-lectured aside: extra proofs}
+These proofs were originally footnotes, but I thought it might be useful to collect them here at the end of the lecture to avoid clutter.
+
+\begin{proof}
+    Trace and $\ket{\Omega}$: we show that $\bra{\Omega}A\otimes B\ket{\Omega}=\frac{1}{d}\Tr(A^T B)$.
+    
+    Note that by the usual laws of matrix multiplication, if $A=a_{ij}\ket{i}\bra{j}$ and similarly $B=b_{ij}\ket{i}\bra{j}$, then $A^TB=a_{ji}B_{jl}\ket{i}\bra{l}$ and so 
+    \begin{equation}
+        \Tr(A^T B)=a_{ji} b_{jl} \braket{l}{i}=A_{ji}b_{ji}.
+    \end{equation}
+    
+    Now by explicit computation, we see that
+    \begin{align*}
+        \bra{\Omega}A\otimes B\ket{\Omega}&= \frac{1}{\sqrt{d}}\bra{\Omega}(a_{ij} \ket{i}\braket{j}{k} \otimes b_{lm} \ket{l} \braket{m}{k})\\
+        &=\frac{1}{\sqrt{d}} \bra{\Omega} (a_{ik} \ket{i} \otimes b_{lk} \ket{l})\\
+        &= \frac{1}{d} a_{ik} \braket{n}{i} b_{lk} \braket{n}{l}\\
+        &= \frac{1}{d} a_{nk} b_{nk}\\
+        &= \frac{1}{d} \Tr(A^T B),
+    \end{align*}
+    where we have swapped $\ket{\Omega}$s freely for their expressions in terms of an orthonormal basis and evaluated the Kronecker deltas implicitly rather than writing them out.
+\end{proof}
+
+\begin{proof}
+    Ricochet property: we wish to prove that
+    \begin{equation*}
+        (A\otimes I)\ket{\Omega}=(I\otimes A^T)(\ket\Omega).
+    \end{equation*}
+    For brevity, I'm suppressing the sums in the following expressions. All sums are taken over $1$ to $d$. Let $A=a_{ij}\ket{i}\bra{j}$, and thus $A^T=a_{ji}\ket{i}\bra{j}$. Then
+    \begin{align*}
+        (A\otimes I)\ket{\Omega} &= a_{ij}\ket{i} \braket{j}{k}\otimes \ket{k}\\
+            &= a_{ij} \ket{i} \delta_{jk} \otimes \ket{k}\\
+            &= a_{ik} \ket{i} \otimes \ket{k}\\
+            &= a_{ki} \ket{k} \otimes \ket{i}\\
+            &= \ket{k} \otimes a_{ji}\ket{i} \delta_{jk}\\
+            &= \ket{k} \otimes a_{ji}\ket{i}\braket{j}{k}\\
+            &= (I\otimes A^T)\ket{\Omega},
+    \end{align*}
+    where we have simply relabeled $i$ and $k$ in the fourth line since both sums run from $1$ to $d$.
+\end{proof}

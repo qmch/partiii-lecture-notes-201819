@@ -1,0 +1,108 @@
+We saw last time that a lot of the interest in our theory lies in its pole structure, i.e. the divergences that crop up when we bring two operators close together. From last term's \emph{Quantum Field Theory}, we're familiar with Wick's theorem, which links time-ordered expressions to normal-ordered expressions with contractions. Here, we have radial ordering, so that
+\begin{align*}
+    R(\phi_1(z_1)\ldots \phi_n(z_n)) ={}& :\phi_1(z_1)\ldots \phi_n(z_n) 
+    + \sum_{(i,j)} :\phi(z_1) \ldots \overbrace{\phi_i(z_i) \ldots \phi_j(z_j)} \ldots \phi_n(z_n): \\
+    &+ \sum_{(i,j),(k,l)} :\phi(z_1) \ldots \overbrace{\phi_i(z_i) \ldots \phi_j(z_j)}\overbrace{\phi_k(z_k) \ldots \phi_l(z_l)} \ldots \phi_n(z_n):+\ldots
+\end{align*}
+where these sums are taken over all internal (pairwise) contractions. The contractions replace operator pairs with Green's functions, which means that there may be a lot of interest in the pole structure of this object.
+
+We can use Wick's theorem and our knowledge of contractions to define composite operators, e.g. we found that
+\begin{equation}\label{wickope}
+    \overbrace{\p X^\mu(z) \p X^\nu (\omega)} =-\frac{\alpha'}{2} \frac{\eta^{\mu\nu}}{(z-\omega)^2}.
+\end{equation}
+This gives us a natural definition for our stress tensor:
+\begin{equation}
+    T(z)=\lim_{\omega\to z} -\frac{1}{\alpha'} \paren{\p X^\mu(z) \p X_\mu(\omega) + \frac{\alpha'}{2} \frac{\eta^\mu{}_\mu}{(z-\omega)^2}}.
+\end{equation}
+\subsection*{Operator Product Expansions (OPEs)}
+OPEs encode what happens when we bring two operators close together. Given a set of operators $\set{O_i}$, we write
+\begin{equation}
+    O_i(\omega) O_j(z)=\sum_k f_{ij}^k(z-\omega) O_k(z)
+\end{equation}
+as $\omega\to z$. Here, there's some sense of completeness in the set of operators $\set{O_i}$. 
+
+\subsection*{OPEs and conformal transformations}
+For instance, let us consider the OPE $T(z)X^\mu(\omega)$ and conformal transformations. We are interested in
+\begin{equation}
+     T(z) X^\mu(\omega)\text{ as }\omega \to z.
+\end{equation}
+We have
+\begin{equation}
+    T(z) X^\mu(\omega)=\frac{1}{\alpha'} :\p X^\nu(z) \p X_\nu (z): X^\mu(\omega),
+\end{equation}
+and by integrating \ref{wickope} we get
+\begin{equation}
+    \p X^\mu(z) X^\nu(\omega) =-\frac{\alpha'}{2} \frac{\eta^{\mu\nu}}{z-\omega}+\ldots
+\end{equation}
+where the $\ldots$ indicate terms that are finite as $z\to\omega$.
+
+It follows that
+\begin{align*}
+    T(z) X^\mu(\omega)&=-\frac{2}{\alpha'} :\overbrace{\p X^\nu(z) \p X_\nu(z): X^\mu(\omega)}+\ldots\\
+    &= -\frac{2}{\alpha'} \p X_\nu(z) \paren{-\frac{\alpha'}{2} \frac{\eta^{\mu\nu}}{z-\omega}}+\ldots\\
+    &= \frac{\p X^\mu(z)}{z-\omega}+\ldots
+\end{align*}
+We then expand $\p X^\mu(z)$ around $z=\omega$ to find
+\begin{equation*}
+    \p X^\mu(z) = \p X^\mu(\omega)+O(z-\omega),
+\end{equation*}
+so
+\begin{equation}
+    T(z)X^\mu(\omega) = \frac{\p X^\mu(\omega)}{z-\omega}+\ldots
+\end{equation}
+where the $\ldots$ terms remain finite.
+
+Recall that the conformal transformation of $X^\mu(\omega)$ may be given by
+\begin{equation}
+    \delta_v X^\mu(\omega) = \oint_{z=\omega} \frac{dz}{2\pi i}R(v(z)T(z) X^\mu(\omega)),
+\end{equation}
+where $v(z)$ is holomorphic and parametrizes our transformation.
+
+We now substitute our OPE into $\delta_v X^\mu(\omega)$ to find
+\begin{equation}
+    \delta_v X^\mu(\omega) =\oint_{z=\omega} \frac{dz}{2\pi i} v(z) \paren{\frac{\p X^\mu(\omega)}{z-\omega} + \ldots} = v(\omega) \p X^\mu(\omega).
+\end{equation}
+where the contour is taken in a little loop around $z=\omega$.
+
+\subsection*{Transformations of primary fields}
+Consider a chiral primary $\phi(z)$ (where $\bar h=0$). We know that
+\begin{equation}
+    \delta_v \phi(z) =\oint_{C(z)} \frac{d\omega}{2\pi i} R(v(\omega)T(\omega) \phi(z)),
+\end{equation}
+where we've swapped the $z$ and $\omega$ in the integral to emphasize our primary field depends only on $z$. We want to retain the idea that a primary field transforms as a conformal tensor of weight $(h,\bar h).$ Therefore we'll require that for $\phi(z)$ to be a chiral primary field, the OPE with $T(\omega)$ is such that
+\begin{equation}\label{tomegaope}
+    \delta_v \phi(z) = v(z) \p \phi(z) + h\p v(z) \phi(z).
+\end{equation}
+Using the residue theorem in the following form,
+\begin{equation}
+    \frac{1}{(n-1)!} \p_z^{n-1} f(z) = \oint \frac{d\omega}{2\pi i } \frac{f(\omega)}{(\omega-z)^n},
+\end{equation}
+we find that the $R$ part of the OPE can be rewritten as follows:
+\begin{equation}
+    R(T(\omega)\phi(z))=\frac{h}{(z-\omega)^2}\phi(\omega) + \frac{1}{z-\omega} \p \phi(\omega)+\ldots
+\end{equation}
+in order to match the form of \ref{tomegaope}.
+
+We could take this OPE with the stress tensor to define what we mean by a chiral primary of weight $h$. Thus by writing the radial ordering for some general $\phi$ we can read off the weight immediately.
+
+\subsection*{A non-trivial OPE} Consider now the OPE
+\begin{equation}
+    T(z) :e^{ik \cdot X(\omega)}:
+\end{equation}
+where $k\cdot X(\omega) = k_\mu X^\mu(\omega)$, with $k_\mu$ some constant spacetime vector. We think of this normal-ordered term in terms of its series expansion, i.e.
+\begin{equation}
+    \sum_{n\geq 0} \frac{i^n}{n!} k_{\mu_1} \ldots k_{\mu_n} :X^{\mu_1}(\omega) \ldots X^{\mu_n}(\omega):
+\end{equation}
+We might wonder what the weight of $:e^{ik\cdot X}:$ is, but there's some non-trivial behavior going on in the normal ordering. Let's tack on $T(z)$ now:
+\begin{equation}
+    -\frac{1}{\alpha'} :\p X^\nu(z) \p X_\nu(z): \sum_{n\geq 0} \frac{i^n}{n!} k_{\mu_1} \ldots k_{\mu_n} :X^{\mu_1}(\omega) \ldots X^{\mu_n}(\omega):
+\end{equation}
+Single contractions contribute to this expression:
+\begin{equation}
+    \sum \frac{i^n}{n!} n(k\cdot X(\omega)^{n-1} k_\nu \frac{1}{z-\omega}\p X^\nu(\omega),
+\end{equation}
+where we've contracted one of the $\p X$s with one of the $X^{\mu_i}$s in the sum. Shifting the index we have
+\begin{equation}
+    \sum_{m\geq 0} \frac{i^m}{m!} (k\cdot X(\omega))^m \frac{k_\nu \p X^\nu(\omega)}{z-\omega} = \frac{1}{z-\omega} \p_\omega (e^{ik\cdot X(\omega)}).
+\end{equation}
+This already looks like the $\p\phi(\omega)$ term in our expansion-- we'll see how the double contractions give the other term on Wednesday.

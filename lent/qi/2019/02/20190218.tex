@@ -1,0 +1,134 @@
+\subsection*{Entanglement} 
+We defined the notion of entanglement last time. Note that entanglement cannot be created or increased via LOCC (local operation classical channels). However, it will turn out to be a valuable resource (e.g. for use in algorithms).
+
+Some of the simplest entangled states we can write down are the Bell states in $\cH_A \otimes \cH_B \simeq \CC^2 \otimes \CC^2$. They are
+\begin{gather}
+    \ket{\phi_{AB}^\pm} = \frac{1}{\sqrt{2}}(\ket{00} \pm \ket{11})\\
+    \ket{\psi_{AB}^\pm} = \frac{1}{\sqrt{2}} (\ket{01} \pm \ket{10}).
+\end{gather}
+These four states can be characterized by two bits-- a parity bit (are the two bits parallel, e.g. $\ket{00}$, or antiparallel, $\ket{01}$) and a phase bit (is the sign of the phase $+$ or $-$). For instance, in this notation, $01$ (with parity the first bit, phase the second) indicates $\ket{\phi^-}$.
+
+Two bits can therefore be encoded in a Bell state. This information can be recovered/decoded by a \emph{joint} measurement on the $2$ qubits. Suppose we want to send a message to a friend, but we only have a quantum channel, i.e. we can only send qubits. What is the measurement we will make? It is a \term{Bell measurement}, a projective measurement with the following four operators:
+\begin{align}
+    P_{00}&=\kb{\phi^+}{\phi^+}\\
+    P_{01}&=\kb{\phi^-}{\phi^-}\\
+    P_{10}&=\kb{\psi^+}{\psi^+}\\
+    P_{11}&=\kb{\psi^-}{\psi^-}.
+\end{align}
+
+Say the state received was $\ket{\phi^-}$. Making this projective measurement, we get $p(11)=0$ and indeed $p(10)=p(00)=0$. Only $p(01)=1$. Moreover, our post-measurement state when we get $1$ is undisturbed. We got $1$ and we didn't destroy the state in the process since
+\begin{equation}
+    \ket{\phi^-{}'}\propto \ket{\phi^-}\braket{\phi^-}{\phi^-} = \ket{\phi^-}.
+\end{equation}
+
+\subsection*{``Distant labs''} From now on, we shall look at the ``distant labs'' paradigm. That is, Alice and Bob each have one qubit, say one qubit of a Bell state, e.g. $\ket{\phi^-_{AB}}.$ Suppose now Alice makes a measurement with a local unitary operator (i.e. she can only affect her qubit), e.g.
+\begin{equation}
+    (\sigma_z^A \otimes I_B).
+\end{equation}
+It's straightforward to see that since $\sigma_z \ket{0}=0, \sigma_z \ket{1}=-\ket{1}$,
+\begin{gather}
+    \ket{\phi^+}\leftrightarrow \ket{\phi^-}\\
+    \frac{\ket{00}+\ket{11}}{\sqrt{2}}\leftrightarrow \frac{\ket{00}-\ket{11}}{\sqrt{2}}.
+\end{gather}
+Similarly,
+\begin{equation*}
+    \ket{\psi^+}\leftrightarrow\ket{\psi^-}.
+\end{equation*}
+Under $\sigma_x^A \otimes I_B$, we see that the states
+\begin{gather}
+    \ket{\phi^+}\leftrightarrow \ket{\psi^+}\\
+    \ket{\phi^-}\leftrightarrow \ket{\psi^-}.
+\end{gather}
+
+Now suppose that Alice and Bob have a classical channel (e.g. a phone), so they can coordinate their measurements. For instance, Alice and Bob agree to both perform $\sigma_z$ on their respective qubits. The outcome is $\pm 1$ for each of them. They can communicate the outcomes and infer \emph{either} the phase bit or the parity bit, but not both.
+
+\begin{exm}
+    Say the initial state (unknown to A and B) is $\ket{\phi^-}$. Suppose they measure $\sigma_z^A \otimes \sigma_z^B$, and they get the outcomes $+1,+1$. The post-measurement state is then given by acting with the projective operator $P_{1,1}=\dyad{0} \otimes \dyad{0}.$%
+        \footnote{That is, the post-measurement state is given by the projection operator made from the eigenvector corresponding to the eigenvalue we measured.
+        }
+    Then the post-measurement state is
+    \begin{align}
+        \propto P\ket{\phi^-}&=(\dyad{0} \otimes \dyad{0}) \paren{ \frac{\ket{00}- \ket{11}}{\sqrt{2}}}\\
+        &= \ket{00}.
+    \end{align}
+    Thus they have determined the parity bit to be zero, but in doing so they've destroyed the original state and cannot recover the phase bit.
+\end{exm}
+
+\subsection*{Generalized measurement of Bell states} How does the story change if we do a generalized measurement? Suppose A and B share
+\begin{equation*}
+    \ket{\phi^+_{AB}} = \frac{\ket{00}+ \ket{11}}{\sqrt{2}}.
+\end{equation*}
+Alice does a generalized measurement with
+\begin{equation}
+    M_1 = \begin{pmatrix}\cos\theta & 0\\
+    0&\sin\theta\end{pmatrix}, \quad M_2 = \begin{pmatrix}\sin\theta & 0\\
+    0&\cos\theta\end{pmatrix}.
+\end{equation}
+The outcomes are $1$ and $2$. If the outcome is $1$, then the post-measurement state is proportional to
+\begin{equation*}
+    (M_1\otimes I_B) \ket{\phi^+}=\cos\theta\ket{00} + \sin\theta\ket{11}
+\end{equation*}
+and
+\begin{equation*}
+    (M_2\otimes I_B) \ket{\phi^+}=\cos\theta\ket{11} + \sin\theta\ket{00}
+\end{equation*}
+if the outcome is $2$, where it's a simple exercise to check that these are the final states.
+
+Based on her measurement, Alice makes a decision. If she got outcome $1$, she does nothing ($I\otimes I$), and if she gets $2$, she performs $\sigma_x^A$ on her qubit (the NOT operation). Thus the new states are
+\begin{gather*}
+    \cos\theta \ket{00}+\sin\theta\ket{11},\\
+    \cos\theta \ket{01} + \sin\theta\ket{10}.
+\end{gather*}
+Finally, Alice tells Bob what she measured, whereupon if the measurement was $1$, Bob does nothing, and if the measurement was 2, Bob uses $\sigma_x^B$ on his qubit so that either way, the final state shared between A and B is
+\begin{equation}
+    \ket{\phi_{AB}^+} \to \cos\theta \ket{00} + \sin\theta\ket{11} \equiv \ket{\chi}.
+\end{equation}
+One can readily check that in general,
+\begin{equation}
+    \rho_A=\Tr_B \ket{\chi}\bra{\chi} \neq I/2,
+\end{equation}
+so the Schmidt rank of this state is $2$. By LOCCs, we have gone from a maximally entangled state to a non-maximally entangled state.
+
+Suppose now Alice and Bob share a general state $\ket{\psi}\in \cH_A \otimes \cH_B$. Can they change it to a desired state $\ket{\phi}\in \cH_A \otimes \cH_B$ via LOCC? The answer to this question is captured in \term{Nielsen's majorization theorem.}
+
+\subsection*{What is majorization?} 
+To understand the theorem, we'll have to know what majorization is. Let $\vec x=(x_1,\ldots, x_n), \vec y=(y_1,\ldots,y_n)$ with $\vec x,\vec y\in \RR^n$. We say that $\vec x$ is \term{majorized} by $\vec y$, denoted $\vec x \prec \vec y$ if
+\begin{equation}
+    \sum_{i=1}^k x_i^{\downarrow} \leq \sum_{i=1}^k y_i^{\downarrow} \quad\forall 1\leq k \leq n-1
+\end{equation}
+and
+\begin{equation}
+    \sum_{i=1}^n x_i^{\downarrow} = \sum_{i=1}^n y_i^{\downarrow},
+\end{equation}
+where $x_1^{\downarrow} \geq x_2^{\downarrow} \geq \ldots \geq x_n^{\downarrow}$ orders the elements of $\vec x$ in non-increasing order. For
+\begin{equation}
+    \vec x=(1/n,\ldots, 1/n),\quad \vec y=(1,0,0,\ldots,0),
+\end{equation}
+we see that $\vec x$ is majorized by $\vec y$ since $1/n \leq 1, 2/n \leq 1,\ldots$ and $k/n \leq 1$.%
+    \footnote{In words, order the elements of the vectors $\vec x,\vec y$ from largest to smallest. Take the partial sums of the first $k$ elements in the ordered vectors. If every partial sum of the ordered $\vec y$ is greater than the corresponding partial sum of $\vec x$, with the full sums being equal, then $\vec y$ majorizes $\vec x$.}
+
+\begin{thm}
+    $\vec x \prec \vec y$ iff $\exists\set{p_i},\set{P_i}$ with $P_i$ some permutation matrices such that
+    \begin{equation}
+        \vec x = \sum_i p_i P_i \vec y.
+    \end{equation}
+\end{thm}
+We also have Birkhoff's theorem:
+\begin{thm}
+    For a matrix $D=\sum_i p_i P_i$, we say that if $\sum_i D_{ij}=1$ and $\sum_j D_{ij}=1$, then $D$ is doubly stochastic. $\vec x \prec \vec y$ iff $\exists D$ (doubly stochastic) such that $\vec x = D \vec y.$
+\end{thm}
+
+In the quantum case, we say that for density matrices $\rho,\sigma$, $\rho$ is majorized by $\sigma$ if
+\begin{equation}
+    \lambda(\rho) \prec \lambda (\sigma),
+\end{equation}
+where $\lambda(\rho)=(r_1,\ldots,r_n)$ is the vector of the eigenvalues of $\rho$. Thus if $\rho \prec \sigma$, then $\exists \set{p_i},\set{U_i}$ s.t. 
+\begin{equation}
+    \rho = \sum_i p_i U_i \sigma U_i^\dagger.
+\end{equation}
+
+Nielsen's majorization theorem gives us the condition for the construction of an arbitrary state $\ket{\phi}$ from a given state $\ket{\psi}$.
+\begin{thm}[Nielsen's majorization thm]
+    $\ket{\psi}\to \ket{\phi}$ by LOCC iff $\lambda_\psi \prec \lambda_\phi$ where $\lambda_\psi$ is the vector of eigenvalues $\lambda(\rho_\psi)$ with $\rho_\psi=\Tr_B \kb{\psi}{\psi}$ and $\lambda_\phi=\lambda(\rho_\phi)$ where $\rho_\phi=\Tr_B\kb{\phi}{\phi}$.
+\end{thm}
+Note it doesn't matter whether we trace over $A$ or $B$ by the Schmidt decomposition since for a pure bipartite state the nonzero eigenvalues after doing a partial trace are the same.
