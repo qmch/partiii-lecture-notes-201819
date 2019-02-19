@@ -1,0 +1,109 @@
+Last time, we wrote down an action for the electromagnetic field,
+\begin{equation*}
+    S_g[A]=\frac{1}{4}\int d^4x F_{\mu\nu}F^{\mu\nu} = \frac{1}{2}\int\frac{d^4k}{(2\pi)^4} \tilde A_\mu(-k)(k^2\delta^{\mu\nu}-k^\mu k^\nu)\tilde A_\nu(k),
+\end{equation*}
+We introduced the Faddeev-Popov method for fixing the gauge. We write the identity in terms of a delta function and an (as yet unspecified) functional $G[A]$,
+\begin{equation*}
+    1= \int \cD \alpha(x) \delta (G[A]) \det \paren{\frac{\delta G[A]}{\delta \alpha}}.
+\end{equation*}
+
+For the $G[A]$ we will use, the determinant (Jacobian factor) will be independent of $A$, though this will not be true more generally in non-Abelian gauge theories. If we choose Lorenz gauge, then
+\begin{equation}
+    G[A^\alpha]=\p_\mu A^\mu +\frac{1}{e} \p^2 \alpha,
+\end{equation}
+so
+\begin{equation}
+    \det \paren{\frac{\delta G[A]}{\delta \alpha}}=\det \paren{\frac{\p^2}{e}}.
+\end{equation}
+%what does this mean, notationally?
+Thus we rewrite the path integral with our delta function as
+\begin{align}
+    \int \cD A e^{-S_g[A]} &= \det \paren{\frac{\delta G{A^\alpha}}{\delta \alpha} \int \cD \alpha \int \cD A e^{-S_g[A]} \delta(G[A])}\\
+    &=\det \paren{\frac{\delta G{A^\alpha}}{\delta \alpha} \paren{\int \cD \alpha} \int \cD A e^{-S_g[A]} \delta(G[A])},
+\end{align}
+where we have changed variable $A\mapsto A^\alpha$ and $S_g$ is invariant since this is a gauge transformation.
+
+TO fix the gauge, let's choose the functional
+\begin{equation}
+    G[A]=\p_\mu A^\mu(x) -\omega(x) \implies G[A^\alpha]=\p_\mu A^\mu - \omega +\frac{1}{e} \p^2 \alpha.
+\end{equation}
+We now integrate over $\omega$ with a Gaussian weight factor of mean $0$ and variance $\xi$. Thus
+\begin{equation}
+    \int \cD \omega \exp \bkt{-\int d^4x \frac{\omega^2}{2\xi}} \det \paren{\frac{\p^2}{e}} \int \cD \alpha \cD A e^{-S[A]}\delta(\p_\mu A^\mu -\omega),
+\end{equation}
+which becomes (similar to before)
+\begin{equation}
+    \det \paren{\frac{\p^2}{e}} \paren{\int \cD \alpha} \int \cD A e^{-S_g[A]-\underbrace{\int d^4x \frac{1}{2\xi}(\p_\mu A^\mu)^2}_{S_{gf}[A]}},
+\end{equation}
+where $S_{gf}$ indicates a gauge-fixing action. Thus
+\begin{equation}
+    S_g[A]+S_{gf}[A]=\frac{1}{2} \int \frac{d^4k}{(2\pi)^k} \tilde A_\mu(-k) \bkt{k^2 \delta^{\mu\nu}-(1-\frac{1}{\xi})k^\mu k^\nu} \tilde A_\nu(k),
+\end{equation}
+where we've just taken a Fourier transform as usual. The propagator solves
+\begin{equation}
+    (k^2 \delta^{\mu\nu}-(1-\frac{1}{\xi})k^\mu k^\nu)\tilde D_{\nu\rho}(k)=\delta^\mu{}_\rho,
+\end{equation}
+so the photon propagator takes the form
+\begin{equation}
+    \tilde D^{\mu\nu}(k)=\frac{1}{k^2}\paren{ \delta^{\mu\nu}-(1-\xi) \frac{k^\nu k^\nu}{k^2}}.
+\end{equation}
+Here, $\xi=0$ is known as Lorenz or Landau gauge depending on when the $\xi$ condition is imposed, while $\xi=1$ is known as Feynman gauge.
+
+\subsection*{Free fermions (electrons)}
+Let us consider an action in terms of fermions,
+\begin{equation}
+    S[\psi,\bar \psi]=\int d^4x (-\bar \psi(\slashed{\p}+m)\psi),
+\end{equation}
+where we work in Euclidean signature, $\slashed{\p}=\gamma_\mu \p^\mu$, and the anticommutation relations hold, $\set{\gamma_\mu,\gamma_\nu}=2\delta_{\mu\nu}$. Our gamma matrices are hermitian, $\gamma_\mu^\dagger =\gamma_\mu$, and our $\gamma_5$ is taken to be $\gamma_5=\gamma_1 \gamma_2 \gamma_3 \gamma_4$. For example,
+\begin{equation}
+    \gamma_j=\begin{pmatrix}
+        0& -i\sigma_j\\
+        i\sigma_j & 0
+    \end{pmatrix},
+    \quad
+    \gamma_4 = \begin{pmatrix}1 & 0 \\ 0 &-1\end{pmatrix}
+    \text{ or } \begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix}.
+\end{equation}
+
+We take the Fourier transform of our fermionic fields using
+\begin{gather}
+    \psi(x) =\int_p e^{ip\cdot x} \tilde \psi(p),\\
+    \bar \psi(x) = \int_p e^{-ip\cdot x} \tilde{\bar \psi}(p)
+\end{gather}
+where $\int_p = \int \frac{d^4p}{(2\pi)^4}$. Thus in Fourier space our action takes the form
+\begin{equation}
+    S[\tilde \psi, \tilde{\bar \psi}]= \int_p \tilde{\bar \psi}(i\slashed{p}+m)\tilde \psi.
+\end{equation}
+Adding sources $\tilde \eta, \tilde{\bar \eta}$, the generating functional is then
+\begin{align}
+    Z[\tilde \eta,\tilde{\bar \eta}]&=\int \cD \tilde \psi \cD \tilde{\bar \psi} \exp -\int_p \bkt{ \tilde{\bar \psi}(i\slashed{p}+m)\tilde \psi - \tilde{\bar \eta} \tilde \psi +\tilde {\bar \psi}\tilde \eta}\\
+    &= Z[0,0] e^{-\int_p \tilde{\bar \eta}(i\slashed{p}+m)^{-1} \tilde \eta},
+\end{align}
+where we have completed the square as usual.
+
+\subsection*{Feynman rules} In addition to the propagators and vertices, fermion loops pick up minus signs. For instance, the position space propagator takes the form
+\begin{equation}
+    S_F^{\alpha\beta}(x-y)=\avg{\psi^\alpha(x) \bar \psi^\beta(y)}=\int_p e^{ip \cdot(x-y)} \paren{\frac{1}{1 \slashed{p}+m}}^{\alpha\beta},
+\end{equation}
+where $\alpha,\beta$ are spin indices $1,\ldots,4$. If we expand the action $e^{-S_{QED}}$ to second order in the electron-photon coupling, we find terms
+\begin{align*}
+    (-ie)^2 \avg{\paren{\int d^4x \bar \psi \slashed{A} \psi}\paren{\int d^4y \bar \psi \slashed{A} \psi}} &= (-ie)^2 \int d^4x d^4 y \,
+    \avg{\slashed{A}^{\alpha\beta}(x) \slashed{A}^{\gamma\delta}(y) \bar \psi^\alpha(x) \psi^\beta(x) \bar \psi^\gamma(y) \psi^\delta(y)}.
+\end{align*}
+In general, we need to anticommute the $\psi$s and $\bar \psi$s to form propagators. One term is
+\begin{equation}
+    -(-ie)^2\int d^4x d^4y \,
+    \paren{
+        \slashed{A}^{\alpha\beta}(x) \slashed{A}^{\gamma\delta}(y) \underbrace{\psi^\beta(x) \bar \psi^\gamma(y)}_{S_F^{\beta\gamma}(x-y)} \underbrace{\psi^\delta(y) \bar \psi^\alpha(x)}_{S_F^{\delta \alpha}(y-x)}
+    }
+\end{equation}
+where the overall minus sign comes from anticommuting and we've recognized the pairs $\psi \bar \psi$ as propagators.
+
+We get some Feynman rules for this theory:
+%see diagram
+\begin{enumerate}
+    \item The fermion propagator is an oriented line, with $\tilde S_F(p)=\frac{1}{i\slashed{p}+m}$
+    \item The photon propagator is a squiggly line, $\tilde D^{\mu\nu}(k)=\frac{1}{k^2}(\delta^{\mu\nu}-(1-\xi)\frac{k^\mu k^\nu}{k^2})$
+    \item The vertex gets a $-ie\gamma^\mu$.
+    \item We pick up an overall factor of $(-1)^{l_F},$ where $l_F$ is the number of fermion loops.
+\end{enumerate}

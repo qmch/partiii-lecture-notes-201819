@@ -1,0 +1,123 @@
+Recall that we wrote down an action last time in the path integral, which took the form 
+\begin{equation*}
+    S = \int \frac{1}{2} g_{ab} \dot x^a \dot x^b+\frac{1}{2} g_{ab} \bar \psi^a \nabla_t \psi^b + \frac{1}{4} R_{abcd} \bar \psi^a \psi^b \bar \psi^c \psi^d dt,
+\end{equation*}
+and we saw that the Witten index $I_W$ can be written in terms of the de Rham cohomology groups as well as the Euler characteristic:
+\begin{equation*}
+    I_W= \sum_{p=0}^{\dim N}(-1)^p \dim(H_{dR}^p(N))=\chi(N).
+\end{equation*}
+Since our action is $\bar Q$-exact, the path integral is independent of the circumference $\beta$ of $S^1$. In particular, if we expand our fields as
+\begin{gather}
+    x^a(\tau)=x_0^a +\delta x^a(\tau)\text{ with }\oint \delta x^a(\tau)d\tau=0\\
+    \psi^a(\tau)=\psi_0^a +\delta \psi^a(\tau)\text{ with }\oint \delta \psi^a(\tau)d\tau=0
+\end{gather}
+then as $\beta\to 0,$ all the contributions from the non-zero modes $(\delta x^a, \delta \psi^a)$ are highly suppressed, e.g.
+\begin{equation}
+    \delta x^a(\tau)=\sum_{k\neq 0} \delta x^a_k e^{2\pi i k\tau/\beta}
+\end{equation}
+where these $\delta x^a(\tau)$ have the interpretation of Fourier modes, and derivatives bring down $1/\beta \to \infty$. In fact, the contributions from $\delta x,\delta \psi$ precisely cancel each other, leaving us with just an integral over the zero-modes $(x_0,\psi_0)$. That is, the path integral localizes as before to constant maps $x_0:S^1 \to N,$ but there's no preferred point in $N$ in the absence of a potential, so we still need to integrate over $N$.
+
+The Witten index is then given by a path integral over the zero modes
+\begin{align*}
+    \chi(N)&=\int e^{-S[x_0,\psi_0]} d^n x_0 d^n \psi_0 d^n \bar \psi_0\\
+        &= \int \exp -\bkt{\frac{1}{2} R_{abcd}(x_0) \bar \psi_0^a \psi_0^b \bar \psi_0^c \psi_0^d} d^n x_0 d^n \psi_0 d^n \bar \psi_0\\
+        &= \int_N \Tr(\underbrace{R \wedge R \wedge \ldots \wedge R}_{n\text{-form part}})
+\end{align*}
+where $R^a{}_b=R_{cd}{}^a{}_b dx^c \wedge dx^d$ is the curvature 2-form. But looking at the form of the exponential, we notice that $\chi(N)=0$ for any theory with an odd number of fermionic zero modes. Therefore $\chi(N)=0$ if $\dim(N)$ is odd. This is the \term{Gauss-Bonnet formula} (up to a constant we've neglected).
+
+\subsection*{Aatiyah-Singer index theorem}
+We take $\dim(N)=n=2m$ to be even-dimensional. We can then restrict the fermions $\psi^a$ to be real, which allows us to simplify the action-- it becomes
+\begin{equation}
+    S[x,\psi] = \oint \frac{1}{2} g_{ab} \dot x^a \dot x^b +\frac{i}{2} g_{ab} \psi^a \nabla_\tau \psi^b d\tau,
+\end{equation}
+where the last term has vanished since $R_{a[bcd]}=0$ by the Bianchi identity.
+
+This action is still invariant under SUSY transforms with $\epsilon=-\bar \epsilon$, i.e.
+\begin{equation}
+    \delta x^a = \epsilon \psi^a, \quad \delta \psi^a =-\epsilon \dot x^a.
+\end{equation}
+This is sometimes called $N=1/2$ SUSY in $d=1.$ We have momenta
+\begin{equation}
+     p_a = \frac{\delta L}{\delta \dot x^a} = g_{ab} \dot x^b +\frac{i}{2} \psi_c \Gamma^c_{ab} \psi^b
+\end{equation}
+where $\psi_c = g_{cd} \psi^d$ and we've picked up the second term from the $\dot x$ hiding inside the covariant derivative. The other momentum is
+\begin{equation}
+    \pi_a = \frac{\delta L}{\delta \dot \psi^a} =g_{ab} \psi^b.
+\end{equation}
+Thus we have canonical commutation relations
+\begin{equation}
+    [\hat x^a, \hat p_b]=i\delta^a{}_b,\quad \set{\hat \psi^a,\hat \psi^b}=2g^{ab}.
+\end{equation}
+Note that here we don't have relations between $\psi,\bar \psi$ since the $\psi$s are now real. Thus we won't have some elements with the natural interpretation of raising and lowering operators; instead, we will get some objects which look like spinors in $n=2m$ dimensions.
+
+For our purposes, the Dirac $\gamma$ matrices obey $(\gamma^i)^\dagger = \gamma^i$ and $\set{\gamma^i,\gamma^j}=2\delta^{ij},$ where $i,j=1,\ldots,\dim(N)$ are tangent (flat) indices. We construct $m=n/2$ raising and lowering operators over $\CC$ by taking
+\begin{equation}
+    \gamma^I_\pm =\frac{1}{2} (\gamma^{2I} \pm i \gamma^{2I+1})\quad\text{ for }I=1,\ldots,m
+\end{equation}
+where we combine the even gamma matrices with the next odd ones (with a $\pm$ sign respectively). One may check that these obey
+\begin{equation}
+    \set{\gamma_+^I, \gamma_-^J}=\delta^{IJ},\quad \set{\gamma_+^I,\gamma_+^J}=0,\quad\text{and }\set{\gamma_-^I,\gamma_-^J}=0.
+\end{equation}
+So these really are raising and lowering operators.
+
+Starting from a spinor $\chi$ that obeys $\gamma^I_-\ chi=0 \forall I$ (effectively a vacuum state), we construct a basis of the space $S$ of spinors by acting with any combination of the raising operators $\gamma^I_+$. However, since $(\gamma^I_+)^2=0,$ each $\gamma_+^I$ can act at most once, so $\dim(S)=2^{n/2}$ (since each $\gamma_+^I$ either acts or does not act on this vacuum state).
+
+The group $\text{Spin}(n)$ (the double cover of $SO(n)$) then acts on these spinors via the generators
+\begin{equation}
+    \Sigma^{ij}=-\frac{1}{4}[\gamma^i, \gamma^j],
+\end{equation}
+which themselves obey
+\begin{equation}
+    [\Sigma^{ij},\Sigma^{kl}]=i\paren{\delta^{ik}\delta^{jl}-\delta^{il}\Sigma^{ik} -\delta^{jk} \Sigma^{il} -\delta^{il}\Sigma^{jk}}.
+\end{equation}
+This representation is not irreducible. Let $\gamma^{n+1}=i^{n/2} \gamma^1 \gamma^2 \ldots \gamma^n$ (equivalent to $\gamma^5$ in the usual case). This obeys
+\begin{equation}
+    (\gamma^{n+1})^2 = 1,\quad \set{\gamma^{n+1},\gamma^i}=0,\quad \text{and }[\gamma^{n+1},\Sigma^{ij}]=0.
+\end{equation}
+We therefore decompose the space of spinors $S$ as
+\begin{equation*}
+    S=S^+ \oplus S^-
+\end{equation*}
+where $S^\pm$ are the $\pm 1$ eigenspaces of $\gamma^{n+1}$ and correspond to states constructed from an even/odd number of raising operators $\gamma_+^I$ acting on $\chi$.
+
+The Dirac operator $i\slashed{\p}$ anticommutes with $\gamma^{n+1}$, and thus decomposes as
+\begin{equation}
+    i\slashed{\p}=\begin{pmatrix}
+        0 & \p^+\\
+        \p^- & 0
+    \end{pmatrix}
+\end{equation}
+where $\p^\pm : S^\pm \to S^\mp$. Note that $\p^\pm$ annhilates $S^\mp,$ so $(\p^\pm)^2=0.$ This should remind us a bit of the exterior derivative. We now define 
+\begin{equation}
+    \text{index}(i\slashed{\p}) = \dim\ker(\p^+) - \dim \ker(\p^-).
+\end{equation}
+
+In our quantization of
+\begin{equation*}
+    S=\int \frac{1}{2} g_{ab} \dot x^a \dot x^b +\frac{i}{2} g_{ab} \psi^a \nabla_\tau \psi^b d\tau,
+\end{equation*}
+the Hilbert space is thus naturally $L^2(S(N),\sqrt{g}d^n x)$, and the supercharge
+\begin{equation}
+    Q=\psi^a( ig_{ab} \dot x^b + \psi_c \Gamma^c_{ab} \psi^b)
+\end{equation}
+corresponds to the covariant Dirac operator $i\slashed{\nabla}.$ The Witten index $\Tr((-1)^F e^{-\beta H})$ is then just the index of the Dirac operator split into its chiral parts,
+\begin{equation}
+    \Tr((-1)^F e^{-\beta H})=\dim \ker(\nabla^+) -\dim\ker(\nabla^-).
+\end{equation}
+The path integral is again independent of the circumference $\beta$. Splitting
+\begin{gather*}
+    x^a(\tau)=x_0^a +\delta x^a(\tau)\text{ with }\oint \delta x^a(\tau)d\tau=0\\
+    \psi^a(\tau)=\psi_0^a +\delta \psi^a(\tau)\text{ with }\oint \delta \psi^a(\tau)d\tau=0
+\end{gather*}
+as before, we use Riemann normal coordinates near $x_0\in N$ to write the metric as the flat metric (in Euclidean signature) up to an $O(\delta x^2)$ correction,
+\begin{equation}
+    g_{ab}(x)=\delta_{ab} -\frac{1}{3} R_{acbd} (x_0) \delta x^c \delta x^d + O(\delta x^3).
+\end{equation}
+The connection may be chosen to vanish to zeroth order and to be given in terms of the curvature to first order:
+\begin{equation}
+    \Gamma^a_{bc}(x) = \p_d \Gamma^a_{bc}(x_0) \delta x^d = -\frac{1}{3} (R^a{}_{bcd}(x_0) +R^a{}_{cbd}(x_0))\delta x^d + O(\delta x^2).
+\end{equation}
+To second order in the fluctuations, the action becomes
+\begin{equation}
+    S^{(2)}[x_0,\psi_0,\delta x, \delta \psi]=\oint \paren{-\frac{1}{2} \delta x_a \frac{d^2}{d\tau^2}\delta x^a +\frac{1}{2} \delta \psi_a \frac{d}{d\tau} \delta \psi^a -\frac{1}{4} R_{abcd} \psi_0^a \psi_0^b \delta x^c \delta \dot x^d} d\tau.
+\end{equation}

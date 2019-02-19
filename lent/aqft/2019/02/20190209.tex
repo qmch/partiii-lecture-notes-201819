@@ -9,16 +9,20 @@ In momentum space, the full propagator $\tilde{\gv \Delta}(p^2)$ takes the form
     \tilde{\gv \Delta}(p^2)=\int d^4x e^{-ip\cdot x}\avg{\phi(x) \phi(0)}_{\text{connected}}.
 \end{equation}
 
-Schematically, we can represent the propagator as the following sum of diagrams: (diagram to be inserted)
-%insert diagram
+Schematically, we can represent the propagator as the following sum of diagrams:
+\begin{center}
+    \includegraphics[width=0.75\textwidth]{2019/02/20190209_1piexpansion.png}
+\end{center}
 or equivalently the following geometric series:
 \begin{align*}
     \tilde{\gv \Delta}(p^2) &= 
         \frac{1}{p^2+m^2}+\frac{1}{p^2+m^2} \Pi(p^2) \frac{1}{p^2+m^2} + \frac{1}{p^2+m^2} \Pi(p^2) \frac{1}{p^2+m^2} \Pi(p^2) \frac{1}{p^2+m^2}+\ldots \\
         &=\frac{1}{p^2+m^2-\Pi(p)^2}
 \end{align*}
-where $\Pi(p^2)$ is called the self-energy. Note that $\Pi$ contributes to the quantum effective action $\Gamma$. Perturbatively, we get contributions from diagrams like the following: (diagram here)
-%diagrams here
+where $\Pi(p^2)$ is called the self-energy. Note that $\Pi$ contributes to the quantum effective action $\Gamma$. Perturbatively, we get contributions from diagrams like the following:
+\begin{center}
+    \includegraphics[width=0.75\textwidth]{2019/02/20190209_1pidiagrams.png}
+\end{center}
 Note that dashed lines are omitted from the computation of the 1PI factor $\Pi(p^2)$ since they are external propagators.
 
 One of the simplest diagrams we can draw is the one-loop diagram, and it corresponds to the amplitude
@@ -41,15 +45,24 @@ For instance, we might define a set of counterterms as
         \frac{\delta Z(\Lambda)}{2} \p_\mu \phi \p^\mu \phi +\frac{1}{2} \delta m^2(\Lambda) \phi^2 +\frac{\delta \lambda(\Lambda)}{4!} \phi^4
     }.
 \end{equation}
-Note that these correspond to some new vertices and thus new contributions to $\Pi(p^2)$: see diagram.%diagram here
+Note that these correspond to some new vertices and thus new contributions to $\Pi(p^2)$. The $\delta Z$ coupling will contribute to a new two-point vertex, as will the $\delta m^2$ coupling:
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{2019/02/20190209_1loopcorrections.png}
+\end{center}
 
 At 1 loop, the 1PI contribtuion becomes
 \begin{equation}
     \Pi^{\text{1-loop}}(p^2)=-p^2 \delta Z -\delta m^2 -\frac{\lambda}{32\pi^2}\bkt{\Lambda^2-m^2\log \paren{1+\frac{\Lambda^2}{m^2}}}.
 \end{equation}
 At two loops, the counterterm diagrams
-%diagrams here
-must also be included. Now we can tune the parameters $\delta Z, \delta m^2, \delta \lambda$ in our counterterms to cancel the divergences. In other words, we \term{renormalize} $\phi,m^2,\lambda$.
+\begin{center}
+    \includegraphics[width=0.75\textwidth]{2019/02/20190209_2loopcorrections.png}
+\end{center}
+must also be included.%
+    \footnote{
+        Note that all these diagrams visually look like they only have one loop. What's going on? Basically, there's a factor of $\hbar$ that suppresses all of the counterterm couplings. What we're really doing is expanding in powers of $\hbar$ and/or $\lambda$, since it was the four-point $\lambda$ coupling that gave rise to loops even before we introduced our counterterms. Thus the first two diagrams pick up a factor of $\lambda$ from the original action and an $\hbar$ from the counterterm couplings $\delta Z, \delta m^2$. The third diagram corresponds to the $\delta \lambda$ coupling, which is part of the counterterms and so has a factor of $\hbar$ but is also a $\lambda$ correction itself, and so is treated at two loop order.
+    }
+Now we can tune the parameters $\delta Z, \delta m^2, \delta \lambda$ in our counterterms to cancel the divergences. In other words, we \term{renormalize} $\phi,m^2,\lambda$.
 
 \subsection*{On-shell renormalization scheme}
 The need to ``regulate'' the theory by cancelling divergences does not uniquely determine the counterterms, so we impose additional renormalization conditions, which we call a \term{scheme}. It will turn out that physical observables do not depend on our choice of scheme.
@@ -73,7 +86,10 @@ These tell us that
     2. \implies \delta Z=0,\\
     1. \implies \delta m^2= -\frac{\lambda}{32\pi^2} \bkt{\Lambda^2-m^2\log \paren{1+\frac{\Lambda^2}{m^2}}}.
 \end{gather}
-Note that $\delta Z=0$ and $\pi(p^2)=0 \forall p^2$ is due to the one-loop diagram not depending on $p^2$. If we instead tried to construct the counterterms to the two-loop diagram we would get $\delta Z\neq 0$ since the integral depends on $p$.
+Note that $\delta Z=0$ and $\pi(p^2)=0 \forall p^2$ is due to the one-loop diagram not depending on $p^2$. If we instead tried to construct the counterterms to the two-loop diagram we would get $\delta Z\neq 0$ since the integral depends on $p$, i.e. the integral corresponding to
+\begin{center}
+    \includegraphics[width=0.3\textwidth]{2019/02/20190209_twolooprenorm.png}
+\end{center}
 
 UV divergences are not too hard to spot-- we saw that
 \begin{equation}
@@ -86,3 +102,15 @@ and generically
         \log \Lambda, & n = m
     \end{cases}.
 \end{equation}
+
+\subsection*{Non-lectured aside: renormalization}
+
+It's worth taking a minute to think about what we're really doing here in renormalizing our theory. To recap, we wrote down a bunch of Lagrangians and actions last term. We derived their Feynman rules, and used the Feynman rules to make some computations of matrix elements, scattering amplitudes, and other physically important quantities.
+
+But there was a trap hidden in our attempt to write down quantum field theories. The Feynman rules tell us that strictly, we should include loop diagrams in our calculations, though the corrections from those diagrams are in principle suppressed by additional factors of the coupling constant. A priori, this sounds like it's not too bad. But once we start writing down loop diagrams and integrating over loop momenta, what we discover is that these corrections we hoped were small are in fact infinite. The integrals over momentum generically diverge, and no factors of the coupling constant can suppress an infinity.
+
+So what do we do? A pragmatic first step to remedying this problem is to say that our theory simply isn't valid to arbitrarily large momentum. As physicists, we know that at very high energies, different forces may unify and perhaps quantum gravitational effects are significant, so it's simply a question of admitting our ignorance and treating our theory as an effective theory at low energies.
+
+But now that we have this cutoff, we would still like to make predictions with our theory that don't depend on our choice of cutoff. Renormalization allows us to do this. It tells us that our first attempt at writing down the actions of quantum field theories was wrong, since it had divergences baked into it from the very beginning. Instead, what we should really be working with is a renormalized effective theory, i.e. we add in counterterms to modify the original couplings to precisely cancel the divergences at some desired order.
+
+This is a very practical thing to do, because once we make some measurements of actual scattering amplitudes, we can fix the values of the couplings in our effective theories and make predictions using for instance the physical mass of a particle (i.e. the effective mass), rather than some mysterious constant $m$ which we can never actually measure. What would have been an honest mass in classical field theory becomes impossible to measure once we add in quantum corrections-- the physically relevant thing is then $m_{\text{phys}}$ (though we can sometimes set $m^2=m_{\text{phys}}^2$ by a choice of scheme), and the same is true of other coupling constants.
