@@ -1,0 +1,163 @@
+We started asking about what states can be constructed in a composite space $\cH_A \otimes \cH_B$ by LOCC.
+
+There is a connection between majorization and the transfer of entanglement, established in Nielsen's Majorization Theorem.
+
+Consider the reduced states
+\begin{equation}
+    \rho_\psi =\Tr_B \dyad{\psi}; \quad \rho_\phi = \Tr_B \dyad{\phi},
+\end{equation}
+with $\lambda_\psi=\lambda(\rho_\psi)$ and $\lambda_\phi=\lambda(\rho_\phi)$ with $\lambda$ the vector of eigenvalues.
+
+Nielsen's Majorization theorem tells us that
+\begin{equation}
+    \ket{\psi}\to \ket{\phi} \iff \lambda_\psi \prec \lambda_\phi.
+\end{equation}
+
+We denote $\rho \prec \sigma$ if $\lambda(\rho)\pre \lambda (\sigma)$. In fact, Uhlmann's theorem says that $\rho \prec\sigma \iff \exists$ a set of unitaries $\set{U_i}$ such that
+\begin{equation}
+    \rho=\sum_i p_i U_i \sigma U_i^\dagger.
+\end{equation}
+
+Recall that
+\begin{align}
+    \vec x \prec \vec y &\iff \vec x = \sum_i p_i P_i \vec y \\
+    &\iff \vec x =D\vec y
+\end{align}
+where $D$ is doubly stochastic.
+
+If $\ket{\psi}\to_{LOCC} \ket{\phi}$, then the operation can be implemented as follows. This generalizes the process we came up with last time.
+\begin{enumerate}
+    \item Alice does a single measurement $\set{M_a}$, getting an outcome $a$, and based on that outcome she performs a unitary $W_a$ (may be the identity).
+    \item By the classical channel (CC), Alice tells Bob that she measured the outcome $a$.
+    \item Bob does his own local unitary (LU) $U_a$.
+\end{enumerate}
+
+\begin{proof}
+    We prove this in the forward direction. If $\ket{\psi}\to_{LOCC} \ket{\phi},$ then $\lambda_\psi \prec \lambda_\phi$.
+    
+    Alice makes her single measurement $\set{M_a}$, measures $a$, and performs a unitary $W_a$. Her initial state is $\rho_\psi=\Tr_B \dyad{\psi},$ and her final state is $\rho_{\phi}$ since she's successfully constructed her half of $\ket{\phi}$.
+    
+    If we got the outcome $a$, then the post-measurement state of Alice is
+    \begin{equation}
+        \frac{M_a\rho_\psi M_a^\dagger}{p(a)},
+    \end{equation}
+    and after Alice performs the unitary $W_a$, she has
+    \begin{equation}
+        W_a \frac{M_a\rho_\psi M_a^\dagger}{p(a)} W_a^\dagger = \rho_\phi,
+    \end{equation}
+    since Bob's unitary doesn't affect the half that Alice has. One may check that
+    \begin{equation}
+        \Tr_B(I\otimes U_a) \sigma_{AB}(I\otimes U_a^\dagger) =\Tr_B \sigma_{AB}.
+    \end{equation}
+    Rearranging, we have
+    \begin{equation}
+        W_a M_a \rho_\psi M_a^\dagger W_a^\dagger = p(a) \rho_\phi.
+    \end{equation}
+    We now apply the polar decomposition, which says that we can write an operator as
+    \begin{equation}
+        A=\sqrt{AA^\dagger}V.
+    \end{equation}
+    Therefore it follows that
+    \begin{equation}
+        W_a M_a \sqrt{\rho_\psi}=\sqrt{W_a M_a \rho_\psi M_a^\dagger W_a^\dagger} V_a,
+    \end{equation}
+    where we recognize the quantity in the square root as none other than $p(a)\rho_\phi$. Therefore
+    \begin{equation}
+        W_a M_a \sqrt{\rho_\psi}=\sqrt{p(a)}\sqrt{\rho_\phi}V_a.
+    \end{equation}
+    Now
+    \begin{equation}
+         \sum_a \sqrt{\rho_\psi} M_a^\dagger W_a^\dagger W_a M_a \sqrt{\rho_\psi} = \sum_a p(a) V_a^\dagger \rho_\phi V_a.
+    \end{equation}
+    Since $\sum M_a^\dagger M_a = I$, we find that
+    \begin{equation}
+        \rho_\psi = \sum p(a) V_a^\dagger \rho_\phi V_a \implies \lambda_\psi \prec \lambda\phi
+    \end{equation}
+    by Uhlmann's theorem.
+\end{proof}
+
+Now, Nielsen's theorem has the following implications.
+\begin{itemize}
+    \item LOCC cannot increase the Schmidt number of a state. That is, with $\ket{\psi}; n_\psi$ and $\ket{\phi};n_\phi$, if $\ket{\psi}\to_{LOCC} \ket{\phi},$ then $n_\psi \geq n_\phi$.
+    \item This implies that LOCC cannot increase the entanglement of a pure state.
+\end{itemize}
+\begin{proof}
+    Let $\lambda_\psi = (\nu_1,\ldots, \nu_d)$ and $\lambda_\phi=(\mu_1,\ldots,\mu_d)$ be the vectors of eigenvalues of $\rho_\psi,\rho_\phi$ respectively, where $d=\dim \cH_A$. WLOG they are already ordered, $\nu_1 \geq \nu_2 \geq \ldots; \mu_1 \geq \mu_2 \geq \ldots$.
+    
+    The proof is by contradiction. Assume $\ket{\psi}\to_{LOCC}\ket{\phi}$, with $n_\psi < n_\phi$. Thus
+    \begin{gather*}
+        \lambda_\psi = (\nu_1, \ldots, \nu_j, 0,0,\ldots,0)\\
+        \lambda_\phi =(\mu_1,\ldots,\mu_j,\ldots,\mu_m,0,\ldots,0).
+    \end{gather*}
+    Thus $\exists$ some integer $m$ such that $\mu_m\neq 0$ but $\nu_m=0$. It follows that since all the other $\nu_i$ are zero,
+    \begin{equation}
+        \sum_{i=1}^{m-1}\nu_1 =1\text{ but} \sum_{=1}^{m-1} \mu_1 < 1.
+    \end{equation}
+    
+    By Nielsen's theorem, $\ket{\psi} \to_{LOCC} \ket{\phi}$ iff $\lambda_\psi \prec \lambda_\phi$, i.e.
+    \begin{equation}
+        \sum_{i=1}^k \nu_i \leq \sum_{i=1}^k \mu_1 \quad \forall 1\leq k \leq d.
+    \end{equation}
+    But we've just seen that if we take $k=m-1 \leq d$, we have the LHS $=1$ and the RHS $<1$. Thus $n_\psi < n_\phi \implies \lambda_\psi \not\prec \lambda_\phi$, so $n_\psi \geq n_\phi$.
+\end{proof}
+
+We now define a measure of entanglement for a pure bipartite state, the \term{entanglement entropy}.
+\begin{defn}
+    For a state $\ket{\psi_{AB}}$ with reduced density matrices $\rho_A,\rho_B$, the \term{entanglement entropy} is denoted $S(\rho_A)=S(\rho_B)$, where
+    \begin{equation}
+         S(\rho)=-\Tr(\rho\log \rho).
+    \end{equation}
+\end{defn}
+\begin{thm}
+    Let $\ket{\psi_{AB}}\in \cH_A \otimes \cH_B; d_A =\dim \cH_A$.
+    \begin{enumerate}
+        \item $S(\rho_A)=0 \iff \ket{\psi_{AB}}$ is a product state (separable). $S(\rho_A) >0 \iff \ket{\psi_{AB}}$ is entangled.
+        \item $S(\rho_A) = \log d_A$ for the maximal mixed state $\iff \ket{\psi_{AB}}$ is a MES.
+    \end{enumerate}
+\end{thm}
+Note that $\rho$ admits a spectral decomposition,
+\begin{equation}
+    \rho=\sum \lambda_i \dyad{e_i},
+\end{equation}
+so then $\log\rho=\sum(\log\lambda_i) \dyad{e_i} \implies S(\rho)=-\sum \lambda_i \log \lambda_i \equiv H(\set{\lambda_i}),$
+the Shannon entropy of the vector of eigenvalues. In particular, we see that a pure state has $S(\rho_A)=0$ and $S(\rho_A)=\log d$ when $\set{\lambda_1}=(1/d,\ldots,1/d)$.
+
+\begin{proof}
+    $S(\rho_A)=0 \iff \rho_A$ is pure $\iff$ the Schmidt number of $\ket{\psi_{AB}}=0$. But then our state is
+    \begin{equation}
+        \ket{\psi_{AB}}=\ket{\chi_A}\otimes \ket{\omega_B}
+    \end{equation}
+    is a separable (product) state.
+\end{proof}
+We can also see that if $\ket{\psi}\to_{LOCC}\ket{\phi}$ then $n_\psi \geq n_\phi \implies S(\rho_\psi)\geq S(\rho_\phi)$.
+
+There is a property known as Schur concavity: for $\rho \prec \sigma$, we have
+\begin{equation}
+    \lambda(\rho)\prec \lambda(\sigma) \implies S(\rho)\geq S(\sigma).
+\end{equation}
+This is a special case of the property for vectors that a function $f$ is Schur concave if $\vec x \prec \vec y \implies f(\vec x) \geq f(\vec y)$. It will turn out that any function which is both concave and symmetric is Schur concave.
+
+\subsection*{Applications of entanglement}
+
+We will now illustrate why entanglement is such a useful, fungible resource.
+
+\textit{Superdense coding}: Suppose Alice has 2 bits she wants to send to Bob, but her telephone line has been cut. She has no classical channel, and is only allowed to send 1 qubit via a noiseless quantum channel.
+
+Can she send her two bits? Yes, \emph{if} Alice and Bob already share a Bell state, e.g. 
+\begin{equation}
+    \ket{\psi_{AB}^+} =\frac{\ket{00}+\ket{11}}{\sqrt{2}}.
+\end{equation}
+Alice has two bits she wants to send, and depending on what her message is, she acts locally on her qubit $A$ as follows:
+\begin{itemize}
+    \item $00\to \sigma_0:\ket{\phi^+}\mapsto \ket{\phi^+}$
+    \item $01 \to \sigma_z:\ket{\phi^+}\mapsto \ket{\phi^-}$
+    \item $10 \to \sigma_x:\ket{\phi^+}\mapsto \ket{\psi^+}$
+    \item $11\to i\sigma_y \equiv \sigma_z\sigma_x:\ket{\phi^+}\mapsto \ket{\psi^-}$.
+\end{itemize}
+She then sends her qubit to Bob, who now possesses the full state $AB$. But in fact, Bob can now make a Bell measurement, a projective measurement with the projectors
+\begin{equation}
+    \dyad{\psi^\pm},\dyad{\psi^\pm}.
+\end{equation}
+But there's something even better about this-- if there is a malicious eavesdropper (Eve) who intercepts Alice's qubit, she cannot recover the message because Alice's qubit alone is in a completely mixed state thanks to the magic of entanglement.
+
+In contrast to superdense coding (send 2 classical bits using a qubit), we also have quantum teleportation (send a quantum state using a classical channel). These are some nice applications and we'll go over teleportation next time.

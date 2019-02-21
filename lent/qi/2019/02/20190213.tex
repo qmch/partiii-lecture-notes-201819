@@ -8,25 +8,31 @@ we have
 \begin{equation}\label{cjdef2}
     \Tr(A\Lambda(B))=d\Tr(J(A\otimes B^T)).
 \end{equation}
-We proved last time that $\Lambda$ is CP $\iff J\geq 0$. Next, we will show that $|Lambda$ is TP $\iff \Tr_A J =I_d/d$.
+We proved last time that $\Lambda$ is CP $\iff J\geq 0$. Next, we will show that $\Lambda$ is TP $\iff \Tr_A J =I_d/d$.
 \begin{proof}
-    $\Tr \Lambda(B)=\Tr(I_{d'}\Lambda(B))=\Tr(\Lambda^*(I_d')B)=\Tr B\forall B$,
+    Suppose that $\Lambda$ is trace-preserving. Then $\Tr \Lambda(B)=\Tr(I_{d'}\Lambda(B))=\Tr(\Lambda^*(I_{d'})B)=\Tr B\,\forall B$,
     so
     \begin{equation}
         \Lambda^*(I_{d'})=I_d.
     \end{equation}
-    Now
+    Now the trace of $J$ is
     \begin{align*}
         \Tr J &= \Tr((\Lambda \otimes \id_d)\Omega)\\
-            &=\Tr((I_A\otimes I_B)(\Lambda \otimes \id)\Omega)\\
-            &=\Tr((\Lambda^* I_{d'} \otimes I_d)\Omega)
+            &=\Tr((I_A\otimes I_B)(\Lambda \otimes \id_d)\Omega)\\
+            &=\Tr((\Lambda^* (I_{d'}) \otimes I_d)\Omega)\\
+            &=\Tr((I_d \otimes I_d)\Omega) =\Tr(\Omega).
     \end{align*}
-    We can now break the trace up into the partial traces:
+    We can break the trace up into the partial traces:
     \begin{align*}
-        \Tr_B(\Tr_A J) &= \Tr_B \Tr_A((\Lambda^* (I_{d'})\otimes I_d) \Omega)\\
-            &= \Tr_B \Tr_A((I_d\otimes I_d) \Omega)\\
+        \Tr_B(\Tr_A J) &= \Tr_B \Tr_A(\Omega)\\
             &= \Tr_B(I_d/d) \implies \Tr_A J = I_d/d.\qedhere
     \end{align*}
+    % \begin{align*}
+    %     \Tr_B(\Tr_A J) &= \Tr_B \Tr_A((\Lambda^* (I_{d'})\otimes I_d) \Omega)\\
+    %         &= \Tr_B \Tr_A((I_d\otimes I_d) \Omega)\\
+    %         &= \Tr_B(I_d/d) \implies \Tr_A J = I_d/d.\qedhere
+    % \end{align*}
+    %this is slightly modified from how we wrote it in class, I think
 \end{proof}
 We now claim that \ref{cjdef} and \ref{cjdef2} define an isomorphism, i.e. a map that is both injective and surjective.
 

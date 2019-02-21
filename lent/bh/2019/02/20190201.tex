@@ -63,7 +63,7 @@ But in particular we could have $X^a= n_a$, which implies that either $X^a$ is s
     The integral curves of $n^a$ are null geodesics. These are called the generators of $\mathcal{N}$.
 \end{prop}
 \begin{proof}
-    Let $\mathcal{N}$ be given by an equation $f=$constant for some function $f$ with $df\neq 0$. $df$ is everywhere normal to $\mathcal{N}$, so we must have $n=h \,df$. Define $N\equiv df$. Since $\mathcal{N}$ is null, we must have
+    Let the null hypersurface $\mathcal{N}$ be given by an equation $f={}$constant for some function $f$ with $df\neq 0$. $df$ is everywhere normal to $\mathcal{N}$, so we must have $n=h \,df$. Define $N\equiv df$. Since $\mathcal{N}$ is null, we must have
     \begin{equation}
         N_a N^a =0\text{ on }\mathcal{N}.
     \end{equation}
@@ -73,16 +73,16 @@ But in particular we could have $X^a= n_a$, which implies that either $X^a$ is s
     \end{equation}
     for some proportionality constant $\alpha$. Now, we also have that
     \begin{equation*}
-        \nabla_a N_a = \nabla_a \nabla_b f = \nabla_b \nabla_a f =\nabla_b N_a,
+        \nabla_a N_b = \nabla_a \nabla_b f = \nabla_b \nabla_a f =\nabla_b N_a,
     \end{equation*}
-    where we have used the assumption that our spacetime is torsion-free. But then we conclude that
+    where we have used the assumption that our spacetime is torsion-free, so that covariant derivatives commute on scalars. But then by the Leibniz rule, we conclude that
     \begin{equation}
         N^b \nabla_b N_a|_{\mathcal{N}}=\alpha N_a,
     \end{equation}
-    which tells us that $N_a$ is a non-affinely parametrized geodesic. We conclude that the integral curves are null geodesics.
+    which tells us that $N^a$ is the tangent vector of a non-affinely parametrized geodesic. We conclude that the integral curves of $N$ are null geodesics.
 \end{proof}
 
-\subsection*{Geodesic deviation} We saw this last term in \emph{General Relativity}-- for ``nearby'' geodesics, we can define relative ``velocities'' and ``accelerations'' leading to tidal forces. We'll make this notion more precise now.
+\subsection*{Geodesic deviation} We first saw geodesic deviation last term in \emph{General Relativity}-- for ``nearby'' geodesics, we can define relative ``velocities'' and ``accelerations'' leading to tidal forces. We'll make this notion more precise now.
 \begin{defn}
     A $1$-parameter family of geodesics is a map $\gamma:I\times I'\to \cM$, where $I,I'$ are both open intervals in $\RR$, such that
     \begin{itemize}
@@ -115,3 +115,4 @@ Solutions of \ref{jacobifields} are called \term{Jacobi fields}.
 \begin{defn}
     Let $U\subset \cM$ be open. A \term{geodesic congruence} on $U$ is a family of geodesics such that exactly one geodesic passes through each $p\in U$.
 \end{defn}
+A geodesic congruence provides us with a notion of a set of geodesics covering a subset of the manifold without overlap.

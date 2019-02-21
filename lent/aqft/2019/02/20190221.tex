@@ -1,0 +1,107 @@
+\subsection*{Vacuum polarization}
+Here, we want to compute the vacuum polarization (cf. Skinner \textsection 5.2.1), corrections to the photon propagator.
+%diagram
+Let's start by amputating the external legs of our diagram and calculating the amplitude corresponding to a single electron-positron loop-- see diagram.
+%diagram
+In $d$ dimensions, we write $e^2=\mu^\epsilon g^2(\mu)$ in order to get $g$ a dimensionsless coupling, with $\epsilon=4-d$. Thus the value of this one-loop diagram is
+\begin{align*}
+    \Pi_{\text{1-loop}}^{\mu\nu}(q) &=-\mu^\epsilon (ig)^2 \int \frac{d^dp}{(2\pi)^d} 
+    \text{tr} \paren{\frac{1}{i\slashed{p}+m}\gamma^\mu \frac{1}{i(\slashed{p}-\slashed{q})+m}\gamma^\nu
+    }\\
+        &= -\mu^\epsilon(ig)^2 \int_p 
+        \frac{\text{tr}\bkt{(-i\slashed{p}+m)\gamma^\mu(-i(\slashed{p}-\slashed{q})+m)\gamma^\nu}}
+        {(p^2+m^2)((p-q)^2+m^2)}.
+\end{align*}
+The overall minus sign comes from the fermion loop. To get this in a form we can actually integrate, we use Feynman's trick:
+\begin{equation}
+    \frac{1}{AB}=\int_0^1 dx \int_0^a dy \frac{\delta(x+y-1)}{\bkt{xA+yB}^2}.
+\end{equation}
+Thus our integral becomes
+\begin{equation}
+    \int_0^1 \frac{dx}{\set*{(p^2+m^2)(1-x)+\bkt{(p-q)^2+m^2}x}^2}
+    =\int_0^1 \frac{dx}{\bkt{(p-qx)^2+m^2 +q^2x(1-x)}^2}.
+\end{equation}
+Since we want to integrate over the internal momentum $p$, let $p'=p-qx$ and WLOG drop the prime. Thus
+\begin{equation}
+    \Pi_{\text{1-loop}}^{\mu\nu}(q) =\mu^\epsilon g^2 \int_p \int_0^1 dx \frac{\text{tr}\set{[-i(\slashed{p}+\slashed{q}x)+m]\gamma^\mu
+    [-i(\slashed{p}-\slashed{q}(1-x))+m]\gamma^\nu}}
+    {(p^2+\Delta)^2},
+\end{equation}
+where we've denoted $\Delta \equiv m^2+q^2 x(1-x)$.
+
+To simplify the big trace in the numerator, we use the following spin traces:
+\begin{gather}
+    \text{tr}(\gamma^\mu \gamma^\nu)=4\delta^{\mu\nu}\\
+    \text{tr}(\gamma^\mu \gamma^\rho \gamma^\nu \gamma^\sigma) = 4(\delta^{\mu\rho}\delta^{\nu\sigma}-\delta^{\mu\nu}\delta^{\rho\sigma}+\delta^{\mu\sigma}\delta^{\rho\nu}).
+\end{gather}
+After some algebra %check this?
+we find that the numerator simplifies (sort of) to
+\begin{equation}
+    \Tr\set{\ldots}=4\set{-(p+qx)^\mu \bkt{p-q(1-x)}^\nu +(p+qx)\cdot \bkt{p-q(1-x)}\delta^{\mu\nu}-(p+qx)^\nu[p-q(1-x)]^\mu +m2 \delta^{\mu\nu}}.
+\end{equation}
+As $d\to 4$ notice that since the integral is taken over all $p$, integrals with odd powers of $p_\mu$ vanish, so we neglect them here. Also, only the diagonal parts of $p^\mu p^\nu$ have nonzero integrals. The nonvanishing terms can be obtained by replacing
+\begin{gather}
+    p^\mu p^\nu \to \frac{1}{d} \delta^{\mu\nu} p^2\\
+    p^\mu p^\nu p^\rho p^\sigma \to \frac{(p^2)^2}{d(d+2)}(\delta^{\mu\nu}\delta^{\rho\sigma} +\delta^{\mu\rho}\delta^{\nu\sigma}+\delta^{\mu\sigma} \delta^{\nu\rho}).
+\end{gather}
+Now our integrand is rotationally invariant, so we can split it up as usual with
+\begin{equation}
+    \int \frac{d^d p}{(2\pi)^d} \to S_d \int \frac{p^{d-1}dp}{(2\pi)^d}=\int_0^\infty \frac{(p^2)^{d/2-1}d(p^2)}{(4\pi)^{d/2}\Gamma(d/2)}.
+\end{equation}
+With these substitutions, our vacuum polarization contribution becomes
+\begin{align*}
+    \Pi_{\text{1-loop}}^{\mu\nu}(q)={}&\frac{4\mu^\epsilon g^2}{(4\pi)^{d/2}\Gamma(d/2)} \int_0^1 dx \int_0^\infty dp^2 (p^2)^{d/2-1} \frac{1}{p^2+\Delta}\\
+    &\times \bkt{p^2(1-\frac{2}{d}) \delta^{\mu\nu}+(2q^\mu q^\nu-q^1 \delta^{\mu\nu})(1-x)+m^2\delta^{\mu\nu}}.
+\end{align*}
+
+These are Euler beta functions-- letting $u=\frac{\Delta}{p^2+\Delta}$, our integral takes the form
+\begin{gather*}
+    \int_0^\infty d(p^2) \frac{(p^2)^{d/2-1}}{p^2+\Delta}=\paren{\frac{1}{\Delta}}^{2-d/2} \frac{\Gamma(2-d/2)\Gamma(d/2)}{\Gamma(2)}\\
+    \int_0^\infty d(p^2) \frac{(p^2)^{d/2}}{p^2+\Delta}=\paren{\frac{1}{\Delta}}^{1-d/2} \frac{\Gamma(1+d/2)\Gamma(1-d/2)}{\Gamma(2)},
+\end{gather*}
+which means that
+\begin{equation}
+    \Pi_{\text{1-loop}}^{\mu\nu}(q)=(q^2\delta^{\mu\nu}-q^\mu q^\nu) \pi_{\text{1-loop}}(q^2)
+\end{equation}
+where
+\begin{equation}
+    \pi_{\text{1-loop}}(q^2)=-\frac{8g^2 \Gamma(\epsilon/2)}{(4\pi)^{d/2}} \int_0^1 dx\, x(1-x) \paren{\frac{\mu^2}{\Delta}}^{\epsilon/2},
+\end{equation}
+where this $\mu$ is the mass scale in $e^2=\mu^\epsilon g^2(\mu)$. Note that the Lorentz structure is the same as for the free propagator in Lorenz gauge, i.e.
+\begin{equation*}
+    q_\mu \pi^{\mu\nu}_{\text{1-loop}}=0.
+\end{equation*}
+
+\subsection*{Ward identity}
+\begin{itemize}
+    \item The gauge invariance of our theory leads to a massless photon (n.b. a coupling $\frac{1}{2}m^2 A^2$ breaks gauge invariance).
+    \item There are only two polarizations for the photon:
+    \begin{equation}
+        \varepsilon^\mu(p)=c_1 \varepsilon_1^\mu(p)+c_2 \varepsilon_2^\mu(p)
+    \end{equation}
+    where $\varepsilon^\mu_{1,2}$ are basis polarization vectors.
+    \item Under a Lorentz boost, the polarization vector transforms as
+    \begin{equation}
+        \varepsilon^\mu(p)\to c_1' \varepsilon_1^\mu(p')+c_2' \varepsilon_2^mu(p')+c_3 p^\mu{}'
+    \end{equation}
+    \item Consider a scattering amplitude $\cM$ with at least one photon in the initial and final state. This depends on $\varepsilon^\mu$:
+    \begin{equation*}
+        \cM = \varepsilon^\mu \cM_\mu.
+    \end{equation*}
+    \item After a boost, the amplitude transforms to
+    \begin{align*}
+        \cM &\to (c_1' \varepsilon_1^\mu(p')+c_2' \varepsilon_2^mu(p')+c_3 p^\mu{}')\cM_\mu'\\
+        &= \varepsilon'{}^\mu \cM_\mu'
+    \end{align*}
+    in this frame. But the photon in a boosted frame still only has 2 polarizations, so we conclude that 
+    \begin{equation}
+        p^\mu \cM_\mu=0,
+    \end{equation} 
+    i.e. there is no longitudinal polarization.
+    \item Note that with the tree-level propagator $\tilde D^{\mu\nu}(k)$,
+    \begin{equation}
+        k_\mu \tilde D^{\mu\nu}(k)=
+        \frac{k_\mu}{k^2}(\delta^{\mu\nu}-(1-\xi)\frac{k^\mu k^\nu}{k^2})=\xi \frac{k^\nu}{k^2},
+    \end{equation}
+    so the longitudinal term will not be renormalized by loop diagrams and the $\xi$-dependence will cancel out of gauge-invariant quantities.
+\end{itemize}

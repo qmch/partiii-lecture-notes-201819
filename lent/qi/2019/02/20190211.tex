@@ -67,7 +67,7 @@ That is, it suffices to check positivity on the density matrix corresponding to 
         }
     Thus
     \begin{equation}
-        (\Lambda \otimes \id)\kb{\Omega}{\Omega} \geq 0. \qedhere
+        (\Lambda \otimes \id_d)\kb{\Omega}{\Omega} \geq 0. \qedhere
     \end{equation}
 \end{proof}
 
@@ -77,7 +77,7 @@ This construction we have defined is known as the \term{Choi matrix} (a Choi sta
 \end{equation}
 
 \begin{thm}[Stinespring's dilation theorem]
-    Let $\Lambda:\cB(\cH)\to \cB(\cH)$ be a quantum operator. Then there exists a Hilber space $\cH'$ and a unitary operator $U\in \cB(\cH\otimes \cH')$ such that $\forall \rho \in \cD(\cH)$,
+    Let $\Lambda:\cB(\cH)\to \cB(\cH)$ be a quantum operator. Then there exists a Hilbert space $\cH'$ and a unitary operator $U\in \cB(\cH\otimes \cH')$ such that $\forall \rho \in \cD(\cH)$,
     \begin{equation}
         \Lambda(\rho)=\Tr_{\cH'}(U(\rho\otimes \phi)U^\dagger)
     \end{equation}
@@ -148,26 +148,42 @@ We call the $A_k$ Kraus operators. Some of the details are an exercise to fill i
         \text{RHS}&=d\Tr (J(A\otimes B^T))\\
         &= d\Tr((\Lambda\otimes \id)(\Omega)(A\otimes B^T)).
     \end{align*}
-    Note we will need the \term{adjoint} $\Lambda^*$ of a map $\Lambda$ w.r.t. the Hilbert-Schmidt inner product. That is, if $\Lambda:\cB(\cH)\to \cB(\mathcal{K}),$ then $\Lambda^*:\cB(\mathcal{K})\to \cB(\cH)$ where
+    Note we will need the concept of the \term{adjoint} $\Lambda^*$ of a map $\Lambda$ w.r.t. the Hilbert-Schmidt inner product. That is, if $\Lambda:\cB(\cH)\to \cB(\mathcal{K}),$ then $\Lambda^*:\cB(\mathcal{K})\to \cB(\cH)$ where
     \begin{equation}
         \Tr(A\Lambda(B)) = \Tr (\Lambda^*(A) B).
     \end{equation}
-    Thus with the adjoint we have
+    Thus writing in terms of the adjoint, we have
     \begin{align*}
-        \text{RHS}&=d\Tr((\Lambda\otimes \id)(\Omega)(A\otimes B^T))\\
-        &= d\Tr(\Omega(\Lambda^*\otimes \id)(A\otimes B^T))\\
-        &= d\Tr(\Omega(\Lambda^*(A)\otimes B^T))\\
-        &= d\Tr \Lambda^*(A)\otimes B^T (\kb{\Omega}{\Omega}).
+        \text{RHS}&=d\Tr((\Lambda\otimes \id_d)(\Omega)(A\otimes B^T))\\
+        &= d\Tr((A\otimes B^T)(\Lambda\otimes \id_d) (\Omega))\\
+        &= d\Tr((\Lambda^*(A)\otimes B^T)(\dyad{\Omega})).
+        %&= d\Tr(\Omega(\Lambda^*\otimes \id_d)(A\otimes B^T))\\
+        %&= d\Tr(\Omega(\Lambda^*(A)\otimes B^T))\\
+        %&= d\Tr \paren{\Lambda^*(A)\otimes B^T (\kb{\Omega}{\Omega})}.
     \end{align*}
+    Note this is slightly different from how it was presented in lecture. Here, I've used the cyclic property of the trace to switch the order of $J$ and $A\otimes B^T$, where I'm considering both as elements of $M_{d'}\otimes M_d$, and then I used the definition of the adjoint to change the $\Lambda$ into a $\Lambda^*$.%
+        \footnote{It is also fairly clear that the adjoint of $\id$ is another identity operator on the appropriate space of matrices. Notice that $\Tr(A \id (B))=\Tr(AB)$ and $\Tr(A\id B)=\Tr(\id^*(A) B)$. For this to be true for all $A,B$, it must be that $\id^*=\id$, so the identity operator is self-adjoint. Thus we've sort of skipped a line here-- $(A\otimes B^T)(\Lambda\otimes \id_d)=\Lambda^*(A) \otimes \id^*(B^T)=\Lambda^*(A) \otimes B^T$. The result then follows.}
     Of course, we can split up the tensor product as
     \begin{align*}
-        (\Lambda^*(A)\otimes B^T)\ket{\Omega} &= (\Lambda^*(A) \otimes I)(I\otimes B^T)\ket{\Omega}\\
-        &= (\Lambda^*(A)\otimes I)(B\otimes I)\ket{\Omega}\\
-        &=(\Lambda^*(A)B \otimes I)\ket{\Omega}.
+        (\Lambda^*(A)\otimes B^T)\dyad{\Omega} &= (\Lambda^*(A) \otimes I)(I\otimes B^T)\dyad{\Omega}\\
+        &= (\Lambda^*(A)\otimes I)(B\otimes I)\dyad{\Omega}\\
+        &= (\Lambda^*(A)B \otimes I) \dyad{\Omega}\\
+        &= (A \Lambda(B) \otimes I) \dyad{\Omega},
     \end{align*}
-    We get
-    \begin{equation}
-        d\bkt{\Tr(\Lambda^*(A)B\otimes I)\kb{\Omega}{\Omega}}=\Tr(A\Lambda(B)),
-    \end{equation}
-    where we trace over the second system and use the adjoint to get back $\Lambda$.
+    where we have used the ricochet property in the second line to change a $B^T$ into a $B$ and turned $\Lambda^*$ back into a $\Lambda$. Finally, observe that this object (which after all is just $J(A\otimes B^T)$) lives in $M_{d'} \otimes M_d$. Let us denote a partial trace over the $M_{d'}$ subsystem by $\Tr_{d'}$ and over $M_d$, by $\Tr_d$. In this notation, we see that
+    \begin{align*}
+        d \Tr((A\Lambda(B)\otimes I) \dyad{\Omega}) &= \Tr\bkt{(A\Lambda(B)\otimes I)\sum_{i,j} \kb{i}{j} \otimes \kb{i}{j}}\\
+            &= \Tr_{d'} \Tr_d\bkt{(A\Lambda(B)\otimes I)\sum_{i,j} \kb{i}{j} \otimes \kb{i}{j}}\\
+            &= \Tr_{d'} \bkt{(A\Lambda(B)\otimes I)\sum_{i,j} \kb{i}{j} \delta_{ij}}\\
+            &= \Tr_{d'} \bkt{\sum_i (A\Lambda(B))\dyad{i}}\\
+            &= \Tr (A \Lambda(B)),
+    \end{align*}
+    where we recognize $\sum_i \dyad{i}$ as just the identity. We conclude that
+    \begin{equation*}
+        \Tr(A\Lambda(B))=d \Tr (J(A\otimes B^T)). \qedhere
+    \end{equation*}
+    % \begin{equation}
+    %     d\Tr\bkt{(\Lambda^*(A)B\otimes I)\dyad{\Omega}}=\Tr(A\Lambda(B)),
+    % \end{equation}
+    % where we trace over the second system and use the adjoint to get back $\Lambda$.
 \end{proof}

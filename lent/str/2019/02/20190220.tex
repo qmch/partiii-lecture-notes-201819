@@ -1,0 +1,125 @@
+Last time, we stopped mid-calculation. We were looking at the OPE for
+\begin{equation}
+    T(Z) e^{ik\cdot X(\omega)},
+\end{equation}
+where $T(z)$ is the holomorphic part of the stress tensor, given by
+\begin{equation}
+    T(z)=-\frac{1}{\alpha'}:\p X^\mu(z) \p X_\mu(z):
+\end{equation}
+and the exponential is treated as a formal power series of the operator $X$.
+We found that single contractions gave us a term
+\begin{equation}
+    \frac{1}{z-\omega} \p_\omega(e^{ik\cdot X(\omega)}.
+\end{equation}
+What about double contractions?
+
+Double contractions contribute
+\begin{equation}
+    -\frac{1}{\alpha'}:\p X^\mu(z) \p X_\mu(z): \sum_{(i,j)} \sum_{n\geq 0} \frac{(i)^n}{n!} k_{\mu_1}\ldots k_{\mu_i}\ldots k_{\mu_j}\ldots k_{\mu_n} :X^{\mu_1}\ldots X^{\mu_i}\ldots X^{\mu_j} \ldots X^{\mu_n}(\omega):,
+\end{equation}
+where we must now perform contractions over the $\p X^\mu(z)$s with the $X^{\mu_i}$s on the right. There are no triple contractions since there are only two derivatives of $X$s outside the sum and the normal ordering has already taken care of contractions in the $X^{\mu_i}$s.
+
+We can make this more precise. There are $n(n-1)$ options for which $X^{\mu_i}$s to contract with, so we get an overall contribution
+\begin{equation}
+    -\frac{1}{\alpha'} \sum_{n\geq 2} k_{\mu_2}\ldots k_{\mu_n} \frac{(i)^n}{n!} n(n-1) \paren{-\frac{\alpha'}{2}}^2 \frac{k^2}{(z-\omega)^2},
+\end{equation}
+where two of the $k$s have been contracted since the contraction of $\p X_\mu(z)\ X^{\mu_i}(\omega)$ comes with an $\eta_\mu^{\mu_i}$. Cleaning up a bit more, we have
+\begin{align}
+    &=-\frac{\alpha'}{4} \frac{k^2}{(z-\omega)^2}\sum_{n\geq 2} :(k\cdot X(\omega))^{n-2}: i^2 i^{n-2} :X^{\mu_2}\ldots X^{\mu_n}: \frac{n!}{n!(n-2)!}\\
+    &= \frac{\alpha'}{4} \frac{k^2}{(z-\omega)^2}:e^{ik \cdot X(\omega)}:
+\end{align}
+In total, we have
+\begin{equation}
+    T(z):e^{ik\cdot X(\omega)}: = \paren{\frac{\alpha'}{4}\frac{k^2}{(z-\omega)^2}+\frac{\p_\omega}{z-\omega}}:e^{ik\cdot X(\omega)} +\ldots
+\end{equation}
+and we see that $:e^{ik\cdot X(\omega)}:$ has conformal weight
+\begin{equation}
+    h=\frac{\alpha' k^2}{4}.
+\end{equation}
+More generally $:e^{ik\cdot X(\omega,\bar \omega)}:$ has weight
+\begin{equation}
+    (h,\bar h)=\paren{\frac{\alpha' k^2}{4}, \frac{\alpha'k^2}{4}}.
+\end{equation}
+Note that factors of the string tension $\alpha'$ go with factors of $\hbar$, which we've previously set to $1$, so the relative factor of $\alpha'$ between the two terms in the expansion of $T(z):e^{ik\cdot X(\omega)}$ tells us that there's a quantum correction going on here so that $:e^{ik\cdot X(\omega)}:$ doesn't just transform trivially as a scalar under conformal transformations.
+
+It is now useful to separate the notion of a primary field from the definitions of $h$ and $\bar h$.
+\begin{defn}
+    A primary field is a field $\phi(\omega)$ with an OPE with $T(z)$ of the form
+    \begin{equation}
+        T(z) \phi(\omega)=\frac{h}{(z-\omega)^2} \phi(\omega)+\frac{1}{z-\omega} \p \phi(\omega).
+    \end{equation}
+    However, the $(z-\omega)^{-2}\phi(\omega)$ coefficient will still be called the \term{weight}, regardless of the presence of higher-order poles.
+\end{defn}
+
+\subsection*{OPE of $T(z)T(\omega)$ and the Virasoro Algebra}
+Recall that
+\begin{equation}
+    T(z)=-\frac{1}{\alpha'}:\p X^\mu(z) \p X)\mu(z):,
+\end{equation}
+and we have the contraction
+\begin{equation}
+    \overbrace{\p X^\mu(z) \p X^\nu(\omega)} = -\frac{\alpha'}{2} \frac{\eta^{\mu\nu}}{(z-\omega)^2}.
+\end{equation}
+We'll just go for it, then.
+\begin{equation}
+    T(z) T(\omega) = \paren{-\frac{1}{\alpha'}}^2 :\p X^\mu(z) \p X_\mu(z): :\p X^\nu(\omega) \p X_\nu(\omega):
+\end{equation}
+where we need to take single contractions (e.g. $\overbrace{\p X_\mu(z) \p X^\nu(\omega)}$) and also double contractions 
+\begin{equation*}
+    \overbrace{\p X_\mu(z) \p X^\nu(\omega)}\overbrace{\p X^\mu(z) \p X_\nu(\omega)}.
+\end{equation*}
+There will be four single contractions and two double contractions. Writing it all out, we find that
+\begin{align*}
+    T(z)T(\omega) &=-\frac{2}{\alpha'} \frac{\eta_{\mu\nu}}{(z-\omega)^2} :\p X^\mu(z) \p X^\nu(\omega): + \frac{1}{2} \frac{\delta^\mu{}_\nu}{(z-\omega)^2}\frac{\delta_\mu{}^\nu}{(z-\omega)^2}+\ldots
+\end{align*}
+We now expand $\p X^\mu(z)$ about $z=\omega$:
+\begin{equation}\label{pxmuzexpansion}
+    \p X^\mu(z) = \p X^\mu(\omega) +(z-\omega) \p^2 X^\mu(\omega)+\ldots
+\end{equation}
+We also recall that $\delta^\mu{}_\nu \delta^\nu{}_\mu=D$ the dimension of spacetime. Thus
+\begin{equation}
+    T(z)T(\omega)=\frac{D/2}{(z-\omega)^4}-\frac{2}{\alpha'} \frac{1}{(z-\omega)^2} :\p X^\nu(\omega) \p X_\nu(\omega): -\frac{2}{\alpha'} \frac{1}{(z-\omega)}:\p^2 X^\mu(\omega) \p X_\mu(\omega):+\ldots
+\end{equation}
+using the expansion of $\p X^\mu(z)$, \ref{pxmuzexpansion}. We arrive at
+\begin{equation}
+    T(z)T(\omega)=\frac{D/2}{(z-\omega)^4}
+    -\frac{2}{\alpha'} \frac{1}{(z-\omega)^2} T(\omega) -\frac{2}{\alpha'} \frac{1}{(z-\omega)}\p T(\omega)+\ldots
+\end{equation}
+Clearly, this has weight $h=2$, so $T(z)$ is of weight $(2,0)$. However, it is only a primary if $D=0$. And of course there's no way to embed a nontrivial worldsheet in $D=0$, so it seems like something very bad has happened.
+
+\subsection*{The Virasoro algebra}
+We've just show that $T(z)$ has $h=2$, so we expand it in modes as
+\begin{equation}
+    T(z)=\sum_n L_n z^{-n-2},\quad \bar T(z)=\sum_n \bar L_n \bar z^{-n-2}.
+\end{equation}
+We can invert these expressions to find
+\begin{equation}
+    L_m=\oint_{z=0} \frac{dz}{2\pi i} z^{m+1} T(z).
+\end{equation}
+Let's now consider the commutator of two $L_n$s-- to wit(t),
+\begin{equation}
+    [L_m,L_n]=\oint_{\omega=0} \frac{d\omega}{2\pi i} \omega^{n+1} \oint_{z=0} \frac{dz}{2\pi i} z^{m+1}[T(z),T(\omega)].
+\end{equation}
+What do we mean by this commutator of operators? Let's just look at the $dz$ integral first. In our discussion of radial ordering, we split up the contour integral as
+\begin{align}
+    \oint_{z=0} \frac{dz}{2\pi i} z^{m+1}[T(z),T(\omega)] :={}&\oint_{\abs{z}>\abs{\omega}} z^{m+1} T(z)T(\omega) -\oint_{\abs{z} < \abs{\omega}} \frac{dz}{2\pi i} z^{m+1} T(\omega) T(z)\\
+    ={}& \oint_{z=\omega} \frac{dz}{2\pi i} R(T(z)T(\omega))z^{m+1}.
+\end{align}
+Using our $T(z)T(\omega)$ OPE, we have
+\begin{align}
+    [L_m,L_n] &=\oint_{\omega=0}\frac{d\omega}{2\pi i} \omega^{n+1} \oint_{z=\omega} \frac{dz}{2\pi i} z^{m+1} \paren{ \frac{D/2}{(z-\omega)^4}+\frac{2T(\omega)}{(z-\omega)^2} +\frac{\p T(\omega)}{z-\omega}}\\
+    &=\oint_{\omega=0}\frac{d\omega}{2\pi i} \omega^{n+1} \paren{\frac{D/2}{3!} \frac{\p^3}{\p z^3} z^{m+1} +2 T(\omega) \P{}{z} z^{m+1} + z^{m+1} \p T(\omega)
+    }_{z=\omega}
+\end{align}
+where we have dropped the $\ldots$ from our OPE, as the contour integral will be evaluated by the residue theorem, and the residue theorem only cares about the pole structure of the thing we are integrating.
+Taking the derivatives, we get
+\begin{align*}
+    [L_m,L_n]&=\oint_{\omega=0}\frac{d\omega}{2\pi i} \paren{ \frac{D}{12}(m^3-m) \omega^{n+m-1}+2(m+1) \omega^{m+n+1} T(\omega) -\omega^{m+n+2}\p T(\omega)
+    }\\
+    &=\oint_{\omega=0}\frac{d\omega}{2\pi i} \paren{ \frac{D}{12}(m^3-m) \omega^{n+m-1}+(m-n) \omega^{m+n+1} T(\omega) 
+    }\\
+    &= \frac{D}{12}(m^3-m)\delta_{m+n,0}+(m-n) L_{m+n}.
+\end{align*}
+where in the second line we have integrated the final term by parts and simplified. This final result is something we were given on the first examples sheet. It looks almost like the Witt algebra, except there is an anomaly, the $D/12$ term. We call it the \term{Virasoro algebra}, and it is a consequence of the conformal symmetry of our quantum theory. It's sometimes called a central extension of the Witt algebra.
+
+In fact, there's a complication that we've missed. Our theory isn't just defined by the $X$s-- there are also the ghosts, and as constraints, we expect that those ghosts will act like ``negative degrees of freedom.'' They will contribute to this commutator and show that our theory can be consistent in $D\neq 0$

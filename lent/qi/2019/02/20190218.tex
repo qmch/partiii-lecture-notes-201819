@@ -34,13 +34,13 @@ Similarly,
 \begin{equation*}
     \ket{\psi^+}\leftrightarrow\ket{\psi^-}.
 \end{equation*}
-Under $\sigma_x^A \otimes I_B$, we see that the states
+Under $\sigma_x^A \otimes I_B$, we see that the Bell states will be exchanged as follows:
 \begin{gather}
     \ket{\phi^+}\leftrightarrow \ket{\psi^+}\\
     \ket{\phi^-}\leftrightarrow \ket{\psi^-}.
 \end{gather}
 
-Now suppose that Alice and Bob have a classical channel (e.g. a phone), so they can coordinate their measurements. For instance, Alice and Bob agree to both perform $\sigma_z$ on their respective qubits. The outcome is $\pm 1$ for each of them. They can communicate the outcomes and infer \emph{either} the phase bit or the parity bit, but not both.
+Now suppose that Alice and Bob have a classical channel (e.g. a telephone), so they can coordinate their measurements. For instance, Alice and Bob agree to both perform $\sigma_z$ on their respective qubits. The outcome is $\pm 1$ for each of them. They can communicate the outcomes and infer \emph{either} the phase bit or the parity bit, but not both.
 
 \begin{exm}
     Say the initial state (unknown to A and B) is $\ket{\phi^-}$. Suppose they measure $\sigma_z^A \otimes \sigma_z^B$, and they get the outcomes $+1,+1$. The post-measurement state is then given by acting with the projective operator $P_{1,1}=\dyad{0} \otimes \dyad{0}.$%
@@ -51,7 +51,7 @@ Now suppose that Alice and Bob have a classical channel (e.g. a phone), so they 
         \propto P\ket{\phi^-}&=(\dyad{0} \otimes \dyad{0}) \paren{ \frac{\ket{00}- \ket{11}}{\sqrt{2}}}\\
         &= \ket{00}.
     \end{align}
-    Thus they have determined the parity bit to be zero, but in doing so they've destroyed the original state and cannot recover the phase bit.
+    Thus they have determined the parity bit to be zero, but in doing so they've destroyed the entanglement in the original state and cannot recover the phase bit.
 \end{exm}
 
 \subsection*{Generalized measurement of Bell states} How does the story change if we do a generalized measurement? Suppose A and B share
@@ -64,15 +64,15 @@ Alice does a generalized measurement with
     0&\sin\theta\end{pmatrix}, \quad M_2 = \begin{pmatrix}\sin\theta & 0\\
     0&\cos\theta\end{pmatrix}.
 \end{equation}
-The outcomes are $1$ and $2$. If the outcome is $1$, then the post-measurement state is proportional to
+The possible outcomes are $1$ and $2$. If the outcome is $1$, then the post-measurement state is proportional to
 \begin{equation*}
     (M_1\otimes I_B) \ket{\phi^+}=\cos\theta\ket{00} + \sin\theta\ket{11}
 \end{equation*}
-and
+and if the outcome is $2$,
 \begin{equation*}
-    (M_2\otimes I_B) \ket{\phi^+}=\cos\theta\ket{11} + \sin\theta\ket{00}
+    (M_2\otimes I_B) \ket{\phi^+}=\cos\theta\ket{11} + \sin\theta\ket{00},
 \end{equation*}
-if the outcome is $2$, where it's a simple exercise to check that these are the final states.
+where it's a simple exercise to check that these are the final states.
 
 Based on her measurement, Alice makes a decision. If she got outcome $1$, she does nothing ($I\otimes I$), and if she gets $2$, she performs $\sigma_x^A$ on her qubit (the NOT operation). Thus the new states are
 \begin{gather*}
@@ -83,7 +83,18 @@ Finally, Alice tells Bob what she measured, whereupon if the measurement was $1$
 \begin{equation}
     \ket{\phi_{AB}^+} \to \cos\theta \ket{00} + \sin\theta\ket{11} \equiv \ket{\chi}.
 \end{equation}
-One can readily check that in general,
+One can readily check%
+    \footnote{The density matrix is 
+    \begin{equation*}
+        \dyad{\chi}=\cos^2\theta \dyad{00}+\cos\theta\sin\theta(\kb{00}{11}+\kb{11}{00})+\sin^2\theta \dyad{11},
+    \end{equation*}
+    so tracing over $B$ (for instance) gives
+    \begin{equation*}
+        \rho_A = \Tr_B(\dyad{\chi}) = \cos^2\theta \dyad{0}+\sin^2\theta \dyad{1} \neq I/2
+    \end{equation*}
+    except for in special cases like where $\theta=\pm \pi/4$.
+    }
+that in general,
 \begin{equation}
     \rho_A=\Tr_B \ket{\chi}\bra{\chi} \neq I/2,
 \end{equation}

@@ -6,32 +6,45 @@ It's been 15 days since the last lecture. Where did we leave off? We introduced 
 
 Last time, we talked about geodesic congruences (families of geodesics which cover some submanifold of the spacetime). Consider a congruence where all geodesics are of the same type,
 \begin{equation*}
-    U^a U_a = \pm 1,
+    U^a U_a = \pm 1
 \end{equation*}
-in affine parametrization or $U^a U_a =0$ for null congruences.
-Now consider a 1-parameter family of geodesics in such congruences where
+in affine parametrization (for spacelike or timelike geodesics respsectively) or $U^a U_a =0$ for null congruences.
+Now consider a 1-parameter family of geodesics which form such a congruence. In terms of the geodesic tangent vector $U$ and the deviation vector $S$, we have
 \begin{equation}
-    [S,U]=0\iff U^b \nabla_b S^a = B^a{}_b S^b
+    [S,U]=0\iff U^b \nabla_b S^a = S^b \nabla_b U^a = S^b B^a{}_b
 \end{equation}
-where
+where we have defined
 \begin{equation}
-    B^a{}b \equiv \nabla_b U^a.
+    B^a{}_b \equiv \nabla_b U^a.
 \end{equation}
 That is, $B$ measures the failure of $S^a$ to be parallel propagated along $U^b$. This tensor has some nice properties:
 \begin{equation}
-    B^a_b U^b =0, \quad U_a B^a{}_b = \frac{1}{2} \nabla_b(U^2)=0.
+    B^a{}_b U^b =0, \quad U_a B^a{}_b = \frac{1}{2} \nabla_b(U^2)=0.
 \end{equation}
-The first follows from the geodesic equation and the latter from $U^2=$constant. Look now at
+The first follows from the geodesic equation and the latter from $U^2=$constant.%
+    \footnote{Just one line of algebra. $U_a B^a{}_b=U_a \nabla_b U^a = \frac{1}{2} \nabla_b(U^2)=0$.}
+Consider the following expression:
 \begin{equation}
-     U\cdot \nabla(U\cdot S) = (U\cdot \nabla U^a) S_a + U^a U\cdot S_a.
+     U\cdot \nabla(U\cdot S) = (U\cdot \nabla U^a) S_a + U^a U\cdot S_a,
 \end{equation}
-But this first term is zero by the geodeisc equation, and the second is zero by the property $U^a B_{ab}=0$ from above. Thus $U\cdot S$ is constant along geodesics $U$.
+where $(\cdot)$ indicates contracted indices. But this first term is zero by the geodesic equation, and the second is zero by the property $U^a B_{ab}=0$ from above. Thus $U\cdot S$ is constant along the integral curves of $U$.
 
-The existence of some quantity along geodesics suggests to us there might be some gauge freedom we get to fix. In particular, we can make a very nice choice:
+The existence of some quantity along geodesics suggests to us there might be some gauge freedom we get to fix. In particular, we can make a very nice choice to fix the affine parameter along geodesics:
 \begin{equation}
     \lambda'=\lambda - a(s)
 \end{equation}
-where $a$ is some function of our choice. In particular this makes
+where $a$ is some function of our choice. In particular this allows us to shift $S$:%
+    \footnote{Recall that $S\equiv \frac{dx^\mu}{ds}$, and $U^\mu\equiv\frac{dx^\mu}{d\lambda}$. Thus for a geodesic parametrized by $\lambda',s$, we may write
+    \begin{align*}
+        x^\mu(\lambda',s) &= x^\mu(\lambda-a(s),s)\\
+            &= x^\mu(\lambda,s)+\frac{dx^\mu}{d\lambda}a(s)\\
+            &= x^\mu(\lambda,s)+U^\mu a(s),\\
+    \end{align*}
+    and taking a derivative with respect to $s$ now yields
+    \begin{equation*}
+        \frac{dx^\mu(\lambda',s)}{ds} = \frac{dx^\mu(\lambda,s)}{ds}+\frac{da}{ds}U^\mu.
+    \end{equation*}
+    }
 \begin{equation}
     S'{}^a\equiv S^a +\frac{da}{ds} U^a \implies U\cdot S'=U\cdot S +\frac{da}{ds}U^2.
 \end{equation}
@@ -115,11 +128,11 @@ We've proved some nice properties about this $B^a{}_b$ matrix. But what exactly 
 \begin{defn}
     Let us define
     \begin{equation}
-        \theta \equiv \hat B^a{}_a, \hat \sigma_{ab} \equiv \hat B_{(ab)}-\frac{1}{2} P_{ab} \theta, \hat \omega-{ab} = \hat B_{[ab]}.
+        \theta \equiv \hat B^a{}_a, \quad \hat \sigma_{ab} \equiv \hat B_{(ab)}-\frac{1}{2} P_{ab} \theta, \quad \hat \omega_{ab} = \hat B_{[ab]}.
     \end{equation}
     Note that the factor of $1/2$ works for $3+1$ spacetime dimensions because the trace of $P_{ab}$ is $2$ here. This then implies that
     \begin{equation}
-        \hat B^a{}_b = \frac{1}{2} \theta P^a{}_b +\hat {\tilde v}^a{}_b +\hat \omega^a{}_b.
+        \hat B^a{}_b = \frac{1}{2} \theta P^a{}_b +\hat \sigma^a{}_b +\hat \omega^a{}_b.
     \end{equation}
 \end{defn}
 With this definition, notice that

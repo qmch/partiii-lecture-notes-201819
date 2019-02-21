@@ -106,14 +106,14 @@ Thus our procedure can be summed up as follows. Add an ancilla $B$. Define unita
         E_1 =2\lambda P_{\hat n_1}=P_{\hat n_1}\\
         E_2 = I-P_{\hat n_1}.
     \end{gather}
-    Thus our POVM is really a projective measurement. One should check thatgiven an initial state $\ket{\psi}$ such that $\gv \sigma \cdot \hat n_1 \ket{\psi}=\ket{\psi},$
+    Thus our POVM is really a projective measurement. One should check that given an initial state $\ket{\psi}$ such that $\gv \sigma \cdot \hat n_1 \ket{\psi}=\ket{\psi},$
     \begin{equation}
         p(\hat n_1)=\bra{\psi}E_1 \ket{\psi}, \quad p(\hat n_2)=0.
     \end{equation}
     In the example sheet, we will consider the case of three spin states and $E_a=\frac{2}{3} \hat P_{n_a}.$
 \end{exm}
 
-In a similar vein, we can consider the case where Alice prepares a state $\ket{\psi}$ which is either $\ket{0}$ or $\ket{+}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$. For this setup, we can actually prepare a POVM such that we never make an error of misidentification-- our POVM may tell us that the state is $\ket{0},$ and it is definitely correct, or $\ket{+}$, and it is definitely correct. But sometimes it will conclude that we can't decide what the state is. A pure projective measurement could not have told us this.
+In a similar vein, on the examples sheet we will consider the case where Alice prepares a state $\ket{\psi}$ which is either $\ket{0}$ or $\ket{+}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$. For this setup, we can actually prepare a POVM such that we never make an error of misidentification-- our POVM may tell us that the state is $\ket{0},$ and it is definitely correct, or $\ket{+}$, and it is definitely correct. But sometimes it will conclude that we can't decide what the state is. A pure projective measurement could not have told us this.
 
 We may also define a \term{pure POVM}, which is some $E_a$ of the form
 \begin{equation*}
@@ -139,5 +139,5 @@ we call this state \term{separable}. Clearly, product states are a subset of sep
 \begin{itemize}
     \item Product states have no correlation between the two systems. Alice and Bob prepare their systems separately and never coordinate.
     \item Separable states have \emph{classical} correlations. Alice and Bob use a classical communication channel, e.g. A and B share a random number generator that produces outcome $i$ with probability $p_i$. They decide to construct by local operations (LO) the state $\rho_i^A \otimes \rho_i^B$.
-    \item Otherwise the state is entangled and exhibits purely quantum correlations.
+    \item Otherwise, the state is entangled and exhibits purely quantum correlations.
 \end{itemize}
