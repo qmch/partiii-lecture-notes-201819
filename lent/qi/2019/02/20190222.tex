@@ -1,0 +1,168 @@
+Last time, we discussed Nielsen's majorization theorem, which stated that a state $\ket{\phi}$ can be constructed from $\ket{\psi}$ by LOCC iff $\lambda_\psi \prec \lambda_\phi$. This theorem has two implications-- first, $n_\psi \geq n_\phi$, so we cannot create/increase entanglement by local operations. Second, the entanglement entropy cannot increase under LOCC,
+\begin{equation*}
+    S(\rho_\psi) \geq S(\rho_\phi).
+\end{equation*}
+However, note that $n_\psi \geq n_\phi \not\implies \lambda_\psi \prec \lambda_\phi$: to see this, consider
+\begin{align*}
+    \lambda_\psi=(1-\epsilon, \epsilon/2, \epsilon/2, 0,\ldots, 0),\quad n_\psi = 3\\\
+    \lambda_\phi = (1/2,1/2,0,\ldots,0),\quad n_\phi=2,
+\end{align*}
+but $\lambda_\psi \not \prec \lambda_\phi$. For now, we'll set aside teleportation to discuss something a bit different.
+
+\subsection*{Separability problem} 
+Consider a state
+\begin{equation*}
+    \rho \in \cD(\cH_A\otimes \cH_B).
+\end{equation*}
+Is it separable or entangled?
+\begin{thm}\label{separabilitycriterion}
+    Let $\rho \in \cD(\cH_A \otimes \cH_B)$. $\rho$ is separable iff $\forall$ positive (P) maps $\Lambda:\cB(\cH_A)\to \cB(\cH_B)$,
+    \begin{equation}
+        (\Lambda \otimes \id_B)(\rho)\geq 0.
+    \end{equation}
+\end{thm}
+\begin{proof}
+    $\implies$: Suppose $\rho$ is separable. Then $\rho$ can be written
+    \begin{equation}
+        \rho=\sum p_i \omega_i^A \otimes \sigma_i^B,
+    \end{equation}
+    so
+    \begin{equation}
+        (\Lambda \otimes \id)\rho = \sum p_i \Lambda(\omega_i^A) \otimes \sigma_i^B \geq 0,
+    \end{equation}
+    where this is a convex combination of positive semidefinite operators and is therefore overall positive.
+    
+    Converse (Horodecki): If $\rho$ is entangled, then $\exists$ some P map such that
+    \begin{equation}
+        (\Lambda \otimes \id)\rho \not\geq 0.
+    \end{equation}
+    In particular this map is not completely positive. For instance, take $\Lambda=T$ the transposition map. We consider the Peres-Horodecki PPT criterion (Positive Partial Transpose). That is, let
+    \begin{equation}
+         \rho =\sum p_{i\alpha,j\beta} \kb{i}{j} \otimes \kb{\alpha}{\beta}.
+    \end{equation}
+    Thus the partial transpose is
+    \begin{equation}
+        \rho^{T_A}=(T\otimes \id)\rho = \sum p_{i\alpha,j\beta} \kb{j}{i} \otimes \kb{\alpha}{\beta}.
+    \end{equation}
+    We say that a density matrix $\rho$ is PPT is $\rho^{T_A} \geq 0$.
+    
+    The PPT criterion states that
+    \begin{enumerate}
+        \item Separable $\implies$ PPT
+        \item Separable $\iff$ PPT for $2\times 2, 2\times 3$ systems. 
+    \end{enumerate}
+    
+    We'll show the first part, sep $\implies$ PPT: suppose $\rho$ is separable. Then
+    \begin{equation*}
+        \rho=\sum p_i \omega_i^A \otimes \sigma_i^B,
+    \end{equation*}
+    so
+    \begin{equation}
+        \rho^{T_A} \equiv (T \otimes \id_B)\rho = \sum p_i (\omega_i^A)^T \otimes \sigma_i^B \geq 0
+    \end{equation}
+    since the transpose of a positve operator is still positive.
+    
+    Now the second part, PPT $\implies$ separable for $2\times 2, 2\times 3, 3\times 2$.
+    \begin{lem}
+        (Stormer, Wo) Any P map $\Lambda: \cM_d \to \cM_{d'}$ s.t. $dd' \leq 6$ has the form
+        \begin{equation}
+            \Lambda=\Lambda_1 +\Lambda_2 T \quad\text{where } \Lambda_1,\Lambda_2 \equiv \text{CP}.
+        \end{equation}
+    \end{lem}
+    Using this lemma, we see that
+    \begin{align*}
+        (\Lambda \otimes \id)\rho &= \paren{(\Lambda_1 +\Lambda_2 T)\otimes \id} \rho\\
+        &= (\Lambda_1\otimes \id)\rho + (\Lambda_2 \otimes \id)\underbrace{(T\otimes \id)\rho}_{\rho^{T_A} \geq 0}.
+    \end{align*}
+    But since we assume PPT, this partial transpose is positive, and $\Lambda_1,\Lambda_2$ are completely positive, so 
+    \begin{equation}
+        (\Lambda\otimes \id)\rho \geq 0.
+    \end{equation}
+\end{proof}
+
+\subsection*{Reduction map}
+For $X\in \cB(\cH_A)$ the space of operators on $A$, we define the reduction map
+\begin{equation}
+    \Lambda_R(X) := (\Tr X)I -X.
+\end{equation}
+One may then check that
+\begin{gather}
+    (\id \otimes \Lambda_R)(\rho)=\rho_A \otimes I -\rho\\
+    (\Lambda_R \otimes \id )\rho = I\otimes \rho_B -\rho.
+\end{gather}
+
+The \term{reduction criterion} is as follows, using Thm. \ref{separabilitycriterion}:
+\begin{equation}
+    \rho\text{ is sep} \iff \rho_A\otimes I -\rho \geq 0, I\otimes \rho_B -\rho \geq 0.
+\end{equation}
+
+\subsection*{Separability criterion involving observables}
+\begin{defn}
+    An observable $W\in \cB(\cH_A\otimes \cH_B)$ (i.e. self-adjoint operator) is an \term{entanglement witness} (EW) if
+    \begin{equation}
+        \Tr(W\sigma) \geq 0 \quad\forall \sigma\text{ sep}
+    \end{equation}
+    and $\exists$ at least one $\rho$ entangled such that
+    \begin{equation}
+        \Tr(W\rho) <0.
+    \end{equation}
+\end{defn}
+Therefore if $W$ is an EW and $\rho$ is a state s.t. $\Tr(W\rho)<0$, then we infer that $\rho$ is entangled. $W$ is an EW which ``detects'' the entangled state $\rho$.
+\begin{thm}\label{ewexistence}
+    $\forall$ entangled state $\rho\in \cD(\cH_A \otimes \cH_B), \exists$ an EW $W$.
+\end{thm}
+This follows from the Hahn-Banach theorem, a result in functional analysis.
+
+Observe that
+\begin{equation}
+    \Tr(W\rho) =(W,\rho)_{HS}=\Tr W^\dagger \rho \equiv \Tr W\rho,
+\end{equation}
+since $W$ is self-adjoint and HS indicates the Hilbert-Schmidt inner product.
+
+Consider $\vec w,\vec r$ unit vectors in $\RR^3$. The inner product is then $(\vec w,\vec r)=\cos\theta$, so there is in principle some plane $P$ such that with $\vec r\in P, (\vec w,\vec r)=0$, and this plane divides $\RR^3$ into two regions where $(\vec w,\vec r)>0$ on one side and $<0$ on the other.
+
+\begin{thm}[Hahn-Banach]
+    If $S_1, S_2$ are two convex, closed sets in a real Banach space and one of them is compact, then $\exists$ a continuous linear functional $\phi$ and an $\alpha\in \RR$ such that $\forall$ pairs $\omega_1 \in S_1,\omega_2\in S_2$,
+    \begin{equation}
+        \phi(\omega_1) < \alpha \leq \phi(\omega_2).
+    \end{equation}
+\end{thm}
+We claim that Thm. \ref{ewexistence} follows directly from the Hahn-Banach theorem.
+
+Consider the space
+\begin{equation}
+    \mathcal{A}_{AB}\equiv \cB_{sa} (\cH_A \otimes \cH_B)
+\end{equation}
+equipped with the H-S inner product (``sa'' indicates self-adjoint). Choose as $S_1$ the set $S_1=\set{\rho_0}$ for $\rho_0$ entangled, and $S_2=\set{\sigma\in \cD(\cH_A \otimes \cH_B): \sigma \text{ sep}}$. The first set is a singleton and therefore compact, while this second is closed and convex. Thus Hahn-Banach guarantees that $\exists \phi, \alpha$ such that
+\begin{equation}
+    \phi(\rho) < \alpha \leq \phi(\sigma) \forall \sigma \in S_2.
+\end{equation}
+Note that the Riesz Rep'n Thm states that we can write a general functional $\phi$ as $\phi(\rho)=\Tr(A\rho)$ for some $A\in \cB_{sa}(\cH_A \otimes \cH_B)$. Thus WLOG we can write this as
+\begin{equation}
+    \Tr(A\rho)< \alpha \leq \Tr(A\sigma),
+\end{equation}
+and thus we take
+\begin{equation}
+    W=A-\alpha I
+\end{equation}
+so that
+\begin{gather}
+    \Tr(W\rho)=\Tr(A\rho)-\alpha <0,\\
+    \Tr(W\sigma) =\Tr(A\sigma) - \alpha \geq 0 \forall \sigma \text{ sep}. \qed
+\end{gather}
+We also have notions of a ``finer'' entanglement witness, e.g. for two EWs, the entangled states detected by one EW are a strict subset of the EWs detected by the other.
+
+\subsection*{Teleportation in 3 minutes}
+Suppose Alice and Bob share $\ket{\phi^+}$, and Alice also has a qubit in state $\ket{\psi_C}$. Thus the whole system is in state
+\begin{equation}
+    \ket{\psi_C}\otimes \ket{\psi^+_{AB}}.
+\end{equation}
+WLOG we can write $\ket{\psi_C}=a\ket{0}+b\ket{1}$. Expanding out the tensor product state, we have
+\begin{align}
+    \ket{\psi_C} \otimes \ket{\phi_{AB}^+} &
+    = \frac{1}{2}\bkt{\ket{\phi_{CA}^+}(a\ket{0_B}+b\ket{1_B})+ \ket{\phi^-}(a\ket{0}-b\ket{1}) + \ket{\psi^+} (a\ket{1}+b\ket{0}) +\ket{\psi^-} (a\ket{1}-b\ket{0})
+    }\\
+    &= \frac{1}{2}\bkt{\ket{\phi_{CA}^+}(\ket{\psi_B})+ \ket{\phi^-}(\sigma_z \ket{\psi}) + \ket{\psi^+} (\sigma_x \ket{\psi}) +\ket{\psi^-} (-i\sigma_y \ket{\psi})
+    }.
+\end{align}
+Alice makes a Bell measurement on her two qubits, measuring $00,01,10,11$ and communicates the result to Bob, who can recover the state by a local unitary.
