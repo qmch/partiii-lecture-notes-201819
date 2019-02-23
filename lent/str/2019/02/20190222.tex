@@ -1,0 +1,125 @@
+Last time, we looked at the OPE for the stress tensor. In our original calculation, we apparently learned that the stress tensor doesn't actually transform as a conformal tensor, thanks to a weird $\frac{D/2}{(z-\omega)^4}$ pole in the OPE, and this divergence was reflected in our calculation of an anomaly in the Virasoro algebra.
+
+But we've only been paying attention to the $X$s, and have neglected the $b,c$ ghosts in our theory. To make sense of the path integral over $h_{ab}$, we introduced ghotst $(b,c)$ via the Faddeev-Popov method. Thus our action included a ghost term
+\begin{equation}
+    S[b,c]=\frac{i}{2\pi}\int_\Sigma d^2\sigma \sqrt{-\hat h} \hat h^{ab} b_{ab} \nabla_c c^b.
+\end{equation}
+We could take $\hat h_{ab}$ as arbitrary and reimpose $\delta[\hat h-h]$ on the path integral. Now the stress tensor for the ghosts is derived by varying with respect to the metric. It is (naturally) symmetric but will otherwise be a mess, as we'll see now.
+\begin{equation}
+    T^{gh}_{ab}=-i\paren{\frac{1}{2} c^c \nabla_{(a}b_{b)c}+(\nabla_{(a}c^c)b_{b)c} -h_{ab}\text{ trace}
+    }.
+\end{equation}
+This is pretty horrible. Let's return to the action. We will now work with a flat Euclidean metric and use our favorite worldsheet coordinates $(z,\bar z)$ on $\CC$. If we do that, the action becomes
+\begin{equation}
+    S[b,c]=\frac{1}{2\pi}\int_\Sigma d^2z\paren{b_{zz} \p_{\bar z} c^z +b_{\bar z \bar z} \p_z c^{\bar z}},
+\end{equation}
+where $b_{z\bar z}=0$ since $b_{ab}$ is traceless.
+
+In keeping with our (unfortunately conventional) notation of writing the dependence of quantities on $\bar z$ with bars themselves (the antiholomorphic bits), we will write
+\begin{gather*}
+    b_{zz}\equiv b, \quad b_{\bar z \bar z} \equiv \bar b\\
+    c^z \equiv c, \quad c^{\bar z}\equiv \bar c.
+\end{gather*}
+In this notation, we now have the full action
+\begin{equation}
+    S=\frac{1}{2\pi} \int_\Sigma d^2z (b\bar \p c + \bar b \p \bar c) -\frac{1}{2\pi \alpha'} \int_\Sigma d^2z \p X^\mu \bar \p X^\nu \eta_{\mu\nu}.
+\end{equation}
+Remember, the ghosts don't have a physical embedding into the space, but they are still critical constraints which allow our theory to be (more) consistent and should be treated as a real part of the theory. The total stress tensor (the holomorphic part, anyway) decomposes by linearity into an $X$ part and a ghost part:
+\begin{equation}
+    T(z)=T_X(z) +T_{gh}(z)
+\end{equation}
+where
+\begin{gather}
+    T_X(z)=-\frac{1}{\alpha'} :\p X^\mu(z) \p X_\mu(z):\\
+    T_{gh}(z) = :\p b(z) c(z): - 2\p(:b(z)c(z):). 
+\end{gather}
+
+\subsection*{Ghost OPEs}
+The ghosts are free, so Wick's theorem gives
+\begin{equation}
+    R(b(z)c(\omega)=:b(z) c(\omega)+\overbrace{b(z) c(\omega)}.
+\end{equation}
+We could have done this with a mode expansion like we did for $X$, but note that since this is a free theory, the classical Green's function for $\bar \p$ gives $\overbrace{b(z)c(\omega)}$ exactly. Thus using the result
+\begin{equation}
+    \P{}{\bar z}\paren{\frac{1}{z-\omega}}=2\pi \delta^2(z-\omega),
+\end{equation}
+so we then have 
+\begin{equation}
+    \overbrace{b(z)c(\omega)}=\frac{1}{z-\omega}.
+\end{equation}
+Thus the OPE is
+\begin{equation}
+    b(z)c(\omega)=\frac{1}{z-\omega}+\ldots \paren{=c(z)b(\omega)}.
+\end{equation}
+We can use this to remove poles from composite operators. Thus
+\begin{equation}
+    T_{gh}(z) =\lim_{\omega\to z} \paren{-2 b(\omega) \p c(z) -\p b(\omega) c(z) +\frac{1}{(z-\omega)^2}
+    }
+\end{equation}
+where the squared in the last term is because of the derivatives in the first two terms.
+
+\subsection*{Conformal transformations of ghosts}
+Consider the ghost stress tensor with the $b$ ghosts:
+\begin{align}
+    T_{gh}(z)b(\omega) &=:\p_z b(z) \overbrace{c(z) b(\omega)}: -2:\p_z(b(z) \overbrace{c(z)) b(\omega)}:+\ldots\\
+        &= \frac{\p b(z)}{z-\omega} -2 \p_z \paren{\frac{b(z)}{z-\omega}}+\ldots\\
+        &= \frac{2}{(z-\omega)^2} b(z) -\frac{1}{z-\omega} \p b(z).
+\end{align}
+where we assume that the other contractions ($b$ with $b$, $c$ with $c$) give regular things that do not contribute to the pole structure of the OPE. We can expand $b(z)$ about $z=\omega$ as
+\begin{equation*}
+    b(z)=b(\omega)+(z-\omega)\p_\omega b(\omega)+\ldots
+\end{equation*}
+so that in the limit our expression becomes
+\begin{equation*}
+    \frac{2b(\omega)}{(z-\omega)^2}+\frac{2}{z-\omega} \p b(\omega) -\frac{1}{z-\omega} \p b(\omega)+\ldots,
+\end{equation*}
+and we conclude that
+\begin{equation}
+    T_{gh}(z) b(\omega) = \frac{2}{(z-\omega)^2} b(\omega) + \frac{1}{z-\omega}\p b(\omega)+\ldots
+\end{equation}
+where we see this is a primary field of weight $(2,0)$. A similar calculation for the $c$ ghost gives
+\begin{equation}
+    T_{gh}(z) c(\omega)=\frac{-1}{(z-\omega)^2} c(\omega)+\frac{1}{z-\omega}\p c(\omega)+\ldots,
+\end{equation}
+i.e. $c$ has weight $(-1,0).$
+
+We can now compute the full OPE of $T_{gh}(z) T_{gh}(\omega)$. It's a good exercise to reproduce
+\begin{equation}
+    T_{gh}(z)T_{gh}(\omega)=\frac{-26/2}{(z-\omega)^4} +\frac{2}{(z-\omega)^2}T_{gh}(\omega) +\frac{1}{z-\omega}\p T_{gh}(\omega)+\ldots
+\end{equation}
+which again looks almost like a primary field, except with this weird $1/(z-\omega)^4$ term. But this is the same dependence we saw in the $X$ part of the stress tensor, and the mixing of the OPEs of the $X$s and the ghosts is trivial, so when we write down the full stress tensor $T(z)=T_X(z)+T_{gh}(z),$ we now find that
+\begin{equation}
+    T(z) T(\omega) = \frac{(D-26)/2}{(z-\omega)^4} +\frac{2}{(z-\omega)^2}T(\omega)+\frac{1}{z-\omega} \p T(\omega)+\ldots
+\end{equation}
+And this provides us with a possible resolution: if $D=26,$ then there is no conformal anomaly, i.e. $T(z)$ transforms like an honest primary field under conformal transformations. We could, with some patience, introduce modes for this corrected stress tensor $T(z)$ (accounting for the ghosts) as
+\begin{equation}
+    T(z) = \sum_n \cL_n z^{-n-2},
+\end{equation}
+and as it turns out, these $\cL$s would satisfy not the Virasoro algebra but the Witt algebra in $D=26$, i.e.
+\begin{equation}
+    [\cL_n,\cL_m]=(n-m)\cL_{n+m}.
+\end{equation}
+%It's good if you want to get closer to 4. It's bad in the sense that 10's not even remotely 4.
+From now on, we will assume that we are working in 26 dimensions in order to have a quantum consistent theory (the tachyon aside). As it turns out, if we look at a general curved spacetime rather than our flat background, the requirement that our theory be anomaly-free will impose some nontrivial conditions on what kind of background spacetime our theory can live in. In fact, this condition will tell us that the background metric must satisfy the Einstein field equations to lowest order.
+
+\subsection*{Mode expansions} As we showed, $b$ has weight $(2,0)$ and $c$ has weight $(-1,0)$, so we can write mode expansions as
+\begin{equation}
+    b(z)=\sum_n b_n z^{-n-2},\quad c(z) \sum_n c_n z^{-n+1}.
+\end{equation}
+What is the anticommutator of these modes $\set{b_m,c_n}$?
+We can invert the mode expansions to get
+\begin{equation}
+    b_m =\oint_{z=0} \frac{dz}{2\pi i} z^{m+1} b(z),\quad c_n = \oint_{z=)} \frac{dz}{2\pi i} z^{n-2} c(z).
+\end{equation}
+Writing out the anticommutator we have
+\begin{align*}
+    \set{b_m,c_n} &= \oint_{z=0} \frac{dz}{2\pi i} z^{m+1} \oint_{\omega=0} \frac{d\omega}{2\pi i} \omega^{n-2} \set{b(z),c(\omega)}\\
+    &=\oint_{z=0} \frac{dz}{2\pi i} \oint_{\omega=0} \frac{d\omega}{2\pi i} R(b(z)c(\omega)) z^{m+1}\omega^{n-2}\\
+    &= \oint_{z=0} \frac{dz}{2\pi i} \oint_{\omega=0} \frac{d\omega}{2\pi i} z^{m+1}\omega^{n-2} \paren{\frac{1}{z-\omega}+\ldots}\\
+    &= \oint_{\omega=0} \frac{d\omega}{2\pi i} \omega^{m+n-1} =\delta_{\m+n,0},
+\end{align*}
+so that
+\begin{equation}
+    \set{b_m,c_n}=\delta_{m+n,0}.
+\end{equation}
+In principle, the OPEs give us all the equations we need to understand the structure of the quantum theory, though they may not always correspond to a sensible classical limit.
