@@ -1,0 +1,77 @@
+\subsection*{QED counterterms}
+Last time, we calculated the vacuum polarization at one loop. There are other loop diagrams we might be interested in, like the electron self-energy and the one-loop correction to the electron-photon interaction (see diagram).
+
+To renormalize our theory, we will add counterterms of the form
+\begin{equation}
+    S^{CT}[\psi,\bar \psi,A,\epsilon] = \int d^dx \bkt{\frac{\delta Z_3}{4} F_{\mu\nu}F^{\mu\nu} +\delta Z_2 \bar \psi \slashed{D} \psi + \delta m \bar \psi \psi
+    }.
+\end{equation}
+It's this second (gauge invariant) term we'll need in the following calculation. As $d\to 4$ ($\epsilon\to 0$), we have
+\begin{equation}
+    \pi_{\text{1-loop}}(q^2=-\frac{g^2(\mu)}{2\pi^2} \int_0^1 dx\, x(1-x)\paren{\frac{2}{\epsilon}-\gamma +\log \frac{4\pi \mu^2}{\Delta}
+    } + O(\epsilon)
+\end{equation}
+with $\Delta,\mu$ as before and $\gamma$ the Euler-Mascheroni constant. In the $\overline{\text{MS}}$ term,
+\begin{equation}
+    \delta Z_3 = -\frac{g^2(\mu)}{12\pi^2} \paren{\frac{2}{\epsilon}-\gamma +\log 4\pi
+    }.
+\end{equation}
+After renormalization, the 1-loop self-energy takes the form
+\begin{equation}
+    \pi_{\text{1-loop}}^{\text{ren}}(q^2)=\frac{g^2(\mu)}{2\pi^2} \int_)^1 dx\, x(1-x) \log \paren{\frac{m^2+x(1-x)q^2}{\mu^2}}.
+\end{equation}
+Note the branch cut for $m^2=x(1-x)q^2 \leq 0.$ For $x\in [0,1]$ we see that $0\leq x(1-x) \leq 1/4$. In Minkowski signature, $q_0=iE$, the branch cut corresponds to
+\begin{equation}
+    x(1-x) (E^2-\vec q^2)\geq m^2,
+\end{equation}
+so the smallest $E$ that satisfies this is simply $E^2=(2m)^2$. This is precisely the minimum energy required to create a real (on-shell) electron-positron pair.
+
+\subsection*{QED $\beta$ function}
+The simplest way to obtain the beta function for the QED coupling is to rescale the field
+\begin{equation*}
+    A-\mu \to \frac{A_\mu}{g}
+\end{equation*}
+so that the action is
+\begin{align}
+    \frac{1}{4g_{\text{eff}}^2} \int d^4x F_{\mu\mu} F^{\mu\nu} &=\frac{1-\pi_{\text{1-loop}}^{\text{ren}}(0)}{4g^2(\mu)} \int d^4x\, F_{\mu\nu} F^{\mu\nu}\\
+        &=\frac{1}{4} \bkt{\frac{1}{g^2(\mu)}-\frac{\hbar}{12\pi^2} \log\frac{m^2}{\mu^2}+O(\epsilon)
+        }\int d^4x \, F_{\mu\nu}F^{\mu\nu}.
+\end{align}
+Then the beta function is
+\begin{equation}
+    \beta(g)=\frac{\hbar g^3(\mu)}{12\pi^2}+O(\hbar^2)>0.
+\end{equation}
+Integrating, we can see how $g$ depends on $\mu$: it is
+\begin{equation}
+    \frac{1}{g^2(\mu')}=\frac{1}{g^2(\mu)}+\frac{\hbar}{6\pi^2}\log\frac{\mu}{\mu'}+ O(\hbar^2).
+\end{equation}
+Let $\Lambda_{QED}$ be the scale at which the coupling diverges,
+\begin{equation}
+    g^2(\mu)=\frac{g\pi^2}{\hbar} \frac{1}{\log \Lambda_{QED}/\mu}.
+\end{equation}
+Given that $m_e=\SI{0.511}{\mega\eV}$, we have a coupling constant $\alpha=\frac{g^2(m_e)}{4\pi}\approx \frac{1}{137}$ (the fine structure constant), which tells us that $\Lambda_{QED}\sim \SI{e286}{\giga\eV}$. Note that at scales $\mu=\SI{100}{\giga\eV},$ the EM and weak forces merge into the electroweak force.
+
+\subsection*{Renormalization group}
+Let's begin our discussion of renormalization by remarking that a QFT is not fully defined by its Lagrangian $\cL$ (or equivalently an action $S$). A full definition requires that we regularize the theory in order to tame its divergences, which introduces an associated (unphysical) mass scale. Thus we impose some renormalization conditions in order to uniquely set the parameters of our theory, which requires empirical input (i.e. experiments to set the effective couplings). Once this is done, we can use a QFT to make predictions.
+
+However, the physical predictions of our theory should be independent of arbitrary choices made in defining the theory. That is, the predictions must be the same at low energies independent of regularization scheme. This leads us to a sense of \term{universality}, just as we saw in \emph{Statistical Field Theory}. That is, no matter what is going on in the UV, our effective theory describes the same IR physics emerging from families of theories with different regularization schemes or scales.
+
+The renormalization group is therefore the natural structure to study how theories with different short-distance (UV) details can give rise to the same long-distance (IR) physics.
+
+To see an example of this, consider a real scalar theory in $d$ dimensions with a momentum cutoff $\Lambda_0$.
+\begin{equation}
+    S_{\Lambda_0}[\phi]=\int d^dx\bkt{
+        \frac{1}{2} \p_\mu \phi \p^\mu \phi +\frac{1}{2} m^2 \phi^2 +\sum_i \frac{1}{\Lambda_0^{d_i-d}} g_{i0} O_i(x)
+    }
+\end{equation}
+where $O_i$ are local operators of mass dimension $d_i >0$ made up of fields and their derivatives. For instance,
+\begin{equation}
+    O_i=(\p\phi)^{r_i} \phi^{s_i}.
+\end{equation}
+We can count the total number of fields in $O_i$-- call it $n_i$, where in this example $n_i=r_i+s_i$.
+
+The partition function with a cutoff, denoted $\mathscr{Z}$, is now
+\begin{equation}
+    \mathscr{Z}(g_{i0})=\int^{\Lambda_0} \cD \phi e^{-S_{\Lambda_0}[\phi]}.
+\end{equation}
+This tells us to integrate over fields with $\abs{p} \leq \Lambda_0$.
