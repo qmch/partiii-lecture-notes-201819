@@ -1,7 +1,8 @@
 \subsection*{Distance measures}
-Given two states $\rho,\sigma$, how well can we distinguish between them? We have a few measures to test.
+Given two states $\rho,\sigma$, how well can we distinguish between them? We have a few measures to test this.
 
 \subsection*{Trace distance}
+We define the \term{trace distance} $D(\rho,\sigma)$ between two density matrices $\rho,\sigma$ as follows:
 \begin{gather}
     D(\rho,\sigma)=\frac{1}{2}||\rho-\sigma||_1\\
     ||A||_1 = \Tr\abs{A}=\Tr\sqrt{A^\dagger A}
@@ -18,34 +19,37 @@ where $Q,R$ are now positive semi-definite. Thus by the linearity of the trace,
         &= \frac{1}{2} \bkt{\sum_{a_i \geq 0} -\sum_{a_i \geq 0} a_i -\sum_{a_i <0} a_i}\\
         &=\frac{1}{2}(\Tr Q + \Tr R),.
 \end{align*}
-However, note that $A=\rho-\sigma =Q-R$, so since $A$ is traceless by definition, $\Tr Q = \Tr R$, which implies that
+However, note that $A=\rho-\sigma =Q-R$. Since $A$ is traceless,%
+    \footnote{This follows since $\rho$ and $\sigma$ are density matrices and have trace 1, so by the linearity of the trace, $\Tr(A)=\Tr(\rho)-\Tr(\sigma)=1-1=0.$}
+it follows that $\Tr Q = \Tr R$, which implies that
 \begin{equation}
     D(\rho,\sigma)=\Tr Q =\Tr R.
 \end{equation}
+
 \begin{lem}\label{tracedistanceproj}
 \begin{equation}
-    D(\rho,\sigma)=\max \Tr(P(\rho-\sigma)), 0 \leq P \leq I.
+    D(\rho,\sigma)=\max \Tr(P(\rho-\sigma)), \quad 0 \leq P \leq I.
 \end{equation}
 \end{lem}
 Here, we use $P\leq I$ to indicate that $X\equiv (I-P)\geq 0 $ is positive semi-definite as an operator.
 \begin{proof}
-Since $D(\rho,\sigma)=\Tr Q$, let $P$ be the projector onto the support of $Q$. THen
+Since $D(\rho,\sigma)=\Tr Q$, let $P$ be the projector onto the support of $Q$. Then
 \begin{align*}
     \Tr(P(\rho-\sigma))&=\Tr(P(Q-R))\\
         &=\Tr PQ - \Tr PR\\
-        &= Tr Q\\
+        &= \Tr Q\\
         &= D(\rho,\sigma),
 \end{align*}
 since the supports of $Q$ and $R$ are orthogonal.
 Conversely, $\forall 0\leq P \leq I$, we have
-\begin{align}
+\begin{align*}
     \Tr P(\rho-\sigma) &= \Tr(P(Q-R))\\
         &\leq \Tr PQ\\
         &\leq \Tr Q\\
         &= D(\rho,\sigma)
-\end{align}
+\end{align*}
 since $P\leq I$.%
-    \footnote{$\Tr PQ = \Tr P Q^{1/2} Q^{1/2}=\Tr Q^{1/2} P Q^{1/2} \leq \Tr Q.$}
+    \footnote{The second line follows since $R$ is positive semi-definite, and $PR$ is also positive semi-definite. The third line follows because $\Tr PQ = \Tr P Q^{1/2} Q^{1/2}=\Tr Q^{1/2} P Q^{1/2} \leq \Tr Q.$}
 Combining these, we see that
 \begin{equation*}
     D(\rho,\sigma) = \max_{0\leq P \leq I} \Tr P(\rho-\sigma).
@@ -53,7 +57,11 @@ Combining these, we see that
 \end{proof}
 This trace distance has some nice properties. It forms a metric on $\cD(\cH)$, as it is
 \begin{itemize}
-    \item Symmetric, $D(\rho,\sigma)=D(\sigma,\rho)$
+    \item Symmetric, $D(\rho,\sigma)=D(\sigma,\rho)$%
+        \footnote{
+            Follows since $D(\rho,\sigma)=\frac{1}{2}||A||_1$, and $||A||_1=\Tr\sqrt{A^\dagger A}=\Tr\sqrt{(-A)^\dagger (-A)}=||-A||_1$, as it should be. Thus $D(\rho,\sigma)=\frac{1}{2}||A||_1
+            =\frac{1}{2}||-A||_1=D(\sigma,\rho).$
+        }
     \item $D(\rho,\sigma)=0$ iff $\rho=\sigma$
     \item Triangle inequality, $D(\rho,\omega) \leq D9\rho,\sigma)+D(\sigma,\omega)$.
 \end{itemize}
@@ -125,10 +133,10 @@ For instance, this tells us that $F(U\rho U^\dagger, U\sigma U^\dagger)=F(\rho,\
     \begin{proof}
         We will need the following lemma:
         \begin{lem}
-            $||A||_1 = \max_{U\text{ unitary}} \abs{\Tr(UA)} \forall A \in \cB(\cH)$.
+            $||A||_1 = \max_{U\text{ unitary}} \abs{\Tr(UA)} \quad\forall A \in \cB(\cH)$.
         \end{lem}
         \begin{proof}
-            We use the polar decomposition, so $\exists V$ a unitary such that $A=|A|V$. If we now choose $U=V^\dagger$, then
+            We use the polar decomposition, so $\exists V$ a unitary such that $A=|A|V$. If we now choose $U=V^\dagger$, then the inequality will be saturated:
             \begin{equation*} 
                 \abs{\Tr(UA)}=\Tr(V^\dagger |A|V)=\Tr(|A|).
             \end{equation*}
@@ -138,7 +146,7 @@ For instance, this tells us that $F(U\rho U^\dagger, U\sigma U^\dagger)=F(\rho,\
                     &\leq \sqrt{(\Tr|A|)\Tr(U^\dagger V^\dagger |A| VU)}\\
                     &=\Tr|A|\equiv ||A||_1
             \end{align*}
-            where we recognize this trace in the first line as a Hilbert-Schmidt inner product $(x,y)_{HS}$ with $x=|A|^{1/2},y=|A|^{1/2}VU$ and apply Cauchy-Schwartz.
+            where we recognize this trace in the first line as a Hilbert-Schmidt inner product $(x,y)_{HS}$ with $x=|A|^{1/2},y=|A|^{1/2}VU$ and apply Cauchy-Schwartz. In the last line, we use the cyclic property of the trace to get $\sqrt{(\Tr|A|)^2}=\Tr|A|.$
             
             This proves the lemma.
         \end{proof}
@@ -148,7 +156,7 @@ For instance, this tells us that $F(U\rho U^\dagger, U\sigma U^\dagger)=F(\rho,\
         \end{equation*}
         where $RA$ indicates the purified system.
         
-        Recall that there is a unitary freedom of purifications-- any two purifications of the same $\rho$ are related by a unitary transformation acting only on the reference system. Equivalently, we can maximize over unitaries. If we fixe $\ket{\psi_\sigma}_{RA}$, then
+        Recall that there is a unitary freedom of purifications-- any two purifications of the same $\rho$ are related by a unitary transformation acting only on the reference system. Equivalently, we can maximize over unitaries. If we fix $\ket{\psi_\sigma}_{RA}$, then
         \begin{equation}
             F(\rho_A,\sigma_A)=\max_{U^\rho, U^\sigma} \abs{\bra{\psi_\rho} (U_\rho^R{}^\dagger \otimes I_A) (U_\sigma^R{}^\dagger \otimes I_A)\ket{\psi_\sigma}.
             }

@@ -26,12 +26,12 @@ This tells us the ``running'' of the renormalized coupling $g(\mu)$, which we re
         \end{equation*}
         restoring $\hbar$.
     }
-\begin{equation}
+\begin{equation}\label{phi4betafunction}
     \beta(g)\equiv \mu\frac{dg}{d\mu}=\frac{3\hbar g^2}{16\pi^2} + O(\hbar^2),
 \end{equation}
 restoring $\hbar$ which counts the loop order of the corrections. Note that $\beta(g)>0$ for this coupling in this theory.
 
-Integrating the ODE between $\mu,\mu'$, we find that
+Integrating the ODE \ref{phi4betafunction} for $\frac{dg}{d\mu}$ between $\mu,\mu'$, we find that
 \begin{align}
     \frac{1}{g(\mu')}={}&\frac{1}{g(\mu)}+\frac{3\hbar}{16\pi^2} \log\frac{\mu}{\mu'}\\
     &\implies g(\mu')=\frac{g(\mu)}{1+\frac{3\hbar g(\mu)}{16 \pi^2} \log \frac{\mu}{\mu'}} = g(\mu)-\frac{3\hbar g^2(\mu)}{16\pi^2} \log\frac{\mu}{\mu'}+O(\hbar^2).
@@ -69,12 +69,12 @@ reveals that
 \end{equation}
 where derivatives have brought down $k$s and the integral over $d^4x$ has related the momenta in $\tilde A_\mu,\tilde A_\nu$.
 
-Note that for a field $\tilde A_\mu(k)=k_\mu \tilde \alpha(k)$ with $\tilde \alpha$ a scalar function, this integral vanishes. This is bad-- $Z$ diverges badly. In position space, this bad choice of $\tilde A_\mu$ corresponds to $A_\mu(x)=\p_\mu\alpha(x)$.
-Recall under gauge transformations,
+Note that for a field $\tilde A_\mu(k)=k_\mu \tilde \alpha(k)$ with $\tilde \alpha$ a scalar function, this integral vanishes. This is bad-- since $\int d^4x F_{\mu\nu} F^{\mu\nu}$ is in the action $S$, any path integral configuration of this form will pick up a weight of $1$ from $e^{-S[\psi,\bar\psi,A]}=e^0=1$, and there are infinitely many such configurations to integrate over in $\cD A$, so $Z$ diverges. In position space, this choice of $\tilde A_\mu$ corresponds to $A_\mu(x)=\p_\mu\alpha(x)$.
+Recall that under gauge transformations,
 \begin{equation}
     A_\mu(x)\mapsto A_\mu(x) +\frac{1}{e} \p_\mu \alpha(x).
 \end{equation}
-Therefore these troublesome modes are gauge-equivalent to $A_\mu(x)=0$, and so the solution will come from a gauge fixing procedure.
+Therefore these troublesome modes are all gauge-equivalent to $A_\mu(x)=0$, and so the solution will come from a gauge fixing procedure.
 
 \subsection*{Faddeev-Popov method for gauge-fixing} Before we do the whole procedure, let's take a simple example. Consider a function $f:\RR^2\to \RR$ that is rotationally invariant,
 \begin{equation}

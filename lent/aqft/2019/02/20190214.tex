@@ -32,13 +32,13 @@ Thus
 \begin{equation}
     S_d = \frac{2\pi^{d/2}}{\Gamma(d/2)},
 \end{equation}
-which we take to be the definition of $S_d$ in $d\in \CC$ dimensions. We can also analytically continue the $\Gamma$ function by
+which we take to be the definition of $S_d$ in $d\in \CC$ dimensions. We can also analytically continue the $\Gamma$ function by establishing a recursion relation:
 \begin{align*}
     \Gamma(\alpha)&=\int_0^\infty dx\, x^{\alpha-1} e^{-x}\\
-    &=\frac{1}{\alpha}\bkt{x^{-\alpha}e^{-x}}_0^\infty +\frac{1}{\alpha} \int_0^\infty dx x^\alpha e^{-x}\\
+    &=\frac{1}{\alpha}\bkt{x^{-\alpha}e^{-x}}_0^\infty +\frac{1}{\alpha} \int_0^\infty dx\, x^\alpha e^{-x}\\
     &= 0 +\frac{1}{\alpha}\Gamma(\alpha+1)
 \end{align*}
-where the first term is zero if $\text{Re}(x)>0$. We analytically continue and define $\Gamma(\alpha)$ for $\text{Re}(x)>-1$ through 
+where the first term is zero if $\text{Re}(\alpha)>0$. We analytically continue and define $\Gamma(\alpha)$ for $\text{Re}(\alpha)>-1$ through 
 \begin{equation}
     \Gamma(\alpha)=\frac{1}{\alpha}\Gamma(\alpha+1).
 \end{equation}
@@ -86,16 +86,18 @@ Using these last two expressions, we have
     \Pi^{\text{1-loop}}=-\frac{g(\mu)m^2}{32\pi^2} \bkt{\frac{2}{\epsilon} -\gamma+1 +\log \paren{\frac{4\pi\mu^2}{m^2}}}+O(\epsilon).
 \end{equation}
 
-We see that the old $\Lambda\to\infty$ divergence with cutoff $\Lambda$ appears here as a $1/\epsilon$ pole. In order to make this contribution converge, we must add a counterterm $\frac{\delta m^2}{2} \phi^2$. The first thing we might think to do is the \term{minimal subtraction} (MS) scheme,
+We see that the old $\Lambda\to\infty$ divergence appears here as a $1/\epsilon$ pole. In order to make this contribution converge, we must add a counterterm $\frac{\delta m^2}{2} \phi^2$. The first thing we might think to do is the \term{minimal subtraction} (MS) scheme,
 \begin{equation}
     \delta m^2 =-\frac{g(\mu)m^2}{16\pi^2 \epsilon},
 \end{equation}
 by which we just get rid of the epsilon divergence directly.
-There's also the \term{modified minimal subtraction scheme} ($\overline{\text{MS}}$), with
+There's also the \term{modified minimal subtraction scheme} ($\overline{\text{MS}}$), where we also get rid of the extra constants hanging around,
 \begin{equation}
-    \delta m^2 = -\frac{g(\mu)m^2}{32\pi^2} \paren{\frac{2}{\epsilon}-\gamma+\log 4\pi},
+    \delta m^2 = -\frac{g(\mu)m^2}{32\pi^2} \paren{\frac{2}{\epsilon}-\gamma+\log 4\pi}.
 \end{equation}
-which is used widely in practice. We might also consider an on-shell scheme, with $m^2+\delta m^2=m_{\text{phys}}^2$. After this regularization, we have
+%which is used widely in practice. 
+%We might also consider an on-shell scheme, with $m^2+\delta m^2=m_{\text{phys}}^2$. 
+After this regularization, we have
 \begin{equation}
     \Pi^{\text{1-loop},\overline{MS}}=\frac{g(\mu)m^2}{32\pi^2} \paren{\log \frac{\mu^2}{m^2}-1}.
 \end{equation}
@@ -115,7 +117,7 @@ and we get the result
 \begin{equation}
     \frac{3g^2 S_4}{2(2\pi)^d} \frac{1}{2}\paren{\frac{\mu}{m}}^\epsilon \frac{\Gamma(2-d/2)\Gamma(d/2)}{\Gamma(2)}=\frac{3g^2}{32\pi^2} \paren{\frac{2}{\epsilon}-\gamma +\log \frac{4\pi \mu^2}{m^2}} +O(\epsilon).
 \end{equation}
-Introducing a counterterm $\delta g=\frac{3g^2}{32\pi^2} \paren{\frac{2}{\epsilon}-\gamma+\log 4\pi},$ we get an effective coupling
+Introducing a counterterm $\delta g=\frac{3g^2}{32\pi^2} \paren{\frac{2}{\epsilon}-\gamma+\log 4\pi}$ (the $\overline{\text{MS}}$ scheme), we get an effective coupling
 \begin{equation}
     g_{\text{eff}}(\mu)=g(\mu)-\frac{3g^2(\mu)}{32\pi^2} \log \frac{\mu^2}{m^2}+\ldots
 \end{equation}

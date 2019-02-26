@@ -23,7 +23,7 @@ which correspond to an amplitude
         +\frac{1}{(p_1+p_3+k)^2+m^2}
     }.
 \end{equation}
-The overall factor of $1/2$ is a symmetry factor since the two internal lines are identical and can be exchanged, and the propagators can be read off by conservation of momentum at each vertex (taking all external momenta to be flowing in). We see that this integral goes as $d^4k/k^4$, so we expect a $\log\Lambda$ divergence. More precisely, the large $k$ behavior (where we care about this divergence) will look like%
+The overall factor of $1/2$ is a symmetry factor since the two internal lines are identical and can be exchanged, and the propagators can be read off by conservation of momentum at each vertex (taking all external momenta to be flowing in). We can evaluate this integral in terms of the external momenta $p_i$, but let's try to get a feel for the divergence first. We see that this integral goes as $d^4k/k^4$, so we expect a $\log\Lambda$ divergence. More precisely, the large $k$ behavior (where we care about this divergence) will look like%
     \footnote{This integral isn't totally immediate. To evaluate this, rewrite $k^3 dk= \frac{1}{2}k^2 d(k^2)$. Next, divide through in the numerator and denominator by $m^4$ to get
     \begin{equation*}
         \frac{1}{2}\int_0^\Lambda \frac{(k^2/m^2) d(k^2/m^2)}{(k^2/m^2) +1)^2}=\frac{1}{2}\int_0^{\Lambda^2/m^2} \frac{u\,du}{(u+1)^2}.
@@ -52,7 +52,7 @@ we can then produce an effective coupling of
 \end{equation}
 which is finite as $\Lambda\to\infty$.%
     \footnote{
-        This is just $\lambda$ plus the one-loop correction we computed to be \ref{quarticdivergence} plus our choice of $\delta \lambda$ (which is itself treated as a one-loop correction). In fact, we've neglected an overall minus sign in computing the one-loop correction. We should add a factor of $-i$ for the loop, and get rid of the $i$ as part of the overall momentum-conserving delta function which we've already dropped. Thus
+        This is just $\lambda$ plus the one-loop correction we computed to be \ref{quarticdivergence} plus our choice of $\delta \lambda$ (which is itself treated as a one-loop correction). In fact, there's a relative minus sign between the original coupling and the one-loop correction. That is, the original coupling contributes $(-\lambda \delta^{(4)}(\ldots)$, while the one-loop diagrams contribute $(-\lambda)^2 \delta^{(4)}(\ldots)$. Thus
         \begin{align*}
             \lambda_\text{eff}&=\lambda -\frac{3\lambda^2}{32\pi^2} \bkt{
                 \log\paren{1+\frac{\Lambda^2}{m^2}}-\frac{\Lambda^2}{\Lambda^2+m^2}
@@ -62,23 +62,23 @@ which is finite as $\Lambda\to\infty$.%
         \end{align*}
     }
 
-For this next discussion, we'll need a trick due to Feynman:
+Having computed the log divergence one way, let us try to be a little more precise and account for the external momenta. For this next discussion, we'll need a trick due to Feynman:
 \begin{equation}
     \int_0^1 \frac{dx}{\bkt{xA+(1-x)B}^2} =\frac{1}{B-1} \bkt{\frac{1}{xA+(1-x)B}}_0^1 = \frac{1}{AB}.
 \end{equation}
-We'll use this to rewrite products of denominators as these sorts of integrals, i.e. from right to left. Note that the integral can be put in a more manifestly symmetric form as
+We'll use this to rewrite products of denominators (i.e. propagators) as these sorts of integrals, i.e. from right to left. Note that the integral can be put in a more manifestly symmetric form as
 \begin{equation*}
     \int_0^1 dx \int_0^1 dy \frac{\delta(x+y-1)}{(xA+yB)^2}.
 \end{equation*}
 
-For our first diagram, let $p_{12}\equiv p_1 +p_2$. Then the propagators take the form
+To compute the loop integral for our first diagram, let $p_{12}\equiv p_1 +p_2$. Using Feynman's trick, we can rewrite the propagators as
 \begin{align*}
     \frac{1}{(p_{12}+k)^2+m^2}\frac{1}{k^2+m^2}&=\int_0^1 \frac{dx}{\bkt{x((p_{12}+k)^2+m^2)+(1-x)(k^2+m^2)}^2
     }\\
         &= \int_0^1 \frac{dx}{\bkt{(k+xp_{12})^2 +m^2 +x(1-x)p_{12}^2}^2}\\
         &= \int_0^1 \frac{dx}{\bkt{l^2+m^2+x(1-x)p_{12}^2}^2}
 \end{align*}
-where we have defined $l=k+x p_{12}.$
+where we have defined $l=k+x p_{12}$ and completed the square.
 In the $\Lambda \to \infty$ limit, the shifted integration range $|k|\leq \Lambda \to |l|\leq \Lambda$ vanishes, so we can turn our $d^4k$ integral into a $d^4 l$ and write
 \begin{align*}
     \int \frac{d^4ldx}
@@ -92,11 +92,11 @@ In the $\Lambda \to \infty$ limit, the shifted integration range $|k|\leq \Lambd
     -1
     }
 \end{align*}
-after a change of variables and an integration by parts. Note that this term with the $1/\Lambda^2$ goes to zero as $\Lambda\to\infty$. Let's notice that all three diagrams are related by the Mandelstam variables 
+after a change of variables and an integration by parts. Note that this term with the $1/\Lambda^2$ goes to zero as $\Lambda\to\infty$, so we will not need to worry about renormalizing it. We also notice that all three diagrams are related by the Mandelstam variables 
 \begin{equation}
-    s=-(p_1+p_2)^2,t=-(p_1+p_4)^2,u=-(p_1+p_3)^2,
+    s=-(p_1+p_2)^2,\quad t=-(p_1+p_4)^2, \quad u=-(p_1+p_3)^2,
 \end{equation}
-so that the sum of our three diagrams is then
+so that the sum of our three diagrams (restoring prefactors) is then
 \begin{equation}
     \frac{\lambda^2}{32\pi^2}\int_0^1 dx \set*{ \log \paren{\frac{\Lambda^2}{m^2-x(1-x)s}} 
     + \log \paren{\frac{\Lambda^2} {m^2-x(1-x)t}}

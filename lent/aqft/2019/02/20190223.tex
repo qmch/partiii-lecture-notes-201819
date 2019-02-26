@@ -8,7 +8,7 @@ To renormalize our theory, we will add counterterms of the form
 \end{equation}
 It's this second (gauge invariant) term we'll need in the following calculation. As $d\to 4$ ($\epsilon\to 0$), we have
 \begin{equation}
-    \pi_{\text{1-loop}}(q^2=-\frac{g^2(\mu)}{2\pi^2} \int_0^1 dx\, x(1-x)\paren{\frac{2}{\epsilon}-\gamma +\log \frac{4\pi \mu^2}{\Delta}
+    \pi_{\text{1-loop}}(q^2)=-\frac{g^2(\mu)}{2\pi^2} \int_0^1 dx\, x(1-x)\paren{\frac{2}{\epsilon}-\gamma +\log \frac{4\pi \mu^2}{\Delta}
     } + O(\epsilon)
 \end{equation}
 with $\Delta,\mu$ as before and $\gamma$ the Euler-Mascheroni constant. In the $\overline{\text{MS}}$ term,
@@ -18,22 +18,24 @@ with $\Delta,\mu$ as before and $\gamma$ the Euler-Mascheroni constant. In the $
 \end{equation}
 After renormalization, the 1-loop self-energy takes the form
 \begin{equation}
-    \pi_{\text{1-loop}}^{\text{ren}}(q^2)=\frac{g^2(\mu)}{2\pi^2} \int_)^1 dx\, x(1-x) \log \paren{\frac{m^2+x(1-x)q^2}{\mu^2}}.
+    \pi_{\text{1-loop}}^{\text{ren}}(q^2)=\frac{g^2(\mu)}{2\pi^2} \int_0^1 dx\, x(1-x) \log \paren{\frac{m^2+x(1-x)q^2}{\mu^2}}.
 \end{equation}
-Note the branch cut for $m^2=x(1-x)q^2 \leq 0.$ For $x\in [0,1]$ we see that $0\leq x(1-x) \leq 1/4$. In Minkowski signature, $q_0=iE$, the branch cut corresponds to
+Thus we've killed off the $1/\epsilon$ divergence and the constants, and have substituted back in $\Delta = m^2+q^2 x(1-x).$
+Note the branch cut in this integral for $m^2+x(1-x)q^2 \leq 0,$ when the argument of the $\log$ becomes negative or zero. In fact, there's a physical interpretation for this. For $x\in [0,1]$ we see that $0\leq x(1-x) \leq 1/4$. In Minkowski signature, $q_0=iE$, the branch cut therefore corresponds to
 \begin{equation}
-    x(1-x) (E^2-\vec q^2)\geq m^2,
+    m^2 \leq x(1-x) (E^2-\vec q^2) \leq \frac{1}{4} (E^2-\vec q^2)
 \end{equation}
 so the smallest $E$ that satisfies this is simply $E^2=(2m)^2$. This is precisely the minimum energy required to create a real (on-shell) electron-positron pair.
 
 \subsection*{QED $\beta$ function}
+%revisit this
 The simplest way to obtain the beta function for the QED coupling is to rescale the field
 \begin{equation*}
-    A-\mu \to \frac{A_\mu}{g}
+    A_\mu \to \frac{A_\mu}{g}
 \end{equation*}
 so that the action is
 \begin{align}
-    \frac{1}{4g_{\text{eff}}^2} \int d^4x F_{\mu\mu} F^{\mu\nu} &=\frac{1-\pi_{\text{1-loop}}^{\text{ren}}(0)}{4g^2(\mu)} \int d^4x\, F_{\mu\nu} F^{\mu\nu}\\
+    \frac{1}{4g_{\text{eff}}^2} \int d^4x F_{\mu\nu} F^{\mu\nu} &=\frac{1-\pi_{\text{1-loop}}^{\text{ren}}(0)}{4g^2(\mu)} \int d^4x\, F_{\mu\nu} F^{\mu\nu}\\
         &=\frac{1}{4} \bkt{\frac{1}{g^2(\mu)}-\frac{\hbar}{12\pi^2} \log\frac{m^2}{\mu^2}+O(\epsilon)
         }\int d^4x \, F_{\mu\nu}F^{\mu\nu}.
 \end{align}
