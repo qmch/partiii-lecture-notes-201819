@@ -1,0 +1,121 @@
+\subsection*{Renormalization group}
+Let's work with the action
+\begin{equation}
+    S_{\Lambda_0}[\phi]=\int d^dx\bkt{
+        \frac{1}{2} \p_\mu \phi \p^\mu \phi +\sum_i \frac{1}{\Lambda_0^{d_i-d}} g_{i0} O_i(x)
+    },
+\end{equation}
+where we're temporarily disregarding the mass coupling. The partition function $\cZ$ is then
+\begin{equation}
+    \cZ_{\Lambda_0}(g_{i0})=\int^{\Lambda_0} \cD \phi e^{-S_{\Lambda_0}[\phi]}.
+\end{equation}
+That is, we integrate over field configurations such that $|k|\leq \Lambda_0$. We might write the fields in terms of their Fourier transforms, i.e.
+\begin{equation}
+    \phi(x) = \int_{\abs{p}\leq \Lambda_0} \frac{d^dp}{(2\pi)^d} e^{ipx} \tilde \phi(p).
+\end{equation}
+Let us introduce $\Lambda < \Lambda_0$, a lower cutoff, and split the integral as
+\begin{align*}
+    \phi(x) &= \int_{\abs{p}\leq \Lambda} \frac{d^dp}{(2\pi)^d} e^{ipx} \tilde \phi(p) 
+        +\int_{\Lambda < \abs{p}\leq \Lambda_0} \frac{d^dp}{(2\pi)^d} e^{ipx} \tilde \phi(p)\\
+    &= \phi^-(x) + \phi^+(x).
+\end{align*}
+These sets of modes are disjoint, so we can write $\cD\phi = \cD \phi^- \cD \phi^+.$ Integrating over $\phi^+$ gives an effective action
+\begin{equation}
+    S_\Lambda^\text{eff}[\phi] = -\log \int_\Lambda^{\Lambda_0} \cD \phi^+ e^{-S_{\Lambda_0} [\phi^- + \phi^+]}.
+\end{equation}
+This ``RG equation'' tells us how to map $S_{\Lambda_0}\to S_\Lambda^{\text{eff}}$ as UV modes are integrated out, and this process can be iterated.%
+    \footnote{
+        In \emph{Statistical Field Theory}, we also had to rescale the momenta to match the original upper limit $\Lambda_0$ in order to study the ``same'' kind of theory. I'm not sure if we're just not interested in that here because we want an effective action, or if there's something else going on.
+    }
+We therefore write
+\begin{equation}
+    S_{\Lambda_0}[\phi^- + \phi^+] =S^0 [\phi^-]+S^0[\phi^+] + S_{\Lambda_0}^{\text{int}} [\phi^-,\phi^+]
+\end{equation}
+with free actions 
+\begin{equation}
+    S^0[\phi]=\int d^dx \,\frac{1}{2} \bkt{(\p \phi)^2 +m^2 \phi^2}.
+\end{equation}
+Note that since $\phi^-,\phi^+$ have disjoint support, there are no mixed $\phi^-\phi^+$ terms. Equivalently the Fourier transform of such a term would be $\tilde \phi^-(k) \tilde \phi^+(k')\delta(k+k')$, and since these modes are in different regions of momentum space, they will not mix. Note this will be different for higher-order couplings.
+
+Performing our integration over UV modes, we get some effective interactions
+\begin{equation}
+    S_\Lambda^{\text{int}}[\phi^-] = -\log \int \cD \phi^+\,\exp \bkt{-S^0[\phi^+]-S_{\Lambda_0}^\text{int} [\phi^-,\phi^+]}.
+\end{equation}
+
+\subsection*{Running couplings}
+Remember, our basic principle is that the physics at low energies must be independent of the cutoffs $\Lambda,\Lambda_0$. Therefore
+\begin{equation}
+    \int^\Lambda \cD \phi \,e^{-S_\Lambda^\text{eff}[\phi]}=
+        \int^{\Lambda_0} \cD \phi \, e^{-S_{\Lambda_0}[\phi]}.
+\end{equation}
+It follows that after integration, we will have some new, modified couplings which depend on $\Lambda$. Thus
+\begin{equation}
+    \cZ_\Lambda(g_i(\Lambda))=\cZ_{\Lambda_0}(g_{i0};\Lambda_0).
+\end{equation}
+But since the RHS is independent of $\Lambda$, so is the LHS. This places some constraints on the ``flow'' of the coupling constants, which we call the \term{Callan-Symantzik equation}. It takes the form
+\begin{equation}
+    0=\Lambda \frac{d\cZ_\Lambda(g)}{d\Lambda} =\paren{\Lambda\P{}{\Lambda}|_{g_i}+\Lambda \P{g_i}{\Lambda}\P{}{g_i}|_\Lambda
+    } \cZ_\Lambda(g).
+\end{equation}
+Now, $S_{\Lambda_0}$ is completely general, so $S_\Lambda^{\text{eff}}$ should have the same form. We write
+\begin{equation}
+    S_\Lambda^\text{eff}[\phi] = \int d^dx \bkt{
+        \frac{Z_\Lambda}{2}(\p \phi)^2+\sum_i \frac{Z_n^{n_i/2}}{\Lambda^{d_i-d}} g_i(\Lambda)O_i(x)
+    }.
+\end{equation}
+in terms of some new coefficients $g_i$.
+Integrating may give a $Z_\Lambda \neq 1$ factor. LSZ therefore implies we want a canonically normalized kinetic term. Let $\phi^r=Z_\Lambda^{1/2}\phi$ be the renormalized field. The remaining variations describing the $\Lambda$ dependence are given by the $g_i(\Lambda)$.
+
+We can associate some $\beta$-functions to this theory by
+\begin{equation}
+    \beta_i^\text{cl}=(d_i-d),\quad \beta_i^\text{q}=\Lambda \P{g_i}{\Lambda},
+\end{equation}
+where the superscripts indicate classical and quantum contributions. For example, $\phi^4$ theory in 4 dimensions with a cutoff $\Lambda_0$ has an action of the form
+\begin{equation}
+    S+S^{CT}=\int d^4x \bkt{\frac{1}{2}(1+\delta Z)(\p\phi)^2 +\frac{1}{2}(m^2+\delta m^2) \phi^2 +\frac{1}{4!}(\lambda+\delta \lambda) \phi^4
+    }.
+\end{equation}
+At one loop, we used the on-shell scheme to fx $\delta Z =0$ and choose $\delta m^2$ such that $m^2=m^2_{\text{phys}}$. In the language of the renormalization group, we can write
+\begin{equation}
+    g_2(\Lambda_0)=\frac{1}{\Lambda_0^2}(m^2+\delta m^2)=g_{20} -\frac{\lambda}{32 \pi^2} \paren{1-g_{20} \log(1+\frac{1}{g_{20}}
+    },
+\end{equation}
+which is $\Lambda$-independent. Similarly,
+\begin{equation}
+    g_4(\Lambda_0)=\lambda +\delta \lambda =g_{40} +\frac{3g_{40}^2}{32\pi} \paren{\log\frac{
+    \Lambda_0^2}{m^2}-1
+    }.
+\end{equation}
+With our rescaled field $\phi^r =Z_\Lambda^{1/2} \phi$ (here $Z_\Lambda=1$, but not generally) we set
+\begin{align*}
+    g_\text{eff} &= \left.\frac{\delta^{4}\Gamma[\tilde \phi^r]}{\delta \tilde \phi^r (p_1) \delta \phi^r (p_2) \delta \tilde \phi^r (p_3) \delta \tilde \phi^r(p_4)}\right|_{p_i=0},
+\end{align*}
+which we can write as our sum of one-loop diagrams as before, but with a factor of $Z_\Lambda^{-2}$ to account for that these variations are taken with respect to the renormalized field. We find that
+\begin{equation}
+    \frac{dg_\text{eff}}{d\Lambda}=0.
+\end{equation}
+
+\subsection*{Anomalous dimensions}
+in general $\delta Z \neq 0$, which means that $Z_\Lambda =1 +\delta Z \neq 1$ and therefore the kinetic term will transform nontrivially under renormalization. The anomalous dimension of the field $\phi$ is given by
+\begin{equation}
+    \gamma_\phi \equiv -\frac{\Lambda}{2} \P{}{\Lambda} \log Z_\Lambda,
+\end{equation}
+which is a ``$\beta$-function'' for the kinetic term. In our last example this was identically zero.
+
+For instance, look at the $n$-point correlation function
+\begin{equation}
+    \avg{\phi(x_1)\ldots \phi(x_n)}=Z_\Lambda^{-n/2} \avg{\phi^r(x_1)\ldots \phi^r(x_n)}.
+\end{equation}
+We focus on the 1PI $n$-point functions calculated by variations with respect to $\phi^r$:
+\begin{equation}
+    \Gamma_\Lambda^{(n)}(x_1,\ldots,x_n; g_i(\Lambda)) = \frac{\delta^n \Gamma}{\delta \phi^r(x_1)\ldots \delta \phi^r(x_n)}.
+\end{equation}
+The fact that our predictions must be independent of $\Lambda$ tell us that we get the same expectation values for $s\lambda$ as for $\Lambda$, with $0<s <1$. Thus
+\begin{equation}
+    Z_{s\Lambda}^{-n/2}\Gamma_{s\Lambda}^{(n)}(x_1,\ldots, x_n; g(s\Lambda)) = Z_\Lambda^{-n/2} \Gamma_\Lambda^{(n)}(x_1,\ldots,x_n; g(\Lambda)).
+\end{equation}
+Under an infinitesimal $\delta s=1-s$, we get
+\begin{equation}
+    0=\Lambda \frac{d}{d\Lambda} \Gamma_\Lambda^{(n)}(x_1,\ldots,x_n; g(\Lambda))=\paren{\Lambda\P{}{\Lambda}+\beta_i \P{}{g_i}+n\gamma_\phi}\Gamma_\Lambda^{(n)}(x_1,\ldots,x_n; g_i(\Lambda))
+\end{equation}
+where $\beta^i=\Lambda \P{g_i}{\Lambda}$ is the quantum $\beta$-function. This is called the generalized Callan-Symanzik equation.
