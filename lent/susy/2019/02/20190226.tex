@@ -1,0 +1,127 @@
+\subsection*{Superspace in $d=2$}
+Let $\RR^{2/4}$ denote the superspace with coordinates $(x^0, x^1; \theta^+,\theta^-,\bar \theta^+,\bar\theta^-)$. Under an $SO(1,1)$ transformation, the bosonic coordiantes transform as
+\begin{equation}
+    \begin{pmatrix}
+    x^0 \\ x^1
+    \end{pmatrix}
+    \mapsto
+    \begin{pmatrix}
+    \cosh\gamma & \sinh\gamma\\
+    \sinh\gamma & \cosh\gamma
+    \end{pmatrix}
+    \begin{pmatrix}
+    x^0 \\ x^1
+    \end{pmatrix},
+\end{equation}
+whereas the fermionic coordinates transform as spinors,
+\begin{gather}
+    \theta^\pm \mapsto e^{\pm \gamma/2}\theta^\pm\\
+    \bar \theta^\pm \mapsto e^{\pm \gamma/2}\bar \theta^\pm.
+\end{gather}
+
+We therefore introduce fermionic derviatives 
+\begin{gather}
+    \mathcal{Q}_\pm =\P{}{\theta^\pm}+i\bar \theta^\pm \P{}{x^\pm}\\
+    \bar {\mathcal{Q}}_\pm =-\P{}{\bar \theta^\pm}-i \theta^\pm \P{}{x^\pm}
+\end{gather} 
+where $\p_\pm = \P{}{x^\pm}=\frac{1}{2} \paren{\P{}{x^0}\pm \P{}{x^1}}$,
+
+These derivatives obey the anticommutation relations $\set{\mathcal{Q}_\pm,\bar {\mathcal{Q}}_\pm}=-2i \p_\pm,$ so they represent our supersymmetry algebra on $\RR^{2/4}$.
+
+The SUSY transformations act geometrically on $\RR^{2/4},$ being generaed by 
+\begin{equation}
+    \delta = \epsilon_+ \cQ_- -\epsilon_- \cQ_+ -\bar \epsilon_+ \bar \cQ_- + \bar \epsilon_- \bar\cQ_+,
+\end{equation}
+where we note that the parameters $\epsilon_\pm,\bar \epsilon_\pm$ must themselves be spinors in order for $\Phi\to \Phi+\delta \Phi$.
+\begin{defn}
+    A \term{superfield} $F$ is simply a function on $\RR^{2/4}$.
+\end{defn}
+A generic superfield has an expansion
+\begin{equation}\label{genericsuperfield}
+    F(x\pm, \theta^\pm, \bar \theta^\pm)=f_0(x^\pm)+\theta^+f_+ (x^\pm)+ \theta^- f_-(x^\pm)+\bar \theta^+ g_+(x^\pm) + \bar \theta^- g_-(x^\pm) +\ldots + \theta^+ \bar \theta^+ \theta^- \bar\theta^- D(x^\pm).
+\end{equation}
+This exapansion has $2^4=16$ components altogether (since each fermionic variable can either be there or not there).
+
+Notice that under a SUSY transform $F\mapsto F+\delta F,$ the highest component field $D(x^\pm)$ can change at most by bosonic derivatives. We can see this by looking at the forms of the fermionic derivatives-- since this is the coefficient of all the $\theta$s and $\bar \theta$s, there are no higher terms to bring down. The component for $\theta^+\bar \theta^+ \theta^-$ could come up under $\cQ_\pm$ but only after a $\P{}{x^\pm}$. So indeed $D$ is only changed up to bosonic derivatives.
+
+\subsection*{Chiral superfields} It's often useful to have smaller superfields that are constrained in some way. For this purpose, let us introduce
+\begin{gather}
+    D_\pm = \P{}{\theta^\pm} - i \bar \theta^\pm \p_\pm\\
+    \bar D_\pm = -\P{}{\bar \theta^\pm} +i\theta^\pm \p_\pm.
+\end{gather}
+These are very similar to the $\cQ$s, but they obey slightly different anticommutation relations:
+\begin{equation}
+    \set{D_\pm,\bar D_\pm}=+2i\p_\pm,
+\end{equation}
+with other anticommutators zero. Moreover, it turns out that
+\begin{equation}
+    \set{D,Q}=\set{\bar D,Q}=0
+\end{equation}
+(for any choice of $\pm$ subscripts).
+
+\begin{defn}
+    A \term{chiral superfield} $\Phi$ is a superfield which obeys $\bar D_\pm \Phi=0$.
+\end{defn}
+These $\Phi$ can depend on $(x^\pm,\theta^\pm,\bar \theta)$ only through the combinations $(y^\pm,\theta^\pm)$ where 
+\begin{equation}
+    y^\pm = x^\pm - i \theta^\pm \bar \theta^\pm
+\end{equation}
+since $\bar D_\pm y^\pm = 0, \bar D_\pm y^\mp = 0$.
+
+We can then expand a chiral superfield as
+\begin{equation}
+    \Phi=\phi(y^\pm)+\theta^+ \psi_+ (y^\pm) +\theta^- \psi_- (y^\pm) + \theta^+\theta^- F(y^\pm).
+\end{equation}
+Notice that the product $\Phi_1\Phi_2$ of any two superfields is again chiral, while the conjugate $\bar \Phi$ of a chiral superfield $\Phi$ obeys $D_\pm \bar \Phi=0$ and is called \term{antichiral}.
+
+Under a SUSY transformation $\Phi\mapsto \Phi +\delta \Phi$, but since all $\set{Q,D}=0$, this SUSY transformation itself is chiral,
+\begin{equation}
+    \bar D_\pm(\delta \Phi)= \delta(\bar D_\pm \Phi)=0.
+\end{equation}
+Thus SUSY transforms preserve chirality in this sense. To work out the SUSY transformations on the component fields, first note that
+\begin{equation}
+    \cQ_\pm = \left.\P{}{\theta^\pm}\right|_{x,\bar\theta}+i\bar \theta^\pm \left.\P{}{x^\pm}\right|_{\theta,\bar \theta} =\P{}{\theta^\pm}|_{y,\bar\theta} +\P{y^\pm}{\theta^\pm}|_{x,\bar \theta} \P{}{y^\pm} |_{\theta,\bar \theta}+i\bar \theta^\pm \P{}{y^\pm}|_{\theta,\bar\theta}.
+\end{equation}
+But we see that since $\P{y^\pm}{\theta^\pm}|_{x,\bar \theta}=-i\bar \theta^\pm$, these last two terms cancel and so
+\begin{equation}
+    \cQ_\pm =\P{}{\theta^\pm}|_{y,\bar\theta}.
+\end{equation}
+Similarly,
+\begin{equation}
+    \bar \cQ_\pm = -\P{}{\bar \theta^\pm}|_{y,\theta} -2i \theta^\pm \P{}{y^\pm}|_{\theta,\bar\theta}.
+\end{equation}
+Using this, one finds the component transformations
+\begin{gather}
+    \delta \phi = \epsilon_+ \psi_- - \epsilon_- \psi_+\\
+    \delta \psi_\pm = \epsilon_\pm F \pm \bar \epsilon_\mp \p_\pm \phi\\
+    \delta F = -2i\bar \epsilon \p_- \psi_+ - 2i \bar \epsilon_- \p_+ \psi_-.
+\end{gather}
+Thus the bosons are picking up some fermionic contributions, while the fermions pick up derivatives of the bosonic fields. There's also a bit of this mysterious $F$ function which is influenced by derivatives of the fermions. Note that the SUSY transform of the $\theta^2$ term $F$ is a bosonic total derivative, in direct analogy to the $D$ component of the superfield in \ref{genericsuperfield}.
+
+\subsection*{Supersymmetric invariant actions}
+The fact that the $D$-term of a generic superfield and $F$ term of a chiral superfield vary only by total derivatives allows us to readily construct SUSY-invariant actions. Let $K(F_i,\Phi^a,\bar \Phi^a)$ be any real, smooth functions of real superfields $F_i(x^\pm,\theta^\pm, \bar \theta^\pm)$ and chiral superfields $\Phi^a(x^\pm - i \theta^\pm \bar \theta^\pm,\theta^\pm)$. Then
+\begin{equation*}
+    \int_{\RR^{2/4}} K(F_i, \Phi^a, \bar \Phi^a)\, d^2x d^2 \theta d^2\bar\theta
+\end{equation*}
+is SUSY invariant provided the component fields behave appropriately as $|x^\pm|\to \infty$. Integrating with respect to $\theta$s and $\bar \theta$s picks out the highest order term (the $F$s and $D$s), and we know that these transform at most up to a total derivative in the $x$s, so will be invariant after integrating with respect to $d^2x$. This $K$ field is called the \term{K\"ahler potential}.
+
+Likewise, suppose $W(\Phi^a)$ (called the \term{superpotential}) is a holomorphic function of $\Phi^a$. Then
+\begin{equation}
+    \bar D_\pm W(\Phi^a)=0
+\end{equation}
+and so
+\begin{equation}
+    \int_{\RR^{2/4}}W(\Phi^a)\,d^2 y d^2\theta
+\end{equation}
+is again SUSY-invariant.
+
+\subsection*{The Wess-Zumino model in $d=1+1$}
+Let's consider the simplest case of a single chiral superfield $\Phi$ and its conjugate $\bar \Phi$. We take
+\begin{equation}
+    K(\Phi,\Phi)=\bar \Phi \Phi
+\end{equation}
+and keep the superpotential $W(\Phi)$ generic. Our action is then
+\begin{equation}
+    S[\Phi,\bar \Phi]=\underbrace{\int_{\RR^{2/4}} \bar \Phi \Phi \, d^2x d^4 \theta}_{\text{kinetic terms}} + \bkt{\underbrace{\int_{\RR^{2/2}} W(\Phi)d^2y d^2\theta +\text{c.c.}}_{\text{potential terms}} },
+\end{equation}
+and this action is guaranteed to be supersymmetric (c.c. indicates complex conjugate of the superpotential), given appropriate asymptotics.
