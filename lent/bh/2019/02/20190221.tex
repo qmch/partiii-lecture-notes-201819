@@ -58,7 +58,7 @@ This follows since the NEC fixes the sign of the the $R_{ab}$ term in Raychaudhu
 These give us a sense of focal points, so they are natural to think about in the context of singularity theorems.
 \begin{thm}\label{conjugatepoints}
     Consider a null geodesic congruence which includes all of the null geodesics through $p$.%
-        \footnote{This is not quite a congruence as we've defined it before. It is necessarily singular, and we won't worry too much about the details. Just take the set of all null geodesics through $p$, possibly with some different velocities as they pass through $p.$}
+        \footnote{This is not quite a congruence as we've defined it before. It is necessarily singular at $p$ since $p$ lies on more than one geodesic-- by definition, it lies on all of them! However, we won't worry too much about the details. Just take the set of all null geodesics through $p$ and work from there.}
     If $\theta \to -\infty$ at a point $q$ on a null geodesic $\gamma$ through $p$, then $q$ is conjugate to $p$ along $\gamma$.
 \end{thm}
 \begin{thm}
@@ -71,10 +71,16 @@ These give us a sense of focal points, so they are natural to think about in the
     \begin{equation*}
         ds^2=-dt^2+d\Omega_2^2.
     \end{equation*}
-    Let us observe that null geodesics emitted from the south pole at time $t=0$ all reconverge at the north pole at time $t=\pi$.
-    However, if we now look at a point $q$ where we would have to travel farther than $R$ along a great circle, then by deforming the great circle into a shorter path, one can travel from $p$ to $q$ with a velocity less than the speed of light, then there exists a timelike curve from $p$ to $q.$
+    Let us observe that null geodesics emitted from the south pole at time $t=0$ all reconverge at the north pole at time $t=\pi$. 
+    However, if we now look at a point $q$ where we would have to travel farther than $R$ along a great circle, then by deforming the great circle into a shorter path, one can travel from $p$ to $q$ with a velocity less than the speed of light. Thus there exists a timelike curve from $p$ to $q.$%
+        \footnote{If we like, we can say that timelike geodesics therefore only have the property of extremizing proper time until they hit their first focal (conjugate) point. As \href{https://arxiv.org/pdf/1901.03928.pdf}{Witten} writes, ``A geodesic that is continued past a focal point and thus has gone more than half way around the sphere is no longer length minimizing, as it can be `slipped off' the sphere.''}
 \end{exm}
-%see Witten for diagram
+\begin{figure}
+    \centering
+    \includegraphics{2019/02/20190221_greatcirclegeodesics.png}
+    \caption{Left: a 2-sphere with a geodesic that travels from the south pole to the north pole (marked by an $X$). Right: a 2-sphere with a geodesic (red) that continues through the north pole. As this geodesic has passed through a focal point, it no longer minimizes the distance between its endpoints, and can be deformed into the geodesic in blue which is of shorter length.}
+    \label{fig:greatcirclegeodesics}
+\end{figure}
 
 Consider now a 2D spacelike surface $S$. We have seen that (in $3+1$ dimensions) we can introduce two future-directed null vector fields (ingoing/outgoing trajectories, if you like) $U^a_1$ and $U^a_2$ on $S$ that are normal to $S$. Consider the null geodesics which have one of these vectors as their tangent on $S$. A point is \term{conjugate} to a surface if there is a Jacobi field which is tangent on the surface and vanishes at that point. The analogue of Thm. \ref{conjugatepoints} is then as follows.
 
@@ -85,6 +91,12 @@ Consider now a 2D spacelike surface $S$. We have seen that (in $3+1$ dimensions)
 \begin{defn}
     Let $(\cM,g)$ be a time-orientable spacetime $U\subset{ \cM}.$ The \term{chronological future/past} of $U$, denoted $I^\pm(U)$, is the set of points of $\cM$ which can be reached by a future-/past-directed timelike curve starting on $U$ (not including $U$).
 \end{defn}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{2019/02/20190221_chronofuture.png}
+    \caption{The chronological future $I^+$ and the causal future $J^+$ in Minkowski space. Notice that the chronological future $I^+(p)$ is strictly the interior of the light cone of the point $p$ and does not include $p$ itself, whereas the causal future includes the light cone and $p$ itself.}
+    \label{fig:chronofuture}
+\end{figure}
 \begin{defn}
     The \term{causal future/past} of $U$, denoted $J^\pm(U)$, is the union of $U$ with the set of points of $\cM$ that can be reached by a future-/past-directed \emph{causal} curve starting on $U$.
 \end{defn}

@@ -1,0 +1,110 @@
+Last time, we saw that under a conformal compactification, we could bring infinity into a finite distance and draw the Penrose diagram to study its causal stucture.
+
+We could study perturbations to the metric itself (i.e. the graviton), but we'll do something more straightforward-- a massless scalar field. Take the massless Klein-Gordon equation:
+\begin{equation}
+    \nabla^a \nabla_a \psi = 0.
+\end{equation}
+Suppose we study spherically symmetric solutions, $\psi(t,r)$. The most general solution is
+\begin{equation}
+    \psi = \frac{1}{r}[f(t-r)+g(t+r)].
+\end{equation}
+It's easy to check this-- if $\psi=\frac{\Pi}{r}$ for some other field, then $\Pi$ satisfies a regular wave equation which has left- and right-moving modes. Now, regularity at $r=0$  demands that
+\begin{equation}
+    \psi(t,r)=\frac{1}{r} \bkt{f(u)-f(v)}=\frac{1}{r} \bkt{F(p)-F(q)},
+\end{equation}
+where $F(x):=f(\tan x)$. Let $F_0(q)$ denote the limiting value of $r\psi$ on $\mathcal{I}^-$, at $p=-\pi/2$. Thus
+\begin{equation}
+    F(-\pi/2)-F(q)=F_0(q).
+\end{equation}
+But this is valid for any $q$, so it is valid for any $p$. We conclude that
+\begin{equation}
+    \psi(t,r)=\frac{1}{r} \bkt{F_0(p)-F_0(q)}.
+\end{equation}
+Thus it suffices to specify initial data on $\mathcal{I}^-$, past null infinity.
+
+\subsection*{Penrose diagram of Kruskal spacetime}
+It's a bit fiddly to explicitly construct the Penrose diagram for the Kruskal spacetime, so instead we'll use our knowledge of the asymptotics to draw the diagram. Take the Kruskal diagram, and notice that regions I and IV are asymptotically flat, so must look like Minkowski. Null rays already travel at 45 degrees, so this is nice. Finally, we can straighten out the singularity by some choice of $\Omega$ to get the Penrose diagram for the Schwarzschild black hole in asymptotically flat space.
+%diagram
+%Do the de Sitter at home. There will be a surprise. Don't tell anyone I gave you that as homework.
+It's pretty straightforward to see from the lines of constant $r$ that $i^+$ is a singular point since it intersects $r=0$, which is singular. But it's also true (though much harder to prove) that spacelike null infinity $i^0$ is also singular.
+
+We can also draw the Penrose diagram for spherical collapse. The surface of the star follows a timelike geodesic, collapsing to $r=0$. When it hits $r=0,$ we get a singularity, and there's also some horizon cutting off the black hole region.
+
+Now, we'd like to discuss asymptotic flatness, but timelike and spacelike infinity are both singular. What's left? Null infinity, $\mathcal{I}^\pm$.
+%Normally here I would start by saying ``Recall the definition of manifold with boundary!'' But I can't do that.
+
+\subsection*{Asymptotic flatness}
+\begin{defn}
+    A \term{manifold-with-boundary} is defined in the same way as a manifold, except charts now map $\phi:\cM \to \RR^n/2 = \set{(x^1,\ldots ,x^n); x^1 \leq 0}$.
+    The boundary $\p \cM$ of $\cM$ is defined to be the set of points which have $x^1=0$ in some chart.
+\end{defn}
+\begin{defn}
+    A time-orientable spacetime $(\cM,g)$ is asymptotically flat at null infinity if there exists a spacetime $(\bar \cM,\bar g)$ such that
+    \begin{enumerate}
+        \item $\exists$ a positive function $\Omega$ defined on $\cM$ such that $(\bar \cM,\bar g)$ is an extension of $(\cM,\Omega^2 g)$.
+        \item Within $\cM$, $\cM$ can be extracted to obtain a manifold-with-boundary $\cM \cup \p \cM$.
+        \item $\Omega$ can be extended to a function on $\bar \cM$ such that $\Omega=0$ and $d\Omega \neq 0$ on $\p\cM$.
+        \item The boundary $\p \cM$ is a disjoint union of two components of $\mathcal{I}^+, \mathcal{I}^-$, each diffeomorphic to $\RR\times S^2$.
+        \item No past- (future-)directed causal curve starting in $\cM$ intersects $I^+(\mathcal{I}^-)$.
+        \item $\mathcal{I}^\pm$ are `complete.'
+    \end{enumerate}
+\end{defn}
+To recap, conditions a-c are conditions on how to choose $\Omega$, while the other conditions describe the spacetime, and we haven't actually explained what `complete' means yet.
+
+Now, we've seen that
+\begin{equation}
+    R_{ab}=\bar R_{ab}+2\Omega^{-1} \bar \nabla_a \bar \nabla_b \Omega +\bar g_{ab} \bar g^{cd}\paren{\Omega^{-1} \bar \nabla_c \bar \nabla_d \Omega - 3\frac{\nabla_c \Omega \nabla_d \Omega}{\Omega^2}}.
+\end{equation}
+In pure gravity, we take vacuum solutions of the Einstein equations and hence $R_{ab}=0$. Note barred quantities are taken with respect to $(\cM,\Omega^2 g)$. Multiplying by a single factor of $\Omega$, we get
+\begin{equation}
+    \Omega \bar R_{ab}+2 \bar \nabla_a \bar \nabla_b \Omega +\bar g_{ab} \bar g^{cd}\paren{\bar \nabla_c \bar \nabla_d \Omega - 3\frac{\nabla_c \Omega \nabla_d \Omega}{\Omega}}=0.
+\end{equation}
+Regularity at $\Omega=0$ implies that
+\begin{equation}
+    \bar g^{cd} \bar \nabla_c \Omega \bar \nabla_d \Omega \propto \Omega.
+\end{equation}
+So $d\Omega$ is null when $\Omega=0$ ($\mathcal{I}^+$).
+
+We deduce that $\mathcal{I}^+$ is a null hypersurface. There's still a residual freedom in our choice of $\Omega,$ though-- we can still choose $\Omega'=\omega^2 \Omega$. And this means we can be more clever about our choice of $\Omega.$ Choose $\omega^2$ such that
+\begin{equation}
+    \Omega^{-1}\bar g^{cd} \bar \nabla_c \Omega \bar \nabla_d \Omega =0 \text{ on }\mathcal{I}^+.
+\end{equation}
+That is, $\bar g^{cd} \bar \nabla_c \Omega \bar \nabla_d \Omega$ goes as $\Omega^2$ so that $\Omega^{-1}\bar g^{cd} \bar \nabla_c \Omega \bar \nabla_d \Omega\to 0$ as $\Omega \to 0$.
+
+Using this, we find that
+\begin{equation}
+    \bar \nabla_a \bar \nabla_b \Omega =0 \text{ on }\mathcal{I}^+,
+\end{equation}
+and hence
+\begin{equation}
+    \bar \nabla_a n^b = 0 \text{ on }\mathcal{I}^+,
+\end{equation}
+which tells us that
+\begin{equation}
+    n^a \bar \nabla_a n^b = 0\text{ on }\mathcal{I}^+.
+\end{equation}
+So the geodesics of $n^a$ are null and they foliate $\mathcal{I}^+$. We introduce coordinates near $\mathcal{I}^+$ as follows: if we have some coordinates on $\mathcal{I}^+$, we can follow $n^a$ on $\mathcal{I}^+$ a affine parameter distance $u$ to get $(u,\theta,\phi)$ coordinates, and we follow $\Omega$ off of $\mathcal{I}^+$ to get to points at $(\Omega, u,\theta,\phi)$. But in fact this is nothing more than Gaussian null coordinates, which means we can immediately write down the metric:
+\begin{equation}
+    \bar g_{\Omega=0} 2du d\Omega +d\theta^2 +\sin^2\theta d\phi^2.
+\end{equation}
+For small $\Omega \neq 0$, the metric components will differ from the above by $O(\Omega)$ terms. (This is hard to prove and not particularly illuminating, so we won't do it.)
+
+If we now introduce $r=1/\Omega$, then
+\begin{equation}
+    g= -2du rd + r^2 (d\theta^2+\sin^2\theta d\phi^2)+\ldots
+\end{equation}
+where $\ldots$ indicates corrections to higher order in $\Omega$. The completeness condition on $\mathcal{I}^+$ says that $u\in (-\infty,+\infty)$.
+%I want to end this with the definition of a black hole. Because you guys deserve it.
+
+\subsection*{Definition of a black hole}
+\begin{defn}
+    A \term{black hole interior} is the region
+    \begin{equation}
+        B=\cM \setminus [\cM \cap J^-(\mathcal{I}^+)].
+    \end{equation}
+    The black hole \term{future event horizon} is
+    \begin{equation}
+        \cH^+ = \cM \cap \dot J^{-}(\mathcal{I}^+).
+    \end{equation}
+\end{defn}
+That is, take the causal past of future null infinity. Follow the light rays back everywhere you can get on your manifold, and take the complement. What remains is the black hole.

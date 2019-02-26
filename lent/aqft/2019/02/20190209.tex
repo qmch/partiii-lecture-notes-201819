@@ -17,23 +17,26 @@ or equivalently the following geometric series:
 \begin{align*}
     \tilde{\gv \Delta}(p^2) &= 
         \frac{1}{p^2+m^2}+\frac{1}{p^2+m^2} \Pi(p^2) \frac{1}{p^2+m^2} + \frac{1}{p^2+m^2} \Pi(p^2) \frac{1}{p^2+m^2} \Pi(p^2) \frac{1}{p^2+m^2}+\ldots \\
-        &=\frac{1}{p^2+m^2-\Pi(p)^2}
+        &=\frac{1}{p^2+m^2-\Pi(p^2)}
 \end{align*}
 where $\Pi(p^2)$ is called the self-energy. Note that $\Pi$ contributes to the quantum effective action $\Gamma$. Perturbatively, we get contributions from diagrams like the following:
 \begin{center}
     \includegraphics[width=0.75\textwidth]{2019/02/20190209_1pidiagrams.png}
 \end{center}
-Note that dashed lines are omitted from the computation of the 1PI factor $\Pi(p^2)$ since they are external propagators.
+Note that dashed lines are omitted from the computation of the 1PI factor $\Pi(p^2)$ since they are external propagators and already accounted for in our expansion.
 
 One of the simplest diagrams we can draw is the one-loop diagram, and it corresponds to the amplitude
 \begin{equation}
-    -\frac{\lambda}{2}\int^\Lambda \frac{d^4k}{(2\pi)^4} \frac{1}{k^2+m^2}.
+    -\frac{\lambda}{2}\int \frac{d^4k}{(2\pi)^4} \frac{1}{k^2+m^2}.
 \end{equation}
-This is divergent. To see this, let us introduce an ultraviolet (UV) cutoff so that we integrate over only modes with $|k|<\Lambda$. Since the integral depends only on $k^2$, we get
+This is divergent, since the integral goes as $d^4k/k^2$. To see this explicitly, let us introduce an ultraviolet (UV) cutoff $\Lambda$ so that we integrate over only momenta with $|k|<\Lambda$. Since the integral depends only on $k^2$, we can change to spherical coordinates and integrate:
 \begin{equation}
     -\frac{\lambda S_4}{2(2\pi)^4} \int_0^\Lambda \frac{k^3 dk}{k^2+m^2}=-\frac{\lambda S_4 m^2}{4(2\pi)^4} \int_0^{\Lambda^2/m^2}\frac{u du}{1+u} = -\frac{\lambda}{32\pi^2} \bkt{\Lambda^2 - m^2 \log \paren{1+\frac{\Lambda^2}{m^2}}},
 \end{equation}
-where $d^dk= S_d |k|^{d-1} d|k|$ with $S_d=\frac{2\pi^{d/2}}{\Gamma(d/2)}$ and we've made the substitution $u=k^2/m^2$ to perform the integral. Here, $S_4=2\pi^2$. With all these substitutions, we reach an amplitude that diverges as $\Lambda\to\infty$.
+where $d^dk= S_d |k|^{d-1} d|k|$ with $S_d=\frac{2\pi^{d/2}}{\Gamma(d/2)}$ and we've made the substitution $u=k^2/m^2$ to perform the integral.%
+    \footnote{Quick note: that gamma function in the volume of the $d-1$-sphere will be nice in even dimension, and somewhat less nice in odd dimension. Here, we have $d=4$, so that $\Gamma(d/2)=\Gamma(2)=1!=1$, and the numerator is just $2\pi^2$. In odd dimension, we evaluate the gamma function at a half-integer, and its value is given by a weird double factorial: $\Gamma\paren{n+\frac{1}{2}}=\frac{(2n-1)!!}{2^n} \sqrt{\pi},$ where $n!!=(n)(n-2)(n-4)\ldots 3\cdot 1$ for odd $n$.
+    }
+After performing the integral, we arrive at an amplitude that indeed diverges as $\Lambda\to\infty$.
 
 Suppose we allow the coupling to depend on $\Lambda$ by adding ``counterterms'' to the action. That is,
 \begin{equation}
@@ -50,8 +53,8 @@ Note that these correspond to some new vertices and thus new contributions to $\
     \includegraphics[width=0.5\textwidth]{2019/02/20190209_1loopcorrections.png}
 \end{center}
 
-At 1 loop, the 1PI contribtuion becomes
-\begin{equation}
+At 1 loop, the 1PI contribution becomes
+\begin{equation}\label{phi4selfenergy}
     \Pi^{\text{1-loop}}(p^2)=-p^2 \delta Z -\delta m^2 -\frac{\lambda}{32\pi^2}\bkt{\Lambda^2-m^2\log \paren{1+\frac{\Lambda^2}{m^2}}}.
 \end{equation}
 At two loops, the counterterm diagrams
@@ -61,6 +64,8 @@ At two loops, the counterterm diagrams
 must also be included.%
     \footnote{
         Note that all these diagrams visually look like they only have one loop. What's going on? Basically, there's a factor of $\hbar$ that suppresses all of the counterterm couplings. What we're really doing is expanding in powers of $\hbar$ and/or $\lambda$, since it was the four-point $\lambda$ coupling that gave rise to loops even before we introduced our counterterms. Thus the first two diagrams pick up a factor of $\lambda$ from the original action and an $\hbar$ from the counterterm couplings $\delta Z, \delta m^2$. The third diagram corresponds to the $\delta \lambda$ coupling, which is part of the counterterms and so has a factor of $\hbar$ but is also a $\lambda$ correction itself, and so is treated at two loop order.
+        
+        Put more simply (as Skinner says), each counterterm vertex counts as a loop.
     }
 Now we can tune the parameters $\delta Z, \delta m^2, \delta \lambda$ in our counterterms to cancel the divergences. In other words, we \term{renormalize} $\phi,m^2,\lambda$.
 
@@ -69,29 +74,44 @@ The need to ``regulate'' the theory by cancelling divergences does not uniquely 
 
 The on-shell scheme is as follows. We fix $\delta Z, \delta m^2, \delta \lambda$ by requiring that
 \begin{enumerate}
-    \item[1.] $\tilde {\gv \Delta}(p^2)$ has a simple pole at some experimentally observable mass, i.e. $-p^2=m^2_{\text{phys}}$ (in Euclidean signature)
+    \item[1.] $\tilde {\gv \Delta}(p^2)$ has a simple pole at some experimentally observable mass, i.e. $-p^2=m^2_{\text{phys}}$ (in Euclidean signature), and
     \item[2.] The residue of this pole is equal to $1$.
 \end{enumerate}
 Therefore since
 \begin{equation}
     \tilde {\gv \Delta}(p^2)=\frac{1}{p^2+m^2-\Pi(p^2)},
 \end{equation}
-our conditions say that
-\begin{enumerate}
-    \item[1.] $\Pi(-m^2_{\text{phys}})=m^2-m^2_{\text{phys}}$, which is zero if we want the mass in $\cL$ to equal $m_{\text{phys}}$ at this order of counterterm.
-    \item[2.] $\P{\Pi}{p^2}|_{p^2}=-m^2_{\text{phys}}=0$ (by L'H\^opital's rule).
-\end{enumerate}
-These tell us that 
+our first condition says that
+\begin{equation}
+    \Pi(-m^2_{\text{phys}})=m^2-m^2_{\text{phys}},
+\end{equation}
+and $m^2-m^2_{\text{phys}}=0$ if we want the mass in $\cL$ to equal $m_{\text{phys}}$ at this order of counterterm.
+Imposing the second condition tells us that
+\begin{equation}
+    \P{\Pi}{p^2}|_{p^2=-m_{\text{phys}}^2}=0,
+\end{equation}
+by L'H\^opital's rule.%
+    \footnote{
+        This is a little quick. Recall that for a function $f(z)$ with a simple pole at $z_0$, the residue is the value $\lim_{z\to\z_0} f(z)(z-z_0).$ Here, we want $\frac{1}{p^2+m^2+\Pi(p^2)}$ to have unit residue at the pole $p^2=-m_\text{phys}^2$. So the residue is
+        \begin{equation*}
+            \lim_{p^2\to -m_\text{phys}^2} \frac{p^2+m_\text{phys}^2}{p^2+m^2+\Pi(p^2)} = \lim_{p^2\to -m_\text{phys}^2}\frac{1}{1+\P{\Pi}{p^2}}= \frac{1}{1+\left.\P{\Pi}{p^2}\right\rvert_{p^2=-m_\text{phys}^2}}.
+        \end{equation*}
+        Setting this expression equal to $1$ gives us precisely the desired condition,
+        \begin{equation*}
+            \P{\Pi}{p^2}|_{p^2=-m_{\text{phys}}^2}=0.
+        \end{equation*}
+    }
+If we now compare to the expression for the self-energy at one loop, Eqn. \ref{phi4selfenergy}, we see that
 \begin{gather}
     2. \implies \delta Z=0,\\
     1. \implies \delta m^2= -\frac{\lambda}{32\pi^2} \bkt{\Lambda^2-m^2\log \paren{1+\frac{\Lambda^2}{m^2}}}.
 \end{gather}
-Note that $\delta Z=0$ and $\pi(p^2)=0 \forall p^2$ is due to the one-loop diagram not depending on $p^2$. If we instead tried to construct the counterterms to the two-loop diagram we would get $\delta Z\neq 0$ since the integral depends on $p$, i.e. the integral corresponding to
+Note that $\delta Z=0$ and $\Pi(p^2)=0 \,\forall p^2$ is due to the one-loop diagram not depending on $p^2$. If we instead tried to construct the counterterms to the two-loop diagram we would get $\delta Z\neq 0$ since the integral depends on $p$, i.e. the integral corresponding to
 \begin{center}
     \includegraphics[width=0.3\textwidth]{2019/02/20190209_twolooprenorm.png}
 \end{center}
 
-UV divergences are not too hard to spot-- we saw that
+In general, UV divergences are not too hard to spot-- we saw that
 \begin{equation}
     \int^\Lambda \frac{d^4k}{(2\pi)^4} \frac{1}{k^2 +m^2} \sim \Lambda^2,
 \end{equation}

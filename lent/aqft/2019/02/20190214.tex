@@ -1,5 +1,5 @@
 \subsection*{Dimensional regularization (``dim reg'')}
-We would like to understand the behavior of our theory in different numbers of dimensions. Though it may seem like a strange construction, let us work in $d$ dimensions where
+We would like to understand the behavior of our QFT in different dimensions. Though it may seem like a strange construction, let us work in $d$ dimensions where
 \begin{equation}
     d=4-\epsilon\text{, with }0\leq \epsilon < 1.%
         \footnote{Compare the epsilon expansion from David Tong's \emph{Statistical Field Theory} notes.}
@@ -8,10 +8,11 @@ We take the action of $\phi^4$ theory,
 \begin{equation}
     S=\int d^dx \bkt{ \frac{1}{2}(\p \phi)^2 + \frac{1}{2} m^2 \phi^2 + \frac{\lambda}{4!} \phi^4}.
 \end{equation}
-We work in $\hbar=c=1$ units and therefore analyze the mass dimension of the quantities here. Given that the action must be dimensionless, $[S]=0$, we get $[\p]=[m]=[x^{-1}]=1$. From the mass term we have 
+Working in $\hbar=c=1$ units, let's analyze the mass dimension of the different quantities and couplings in this action. Given that the action must be dimensionless, $[S]=0$, we get $[\p]=[m]=[x^{-1}]=1$. Recall that in 4 dimensions, $\lambda$ was a dimensionless coupling and therefore ``marginal.'' From the mass term we have 
 \begin{equation}
     [m^2\phi^2]=2[m]+2[\phi]=d \implies [\phi]\frac{d}{2}-1,
-\end{equation} and our $\lambda$ term now has dimensions given by
+\end{equation} 
+which means our $\lambda$ term now has dimensions given by
 \begin{equation}
     [\lambda \phi^4]=d \implies [\lambda] =4-d=\epsilon.
 \end{equation}
@@ -25,7 +26,7 @@ If we return to our one-loop graph, we see that the self-energy $\Pi^{\text{1-lo
 \end{equation}
 with $S_d$ the surface area of the $d$-sphere. Note that we can actually define the surface area of the unit sphere in $d$ dimensions even when $d$ is not an integer:
 \begin{equation}
-    (\sqrt{\pi})^d = \int \prod_{i=1}^d e^{-x_i^2} dx_i = S_d \int_0^\infty e^{-r^2} r^{d-2}dr =\frac{s_d}{2} \Gamma(d/2).
+    (\sqrt{\pi})^d = \int \prod_{i=1}^d e^{-x_i^2} dx_i = S_d \int_0^\infty e^{-r^2} r^{d-2}dr =\frac{S_d}{2} \Gamma(d/2).
 \end{equation}
 Thus
 \begin{equation}

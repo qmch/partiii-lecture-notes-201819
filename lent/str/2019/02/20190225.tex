@@ -1,0 +1,96 @@
+We're tantalizingly close to actually calculating an observable of our theory (in a formal sense, anyway). But we'll need one more tool.
+
+\subsection*{BRST symmetry}
+As it turns out, there's an additional global symmetry left over even after we do gauge fixing. Recall our path integral,
+\begin{equation}
+    \mathcal{Z} = \frac{1}{\abs{\text{CKG}}}\int_{M_g} d^st \int \cD X \cD b \cD c \, e^{iS[X,b,c]}\prod_{I=1}^s (b|\mu_I) \prod_{i,a} c^a(\hat \sigma_i).
+\end{equation}
+The way to see the residual symmetry is to explicitly reintroduce the path integral over the metric, writing
+\begin{equation}
+    \mathcal{Z} = \frac{1}{\abs{\text{CKG}}}\int_{M_g} d^st \int \cD X \cD b \cD c \cD h \, \delta[h-\hat h] e^{iS[X,b,c]}\prod_{I=1}^s (b|\mu_I) \prod_{i,a} c^a(\hat \sigma_i).
+\end{equation}
+We can write this delta functional as a functional integral over auxiliary fields $B_{ab}$ and add to the action the following:
+\begin{equation}
+    S_{gf}[B,h]=\frac{1}{4\pi} \int_\Sigma d^2 \sigma \sqrt{-h}B^{ab}(\hat h_{ab}-h_{ab}),
+\end{equation}
+which is simply the functional analogue of writing a delta function in terms of a Fourier transform. The full action is now
+\begin{align}
+    S[X,h,b,c,B]={}&-\frac{1}{4\pi \alpha'} \int_\Sigma d^2\sigma \sqrt{-h}h^{ab}\p_a X^\mu \p_b X^\nu \eta_{\mu\nu}+\frac{i}{2\pi}\int_\Sigma d^2\sigma \sqrt{-h}b_{ab} \nabla^a c^b\nonumber\\
+    &+\frac{1}{4\pi}\int_\Sigma d^2\sigma \sqrt{-h} B^{ab}(\hat h_{ab}-h_{ab}).\label{brstaction}
+\end{align}
+So far, this construction seems pretty ad hoc. But there is a rigid symmetry of this action, given by
+\begin{equation}
+    \delta_Q X^\mu(z)=i\epsilon c(z) \p X^\mu(z).
+\end{equation}
+This is just a diffeomorphism with $v(z)=\epsilon c(z)$, where $\epsilon$ is just some constant (Grassmann) parameter. We also need to change the metric:
+\begin{equation}
+    \delta_Q h_{ab}(z) = \epsilon(Pc)_{ab}
+\end{equation}
+and the ghosts:
+\begin{gather}
+    \delta_Q c^a(z) = i\epsilon c^b \p_b c^a\\
+    \delta_Q b_{ab} = i\epsilon B_{ab}.
+\end{gather}
+And our new field is invariant,
+\begin{equation}
+    \delta_Q B_{ab}=0.
+\end{equation}
+
+It seems plausible that the first term in the action \ref{brstaction} will be invariant under this symmetry, as some sort of diffeomorphism. To see that the remaining terms are also invariant, we introduce the ``gauge-fixing fermion.'' The name is historical-- our theory is still bosonic.
+\begin{equation}
+    \Psi[b,h]=-\frac{i}{4\pi}\int_\sigma d^2\sigma\, b^{ab}(\hat h_{ab}-h_{ab}).
+\end{equation}
+This is a Grassmann quantity, and under a BRST transformation, $\Psi$ generates the second and third terms in \ref{brstaction}. That is, we can write the action as
+\begin{equation}
+    S[X,b,c,B,h]=-\frac{1}{4\pi \alpha'} \int_\Sigma d^2\sigma \,\sqrt{-h}h^{ab} \p_a X^\mu \p_b X^\nu \eta_{\mu\nu}+\delta_Q \Psi[b,h].
+\end{equation}
+In fact, one can show by direct calculation that $\delta^2_Q=0$ on any field. We'll try to show it in a better way, though. For the moment assume this holds. Then since the first term of the action is invariant under $\delta_Q$,
+\begin{equation}
+    S_Q X[\ldots]=0+\delta^2_Q \Psi[b,h]=0,
+\end{equation}
+so the entire action will be invariant. We now integrate out the auxiliary field $B_{ab}$. We have now fixed the metric, and the action (with $h_{ab}=\hat h_{ab}$ and $B_{ab}$ integrated out) is invariant under the transformations
+\begin{gather*}
+    \delta_Q X^\mu(z)=i\epsilon c(z) \p X^\mu(z),\\
+    \delta_Q b_{ab}=i\epsilon T_{ab},\\
+    \delta_Q c^a(z) = i\epsilon c^b \p_b c^a,
+\end{gather*}
+where $T_{ab}$ is the total stress tensor $T_X+T_{gh}$. Invariance under this set of variations is known as \term{BRST symmetry}.
+
+\subsection*{BRST cohomology and physical states}
+Let us introduce the BRST charge $Q_B$. We will argue (loosely) that physical states $\ket{\phi}$ are in the kernel of $Q$ as an operator (i.e. $Q_B \ket{\phi}=0$) but not in its image ($\not\exists \ket{\psi}$ such that $\ket{\phi}=Q_B\ket{\psi}$). We call
+\begin{equation}
+    \ker (Q_B)/\text{Im}(Q_B) \simeq \text{Cohom}(Q_B)
+\end{equation}
+the cohomology. Along the way, we'll prove that $\delta_Q$ is nilpotent ($\delta_Q^2=0$).
+
+Why are physical states in the kernel of $Q_B$? It's because any observables of our theory cannot depend on our choice of gauge. Consider the observable
+\begin{equation*}
+    \braket{\phi_f}{\phi_i}=\int \cD \phi\, T(\phi_i \phi_f) e^{iS[\phi]}
+\end{equation*}
+where $\phi_i,\phi_f$ are some initial/final states and $S[\phi]$ is of the form $S_0[\phi]+\delta_Q \Psi=S_0[\phi]+\set{Q_B,\psi}$. $T$ indicates time ordering.
+
+Let us change our gauge choice by changing $\Psi\to \Psi+ \delta \Psi$ ($\delta \Psi$ is not related to our $Q_B$ transformation). Thus
+\begin{equation}
+    \delta\braket{\phi_f}{\phi_i} =\int \cD \phi\, \phi_i \phi_f e^{iS[\phi]+i\set{Q,\delta \psi}}-\int \cD \phi \, \phi_i \phi_f e^{iS[\phi]}.
+\end{equation}
+To leading order, this variation is
+\begin{align*}
+    \delta \braket{\phi_f}{\phi_i} &= \int \cD \phi\, \phi_i \phi_f i\set{Q,\delta\Psi} e^{iS[\phi]}\\
+        &= \bra{\phi_f} \set{Q_B,\delta \Psi}\ket{\phi_i}=0,
+\end{align*}
+where we require that this variation vanishes since our gauge freedom is a redundancy of our theory and cannot affect observables. For this to be true for any $\delta \Psi$, we require that
+\begin{equation}
+    Q_B\ket{\phi}=0,
+\end{equation}
+where going forward we assume that $Q_B=Q_B^\dagger$. Thus $\ket{\phi}\in \ker(Q_B)$.
+
+Next, we argue that $Q_B^2=0$. We want $Q_B$ to be conserved, which means it commutes with the Hamiltonian. Under a change of gauge, $\psi\to \psi+\delta \psi$, we want $Q$ to still be conserved, and we can ensure this by requiring that
+\begin{equation}
+    [Q_B,\delta_Q(\delta \Psi)]=0.
+\end{equation}
+To sum up, $\delta \Psi$ is the change from the gauge transforamtion, $\delta_Q(\delta\Psi)$ the effect on the action, and $[Q_B,\delta_Q (\delta \psi)]$ the requirement that $Q_B$ is still conserved. Thus
+\begin{align*}
+    0 &= [Q_B,\set{Q_B,\delta \Psi}]\\
+        &= -[\delta \Psi,\set{Q_B,Q_B}]-[Q_B,\set{\delta \psi,Q_B}] \implies \set{Q_B,Q_B}=0.
+\end{align*}
+We conclude that $Q_B^2= \frac{1}{2}\set{Q_B,Q_B}=0.$

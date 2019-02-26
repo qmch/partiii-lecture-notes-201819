@@ -6,10 +6,16 @@ Last time, we wrote down a counterterm action to cancel UV divergences at one-lo
 \end{equation*}
 In our on-shell renormalization scheme, we set 
 \begin{gather*}
-    \delta Z=0\\
+    \delta Z=0,\\
     \delta m^2= -\frac{\lambda}{32\pi^2} \bkt{\Lambda^2-m^2\log \paren{1+\frac{\Lambda^2}{m^2}}}.
 \end{gather*}
-To determine $\delta \lambda$, we must look at the $1$-loop level. There are three diagrams (see diagram), which correspond to an amplitude
+To determine $\delta \lambda$, we must look at the $1$-loop level correction to the quartic coupling, $\frac{\lambda}{4!}\phi^4$. Before considering any counterterms, there are three diagrams%
+    \footnote{Diagram credit to \href{http://www.damtp.cam.ac.uk/user/dbs26/AQFT/chap5.pdf}{Skinner}, \textsection 5.1.2.}
+which modify the quartic coupling:
+\begin{center}
+    \includegraphics{2019/02/20190212_skinnerquartic.png}
+\end{center}
+which correspond to an amplitude
 \begin{equation}
     \frac{\lambda^2}{2} \int^\Lambda \frac{d^4k}{(2\pi)^4}\frac{1}{k^2+m^2} \bkt{
         \frac{1}{(p_1+p_2+k)^2 +m^2}
@@ -17,22 +23,44 @@ To determine $\delta \lambda$, we must look at the $1$-loop level. There are thr
         +\frac{1}{(p_1+p_3+k)^2+m^2}
     }.
 \end{equation}
-We see that this integral goes as $d^4k/k^4$, so we expect a $\log\Lambda$ divergence. The large $k$ behavior (where we care about this divergence) will look like
+The overall factor of $1/2$ is a symmetry factor since the two internal lines are identical and can be exchanged, and the propagators can be read off by conservation of momentum at each vertex (taking all external momenta to be flowing in). We see that this integral goes as $d^4k/k^4$, so we expect a $\log\Lambda$ divergence. More precisely, the large $k$ behavior (where we care about this divergence) will look like%
+    \footnote{This integral isn't totally immediate. To evaluate this, rewrite $k^3 dk= \frac{1}{2}k^2 d(k^2)$. Next, divide through in the numerator and denominator by $m^4$ to get
+    \begin{equation*}
+        \frac{1}{2}\int_0^\Lambda \frac{(k^2/m^2) d(k^2/m^2)}{(k^2/m^2) +1)^2}=\frac{1}{2}\int_0^{\Lambda^2/m^2} \frac{u\,du}{(u+1)^2}.
+    \end{equation*}
+    Finally, to evaluate the $u$ integral, just integrate by parts. Some similar integrals like $\int \frac{u\, du}{1+u}$ are amenable to a simple rewriting as $\frac{u}{1+u}=1-\frac{1}{1+u}$, but in general you'll want to integrate by parts:
+    \begin{equation*}
+        \int_0^{\Lambda^2/m^2} u\frac{du}{(1+u)^2}= -\left.\frac{u}{1+u}\right\rvert_0^{\Lambda^2/m^2} -\int \paren{-\frac{1}{1+u}}du=-\left.\frac{u}{1+u}\right\rvert_0^{\Lambda^2/m^2} +\left.\log(1+u)\right\rvert_0^{\Lambda^2/m^2}=\log\paren{1+\frac{\Lambda^2}{m^2}}-\frac{\Lambda^2}{\Lambda^2+m^2}.
+    \end{equation*}
+    
+    }
 \begin{align}
     \frac{3\lambda^2}{2} \int^\Lambda \frac{d^4k}{(2\pi)^4}\frac{1}{(k^2+m^2)^2} &= \frac{3\lambda^2}{16\pi^3} \int_0^\Lambda \frac{k^3 dk}{(k^2+m^2)^2}\\
+    &= \frac{3\lambda^2}{32\pi^2} \int_0^{\Lambda^2/m^2} \frac{u\,du}{(1+u)^2}\\
     &= \frac{3\lambda^2}{32\pi^2} \bkt{
-        \log(1+\frac{\Lambda^2}{m^2})-\frac{\Lambda^2}{\Lambda^2+m^2}
+        \log\paren{1+\frac{\Lambda^2}{m^2}}-\frac{\Lambda^2}{\Lambda^2+m^2}\label{quarticdivergence}
     }.
 \end{align}
+This value is the shift in the $\lambda$ coupling before we introduce the $\delta \lambda$ counterterm.
 If we then choose
 \begin{equation}
     \delta \lambda =\frac{3\lambda^2}{32\pi^2} \bkt{\log \frac{\Lambda^2}{m^2}-1},
 \end{equation}
 we can then produce an effective coupling of 
 \begin{equation}
-    \lambda_{eff}=\lambda -\frac{3\lambda^2}{32\pi^2} \bkt{\log \paren{1+\frac{m^2}{\Lambda^2}}+\frac{m^2}{m^2+\Lambda^2}},
+    \lambda_{\text{eff}}=\lambda -\frac{3\lambda^2}{32\pi^2} \bkt{\log \paren{1+\frac{m^2}{\Lambda^2}}+\frac{m^2}{m^2+\Lambda^2}},
 \end{equation}
-which is finite as $\Lambda\to\infty$.
+which is finite as $\Lambda\to\infty$.%
+    \footnote{
+        This is just $\lambda$ plus the one-loop correction we computed to be \ref{quarticdivergence} plus our choice of $\delta \lambda$ (which is itself treated as a one-loop correction). In fact, we've neglected an overall minus sign in computing the one-loop correction. We should add a factor of $-i$ for the loop, and get rid of the $i$ as part of the overall momentum-conserving delta function which we've already dropped. Thus
+        \begin{align*}
+            \lambda_\text{eff}&=\lambda -\frac{3\lambda^2}{32\pi^2} \bkt{
+                \log\paren{1+\frac{\Lambda^2}{m^2}}-\frac{\Lambda^2}{\Lambda^2+m^2}
+            }
+            +\frac{3\lambda^2}{32\pi^2} \bkt{\log \frac{\Lambda^2}{m^2}-1}\\
+            &= \lambda -\frac{3\lambda^2}{32\pi^2} \bkt{\log \paren{1+\frac{m^2}{\Lambda^2}}+\frac{m^2}{m^2+\Lambda^2}}.
+        \end{align*}
+    }
 
 For this next discussion, we'll need a trick due to Feynman:
 \begin{equation}
