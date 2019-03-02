@@ -1,0 +1,56 @@
+Admin note: Example Sheet 3 is online, albeit with just three questions for now.
+
+Let's finish up our discussion of RG today. Near a fixed point, we can linearize the RG equations. Let
+\begin{equation}
+    \delta g_j = g_j - g_j^*
+\end{equation}
+so that
+\begin{equation}
+    \Lambda \left.\P{g_i}{\Lambda}\right|_{g_j^*+\delta g_j} = B_{ij} \delta g_j + O(\delta g^2).
+\end{equation}
+Then this matrix $B_{ij}$ has some eigenvectors $\sigma_i$, which are $\Lambda$-dependent vectors in coupling constant space. Its eigenvalues are $\Delta_i-d$ with $\Delta_i={}$the scaling dimension of $\sigma_i.$
+
+For instance, in the simplest case, the coupling constants all decouple and $B_{ij}$ is just diagonal. The $\Lambda$ dependence of $\sigma_i$ is then obvious. More generally, the eigenvectors $\sigma_i$ represent linear combinations of some operators $O_j(x)$ in the action, i.e.
+\begin{equation}
+    \Lambda \P{\sigma_i}{\Lambda}=(\Delta_i -d) \sigma_i 
+    \implies \sigma_i(\Lambda) = \paren{\frac{\Lambda}{\Lambda_0}}^{\Delta_i-d} \sigma_i(\Lambda_0),
+\end{equation}
+for an overall cutoff $\Lambda_0$. There are some cases to consider here:
+\begin{itemize}
+    \item $\Delta_i > d \implies \sigma_i(\Lambda) < \sigma_i (\Lambda_0)$, so we flow back to the fixed point (an \term{irrelevant} direction in coupling constant space)
+    \item $\Delta_i <d \implies \sigma_i(\Lambda) > \sigma_i (\Lambda_0)$, so we flow away from the fixed point (a \term{relevant} direction)
+    \item $\Delta_i=d\implies$ the coupling is \term{marginal}, i.e. we can't tell (to this order) which way the coupling will flow.
+\end{itemize}
+The subspace of irrelevant couplings is called the \term{critical surface} $C$. Strictly, it is infinite-dimensional.%
+    \footnote{See also Skinner's \href{http://www.damtp.cam.ac.uk/user/dbs26/AQFT/Wilsonchap.pdf}{nice diagram} on page 24 of the PDF. Or David Tong's for that matter.}
+However, the codimension (i.e. the dimension of the perpendicular space) of $C$ is finite and represents relevant directions. There is also a special trajectory off the critical surface, known as the ``renormalized trajectory'' (RT).
+
+\subsection*{Continuum limit}
+We used the RG to give us an effective action,
+\begin{equation}
+    S_\Lambda^\text{eff}[\phi^-]=\log \int_\Lambda^{\Lambda_0} \cD \phi^+ \exp\paren{- S_{\Lambda_0}[\phi^- + \phi^+]},
+\end{equation}
+which gave $\Lambda$-independent physics. What if we take $\Lambda_0\to \infty$ (the continuum limit)? This is of course equivalent to taking a lattice spacing to zero in our theory.
+
+Suppose we start at some point in theory space with a set of initial coupling constants $\set{g_{i0}}$ and a cutoff $\Lambda_0$. Now we flow to a new set of couplings $\set{g_i^\text{ref}}.$ The distance we move along our trajectory in RG space then depends on the ratio $\mu/\Lambda_0$, where $\mu$ is the scale at which $g_i(\mu)=g_i^\text{ref}.$
+
+Keeping $g_{i0}$ fixed but increasing $\Lambda_0$, we see that $g_i(\Lambda)$ is driven towards the fixed point in irrelevant directions but away from the fixed point in relevant directions. If we have only irrelevant couplings, i.e. if $g_{i0}$ lies on $C$, then in the $\Lambda_0 \to \infty$ limit we flow into the fixed point. That is, $\lim_{\Lambda_0\to \infty} S_\Lambda^\text{eff}[\phi^-]$ exists and corresponds to a scale-invariant theory with couplings $g_i^*$.%
+    \footnote{In lecture, it was stated that scale invariance implies this is a CFT. This is not generally true, or at least has not been proven. Polchinski completed a proof by Zamolodchikov that this holds in 2 dimensions but it's an open question for higher dimensions.}
+
+Now let us consider the continuum limit with relevant couplings (e.g. mass coupling, Yang-Mills coupling in 4D). Let $g_i^\text{ref}$ be a point in coupling space ``near'' $g_i^*$. Let $\mu$ be the scale at which, for a given $\Lambda_0$, $g_i(\mu)=g_i^\text{ref}$. If we had started with some cutoff $\Lambda'=b\Lambda_0$ ($b>1$) then we would have had to run to a scale $\mu'=b\mu$, i.e.
+\begin{equation}
+    \frac{\mu'}{\Lambda'}=\frac{\mu}{\Lambda_0}\implies \mu=\Lambda_0 f(g_{i0}).
+\end{equation}
+But we want $\mu$ finite, so we must change the initial action.
+
+\subsection*{Counterterms, revisited}
+We can change the initial action by adding counterterms:
+\begin{equation}
+    S_{\Lambda_0}[\phi] = S_{\Lambda_0}[\phi] +S^{CT}[\phi,\Lambda_0].
+\end{equation}
+This modifies the couplings as $g_{i0}\mapsto \tilde g_{i0}$ so that the trajectory under RG flow is closer to $C$ and the renormalization trajectory from the fixed point. Since the ``flow'' is ``slower'' nearer to the fixed point, the ratio of scales $\tilde \mu/\tilde \Lambda_0$ can be made smaller than the original $\mu/\Lambda_0$.
+
+Note the limit is taken after integrating out the high-momentum modes $(\Lambda,\Lambda_0)$, i.e. $\lim_{\Lambda_0\to\infty} S_\Lambda^\text{eff}[\phi]$.
+
+Note also that if the irrelevant operators are important for describing some physics, e.g. the 4-fermion operators describing low-energy $\beta$ decay in the theory of the weak interaction, we cannot take the continuum limit. Such couplings will be suppressed under RG flow, so there is no way to keep these couplings nonzero as $\Lambda_0\to \infty$. The theory is said to be nonrenormalizable.
+This usually indicates something new is going on-- in the case of the weak interaction, this was the unification into the electroweak interaction at higher energies. 
