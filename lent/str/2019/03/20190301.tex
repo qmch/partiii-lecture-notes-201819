@@ -1,0 +1,120 @@
+Today we'll begin our discussion of scattering amplitudes in string theory, i.e. the S-matrix.
+
+\subsection*{The big idea}
+Recall that we found it useful to conformally map our worldsheet cylinder onto the complex plane, or equivalently the Riemann sphere ($\CC \cup \set{\infty}$) with two punctures, using the map $z=e^{\tau + i\sigma}$. What if there are some initial and final states $\ket{\phi_i},\ket{\phi_f}$ in the picture?
+
+We can encode the initial and final states in the Riemann sphere picture by inserting operators $V_i,V_f$ at the punctures, where e.g.
+\begin{equation}
+    \ket{\phi_i}=\lim_{z\to 0} V_i(z) \ket{0}.
+\end{equation}
+But what if we want to discuss scattering? We could think of interactions between strings as described by worldsheets with many boundaries. In the same way, we will assume that $\exists$ a (conformal) map between e.g. a state with two initial strings merging and separating (see diagram) to a sphere with four punctures. 
+%diagram
+We will also have loop diagrams, and these can be mapped to tori with punctures.%
+    \footnote{We can definitely construct this from the ``tree-level'' interactions by ``gluing'' the punctured Riemann spheres together at the punctures.}
+%diagram    
+
+Note that there have always been two theories in the game-- the physics on our worldsheet, and the bigger spacetime it was embedded in. In order to properly discuss scattering amplitudes, we will need a few preliminaries.
+
+\subsection*{Scattering preliminaries}
+What constraints on the ghosts are required for the limit
+\begin{equation}
+    \ket{\phi}=\lim_{z\to 0} \phi(z) \ket{0}
+\end{equation}
+to exist? Suppose $\phi(z)$ is of weight $(h,0)$ (a chiral field), such that
+\begin{equation}
+    \phi(z) = \sum_n \phi_n z^{-n-h}.
+\end{equation}
+Then the limit we want to evaluate is
+\begin{equation}
+    \lim_{z\to 0} \sum_n \phi z^{-n -h} \ket{0}.
+\end{equation}
+Notice that for $-n-h >0$, the terms go to zero as $z\to 0$, but for $-n-h <0$ these terms will generically blow up as $z\to 0$.
+
+We can get a sensible limit if we require that
+\begin{equation}
+    \phi_n \ket{0} =0,\quad n > -h,
+\end{equation}
+and then
+\begin{equation}
+    \ket{\phi}=\phi_{-h} \ket{0},
+\end{equation}
+the only mode that doesn't vanish.
+
+For the ghosts, $b$ has weight $h=2$ and $c$ has weight $h=-1$. This means that
+\begin{equation}
+    c_0\ket{0} \neq 0, c_1 \ket{0} \neq 0
+\end{equation}
+and
+\begin{equation}
+    \bra{0} c_{-1} c_0 c_{+1}\ket{0} \neq 0.
+\end{equation}
+There's some freedom in how we choose to normalize the ghost vacuum.
+We can choose
+\begin{equation}
+    \bra{0} c_{-1} c_0 c_{+1} \ket{0} =1
+\end{equation}
+%
+One can then show as an exercise that the expectation of the $c$-ghosts at three points (e.g. by a mode expansion) that
+\begin{equation}
+    \bra{0} c(z_1) c(z_2) c(z_3) \ket{0} = (z_1-z_2)(z_2-z_3)(z_3-z_1).
+\end{equation}
+\subsection*{The dilaton and the string coupling}
+There's also an interesting point to be made about the dilaton, the scalar that popped out of our theory early on. We could consider the string as propagating in a spacetime with a background of $g_{\mu\nu}(X),B_{\mu\nu}(X),\Phi(X)$. That is, there's other stuff like background curvature and EM fields in the ambient spacetime. In that case, our worldsheet theory ought to be sensitive to this stuff.
+
+In particular, the worldsheet metric would be modified to
+\begin{equation}
+    S=-\frac{1}{4\pi \alpha'} \int_\Sigma d^2\sigma \sqrt{-h} h^{ab} \p_a X^\mu \p_b X^\nu g_{\mu\nu}(X).
+\end{equation}
+This is hard to solve. We already needed perturbation theory just to discuss the string in a flat Minkowski background-- now we have some additional structure to perturb about. We might also pick up a factor
+\begin{equation}
+    S=-\frac{i}{4\pi \alpha'} \int_\Sigma d^2\sigma \sqrt{-h} \epsilon^{ab} \p_a X^\mu \p_b X^\nu B_{\mu\nu}(X)
+\end{equation}
+with $\epsilon^{ab}=\begin{pmatrix} 0 & -1\\ 1& 0\end{pmatrix}.$ If we like, the $B$-field is just a two-form, and its contribution to the action is simply the pullback of this two-form to the worldsheet.
+
+There's one last thing we could do-- we could couple to the dilaton.
+\begin{equation}
+    S_\Phi = \frac{1}{4\pi} \int_\Sigma d^2\sigma \sqrt{-h} \Phi(X) R_\Sigma,
+\end{equation}
+where $R_\Sigma$ is the Ricci scalar on $\Sigma$. There are a few strange features of this-- this isn't at order $1/\alpha'$ but at order 1. The structure of this coupling also looks different than the other two, as it is diff invariant but not Weyl invariant. Moreover, if $\Phi(X)$ has a vacuum expectation value $\avg{\Phi(X)}=\Phi_0$, then our action picks up a contribution
+\begin{equation}
+    S_\Phi= \frac{1}{4\pi} \Phi_0 \int_\Sigma d^2\sigma \sqrt{-h} R_\Sigma =\Phi_0 \chi=\Phi_0 (2g-2)
+\end{equation}
+where $\chi$ is the Euler characteristic of $\Sigma$ and $g$ is the genus of the worldsheet $\Sigma$.
+
+So in the path integral, the sum over genus is weighted by a factor of $e^{\Phi_0}$. Our path integral has the form
+\begin{equation}
+    Z=\sum_{g=0}^\infty\frac{e^{\Phi_0(2g-2)}}{|\text{CKG}|}\int_{\cM_g} d^st \int \cD b \cD c \cD \bar b \cD \bar c \cD X \prod_{I=1}^s (\mu_I | b)(\bar \mu_I|\bar b) e^{-S[X,b,c]}.
+\end{equation}
+That is, in addition to the path integrals over the fields and ghosts, we must sum over all topologies with a weight given by the dilaton VEV, where we call
+\begin{equation}
+    g_c \equiv e^{\Phi_0}
+\end{equation}
+the closed string coupling constant.
+%I guess everyone knows gravitons are blue.
+
+For suppose we have a Riemann surface of genus $g$, weighted by $g_c^{2g-2}$. Now if we have a closed string state (e.g. a graviton) being emitted and then absorbed by $\Sigma_g$, this adds one more handle to $\Sigma_g$ and hence increases the genus by $1$. Thus $g\to g+1$ adds another factor of $g_c^2$ to our expression, so we associate a factor of $g_c$ with each additional ``vertex,'' i.e. one for the emission and one for the absorption in this process.
+
+For now, we'll assume the background metric is flat Minkowski and there's no $B$-field. But there may be a nonzero dilaton field.
+
+\subsection*{Vertex operators}
+How can we build operators that live in the BRST cohomology? Suppose we have an operator $\Phi(z,\bar z)$ which satisfies
+\begin{equation}
+    [Q_B,\phi(z,\bar z)]=\p(c\phi),\quad [\bar Q_B, \phi(z,\bar z)]=\bar \p(\bar c \phi).
+\end{equation}
+This is not chiral; it knows about both the holomorphic and antiholomorphic sectors of the theory. Then
+\begin{equation}
+    V_\phi = \int_\Sigma d^2z \, \phi(z,\bar z)
+\end{equation}
+is BRST-closed. Given one such solution, we'll get some others for free. Consider
+\begin{equation}
+    U(z,\bar z) =c(z) \bar c(z) \phi(z,\bar z).
+\end{equation}
+By linearity,
+\begin{align*}
+    [\cQ_B, U]=[Q_B +\bar Q_B, U] &= c\p c \bar c \phi + c\bar c \p(c \phi)+\text{barred expressions}\\
+        &= c\p c \bar c \phi + c \bar c \p c\phi +\ldots\\
+        &= 0.
+\end{align*}
+Thus $U$ is BRST-closed.%
+    \footnote{The $\p\phi$ term goes away since it has a $c^2$, and the two terms we've written cancel once we anticommute $\bar c$ and $\p c$.}
+We have therefore constructed two BRST-closed objects, one local and one non-local.

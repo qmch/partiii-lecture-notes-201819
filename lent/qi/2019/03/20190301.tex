@@ -1,0 +1,151 @@
+Last time, we introduced some ideas of entropy in quantum systems. We stated Klein's inequality,
+\begin{equation}
+    D(\rho||\sigma)\geq 0 \forall \rho,\sigma \in \cD(\cH).
+\end{equation}
+We also defined the von Neumann entropy, $S(\rho)$. This quantitiy has some nice properties:
+\begin{enumerate}
+    \item Composite states $\rho_{AB}\in \cD(\cH_A \otimes \cH_B)$ also obey the property of subadditivity,
+    \begin{equation}
+        S(\rho_{AB})\leq S(\rho_A) + S(\rho_B),
+    \end{equation}
+    which follows from the positivity of the mutual information,
+    \begin{equation}
+        I(A:B)=S(\rho_A)+S(\rho_B)-S(\rho_{AB})\geq 0.
+    \end{equation}
+    THus $I(A:B)=D(\rho_{AB}||\rho_A \otimes \rho_B)\geq 0$.
+    \item Note that if $\rho_{AB}=\dyad{\psi_{AB}}$ is a pure state, then $S(\rho_A)=S(\rho_B)$ by the Schmidt decomposition (the reduced states share the same non-zero eigenvalues, and the von Neumann entropy depends only on the eigenvalues).
+    \item Note that if $\rho_{AB}=\dyad{\psi_{AB}}$ is a pure state, then $S(\rho_A)=S(\rho_B)$ by the Schmidt decomposition (the reduced states share the same non-zero eigenvalues, and the von Neumann entropy depends only on the eigenvalues).
+    \item Triangle inequality/Araki-Lieb inequality: $S(\rho_{AB})\geq |S(\rho_A)-S(\rho_B)|$.
+    
+    Suppose we have a purification $\rho_{AB}\to \ket{\psi_{ABR}}.$ By (a), we have $S(A,R) \leq S(A)+S(R).$
+    But by (b) we also have $S(A,R)=S(B)$ and $S(A,B)=S(R).$ Substituting in, we have
+    \begin{equation}
+        S(B) \leq S(A)+S(A,B) \implies S(A,B) \geq S(B)- S(A)
+    \end{equation}
+    and similarly
+    \begin{equation}
+        S(A,B) \geq S(A) -S(B) \implies S(A,B) \geq |S(A)-S(B)|.
+    \end{equation}
+    \item If $\rho=\sum p_I \rho_i$ where the $\rho_i$ have mutually orthogonal supports, then (proof in example sheet 3)
+    \begin{equation}
+        S(\sum_i p_i \rho_i) = H(\set{p_i}) +\sum p_i S(\rho_i)
+    \end{equation}
+\end{enumerate}
+
+The von Neumann entropy also obeys the property of \term{strong subadditivity (SSA)}. The original proof is due to Lieb and Ruskai (1973). Suppose we have a tripartite system $\rho_{ABC}$. Then 
+\begin{equation}
+    S(\rho_{ABC})+S(\rho_B) \leq S(\rho_{AB})+S(\rho_{BC}).
+\end{equation}
+This property has some interesting consequences.
+\begin{enumerate}
+    \item Conditioning reduces entropy,
+    \begin{equation}
+        S(A|BC) \leq S(A|B).
+    \end{equation}
+    This is immediate-- since $S(A|BC)=S(ABC)-S(BC)$, just move the terms around to get $S(A|BC)=S(ABC)-S(BC)\leq S(AB)-S(B) =S(A|B)$.
+    \item Discarding quantum systems never increases mutual information, i.e.
+    \begin{equation}
+        I(A:B) \leq I(A:BC).
+    \end{equation}
+    Proof: just add $S(A)$ to both sides and rearrange to get
+    \begin{equation}
+        I(A:B)=S(A) +S(B) -S(AB) \leq S(BC) +S(A) -S(ABC) = I(A:BC).
+    \end{equation}
+    \item Quantum operations never increase mutual information. That is, we have a bipartite system $AB$ and we perform a CPTP map $\Lambda$ on the $B$ part. Thus with $\rho_{A'B'}=(\id_A \otimes \Lambda)\rho_{AB}$,
+    \begin{equation}
+        I(A':B') \leq I(A:B).
+    \end{equation}
+    \begin{proof}
+        We use Stinespring. That is, to implement the operation $\Lambda$ we introduce the ancilla $\cH_C$ with some reference state $\phi \in \cH_C$ and a unitary $U_{BC}$ such that 
+        \begin{equation}
+            \Tr_C(U_{BC} (\rho_B \otimes \phi)U_{BC}^\dagger) =\Lambda(\rho_B) \equiv \rho_{B'}.
+        \end{equation}
+        Then we can prove that
+        \begin{equation}
+            I(A:B)=\underbrace{I(A:BC)}_{\rho_{AB} \otimes \phi_C},
+        \end{equation}
+        since $C$ is uncorrelated with $A$, and we can rewrite this mutual information as
+        \begin{equation}
+            D(\rho_{AB}||\rho_A \otimes \rho_{BC})=D(\rho_{AB} \otimes \phi_{C} || \rho_A \otimes \rho_B \otimes \phi_C)
+        \end{equation}
+        One may check the following properties:
+        \begin{itemize}
+            \item $D(\rho\otimes \omega ||\sigma \otimes \nu) =D(\rho||\sigma) + D(\omega||\nu)$
+            \item $\forall U$ unitary, $D(U\rho U^\dagger || U \sigma U^\dagger) =D(\rho||\sigma)$.
+            \item Joint convexity:
+            \begin{equation}
+                D(\sum p_i \rho_i || \sum p_i \sigma_i) \leq \sum p_ i D(\rho_i ||\sigma_i).
+            \end{equation}
+        \end{itemize}
+        With the first property, we can rewrite this as
+        \begin{equation}
+            D(\rho_{AB}||\rho_A \otimes \rho_B) +D(\phi_C||\phi_C) =I(A:B).
+        \end{equation}
+        Now using the second properties since $\rho_{ABC}$ and $\rho_{A'B'C'}$ are related by a unitary transformation,
+        \begin{equation}
+            \rho_{A'B'C'}=(\id_A \otimes U_{BC})(\rho_{ABC})(\id_A \otimes U_{BC}^\dagger),
+        \end{equation}
+        We can just trace over $C$ to complete the proof.
+    \end{proof}
+\end{enumerate}
+Let us now consider the quantum relative entropy and the data processing inequality: for $\Lambda$ a quantum operation,
+\begin{equation}
+    D(\rho||\sigma) \geq D(\Lambda(\rho)||\Lambda(\sigma)).
+\end{equation}
+Consider a qudit, $\cH\simeq \CC^d$ with some basis $\set{\ket{j}}_{j=0}^{d-1}$. There are generalizations of the Pauli matrices $\sigma_x,\sigma_Z$-- call them $X,Z$ such that
+\begin{align}
+    X^k \ket{j} &= \ket{j \oplus k},\\
+    Z^m\ket{j} &= e^{2\pi i mj/d}\ket{j}
+\end{align}
+where $\oplus$ indicates addition $\mod d$, with $k,m\in \set{0,1,\ldots,d-1}$. So for instance with $k=1,d=2$ we have
+\begin{gather*}
+    X\ket{0}=\ket{1}; \quad X\ket{1} = 0\\
+    Z\ket{0} = \ket{0}; \quad Z\ket{1} = -\ket{1}.
+\end{gather*}
+Thus on qubits these operators reduce to the old $\sigma_x,\sigma_z$.
+
+Let us introduce some combination unitary operators
+\begin{equation}
+    W_{k,m}=X^k Z^m \in \cB(\CC^d).
+\end{equation}
+There are $d^2$ such operators, called \term{Heisenberg-Weyl operators}. For $A\in \cB(\CC^d),$ we have as an exercise the following proof:
+\begin{equation}\label{hwopsdefn}
+    \frac{1}{d^2} \sum W_{k,m} A W_{k,m}^\dagger = (\Tr A) \tau
+\end{equation}
+where $\tau \equiv I/d$ is the completely mixed state.
+
+Now to prove the DPI, note first that
+\begin{equation}
+    D(\Lambda(\rho)||\Lambda(\sigma)) = D(\Lambda(\rho)\otimes \tau|| \Lambda(\sigma) \otimes \tau)
+\end{equation}
+where $\tau$ is as above. We can certainly couple an unrelated system. But now using Stinespring, we can implement $\Lambda$ as
+\begin{equation}
+    \Lambda(\rho)= \Tr_2 U(\rho\otimes \phi)U^\dagger,
+\end{equation}
+so the LHS of \ref{hwopsdefn} can be rewritten
+\begin{align*}
+    \frac{1}{d^2} \sum (I\otimes W_{k,m}) U(\rho \otimes \phi) U^\dagger (I\otimes W_{k,m}^\dagger) &= (\Tr_2 U(\rho \otimes \phi) U^\dagger) \otimes \tau\\
+    &= \Lambda(\rho) \otimes \tau.
+\end{align*}
+Defining $I\otimes W_{km} \equiv \tilde W_{km}$, we have an expression for $\Lambda(\rho)\otimes \tau$. Thus
+\begin{align}
+    D(\Lambda(\rho)||\Lambda(\sigma)) &= D(\Lambda(\rho) \otimes \tau ||\Lambda(\sigma) \otimes \tau)\\
+    &= D(\frac{1}{d^2} \sum_{k,m} \tilde W_{km} U(\rho\otimes \phi) U^\dagger \tilde W_{km}^\dagger || \frac{1}{d^2} \sum-{k,m} \tilde W_{km}U (\sigma \otimes \phi) U^\dagger \tilde W_{km}^\dagger)\\
+    &= D(\frac{1}{d^2} \sum_{km} V_{km}(\rho \otimes \phi) V_{km}^\dagger || \frac{1}{d^2} \sum_{km} V_{km}(\sigma \otimes \phi) V_{km}^\dagger
+\end{align}
+where we've defined $\tilde W_{km} U \equiv V_{km}$ a unitary. We use joint convexity to turn this into
+\begin{align*}
+    D(\Lambda(\rho)||\Lambda(\sigma)) &\leq \frac{1}{d^2} \sum_{km} D(V_{km}(\rho\otimes \phi)V_{km}^\dagger || V_{km}(\sigma\otimes \phi)V_{km}^\dagger)\\
+    &= \frac{1}{d^2} \sum_{k,m} D(\rho\otimes \phi|| \sigma \otimes \phi)\\
+    &= \frac{1}{d^2} \sum_{k,m} D(\rho||\sigma)\\
+    &\implies D(\Lambda(\rho)||\Lambda(\sigma)) \leq D(\rho||\sigma) \qed
+\end{align*}
+
+We haven't proved the joint convexity, but it is implied by Lieb's concavity theorem-- let $X$ be a matrix and $0\leq t \leq 1$ such that
+\begin{equation}
+    f(A,B) := \Tr(X^\dagger A^t X B^{1-t})
+\end{equation}
+is jointly concave in $A,B$. Then
+\begin{equation}
+    f(\sum p_i A_i, \sum_i p_i B_i) \geq \sum p_i f(A_i, B_i)
+\end{equation}

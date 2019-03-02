@@ -1,0 +1,176 @@
+Last time, we discussed the trace distance and the fidelity, two measures of distance between states. We also stated Uhlmann's theorem, which states that the fidelity of two states $\rho,\sigma$ is related to the maximal overlap between two purifications $\ket{\psi_\rho^{AB}},\ket{\sigma_\rho^{AB}}$.
+
+Some properties follow from the theorem.
+\begin{enumerate}
+    \item $0\leq F(\rho,\sigma \leq 1$ and $F(\rho,\sigma)=1$ iff $\rho=\sigma$. The first follows since
+    \begin{equation*}
+        0\leq \abs{\braket{\psi_\rho^{AR}}
+        {\psi_\sigma^{AR}}} \leq 1,
+    \end{equation*}
+    and the latter since $\rho=\sigma \iff F(\rho,\sigma)=1$
+    \item $F(\rho,\sigma)=F(\sigma,\rho)$, which is clear from the inner product definition.
+\end{enumerate}
+\begin{lem}[Monotonicity under partial trace]
+    For $\rho_{AB},\sigma_{AB}\in \cD(\cH_A\otimes \cH_B)$,
+    \begin{equation}
+        F(\rho_{AB},\sigma_{AB})\leq F(\rho_A,\sigma_A).
+    \end{equation}
+\end{lem}
+\begin{proof}
+    We use Uhlmannn's theorem. Thus $\exists \ket{\psi_\rho^{ABC}},\ket{\psi_\sigma^{ABC}}$ which are purifications of $\rho_{AB},\sigma_{AB}$ s.t.
+    \begin{equation}
+        F(\rho_{AB},\sigma_{AB}) =\braket{\psi_\rho^{ABC}}{\psi_\sigma^{ABC}}.
+    \end{equation}
+    But $\ket{\psi_\rho^{ABC}},\ket{\psi_\sigma^{ABC}}$ are also purifications of $\rho_A,\sigma_A$, and so for this particular purification, the fidelity must be $\geq \braket{\psi_\rho^{ABC}}{\psi_\sigma^{ABC}}$. Thus
+    \begin{equation}
+        F(\rho_{AB},\sigma_{AB}) \leq F(\rho_A,\sigma_A).
+    \end{equation}
+\end{proof}
+
+We now state teh Fuchs-van de Graaf inequality:
+\begin{equation}
+    1-F(\rho,\sigma)\leq D(\rho,\sigma) \leq \sqrt{1-F^2(\rho,\sigma)}
+\end{equation}
+
+\subsection*{Operational interpretation of $D(\rho,\sigma)$}
+We now discuss (binary) quantum hypothesis testing. Suppose Alice prepares either state $\rho_0$ or $\rho_1$ with probability $1/2$. She then sends her state to Bob, who wants to distinguish the states. Bob makes a measurement-- he constructs a (binary) POVM $\set{E_0,E_1=I-E_0}$.
+
+What is Bob's probability of error? It is
+\begin{align}
+    p_\text{err}(\set{E_0,E_1})&=\frac{1}{2} \bkt{\Tr(E_0\rho_1)+\Tr(E_1\rho_0)}\\
+        &= \frac{1}{2}\bkt{1-\Tr(E_0(\rho_0-\rho_1))},
+\end{align}
+where we've taken the probability of $\rho$ being a given state ($1/2$) and multiplied by the likelihood of measuring $0$ when the state was $\rho_1$ ($\Tr(E_0\rho_1)$) and the same for measuring $1$ when the state was $\rho_0$. In the second line, we just rewrote $E_1=I-E_0$. Now the minimum error probability is
+\begin{align}
+    p_\text{err}^* &= \min_{0\leq E_0 \leq I} p_\text{err}(E_0\\
+        &= \frac{1}{2} \bkt{1-\max_{0\leq E_0\leq I} \Tr(E_0(\rho_0-\rho_1))}\\
+        &=\frac{1}{2} \bkt{1-D(\rho_0,\rho_1)}.
+\end{align}
+Thus the maximum success probability is
+\begin{equation}
+    p_\text{suc}^* = 1-p_\text{err}^* = \frac{1}{2}\bkt{1+D(\rho_0,\rho_1)}.
+\end{equation}
+One can show that $p_\text{suc}^*$ is achieved via a projective measurement, $E_0=P_0, E_1=P_1$. Recall that we could write $\rho_0-\rho_1=Q-R$ in terms of positive and negative eigenvalues. Here, $P_0,P_1$ are the projections onto the supports of $Q$ and $R$, respectively. The proof of this is due to Holevo and Helstrom.
+
+\subsection*{Quantum entropy}
+The notion of entropy for quantum systems is also called the von Neumann entropy.
+\begin{defn}
+    For a state $\rho\in \cD(\cH)$, the \term{von Neumann entropy} is
+    \begin{equation}
+        S(\rho)=-\Tr(\rho\log \rho).
+    \end{equation}
+    Here, the log is base 2 (as is typical in information theory).
+\end{defn}
+Note that in the case where $\rho$ admits a spectral decomposition, $\rho=\sum \lambda_i \dyad{e_i}$, the von Neumann entropy reduces to 
+\begin{equation}
+    S(\rho)=-\sum \lambda_i \log \lambda_i = H(\set{\lambda_i}),
+\end{equation}
+the Shannon entropy of the set of eigenvalues.
+
+The von Neumannn entropy has the following properties:
+\begin{enumerate}
+    \item $S(\rho) \geq 0 $ with $S(\rho)=0 \iff \rho$ is pure (i.e. $\rho$ has one non-zero eigenvalue).
+    \item $S(U^\dagger \rho U)=S(\rho) \forall U$ unitary (since the eigenvalues are not changed under a unitary).
+    \item $S(\rho) \leq \log d$ with equality when $\rho=I/d$.
+\end{enumerate}
+To prove this last property, let us define a parent quantity, the quantum relative entropy $D(\rho||\sigma).$ Let $\rho\in \cD(\cH), \sigma \geq 0$. 
+\begin{defn}
+    The \term{quantum relative entropy} is the quantity
+    \begin{equation}
+        D(\rho||\sigma) := \Tr(\rho \log \rho - \rho \log \sigma),
+    \end{equation}
+    which is well-defined if $\text{supp}\rho \subseteq \text{supp}\sigma$.
+\end{defn}
+This is the quantum analogue of the KL divergence (classical relative entropy), defined $D(p||q)=\sum_i p_i \log \frac{p_i}{q_i}$.
+Moreover, we see that the quantum relative entropy is indeed a parent quantity for the von Neumann entropy:
+\begin{equation}
+    S(\rho)=-D(\rho||I)
+\end{equation}
+since $\rho\log \sigma|_{\sigma=I}=0$.
+
+A useful property is the \term{Klein's inequality},
+\begin{equation}
+    D(\rho||\sigma) \geq 0.
+\end{equation}
+\begin{proof}
+    If $\rho=\sum \lambda_i \dyad{i}$, $\sigma = \sum a_\alpha \dyad{\alpha}$, then
+    \begin{align*}
+        D(\rho||\sigma) &= \sum \lambda_i \log \lambda_i -\Tr\paren{ (\sum_i \lambda_i \dyad{i})(\sum_\alpha \log(a_\alpha)\dyad{\alpha}
+        }\\
+            &= \sum_i \lambda_i \log \lambda_i -\sum_{i,\alpha} \lambda_i \log a_\alpha |\braket{i}{\alpha}|^2.
+    \end{align*}
+    But observe that for $p_{i\alpha}=|\braket{i}{\alpha}|^2$, we have $\sum_i p_{i\alpha}=\sum_i |\braket{i}{\alpha}|^2 = \sum_i \braket{\alpha}{i}\braket{i}{\alpha}=1$, and the same is true if we sum over $\alpha$. This tells us that $p_{i\alpha}$ are teh elements of a doubly stochastic matrix. Thus
+    \begin{equation}
+        D(\rho||\sigma)=\sum \lambda_i \log \lambda_i -\sum_{i,\alpha} \lambda_i \log a_\alpha p_{i\alpha}.
+    \end{equation}
+    Note that $f(x)=\log x$ is a concave function, so treating the $p_{i\alpha}$s as a probability, we have
+    \begin{equation}
+        \sum_\alpha p_{i\alpha} \log a_\alpha \leq \log(\sum_\alpha p_{i\alpha} q_\alpha),
+    \end{equation}
+    which tellls us that
+    \begin{equation}
+        D(\rho||\sigma) \geq \sum \lambda_i \log \lambda_i -\sum_i \lambda_i \log (\sum_\alpha p_{i\alpha} a_\alpha).
+    \end{equation}
+    Defining $r_i := \sum_\alpha p_{i\alpha} a_\alpha$ where $r_i \geq 0$ and $\sum_i r_i =1$, we find that
+    \begin{align*}
+        D(\rho||\sigma) &\geq \sum \lambda_i (\log \lambda_i -\log r_i)\\
+            &= D_{KL}(\lambda||r)\\
+            &\geq 0,
+    \end{align*}
+    where we recognize the classical relative entropy on $\lambda=\set{\lambda_i},r=\set{r_i}.$
+\end{proof}
+
+We can also prove the upper bound on $S(\rho)\leq \log d$. Take $\sigma=I/d$, and then
+\begin{align*}
+    0 \leq D(\rho||\sigma) &=\Tr(\rho \log \rho - \rho \log I/d)\\
+        &= -S(\rho)-\rho \text{diag}(\log 1/d,\ldots,\log 1/d)\\
+        &= -S(\rho)-\log 1/d \Tr \rho\\
+        &= -S(\rho) +\log d \Tr \rho.
+\end{align*}
+Thus $S(\rho) \leq \log d$.
+
+Note that $S(\rho)$ is concave,
+\begin{equation}
+    S(\sum p_i \rho_i)\geq \sum p_i S(\rho_i).
+\end{equation}
+One can prove this by taking $f(x)=-x\log x$ and considering $\rho_i, \bar \rho=\sum p_i \rho_i$.
+
+\subsection*{Composite systems}
+There are some notions of entropy for composite quantum systems, $\rho_{AB}\in \cD(\cH_A \otimes \cH_B)$.
+\begin{enumerate}
+    \item The \term{joint entropy} is 
+    \begin{equation}
+        S(\rho_{AB})=-\Tr \rho_{AB}\log \rho_{AB}
+    \end{equation}.
+    \item The \term{quantum conditional entropy} is
+    \begin{equation}
+        S(A|B)_\rho=S(AB)-S(B) =S(\rho_{AB})-S(\rho_B)
+    \end{equation}
+    \item The \term{quantum mutual information} is
+    \begin{align*}
+        I(A:B) &=S(A)+S(B)-S(AB)\\
+        &=S(A)-S(A|B)\\
+        &= S(B)- S(B|A)\\
+        &= I(B:A).
+    \end{align*}
+\end{enumerate}
+Note that this last quantity does not satisfy some properties of the classical mutual information. Classically, for $X,Y$ random variables,
+\begin{equation}
+    H(X) \leq H(XY) \implies H(XY)-H(X) \geq 0,
+\end{equation}
+and this latter expression is just a conditional entropy. THus $H(Y|X)\geq 0$. But in the quantum case, $S(A|B)$ need not be $\geq 0$. To see this, let us take $\rho_{AB}=\dyad{\phi^+}$. Thus
+\begin{align*}
+    S(A|B) &= S(AB) - S(A)\\
+        &= -\log d <0
+\end{align*}
+since $S(AB)=0$ and $A$ is a completely mixed state.
+
+Naturally,
+\begin{equation}
+    S(\rho\otimes \sigma)= S(\rho)+S(\sigma),
+\end{equation}
+and additionally,
+\begin{equation}
+    S(\rho_{AB})\leq S(\rho_A) +S(\rho_B),
+\end{equation}
+which can be proved using $D(\rho||\sigma)\geq 0$.

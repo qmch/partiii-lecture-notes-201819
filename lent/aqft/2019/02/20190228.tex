@@ -1,0 +1,72 @@
+\begin{note}
+We report the following erratum. Last time, we wrote an action as $S+S^{CT}$, and tried to connect it to the Wilsonian flow. However, this action has a definite cutoff, whereas the renormalization group interpretation requires us to integrate from $\Lambda$ to $\Lambda_0$, so these aren't quite comparable.
+\end{note}
+
+Let us now return to our discussion of anomalous dimension.%
+    \footnote{Cf. Tong \emph{Statistical Field Theory} \textsection 3.2.}
+Last time, we wrote down the anomalous dimension of a field $\phi$, given by
+\begin{equation}
+    \gamma_\phi \equiv -\frac{\Lambda}{2} \P{}{\Lambda} \log Z_\Lambda,
+\end{equation}
+and we derived the generalized Callan-Symanzik equation,
+\begin{equation}
+    0=\Lambda \frac{d}{d\Lambda} \Gamma_\Lambda^{(n)}(x_1,\ldots,x_n; g(\Lambda))=\paren{\Lambda\P{}{\Lambda}+\beta_i \P{}{g_i}+n\gamma_\phi}\Gamma_\Lambda^{(n)}(x_1,\ldots,x_n; g_i(\Lambda)).
+\end{equation}
+Thus if we let $\Lambda'=s\Lambda$, the differentiating with respect to $s$ we have
+\begin{equation}
+    s \P{}{s} Z_{s\Lambda}^{-n/2}=-\frac{n}{2} Z_{s\Lambda}^{-n/2} s\P{}{s} \log Z_{s\Lambda}=n \gamma
+\end{equation}
+using $s\P{}{s} = \Lambda' \P{}{\Lambda'}$.
+
+Our RG process is then as follows.
+\begin{enumerate}
+    \item Integrate out modes with momenta in $(s\Lambda,\Lambda)$.
+    \item Rescale coordinates $x^\mu \mapsto x'{}^\mu = sx^\mu$ in order to keep the kinetic term canonically normalized, $\frac{1}{2} \int d^dx \frac{1}{2} \p_\mu \phi \p^\mu \phi$, so that
+    \begin{equation}
+        \phi^r(sx) = s^{1-d/2} \phi^r(x).
+    \end{equation}
+    The rest of the action is invariant if $\Lambda \to \Lambda/s$.
+\end{enumerate}
+Then
+\begin{align*}
+    \Gamma_\Lambda^{(n)}(x_1,\ldots, x_n ; g_i(\Lambda)) &=\paren{\frac{Z_\Lambda}{Z_{s\Lambda}}}^{n/2} \Gamma_{s\Lambda}^{(n)}(x_1,\ldots, x_n ; g_i(s\Lambda))\\
+    &= \paren{s^{2-d} \frac{Z_\Lambda}{Z_{s\Lambda}} }^{n/2} \Gamma_\Lambda^{(n)} (sx_1,\ldots, sx_n; g_i (s\Lambda)).
+\end{align*}
+Note the values $g_i(s\Lambda)$ and $Z_{s\Lambda}$ do not change under rescaling. Now a relabeling $x_i \mapsto \frac{x_i}{s}$ yields
+\begin{equation}
+    \Gamma_\Lambda^{(n)}(x_1/s,\ldots, x_n/s; g_i(\Lambda))= \paren{s^{2-d} \frac{Z_\Lambda}{Z_{s\Lambda}} }^{n/2} \Gamma_\Lambda^{(n)} (x_1,\ldots, x_n; g_i (s\Lambda)).
+\end{equation}
+Thus we can think of a running coupling while integrating out high-momentum modes as equivalent to the same coupling under a scaling transformation. As $s\to 0$, we are integrating out more modes. On the LHS, we see the separation between points increasing $\frac{|x_i-x_j|}{s}\to \infty$ (flowing to the long-distance infrared behavior), whereas on the RHS the separation is fixed but the coupling is ``running'' to lower energy scales (becomes insensitive to UV phenomena).
+
+For infinitesimal $\delta s= 1-s$ we can expand to linear order,
+\begin{equation}
+    \paren{s^{2-d} \frac{Z_\Lambda}{Z_{s\Lambda}}}^{1/2} = 1+\paren{\frac{d-2}{2}+\gamma_\phi}\delta s +\ldots
+\end{equation}
+and we see that the fields scale with mass dimension
+\begin{equation}
+    \frac{d-2}{2} +\gamma_\phi \equiv \Delta \phi,
+\end{equation}
+where there is an ``engineering dimension'' that we always get (and could have read off from the kinetic term), plus an ``anomalous dimension.'' These add up to make an overall scaling dimension $\Delta \phi$ which in general is not the engineering dimension.
+
+\subsection*{RG flow}
+The renormalization group process tells us how couplings run as we integrate out high momentum modes and flow to the IR. These trace out trajectories, lines in the space of coupling constants which are governed by $\beta$-functions. Remarkably, some theories flow to the same endpoints, and therefore share the same IR physics. This is known as universality.
+
+Where do such theories end up? If they end somewhere, they must end at fixed points (critical points), i.e. points in the space of coupling constants $g_i=g_i^*$ such that
+\begin{equation}
+    \beta_i|_{g_i=g_i^*}=0 \forall i,
+\end{equation}
+where we now mean the full $\beta$-function, including classical and quantum contributions.
+
+In $\phi^4$ theory, there's an easy fixed point to spot. This is the Gaussian fixed point, $g_j^*=0 \forall j$, which is a massless free theory with no mass. If there are no couplings, there's nothing to flow and the theory stays at the fixed point. There are also nontrivial fixed points which require $\beta^\text{cl}$ and $\beta^\text{q}$ to cancel, such as the Wilson-Fisher fixed point.
+
+\subsection*{Scale invariance at fixed points} Let us note that at fixed points, the couplings $g_i^*$ must be independent of scale, and dimensionless functions of $g_i^*$ become constant, e.g. $\gamma_\phi(g_i^*)=\gamma_\phi^*$.
+
+Consider Callan-Symanzik for $n=2$ at a fixed point. We have
+\begin{equation}
+    \Lambda \P{}{\Lambda} \Gamma_\Lambda^{(2)}(x,y) = -2 \gamma_\phi^* \Gamma^{(2)} (x,y).
+\end{equation}
+Lorentz invariance tells us that $\Gamma^{(2)}$ must be a function of $|x-y|$ only. Like $\avg{\phi(x)\phi(y)}$, $\Gamma^{(2)}$ has mass dimensions of $d-2$, so we posit that
+\begin{equation}
+    \Gamma_\Lambda^{(2)}(|x-y|; g_i^*) =\frac{\Lambda^{d-2}}{\Lambda^{2\Delta d}} \frac{c(g_i^*)}{|x-y|^{2\Delta d}}.
+\end{equation}
+%finish this

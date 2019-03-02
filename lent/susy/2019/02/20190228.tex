@@ -1,0 +1,96 @@
+Last time, we stated the Wess-Zumino model of a chiral superfield, 
+\begin{equation}
+    S[\Phi,\bar \Phi]=\int_{\RR^{2/4}} \bar \Phi \Phi \, d^2x d^4 \theta + \int_{\RR^{2/2}} W(\Phi)d^2y d^2\theta + \int_{\RR^{2/2}} \bar W(\bar \Phi)d^2 \bar y d^2 \bar \theta.
+\end{equation}
+Note that $W(\Phi)$ is a holomorphic function of the superfield
+\begin{equation}
+    \Phi=\phi(y^\pm)+\theta^+ \psi_+(y^\pm)+\theta^- \psi_-(y^\pm) + \theta^+ \theta^- F(y^\pm)
+\end{equation}
+where $y^\pm=x^\pm -i\theta^\pm \bar \theta^\pm.$ Note also the limits of integration and the integration measures, since the superpotential separates into holomorphic and antiholomorphic parts. We have
+\begin{equation}
+    \left.W(\Phi)\right|_{\theta^+\theta^-} = F\p W(\phi)-\psi_+ \psi_- \frac{\p^2 W}{\p \phi^2}(\phi).
+\end{equation}
+For the K\"ahler potential $|\Phi|^2_{\theta^4}$ we need to write
+\begin{align}
+    \Phi(x^\pm, \theta^\pm, \bar \theta^\pm) ={}&\phi(y^\pm) +\theta^+\psi_+(y^\pm) +\theta^- \psi_- (y^\pm) + \theta^+ \theta^- F(y^\pm)\\
+        ={}& \phi(x^\pm) - i\theta^+ \bar \theta^+ \p_+ (x^\pm) - i\theta^- \bar \theta^- \p_- \phi(x^\pm) +\theta^+ \bar \theta^+ \theta^- \bar \theta^- \p_+ \p_- \phi(x^\pm)\\
+        &+ \theta^+ \psi_+(x^\pm) -i\theta^+ \theta^- \bar \theta^- \p_- \psi_+ (x^\pm) + \theta^- \psi_- (x^\pm) - i\theta^- \theta^+ \bar \theta^+ \p_+ \psi_- (x^\pm) + \theta^+ \theta^- F(x^\pm)
+\end{align}
+as a function on non-chiral superspace. All we've done is expand $y^\pm$ in $x^\pm,\theta$, dropping any terms that are zero.
+
+Similarly, the antiholomorphic part $\bar \Phi(x^\pm, \theta^\pm, \bar \theta^\pm$ has an expansion which looks like
+\begin{align*}
+    \Phi(x^\pm, \theta^\pm, \bar \theta^\pm) 
+        ={}& \bar \phi(x^\pm) + i\theta^+ \bar \theta^+ \p_+ (x^\pm) + i\theta^- \bar \theta^- \p_- \bar \phi(x^\pm) - \theta^+ \bar \theta^+ \theta^- \bar \theta^- \p_+ \p_- \bar \phi(x^\pm)\\
+        &- \bar \theta^+ \bar \psi_+(x^\pm) -i\bar \theta^+ \theta^- \bar \theta^- \p_- \bar \psi_+ (x^\pm) -\bar \theta^- \bar \psi_- (x^\pm) - i\bar \theta^- \theta^+ \bar \theta^+ \p_+ \bar \psi_- (x^\pm) + \bar \theta^+ \bar \theta^- \bar F(x^\pm).
+\end{align*}
+We need to extract the $\theta^2 \bar \theta^2$ term from $\bar \Phi \Phi$, i.e. we need to collect terms with all four $\theta$s.%
+    \footnote{Gotta catch 'em all.}
+We have
+\begin{align*}
+    \bar \Phi \Phi|_{\theta^4} ={}& -\bar \phi \p_+ \p_- \phi + \p_+ \bar \phi \p_- \phi +\p_- \bar \phi \p_+ \phi -\p_+ \p_- \bar \phi \phi\\
+    &+i\bar \psi_+ \p_- \psi_+ - i \p_- \bar \psi_+ \psi_+ + i\bar \psi_- \p_+ \psi_- -i\p_+ \bar \psi_- \psi_- + |F|^2.
+\end{align*}
+where we've been careful to reorder the $\theta$s to be in the order $\theta^+ \theta^- \bar \theta^+ \bar \theta^-$ to fix the signs.
+
+Combining all the pieces we have a component action
+\begin{align}
+    S[\phi,\psi,F] ={}& \int_{\RR^2} [\p^\mu \bar \phi \p_\mu \phi + i \bar \psi_- \p_+ \psi_- + i\bar \psi_+ \p_- \psi_+ + |F|^2 \nonumber \\
+    &+ FW'(\phi)-\psi_+ \psi_- W''(\phi) + \bar F \bar W'(\bar \phi) -\bar \psi_- \bar \psi_+ \bar W''(\bar \phi)] d^2x,\label{wzcomponentaction}
+\end{align}
+where we've explicitly performed the integral over the $\theta$s. The kinetic terms come  from $|\phi|^2_{\theta^4},$ while the potential terms come from the superpotential $W(\Phi), \bar W(\bar \Phi).$
+
+Notice the field $F$ is auxiliary (i.e. its equation of motion is purely algebraic), so we can eliminate it using its equation of motion,
+\begin{equation}
+    F+\bar W'(\bar \phi)=0 \implies F=-\P{\bar W}{\bar \phi}.
+\end{equation}
+This gives us the interactions
+\begin{equation}
+    \int -|W'(\phi)|^2 d^2x = \int -V(\phi)d^2x,
+\end{equation}
+giving a potential $V(\phi)=|W'(\phi)|^2$ for the scalars.
+
+\subsection*{Symmetries of the WZ model}
+By construction, this model is invariant under SUSY transformations acting on the component fields of $\Phi$. The Noether currents for the supersymmetry are $G^\mu_\pm$ where
+\begin{gather}
+    G^0_\pm = 2\p_\pm \bar \phi \psi_\pm \pm i \bar \psi_\pm F\\
+    G^1_\pm =  \mp 2 \p_\pm \bar \phi \psi_\pm + i \bar \psi_\mp F
+\end{gather}
+and similarly for $\bar G^\mu_\pm$, the Noether charge is $Q_\pm = \int_{\RR^1} G^0_\pm dx^1$, the integral over a constant time slice (remember we're in $1+1$ dimensions). Notice that the $G^\mu_\pm$ currents have spin $3/2$, so the charges $Q_\pm\mapsto e^{+\gamma/2} Q_\pm$ are each spin $1/2$, as expected for supercharges.
+
+Consider the axial $U(1)_A$ transformation acting on $\Phi(x^\pm, \theta^\pm, \bar \theta^\pm)$ such that
+\begin{equation}
+    \Phi(x^\pm, \theta^\pm, \bar \theta^\pm)\mapsto \Phi(x^\pm, e^{\mp i \alpha}\theta^\pm, e^{\pm i \alpha}\bar \theta^\pm),
+\end{equation}
+leaving $\theta^+ \theta^-$ invariant. Then $W(\Phi)|_{\theta^2}$ is likewise invariant, as is $\Bar \Phi \Phi|_{\theta^4}$, so these transformations are also symmetries.
+
+In terms of the component fields, we can equivalently think of these as
+\begin{equation}
+    \phi \mapsto \phi, \quad \psi_\pm \mapsto e^{\mp i\alpha}\psi_{\pm}, \quad F\mapsto F.
+\end{equation}
+Writing it like this, it is clear looking at the form of the action that \ref{wzcomponentaction} is invariant under such transformations. The corresponding Noether charge is
+\begin{equation}
+    F_A = \int_{\RR^1} (\bar \psi_+ \psi_+ - \bar \psi_- \psi_-) dx^1.
+\end{equation}
+
+Now consider the $U(1)_V$ transformations
+\begin{equation}
+    \Phi(x^\pm, \theta^\pm, \bar \theta^\pm)\mapsto e^{iq\beta} \Phi(x^\pm, e^{- i \beta}\theta^\pm, e^{+ i \beta}\bar \theta^\pm),
+\end{equation}
+where $\theta^+,\theta^-$ transform together, and we allow the whole superfield $\Phi$ to have charge $q$. In this case, $\theta^+ \theta^-$ is not invariant but transforms to
+\begin{equation}
+    \theta^+ \theta^- \mapsto e^{-2i\beta} \theta^+ \theta^-,
+\end{equation}
+although the combination
+\begin{equation}
+    \theta^2 \bar \theta^2 \mapsto \theta^2 \bar \theta^2,
+\end{equation}
+is invariant. So the K\"ahler term is invariant for any $q$, whereas the superpotential term will only be invariant if
+\begin{equation}
+    W\mapsto e^{2i\beta} W
+\end{equation}
+to cancel the phase from the transformation of $\theta^2$. In particular, for a monomial $W(\Phi)=c\Phi^k$, we have $U(1)_V$ symmetry iff we assign charge $q=2/k$ to $\Phi$. At the level of the component fields, these transformations can be taken to be
+\begin{equation}
+    \phi \mapsto e^{2i\beta /k} \phi,\quad \psi_\pm \mapsto e^{(2/k -1)i\beta} \psi_\pm, \quad F\mapsto e^{(2/k-2) i\beta}F.
+\end{equation}
+These are automatically symmetries of the kinetic terms (everything through $|F|^2$ in \ref{wzcomponentaction}) since they are just phases, but we require this form to preserve the potential terms. What we'll show next time is that the superpotential is not altered by quantum corrections, so the quantum theory with respect to the superpotential has the same form as in the classical theory.

@@ -1,0 +1,97 @@
+\begin{quote}
+    \textit{``In fact, you become a dude if you are here because you are forced to surf the black hole. You HAVE to surf the black hole. So physicists are COOL.'' --Jorge Santos}
+\end{quote}
+
+n.b. last time my laptop died before lecture. If you're reading this, I haven't yet transcribed the notes for yesterday that I took by hand, but they will be up probably after the weekend. Thanks!
+
+\subsection*{Rotating black holes (Kerr)}
+Last time, we described charged black holes. Highly charged black holes are probably not astrophysically relevant, but black holes with large angular momentum are. In the realm of stationary solutions, one might hope to make a classification of stationary solutions to the Einstein equations which contain black holes. To do this, we'll have to discuss \term{uniqueness theorems.}
+
+\begin{defn}
+    A spacetime which is asymptotically flat at null infinity is \term{stationary} if it admits a Killing vector field $K^a$ that is timelike in a neighborhood of $\mathcal{I}^+$.
+\end{defn}
+This is a little different from our old definition, where we required a timelike Killing vector field everywhere (which we might now call strictly stationary). Here, we only care about what's happening at null infinity.
+
+It is convenient to normalize this Killing vector field to
+\begin{equation}
+    K^2 = -1 \text{ at } \mathcal{I}^+.
+\end{equation}
+We need another definition to discuss rotating black holes.
+\begin{defn}
+    A spacetime asymptotically flat at null infinity is \term{stationary} and \term{axisymmetric} if 
+    \begin{enumerate}
+        \item[(i)] it is stationary,
+        \item[(ii)] it admits a Killing vector field $m^a$ that is spacelike near $\mathcal{I}^+$,
+        \item[(iii)] $m^a$ generates a 1-parameter group of isometries isomorphic to $U(1)$ (i.e. 2D rotations)
+        \item[(iv)] $[K,m]=0$.
+    \end{enumerate}
+\end{defn}
+\begin{thm}[Israel 1967, Bunting and Masood 1987]
+    If $(\cM,g)$ is a static, asymptotically flat vacuum black hole spacetime that is suitably regular on and outside the event horizon, then $(\cM,g)$ is isometric to the Schwarzschild solution.
+\end{thm}
+However, let us assume that our spacetime is not static, just stationary. There is an analogue of this theorem for Einstein-Maxwell.
+\begin{thm}[Hawking 1973, Wald 1991]
+    If $(\cM,g)$ is a stationary, non-static, asymptoticallly flat analytic solution of the Einstein-Maxwell equation that is suitably regular that is suitably regular on and outside the event horizon, then $(\cM,g)$ is stationary and axisymmetric.
+\end{thm}
+This is sometimes called a ``rigidity'' theorem, and the analyticity condition is often considered too strong.
+\begin{thm}[Carter 1971, Robinson 1975]
+    If $(\cM,g)$ is a stationary, axisymmetric asym. flat vacuum spacetime regular on and outside a connected event horizon, then $(\cM,g)$ is a member of the 2-parameter Kerr (1963) family of solutions, with the two parameters mass $M$ and angular momentum $J$.
+\end{thm}
+%You could build it out of encyclopedias, you could crash a bunch of humans into each other-- it would be messy but you could do it-- there are many many ways to build this black hole.
+In fact, black holes have a remarkable property-- no matter what sort of matter we use to build the black hole, all that remains after collapse are two parameters in pure gravity (or four in Einstein-Maxwell). These are the \term{no-hair} theorems, and they only strictly hold in four dimensions.
+
+If we turn on charge, we get the Kerr-Newman solution, written in so-called Boyer-Lindquist coordinates. There are four parameters of this solution, $a$ (angular momentum), $M$ (mass), $P,$ and $Q$ (magnetic and electric charges).
+%copy later
+The Kerr-Newman solution enjoys two Killing vectors,
+\begin{equation}
+    K^a = \paren{\P{}{t}}^a,\quad m^a = \paren{\P{}{\phi}}^a,
+\end{equation}
+and there is also a nice symmetry where the line element is invariant under the symmmetry
+\begin{equation}
+    (t,\phi) \to (-t,-\phi).
+\end{equation}
+The parameter $a=J/M$ is simply a normalized version of the old angular momentum.
+
+The \term{Kerr solution} is the Kerr-Newman solution with no charge, $Q=P=0$. Define $\Delta \equiv (r-r_+)(r-r_-), r_\pm = M\pm\sqrt{M^2+a^2}$. Notice the analogy to Reissner-Nordstr\"om-- if $M^2 <a^2$ we have a naked singularity (ruled out by WCC conjecture). If $M^2 >a^2$, we have a black hole. If $M^2=a^2$, we have the extremal Kerr solution.
+
+From the form of Kerr-Newman, it looks like the metric becomes singular when $\Delta = 0$ (at $r=r_\pm$) or when $\Sigma=0$ (at $r=0,\theta=\pi/2$). The first two are coordinate singularities, whereas the $r=0$ singularity is a proper curvature singularity.
+
+We introduce now the equivalent of EF coordinates, which here are called Kerr coordinates:
+\begin{equation}
+    dv = dt +\frac{r^2+a^2}{\Delta}dr,\quad d\chi = d\phi +\frac{a}{\Delta } dr.
+\end{equation}
+In thse coordinates, the Killing vectors become $K=\P{}{v}$ and $m=\P{}{\chi}$, where $\chi$ is periodic with $\chi \sim \chi+2\pi$. In these coordinates, we can extend our solution to $0< r< r_+$.
+
+\begin{prop}
+    The surface $r=r_+$ is a null hypersurface with normal $\xi^a = K^a + \Omega_H m^a$, where $\Omega_H=\frac{a}{r_+^2 + a^2}$.
+\end{prop}
+\begin{proof}
+    First compute $\xi_\mu$ in Kerr coordinates. We will find that
+    \begin{equation*}
+        \xi_\mu dx^\mu|_{r=r_+} \propto dr, \quad \xi^\mu \xi_\mu|_{r=r_+} =0.
+    \end{equation*}
+\end{proof}
+In BL coordinates, $\xi=\P{}{t} +\Omega_H \P{}{\phi}$ and hence
+\begin{equation}
+    \xi^\mu \p_\mu(\phi-\Omega_H t) = 0\implies \phi=\text{const} + \Omega_H t.
+\end{equation}
+Thus the generators of the horizon travel with an angular velocity given by $\Omega_H$.
+
+\subsection*{Maximal analytic extension}
+Much of the structure of the Kerr solution will be similar to the RN solution-- we'll still get an event horizon and a Cauchy horizon. However, the Kerr solution is not spherically symmetric, so we must restrict ourselves to a submanifold-- we'll choose $(\theta=0,\theta=\pi)$. Fortunately, this is totally geodesic (i.e. geodesics don't escape the submanifold).
+
+But (as we'll show on the examples sheet) the singularity of Kerr is not a point but a ring. One can go ``through'' the center of the ring and end up in another asymptotically flat end, and near the singularity there are closed timelike curves. Again, strong cosmic censorship saves us-- it tells us that we really shouldn't trust the diagram beyond the Cauchy horizon, and this result is strongly suggested (though not quite proven) by work by Dafermos.
+
+\subsection*{The ergosurface and Penrose process}
+Let us look at the Killing field $K$:
+\begin{equation}
+    K^2 = g_{tt} =-\bkt{1-\frac{2Mr}{r^2+a^2\cos^2\theta}}.
+\end{equation}
+Let $K^2<0$ be timelike. Thus
+\begin{equation}
+    r > M +\sqrt{M^2-a^2 \cos^2\theta} \geq r_+.
+\end{equation}
+There is a boundary known as the ergosphere bounding a region known as the ergoregion, some of which lies outside the black hole.
+
+Suppose now we have a stationary observer on a timelike trajectory that follows the integral curves of $K$. Such an observer is dragged along with the co-rotating frame, and we'll moreover show that we can use this phenomenon to extract energy from the black hole.
+%In fact, you become a dude if you are here because you are forced to surf the black hole. You have to surf the black hole. So physicists are COOL.

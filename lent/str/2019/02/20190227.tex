@@ -1,0 +1,115 @@
+Today we'll continue our discussion of BRST symmetry. Last time, we argued that the BRST symmetry was related to physical states in a special way. We showed that the BRST charge $\cQ_B$ must satisfy
+\begin{equation}
+    \cQ_B^2 = \frac{1}{2}\set{\cQ_B,\cQ_B}=0
+\end{equation}
+for $\cQ_B$ to be conserved. We also required that physical states must satisfy $\cQ_B\ket{\phi}=0$, i.e. they are $\cQ_B$-closed.
+
+Consider a state $\ket{\zeta}=\cQ_B \ket{\Lambda}$ for some state $\ket{\Lambda}$ (i.e. a $\cQ_B$-exact state). Clearly, such a state is $\cQ_B$-closed, since
+\begin{equation}
+    \cQ_B\ket{\zeta}=\cQ_B^2 \ket{\Lambda}=0.
+\end{equation}
+However, notice that
+\begin{equation}
+    \braket{\zeta}{\zeta}=\bra{\Lambda}\cQ_B^2\ket{\Lambda}=0,
+\end{equation}
+so such states have zero norm. More generally, if $\ket{\phi}$ is a physical state (not necessarily $\cQ_B$-exact), then
+\begin{equation}
+    \braket{\phi}{\zeta}=\bra{\phi}\cQ_B\ket{\zeta}=0,
+\end{equation}
+In fact, though we haven't proved it, such $\cQ_B$-exact states decouple from the theory. That is, any correlation functions with $\cQ_B$-exact states included will vanish.
+
+Therefore the physical states we are interested in are in the kernel of $\cQ_B$ ($\cQ_B$-closed) but not in its image ($\cQ_B$-exact). This is precisely the notion of the \term{cohomology} of $\cQ_B$: all physical states $\ket{\phi}$ must satisfy
+\begin{equation}
+    \ket{\phi} \in \text{ker}(\cQ_B)/\text{Im}(\cQ_B) \simeq \text{Cohom}(\cQ_B).
+\end{equation}
+We might wonder whether there are still ghosts in the theory, but one can prove that the physical spectrum is actually in one-to-one correspondence with $\text{Cohom}(\cQ_B)$ (the no-ghost theorem).
+
+\subsection*{BRST charge for bosonic string theory}
+Having discussed heuristically why we might be interested in such a charge, let us try to construct it for the bosonic string. That is, we shall look for an operator $\cQ_B$ such that $\cQ_B^2=0$ which generates our BRST transformations. Recall that our theory comes as two copies, a holomorphic and antiholomorphic sector. We shall decompose the charge into its action on the holomorphic and antiholomorphic sectors,
+\begin{equation}
+    \cQ_B = Q_B +\bar Q_B,
+\end{equation}
+and require that
+\begin{gather}
+    \cQ_B^2 = 0,\\
+    \set{Q_B,Q_B}=0,\quad \set{\bar Q_B,\bar Q_B}=0,\quad \set{Q_B,\bar Q_B}=0.
+\end{gather}
+What's our strategy to construct the charge? We require the embedding fields to vary as
+\begin{equation}
+    \delta_Q X^\mu(\omega)=\epsilon c(\omega)\p X^\mu(\omega),
+\end{equation}
+where $\epsilon$ is some Grassmann parameter and $c$ is the $c$-ghost. Thus we get the anticommutator
+\begin{equation}
+    [Q_B,X^\mu(\omega)]=c(\omega) \p X^\mu(\omega),
+\end{equation}
+which looks like a conformal transformation! We can recover this from the charge
+\begin{equation*}
+    Q_B=\oint_{z=0} \frac{dz}{2\pi i} c(z) T_X(z).
+\end{equation*}
+In fact, that's not quite the whole story-- we must also couple the charge to the ghosts, writing the charge
+\begin{equation}
+    Q_B=\oint_{z=0} \frac{dz}{2\pi i} c(z) \paren{T_X(z)+\frac{1}{2} T_{\text{gh}}(z)}.
+\end{equation}
+Recall that once the $B_{ab}$ auxiliary field is integrated out, the gauge-fixed action was invariant under
+\begin{gather}
+    [Q_B,X^\mu(\omega)]= c(\omega) \p X^\mu(\omega)\\
+    \set{Q_B,c(\omega)}=c(\omega) \p c(\omega)\\
+    \set{Q_B,b(\omega)} = T_X(\omega)+T_\text{gh}(\omega).
+\end{gather}
+
+For example,
+\begin{align*}
+    \set{Q_B,b(\omega)} &= \oint_{z=0}\frac{dz}{2\pi i}\set{(z)(T_X(z)+\frac{1}{2}T_\text{gh}(z)),b(\omega)}\\
+        &= \oint_{z=\omega} \frac{dz}{2\pi i} \paren{\overbrace{c(z) (T_X(z)+\frac{1}{2} T_\text{gh}(z))b(\omega)} +\frac{1}{2} c(z) \overbrace{T_\text{gh} b(\omega)}
+        }\\
+        &= \oint_{z=\omega} \frac{dz}{2\pi i} \paren{ (T_X(z)+\frac{1}{2} T_\text{gh}(z)) \frac{1}{z-\omega} +\frac{1}{2} c(z) \paren{ \frac{2}{(z-\omega)^2}b(\omega)+\frac{1}{z-\omega} \p b(\omega)}
+        }
+\end{align*}
+where we've used the OPEs to do the contraction. Expanding in powers of $z-\omega \ll 1$, $c(z)=c(\omega)+(z-\omega)\p c(\omega)+O((z-\omega)^2)$, we have
+\begin{equation}
+    \oint_{z=\omega} \frac{dz}{2\pi i} \paren{ (T_X(\omega)+\frac{1}{2} T_\text{gh}(\omega)) \frac{1}{z-\omega} +\frac{1}{2}\paren{
+        \frac{2c(\omega)b(\omega)}{(z-\omega)^2}
+        +2\frac{\p c(\omega) b(\omega)}{z-\omega}
+        +\frac{c(\omega)\p b(\omega)}{z-\omega}
+        }
+    }.
+\end{equation}
+But we now see that the $(z-\omega)^2$ pole does not depend on $z$ in its numerator, and therefore does not contribute to the contour integral. The last two terms in the parentheses give a copy of $T_\text{gh}(\omega)$, leaving
+\begin{equation}
+    \set{\cQ_B,b(\omega)}=\set{Q_B,b(\omega)}=\oint_{z=\omega} \frac{dz}{2\pi i}(T_X(\omega)+T_\text{gh})\frac{1}{z-\omega} =T_\text{tot}(\omega).
+\end{equation}
+With (perhaps a lot of) work, one can show that
+\begin{equation}
+    [Q_B,T_\text{tot}]=\frac{D-26}{12} \p^3 c(\omega),
+\end{equation}
+which suggests that our charge will be anomalous in any $D\neq 26$. Thus $Q_B^2=0$ if $D=26$, the same anomaly we saw in the Virasoro algebra.
+
+\subsection*{The BRST current and anomaly}
+It is useful to define the BRST current
+\begin{equation}
+    \cQ_B = Q_B +\bar Q_B = \oint_{z=0} \frac{dz}{2\pi i} j_B(z) -\oint_{\bar z=0} \frac{d\bar z}{2\pi i} \bar j_B(\bar z).
+\end{equation}
+Our BRST current takes the form
+\begin{equation*}
+    j_B(Z)=c(z) \paren{T_X(z) +\frac{1}{2}T_\text{gh}(z)}+\frac{3}{2} \p^2 c(z),
+\end{equation*}
+where this last term drops out in the contour integral. The rest is what we could have read off.
+%Can it be that string theory can live in two dimensions at once? The answer is sort of yes. But not in this way.
+As it turns out, the OPE of $j_B(z)$ with itself is
+\begin{equation}
+    j_B(z) j_B(\omega)=-\frac{D-18}{2(z-\omega)^3} c(\omega) \p c(\omega) -\frac{D-18}{4(z-\omega)^2} c(\omega) \p^2 c(\omega) -\frac{(D-26)}{12(z-\omega)}c(\omega) \p^3 c(\omega)+\ldots
+\end{equation}
+and this seems pretty strange. Does this $D-18$ factor mean that $D$ is somehow both $18$ and also $26$?
+
+No. When we check $Q_B^2=0$, we see that
+\begin{align*}
+    \set{Q_B,Q_B} &= \oint_{z=0} \frac{dz}{2\pi i} \oint_{\omega=0} \frac{d\omega}{2\pi i} \set{j_B(z),j_B(\omega)}\\
+        &= \oint_{z=0} \frac{dz}{2\pi i} \oint_{\omega=0} \frac{d\omega}{2\pi i} \paren{j_B(z)j_B(\omega) \text{ OPE}}\\
+        &= \oint_{z=0} \frac{dz}{2\pi i} \oint_{\omega=0} \frac{d\omega}{2\pi i} \paren{-\frac{(D-26)}{12(z-\omega)}c(\omega) \p^3 c(\omega)}.
+\end{align*}
+In fact, the $D-18$ terms can be integrated by parts, and the two terms we have written turn out to make equal and opposite contributions to the contour integral. Performing the $d\omega$ integral, what remains is
+\begin{equation}
+    \set{Q_B,Q_B} = -\frac{(D-26)}{12} \oint_{z=0} \frac{dz}{2\pi i} c(z) \p^3 (z).
+\end{equation}
+
+As we've presented it, the BRST symmetry was something that emerged from our idea of physical states. But there's another viewpoint-- the BRST operator is actually the fundamental object which tells us the structure of our theory. It tells us something deep about the constraints as we wee them through ghosts, and the requirement that states are not in the image of the BRST transformation is the statement that we are not interested in states which are pure gauge.
