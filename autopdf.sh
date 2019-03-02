@@ -44,10 +44,10 @@ latexmk -c
 mv qi-notes-partiii.pdf ../../pdfs
 
 #standard model
-cd ../sm
-latexmk -pdf sm-notes-partiii.tex
-latexmk -c
-mv sm-notes-partiii.pdf ../../pdfs
+#cd ../sm
+#latexmk -pdf sm-notes-partiii.tex
+#latexmk -c
+#mv sm-notes-partiii.pdf ../../pdfs
 
 #supersymmetry
 cd ../susy
