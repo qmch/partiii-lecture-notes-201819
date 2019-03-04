@@ -1,4 +1,4 @@
-Last time, we discussed the trace distance and the fidelity, two measures of distance between states. We also stated Uhlmann's theorem, which states that the fidelity of two states $\rho,\sigma$ is related to the maximal overlap between two purifications $\ket{\psi_\rho^{AB}},\ket{\sigma_\rho^{AB}}$.
+Last time, we discussed the trace distance and the fidelity, two measures of distance between states. We also stated Uhlmann's theorem, which says that the fidelity of two states $\rho,\sigma$ is related to the maximal overlap between two purifications $\ket{\psi_\rho^{AB}},\ket{\sigma_\rho^{AB}}$.
 
 Some properties follow from the theorem.
 \begin{enumerate}
@@ -27,7 +27,7 @@ Some properties follow from the theorem.
     \end{equation}
 \end{proof}
 
-We now state teh Fuchs-van de Graaf inequality:
+We now state the Fuchs-van de Graaf inequality:
 \begin{equation}
     1-F(\rho,\sigma)\leq D(\rho,\sigma) \leq \sqrt{1-F^2(\rho,\sigma)}
 \end{equation}
@@ -61,13 +61,13 @@ The notion of entropy for quantum systems is also called the von Neumann entropy
     \end{equation}
     Here, the log is base 2 (as is typical in information theory).
 \end{defn}
-Note that in the case where $\rho$ admits a spectral decomposition, $\rho=\sum \lambda_i \dyad{e_i}$, the von Neumann entropy reduces to 
+Since $\rho$ admits a spectral decomposition, $\rho=\sum \lambda_i \dyad{e_i}$, the von Neumann entropy reduces to 
 \begin{equation}
     S(\rho)=-\sum \lambda_i \log \lambda_i = H(\set{\lambda_i}),
 \end{equation}
 the Shannon entropy of the set of eigenvalues.
 
-The von Neumannn entropy has the following properties:
+The von Neumann entropy has the following properties:
 \begin{enumerate}
     \item $S(\rho) \geq 0 $ with $S(\rho)=0 \iff \rho$ is pure (i.e. $\rho$ has one non-zero eigenvalue).
     \item $S(U^\dagger \rho U)=S(\rho) \forall U$ unitary (since the eigenvalues are not changed under a unitary).
@@ -81,7 +81,8 @@ To prove this last property, let us define a parent quantity, the quantum relati
     \end{equation}
     which is well-defined if $\text{supp}\rho \subseteq \text{supp}\sigma$.
 \end{defn}
-This is the quantum analogue of the KL divergence (classical relative entropy), defined $D(p||q)=\sum_i p_i \log \frac{p_i}{q_i}$.
+This is the quantum analogue of the \href{https://en.wikipedia.org/wiki/Kullback\%E2\%80\%93Leibler_divergence}{KL divergence}
+(classical relative entropy), defined $D(p||q)=\sum_i p_i \log \frac{p_i}{q_i}$.
 Moreover, we see that the quantum relative entropy is indeed a parent quantity for the von Neumann entropy:
 \begin{equation}
     S(\rho)=-D(\rho||I)
@@ -99,7 +100,7 @@ A useful property is the \term{Klein's inequality},
         }\\
             &= \sum_i \lambda_i \log \lambda_i -\sum_{i,\alpha} \lambda_i \log a_\alpha |\braket{i}{\alpha}|^2.
     \end{align*}
-    But observe that for $p_{i\alpha}=|\braket{i}{\alpha}|^2$, we have $\sum_i p_{i\alpha}=\sum_i |\braket{i}{\alpha}|^2 = \sum_i \braket{\alpha}{i}\braket{i}{\alpha}=1$, and the same is true if we sum over $\alpha$. This tells us that $p_{i\alpha}$ are teh elements of a doubly stochastic matrix. Thus
+    But observe that for $p_{i\alpha}=|\braket{i}{\alpha}|^2$, we have $\sum_i p_{i\alpha}=\sum_i |\braket{i}{\alpha}|^2 = \sum_i \braket{\alpha}{i}\braket{i}{\alpha}=1$, and the same is true if we sum over $\alpha$. This tells us that $p_{i\alpha}$ are the elements of a doubly stochastic matrix. Thus
     \begin{equation}
         D(\rho||\sigma)=\sum \lambda_i \log \lambda_i -\sum_{i,\alpha} \lambda_i \log a_\alpha p_{i\alpha}.
     \end{equation}
@@ -158,14 +159,14 @@ Note that this last quantity does not satisfy some properties of the classical m
 \begin{equation}
     H(X) \leq H(XY) \implies H(XY)-H(X) \geq 0,
 \end{equation}
-and this latter expression is just a conditional entropy. THus $H(Y|X)\geq 0$. But in the quantum case, $S(A|B)$ need not be $\geq 0$. To see this, let us take $\rho_{AB}=\dyad{\phi^+}$. Thus
+and this latter expression is just a conditional entropy. Thus $H(Y|X)\geq 0$. But in the quantum case, $S(A|B)$ need not be $\geq 0$. To see this, let us take $\rho_{AB}=\dyad{\phi^+}$. Thus
 \begin{align*}
     S(A|B) &= S(AB) - S(A)\\
         &= -\log d <0
 \end{align*}
 since $S(AB)=0$ and $A$ is a completely mixed state.
 
-Naturally,
+Naturally, the von Neumann entropy has a nice additive structure under tensor products
 \begin{equation}
     S(\rho\otimes \sigma)= S(\rho)+S(\sigma),
 \end{equation}
