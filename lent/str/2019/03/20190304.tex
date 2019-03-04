@@ -1,0 +1,92 @@
+Let's continue our discussion of scattering amplitudes. We argued that if we have an operator $\phi(z,\bar z)$ that transforms as
+\begin{equation}
+    [Q_B,\phi]=\p(c\phi)\text{ and }[\bar Q_B,\phi]=\bar \p(\bar c \phi),
+\end{equation}
+then we can construct two BRST-closed objects,
+\begin{equation}
+    U(z,\bar z)=c(z,\bar c(z) \phi(z,\bar z),\quad V=\int_\Sigma d^2z\, \phi(z,\bar z).
+\end{equation}
+
+Since this $U$ we have constructed is local, it would be nice if it also transformed properly under conformal transformations. What sort of $\phi$s will satisfy this property? Assume that $\phi$ has weight $(h,\bar h)$. Under conformal transformations, we have
+\begin{equation}
+    \delta_v \phi = h\p v \phi + v \p \phi + \bar h \bar \p \bar v \phi+ \bar v \bar \p \phi.
+\end{equation}
+Therefore under BRST, we have
+\begin{align*}
+    [Q_B,\phi] &= h(\p c) \phi + c\p \phi\\
+        &=(h-1)(\p c) \phi + \p(c\phi).
+\end{align*}
+Notice that $\phi$ transforms in the right way if $h=1$. A similar argument for the antiholomorphic sector tells us we also require the $\bar h=1$. Thus $U$ and $V$ are BRST-invariant if $(h,\bar h)=(1,1)$.
+
+\subsection*{The tachyon}
+Imagine mapping a scattering process from our worldsheet to the Riemann sphere with some punctures. We might expect the tachyon vertex operator to tell us where the puncture is,
+\begin{equation}
+    \delta^{26}[x^\mu- x^\mu(z,\bar z)]
+\end{equation}
+In momentum space, this becomes (after a Fourier transform)
+\begin{equation}
+    \int d^{26}x \, \delta^{26}(x^\mu -X^\mu(z,\bar z))e^{ik_\mu x^\mu} = e^{ik_\mu X^\mu(z,\bar z)}.
+\end{equation}
+We might therefore propose that
+\begin{equation}
+    \phi(z,\bar z)=e^{ik_\mu X^\mu(z,\bar z)}.
+\end{equation}
+Happily, this agrees with the state-operator correspondence as a momentum eigenstate.
+
+Given this new operator $\phi$, will $U$ and $V$ be BRST-invariant? We have shown that $e^{ik\cdot X(z,\bar z)}$ has weight
+\begin{equation}
+    (h,\bar h)=\paren{\frac{\alpha' k^2}{4},\frac{\alpha' k^2}{4}}.
+\end{equation}
+For the tachyon, $k^2=4/\alpha'$, so $U$ and $V$ will have weight $(1,1)$. The tachyon vertex operators are then
+\begin{equation}
+    U_T(z,\bar z)=g_c c(z) \bar c(z) :e^{ik\cdot X(z,\bar z)}:,\quad V_T=g_c \int_\Sigma d^2 z\, :e^{ik \cdot X(z,\bar z)}:.
+\end{equation}
+
+\subsection*{Massless states}
+Imagine a worldsheet embedding into a spacetime with metric
+\begin{equation}
+    g_{\mu\nu}(X)=\eta_{\mu\nu} + \epsilon_{\mu\nu} e^{ik\cdot X(z,\bar z)},
+\end{equation}
+almost Minkowski but with a little plane wave ripple in it. The action is
+\begin{equation}
+    S= -\frac{1}{2\pi \alpha'} \int d^2z \paren{\eta_{\mu\nu} + \epsilon e^{ik\cdot X(z,\bar z)}} \p X^\mu \bar \p X^\nu.
+\end{equation}
+Since we treat $\epsilon_{\mu\nu}$ as a small (symmetric) perturbation, we may as well expand in powers of that perturbation. Thus
+\begin{equation}
+    \int \cD X \, e^{-S[X]} \approx \int \cD X e^{-S_0[X]}\paren{1+\frac{1}{4\pi \alpha'}\int_\Sigma d^2 z \, \epsilon_{\mu\nu} \p X^\mu \bar \p X^\nu e^{ik\cdot X}+\ldots}
+\end{equation}
+where $S_0[X]$ is the unperturbed action with $g_{\mu\nu}=\eta_{\mu\nu}$. These operator insertions tell us how to deform our flat Minkowski spacetime into a slightly curved spacetime. That is, the insertion of an operator
+\begin{equation}
+    \int_\Sigma d^2 z \, \epsilon_{\mu\nu} \p X^\mu \bar \p X^\nu e^{ik\cdot X}
+\end{equation}
+results in an infinitesimal perturbation in $g_{\mu\nu}$. This suggests that
+\begin{equation}
+    \phi(z,\bar z)=\epsilon_{\mu\nu} \p X^\mu \bar \p X^\nu e^{ik\cdot X}
+\end{equation}
+can be used to build graviton vertex operators. We checked the conformal weight of this object on the last examples sheet-- the weight of $\phi(z,\bar z)$ is
+\begin{equation}
+    \paren{1+\frac{\alpha' k^2}{4},1+\frac{\alpha'k^2}{4}}.
+\end{equation}
+So if $k^2=0$ then the $\phi$ operator has weight $(1,1)$, which tells us that our graviton candidate is massless.
+The corresponding graviton vertex operators are
+\begin{equation}
+    U_g(z,\bar z)=g_c c \bar c \epsilon_{\mu\nu} :\p X^\mu \bar \p X^\nu e^{ik\cdot X(z,\bar z)}:,\quad V_g= g_c \epsilon_{\mu\nu} \int_\Sigma d^2 z : \p X^\mu \bar \p X^\nu e^{ik\cdot X}:.
+\end{equation}
+
+As it turns out, if we add a small mass to the graviton then its vertex operators are no longer BRST-invariant. There are also massive states in our theory, but the constraints on these modes are more subtle-- renormalization comes into play. We won't really discuss these except to note they exist.
+
+\subsection*{The S-matrix}
+The S-matrix entry describing the scattering of $n$ states using the vertex operators $V_1,\ldots,V_n$ is
+\begin{align*}
+    A_n ={}& \sum_{g=0}^\infty g_c^{2g-2} \frac{1}{|\text{CKG}|} \int_{\cM} d^s t \int \cD b \cD c \cD \bar b \cD \bar c \cD X \prod_{I=1}^s (\mu_I |b)(\bar \mu_I|\bar b)\\
+    &\times e^{-S[X,b,c,\bar b,\bar c]}\prod_{i,a} c^a(\hat \sigma_i) V_1 \ldots V_n.
+\end{align*}
+Here, we have a sum over genus $g$, an integral over moduli space $\cM$, a path integral over $b,c,\bar b, \bar c$ fields, the path integral weight $e^{-S},$ some Killing vector-fixing factors $c^a(\hat \sigma_i)$, and of course the vertex operators themselves.
+
+At tree-level, we consider the $g=0$ contributions (i.e. spheres). The CKG is $SL(2;\CC)$, and the moduli space is zero-dimensional (all spheres are conformally equivalent). Thus the factors $(\mu_I|b)$ drop out of the integral. We can fix the freedom in the CKG by choosing the $\hat \sigma_i^a$ to coincide with the first three punctures. In particular, it might be nice to select these to coincide with the operators $V_1,V_2,V_3$. Our amplitude becomes
+\begin{align*}
+    A_n^{(g=0)} ={}& \frac{g_c^{-2}}{|\text{CKG}|} \paren{\int \cD b \cD c \cD \bar b \cD \bar c e^{-S_{gh}[b,c]}\prod_{i=1}^3 c(z_i) \bar c(\bar z_i)}\\
+        &\times \int \cD X e^{-S[X]}V_1\ldots V_n\\
+    ={}& \frac{g_c^{n-2}}{|CKG|} \int d^2 z_1 \ldots d^2 z_n \avg{\prod_{i=1}^3 c(z_i) \bar c (\bar z_i)}_{\text{gh}} \avg{\phi_1 (z_1,\bar z_1)\ldots \phi_n(z_n,\bar z_n)}\\
+    ={}& \frac{g_c^{n-2}}{|\text{CKG}|}\int d^2 z_1 d^2 z_2 d^2 z_3 \avg{U_1(z_1,\bar z_1) U_2 U_3 V_4\ldots V_n}.
+\end{align*}

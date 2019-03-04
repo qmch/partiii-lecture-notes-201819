@@ -62,7 +62,7 @@ and we have the contraction
 \end{equation}
 We'll just go for it, then.
 \begin{equation}
-    T(z) T(\omega) = \paren{-\frac{1}{\alpha'}}^2 :\p X^\mu(z) \p X_\mu(z): :\p X^\nu(\omega) \p X_\nu(\omega):
+    T(z) T(\omega) = \paren{-\frac{1}{\alpha'}}^2 \normord{\p X^\mu(z) \p X_\mu(z)} \normord{\p X^\nu(\omega) \p X_\nu(\omega)}
 \end{equation}
 where we need to take single contractions (e.g. $\overbrace{\p X_\mu(z) \p X^\nu(\omega)}$) and also double contractions 
 \begin{equation*}
@@ -70,7 +70,7 @@ where we need to take single contractions (e.g. $\overbrace{\p X_\mu(z) \p X^\nu
 \end{equation*}
 There will be four single contractions and two double contractions. Writing it all out, we find that
 \begin{align*}
-    T(z)T(\omega) &=-\frac{2}{\alpha'} \frac{\eta_{\mu\nu}}{(z-\omega)^2} :\p X^\mu(z) \p X^\nu(\omega): + \frac{1}{2} \frac{\delta^\mu{}_\nu}{(z-\omega)^2}\frac{\delta_\mu{}^\nu}{(z-\omega)^2}+\ldots
+    T(z)T(\omega) &=-\frac{2}{\alpha'} \frac{\eta_{\mu\nu}}{(z-\omega)^2} \normord{\p X^\mu(z) \p X^\nu(\omega)} + \frac{1}{2} \frac{\delta^\mu{}_\nu}{(z-\omega)^2}\frac{\delta_\mu{}^\nu}{(z-\omega)^2}+\ldots
 \end{align*}
 We now expand $\p X^\mu(z)$ about $z=\omega$:
 \begin{equation}\label{pxmuzexpansion}
