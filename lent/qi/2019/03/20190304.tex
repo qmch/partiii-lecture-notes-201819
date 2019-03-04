@@ -1,0 +1,153 @@
+Today we will discuss quantum data compression. Let $Q$ be a quantum information source, e.g. a highly attenuated laser emitting single monochromatic photons. Hence the source produces some signals $\ket{\Psi_k}$ with probability $p_k$, and these signals lie in a Hilbert space $\cH$ with dimension $d=\dim\cH$. Then we assign a density matrix
+\begin{equation}
+    \rho=\sum p_k \dyad{\Psi_k}
+\end{equation}
+to our source. Note that the outputs need not be orthogonal: $\braket{\Psi_j}{\Psi_k}\neq \delta_{ij}$.
+
+Just like in the classical case, we will be interested in the asymptotic limit, i.e. for $n$ copies/uses of the source, we can produce a string of outputs
+\begin{equation}
+    \ket{\Psi_{k}^{(n)}} \in \cH^{\otimes n} \text{ with probability }p_k^{(n)}
+\end{equation}
+where
+\begin{equation}
+    \rho^{(n)}=\sum p_k^{(n)}\dyad{\Psi_k^{(n)}}.
+\end{equation}
+Thus our source is described by $\set{\rho^{(n)},\cH^{\otimes n}}$ (or more formally, $\set{\ket{\Psi_k^{(n)}},p_k^{(n)},\cH^{\otimes n}}.$
+
+Now let us define a data compression map
+\begin{equation}
+    \cC^{(n)}:\dyad{\Psi_k^{(n)}} \mapsto \tilde \rho_k^{(n)} \in \cD(\tilde \cH_n),
+\end{equation}
+where $\cH_n$ is some new Hilbert space. For this to be a compression map, we must have the dimension of the target space be smaller than the dimension of the source,
+\begin{equation}
+    d_c^{(n)}=\dim \tilde \cH_n < d^n.
+\end{equation}
+Let us also suppose there exists a decompression map
+\begin{equation}
+    \cD^{(n)}: \cD(\tilde \cH_n)\to \cD (\cH^{\otimes n}).
+\end{equation}
+
+In particular, these maps must be quantum operations and hence linear CPTP maps. The \term{rate} of this compression-decompression scheme is
+\begin{equation}
+    R=\frac{\log d_c^{(n)}}{n}.
+\end{equation}
+This is simply the number of qubits in the compressed version divided by the number of uses of the source. We can also invert the relationship and write
+\begin{equation}
+    \dim \tilde H_n \equiv d_c^{(n)}=2^{nR}.
+\end{equation}
+
+With our source and compression/decompression maps in hand, what does it mean to say that such a scheme is reliable? Quantum signals are not completely distinguishable, unlike the classical case. However, we can use the fidelity instead. We have the following criterion, the \term{ensemble average fidelity}, and say that the scheme is reliable if
+\begin{equation}
+    \lim_{n\to \infty} \bar F_n =1,
+\end{equation}
+where this ensemble average fidelity is defined by
+\begin{equation}
+    \bar F_n := \sum_k p_k^{(n)} \bra{\Psi_k^{(n)}}\cD^{(n)} (\tilde \rho_k^{(n)} \ket{\Psi_k^({n)}},
+\end{equation}
+such that $0\leq \bar F_n \leq 1$ with $\bar F_n = 1$ iff $\cD^{(n)}(\tilde \rho_k^{(n)}=\dyad{\Psi_k^{(n)}}.$
+
+The original proof about quantum data compression was due to Schumacher, who worked with a memoryless (iid) source. this proof relies on the notion of a \term{typical subspace}. Where in classical information theory, a sequence was either in the typical set or not, in a quantum system this is weakened slightly. What we can say instead is that an output sequence $\ket{\Psi_k^{(n)}}$ has a large component in the typical subspace $J_\epsilon^{(n)} \subset \cH^{\otimes n}.$
+
+Consider a source output $\rho^{(n)}\in \cD(\cH^{\otimes n}$ described by an iid source. Thus
+\begin{equation}
+    \rho^{(n)}=\pi^{\otimes n}, \quad \pi\in \cD(\cH)
+\end{equation}
+where
+\begin{equation}
+    \pi = \sum q_i \dyad{\phi_i}.
+\end{equation}
+In particular, we can then write
+\begin{equation}
+    \rho^{(n)}=\sum_{\vec i} \lambda_{\vec i}^{(n)} \dyad{\chi^{(n)}_{\vec i}}
+\end{equation}
+where
+\begin{equation}
+    \lambda_{\vec i}^{(n)}=q_{i_1,\ldots, i_n},\quad \ket{\chi_{\vec i}^{(n)}} = \ket{\phi_{i_i}}\otimes \ldots \otimes \ket{\phi_{i_n}}.
+\end{equation}
+That is, we label the eigenvalues and eigenvectors of $\rho^{(n)}$ in terms of sequences $\vec i=(i_1,\ldots,i_n)$.
+
+In the classical case, the data compression limit was given by the Shannon entropy. In the quantum case, we will need the von Neumann entropy:
+\begin{equation}
+    S(\rho^{(n)})=S(\pi^{\otimes n}) = n S(\pi),
+\end{equation}
+since the von Neumann entropy adds under tensor products. We now define the set of $\epsilon$-typical sequences $T_\epsilon^{(n)}$ as sequences $\vec i$ with probability $\lambda_{\vec i}^{(n)}=q_{i_1}\ldots q_{i_n}$ such that
+\begin{equation}
+    2^{-n(S(\pi)+\epsilon)}\leq \lambda_{\vec i}^{(n)} \leq 2^{-n(S(\pi)-\epsilon)},
+\end{equation}
+where $S$ is now the von Neumann entropy.
+
+We can now define the typical subspace $\cT_\epsilon^{(n)}\subset \cH^{\otimes n}$ as
+\begin{equation}
+    \cT_\epsilon^{(n)} := \text{span}\set{\ket{\chi_{\vec i}^{(n)}} : \vec i \in T_\epsilon^{(n)}}.
+\end{equation}
+
+\begin{thm}[Typical subspace theorem]
+    Fix $\epsilon>0$. Then $\forall \delta >0, \exists n_0(\delta) >0$ such that $\forall n \geq n_0(\delta)$ and $\rho^{(n)}=\pi^{\otimes n}$. Then
+    \begin{equation}
+        \Tr(P_\epsilon^{(n)} \rho^{(n)} > 1-\delta
+    \end{equation}
+    where $P_\epsilon^{(n)}$ is the projection onto the typical subspace $\cT_\epsilon^{(n)}$ and
+    \begin{equation}
+        (1-\delta) 2^{n(S(\pi)-\epsilon)}\leq \abs{\dim \cT_\epsilon^{(n)}} \leq 2^{n(S(\pi)+\epsilon)}.
+    \end{equation}
+\end{thm}
+\begin{proof}
+\begin{equation}
+    \Tr(P_\epsilon^{(n)} \rho^{(n)}) = \sum-{i\in T_\epsilon^{(n)}} \lambda_{\vec i}^{(n)} =\sum_{\vec i \in T_\epsilon^{(n)}} p({\vec i}) = Pr(T\epsilon^{(n)})>1-\delta.
+\end{equation}
+That is, we use $P_\epsilon^{(n)} = \sum_{\vec i\in T_\epsilon^{(n)}}\dyad{\chi_{\vec i}^{(n)}}$.
+
+The second part of the theorem is proved with analogy to the classical typical sequence theorem, since $\dim \cT_\epsilon^{(n)}=|T_\epsilon^{(n)}|.$
+\end{proof}
+
+\begin{thm}[Schumacher]
+    For an iid memoryless source $\set{\pi,\cH}$,
+    \begin{itemize}
+        \item [(1)] If $R>S(\pi)$ then $\exists$ a reliable compression-decompression scheme of rate $R$.
+        \item[(2)] If $R<S(\pi)$ then no compression-decompression scheme of rate $R$ is reliable.
+    \end{itemize}
+\end{thm}
+This sounds a lot like Shannon's theorem. We'll try to prove at least the first part today.
+\begin{proof}
+    Let $R>S(\pi)$. Our proof is constructive. Choose $\epsilon>0$ such that $R>S(\pi) + \epsilon$. By the typical subspace theorem, for any $\delta>0$ and $n$ large enough we have
+    \begin{equation}
+        \dim \cT_\epsilon^{(n)} \leq 2^{n(S(\pi)+\epsilon)} < 2^{nR}.
+    \end{equation}
+    
+    What is the compression map? We have
+    \begin{equation}
+        \cC^{(n)}:\dyad{\Psi_k^{(n)}} \mapsto \tilde \rho_k^{(n)}
+    \end{equation}
+    where
+    \begin{equation}
+        \tilde \rho_k^{(n)}=\alpha_k^2 \dyad{\tilde \psi_k^{(n)}}+\beta_k^2 \dyad{\Phi_0},
+    \end{equation}
+    with
+    \begin{equation}
+        \ket{\tilde \Psi_k^{(n)}} = \frac{P_\epsilon^{(n)}\ket{\Psi_k^{(n)}}}{\sqrt{\bra{\Psi_k^{(n)}}P_\epsilon^{(n)} \ket{\Psi_k^{(n)}}}},
+    \end{equation}
+    the projection of $\ket{\Psi_k^{(n)}}$
+    onto the typical subspace with a normlization. $\ket{\Phi_0}$ is some fixed state in the typical subspace, and we fix $\alpha_k^2= \bra{\Psi_k^{(n)}}P_\epsilon^{(n)} \ket{\Psi_k^{(n)}}$ with $\alpha_k^2 +\beta_k^2=1$.
+    
+    Now our decompression map is simply
+    \begin{equation}
+        \cD^{(n)}(\tilde \rho_k^{(n)}) = \tilde \rho_k^{(n)}\oplus \vec 0,
+    \end{equation}
+    where $\vec 0$ is there to pad the decompressed matrix with zeroes. Now what is the average ensemble fidelity?
+    \begin{align*}
+        \bar F_n &= \sum_k p_k^{(n)} \bra{\Psi_k^{(n)}} \tilde \rho_k^{(n)} \ket{\Psi_k^{(n)}}\\
+        &= \sum p_k^{(n)} \bkt{ \alpha_k^2 \underbrace{|\braket{\Psi_k^{(n)}}{\tilde \Psi_k^{(n)}}|^2}_{\alpha_k^2}+\beta_k^2 \underbrace{|\braket{\Psi_k^{(n)}}{\Phi_0}|}_{\geq 0}}\\
+        &\geq \sum p_k^{(h)} \alpha_k^4\\
+        &\geq \sum p_k^{(n)}(2\alpha_k^2-1)
+    \end{align*}
+    since $(1-x)^2 \geq 0 \implies x^2 \geq 2x-1$. We conclude that
+    \begin{align*}
+        \bar F_n &\geq 2 \sum_k p_k^{(n)} \bra{\Psi_k^{(n)}}P_\epsilon^{(n)} \ket{\Psi_k^{(n)}} -1\\
+        &= 2\Tr(P_\epsilon^{(n)} \rho^{(n)})-1.
+    \end{align*}
+    But by the typical subspace theorem, we have $\Tr(P_\epsilon^{(n)} \rho^{(n)}) > 1-\delta$, so
+    \begin{equation}
+        \bar F_n \geq 1-2\delta,
+    \end{equation}
+    where $\delta$ can be made arbitrarily small in the limit as $n\to \infty$.
+\end{proof}

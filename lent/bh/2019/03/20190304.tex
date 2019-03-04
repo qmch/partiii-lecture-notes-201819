@@ -1,0 +1,133 @@
+\begin{quote}
+    \textit{``What is the area of the black hole?'' ``Zero?'' ``No, it's the other guy. Infinity.'' --Jorge Santos and a student}
+\end{quote}
+
+\subsection*{Penrose process} 
+Last time, we mentioned that rotating black holes drag along ``stationary'' observers in a region outside the black hole region. That is, the originally timelike killing vector $K=\P{}{t}$ is such that within the ergoregion, $K^2>0$, so timelike observers are forced to ``surf'' the black hole.
+
+More concretely, consider a particle with 4-momentum
+\begin{equation}
+    P^a =  \mu U^a
+\end{equation}
+where $\mu$ is the rest mass and $U^a$ is the four-velocity.
+The energy along such a geodesic is conserved,
+\begin{equation}
+    E=-K \cdot P.
+\end{equation}
+Suppose this particle carries a bomb and breaks apart so that
+\begin{equation}
+    P^a = P_1^a + P_2^a\implies E=E_1+E_2, E_i=-K\cdot P_i.
+\end{equation}
+Since $K$ is spacelike, $E_1<0$. This is possible since $K$ is spacelike in the ergoregion. But we see that
+\begin{equation}
+    E_2 = E_+|E_1| >E,
+\end{equation}
+so the particle with energy $E_2$ leaves with more energy that went in.
+%Imagine that you surround this black hole by a really big mirror. This is the black hole bomb. Believe it or not, no one knows what the endpoint of this process is. Some people have conjectured that in AdS, this leads to a violation of weak cosmic censorship.
+This is known as the \term{Penrose process}. How much energy can we steal from the black hole? A particle that crosses $\cH^+$ must have $-P\cdot \xi \geq 0$, which tells us that
+\begin{equation}
+    E-\Omega_H L \geq 0 , L= m \cdot P.
+\end{equation}
+After the system settles,
+\begin{equation}
+    \delta M = E_1, \quad \delta J=L.
+\end{equation}
+Comparing to our inequality, we find that
+\begin{equation}
+    \delta J \leq \frac{\delta M}{\Omega} =\frac{2M(M^2+\sqrt{M^4 - J^2}}{J} \delta M,
+\end{equation}
+or with a bit of manipulation,
+\begin{equation}
+    \delta M_{irr} \geq 0,\quad M_{irr}=\bkt{\frac{1}{2}(M^2+\sqrt{M^4-J^2})}^{1/2}.
+\end{equation}
+Solving for $M^2$, we find that
+\begin{equation}
+    M^2 = M_{irr}^2 +\frac{J^2}{4M_{irr}^2} \geq M_{irr}^2
+\end{equation}
+%What is the area of the black hole? Zero? No, it's the other guy. Infinity.
+The area of the intersection of a partial Cauchy surface $t={}$constant with $\cH^+$ is
+\begin{equation}
+    A=16\pi M_{irr}^2 \implies \delta A\geq 0.
+\end{equation}
+
+\subsection*{Mass, charge, and angular momentum}
+For our next trick, we'll show that the quantities we have been calling $M,Q,$ and $J$ correspond to the ideas of mass, charge, and angular momentum in a sensible way. Let us begin with electromagnetism.
+\begin{equation}
+    \nabla^a F_{ab}=-4\pi J_b, \quad \nabla_{[a}F_{bc]}=0.
+\end{equation}
+This is just Maxwell's equations and the Bianchi identity on the field strength tensor. The \term{Hodge dual} (Hodge star) of a $p$-form $\omega_p$ is a $d-p$ form defined by
+\begin{equation}
+    (* \omega_p)^{a_1 \ldots a_{d-p}} \equiv \frac{1}{p!} \frac{\epsilon^{a_1 \ldots a_{d-p} b_1 \ldots b_p}}{\sqrt{-g}} \omega_{b_1\ldots b_p},
+\end{equation}
+where $\epsilon$ is the totally antisymmetric rank-$p$ tensor (fixing some orientation for the spacetime). Using differential forms, we can write Maxwell's equations compactly as
+\begin{equation}
+    d*F = -4\pi * j, \quad dF=0.
+\end{equation}
+The second of these tells us by the Poincar\'e lemma that $dF=0\implies F=dA$ for some one-form $A$, at least locally. Consider a spacelike surface $\Sigma$, such that
+\begin{equation}
+    Q \equiv -\int_\Sigma * j
+\end{equation}
+defines a charge. The key thing about a charge is that it should be conserved, i.e. if we take another spacelike surface $\Sigma'$, the charge is unchanged. By the Maxwell equation,
+\begin{equation}
+    Q = -\int_\Sigma * j = \frac{1}{4\pi} \int_\Sigma d* F =\frac{1}{4\pi} \int_{\p \Sigma} *F,
+\end{equation}
+where we have applied Stokes's theorem.
+\begin{defn}
+    Let $(\Sigma,h,K)$ be an asymptotically flat end. Then the electric and magnetic charges associated with this end are
+    \begin{equation}
+        Q=\frac{1}{4\pi} \lim_{r\to +\infty} \int_{S^2_r} *F,\quad P= \frac{1}{4\pi} \lim_{r\to + \infty}\int S^2_r F.
+    \end{equation}
+\end{defn}
+
+\subsection*{Korman integrals}
+If a spacetime $(\cM,g)$ is stationary, then there exists a conserved energy momentum current
+\begin{equation}
+    J_a = -T_{ab} K^b \implies \nabla_a J^a = 0.
+\end{equation}
+One can show this since $T_{ab}$ is conserved and $K^b$ is Killing. In the language of differential forms,
+\begin{equation}
+    d*J=0.
+\end{equation}
+Note that $T_{ab}$ need not be the stress-energy tensor on the RHS of the Einstein equations. We will simply treat it as a symmetric 2-tensor that is conserved, i.e. obeys $\nabla_a T^{ab}=0$.
+
+Hence we can define the total energy of matter on a spacelike hypersurface $\Sigma$ as
+\begin{equation}
+    E[\Sigma]=-\int_\Sigma * J.
+\end{equation}
+Then
+\begin{equation}
+    E[\Sigma']-E[\Sigma]=-\int_{\p R} *J = -\int_R d* J = 0
+\end{equation}
+by Stokes's theorem. In electromagnetism, we said that $*J=dX$ for some $X$. But GR is harder-- the current here will not generally admit a form $*J=dX$. However, we can get close. Look at
+\begin{align*}
+    (*d*dK)_a = -\nabla^b(dK)_{ab}&=-\nabla^b \nabla_a K_b + \nabla^b \nabla_b K_a\\
+    &= 2\nabla^b \nabla_b K_a
+\end{align*}
+where we have used the fact that $K$ is Killing to rewrite the final line.
+\begin{lem}
+    A Killing vector field obeys
+    \begin{equation}
+        \nabla_a \nabla_b K^c = R^c{}_{bad} K^d.
+    \end{equation}
+\end{lem}
+Hence we have $(*d*d K)_a = -2R_{ab}K^b \equiv 8\pi J')a$,
+where $J'a = -2(T_{ab}-\frac{1}{2}T g_{ab})K^b$ by the Einstein equations. Hence
+\begin{equation}
+    d*dK=8\pi * J'.
+\end{equation}
+We know $*J'$ is exact and conserved, hence
+\begin{equation}
+    -\int_\Sigma * J' = -\frac{1}{8\pi} \int_\Sigma d* dK = -\frac{1}{8\pi}\int_{\p \Sigma} *dK.
+\end{equation}
+\begin{defn}
+    Let $(\Sigma,h,K)$ be an asymptotically flat end in a stationary spacetime. The \term{Komar mass} (or energy) is
+    \begin{equation}
+        M_{\text{Komar}}=-\frac{1}{8\pi} \lim_{r\to +\infty} \int_{S^2_r} * dK
+    \end{equation}
+\end{defn}
+\begin{defn}
+    Let $(\Sigma,h,K)$ be an asymptotically flat end in an axisymmetric spacetime. The \term{Komar angular momentum} is
+    \begin{equation}
+        J_{\text{Komar}}=\frac{1}{16\pi} \lim_{r\to +\infty} \int_{S^2_r} *dm, \quad m=\P{}{\phi}.
+    \end{equation}
+\end{defn}
