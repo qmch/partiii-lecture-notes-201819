@@ -1,0 +1,88 @@
+\subsection*{Gauge fixing, cont.}
+We had a general gauge-fixing expression
+\begin{equation*}
+    \int \cD A e^{-S[A]}=\paren{\int \cD \alpha} \int \cD A e^{-S[A]} \delta(G[A]) \det \paren{\frac{\delta G[A^\alpha]}{\delta \alpha}},
+\end{equation*}
+and we can choose a particular gauge-fixing function $G[A]=\p^\mu A_\mu^a(x) -\omega^a(x)$, just as in QED. We then integrate over an extra parameter $\omega^a(x)$ with Gaussian weight $1/2\xi$,
+\begin{equation}
+    \int \cD A e^{-S[A]}\det \paren{\frac{\delta G[A^\alpha]}{\alpha}} \exp \bkt{\int d^4x \frac{1}{2\xi} (\p^\mu A_\mu)^2}
+\end{equation}
+The gauge-transformed field
+is then
+\begin{equation}
+    (A^\alpha)^a_\mu = A^a_\mu + \frac{1}{g} D_\mu \alpha^a
+\end{equation}
+such that the variation is%
+    \footnote{See Skinner to make sense of this expression. We've left off a delta-function.}
+\begin{equation}
+    \frac{\delta G[A^\mu]}{\delta \alpha}=\frac{1}{g} \p^\mu D_\mu.
+\end{equation}
+The Faddeev-Popov method tells us to express the functional determinant as a path integral over new Grassmann fields $c,\bar c$ which transform in the adjoint representation of the gauge group. These new fields anticommute, but are otherwise Lorentz scalars (spin zero). These $c,\bar c$ fields do not represent physical particles (i.e. valid in/out states) and should be thought of as constraints. They are called \term{Faddeev-Popov ghosts.} One can then write a ``ghost Lagrangian,''
+\begin{equation}
+    \cL_\text{gh}=\bar c^a( \p^2 \delta^{ac} +g f^{abc} \p^\mu A_\mu^b) c^c.
+\end{equation}
+We arrive at a ghost propagator,
+\begin{equation}
+    \avg{c^a(x) \bar c^b(y)} =\int \frac{d^4k}{(2\pi)^4} \frac{\delta^{ab}}{k^2} e^{-ik\cdot (x-y)}
+\end{equation}
+so that a ghost propagator is associated with a $\delta^{ab}/k^2$ and we also get a three-point vertex with amplitude $-g f^{abc}p^\mu$.
+
+If these ghost fields do not represent physical particles, why do we need them in our theory?
+\begin{itemize}
+    \item The Feynman rules for fermions and gauge bosons only (no ghosts) lead to unphysical gauge field polarizations, e.g. the following diagrams.
+    %diagram
+    At tree level we can neglect unphysical polarizations by focusing on physcial in/out states, but loops are a problem.
+    \item Ghosts cancel the unphysical contributions, e.g. the sum
+    %diagram
+    is free from contributions of unphysical polarizations.
+    \item It is possible to avoid the ghosts by using a Lorentz non-invariant gauge-fixing condition, e.g. axial gauge like $n\cdot A^a=0 \forall a$ with $n$ a unit vector. Thus $G[A^\alpha]=n\cdot (A^\alpha)^a$. The gauge transformation of such a field is then
+    \begin{equation}
+        n\cdot (A^\alpha)^a = n\cdot A^a +\frac{1}{g} n \cdot \p \alpha^a +f^{abc} +f^{abc} n\cdot A^b \alpha^c =\frac{1}{g} n\cdot \p \alpha^a,
+    \end{equation}
+    which is independent of $A$ as in QED. (We have simplified by the original gauge condition $n\cdot A=0$.)  Thus $\frac{\delta G[A^\alpha]}{\delta \alpha}$ is independent of $A$. However, the downside of doing this is that we get a more complicated propagator for the gauge field. We see that breaking Lorentz invariance has its costs.
+\end{itemize}
+
+\subsection*{BRST symmetry}
+This symmetry is a constraint on physical states, named for Becchi-Rouet-Storz-Tyutin. We have a Lagrangian in Euclidean space,
+\begin{equation}
+    \cL=\frac{1}{4}(F^a_{\mu\nu})^2)^2 +\bar \psi(\slashed{D}+m)\psi +\frac{1}{2\xi}(\p^\mu A^a_\mu)^2 + \bar c \p^\mu D_\mu c.
+\end{equation}
+This is just a theory with a term that looks like the $F_{\mu\nu}$ of QED, a fermion coupling, a kinetic term for the gauge field, and the ghost constraint.
+We may then introduce an auxiliary (i.e. non-dynamical) field $B^a$, modifying our Lagrangian to
+\begin{equation}
+    \cL = \frac{1}{4}(F_{\mu\nu}^a)^2 + \bar \psi(\slashed{D} + m) \psi +\frac{1}{2\xi} (B^a)^2 -B^a \p^\mu A_\mu^a  +\bar c \p^\mu D_\mu c,
+\end{equation}
+where completing the square and integrating out $B^a$ yields the original Lagrangian.
+
+This new Lagrangian is then invariant under the global BRST transformation, written in infinitesimal form as
+\begin{align}
+    \delta A_\mu^a &= \epsilon D_\mu^{ac} c^c\\
+    \delta \psi &= ig \epsilon c^a t^a \psi\\
+    \delta c^a &= -\frac{1}{2} g\epsilon f^{abc} c^b c^c\\
+    \delta \bar c^a &= \epsilon B^a\\
+    \delta B^a &= 0.
+\end{align}
+where $\epsilon$ must be an infinitesimal Grassmann (anticommuting) quantity. Here, the $t^a$s are the generators of the gauge group as before and $f^{abc}$ are the corresponding structure constants.
+
+This transformation may seem a bit ad hoc, but in fact it will help us to make sense of the ghosts. Notice that the transformation of $\bar c^a$ is related to the auxiliary field $B^a$.
+
+The transformation of the fields $\psi,A_\mu$ is a local gauge transformation with $\alpha^a(x)=g\epsilon c^a(x)$, so invariance of $(F_{\mu\nu}^a)^2,\bar \psi(\slashed{D}+m)\psi$ is clear. The $B^a$ term is also trivially invariant.
+
+The transformation of $\bar c$ cancels the transformation of $A_\mu$ when combining the last two terms of $\cL$, so what remains is the covariant derivative term.
+\begin{align*}
+    \delta(D_\mu^{ac} c^c) &= D_\mu^{ac} \delta c^c + g f^{abc} \delta A_\mu^b c^c\\
+    &= -\frac{1}{2} g\epsilon \p_\mu (f^{abc} c^b c^c) -\frac{1}{2} g^2 \epsilon f^{abc} f^{cde} A_\mu^b c^d c^e +g \epsilon f^{abc} (\p_\mu c^b) c^c + g^2 \epsilon f^{abc} f^{bde} A_\mu^d c^c c^e.
+\end{align*}
+Looking at the $O(g)$ terms, we have
+\begin{equation}
+     -\frac{f^{abc}}{2}\p_\mu (c^b c^c) +f^{abc}(\p_\mu c^b) c^c =-\frac{f^{abc}}{2} \bkt{(\p_\mu c^b) c^c +c^b(\p_\mu c^c)} +f^{abc}(\p_-\mu c^b)c^c.
+\end{equation}
+Using
+\begin{equation}
+    f^{abc} c^b(\p_\mu c^c) = -f^{abc} (\p_\mu c^c) c^b = -f^{abc}(\p_\mu c^b) c^c = + f^{abc}(\p_\mu c^b)c^c,
+\end{equation}
+we see that the whole $O(g)$ term is zero. Similar manipulations show that the $O(g^2)$ term is also zero, using the Jacobi identity:
+\begin{equation}
+    f^{ade}f^{bcd} + f^{bde} f^{cad} +f^{cde} f^{abd}=0.
+\end{equation}
+We conclude that $\cL$ is BRST-invariant.

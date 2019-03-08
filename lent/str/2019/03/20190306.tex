@@ -1,0 +1,128 @@
+Last time, we wrote down an amplitude for an $n$-state scattering process at tree level,
+\begin{equation}
+    A_n =\frac{1}{\abs{SL(2;\CC)}}g_c^{n-2} \int d^2 z_1 \ldots d^2 z_n \avg{\prod_{i=1}^3 c(z_i) \bar c(\bar z_i)}_{bc} \avg{\phi_1(z_1,\bar z_2)\ldots \phi_n(z_n,\bar z_n)}.
+\end{equation}
+One can show that
+\begin{equation}
+    \avg{\prod_{i=1}^3 c(z_i) \bar c(\bar z_i)}_{bc} =\abs{(z_1-z_2)(z_2-z_3)(z_3-z_1)}^2 \underbrace{\bra{0}c_{-1} c_0 c_1 \bar c_{-1} \bar c_0\bar c_1 \ket{0}}_{=1}.
+\end{equation}
+What about this $SL(2;\CC)$ volume? Remember, this corresponds to some gauge fixing in which we must pick three points on the Riemann sphere to fix the $SL(2;\CC)$ symmetry. It is natural for us to choose three of the punctures as the points to fix the symmetry. Notice that under an infinitesimal $SL(2;\CC)$ transformation,
+\begin{equation}
+    z_i\to a_1 + a_2 z_i + a_3 z_i^2.
+\end{equation}
+Here, $a_i$ are parameters defining the transformation. We can relate an integral over the space of $a_i$ ($i=1,2,3$) to an integral over the locations of three punctures $z_i$ as
+\begin{equation}
+    |J|^2 d^2 a_1 d^2 a_2 d^2 a_3= d^2 z_1 d^2z_2 d^2z_3,
+\end{equation}
+where $J$ is some Jacobian factor. In particular, it is
+\begin{equation}
+    J=\det\abs*{\P{z_i}{a_j}} + \abs*{\begin{matrix}
+    1 & z_1 & z_1^2\\
+    1 & z_2 & z_2^2\\
+    1 & z_3 & z_3^2
+    \end{matrix}}
+    =(z_1-z_2)(z_2-z_3)(z_3-z_1),
+\end{equation}
+so we see that
+\begin{equation}
+    \frac{1}{d^2a_1 d^2 a_2 d^2a_3}=\frac{1}{d|SL(2;\CC)|}=\frac{|(z_1-z_2)(z_2-z_3)(z_3-z_1)|^2}{d^2 z_1 d^2 z_2 d^2 z_3}=\frac{\avg{\prod_{i=1}^3 c(z_i) \bar c(\bar z_i)}_{bc}}{d^2 z_1 d^2 z_2 d^2z_3}.
+\end{equation}
+What we see is that the Faddeev-Popov determinant is correctly capturing the Jacobian factor in going from $d^2z_i$s to $d^2 a_i$s. So we interpret the $\frac{1}{|SL(2;\CC)|}$ factor as allowing us to fix the symmetry with the first three punctures, so we can write the amplitude as
+\begin{equation}
+    A_n=g_c^{n-2} \int d^2 z_4 \ldots d^3 z_n \avg{\prod_{i=1}^3 c(z_i) \bar c(\bar z_i)}_{bc} \avg{\phi_1(z_1,\bar z_1) \ldots \phi_n(z_n,\bar z_n)}_X,
+\end{equation}
+i.e. we integrate over $n-3$ of the punctures. Note that if $g=1$ ($\Sigma$ is a torus), we integrate oer $n-1$ punctures, and if $g>1$ we integrate over all $n$ punctures.
+
+We can then compactly write the expression for $A_n$ in terms of the $U_i,V_i$ vertex operators, where recalling that
+\begin{equation}
+    U_i = g_c c(z_i)\bar c (z_i) \phi_i (z_i, \bar z_i),\quad V_i = g_c \int_\Sigma d^2 z_i \phi(z_i,\bar z_i),
+\end{equation}
+we have the amplitude
+\begin{equation}
+    A_n = g_c^{-2} \avg{\prod_{i=1}^3 U_i(z_i,\bar z_i) \prod_{j=4}^n V_j}.
+\end{equation}
+
+\subsection*{Tree-level scattering with path integrals}
+Consider the correlation function
+\begin{equation}
+    \avg{\phi_1(z_1)\ldots \phi_n(z_n)}_X= \int \cD X e^{-S[X]}\phi_1(z_1)\ldots \phi_n(z_n),
+\end{equation}
+and introduce a source term to the action,
+\begin{equation}
+    S_J[X]=\int_\Sigma d^2 z J_\mu X^\mu.
+\end{equation}
+Then
+\begin{align*}
+    S[X]+S_g[X] &= -\frac{1}{2\pi \alpha'} \int_\Sigma d^2x \p X^\mu \bar \p X_\mu + \int_\Sigma d^2 z J_\mu X^\mu\\
+    &= \frac{1}{2\pi \alpha'} \int_\Sigma d^2x  X^\mu \Box X_\mu + \int_\Sigma d^2 z J_\mu X^\mu\\
+    &= \frac{1}{2\pi \alpha'} \int_\Sigma d^2 z Y^\mu \Box Y_\mu +\frac{1}{2} \int_{\Sigma \times \Sigma} d^2z d^2\omega J^\mu(z) G(z,\omega) J_\mu(\omega) + x^\mu \int_\Sigma d^2z J_\mu(z),
+\end{align*}
+where we have integrated by parts and denote $\Box=\p \bar \p$.
+In this last step, we have separated off the constant part of $X^\mu$,
+\begin{equation}
+    X^\mu(z,\bar z)=x^\mu + \tilde X^\mu(z,\bar z),
+\end{equation}
+and noticed that the derivatives in the first term kill the constant $x^\mu$, leaving us with $\tilde X$s. We then denote
+\begin{equation}
+    Y^\mu(z,\bar z)=\tilde X^\mu(z,\bar z)-\int_\Sigma d^2 \omega G(z,\omega)J^\mu(\omega,\bar \omega)
+\end{equation}
+where $G(z,\omega)$ is the Green's function 
+\begin{equation}
+    G(z,\omega)=-\frac{\alpha'}{2} \ln|z-\omega|^2
+\end{equation}
+satisfying
+\begin{equation}
+    -\frac{1}{\pi \alpha'} \Box_z G(z,\omega)=\delta^2(z-\omega).
+\end{equation}
+In principle, this is just completing the square in order to decouple the $Y^\mu$ integral. If we define
+\begin{equation}
+    Z[J]=\int \cD X e^{-S[X]-S_J[X]},
+\end{equation}
+notice that up to zero modes which may be absorbed into the normalization of $Z[J]$, we have
+\begin{equation}
+    Z[0]\sim \int \cD Y \exp \paren{-\frac{1}{2\pi \alpha'} \int_\Sigma d^2 \p Y^\mu \bar \p Y_\mu},
+\end{equation}
+and so
+\begin{equation}\label{stringsourcepartitionfn}
+    Z[J]=Z[0]\exp \paren{\frac{1}{2} \int_{\Sigma \times \Sigma} d^2 z d^2 \omega J^\mu(z) G(z,\omega) J_\mu(\omega)}\int d^{26}x \exp \paren{x^\mu \int d^2z J_\mu(z)}
+\end{equation}
+There is a slight caveat, which is that $\cD X = d^{26}x \cD \tilde X = d^{26}x \cD Y$, so we cannot discard the integral over zero modes, though it still separates out.
+
+In a quantum field theory, we would write down Feynman rules by taking derivatives of $Z[J]$ with respect to $J$, bringing down factors of the propagator. However, that's not what we're going to do here.
+
+\subsection*{Tachyon scattering}
+The amplitude for $n$ tachyon scattering includes
+\begin{equation}
+    \avg{e^{ik_1 \cdot X(z_1)}\ldots e^{ik_n \cdot X(z_n)}}=\int \cD X e^{-S[X]}\prod_{i=1}^n e^{ik \cdot X(z_i)}.
+\end{equation}
+If we wanted to, we could write this as
+\begin{align*}
+    \avg{e^{ik_1 \cdot X(z_1)}\ldots e^{ik_n \cdot X(z_n)}} &= \int cD X \exp \paren{-S[X]+i\sum_{i=1}^n k_i \cdot X(z_i)}\\
+        &= \int \cD X \exp\paren{-S[X]-\int_\Sigma d^2z J^\mu(z) X_\mu(z)}
+\end{align*}
+where $J^\mu(z,\bar z)=-i \sum_{i=1}^n k^\mu_i \delta^2(z-z_i)$, so that we've constructed a ``source term'' and this amplitude looks a lot like $Z[J]$. Substituting this $J^\mu$ into \ref{stringsourcepartitionfn} then requires us to compute
+\begin{equation}
+    \int_\Sigma d^2z J_\mu(z) = -i \sum_{j=1}^n \int_\Sigma d^2z \delta^2(z-z_j) k_{\mu j} = -i \sum_{j=1}^n k_{\mu j}.
+\end{equation}
+Hence
+\begin{equation}
+    \int d^{26}x \exp( x^\mu \int_\Sigma d^2z J_\mu) = \int d^{26} x \exp(i x^\mu \sum_{j=1}^n k_{\mu j}) = (2\pi)^{26} \delta^{26} \paren{\sum_{j=1}^n k_j^\mu},
+\end{equation}
+where this integral has turned out to simply enforce momentum conservation.
+
+What about the other integral with the Green's function? Substituting in $J^\mu$ gives us
+\begin{align*}
+    \frac{1}{2}_{\Sigma\times \Sigma} d^2 z d^2 \omega J^\mu(z) G(z,\omega) J_\mu(\omega) 
+    &= -\frac{1}{2} \int_{\Sigma\times \Sigma} d^2 z d^2\omega \sum_{i\neq j} k_i^\mu \delta^2(z-z_i) G(z,\omega) k_{j\mu} \delta^2(z_j-\omega)\\
+    &= -\frac{1}{2} \sum_{i\neq j} k_i \cdot k_j \paren{-\frac{\alpha'}{2} \ln|z_i-z_j|^2}.
+\end{align*}
+This has cleaned up nicely, and so
+\begin{align*}
+    \exp \frac{1}{2} \int_{\Sigma\times\Sigma} d^2z d^2\omega J^\mu(z) G(z,\omega) J_\mu(\omega) &= \prod_{i\neq j} |z_i-z_j|^{\alpha' k_i \cdot k_j/2}\\
+    &= \prod_{i<j} |z_i - z_j|^{\alpha' k_i \cdot k_j}.
+\end{align*}
+We find that
+\begin{equation}
+    \avg{\prod_{i=1}^n e^{ik_i \cdot X(z_i,\bar z_i)}}_X = (2\pi)^{26} \delta^{26}\paren{\sum_{i=1}^n k_{i\mu}} \prod_{i<j} |z_i-z_j|^{\alpha' k_i \cdot k_j}.
+\end{equation}
+To sum up, we found that the tachyon amplitude could be written as an integral with an action plus a source term, which means that we can rewrite it (up to an overall normalization factor) in terms of our factorized result \ref{stringsourcepartitionfn} and compute the path integral explicitly.

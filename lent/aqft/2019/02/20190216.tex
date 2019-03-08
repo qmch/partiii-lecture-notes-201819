@@ -80,25 +80,47 @@ Therefore these troublesome modes are all gauge-equivalent to $A_\mu(x)=0$, and 
 \begin{equation}
     f(r;\rho)\text{ with }r^2=x^2+y^2,\rho\text{ another parameter}.
 \end{equation}
-Start with the integral
+Consider the integral
 \begin{align*}
     Z(\rho)&=\int d^2x\, f(r;\rho)\\
         &= \int_0^{2\pi} d\phi \int rdr f(r;\rho) =2\pi \int dr\, r f(r;\rho),
 \end{align*}
-where we used a change of coordinates to do the integral. But let's say we want to integrate only along a line, say the $x$-axis. Then we introduce a delta function, $\delta(y)$.
+where we used a change of coordinates to do the integral. Easy enough to compute. We separated and integrated out a trivial part of the integral, the $d\phi$ part, leaving only the interesting $r$ dependence.
 
-Under a rotation by $\theta$, $y\mapsto y_\theta = y\cos\theta -x\sin\theta$, so
+But there's another way to think about this integration.%
+    \footnote{Following Skinner's conventions (Ch. 8 of his notes), I've significantly rewritten this section from how it was presented in class in anticipation of later gauge fixing content.}
+Consider an integration path given by the constraint $g(\vec x)=0$ for some function of our choosing $g(\vec x)$. We may (following Skinner) call this path a \term{gauge slice} and the function a \term{gauge-fixing function}. In particular, let's say we want to integrate only along the $x$-axis, i.e. $g(\vec x)=y=0$. Consider then the related integral
 \begin{equation}
-    \delta(y) \mapsto \delta(y_\theta) = \frac{\delta(\theta-\tan^{-1}\frac{y}{x}}{\abs{y\sin\theta +x\cos\theta}}
+    \int d^2x \, \delta(g(\vec x)) f(r;\rho).
 \end{equation}
-using the composition rule of the $\delta$ function ($\delta(f(x))=\frac{\delta(x-x_0)}{|f'(x)|}$ for $f(x_0)=0$).
-Then
+With the delta function, this integral does what we wanted-- it restricts the integration path precisely to $g(\vec x)=0$. However, its value clearly depends on our choice of path, since rescaling $g\to cg$ for some constant $c$ will rescale the entire integral by a factor $1/|c|$. This is because the $\delta$ function changes with our gauge fixing function $g$. However, we can account for this as follows. We introduce the factor
+\begin{equation}
+    \Delta_g (\vec x)=\left.\P{}{\theta}g(R_\theta \vec x)\right|_{\theta=0}
+\end{equation}
+where $R_\theta$ indicates that we rotate our coordinates by an angle $\theta$ before evaluating our gauge fixing function $g(\vec x)$. This factor precisely captures how the delta function changes as we change $g$ by an infinitesimal rotation, so that the integral
+\begin{equation}
+    \int d^2x \abs{\Delta_g(\vec x)} \delta(g(\vec x)) f(r;\rho)
+\end{equation}
+is now independent of both reparametrization of $g$ and rotations by $\theta$. In fact, notice that so long as our gauge slice only hits each gauge orbit once, the integral is completely independent of the gauge slice. For our example, it is straightforward to compute $\Delta_g(\vec x)$:
+\begin{equation}
+    \Delta_g(\vec x) = \P{}{\theta}(y\cos\theta - x\sin\theta)|_{\theta=0}= -y\sin\theta -x\cos\theta|_{\theta=0}=-x.
+\end{equation}
+
+To see how this factor emerges, consider again our delta function $\delta(g(\vec x))=\delta(y)$. Under a rotation by $\theta$, $y\mapsto y_\theta = y\cos\theta -x\sin\theta$, so
+\begin{equation}
+    \delta(y) \mapsto \delta(y_\theta) = \delta(y\cos\theta-x\sin\theta).
+\end{equation}
+Let us now write this delta function in terms of $\theta$ using the composition rule of the $\delta$ function: for a function $f$ with a single zero $f(x_0)=0$, $\delta(f(x))=\frac{\delta(x-x_0)}{|f'(x_0)|}$. Thus
+\begin{equation}
+    \delta(y_\theta)=\frac{\delta(\theta-\tan^{-1}\frac{y}{x})}{\abs{y\sin\theta +x\cos\theta}_{\theta=0}}=\frac{\delta(\theta-\tan^{-1}\frac{y}{x})}{|x|}.
+\end{equation}
+By definition, when $\tan^{-1} y/x \in (0,\pi),$ the delta function satisfies
 \begin{align*}
     1 &= \int_0^\pi d\theta\, \delta(\theta-\tan^{-1}\frac{y}{x})\\
-        &= \int_0^\pi d\theta \, \delta(y\cos\theta-x\sin\theta)\abs{y\sin\theta +x\cos\theta}\\
+        &= \int_0^\pi d\theta \, \delta(y\cos\theta-x\sin\theta)\abs{x}\\
         &= \int_0^\pi d\theta\, \delta(y_\theta) \abs*{\P{y_\theta}{\theta}}.
 \end{align*}
-Then
+We recognize $\abs*{\P{y_\theta}{\theta}}=\Delta_g(\vec x)$. Then
 \begin{equation}
     Z(\rho)=\int d^2x \int_0^\pi d\theta\, \delta(y_\theta) \abs*{\P{y_\theta}{\theta}} f(r;\rho).
 \end{equation}
@@ -119,7 +141,8 @@ If we had $N$ variables and $N-1$ rotations with angles $\theta_{1i},i=2,\ldots,
 \begin{equation}
     1=\int d\theta_{1i} \delta(x_{\theta i}^i) \abs*{\frac{dx_{\theta_{1i}}^i}{d\theta_{1i}}}.
 \end{equation}
-This approach generalizes-- in our gauge theory, we fix the gauge with some functional of $A_\mu(x)$, i..e $G[A]=0$. For example, $G[A]=\p_\mu A^\mu$ in Lorenz [sic] gauge. Consider now gauge transformations
+
+This approach generalizes-- in our gauge theory, we fix the gauge with some functional of $A_\mu(x)$, i.e. $G[A]=0$. For example, $G[A]=\p_\mu A^\mu$ in Lorenz [sic] gauge. Consider now gauge transformations
 \begin{equation}
     A_\mu^\alpha(x)=A_\mu (x) +\frac{1}{e} \p_\mu \alpha(x).
 \end{equation}
@@ -128,3 +151,25 @@ We now use the identity
     1= \int \cD \alpha(x) \delta (G[A]) \det \paren{\frac{\delta G[A]}{\delta \alpha}},
 \end{equation}
 where this last factor is a functional determinant. We'll see how the gauge-fixing procedure modifies the photon propagator next time.
+
+\subsection*{Non-lectured aside: on Fadeev-Popov determinants}
+
+Let us briefly remark on what we've done. We had a theory over some potentially complicated space, but we recognized that there was a redundancy in our description. In the case of our rotationally invariant integral, we saw that on $r={}$constant orbits, the integrand was also constant. This led us to take a gauge slice, i.e. to fix a path through the space which only intersects each gauge orbit once, and then multiply by the ``size'' of a gauge orbit. More generally, the ``size'' of a gauge orbit will be infinite, but we can still use this method to choose a gauge slice in our configuration space, and we include the Faddeev-Popov determinant to ensure that the integral is independent of our choice of path.
+
+The way it was presented in lecture is a bit backwards from how we use this method. Here is a quick recap of how we will use this.
+\begin{enumerate}
+    \item Identify a gauge symmetry of the theory.
+    \item Identify the gauge orbits.
+    \item Choose a gauge-fixing function such that $g=0$ along the gauge slice (integration path).
+    \item Calculate the Faddeev-Popov determinant, i.e. compute the variation of $g$ as we go around a gauge orbit, evaluated at our gauge slice.
+    \item Insert the delta function and the Faddeev-Popov determinant into the integral.
+    \item Perform the integral using the delta function.
+\end{enumerate}
+How does this connect to our example?
+\begin{enumerate}
+    \item We identified an $SO(2)$ gauge symmetry.
+    \item We identified the gauge orbits as sets of constant $r$, and within each orbit there was a gauge freedom described by $\theta$.
+    \item We chose as our gauge-fixing function $g=y$.
+    \item We calculated the Faddeev-Popov determinant by varying with respect to the parameter $\theta$ describing the gauge freedom: $\Delta_g (\vec x)=\left.\P{}{\theta}g(R_\theta \vec x)\right|_{\theta=0}=-x$.
+    \item We insert the delta function $\delta(y)$ and the Faddeev-Popov determinant into our integral to get $\int d^2x \,\delta(y)|x| f(r;\rho)= \int_{-\infty}^\infty dx \, |x| f(x;\rho)$.
+\end{enumerate}

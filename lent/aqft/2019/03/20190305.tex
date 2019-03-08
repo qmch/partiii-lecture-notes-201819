@@ -1,0 +1,158 @@
+\subsection*{Nonabelian gauge theories}
+Today, we begin our discussion of nonabelian gauge theories. For an external reference, see Peskin and Schroeder or Osborn.
+
+Under a local $U(1)$ transformation of the fermion field 
+\begin{equation}
+    \psi(x)\mapsto e^{i\alpha(x)} \psi(x),
+\end{equation}
+the term $\bar \psi \slashed{\p}\psi$ is not invariant. Consider the derivative in the direction of $n^\mu$ a unit vector, i.e.
+\begin{equation}
+    n^\mu \p_\mu \psi = \lim_{a\to 0} \frac{1}{a} \bkt{\psi(x+an) - \psi(x)}.
+\end{equation}
+\begin{defn}
+    A \term{parallel transporter} (aka \term{Wilson line}) is an object $U(y,x)$ with the following ($U(1)$) gauge transformation:
+    \begin{equation}
+        U(y,x)\mapsto e^{i\alpha(y)} U(y,x) e^{-i\alpha(x)}.
+    \end{equation}
+    If we also set $U(x,x)=1$, then $U(y,x)$ can be written as a phase
+    \begin{equation}
+        U(y,x)=e^{i\phi(y,x)},
+    \end{equation}
+    and we moreover take $U(x,y)=(U(y,x))^*$.
+\end{defn}
+With this Wilson line, we can define a covariant derivative for our theory,
+\begin{equation}
+    n^\mu D_\mu \psi = \lim_{a\to 0} \frac{1}{a} \paren{\psi(x+an) -U(x+an,x) \psi(x)}
+\end{equation}
+such that
+\begin{equation}
+    \bar \psi n^\mu D_\mu \psi = \lim_{a\to 0} \frac{1}{a} \bkt{ \bar \psi_x \psi_{x+an}- \bar \psi_{x+an} \psi_x},
+\end{equation}
+which is gauge-invariant. For small $a$, define
+\begin{align*}
+    U(x+an,x) &= \exp \bkt{-iea n^\mu A_\mu(x+ \frac{a}{2}n) + O(a^3)}\\
+        &= 1-ie an^\mu A_\mu(x+\frac{a}{2}n) +O(a^2),
+\end{align*}
+so our covariant derivative takes the familiar form
+\begin{equation}
+    D_\mu\psi(x)= \bkt{\p_\mu +ie A_\mu(x)} \psi(x),
+\end{equation}
+which is simply the minimal coupling of the gauge field $A_\mu(x)$.
+
+Under gauge transformations,
+\begin{gather}
+    A_\mu(x) \mapsto A_\mu(x) -\frac{1}{e} \p_\mu \alpha(x)\\
+    D_\mu \psi(x) \mapsto e^{i\alpha(x)}D_\mu \psi(x),
+\end{gather}
+which tells us that $D_\mu \psi$ transforms like $\psi$, as does $D_\nu (D_\mu \psi)$. We can consider how the commutator transforms under gauge transformations,
+\begin{equation}
+    [D_\mu,D_\nu]\psi \mapsto e^{i\alpha(x)} [D_\mu,D_\nu] \psi,
+\end{equation}
+where
+\begin{equation}
+    [D_\mu,D_\nu]=ie(\p_\mu A_\nu - \p_\nu A_\mu)\equiv ie F_{\mu\nu},
+\end{equation}
+the gauge-invariant field strength tensor.
+
+Generally, our Lagrangian can contain terms which are Lorentz invariant like
+\begin{equation}
+    F_{\mu\nu} F^{\mu\nu}\text{ and } i\epsilon^{\mu\nu\rho\sigma} F_{\mu\nu} F_{\rho\sigma},
+\end{equation}
+though the latter term here breaks $P$ and $T$ symmetry. In terms of the parallel transporters $U$, the $F_{\mu\nu}$ appears from gauge-invariant \term{Wilson loops}, i.e. closed Wilson lines. For instance, the plaquette, with overall value
+\begin{equation}
+    P_{12}(x)=U(y_1,y_4)U(y_4,y_3) U(y_3,y_2) U(y_2,y_1).
+\end{equation}
+We can expand this about small $a$ to find
+\begin{equation}
+    P_{12}(x)=1-iea^2 F_{12}(x)+ O(a^3)
+\end{equation}
+
+One can generalize this principle to a Lie group $G$ (e.g. $SU(N)$). The Lie group acts on our fields by local transformations,
+\begin{equation}
+    \psi(x) \mapsto V(x) \psi(x)
+\end{equation}
+with $V(x)\in G$, and Wilson lines then take the form
+\begin{equation}
+    U(y,x)\mapsto V(y) U(y.x) V^\dagger (x)
+\end{equation}
+with $U(x,x)=1$. If $G$ has some (hermitian) generators $t^a$ in the Lie algebra $L(G)$ corresponding to $G$, then
+\begin{equation}
+    U(x+an,x)=1+ig a n^\mu A_\mu^a t^a+O(a^2),
+\end{equation}
+where we take
+\begin{equation}
+    [t^a,t^b] = if^{abc}t^c
+\end{equation}
+for $f^{abc}$ some structure constants which are totally antisymmetric in their indices. Note that the index $a$ is summed over (and should not be confused with the expansion parameter $a$). As we learned in \emph{Symmetries, Fields and Particles}, the Lie bracket obeys the Jacobi identity,
+\begin{equation*}
+    [t^a,[t^b,t^c]]+[t^b,[t^c,t^a]] +[t^c,[t^a,t^b]]=0.
+\end{equation*}
+
+To find the transformation of the $A^a$ gauge fields, we expand $V(x+an)$. Notice that $V(x) V^\dagger(x)=1$ (where we take $G$ to be unitary), so
+\begin{align*}
+    V(x+an)V^\dagger(x) &= \bkt{(1+an^\mu \p_\mu +O(a^2))V(x)} V^\dagger (x)\\
+        &= 1+an^\mu(\p_\mu V)V^\dagger+\ldots\\
+        &=1-a n^\mu V(\p_\mu(V^\dagger)+\ldots,
+\end{align*}
+so we find that 
+\begin{equation}
+    A_\mu^a(x) t^a \mapsto V(x)\bkt{A_\mu^a(x) t^a+\frac{i}{g} \p_\mu} V^\dagger(x).
+\end{equation}
+
+Our covariant derivative is therefore
+\begin{equation}
+    D_\mu=\p_\mu -ig A_\mu^a t^a,
+\end{equation}
+and for infinitesimal transformations,
+\begin{equation}
+    V(x)=1+i\alpha^a t^a +O(\alpha^2)
+\end{equation}
+so that
+\begin{gather}
+    \psi(x) \mapsto (1+i\alpha^a(x) t^a) \psi(x)\\
+    A_\mu^a(x) \mapsto A_\mu^a(x) +\frac{1}{g} \p_\mu \alpha^a(x) +f^{abc}A_\mu^b \alpha^c(x) = A_\mu^a+ \frac{1}{g} D_\mu \alpha^a.
+\end{gather}
+The field strength tensor is then defined
+\begin{equation}
+    [D_\mu,D_\nu]=-ig F_{\mu\nu}^a t^a
+\end{equation}
+with
+\begin{equation}
+    F_{\mu\nu}^a = \p_\mu A_\nu^a - \p_\nu A_\mu^a +g f^{abc}A_\mu^b A_\nu^c,
+\end{equation}
+where this last term shows that some new structure comes in from the fact our Lie group is in general nonabelian. In electromagnetism, this last term vanished since the structure constants were all zero.
+
+Under gauge transformations,
+\begin{equation}
+    F_{\mu\nu}^a \mapsto F_[\mu\nu]^a - f^{abc}\alpha^b F_{\mu\nu}^c
+\end{equation}
+alone is not gauge invariant, but
+\begin{equation}
+    F_{\mu\nu}^a F^{a,\mu\nu} = \Tr F_{\mu\nu} F^{\mu\nu}
+\end{equation}
+is gauge invariant (where the trace is taken over generators). Generically, the new term with the structure constants means that our theories will have self-interactions even at tree level.
+
+\subsection*{Gauge fixing}
+With our field strength tensor, we can write down a path integral
+\begin{equation}
+    \int \cD A \exp \bkt{-\frac{1}{4} \int d^4x \Tr F_{\mu\nu} F^{\mu\nu}}
+\end{equation}
+To quantize, we need to avoid integrating over configurations which are pure gauge (i.e. gauge-equivalent to $A_\mu(x)=0$). We do this through the Faddeev-Popov gauge fixing procedure, i.e. we set some $G[A]=0$ at each point $x$ such that
+\begin{equation}
+    1=\int \cD \alpha(x) \delta(G[A^\alpha]) \det \paren{\frac{\delta G[A^\alpha]}{\delta \alpha}}
+\end{equation}
+where $\alpha$ is not an index but instead parametrizes the gauge transformation, i.e.
+\begin{equation}
+    (A^\alpha)^a_\mu = A_\mu^a + \frac{1}{g} D_\mu \alpha^a.
+\end{equation}
+Note that for $G[A]$ linear in $A$, the variation $\frac{\delta G[A^\alpha]}{\delta \alpha}$ will be independent of $\alpha$. The gauge-fixing procedure is then as in QED:
+\begin{enumerate}
+    \item Intechange order of integration, $A\leftrightarrow \alpha$
+    \item Change variables $A'=A^\alpha$, noting that $\cD A' =\cD A$
+    \item Relabel (remove the $'$) and factor out the $\alpha$ integration (assuming linear $G[A]$).
+\end{enumerate}
+We arrive at
+\begin{equation}
+    \int \cD A e^{-S[A]}=\paren{\int \cD \alpha} \int \cD A e^{-S[A]} \delta(G[A]) \det \paren{\frac{\delta G[A^\alpha]}{\delta \alpha}}.
+\end{equation}
+Note that this final determinant can now depend on the gauge field $A$. We can calculate propagators similarly to QED, and we'll see that some new constraints emerge in our non-abelian theories.

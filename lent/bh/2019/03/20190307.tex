@@ -1,0 +1,149 @@
+In our last class, we talked about Killing horizions. We have seen that if $\cH^+$ is a Killing horizon with Killing vector field $\xi^a$, then
+\begin{equation}
+    \xi^a \nabla_a \xi^b|_{\cH^+} = \kappa_0 \xi^b.
+\end{equation}
+For the RN and Kerr-Newman solutions, the surface gravity $\kappa_0$ (which a priori could have been a function) is in fact a constant.
+
+Hawking thought that perhaps we could prove that in general, the surface gravity was a constant and not dependent on where on the horizon we looked. This turns out to be true, and it leads us to the zeroth law of black hole mechanics.
+
+\subsection*{Zeroth law}
+\begin{prop}
+    Consider a null geodesic congruence that contains the generators of a Killing horizon $\cN$. Then $\theta=\hat \sigma =\hat \omega=0$.
+\end{prop}
+\begin{proof}
+    We know that $\hat \omega=0$ since our congruence is hypersurface orthogonal.%check Reall notes
+    Let $\xi^a$ be a Killing field normal to $\cN$. On $\cN$, we can write $\xi^a= hU^a$, where $U^a$ is affinely parametrized and $h$ is a function on $\cN$.
+    Let the horizon $\cN$ be specified by an equation $f=0$. Then we can write $U^a=h^{-1} \xi^a + f V^a$, where $V^a$ is a smooth vector field. This lets us extend $U^a$ off of $\cN$ a bit.
+    
+    We can calculate the optical matrix
+    \begin{equation}
+        B_{ab}=\nabla_b U_a = (\nabla_a h^{-1})\xi_a + h^{-1} \nabla_b \xi_a + (\nabla_b f)V_a +f \nabla_b V_a.
+    \end{equation}
+    Evaluating on $\cN$ and using the fact that $\xi$ is Killing,
+    \begin{equation}
+        B_{ab}|_\cN = \xi_{(a}\nabla_{b)} h^{-1} + V_{(a}\nabla_{b)}f|_{\cN},
+    \end{equation}
+    where we only consider the symmetric part since the antisymmetric part was $\omega$ and vanishes. But both $\xi_a,\nabla_a f$ are parallel to $U_a$ on $\cN$. Hence when we project onto $T_\perp$, we find that
+    \begin{equation}
+        \hat B_{(ab)}|_\cN = P_a{}^c B_{(cd)} P_b{}^d = 0,
+    \end{equation}
+    so indeed $\hat \sigma=0$.
+\end{proof}
+
+\begin{thm}[Zeroth law of black hole mechanics]
+    $\kappa_0$ is constant on the future event horizon of a stationary black hole spacetime obeying the dominant energy condition.
+\end{thm}
+\begin{proof}
+    Note that Hawking's theorem implies that $\cH^+$ is Killing with respect to some Killing vector field $\xi^a$. We have just seen that $\theta=0$ along the generators of $\cH^+$. Hence $\frac{d\theta}{d\lambda}=0$ (where $\lambda$ parametrizes the integral curves of the generators). We also have $\hat \sigma = \hat \omega =0$. Now the Raychaudhuri equation says that
+    \begin{equation}
+        0=R_{ab} \xi^a \xi^b|_{\cH^+} = 8\pi T_{ab} \xi^a \xi^b|_{\cH^+}
+    \end{equation}
+    where we've applied the Einstein equation and dropped the trace term since we're on the horizon.
+    
+    This implies that
+    \begin{equation}
+        J\cdot \xi|_{\cH^+} =0
+    \end{equation}
+    where $J_a \equiv -T_{ab}\xi^b$. Now $\xi^a$ is a future-directed causal vector, so by the dominant energy condition, $J_a$ is also future-directed. Hence the above equation implies that $J^a$ is parallel to $\xi^a$ on $\cH^+$.%revisit this?
+    
+    Since this is the case, we can look at the expression
+    \begin{equation}
+        0=\xi_{[a}J_{b]}|_{\cH^+}= -\frac{1}{8\pi} \xi_{[a} R_{b]c} \xi^c |_{\cH^+}.
+    \end{equation}
+    On Examples Sheet 4, problem 1, we will prove that the previous expression implies the following:
+    \begin{equation}
+        0=\frac{1}{8\pi} \xi_{[a}\nabla_{b]}\kappa_0|_{\cH^+}.
+    \end{equation}
+    But this means that $\nabla_a \kappa_0$ is proportional to $\xi_a$, i.e. 
+    \begin{equation}
+        t \cdot \nabla \kappa_0=0
+    \end{equation}
+    for any tangent vector to $\cH^+$. Hence $\kappa_0$ is constant on the horizon.
+\end{proof}
+In fact, one can relax the energy condition from the DEC a bit, but it requires other details about the spacetime (asymptotic flatness and others).
+
+\subsection*{First law of black hole mechanics}
+Consider the Kerr spacetime. The horizon area $A$ is the area of the intersection of $\cH^+$ with a partial Cauchy surface of $t={}$constant. It is also the area of the bifurcating Killing horizon. $A$ will be a function of $J$ and $M$, and we can consider the quantity $\frac{\kappa_0}{8\pi}$. This turns out to be
+\begin{equation}
+    \frac{\kappa_0}{8\pi}\delta A = \delta M -\Omega_H \delta J.
+\end{equation}
+This leads us to an interesting question. Start with a particular Kerr solution. Take a slice of the Kerr solution, perturb the initial conditions, and solve the perturbed initial value problem. This is hard to do and in fact wasn't completed until the 1990s.%Wald-- see Reall
+%This is a version of the first law which is the most badass, hard version to prove.
+However, there is a more physical argument we can make about this relationship, made much earlier by Hartle and others.
+
+Suppose we have some matter with a stress-energy tensor of $O(\epsilon)$. That is, it is small compared to the stress-energy of the black hole. Let
+\begin{equation}
+    J^a = -T^a{}_b K^b,\quad L^a = T^a{}_b m^b
+\end{equation}
+where $K$ is the stationary Killing vector field and $m$ is the axisymmetric Killing vector field. We would like these currents to still be conserved after we throw some stuff in. In Kerr, $\nabla_a J^a$ is exactly zero. In the new metric, we have instead
+\begin{equation}
+    \nabla_a J^a = O(\epsilon^2), \nabla_a L^a = O(\epsilon^2)
+\end{equation}
+That is, the metric is perturbed from Kerr by $g=\bar g_K +\epsilon \hat g$ where $\bar g_K$ is exactly Kerr. Hence we get an $O(\epsilon)$ correction in the covariant derivative from the perturbation to the metric, and we get another factor of $\epsilon$ from the perturbation of the stress-energy tensor. Hence to order epsilon this really is a current.
+
+One may compute (on examples sheet 3) that
+\begin{equation}
+    \delta M =-\int_\cN * J, \quad \delta J = -\int_\cN * L.
+\end{equation}
+Note that the $J$ in the first expression is the current corresponding to the Killing vector $K$, while the second $J$ is the angular momentum of the black hole.
+
+Now, one may choose Gaussian null coordinates on the horizon. In these coordinates, $\cH^+$ is the surface $r=0$, and the metric on $\cH^+$ takes the form
+\begin{equation}
+     ds^2_{\cH^+}= 2drd\lambda +h_{ij}(\lambda,y) dy^i dy^j.
+\end{equation}
+Using $\sqrt{-g}=\sqrt{h}$, we can write
+\begin{equation}
+    \eta=\sqrt{h} d\lambda \wedge dr \wedge dy^1 \wedge dy^2
+\end{equation}
+and fix an orientation (i.e. choose whether or not to put a minus sign on our definition of $\eta$ as a volume element).
+
+The orientation of $\cN$ used in defining $\delta M, \delta J$ is the one used in Stokes's theorem. Viewing $\cN$ as the boundary of the region with $r>0$ (the black hole exterior, if you like), the volume element on $\cN$ is $d\lambda \wedge dy^1 \wedge dy^2$. Hence on $\cN$,
+\begin{equation}
+    (*J)_{\lambda 12} = \sqrt{h} J^r = \sqrt{h} J_\lambda = \sqrt{h} U\cdot J
+\end{equation}
+where $U=\P{}{\lambda}$.
+
+We can now evaluate everything on Kerr, since the deviation is $O(\epsilon^2)$. Hence $\cN$ is Killing with a killing vector $\xi=K+\Omega m$ on $\cN$, and we also have $\xi=f U$ for a function $f$. Using $\xi^a \nabla_a \xi^b|_{\cH^+}=\kappa_0 \xi^b$, we find that
+\begin{equation}
+    \xi \cdot \nabla( \log|f|)=\kappa_0 \implies f= \kappa_0 \lambda + f_0(y)
+\end{equation}
+(where we can integrate knowing $\kappa_0=0$).
+
+So far, we have
+\begin{equation}
+     \xi^a = [\kappa_0 \lambda +f_0(y)]U^a,
+\end{equation}
+where $\lambda=0$ is the bifurcating surface. Hence we find that the integration constant vanishes, $f_0(y)=0$, and so
+\begin{equation}
+    \xi^a = \kappa_0 \lambda U^a\text{ on } \cN.
+\end{equation}
+
+From the definition of $\delta M$, we have (substituting)
+\begin{align*}
+    \delta M &= \int_\cN d\lambda d^2y \sqrt{h} T_{ab} U^a(\xi^b -\Omega_H m^b)\\
+        &= \int_\cN d\lambda dy^2 \lambda \sqrt{h } T_{ab} U^a U^b \kappa_0 \lambda -\Omega_H \int_\cM d\lambda d^2y \sqrt{h} U\cdot L,
+\end{align*}
+where this second term is precisely $-\delta J$. However, we have not yet used the Einstein equation-- we can turn $T_{ab}$ into a curvature condition,
+\begin{equation}
+    8\pi T_{ab} U^a U^b = R_{ab} U^a U^b,
+\end{equation}
+so that
+\begin{align*}
+    \delta M -\Omega_H \delta J &= \frac{\kappa_0}{8\pi} \int_\cN d\lambda d^2 y \sqrt{h} \lambda R_{ab} U^a U^b\\
+    \implies \delta M -\Omega_H \delta J &= -\frac{\kappa_0}{8\pi} \int d^2y \int_0^{+\infty} \sqrt{h} \lambda \frac{d\theta}{d\lambda} d\lambda\\
+    &= -\frac{\kappa_0}{8\pi} \int d^2y \set*{ [\sqrt{h}\lambda\theta]_0^{+\infty} -\int_0^{+\infty}(\sqrt{h}+ \underbrace{\lambda \frac{d\sqrt{h}}{d\lambda}}_{O(\epsilon^2)})\theta d\lambda},
+\end{align*}
+where we applied Raychaudhuri and integrated by parts.
+
+Now recall that
+\begin{equation}
+    \frac{d\sqrt{h}}{d\lambda}=\theta\sqrt{h}=O(\epsilon).
+\end{equation}
+We will assume the final states exist in a $\lambda\to +\infty$ limit, $\sqrt{h}$ is finite. Hence
+\begin{equation}
+    \int_0^{+\infty} \sqrt{h}\theta d\lambda = \int_0^{+\infty} \frac{d\sqrt{h}}{\lambda} d\lambda = \delta(\sqrt{h}).
+\end{equation}
+Finiteness gives $\theta = o(1/\lambda)$ (decays at least as fast as $1/\lambda$), and hence the boundary terms go away. We learn that
+\begin{equation}
+    \delta M-\Omega_H \delta J = \frac{\kappa_0}{8\pi} \delta A. \qed
+\end{equation}

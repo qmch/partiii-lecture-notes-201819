@@ -1,0 +1,190 @@
+Last time, we discussed the qubit depolarizing channel. On e can show as an exercise that it has two equivalent forms, where $q=4p/3, q\leq 1 \implies p \leq 3/4$.
+
+\subsection*{Amplitude-damping channel}
+Suppose we have a two-level atom where there is a ground state $\ket{0_A}$ and an excited state $\ket{1_A}$. By releasing a photon $\gamma$, for instance, this system can transition from the excited state to the ground state. This photon goes into the environment, i.e. the electromagnetic field, which is initially in a vacuum state $\ket{0_E}$
+
+Hence the evolution of this system is described by both the atom (A) and the environment (E) and hence either
+\begin{equation}
+    \ket{1_A} \to_p \ket{0_A} + \gamma
+\end{equation}
+or
+\begin{equation}
+    \ket{1_A} \to_{1-p} \ket{1_A}.
+\end{equation}
+
+By Stinespring, we can implement this as some unitaries:
+\begin{equation}
+    \Lambda(\rho)=\Tr_E \bkt{U(\rho \otimes \dyad{0}_E)U^\dagger},
+\end{equation}
+where
+\begin{equation}
+    \rho=\sum_{i=0}^1 \rho_{ij} \kb{i}{j}
+\end{equation}
+where
+\begin{align}
+    U\ket{0_A} \otimes \ket{0_E} &= \ket{0_A} \otimes \ket{0_E}\\
+    U\ket{1_A} \otimes \ket{0_E} &= \sqrt{1-p} \ket{1_A} \otimes \ket{0_E} + \sqrt{p} \ket{0_A} \otimes \ket{1_E}.
+\end{align}
+Now our CPTP map $\Lambda$ can be written as
+\begin{equation}
+    \Lambda(\rho)=\begin{pmatrix}
+        \rho_{00}+p\rho_{11} & \sqrt{1-p}\rho_{01}\\
+        \sqrt{1-p}\rho_{10} & (1-p)\rho_{11}
+    \end{pmatrix}.
+\end{equation}
+We can check that this $U$ does actually implement $\Lambda$. For instance, look at $i=0,j=1$:
+\begin{align*}
+    \rho_{10} \Tr_E \bkt{U\kb{0}{1}_A \otimes \kb{0}{0}_E U^\dagger} &= \rho_{01} \Tr_E (U\ket{0_A} \otimes \ket{0_E}) (\bra{1_A} \otimes \bra{0_E} U^\dagger)\\
+    &= \rho_{01} \Tr_E (\ket{0_A}\otimes \ket{0_E})(\sqrt{1-p} \bra{1_A} \otimes \bra{0_E} + \sqrt{p} \bra{0_A} \otimes \bra{1_E})\\
+    &=\sqrt{1-p}\rho_{01} \kb{0_A}{1_A}.
+\end{align*}
+The others can be checked easily.
+
+We can also write a Kraus representation for this operation. With
+\begin{equation}
+    \Lambda(\rho)=\sum_{k=1}^2 A_k \rho A_k^\dagger,
+\end{equation}
+we have
+\begin{equation}
+    A_1=\begin{pmatrix} 1& 0 \\
+    0& \sqrt{1-p}
+    \end{pmatrix},
+    \quad
+    A_2 = \begin{pmatrix}
+    0 &\sqrt{p}\\
+    0 &0
+    \end{pmatrix}.
+\end{equation}
+One can see explciilty that
+\begin{gather}
+    A_1\ket{0}= \ket{0}, A_1\ket{1} =\sqrt{1-p}\ket{1}\\
+    A_1 \ket{0} = 0, A_2 \ket{1}=\sqrt{p}\ket{0}.
+\end{gather}
+So $A_1$ represents the state staying as it is and $A_2$ represents the decay process.
+
+Notice that we could have $N$ successive uses of $\Lambda$. Hence
+\begin{equation}
+    \begin{pmatrix}
+        \rho_00 & \rho_{01}\\
+        \rho_{10} & \rho_{11}
+    \end{pmatrix}
+    \to_\Lambda
+    \begin{pmatrix}
+        \rho_00 + p \rho_{11} & \sqrt{1-p} \rho_{01}\\
+        \sqrt{1-p}\rho_{10} & (1-p)\rho_{11}
+    \end{pmatrix}
+    \to_\Lambda 
+    \begin{pmatrix}
+        \rho_{00}' + p \rho_{11}' & \sqrt{1-p} \rho_{01}'\\
+        \sqrt{1-p}\rho_{10}' & (1-p)\rho_{11}'
+    \end{pmatrix}.
+\end{equation}
+Letting $q=1-p$, we find that after $n$ uses, we end up in the state
+\begin{equation}
+    \Lambda(\ldots \Lambda(\Lambda(\rho))\ldots)=
+    \begin{pmatrix}
+        \rho_{00}+\rho_{11} p[1+q+q^2 + \ldots + q^{n-1}] & q^{n/2} \rho_{01}\\
+        q^{n/2} \rho_{10} & q^n \rho_{11},
+    \end{pmatrix}
+\end{equation}
+and in the limit as $n\to \infty$ we get
+\begin{equation}
+    \begin{pmatrix}
+        \rho_{00}+\rho_{11} & 0\\
+        0 & 0
+    \end{pmatrix}
+    = \begin{pmatrix}
+        1 & 0\\
+        0 & 0
+    \end{pmatrix}
+    =\dyad{0}_A.
+\end{equation}
+Notice that $S(\rho) >0$, but $\lim_{n\to \infty} S(\Lambda^n(\rho)) = S(\dyad{0})=0$.
+Note that this \emph{does not} mean that the information in the state has increased. Really, what's happened is that we've thrown away the original state with many uses of the channel. Hence we see that $S(\Lambda(\rho)) \not\geq S(\rho)$.
+We will shortly try to describe a measure of information that does decrease monotonically, $\chi(\Lambda(\rho))\leq \chi(\rho)$.
+
+Suppose we have a decay rate $\delta$. This is probability that $A$ decays per unit time, and hence in time $\Delta t$, the probability of decay is $p=\delta \Delta t = \delta \frac{t}{n}$. Equivalently $t=n\Delta t$. We can see from our matrix that
+\begin{align*}
+    \rho_{11} \mapsto q^n \rho_{11} &= (1-p)^n \rho_{11}\\
+        &= \paren{1-\frac{\delta t}{n}}^n \rho_{11}\\
+        &= e^{-\delta t} \rho_{11}
+\end{align*}
+in the $n\to\infty$ limit. Thus our final state in the continuous limit is
+\begin{equation}
+    \begin{pmatrix}
+        \rho_{00}+\rho_{11} (1-e^{-\delta t}) & e^{-\delta t/2} \rho_{01}\\
+        e^{-\delta t/2} \rho_{10} & e^{-\delta t} \rho_{11}
+    \end{pmatrix}
+    \to \begin{pmatrix}
+        1 & 0\\
+        0 & 0
+    \end{pmatrix}.
+\end{equation}
+
+\subsection*{Accessible information and the Holevo bound}
+We shall define a quantity $\chi$ known as the Holevo $\chi$ quantity. It arises as an upper bound in a quantum information theoretic task: suppose we have a message-sender Alice who has a classical source producing signals $X \sim p(x),x\in J$. But she only has a quantum channel, so she has instead an encoder $x\mapsto \rho_x$. For now, suppose Alice has a noiseless quantum channel. She therefore sends $\rho_x$ through the channel, where Bob receives $\rho_x$ and decodes with a measurement (WLOG a POVM) $\set{E_y}_{y\in J}$ to get an inference $Y$.
+
+\textbf{Q:} How much information can Bob gain about $X$ through his measurement? It is simply the mutual information $I(X:Y)$. To get the maximum possible information, we ought to maximize
+\begin{equation}
+    I_\text{acc}(\underbrace{\set{p_x,\rho_x}}_\epsilon) = \max I(X:Y),
+\end{equation}
+where we maximize over the encoded states and the probability of the inputs. Holevo proved that
+\begin{equation}
+    I_\text{acc}(\epsilon) \leq \chi(\epsilon),
+\end{equation}
+where
+\begin{equation}
+    \chi(\epsilon):= S(\underbrace{\sum_x p_x \rho_x}_\rho) - \sum_x p_x S(\rho_x)
+\end{equation}
+Thus if $\set{p_x,\rho_x}$ is an ensemble of pure states, $\chi(\epsilon)=S(\rho)$, so the mutual information is total. Remarkably, this is completely independent of what measurement we do.
+\begin{thm}[Holevo bound]
+    The mutual information is bounded by the Holevo $\chi$ quantity:
+    \begin{equation}
+        I(X:Y)\leq \chi(\set{p_x,\rho_x})
+    \end{equation}
+    so that
+    \begin{equation}
+        I_\text{acc}(\set{p_x,\rho_x})\leq \chi(\set{p_x,\rho_x}),
+    \end{equation}
+    where equality holds if all the $\rho_x$s commute, and the measurment is a projection onto the simultaneous eigenbasis.
+\end{thm}
+\begin{proof}\renewcommand{\qedsymbol}{}
+    The proof is by strong subadditivity. Recall that we need three systems to make SSA work. Call them $A,Q,B$-- we'll define them as follows.
+    
+    \begin{enumerate}
+        \item[I] We start by embedding the random variable $X$ into a quantum system $A$ with Hilbert space $\cH_A;\dim \cH =|J|$. For $x\in J$, we can assign the orthonormal basis $\set{\ket{x}}$.
+        \item[II] The second system $Q$ is then Alice's encoded state $\rho_x \in \cD(\cH_Q)$.
+        \item[III] The final system $B$ is Bob's measuring device, with a Hilbert space $\cH_B$. We assume it is in a fixed pure state $\ket{\phi_B}$.
+    \end{enumerate}
+    We can describe the overall process with a state $AQB\in \cH_A \otimes \cH_Q \otimes \cH_B$.
+    
+    The initial state is
+    \begin{equation}
+        \rho_{AQB}=\paren{\sum p_x \underbrace{\dyad{x}}_A \otimes \underbrace{\rho_x}_Q} \otimes \underbrace{\dyad{\phi_B}}_B.
+    \end{equation}
+    Now let us describe the measurement-- associate a quantum operation $\Lambda$ acting on $Q,B$ such that
+    \begin{equation}
+        \Lambda(\sigma_Q \otimes\dyad{\phi_B}) = \sum_y \sqrt{E_y} \sigma_Q \sqrt{E_y} \otimes \dyad{y_B},
+    \end{equation}
+    where we now sum over the measurement outcomes $y$. Recall that we went from projective measurements $\set{M_y}$ to POVMs $E_a=M^\dagger_a M_a$ such that $M_a =\sqrt{E_a}$. Notice this is legitimate since the trace is preserved,
+    \begin{align*}
+        \Tr \Lambda(\sigma_Q \otimes \dyad{\phi_B}) &= \Tr \sum_y \sqrt{E_y} \sigma_Q \sqrt{E_y}\\
+        &= \sum_y \Tr E_y \sigma_Q  =\Tr \sigma_Q = 1.
+    \end{align*}
+    Now for a more general state of the system $QB$, we have
+    \begin{equation}
+        \Lambda(\omega_{QB})=\sum_y A_y \omega_{QB} A_y^\dagger,
+    \end{equation}
+    where we can check as an exercise that
+    \begin{equation}
+        A_y=\sqrt{E_y}\otimes U_y, \quad U_y \ket{\phi_B} = \ket{y_b}
+    \end{equation}
+    such that $\sum_y A_y^\dagger A_y=I, \sum_y E_y=I$.
+    
+    Now our system has gone from an initial state $\rho_{AQB}\to \rho_{A'Q'B'}$ where
+    \begin{equation}
+        \rho_{A'Q'B'}=\sum_{x,y} p_x \dyad{x} \otimes \sqrt{E_y} \rho_x \sqrt{E_y} \otimes \dyad{y_B}.
+    \end{equation}
+    We'll complete the proof next time.
+\end{proof}
+Also, a quick note that the converse of the data compression theorem is a bit algebra-heavy, and will not be examinable.

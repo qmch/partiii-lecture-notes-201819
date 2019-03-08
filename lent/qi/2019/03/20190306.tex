@@ -1,0 +1,141 @@
+Last time, we proved the first half of Schumacher's theorem. That is, for an iid memoryless ource $\set{\pi,\cH},$ our signals are $\rho^{\otimes n}=\pi^{\otimes n}$, where the signals take the form $\ket{\Psi_k^{(n)}}$ with probability $p_k^{(n)}$. A single use of the source produces
+\begin{equation}
+    \pi=\sum q_i \ket{\phi_i},
+\end{equation}
+while the full output is
+\begin{equation}
+    \rho^{\otimes n}=\sum \lambda_{\vec i}^{(n)} \dyad{\chi_{\vec i}^{(n)}}
+\end{equation}
+with $\ket{\chi_{\vec i}^{(n)}}=\ket{\phi_{i_1}}\otimes \ldots \otimes \ket{\phi_{i_n}}.$
+
+Last time, we proved by construction that for any rate $R>S(\pi), \exists$ a reliable compression-decompression scheme of rate $R$. Today, we will show that if $R<S(\pi)$, no compression-decompression scheme is reliable.
+\begin{proof}
+    Let $R<S(\pi)$, and choose $\epsilon >0$ such that $R=S(\pi)-2\epsilon$. We have compression and decompression maps $\cC^{(n)}$ and $\cD^{(n)}$
+    such that
+    \begin{gather}
+        \cC^{(n)}: \cD(\cH^{\otimes n})\to \cD(\tilde \cH_n),\\
+        \cD^{(n)}: \cD(\tilde H_n) \to \cD(\cH^{\otimes n}).
+    \end{gather}
+    We say that
+    \begin{equation}
+        \dim \tilde \cH_n \approx 2^{nR}.
+    \end{equation}
+    Let us denote a single compressed input as $\cC^{(n)}(\dyad{\Psi_k^{(n)}})=\tilde \rho_k^{(n)}$ and the decompressed output as $\cD^{(n)}(\tilde \rho_k^{(n)} \equiv \sigma_k^{(n)} \in \cD(\cH^{\otimes n}).$
+    We also denote by $\tilde P_n$ the orthogonal projection operator onto $\tilde \cH_n$.
+    
+    Now the ensemble average fidelity is
+    \begin{equation}
+        \bar F_n =\sum_k p_k^{(n)} \bra{\Psi_k^{(n)}}\sigma_k^{(n)} \ket{\Psi_k^{(n)}}.
+    \end{equation}
+    We shall insert the identity $P_\epsilon^{(n)}+\bar P_\epsilon^{(n)}$, where $P_\epsilon^{(n)}$ is the projection onto the typical subspace $\cT_\epsilon^{(n)}$ and $\bar P_\epsilon^{(n)}=I-P_\epsilon^{(n)}$. Sandwiching $\sigma_k^{(n)}$ with the identity gives us four terms when we expand out.
+    
+    The first term looks like
+    \begin{align*}
+        (I) &= \sum_k p_k^{(n)} \bra{\Psi_k^{(n)}}P_\epsilon^{(n)} \sigma_k^{(n)} P_\epsilon^{(n)} \ket{\Psi_k^{(n)}}\\
+            &\leq \sum_k p_k^{(n)} \bra{\Psi_k^{(n)}}P_\epsilon^{(n)} \sigma_k^{(n)} P_\epsilon^{(n)} \ket{\Psi_k^{(n)}}\\
+            &\leq\Tr(\rho^{(n)} P_\epsilon^{(n)} \cD^{n}(\tilde P_n) P_\epsilon^{(n)})\\
+            &= \sum_{\vec i \in \cT_{\epsilon}^{(n)}} \lambda_i^{(n)} \bra{\chi_{\vec i}^{(n)}} \cD^{n}(\tilde P_n) \ket{\chi_{\vec i}^{(n)}}\\
+            &= 2^{-n(S(\pi-\epsilon)} \sum_i \bra{\chi_{\vec i}^{(n)}}D^{(n)}(\tilde P_n)\ket{\chi_{\vec i}^{(n)}}\\
+            &= 2^{-n(S(\pi)-\epsilon)} \Tr(\cD^n(\tilde P_n)).
+    \end{align*}
+    where we've used the fact that $\rho_k^{(n)} \leq \tilde P_n$, so $\cD^n(\rho_k^{(n)})\leq \cD^n(\tilde P_n)$ and rearranged terms to a trace by recognizing that $\rho^n=\sum_k p_k^{(n)} \dyad{\Psi_k^{(n)}}$. We then used the projectors to turn the sum into a sum over only states in the typical subspace $\cT_\epsilon^{(n)}$, and then we used the bound on $\lambda_{\vec i}^{(n)}\leq 2^{-n(S(\pi)-\epsilon}$ from the typical subspace theorem.
+    
+    The second term is simpler: we have a term such that
+    \begin{align*}
+        (II) &= \sum p_k^{(n)} \bra{\Psi_k^{(n)}}\bar P_\epsilon^{(n)} \underbrace{\cD^{(n)} (\tilde \rho_k^{(n)})}_{\sigma_k^{(n)}\leq I} \bar P_\epsilon^{(n)} \ket{\Psi_k^{(n)}}\\
+            &\leq \sum_{\vec i \notin \cT_\epsilon^{(n)}}\lambda_{\vec i}^{(n)}\\
+            &= \text{Pr}(A_\epsilon^{(n)})\to 0\text{ as } n\to\infty.
+     \end{align*}
+     
+     The cross terms $(III)+(IV)$ take the form
+     \begin{align*}
+         (III)+(IV) &= \sum p_k^{(n)} \bra{\Psi_k^{(n)}} P_\epsilon^{(n)} \sigma_k^{(n)} \bar P_\epsilon^{(n)} + \bar P_\epsilon^{(n)} \sigma_k^{(n)} P_\epsilon^{(n)} \ket{\Psi_k^{(n)}}\\
+            &= \Tr(A^\dagger B+B^\dagger A)
+     \end{align*}
+     where $A=\sqrt{\sigma_k^{(n)}}P_\epsilon^{(n)}\sqrt{\rho^{(n)}}; B=\sqrt{\sigma_k^{(n)}}\bar P_\epsilon^{(n)}\sqrt{\rho^{(n)}}$. From here, we can observe that
+     \begin{align}
+         [\Tr(A^\dagger B + B^\dagger A)]^2 &= (2\text{Re}(\Tr A^\dagger B))^2\\
+         &\leq 4|Tr(A^\dagger B)|^2\\
+         &\leq 4|(A,B)_{HS}|^2\\
+         &\leq (A,A)(B,B)
+     \end{align}
+     by Cauchy-Schwartz (and using the fact that $\overline{\Tr X}=\Tr X^\dagger$).
+     Hence this is bounded by
+     \begin{equation}
+         4 \Tr(\rho^{(n)} P_\epsilon^{(n)} \sigma_k^{(n)} P_\epsilon^{(n)})\Tr (\rho^{(n)} \bar P_\epsilon^{(n)} \sigma_k^{(n)} \bar P_\epsilon^{(n)}),
+     \end{equation}
+     where recognizing that $P_\epsilon^{(n)}\leq I, \sigma_k^{(n)} \leq I$, we have the final bound
+     \begin{equation}
+         [\Tr(A^\dagger B + B^\dagger A)]^2 \leq 4 \Tr(\bar P_\epsilon^{(n)} \rho^{(n)} \bar P_\epsilon^{(n)}) =\text{Pr}(A_\epsilon^{(n)})\to 0.
+     \end{equation}
+     Hence this completes the proof of Schumacher's theorem-- we have shown that all the terms are bounded and vanish in the $n\to\infty$ limit.
+\end{proof}
+
+\subsection*{Quantum channels}
+Let us consider sending information via qubit. That is, Alice prepares a state $\rho$ and sends it to Bob through a \term{quantum channel} represented by a map $\Lambda$, and what Bob receives is $\Lambda(\rho)\neq \rho$, where we anticipate there is noise in the channel.
+
+Take a qubit, $\rho\in \CC^2$, and recall that we can write the qubit state on the Bloch sphere as
+\begin{equation}
+    \rho=\frac{1}{2}(I_2+ \vec s \cdot \vec \sigma),
+\end{equation}
+with $\vec s=(s_x,s_y,s_z)$.
+
+The first channel we'll consider is the bit flip channel:
+\begin{equation}
+    \Lambda(\rho)= p \sigma_x \rho \sigma_x+(1-p)\rho =\sum A_k \rho A_k^\dagger,
+\end{equation}
+where this channel admits a Kraus representation with
+\begin{equation}
+    A_1=\sqrt{1-p}I,\quad A_2=\sqrt{p}\sigma_x.
+\end{equation}
+One can easily check that $\sum_{k=1}^2 A_k^\dagger A_k = I$. Now we can put the Bloch sphere decomposition into our expression for $\Lambda(\rho)$. Recalling that $\sigma_i \sigma_j = \delta_{ij} +i\epsilon_{ijk}\sigma_k$, we can show that the final state can also be written in a Bloch representation as
+\begin{gather}
+    \vec s=(s_x,s_y,s_z)\\
+    \to \vec s' =(\vec s_x,(1-2p)s_y,(1-2p)s_z).
+\end{gather}
+
+The next channel is the \term{phase flip} channel, which is
+\begin{equation}
+    \Lambda(\rho)=p\sigma_z \rho \sigma_z + (1-p) \rho,
+\end{equation}
+with output
+\begin{equation}
+    \vec s'=((1-2p)s_x,(1-2p)s_y,s_z).
+\end{equation}
+In general, we may consider random unitary (mixing-enhancing) channels, i.e. convex combinations of unitaries which generally produce CPTP maps. That is,
+\begin{equation}
+    \sigma \equiv \Lambda(\rho)=\sum_i p_i U_i \rho U_i^\dagger.
+\end{equation}
+This should remind us of Uhlmann's theorem-- recall the idea of majorization. Uhlmann told us that
+\begin{equation}
+    \vec x \prec \vec y \iff \vec x = \sum p_j P_j \vec y,
+\end{equation}
+and in the quantum case, we have
+\begin{equation}
+    \omega \prec \nu \iff \omega =\sum p_i U_i \nu U_i^\dagger.
+\end{equation}
+Thus we see that for a general unitary channel, the output is majorized by the input,
+\begin{equation}
+    \sigma \prec \rho \implies S(\sigma) \geq S(\rho)
+\end{equation}
+by Schur concavity.
+
+Here's another channel-- the depolarizing channel, with
+\begin{equation}
+    \Lambda(\rho)=(1-p)\rho + \frac{p}{3}(\sigma_x \rho \sigma_x+ \sigma_y \rho \sigma_y + \sigma_z \rho \sigma_z),
+\end{equation}
+with four natural Kraus operators $A_1=\sqrt{1-p}I, A_2=\sqrt{p/3}\sigma_x,$ and $A_3,A_4$ the same with $\sigma_y,\sigma_z$. If we compute this, we find that
+\begin{equation}
+    \vec s'=(f(p)s_x,f(p)s-y,f(p)s_z)
+\end{equation}
+with $f(p)=1-\frac{4p}{3}$. Thus the depolarization channel scales down vectors from the Bloch sphere.
+\begin{exm}
+Prove that
+\begin{equation}
+    \Lambda(\rho)=(1-q)\rho+q\frac{I}{2}
+\end{equation}
+is an alternate form for the depolarizing channel. Find the relation between $p$ and $q$, using the identity
+\begin{equation}
+    \frac{I}{2}=\frac{1}{4} \bkt{\rho+\sigma_x \rho \sigma_x + \sigma_y \rho \sigma_y + \sigma_z \rho \sigma_z}.
+\end{equation}
+\end{exm}

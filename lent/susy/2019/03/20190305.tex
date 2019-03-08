@@ -1,0 +1,101 @@
+Previously, we considered the Wess-Zumino model and identified two $U(1)$ symmetries, the axial $U_A(1)$ symmetry sending
+\begin{equation}
+    \phi \mapsto \phi,\quad \psi_\pm \mapsto e^{\mp i\alpha}\psi_\pm, \quad \bar \psi_\pm \mapsto e^{\pm i\alpha} \bar \psi_\pm
+\end{equation}
+and the vector $U_V(1)$ symmetry sending
+\begin{equation}
+    \phi \mapsto e^{iq\beta} \phi,\quad \psi_\pm \mapsto e^{i(q-1) \beta}\psi_\pm,\quad \bar \psi_\pm \mapsto e^{-i(q-1)\beta} \bar \psi_\pm.
+\end{equation}
+
+\subsection*{Vacuum moduli space}
+The scalar potential has the form
+\begin{equation*}
+    V(\phi)=\abs{W'(\phi)}^2
+\end{equation*}
+or more generally
+\begin{equation}\label{vacuummodulipot}
+    V(\phi^a,\bar \phi^{\bar a})=\sum_a \abs*{\P{W}{\phi^a}}^2.
+\end{equation}
+Recall that a ground state $\ket{\Omega}$ is supersymmetric iff $H\ket{\Omega}=0$. In particular, a field configuration can be a ground state if it sits in a (global) minimum of $V(\phi)$ over all space since $V\geq 0$. THus the ground state is supersymmetric if
+\begin{equation*}
+    \P{W}{\phi^a}(\phi^a_0)=0\, \forall \phi^a,
+\end{equation*}
+i.e. if each of the terms in the potential sum \ref{vacuummodulipot} vanish.
+
+In the quantum theory, the values $\phi^a_0$ are the expectation values $\phi_0^a = \bra{\Omega} \phi^a \ket{\Omega}$ of the fields $\phi^a$ in the vacuum state. Sometimes these values are just zero, but we know that sometimes symmetries are broken and we expand about some nonzero field values. Typically, the holomorphic function $W(\phi^a)$ is a polynomial (over $\CC$), so the vacuum conditions $\P{W}{\phi^a}$ are a system of (complex) polynomials. The space of vacua $\cM$ is the zero set of these polynomials, i.e.
+\begin{equation}
+    \P{W}{\phi^1}=\P{W}{\phi^2}=\ldots = \P{W}{\phi^n}=0,
+\end{equation}
+which defines a \term{affine algebraic variety}, so we make contact with algebraic geometry.
+
+\begin{exm}
+    Consider the superpotential
+    \begin{equation}
+        W(\phi)=m\frac{\phi^2}{2}+\lambda \frac{\phi^3}{3}.
+    \end{equation}
+    The vacuum conditions are then
+    \begin{equation}
+        \P{W}{\phi}=m \phi + \lambda \phi^2=0,
+    \end{equation}
+    which tells us that either $\phi=0$ or $\phi=-m/\lambda$. If we plot $V(\phi)=|W'|^2$, we see that there are two isolated supersymmetric minima in our theory.
+\end{exm}
+\begin{exm}
+    Consider now a theory with two fields $l,h$:
+    \begin{equation}
+        W(l,h)=\frac{\lambda}{2} lh^2.
+    \end{equation}
+    Then the vacuum equations tell us
+    \begin{equation}
+        \P{W}{l}=\frac{\lambda h^2}{2},\quad \P{W}{h}=\lambda l h.
+    \end{equation}
+    Thus the vacuum moduli space requires $h=0$ but $l$ is unconstrained. However, for $\avg{l}\neq 0$ (the field $l$ takes on a VEV), the field $h$ is then massive with mass $|\lambda \avg{l}|,$ whereas the field $l$ is always massless in the vacuum (since $\avg{h}=0$, and so there is no term which goes as $|l|^2$ in the action).
+\end{exm}
+\begin{exm}
+    Finally, consider a theory with superpotential
+    \begin{equation}
+        W(X,Y,Z)=XYZ.
+    \end{equation}
+    In this case, we have conditions
+    \begin{equation}
+        \p_X W=YZ,\quad \p_Y W =XZ, \p_Z W=XY.
+    \end{equation}
+    We see that if any pair of the fields vanish, then all three vacuum conditions are satisfied, and the third field is free to take on any value we like. Therefore
+    \begin{equation}
+        \cM=\set{X=Y=0} \cup \set{X=Z=0} \cup \set{Y=Z=0}.
+    \end{equation}
+    There are three ``branches'' of the space of vacua since e.g if we take $\avg{X}=\avg{Y}=0$ then we are otherwise free to select $Z\in \CC$.
+\end{exm}
+In general, the vacuum moduli space is the affine variety
+$\CC[\phi^1,\ldots,\phi^n]/(\p_a W)$. If $\cM$ is not just a set of isolated points, we say the potential $V(\phi^a)$ has \term{flat directions}, i.e. we can change some $\avg{\phi^a}$ continuously without leaving $V(\avg{\phi^a})=0$.
+
+In a generic QFT, the structure of the classical potential is changed by quantum corrections. Couplings run with scale, and new couplings are generated (at least in an effective theory). In particular, these corrections tend to lift flat directions, leaving us with isolated vacua. SUSY theories are special and preserve the symmetry which gave rise to the original flat directions.
+
+\subsection*{Seiberg Non-Renormalization Theorems}
+In a supersymmetric theory, the effective superpotential $W_\text{eff}(\Phi)$ in the Wilsonian action (after integrating out modes) is actually identical to $W(\Phi)$. We can understand this with an example. Suppose $W(\Phi)=\frac{m}{2} \Phi^2+\frac{\lambda}{3}\Phi^3$. Recall that our interactions come from $V(\phi)=\abs{W'}^2$, so we will get some different vertices, 
+%see diagram
+and there are many non-trivial Feynman diagrams we can draw. (Note that fermionic couplings come from the other terms in the Wess-Zumino model.) For example, the 1-loop corrections to the $m$ coupling receives contributions from some loop diagrams.
+%diagram
+However, these diagrams cancel exactly, and the same cancellation holds to all orders in $\lambda$! This is a remarkable simplification.
+
+It appears as though $W(\Phi)=\frac{m}{2} \Phi^2+\frac{\lambda}{3}\Phi^3$ breaks the $U_V(1)$ symmetry, and the $U_A(1)$ symmetry acts trivially on $\phi$, so cannot help constrain the form of $m_\text{eff}^2$. So what saves our theory from loop corrections?
+
+Seiberg's idea was to promote the couplings $(m,\lambda)$ to chiral superfields $(M,\Lambda)$ such that $m,\lambda$ are the VEVs of the scalars in $M,\Lambda$. Note that $(M,\Lambda)$ must be \emph{chiral} superfields since they appear in $W(\Phi,M,\Lambda)$. In promoting these couplings to fields, we give them kinetic terms
+\begin{equation}
+    K(\Phi,\bar \Phi)\to K(\Phi,\Bar \Phi)+ \frac{1}{\epsilon}\bkt{\bar M M + \bar \Lambda \Lambda},
+\end{equation}
+so the new kinetic terms come with a factor $1/\epsilon$. Hence fluctuations in $M,\Lambda$ are strongly suppressed as $\epsilon\to 0$.
+
+The point of doing this is that $W(\Phi,M,\Lambda)=\frac{M}{2}\Phi^2 + \frac{\Lambda}{3}\Phi^3$ does preserve both $U_A(1),U_V(1)$ if we assign charges to the new superfields:
+\begin{center}
+    \begin{tabular}{c|c c c}
+         & $\Phi$ & $M$ & $\Lambda$ \\\hline
+         $U_V(1)$ & $1$ & $0$ & $-1$ \\
+         $U_{WZ}(1)$ & $1$ & $-2$ & $-3$
+    \end{tabular}
+\end{center}
+where $U_{WZ}(1)$ is an additional $U(1)$ symmetry acting trivially on $\theta^\pm, \bar \theta^\pm$. Provided we choose a regularization which is supersymmetric and preserves these two two $U(1)$s, the $W_\text{eff}(\Phi,M,\Lambda)$ in the Wilsonian action is constrained, so that it
+\begin{itemize}
+    \item is holomorphic in $(\Phi,M,\Lambda)$
+    \item has $U_V(1)$ charge $+2$ and $U_{WZ}(1)$ charge zero
+    \item reduces to the classical $W(\Phi)$ in the limit that $M,\Lambda \to 0$ (weak coupling).
+\end{itemize}

@@ -1,0 +1,128 @@
+\subsection*{Second law of black hole mechanics}
+\begin{thm}[Hawking 1972]
+    Let $(\cM,g)$ be a strongly asymptotically predictable spacetime satisfying the Einstein equation with the null energy condition. Let $U\subset \cM$ be globally hyperbolic region for which $\bar J^-(\mathcal{I}^+)\subset U$.  Let $|Sigma_1,\Sigma_2$ be spacelike Cauchy surfaces for $U$ with $\Sigma_2 \subset J^+(\Sigma_1)$ and let $H_1=\cH^+ \cap \Sigma_i$. Then $\text{area}(H_2) \geq \text{area}(H_1)$.
+\end{thm}
+That is, the surface area of the black hole event horizon is monotonically increasing.
+\begin{proof}
+    We will make the additional assumption that inextendible generators of $\cH^+$ are future complete (i.e $\cH^+$ is non-singular). Recall that the generators for a null congruence of geodesics, and their behavior is in part governed by the expansion $\theta$. So it might be a good start to show that $\theta \geq 0$ on $\cH^+$.
+    
+    The proof is by contradiction. Suppose $\theta < 0$ at $p\in \cH^+$, and let $\gamma$ be the (inextendible) generator of $\cH^+$ through $p$ and let $q$ be slightly to the future of $p$ along $\gamma$. But then we know that there exists a point $r$ conjugate to $p$ on $\gamma$ using our assumption and the Raychaudhuri equation.
+    
+    Recall our theorem about conjugate points, however. %add reference
+    This tells us that we can deform $\gamma$ to obtain a timelike curve from $p$ to $r$, but this violates achronality of $\cH^+$.
+    
+    Let $p\in H_1$. The generators of $\cH^+$ through $p$ cannot leave $\cH^+$, so they must intersect $H_2$ as $\Sigma_2$ is a Cauchy surface. This therefore defines a map $\phi:H_1 \to H_2$ (just follow the generators of $\cH^+$). Now $\text{area}(H_2) \geq \text{area}(\phi(H_1)) \geq \text{area}(H_1)$, where the first inequality follows because $\phi(H_1) \subset H_2$ and the second inequality follows from $\theta >0$.
+    %I encourage you to look up other proofs of [the second law]. There is a proof which Malcolm used to lecture in his course with way too many indices.
+\end{proof}
+
+Suppose we have two black holes at some time in the past with masses $M_1,M_2$ and they merge to form a new black hole with mass $M_3$. The theorem we have just proved told us that
+\begin{equation}
+    A_3 \geq A_1 +A_2 \implies M_3^2 \geq M_1^2 +M_2^2.
+\end{equation}
+We define the efficiency of the merger process to be
+\begin{equation}
+    \frac{M_1+M_2 -M_3}{M_1+M_2} \leq 1-\frac{1}{\sqrt{2}}.
+\end{equation}
+By looking at a BH merger (e.g. by LIGO), we could have checked the area theorem. We have very sensitive measurements of $M_1$ and $M_2$, but we currently have no way to measure $M_3$. In fact, the $M_3$ that was reported comes from numerics (input $M_1$ and $M_2$ and simulate the merger)-- with a more sensitive detector, we might have seen the quasinormal ringdown (decaying oscillations) of the post-merger black hole, but we weren't able to at the time, and hence Stephen Hawking didn't win a Nobel Prize.
+
+Let us now recap the three laws of black hole mechanics.
+\begin{itemize}
+    \item 0th law: $\kappa_0$ is constant.
+    \item $dM=\frac{\kappa_0}{8\pi} dA + \Omega dJ$
+    \item $\Delta A \geq 0$.
+\end{itemize}
+Notice the first law looks suspiciously like the first low of thermodynamics,
+\begin{equation}
+    dE = TdS + \mu dJ
+\end{equation}
+under the identification 
+\begin{equation}
+    T=\lambda \kappa_0, \quad S=\frac{A}{8\pi \lambda}
+\end{equation}
+where $\lambda$ is some undetermined number. The second law checks out here as well-- $\delta A \geq 0$ tells us entropy is increasing. It's also reasonable to think that black holes are thermodynamic objects-- there's entropy in the stuff we throw in, so there should still be entropy in the black hole system by the second law of thermodynamics. This argument is due to Bekenstein.
+
+But we just proved that black holes were black-- classically, nothing escapes the black hole. But thermodynamic objects must radiate. What's the solution?
+
+It is the following formula:
+\begin{equation}
+    T=\frac{\hbar \kappa_0}{2\pi},
+\end{equation}
+taking $\lambda=\hbar/2\pi$. We see now that this is something quantum. In the classical limit as $\hbar \to 0$, the entropy becomes infinite.
+%In 1974, it was not clear that QFT was the right thing to use. THis was Stephen's insight
+%So far in the course everything has been done in mathematical rigor, at least to my standards.
+%But this is work of the devil. It smells like sulphur. Nevertheless we are going to roll with it.
+%If you have not taken QFT, this will look to you like Chinese looks to me. ...I don't understand any Chinese.
+
+\subsection*{Quantization of the free scalar field}
+Let $(\cM,g)$ be a globally hyperbolic spacetime with metric
+\begin{equation}
+    ds^2 =-N^2 dt^2 + h_{ij}(dx^i + N^i dt)(dx^j + n^j dt).
+\end{equation}
+Let $\Sigma$ be a Cauchy surface with normal $n_a=-N(dt)_a$. The metric on $\Sigma_t$ is simply $h_{ij}$, with $\sqrt{-g}=N\sqrt{h}$.
+Now we can write down the action for a free scalar field,
+\begin{equation}
+    S=\int_\cM dt d^3x \sqrt{-g} \bkt{-\frac{1}{2} \nabla^a \Phi \nabla_a \Phi -\frac{1}{2} m^2 \Phi^2}.
+\end{equation}
+We compute the conjugate momentum to the field; it is
+\begin{equation}
+    \pi(x) =\frac{\delta S}{\delta (\p_t \Phi)} = \sqrt{h} n^\mu \nabla_\mu \Phi.
+\end{equation}
+Next, to quantize we promote $\Phi,\pi$ to operators (in $\hbar =1$ units) such that they satisfy equal-time commutation relations
+\begin{equation}
+    [\Phi(t,x),\pi(t,x')]=i\delta^{(3)}(x-x').
+\end{equation}
+
+We now introduce the Hilbert space where the field lives. Let $S$ be the space of complex solutions to the Klein-Gordon equation ($\Box \Phi=m^2 \Phi$, where $\Box=\nabla_a \nabla^a$). Global hyperbolicity implies that a point in $S$ is specified uniquely by the initial conditions $\Phi, \p_t \Phi$ on $\Sigma_0$. Note that the Hilbert space comes equipped with an inner product:
+\begin{equation}
+    (\alpha,\beta)=-\int_{\Sigma_0} d^3x \sqrt{h} n_a j^a(\alpha,\beta),\quad j(\alpha,\beta)\equiv -i (\bar \alpha d\beta -\beta d\bar \alpha).
+\end{equation}
+In fact, one now finds that this current $j$ we have defined is actually conserved, i.e. from Klein-Gordon it follows that
+\begin{equation}
+    \nabla^a J_a = 0.
+\end{equation}
+This implies our norm is actually independent of $t$-- while it may be convenient to calculate on $\Sigma_0$, $(\alpha,\beta)$ does not depend on $t$.
+
+Note that
+\begin{equation}
+    (\alpha,\beta)=\overline{(\beta,\alpha)},
+\end{equation}
+which implies that $(\cdot,\cdot)$ is a Hermitian form. It is non-degenerate, i.e. if $(\alpha,\beta)=0$ for all $\beta \in S,$ then $\alpha=0$. However,
+\begin{equation}
+    (\alpha,\beta)=-(\bar \beta,\bar \alpha),\text{ so }(\alpha,\alpha)=-(\bar \alpha,\bar \alpha),
+\end{equation}
+which tells us our inner product is not positive-definite. In Minkowski space, the inner product $({},{})$ is positive-definite on the subpsace $S_p$ of $S$ consisting of positive frequency solutions. A basis for $S_p$ is the set of plane waves,
+\begin{equation}
+    \psi_{\vec p} (x) = \frac{1}{(2\pi)^{3/2}(2p^0)^{1/2}} e^{ip \cdot x},\quad p^0 =\sqrt{\vec p^2 +m^2}. 
+\end{equation}
+These modes (i.e. solutions of the K-G equation) are positive frequency in the sense that if we take $K=\P{}{t}$ to be our stationary Killing field, then these modes have negative imaginary eigenvalues with respect to the Lie derivative $\cL_K$. That is,
+\begin{equation}
+    \cL_K \psi_{\vec p} = -i p^0 \psi_{\vec p}
+\end{equation}
+Now observe that the complex conjugate of $\psi_{\vec p}$ is a negative frequency plane wave. By linearity, we can decompose
+\begin{equation}
+    S=S_p + \bar S_p.
+\end{equation}
+
+However, note that in curved spacetime, we do not have a definition of ``positive frequency'' except if the spacetime is stationary (in which case the Killing field provides us a ``time'' direction). Instead, we simply choose a subspace $S_p$ for which $(\cdot,\cdot)$ is positive-definite and $S$ can be decomposed $S=S_p\oplus \bar S_p$. In general there are many ways to do this, and moreover physics may look very different depending on how we decompose the space.
+
+In the QFT, we define the creation and annihilation operators to be modes $f\in S_p$ of a real scalar field ($\Phi^\dagger = \Phi$) by
+\begin{equation}
+    a(f)=(f,\Phi),\quad a^\dagger(f) =-(\bar f,\Phi).
+\end{equation}
+These imply that
+\begin{equation}
+    [a(f),a(g)^\dagger]=(f,g)
+\end{equation}
+which in Minkowski space reduces to
+\begin{equation}
+    [a_{\vec p},a^\dagger_{\vec q}]=\delta^{(3)}(\vec p- \vec q).
+\end{equation}
+The last ingredient we need is a vacuum state. Once we have a vacuum state, we can say that the Hilbert space is just the Fock space we get by acting on the vacuum repeatedly with the one-particle operators. We therefore define the (normalized) vacuum state $\ket{0}$ by the condition
+\begin{equation}
+    a(f)\ket{0} = 0\, \forall f\in S_p, \quad \braket{0}{0}=1.
+\end{equation}
+However, suppose we chose a different positive frequency space, $S_p'$. The for any $f'\in S'_p$, we can decompose this function in the original basis, $f'=f+\bar g$ for $f\in S_p,\bar g\in \bar S_p$. Now the annihilation operator of our $f'$ is
+\begin{equation}
+    a(f') = (f,\Phi) +(\bar g,\Phi)=a(f) -a(g)^\dagger.
+\end{equation}
+And hence what we would have called a positive frequency solution relative to $S_p$ now gives us an $a(g)^\dagger$, which creates a particle relative to the original vacuum. We see that something as innocuous-sounding as a decomposition into positive and negative frequency solutions means that we won't agree even on the number of particles in the system.

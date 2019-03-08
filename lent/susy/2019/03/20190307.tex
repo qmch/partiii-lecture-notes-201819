@@ -1,0 +1,97 @@
+We continued our study of the Wess-Zumino model, with Seiberg's insight that we could promte the couplings $m,\lambda$ to superfields in their own right, arriving at a superpotential
+\begin{equation}
+    W(\Phi,M,\Lambda)=\frac{M}{2} \Phi^2 + \frac{\Lambda}{3} \Phi^3,
+\end{equation}
+where $W_{\text{eff}}(\Phi,M,\Lambda)$ must be
+\begin{itemize}
+    \item holomorphic in $\Phi,M,\Lambda$
+    \item $U_V(1)$ charge $2$ and invariant under $\Phi\to e^{i\alpha}\Phi,M\to e^{-2i\alpha}M,\Lambda \to e^{-3i\alpha}\Lambda$
+    \item reduce to $W(\Phi,\Lambda,M$ as $\Lambda\to 0$.
+\end{itemize}
+The first two conditions fix 
+\begin{equation}
+    W_\text{eff}(\Phi,M,\Lambda)=M \Phi^2 f\paren{\frac{\Phi \Lambda}{M}},
+\end{equation}
+where $f(t)$ must be holomorphic in $t$, and in particular $f(t)$ is regular as $t\to 0$ and  $f(t)/t$ is regular as $t\to\infty$. Thus we must have $f(t)=a+bt$, something at most linear in $t$. Teh final condition hence fixes $a=\frac{1}{2},b=\frac{1}{3}$. Hence
+\begin{equation}
+    W_\text{eff}(\Phi,M,\Lambda)=\frac{M}{2}\Phi^2 + \frac{\Lambda}{3} \Phi^3 = W(\Phi, M, \Lambda).
+\end{equation}
+We find that the effective potential is the same as the original potential. Finally, we freeze the superfields $(M,\Lambda)$ to their VEVs $(m,\lambda)$ by sending $\epsilon\to 0$ in the kinetic terms $\frac{1}{\epsilon}[\bar M M +\bar \Lambda\Lambda]$. The value of $\epsilon$ also cannot affect $W_\text{eff}$ because we can always promote $1/\epsilon$ to a \emph{real} superfield, and if supersymmetry is to hold, the superpotential can't depend on real superfields (only chiral superfields). More generally, the quantum superpotential is always independent of couplings appearing only in the K\"ahler potential $K(\Phi,\bar \Phi)$.
+
+In the end, we conclude that the effective superpotential is the same as it was classically--
+\begin{equation}
+    W_\text{eff}(\Phi)=\frac{m}{2} \Phi^2 + \frac{\lambda}{3} \Phi = W(\Phi)
+\end{equation}
+and therefore receives no quantum corrections from perturbations in e.g. $\lambda$. In fact, with a bit more work this can be shown to be an exact, non-perturbative statement. 
+
+However, the K\"ahler potential \emph{does} generically get quantum corrections. This is because the K\"ahler potential can depend on real superfields and is not guaranteed to be holomorphic; moreover, couplings from the superpotential can appear as couplings in the K\"ahler potential. In particular, the kinetic terms can receive corrections, so these can be nontrivial \term{wavefunction renormalization}, i.e.
+\begin{equation}
+    \Phi_r = Z^{1/2}_\Phi \Phi
+\end{equation}
+since e.g. we might have 
+$\p^\mu \bar \phi \p_\mu \phi \to Z_\phi \p^\mu \bar \phi \p_\mu \phi=\p^\mu \bar \phi_r \p_\mu \phi_r$ after loop corrections. We might like to keep the kinetic term canonically normalized in terms of these $\phi_r$s. In terms of the renormalized fields (for canonical kinetic terms), we then have
+\begin{equation}
+    W_\text{eff}(\Phi_r) = \frac{m_r}{2} \Phi^2_r +\frac{\lambda_r}{3} \Phi_r^3 \quad \text{where }m_r = Z_\Phi^{-1} m, \lambda_r = Z_\Phi^{-3/2} \lambda.
+\end{equation}
+However, it's usually nicer to stick with the unrenormalized fields, since this makes the invariance of the superpotential under quantum corrections manifest.
+
+\subsection*{K\"ahler geometry}
+A \term{K\"ahler} manifold is a manifold $\cM$ with three compatible structures: a Riemannian metric $g$, a (positive) symplectic form $\omega$, and a complex structure $J$.
+
+A 2-form $\omega \in\Omega^2(\cM)$ is \term{symplectic} if
+\begin{itemize}
+    \item $d\omega=0$ (i.e. $\omega= \omega_{ij}(x) dx^i\wedge dx^j$, then $\p_{[i}\omega_{jk]}=0$)
+    \item $\omega$ is non-degenerate (i.e. for any vector field $X$, $\omega(X,Y)=0 \forall $ vectors $Y$ iff $X=0$. Equivalently, $\omega_{ij}$ as an antisymmetric matrix is invertible)
+\end{itemize}
+A symplectic form is a natural candidate for a Poisson bracket structure.
+
+A \term{almost complex structure} is a map $J:T\cM\to T\cM$ (i.e. on vectors in the tangent space) such that $J^2=-\id$. For example, on $\RR^2, \set{\P{}{x},\P{}{y}}$ is a basis of $T\cM$, and we could choose
+\begin{equation}
+    J\paren{\P{}{x}} = \P{}{y},\quad J\paren{\P{}{y}}=-\P{}{x}.
+\end{equation}
+Notice this feels a lot like multiplying by $i$, such that $J^2=-1$.
+
+We define the \term{holomorphic} and \term{antiholomorphic tangent bundles} on $\cM$ (vector fields, if you like) as
+\begin{align}
+    T^{(1,0)}\cM &= \set{X\in T\cM \otimes \CC : \frac{1}{2}(1-iJ)X=X},\\
+    T^{(0,1)}\cM &= \set{X\in T\cM \otimes \CC : \frac{1}{2}(1+iJ)X=X}.
+\end{align}
+That is, the holomorphic tangent bundle is the set of tangent vectors living in the $+i$ eigenspace of $J$, and the antiholomorphic tangent bundle is the set of tangent vectors in the $-i$ eigenspace.
+
+An \term{almost complex structure} $J$ is said to be integrable if $\forall X,Y\in T\cM \otimes \CC$, we have
+\begin{equation}
+    \frac{(1+iJ)}{2} \bkt{\frac{(1-iJ)}{2}X, \frac{(1-iJ)}{2}Y} =0.
+\end{equation}
+That is, the Lie bracket of any two holomorphic vector fields is again holomorphic, so the tangent bundles decouple as we move around in the space. Taking the real and imaginary parts of these equations, we find that
+\begin{equation}
+    N_J(X,Y)=-J^2([X,Y])+J([JX,Y]+[X,JY])-[JX,JY]=0.
+\end{equation}
+Here $N_J(X,Y)$ is known as the \term{Nijenhuis tensor}. Notice that $J$ need not be a constant; in principle, these Lie brackets also differentiate the $J$s. However, the final result will turn out to not invole derivatives of the $X$s and $Y$s. Moreover, this tensor is linear-- for functions $f,g$, we have $N_J(fX,gY)=fg N_J(X,Y)$.
+
+We now say that $J$ is a complex structure iff it is an integrable almost complex structure. According to the Newlander-Nirenberg theorem, if any real manifold $\cM$ has $N(X,Y)=0$, then $\exists$ complex coordinates $x^i\to (z^a,\bar z^{\bar z})$ on any patch $U\subset \cM$, and the transition functions between overlapping patches are purely holomorphic.
+
+Note there may be different complex structures $J$ on the same manifold, which may not be equivalent. Some manifolds admit no complex structures, some have uniquely one (e.g. the Riemann sphere), and others admit several inequivalent structures.
+
+If $J$ is a complex structure, we can split the tangent bundle up into holomorphic and antiholomorphic sectors,
+\begin{equation}
+    T\cM \otimes \CC = T^{(1,0)}\cM \oplus T^{(0,1)}\cM
+\end{equation}
+globally. Similarly, we split $T^*\cM \otimes \CC= T^{*(1,0)}\cM \oplus T^{*(0,1)}\cM$ where $T^{*(1,0)}_p\cM$ is the dual vector space to $T^{(1,0)}_p\cM \forall p\in \cM$. Hence if $\bar \alpha \in T^{*(0,1)} \cM$ is an antiholomorphic one-form and $z\in T^{(1,0)}\cM$ is in the holomorphic tangent bundle, then $\bar \alpha(z)=0$. Equivalently, $\bar \alpha \in T^{*(0,1)}\cM$ iff $\bar \alpha= \bar \alpha_{\bar a}(z,\bar z)d\bar z^{\bar z}.$
+
+This structure extends-- we can likewise split
+\begin{equation}
+    \Omega^k(M,\CC) =\bigoplus_{k=p+q} \Omega^{(p,q)} (\cM),
+\end{equation}
+the space of complex-valued $k$-forms, into spaces $\Omega^{(p,q)}(\cM)$ with $p$ holomorphic indices and $q$ antiholomorphic indices,
+\begin{equation}
+    \eta(z,\bar z)=\eta_{a_1\ldots a_p \bar b_1 \ldots \bar b_q}(z,\bar z) dz^{a_1}\wedge \ldots \wedge dz^{a_p} \wedge d\bar z^{\bar b_1}\wedge \ldots \wedge d\bar z^{\bar b_q}.
+\end{equation}
+We also have the exterior derivative operation $d:\Omega^k\to \Omega^{k+1}$, so on a $\CC$-manifold this splits as $d=\p + \bar \p$ where $\p:\Omega^{(p,q)}\to \Omega^{(p+1,q)}$ and $\bar \p: \Omega^{(p,q)}\to \Omega^{(p,q+1)}$. For example, on $\RR^2$,
+\begin{equation}
+    d=dx \P{}{x} +dy\P{}{y} = dz \P{}{z} + d\bar z \P{}{\bar z}
+\end{equation}
+where $z=x+iy$. Also notice that
+\begin{equation}
+    0=d^2=\p^2 +(\p \bar \p + \bar \p \p)+\bar \p^2
+\end{equation}
+and we must have $\p^2=0, \bar \p^2 = 0, \p \bar \p +\bar \p \p =0$ separately since the form after each of these live in different spaces.

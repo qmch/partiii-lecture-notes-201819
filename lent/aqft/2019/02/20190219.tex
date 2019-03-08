@@ -18,12 +18,12 @@ so
 %what does this mean, notationally?
 Thus we rewrite the path integral with our delta function as
 \begin{align}
-    \int \cD A e^{-S_g[A]} &= \det \paren{\frac{\delta G{A^\alpha}}{\delta \alpha} \int \cD \alpha \int \cD A e^{-S_g[A]} \delta(G[A])}\\
-    &=\det \paren{\frac{\delta G{A^\alpha}}{\delta \alpha} \paren{\int \cD \alpha} \int \cD A e^{-S_g[A]} \delta(G[A])},
+    \int \cD A e^{-S_g[A]} &= \det \paren{\frac{\delta G{A^\alpha}}{\delta \alpha}} \int \cD \alpha \int \cD A e^{-S_g[A]} \delta(G[A])\\
+    &=\det \paren{\frac{\delta G{A^\alpha}}{\delta \alpha}} \paren{\int \cD \alpha} \int \cD A e^{-S_g[A]} \delta(G[A]),
 \end{align}
 where we have changed variable $A\mapsto A^\alpha$ and $S_g$ is invariant since this is a gauge transformation.
 
-TO fix the gauge, let's choose the functional
+To fix the gauge, let's choose the functional
 \begin{equation}
     G[A]=\p_\mu A^\mu(x) -\omega(x) \implies G[A^\alpha]=\p_\mu A^\mu - \omega +\frac{1}{e} \p^2 \alpha.
 \end{equation}

@@ -1,0 +1,121 @@
+Last time, we went through most of the steps for evaluating our first string theory amplitude, the $n$-tachyon scattering amplitude. We found that the integral over the zero-modes for the $X$s gave us overall momentum conservation, while the nontrivial bit gave us
+\begin{equation}
+    \avg{\phi_1 \ldots \phi_n}_X = (2\pi)^{26} \delta^{26}\paren{\sum_{i=1}^n k_{i\mu}} \prod_{i<j} |z_i-z_j|^{\alpha' k_i \cdot k_j},
+\end{equation}
+which sort of measures the distance between the punctures on the Riemann sphere. Let's get more specific and set $n=3$. We notice that
+\begin{equation}
+    \alpha' k_1 \cdot k_2 = \frac{\alpha'}{2} \bkt{(k_1+k_2)^2 -k_1^2 -k_2^2},
+\end{equation}
+and using momentum conservation we know that $k_1^\mu +k_2^\mu = -k_3^\mu$. Thus we can use the delta function to write
+\begin{equation}
+    \alpha' k_1 \cdot k_2 = \frac{\alpha'}{2}(k_3^2 -k_1^2-k_2^2),
+\end{equation}
+and since tachyons have
+\begin{equation}
+    k^2 =-m^2 = 4/\alpha',
+\end{equation}
+we can write this explicitly as
+\begin{equation}
+    \alpha' k_1 \cdot k_2 = -\frac{\alpha'}{2} \frac{4}{\alpha'}=-2,
+\end{equation}
+and similar expressions hold for the other $\alpha' k_i\cdot k_j, i\neq j$. Hence we have%
+    \footnote{This almost looks like a Feynman propagator.}
+\begin{equation}
+    \avg{\phi_1 \phi_2 \phi_3}_X = (2\pi)^{26} \delta^{(26} \paren{ \sum_{i=1}^3 k_i^\mu} \frac{1}{|z_1-z_2|^2 |z_2-z_3|^2 |z_3-z_1|^2}.
+\end{equation}
+However, this isn't the whole story. The ghost contribution gives a factor of
+\begin{equation}
+    |z_1-z_2|^2 |z_2-z_3|^2 |z_3-z_1|^2,
+\end{equation}
+and therefore we find that the amplitude is independent of the $z_i$. Thus
+\begin{equation}
+    A_3= g_c(2\pi)^{26} \delta^{26} \paren{\sum_{i=1}^3 k_i^\mu}.
+\end{equation}
+This isn't too surprising-- this is like the scattering of three scalar particles, and there isn't that much we could have written down that would be Lorentz invariant. We see that a ``three-point vertex'' in string theory is associated to a single factor of the closed string coupling $g_c$.
+
+We can kick it up a notch with $n=4$. The $n=3$ case was very simple because the ghosts cancel the first three punctures-- what if we have another one? Let us choose
+\begin{equation}
+    z_1=0,z_2=1,z_3=\lambda \to \infty
+\end{equation}
+and take $z_4=z$ to be integrated over.
+The amplitude for four-tachyon scattering will be
+\begin{equation}
+    A_4 \sim \avg{U_(z_1) U(z_2)U(z_3) V_4}
+\end{equation}
+where we now have an integral to perform over $z_4=z$. The amplitude includes a factor
+\begin{equation}
+    \avg{\prod_{l=1}^3 c_l \bar c_l}\prod_{i<j=1}^4 |z_i-z_j|^{\alpha' k_i \cdot k_j}=|z|^{\alpha' k_1 \cdot k_4}|1-z|^{\alpha' k_2 \cdot k_4},
+\end{equation}
+where we can derive this last expression using momentum conservation.
+
+We can now introduce Mandelstam variables,
+\begin{equation}
+    t=-(k_1+k_3)^2, \quad u=-(k_1+k_4)^2,
+\end{equation}
+so that e.g. $k_2\cdot k_4$ can be written in terms of $k_1,k_3$ and therefore in terms of $t$. That is, we can write
+\begin{equation}
+    \alpha' k_1 \cdot k_4 =-\frac{\alpha' u}{2} -4,\quad \alpha' k_2 \cdot k_4 =-\frac{\alpha't}{2} -4.
+\end{equation}
+This is sometimes useful when comparing to field theory calculations.
+
+We find that
+\begin{equation}
+    A_4 = g_c^2 (2\pi)^{26} \delta^{26} \paren{\sum_{i=1}^4 k_i^\mu} \int d^2z |z|^{-\alpha/ u/2 -4} |1-z|^{-\alpha' t/2-4}.
+\end{equation}
+Introducing the gamma function
+\begin{equation}
+    \Gamma(\alpha)=\int_0^\infty y^{\alpha-1} e^{-y} dy,
+\end{equation}
+the amplitude $A_4$ may be written as
+\begin{equation}
+    A_4 = g_c^2 (2\pi)^{26} \delta^{26} \paren{\sum_{i=1}^4 k_{i\mu}} \frac{2\pi \Gamma(\alpha(s)) \Gamma(\alpha(t)) \Gamma(\alpha(u))}{\Gamma(\alpha(t)+ \alpha(u))\Gamma(\alpha(s)+\alpha(u))\Gamma(\alpha(s)+\alpha(t))}
+\end{equation}
+where $\alpha(s)=-1-\frac{\alpha's}{4}$ with
+\begin{equation}
+    s=-(k_1+k_2)^2,\quad t=-(k_1+k_3)^2,\quad u=-(k_1+k_4)^2.
+\end{equation}
+Notice that $A_4$ is completely symmetric in the Mandelstam variables $s,t,u$. This is what we might call a ``duality'' or ``dual models.''%
+    \footnote{In field theory we sometimes call these crossing symmetries.}
+String theory is a little different-- since we can continuously deform our scattering processes, we actually get the other Feynman diagrams for free. Hence a single scattering amplitude at tree level contains the $s,t,$ and $u$ channels (up to an integral over moduli space).
+%figure-- deforming s channel to t channel
+
+\subsection*{Massless scattering}
+For the tachyon, we argued that the vertex operator could be turned into a sort of source term, which allowed us to exactly calculate the amplitude for tachyon scattering. One might wonder if this technique generalizes for massless states, and ideed it does. Massless states have vertex operators of the form
+\begin{equation}
+    V= \int d^2 z \epsilon_{\mu\nu} \p X^\mu \bar \p X^\nu e^{ik\cdot X}.
+\end{equation}
+It's a little more complicated than the tachyon operator. Introducing the dummy variables $\rho$ and $\bar \rho$, we can write
+\begin{equation}
+    \P{}{\rho_{\mu j}}\set*{\exp\bkt{
+        i\int_\Sigma d^2 z (k_{\mu j} +\rho_{\mu j} \P{}{z}) X^\mu(z,\bar z) \delta^2(z-z_j)
+    }}_{\rho_j=0} = i\p X^\mu(z_j) e^{ik_j \cdot X(z_j)}.
+\end{equation}
+So this lets us write $V$ as a pure exponential. Thus
+\begin{equation}
+    \epsilon_{\mu\nu} \p X^\mu \bar \p X^\nu e^{ik\cdot X} = -\epsilon_{\mu\nu} \frac{\p^2}{\p \rho_{\mu j} \p \bar \rho_{\nu j}} \exp \set*{
+        i\int_\Sigma d^2 z \delta^2(z-z_j) (k_{\mu j} +\rho_{j\mu} \P{}{z} + \bar \rho_{j\mu} \P{}{\bar z}) X^\mu(z,\bar z)
+    }_{\rho=0,\bar \rho=0}.
+\end{equation}
+This is a lot like what we did in field theory, introducing a source, taking derivatives, and setting the source to zero. Introducing now
+\begin{equation}
+    J_\mu (z,\bar z) = -i\sum_{j=1}^n \delta^2 (z-z_j) (k_{\mu_j} + \rho_{\mu_j} \P{}{z} + \bar \rho_{j\mu}\P{}{\bar z}),
+\end{equation}
+the $n$-point amplitude for massless scattering may be written as
+\begin{equation}
+    A_n = (-1)^n g_c^{n-2} 
+    \prod_{j=1}^n \paren{\epsilon_{\mu_j \nu_j} \frac{\p^2}{\p \rho_{\mu_j} \p \bar \rho_{\nu_j}}} 
+    \exp \paren{ \frac{1}{2} \int_{\Sigma \times \Sigma} d^2z d^2 \omega \, J(z) J(\omega) G(z,\omega)}_{\rho=0,\bar \rho=0} 
+    \times (2\pi)^{26} \delta^{26} \paren{\sum_{j=1}^n k_{\mu j}},
+\end{equation}
+with $G(z,\omega)$ a Green's function.
+
+
+It is useful to split
+\begin{equation}
+    X^\mu(z,\bar z)= x^\mu + \tilde X^\mu(z) + \bar X^\mu(\bar z),
+\end{equation}
+i.e. into a center of mass bit, a holomorphic part, and an antiholomorphic part. Similarly we write%
+    \footnote{``We find that... we find that we probably should not start this now.'' --R.A. Reid-Edwards}
+\begin{equation}
+    G(z,\omega)=-\frac{\alpha'}{2} \ln|z-\omega|^2 = -\frac{\alpha'}{2} \ln(z-\omega) -\frac{\alpha'}{2} \ln(\bar z-\bar \omega).
+\end{equation}

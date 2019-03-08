@@ -1,0 +1,141 @@
+Last time, we talked about the Komar mass (energy), which let us define a mass for black hole systems that admit a Killing vector.
+
+\subsection*{Hamiltonian formulation of GR}
+For today, we'll take a new choice of units, $16\pi G=1$, in order to avoid some awkward $16\pi$s floating around. We begin with the action
+\begin{equation}
+    ds^2 = -N^2 dt^2 +h_{ij} (dx^i +N^i dt)(dx^j +N^j dt),
+\end{equation}
+where $N$ is called the \term{lapse}, $j_{ij}$ is some general $3\times 3$ metric, and $N^i$ is the \term{shift}. Note this is not Kaluza-Kelin because $N,h_{ij},$ and $N^i$ all generically depend on time, e.g. $\p_t N\neq 0$.
+
+Now let us rewrite our action:
+\begin{equation}
+    S=\int dt d^3x \cL = \int dt d^3x \sqrt{h} N \bkt{{}^{(3)}R+K_{ij} K^{ij}-K^2}
+\end{equation}
+where ${}^{(3)}R$ is the ricci scalar of $H$ and 
+\begin{equation}
+    K_{ij} = \frac{1}{2N} \paren{ \dot h_{ij} -D_i N-J - D_j N_i},\quad \cdot \equiv \p_t
+\end{equation}
+and
+\begin{equation}
+    K=h^{ij}K_{ij}.
+\end{equation}
+Notice there are no time derivatives of $N$ or $N^i$, so they are not dynamical variables (by the equations of motion)-- we are free to specify them, which corresponds to a coordinate choice. We vary the action with respect to $N$ to get a Hamiltonian constraint, and with respect to $N^i$ to get the momentum constraint. Note we must vary the action first, and then choose $N$.
+
+To write a Hamiltonian, we must also compute a conjugate momentum of our system:
+\begin{equation}
+    \pi^{ij} \equiv \frac{\delta S}{\delta \dot h_{ij}} =\sqrt{h}(K^{ij} - K h^{ij}.
+\end{equation}
+From here we compute
+\begin{align*}
+    H &= \int d^3x (\pi^{ij} \dot h_{ij} -\cL)\\
+        &= \int d^3x \sqrt{h}\paren{N\cH + \cH_i N^i},
+\end{align*}
+where
+\begin{gather}
+    \cH= -{}^{(3)}R + h^{-1} \pi^{ij} \pi_{ij} - \frac{1}{2} h^{-1} \pi^2\\
+    \cH_i = -2 h_{ik} D_j (h^{-1/2} \pi^{jk})
+\end{gather}
+where $\pi$ here is $\pi\equiv h^{ij} \pi_{ij}$. Thus $N,N^i$ act like Lagrange multipliers, and they set their coefficients to zero:
+\begin{equation}
+    \frac{\delta H}{\delta N}=0,\frac{\delta H}{\delta N^i}=0 \implies \cH=0, \cH_i = 0.
+\end{equation}
+But this might seem a little weird-- didn't we just say that the Hamiltonian was the sum of a $\cH$ term and a $\cH_i$ term? This seems to imply that the energy is zero. Here's the solution. The Hamilton equations are
+\begin{equation}
+    \dot h_{ij}=\frac{\delta H}{\delta \pi^{ij}}, \dot \pi^{ij} = -\frac{\delta H}{\delta h_{ij}},
+\end{equation}
+and to compute these functional derivatives we actually need to vary for instance ${}^{(3)}R$ with respect to $\pi^{ij}$, which requires that we perform some integrations by parts. If the system were closed, there would be no boundary term and the energy would indeed be zero, but in our asymptotically flat system, a time slice is not compact and so we are not guaranteed that the boundary term is zero. As it is, this Hamiltonian doesn't give well-defined variations and so we must integrate by parts in order for our Hamiltonian to give us a physically meaningful energy.
+
+%It's the constraint equations which cannot be generically satisfied in loop quantum gravity.
+Recall that for asymptotically flat initial data,
+\begin{gather}
+    h_{ij}=\delta-{ij}+O(1/r)\implies \delta h_{ij} =O(1/r),\\
+    \delta \pi^{ij} = O(1/r^2).
+\end{gather}
+Hence
+\begin{equation}
+    N=1+O(1/r), N^i\to 0\text{ as }r\to +\infty.
+\end{equation}
+
+Consider the region of a constant $t$ surface contained within a sphere of constant $r$ with boundary $S_r^2$. When we vary $\pi^{ij}$, we get
+\begin{equation}
+    \int_{S^2_r} dA(-2N^i h_{ik} n_j h^{-1/2} \delta \pi^{jk})
+\end{equation}
+where $dA$ is the area element of $S^2_r$ and $n^j$ is the outward unit normal of $S^2_r$. Now, $dA=O(r^2)$, but $\delta \pi^{ij}=O(1/r^2)$ so this boundary term goes to zero.
+
+Note also that the Ricci scalar is made of second derivatives of $h$, which means that varying with respect to $h_{ij}$ gives two boundary terms. THus
+\begin{equation}
+    \delta^{(3)}R = -R^{ij} \delta h_{ij} + D^i D^j h_{ij} -D^k D_k(h^{ij} \delta h_{ij})
+\end{equation}
+where $D$ is a covariant derivative of $h$. Then one of the boundary terms is
+\begin{equation}
+    S_1=-\int_{S^n_r} dA N\bkt{n^i D^j \delta h_{ij} - n^k D_k (h^{ij} \delta h_{ij})}.
+\end{equation}
+There's a second boundary term $S_2$ which goes to zero as $r\to +\infty$, but this term we have computed $S_1$ does not! Instead,
+\begin{equation}
+    \lim_{r\to +\infty} S_1 =-\delta E_{ADM}
+\end{equation}
+where
+\begin{equation}
+    E_{ADM}=\lim_{r\to +\infty} \int_{S^2_r} dA n_i(\p_j h_{ij} -\p_i h_{jj}).
+\end{equation}
+In general $E_{ADM}$ will not be zero. In fact, what we ought to have started with was
+\begin{equation}
+    H'=H+E_{ADM},
+\end{equation}
+which now poses a well-defined variational problem. Note that the indices down doesn't matter-- we can just raise e.g. a pair of the $i,j$ indices by a Kronecker delta since the integral is taken in Euclidean space.
+
+%Witten the father worked for most of his life on this problem. And then a proof by Schoen and Yau scooped him-- they published a lower bound on the ADM energy that works in <7 dimensions, based on minimal surfaces. But that was not the end of his misery. Witten-- the son-- decided to have a look at this problem. And in the space of a couple of weeks he constructed a proof that fit in a page and a half for the positivity of the ADM energy that worked in arbitrary dimension. As a father I would be very proud but as 
+
+%This is where we really start to see Stephen's influence on general relativity. From now on there is not a single class where I will not mention the name Stephen Hawking.
+
+\subsection*{Black hole mechanics}
+There are three laws of black hole mechanics (\emph{not} thermodynamics!).
+\begin{defn}
+    A null hypersurface $\cN$ is a \term{Killing horizon} if there exists a Killing vector field $\xi^a$ defined in a neighborhood of $\cN$ such that $\xi^a$ is normal to $\cN.$
+\end{defn}
+Notice that nowhere in the definition of a black hole did we specify such a Killing horizon had to exist, and yet we have found one in every black hole spacetime we have studied so far.
+\begin{thm}[Hawking 1972]
+    In a stationary, analytic, asymptotically flat vacuum black hole spacetime, $\cH^+$ is a Killing horizon.
+\end{thm}
+These are quite strong conditions-- explicit counterexamples exist as soon as one relaxes the asymptotic flatness condition, for example. 
+
+Notice that if $\cN$ is a Killing horizon with respect to a Killing vector field $\xi^a$, then it is also a Killing horizon with respect to $c\xi$ for $c$ a constant. We can fix the normalization by specifying that (e.g. in Kerr) if
+\begin{equation}
+    \xi = K+\Omega_H m,
+\end{equation}
+then $K^2=-1$ as $r\to +\infty$. Notice that this tells us horizons rotate rigidly ($\Omega_H$ just a constant), or else $\xi$ would not be Killing.
+
+Since $\xi^a\xi_a=0$ on $\cN$, it follows that the gradient of $\xi^a\xi_a$ is normal to $\cN$, i.e. it is proportional to $\xi_a$.
+\begin{equation}
+    \nabla_a(\xi^b \xi_b)|_\cN = -2 \kappa_0 \xi_a
+\end{equation}
+A priori, $\kappa_0$ is a function. We call it the \term{surface gravity}. Since $\xi$ is Killing we can write
+\begin{equation}
+    \nabla(\xi^b \xi_b) = 2 \xi^b \nabla_a \xi_b = -2 \xi^b \nabla_b \xi_a,
+\end{equation}
+and thus
+\begin{equation}
+    \xi^b \nabla_b \xi^a|_{\cN} = \kappa_0 \xi^a.
+\end{equation}
+The surface gravity therefore tells us how much the integral curves of $\xi^a$ fail to be affinely parametrized at the horizon.
+
+\begin{exm}
+    Consider the surface gravity of the Reissner-Nordstr\"om solution. We have the metric
+    \begin{equation}
+        ds^2=-\frac{\Delta}{r^2}dv^2 +2dv dr +r^2 d\Omega^2
+    \end{equation}
+    with $\Delta(r)=(r-r_+)(r-r_-), r_\pm = M\pm \sqrt{M^2-Q^2}$.
+    The stationary killing field is $K=\P{}{v}$. At $r=r_\pm,\Delta=0$, so
+    \begin{equation}
+        (K)_a =(dr)_a
+    \end{equation}
+    at $r=r\pm$ is null. THen
+    \begin{equation}
+        d(K^a K_a)=d(-\frac{\Delta}{r^2}) =-\paren{-\frac{\Delta'}{r^2}+\frac{2 \Delta}{r^3}}dr,
+    \end{equation}
+    and so evaluating at $r=r_\pm$, we have
+    \begin{equation}
+        d(K^b K_b)|_{r=r_\pm} = -\frac{(r_\pm - r_\mp)}{r_\pm^2}K|_{r=r_\pm}\implies \kappa_{0\pm}=\frac{r_\pm - r_\mp}{2r_{\pm}^2}.
+    \end{equation}
+    What we've learned is that $\kappa$ is actually not a function but just a number. One might think this comes about because of spherical symmetry, but it's actually true for other solutions like Kerr-Newman as well. Next time, we will show that the surface gravity of a black hole is always a constant and does not depend on where on the horizon you look.
+\end{exm}
