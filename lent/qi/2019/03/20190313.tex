@@ -1,0 +1,117 @@
+Last time, we set up the problem of sending classical information through a quantum channel. For our case, we shall be interested in Alice preparing a product state input,
+\begin{equation}
+    \rho_M^{(n)}= \rho_M^1 \otimes \ldots \otimes \rho_M^n,
+\end{equation}
+which is transmitted through the memoryless channel $\Lambda^{\otimes n}: \rho^{(n)}_M \to \sigma_M^{(n)} = \sigma_M^1 \otimes \ldots \otimes \sigma_M^n$ to Bob as another (generally different) product state. Bob then applies his decoding protocol $\cD$ on the entire $\sigma_M^n$ once all the messages have come in.
+
+The product state capacitiy is given by $C^{(1)}(\Lambda)= \sup\set{R: R\text{ achievable}}$ where $R$ is the rate of a code.
+\begin{thm}[Holevo-Schumacher-Westmoreland (HSW)]
+    The product state capacity is given by
+    \begin{equation}
+        C^{(1)}(\Lambda)=\max_{\set{p_x,\rho_x}_{x=1}^{d_A^2}} \chi(\set{p_x,\Lambda(\rho_x)}) \equiv \chi^*(\Lambda)
+    \end{equation}
+\end{thm}
+That is, for any rate $R< \chi^*(\Lambda)$, there exists a code $\cC^{(n)}$ with that rate which is reliable. Conversely, for all codes $\cC^{(n)}$ with rate $R >\chi^*(\Lambda)$, no such code is reliable.
+
+In the examples sheet, we will show that by transmitting $n$ qubits, Alice can send at most $n$ bits of classical message to $B$. Moreover, for today we will use the generalized Fano's inequality, i.e. for two random variables $X,Y$ with values $x_i,y_i,i=1,\ldots,m$, for $\epsilon\in (0,1)$,
+\begin{equation}
+    \sum_{i=1}^m P(X=x_i,Y=y_i)=1-\epsilon.
+\end{equation}
+Equivalently
+\begin{equation}
+    H(X|Y)\leq h(\epsilon) + \epsilon \log(m-1),
+\end{equation}
+or
+\begin{equation}
+    P(X=Y)=1-\epsilon.
+\end{equation}
+
+\begin{proof}
+    Assume WLOG that the messages are uniformly distributed. We can do this since we are only interested in the maximum probability of error, which should not depend on the distribution of the message.
+    
+    If the message $M$ is sent, the probability of error is then
+    \begin{equation}
+        P(\hat M \neq M) = 1-\Tr(E_M^{(n)} \sigma_M^{(n)},
+    \end{equation}
+    i.e. $1-{}$the probability of a successful decoding. Now $nR$ is the number of bits of classical information sent on $n$ uses. The maximum number of qubits Alice can send is $\log d_B^n=n\log d_B$ where $\d_B^n = \dim \cH_B^{\otimes n}$. That is, in each use Alice sends at most $\log d_B$ qubits corresponding to a $\sigma_M^i \in \cH_B$. Hence
+    \begin{equation}
+        nR \leq n \log d_B
+    \end{equation}
+    
+    Using our second fact, the generalized Fano's inequality, let $q=P(\hat M \neq M)$. We want to prove that $\forall \cC^{(n)}$ of rate $R >\chi^*(\Lambda), p_{\max}^{(n)}\to 0$ as $n\to\infty$.
+    
+    The generalized Fano's inequality then says that
+    \begin{align*}
+        H(M|\hat M) &\leq h(q) + q \log(|\cM|-1)\\
+            &\leq h(q) + q \log|M|\\
+            &= h(q) + q nR \leq h(q) + qn\log d_Bm
+    \end{align*}
+    using the definition $R=\frac{\log|\cM|}{n}$ and the inequality $R \leq \log d_B$.
+    
+    Hence
+    \begin{align*}
+        q_n \log d_B \geq (M|\hat M) - h(q)\\
+        &= H(M\hat M)- H(\hat M) +(-H(M)+H(M))-h(q)\\
+        &= H(M) - I(M:\hat M) - h(q).
+    \end{align*}
+    The Holevo bound now tells us that
+    \begin{equation}
+        I(M:\hat M) \leq \chi \paren{\set*{\frac{1}{|\cM|},\sigma_M^{(n)}}},
+    \end{equation}
+    where we have taken a uniform distribution so $p_x=1/|\cM|\, \forall x$ and substituted the definition $\Lambda(\rho_M^{(n)})=\sigma_m^{(n)}$ for $n$ uses of the channel.
+    
+    Recalling the definition of the Holevo $\chi$ quantity, we can write
+    \begin{equation}
+        I(M:\hat M) \leq S\paren{\underbrace{\frac{1}{|\cM|} \sum_{m\in \cM} \sigma_M^{(n)}}_{\bar \sigma_j}} -\frac{1}{|\cM|} \sum_{m\in \cM} S(\sigma_M^{(n)}).
+    \end{equation}
+    Notice that $\sigma_M^{(n)}\in \cH_B^{\otimes n}$. If we write the state
+    \begin{equation}
+        \omega_{B_1\ldots B_n} := \frac{1}{|\cM|} \sum \sigma_M^{(n)} = \frac{1}{|\cM| \sum_M\in \cM} (\sigma_M^1 \otimes \ldots \otimes \sigma_M^n),
+    \end{equation}
+    bu subadditivity we know that
+    \begin{equation}
+        S(\omega_{B_1 \ldots B_n})\leq \sum_{j=1}^n S(\omega_{B_j}),
+    \end{equation}
+    where $\omega_{B_j}=\Tr_{\not j} \omega_{B_1\ldots B_n} =\frac{1}{|\cM|} \sum_{M\in \cM} \sigma_M^j = \bar \sigma^j,$
+    the average output state.
+    
+    For a product state, notice that
+    \begin{equation}
+        S(\sigma_M^{(n)} = \sum_{j=1}^n S(\sigma_M^J).
+    \end{equation}
+    Hence our mutual information is bounded by
+    \begin{align*}
+        I(M:\hat M) &\leq \sum_{j=1}^n S\paren{\bar \sigma_j} -\frac{1}{|\cM|} \sum_{m\in \cM} \sum_{j=1}^n S(\sigma_M)\\
+        &=\sum_{j=1}^n \bkt{S(\frac{1}{|\cM|} \sum_{m\in \cM} \sigma_M^j) -\frac{1}{|\cM|} \sum_{m\in\cM} S(\sigma_M^j)},
+    \end{align*}
+    so we conclude that
+    \begin{equation}
+        I(M:\hat M) \leq \sum_{j=1}^n \chi\paren{\set*{\frac{1}{|\cM|},\sigma_M^j}}.
+    \end{equation}
+    Notice that the Holevo capacity bounds the individual Holevo $\chi$ quantity
+    \begin{align*}
+        \chi^*(\Lambda)&= \max_{\set{p_x,\rho_x}} S(\sum p_x \Lambda(\rho_x)) -\sum p_x S(\Lambda(\rho_x))\\
+        &\geq S\paren{\frac{1}{|\cM|} \sum \sigma_M^j} -\frac{1}{|\cM|} \sum S(\sigma^j_M)\\
+        &= \chi \paren{\set{\frac{1}{|\cM|},\sigma_M^j}},
+    \end{align*}
+    and therefore
+    \begin{equation}
+        I(M:\hat M) \leq \sum_{j=1}^n \chi^*(\Lambda) = n\chi^* (\Lambda).
+    \end{equation}
+    
+    Using this bound on the mutual information we now write
+    \begin{align*}
+        q n \log d_B &\geq H(M) - I(M:\hat M) - h(q)\\
+        &\geq H(M) -n \chi^*(\Lambda -h(q)\\
+        &= \log|\cM|-n \chi^*(\Lambda -h(q)\\
+        &= nR - n\chi^*(\Lambda)-h(q).
+    \end{align*}
+    Dividing through by $n\log d_B$, we have
+    \begin{equation}
+        q \geq \frac{ n(R-\chi^*(\Lambda))}{n\log d_B} -\frac{h(q)}{n\log d_B}.
+    \end{equation}
+    We see that in the $n\to \infty$ limit, this second term goes to zero and $p_{\max}^{(n)}\geq q$, so in the $n\to\infty$ lmit we have
+    \begin{equation}
+        \frac{R-\chi^*(\Lambda)}{\log d_B} > 0 \implies p_{\max}^{(n)} \not \to 0.
+    \end{equation}
+\end{proof}

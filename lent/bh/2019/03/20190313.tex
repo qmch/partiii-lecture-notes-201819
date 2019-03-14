@@ -1,0 +1,90 @@
+Our previous class was entirely classical. We studied waves on curved spacetime, defining an important set of modes-- the out and down modes, defined in the future (on $\mathcal{I}^+,\cH^+$) and the in and up modes, defined in the past (on $\mathcal{I}^-$ and $\cH^-$). Note also that these modes have nothing to do with quasinormal modes, which you will come across if you continue to study general relativity.%
+    \footnote{If you want to learn about quasinormal modes, come to my talk on them on March 14, 2019! (Pi Day!) In MR2, 1:45 PM. For most readers this will be impossible without closed timelike curves or the like. But I will be there at that point in spacetime.}
+
+Now, the Krukal spacetime is stationary, since it admits a Killing vector $K\equiv \P{}{t}$. Hence
+\begin{equation}
+    \Phi_{lm}(t,r_*) = e^{-i\omega t} R_{\omega l m}(r)
+\end{equation}
+are eigenfunctions of $\cL_K$, and for $\omega>0$ they have positive norm.
+
+Input this into the Klein-Gordon equation $\Box \Phi=0$, and we get a time-independent Schr\"odinger equation:
+\begin{equation}
+    \bkt{-\frac{d^2}{dr_*^2} +V_l(r_*)} R_{\omega lm} = \omega^2 R_{\omega lm}.
+\end{equation}
+We impose the boundary condition that these modes vanish either on the future event horizon $\cH^+$ or at future null infinity, $\mathcal{I}^+$ to get e.g. the out and down modes.
+
+We emphasize that these are different from quasinormal modes, which obey infalling and outgoing boundary conditions and describe the ringing of a black hole after perturbation.
+
+\subsection*{Hawking radiation}
+Let us now venture into the quantum consequences of the calculation we have done. A priori, it's not surprising that we have particle production when the spacetime is time-dependent. What is surprising is that particle production is not a transient behavior but persists indefinitely into the future (up to the evaporation of the BH).
+
+We will now introduce a basis for the spacetime describing a collapsing star, analogous to the modes of Kruskal. In the past, there are no ``up'' modes since there is no past event horizon. But we do have ``in'' modes!
+
+Notice the geometry near $\mathcal{I}^-$ is static, so there is a natural notion of positive frequency there. Let $\set{f_i}$ be a basis of the ``in'' modes. After the black hole forms, we must deal with the out and down modes.
+%This all starts with very obvious statements. But they build up, and complicate towards the end.
+
+At late times, we can define ``out'' and ``down'' modes as before. The geometry near $\mathcal{I}^+$ is also static, so we can define a notion of positive frequency there. Call a basis for such modes $\set{p_i}$.
+The geometry is \emph{not} static everywhere on $\cH^+$, however, so there is no natural notion of positive frequency modes. We can nevertheless pick there a basis $\set{q_i}$.
+
+First we impose orthonormality:
+\begin{equation}
+    (p_i,p_j)=(q_i,q_j)=\delta_{ij}, \quad (f_i,f_j) =\delta_{ij}.
+\end{equation}
+Moreover,
+\begin{equation}
+    (p_i,q_j)=0
+\end{equation}
+since they have mutually exclusive supports.
+
+Let $a_i,b_i$ be annihilation operators for the ``in'' and ``out'' modes respectively,
+\begin{equation}
+    a_i =(f_i,\Phi) ,b_i (p_i,\Phi).
+\end{equation}
+Using a Bogoliubov transformation, we can expand
+\begin{equation}
+    p_i = \sum_j \paren{A_{ij} f_j + B_{ij} \bar f_j}
+\end{equation}
+so that
+\begin{equation}
+    b_i=(p_i,\Phi)=\sum_j \paren{\bar A_{ij} a_j - \bar B_{ij} a_j^\dagger}.
+\end{equation}
+
+In the past, we are in the vacuum state $a_i\ket{0}=0$. But we showed that the number of expected particles in the future is related to the Bogoliubov coefficients. The expected number of particels present in the $i$th ``out'' mode is then
+\begin{equation}
+    \bra{0}b_i^\dagger b_i \ket{0} = (B B^\dagger)_{ii}.
+\end{equation}
+We will choose our ``out'' basis $p_i$ so that at $\mathcal{I}^+$ they are wavepackets localized around some particular retarded time $u_i$, and containing only positive frequencies localized around some value $\omega_i$. What you should have in mind is a cosine modulated by a Gaussian, $e^{-(u-u_i)^2} \cos(\omega_i u)$.
+
+Consider first Kruskal. Imagine propagating a wavepacket back in time from $\mathcal{I}^+$. Part of the wavepacket could be `reflected'' to give a wavepacket on $\mathcal{I}^-$ (which we call $p_i^{(1)}$), and part of it will be ``transmitted'' and reach $\cH^-$ (as $p_i^{(2)}$). More generally we could study a wavepacket from $\mathcal{I}^+\cup \cH^+$.
+
+We want to look at the case of a wavepacket that is localized around a late retarded time. We can also decompose the solutions that end up on $\mathcal{I}^-$ as the sum of modes:
+\begin{equation}
+    p_i=p_i^{(1)} +p_i^{(2)},
+\end{equation}
+where $p_i^{(1)}$ is simply ``reflected'' off the Schwarzschild geometry, while $p_i^{(2)}$ passes through the time-dependent region before reaching $\mathcal{I}^-$. It must be that $B$ (the Bogoliubov coefficients) is related to $p_i^{(2)}$, the part of $p_i$ that sees the time dependence.
+
+Let us define transmission and reflection coefficients
+\begin{equation}
+    T_i =\sqrt{(p_i^{(2)},p_i^{(2)}},\quad R_i =\sqrt{(p_i^{(1)},p_i^{(1)}}
+\end{equation}
+such that
+\begin{equation}
+    R_i^2+T_i^2=1.
+\end{equation}
+From what we have seen,
+\begin{equation}
+    A_{ij}=A_{ij}^{(1)}+A_{ij}^{(2)},\quad B_{ij} = B_{ij}^{(2)}.
+\end{equation}
+We want to compute $B_{ij}$, which means we have to find the behavior of $p_i^{(2)}$ on $\mathcal{I}^-$.
+
+Notice that with the form of $p$ we have specified on $\mathcal{I}^+$, as we approach the horizon $H^+$, $u\to +\infty$, and our wavepacket oscillates infinitely. Because there are infinitely many oscillations, we can apply the WKB approximation (i.e. we study a quickly varying solution on a slowly varying background potential). Hence
+\begin{equation}
+    \Phi(x) = A(x) e^{i\lambda S(x)},\lambda \gg 1.
+\end{equation}
+Applying the Klein-Gordon equation gives
+\begin{equation}
+    \Box \Phi = 0 \implies \nabla^a S \nabla_a S =0.
+\end{equation}
+Surfaces of constant phase $S$ are null hypersurfaces. The generators of these hypersurfaces are null geodesics.
+
+In our next class, we will show that since surfaces of constant $S$ have null geodesics, we can solve for these null geodesics and derive a great consequence.

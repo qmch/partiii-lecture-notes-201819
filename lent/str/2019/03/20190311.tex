@@ -1,0 +1,108 @@
+Today we'll continue our discussion of the scattering of massless states. Recall that we had a trick of writing vertex operators as ``source terms'' in the path integral, which we could differentiate and then set sources to zero in, giving us the desired scattering amplitude.
+
+Recall that we could write the vertex operator
+\begin{equation}
+    i\p X^\mu(z_j) e^{ik_j \cdot X(z_j)} =
+        \P{}{\rho_{\mu j}}\set*{\exp\bkt{
+        i\int_\Sigma d^2 z (k_{\mu j} +\rho_{\mu j} \P{}{z}) X^\mu(z,\bar z) \delta^2(z-z_j)
+    }}_{\rho_j=0}.
+\end{equation}
+It is useful to split $X$ into a center-of-mass part and its holomorphic and antiholomorphic parts,
+\begin{equation*}
+    X^\mu(z,\bar z) = x^\mu +\tilde X^\mu(z) + \bar X^\mu(\bar z),
+\end{equation*}
+and similarly we split
+\begin{equation}
+    J^\mu(z,\bar z) =j^\mu (z) +\bar j^\mu (\bar z).
+\end{equation}
+The Green's function also splits:
+\begin{equation}
+    G(z,\omega)=-\frac{\alpha'}{2} \ln|z-\omega|^2 = -\frac{\alpha'}{2} \ln(z-\omega) -\frac{\alpha'}{2} \ln(\bar z-\bar \omega).
+\end{equation}
+Explicitly, our source terms splits as
+\begin{equation}
+    j_\mu(z) = i\sum_{j=1}^n \delta^2( z-z_j) \paren{ \frac{1}{2} k_{j\mu} + \rho_{j\mu} \P{}{z}}.
+\end{equation}
+As usual, our theory comes with two basically decoupled sectors. The amplitude may be written as
+\begin{align*}
+    A_n ={}& g_c^{n-2} |z_1-z_2|^2 |z_2-z_3|^2 |z_3-z_1|^2 
+        \delta^{26} \paren{ \sum_{j=1}^{n} k_{\mu j}} 
+        \int d^2 z_4 \ldots d^2 z_n \, \epsilon_{\mu_1 \nu_1}^{(1)} \ldots \epsilon_{\mu_n \nu_n}^{(n)}\\
+        &\times \avg{\prod_{j=1}^{n} \p \tilde X^{\mu_j} (z_j) e^{ik_j \cdot \tilde X(z_j)}} \avg{\prod_{j=1}^n \bar \p \bar X^{\mu_j} (\bar z_j) e^{ik_j \cdot \bar X(\bar z_j)}}
+\end{align*}
+where
+\begin{equation}
+    \avg{\prod_{j=1}^n \p \tilde X^{\mu_j} (z_j) e^{ik_j \cdot X(z_j)}}= \frac{1}{i^n} \frac{\p^n}{\p \rho_{1\mu_1} \ldots \p \rho_{n\mu_n}} W[j]|_{\rho_1 = \rho_2 =\ldots =0}
+\end{equation}
+and
+\begin{equation}
+    W[j]= \exp \paren{ \frac{1}{2} \int_{\Sigma \times \Sigma} d^2 z d^2\omega\, j(z) j(\omega) G(z,\omega)}
+\end{equation}
+is an action with sources. We can think of $W$ as a generating functional, just like in QFT. Here, $G(z,\omega)=-\frac{\alpha'}{2} \ln(z-\omega)$. If we do the integral, we find that
+\begin{equation}
+    W[j]= \prod_{i<j} |z_i -z_j|^{\alpha' k_i \cdot k_j /2} \times \exp \paren{\frac{\alpha'}{2} \sum_{i<j} \frac{\rho_i \cdot \rho_j}{(z_i-z_j)^2}+ \frac{\alpha'}{2} \sum_{i\neq j} \frac{k_i \cdot \rho_j}{z_i-z_j}}.
+\end{equation}
+Actually taking the derivatives is a bit of a pain for many-particle scattering amplitudes, but in principle it is tractable. We can also compute amplitudes using a Wick contraction method-- it's a matter of taste which way is preferable.
+
+\begin{exm}
+    Let's consider three-point graviton scattering. Here, the polarization vectors $\epsilon_{\mu\nu}$ are symmetric and traceless to represent gravitons. Recall that three-point interactions are nice since momentum conservation and the ghosts simplify our problem a bit. For three gravitons,
+    \begin{equation}
+        \alpha' k_1 \cdot k_2 = \frac{\alpha'}{2}(k_1+k_2)^2 = \frac{\alpha'}{2} k_3^2=0.
+    \end{equation}
+     We therefore have
+    \begin{equation}
+        |z_1-z_j|^{\alpha' k_1 \cdot}=1,
+    \end{equation}
+    and so
+    \begin{equation}
+        \avg{\prod_{j=1}^3 \p \tilde X^{\mu_j} (z-J) e^{ik_j \cdot X(z_j)}} =\paren{\frac{\alpha'}{2}}^2 \frac{T^{\mu_1 \mu_2 \mu_3}}{(z_1-z_2)(z_2-z_3)(z_3-z_1)}
+    \end{equation}
+    with
+    \begin{equation}
+         T^{\mu_1 \mu_2 \mu_3} =\eta^{\mu_1 \mu_2} k_2^{\mu_3} + \eta^{\mu_2 \mu_3} k_3^{\mu_1} +\eta^{\mu_3 \mu_1} k_1^{\mu_2} + \frac{\alpha'}{2} k_3^{\mu_1} k_1^{\mu_2} k_2^{\mu_2},
+    \end{equation}
+    where we used identities like $k^{\mu_1} \epsilon_{\mu_1 \nu_1}^{(1)}=0$ to simplify. Thus the three-point graviton scattering amplitude comes out to
+    \begin{equation}
+        A_3 = g_c (2\pi)^{26} \delta^{26} \paren{\sum_{j=1}^3 k_{\mu j}} \epsilon_{\mu_1 \nu_1} \epsilon_{\mu_2 \nu_2} \epsilon_{\mu_3 \nu_3} T^{\mu_1 \mu_2 \mu_3} T^{\nu_1 \nu_2 \nu_3}.
+    \end{equation}
+    One can show that this agrees with (tree-level) perturbation theory in general relativity, where there's some identification between $g_c$ and the gravitational constant $G_N$ in 26 dimensions. However, there might also be interactions at tree level in string theory, higher derivative corrections to the Einstein equations.
+\end{exm}
+
+\subsection*{One loop}
+This is non-examinable material (no exam questions on loop corrections) but it's certainly the next natural step after discussing tree-level amplitudes. We integrate over the moduli space $\cM_1$, i.e. the moduli space of the torus (genus 1 Riemann surfaces). Thus
+\begin{equation}
+    \cM_1 =\set{\tau = \tau_1 +i \tau_2| \tau_2 >0; -\frac{1}{2} \leq \tau_1 \leq \frac{1}{2}, |\tau| \geq 1}
+\end{equation}
+where $z\sim z + \tau$. At one loop, the amplitude is given by
+\begin{equation}
+    A_n = \frac{1}{|U(1) \times U(1)|} \int_{\cM_1} \frac{d^2 \tau}{\tau_2} \int \cD b \cD \bar b \cD c \cD \bar c (\mu_\tau|b) (\bar \mu_\tau |\bar b) e^{-S_\text{gh}[b,c]} \avg{V_1 \ldots V_n}_X c(z_1) \bar c(\bar z_1).
+\end{equation}
+That is, this prefactor is equivalent to dividing out by the surface area of the torus. The weird inner products are then
+\begin{equation}
+    (\mu_\tau | b) =\frac{1}{2\pi} \int_\Sigma d^2 z\paren{\P{h_{\bar z \bar z}}{\tau}} b_{zz}.
+\end{equation}
+We can compute this explicitly. Consider the worldsheet metric
+\begin{equation}
+    h_{ab} =\begin{pmatrix}
+        0 & \frac{1}{2}\\
+        \frac{1}{2} & 0
+    \end{pmatrix}
+\end{equation}
+under the deformation $h_{\bar z \bar z}=0\to \epsilon$. We find that
+\begin{equation}
+    ds^2 = dz d \bar z  \to (1+\epsilon +\bar \epsilon) dz' d\bar z' +O(\epsilon^2),
+\end{equation}
+with $z'=z+\epsilon(\bar z-\bar z)+O(\epsilon^2)$.
+Looking at $z'\sim z'+\tau',$ we see that 
+\begin{equation}
+    \tau'=\tau+\epsilon(\bar \tau_\tau)+O(\epsilon^2).
+\end{equation}
+We know $\P{h_{\bar z \bar z}}{\epsilon}$ and $\P{\tau}{\epsilon}$ and we have
+\begin{equation}
+    \p_\tau h_{\bar z \bar z} =\frac{i}{2\tau_2}.
+\end{equation}
+Compared with tree level, we have b-ghost insertions in the ghost path integral.
+
+However, observe that the Green's function also changes now that the topology of our Riemann surface has changed. $G(z,\omega)$ is more complicated due to periodicity requirements. Such requirements will lead us to introduce ``theta functions'' from the study of partial differential equations on manifolds of interesting topology.
+
+We may ask whether our theory has divergences after we introduce loops. It turns out that it does, but these aren't UV divergences-- they are associated to a tachyon, which is not present in the superstring theory. It seems that this theory is perturbatively finite to all orders.

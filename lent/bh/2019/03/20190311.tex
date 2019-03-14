@@ -1,0 +1,116 @@
+\begin{quote}
+    \textit{``Here is a form where you can complain about me. You can complain about me any day, but today is the day I will hear your complaints.'' --Jorge Santos}
+\end{quote}
+
+Last time, we said that a free real massive scalar field in a curved spacetime obeys a Klein-Gordon equation. In particular, we defined a space of solutions $S$, and we found that because the norm of states under the inner product
+\begin{equation}
+    (\alpha,\beta)=-\int_\Sigma d^3x \sqrt{h} n_a j^a(\alpha,\beta)
+\end{equation}
+is not positive-definite, we do not have a unique way to decompose $S$ into positive and negative frequency states. In fact, we showed that 
+\begin{equation}
+    a(f')=a(f) -a(g)^\dagger,
+\end{equation}
+so moving observers will disagree on the vacuum.
+
+However, there are no such problems in Minkowski space. In a stationary spacetime, one can use time translation symmetry to identify a preferred choice of $S_p$ (the space of positive frequency states). Let $K^a$ be the (future-directed) time translation Killing Vector field of Minkowski space. It can be shown that the Lie derivative $\cL_K$ commutes with the Klein-Gordon operator $(\Box -m^2)$ and therefore maps the space of solutions onto itself, $S\to S$.
+
+It can be shown (on the examples sheets) that $\cL_K$ is anti-Hermitian and hence has purely imaginary eigenvalues.
+\begin{defn}
+    We say that an eigenfunction has positive frequency if its eigenvalue under $\cL_K$ is negative imaginary,
+    \begin{equation}
+        \cL_K u= -i \omega u, \omega > 0.
+    \end{equation}
+\end{defn}
+Because $\cL_K$ is anti-Hermitian, this gives us a preferred decomposition of $S=S_p \oplus \bar S_p$ into positive and negative frequency solutions.
+
+\subsection*{Bogoliubov transformations}
+Let $\set{\psi_i}$ be an orthonormal%
+    \footnote{We're writing the indices like they're discrete, but really they could be some sort of continuum.}
+basis for $S_p$. That is,
+\begin{equation}
+    (\psi_i, \psi_j) = \delta_{ij}, \quad (\psi_i, \bar \psi_j)=0.
+\end{equation}
+We can define creation and annihilation operators $a_i,a_i^\dagger$ such that
+\begin{equation}
+    \Phi = \sum_i (a_i \psi_i + a_i^\dagger \bar \psi_i),
+\end{equation}
+which is like a Fourier decomposition of a general $\Phi\in S$, with $a_i \equiv (\Phi,\psi_i)$. In such a basis,
+\begin{equation}
+    [a_i, a_j^\dagger] = \delta_{ij},\quad [a_i,a_j]=0.
+\end{equation}
+Let $S'_p$ be a different choice for the positive frequency subspace, with its own (orthornormal) basis $\set{\psi_i'}$. Since we are still decomposing the subspace, there had better be a linear transformation relating this decomposition and the other one:
+\begin{equation}
+     \psi_i' = \sum_j (A_{ij} \psi_j +B_{ij} \bar \psi_j),
+\end{equation}
+with $\bar \psi_i'$ similar. Note that the $\psi_i'$s must still satisfy orthogonality relations,
+\begin{equation}
+    (\psi_i', \psi_j')=\delta_{j},\quad (\psi_i',\bar \psi_j')=0,
+\end{equation}
+and so we get some conditions on $A_{ij}$ and $B_{ij}$, known as the Bogoliubov coefficients. One finds that
+\begin{equation}
+     A A^\dagger - B B^\dagger =1 , \quad A B^T - BA^T=0.
+\end{equation}
+
+Why are these transformations interesting? Consider some spacetime which we divide into three regions by time: $(\cM_-,g_-),(\cM_0,g_0),(\cM_+,g_+)$. Here, we have a preferred time direction, and we want a globally hyperbolic spacetime $(\cM,g)$ where
+\begin{equation}
+     \cM = \cM_- \cup \cM_0 \cup \cM_+.
+\end{equation}
+%diagram
+In particular, the first and last regions are stationary, while the middle one is dynamic. We imagine e.g. a black hole in the past that eats some matter and then settles down to a steady state. In the spacetime $(\cM_\pm,g)$, stationarity implies that there is a preferred choice of positive frequency modes $S^\pm_p$ in both $\cM_+,\cM_-$.
+
+Hence we have two choices of positive frequency subspaces for $(\cM,g)$ given by $S^+_p,S^-_p$. Notice that these work for the \emph{entire} manifold $\cM$ because of global hyperbolicity. Let $\set{U_i^\pm}$ denote an orthonormal basis for $S_p^\pm$ and let $a_i^\pm$ be the annihilation operators
+\begin{equation}
+    u_i^+ = \sum_j (A_{ij} u_j^- + B_{ij} \bar u_j^-),
+\end{equation} 
+with
+\begin{equation}
+     a_i^+ = \sum_j (\bar A_{ij} a_j^- - \bar B_{ij} a_j^-{}^\dagger).
+\end{equation}
+That is, we can relate the subspace decompositions $S_p^\pm$ by a Bogoliubov transformation.
+
+Now denote the respective vacua by $\ket{0\pm}$, such that
+\begin{equation}
+    a_i^\pm \ket{0 \pm} = 0\quad \forall i.
+\end{equation}
+In the past, start with the vacuum $\ket{0-}$. The particle number for the $i$th late time mode is
+\begin{equation}
+     N_i^+ = a_i^+{}^\dagger a_i^+.
+\end{equation}
+Thus the particle number seen in the $+$ region is
+\begin{equation}
+    \bra{0-}N_i^\dagger \ket{0-} = \sum_{j,k} \bra{0-} a_k^- (-B_{ij})(-\bar B_{ij}) a_j^-{}^\dagger \ket{0-} = (BB^\dagger)_{ii}.
+\end{equation}
+Hence the expected total number of particles is
+\begin{equation}
+     \sum_i (BB^\dagger)_{ii} = \Tr(B^\dagger B),
+\end{equation}
+so if $B\neq 0$, we will have particle production. If $B=0$, then $S_p^+=S_p^-$ and the decompositions agree. But this is generally not true.
+
+To really understand the consequences of this, we want to know these Bogoliubov coefficients for the Schwarzschild black hole. That is, we will solve the wave equation around the black hole.
+
+\subsection*{Wave equation in Schwarzschild spacetime}
+Notice that the Schwarzschild spacetime has spherical symmetry. Thus we might like to decompose a massless Klein-Gordon field $\Phi$ into spherical harmonics,
+\begin{equation}
+     \Phi = \sum_{l=0}^\infty \sum_{m=-l}^l \frac{1}{r} \phi_{lm}(t,r) Y_{lm}(\theta, \phi).
+\end{equation}
+The wave equation $\Box \Phi=0$ then reduces to
+\begin{equation}
+    \bkt{\frac{\p^2}{\p t^2} -\frac{\p^2}{\p r_*^2} +V_l(r_*)} \phi_{lm}(t,r_*)=0
+\end{equation}
+where
+\begin{equation}
+    V_l( r_*) = \bkt{1-\frac{2M}{r(r_*)}} \bkt{ \frac{l(l+1)}{r(r_*)^2}+\frac{2M}{r(r_*)^3}}.
+\end{equation}
+Notice that when $r_* \to -\infty, r\to 2M$ (the near-horizon limit). Moreover, $V_l(r_*)$ vanishes both as $r_*\to +\infty $and $r_*\to -\infty$.
+
+However, note that if we prepare a wavepacket at the maximum of the potential, it will generically split into two wavepackets under time evolution. One packet will fall in towards the horizon, and the other will go out towards $\mathcal{I}^+$.
+
+At late time $t\to +\infty$ we therefore expect the solution to consist of a superposition of two wavepackets propagating to the ``left'' ($r_*\to -\infty$) and to the ``right'' ($r_*\to +\infty$) and hence in the limit $t\to \pm \infty$ we expect a decomposition of the form
+\begin{equation}
+     \phi_{lm}(t,r_*) = f_\pm (t-r_*) + g_\pm (t+ r_*) = f_\pm (u) + g_\pm(v),
+\end{equation}
+ingoing and outgoing wavepackets. $f+(u)$ is an outgoing wavepacket propagating to $\mathcal{I}^+$, while $g_+(v)$ describes an ingoing wavepacket propagating to $\cH^+$.
+Hence the solution is uniquely determined by specifying its behavior on $\mathcal{I}^+ \cup \cH^+$.
+
+We will define an ``out'' mode to be a solution which vanishes on the horizon $\cH^+$ and a ``down'' mode to be a solution which vanishes on $\mathcal{I}^+$.
+Similarly, at early times, we can evaluate the integral defining the Klein-Gordon inner product to find the ``in'' mode which vanishes on $\cH^-$ and the ``up'' mode which vanishes on $\mathcal{I}^-$.

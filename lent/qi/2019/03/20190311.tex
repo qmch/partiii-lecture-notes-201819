@@ -1,0 +1,189 @@
+Today we will complete the proof of the Holevo bound. We said that Alice's message, the encoded state, and Bob's measurement device were written as a tripartite initial state
+\begin{equation}
+    \rho_{AQB}=\sum_x p_x \dyad{x} \otimes \rho_x \otimes \dyad{\phi_B},
+\end{equation}
+which became
+\begin{equation}
+    \rho_{A'Q'B'} = \sum_{x,y} p_x \dyad{x} \otimes \sqrt{E_y} \rho_x \sqrt{E_y} \otimes \dyad{y_B}.
+\end{equation}
+We know that SSA has the following consequences:
+\begin{enumerate}
+    \item[(1)] $I(A:B) \leq I(A:BC)$
+    \item [(2)] $I(A':B')\leq I(A:B)$
+\end{enumerate}
+where $\rho_{A'B'}=(\id_A \otimes \Lambda) \rho_{AB}$. Thus notice that
+\begin{equation}
+    I(A:Q) = I(A:QB)
+\end{equation}
+since $B$ is uncorrelated initially.
+\begin{equation}
+    I(A:QB) \geq I(A': Q'B')
+\end{equation}
+by (2) above, and 
+\begin{equation}
+    I(A':Q'B") \geq I(A': B')
+\end{equation}
+by (1). Hence
+\begin{equation}
+    I(A':B')\leq I(A:Q).
+\end{equation}
+In fact, this is the Holevo bound. For notice that the RHS is $I(A:Q)$, such that
+\begin{align*}
+    \rho_{AQ}&= \sum_x p_x \dyad{x} \otimes \rho_x\\
+    \rho_A &= \sum p_x \dyad{x}\\
+    \rho_Q &= \sum p_x \rho_x = \rho.
+\end{align*}
+The entropies of these states are
+\begin{equation}
+    S(\rho_A) = H(\set{p_x}),\quad S(\rho_Q)=S(\sum p_x \rho_x).
+\end{equation}
+Recall that on Examples Sheet 3, we showed that for $\omega_x$ with mutually orthogonal supports,
+\begin{equation}
+    S(\sum p_x \omega_x) = H(\set{p_x}) + \sum p_x S(\omega_x).
+\end{equation}
+Thus for the state $\rho_{AQ}=\sum p_x \omega_x$ wth $\omega_x=\dyad{x} \otimes \rho_x$, we have
+\begin{equation}
+    S(\rho_{AQ})=H(\set{p_x}) +\sum p_x S(\rho_x)
+\end{equation}
+since $S(\dyad{x}{x})=0$.
+
+Thus the mutual information $I(A:Q)$ is
+\begin{align*}
+    I(A:Q) &= S(A) + S(Q) -S(AQ)\\
+    &= H(\set{p_x}) + S(\sum p_x \rho_x) - H(\set{p_x}) -\sum p_x S(\rho_x)\\
+    &= \chi(\set{p_x,\rho_x}).
+\end{align*}
+We're nearly done. All that remains to to evaluate the LHS,
+\begin{equation}
+    I(A':B')=S(A')+S(B')-S(A'B').
+\end{equation}
+Returning to our expression for the statement after measurement, we have
+\begin{equation}
+    \rho_{A'B'}=\sum p_x \dyad{x} \Tr(E_y \rho_x) \otimes \dyad{y_B}
+\end{equation}
+by the cyclicity of the trace. Notice that $\Tr(E_y \rho_x) = p(y|x)$, the probability of measuring outcome $y$ given that the state was $\rho_x$, so we have
+\begin{equation}
+    \rho_{A'B'}= \sum_{x,y} p(x) p(y|x) \dyad{xy}_{A'B'} = \sum_{x,y} p(x,y) \dyad{xy}_{A'B'}.
+\end{equation}
+Since these are mutually orthogonal states, we find that
+\begin{equation}
+    S(A'B')=H(\set{p(x,y)}) = H(XY),
+\end{equation}
+the joint Shannon entropy. Now
+\begin{equation}
+    \rho_{A'}=\sum p(x) \dyad{x} \implies S(A')= H(\set{p_x})=H(X)
+\end{equation}
+and similarly
+\begin{equation}
+    \rho_{B'}=\sum_{x.y} p(x,y)\dyad{y} = \sum p(y) \dyad{y} \implies S(B')=H(Y).
+\end{equation}
+Thus we find that
+\begin{equation}
+    I(A':B')=H(X)+H(Y)-H(XY)\equiv I(X:Y),
+\end{equation}
+and therefore we conclude that
+\begin{equation}
+    I(X;Y) \leq \chi(\set{p_x,\rho_x}). 
+\end{equation}
+This is the Holevo bound. \qed
+
+\subsection*{Properties of the Holevo $\chi$ quantity}
+Let us denote the average state $\rho=\sum p_x \rho_x$.
+\begin{enumerate}
+    \item $\chi(\set{p_x,\rho_x}) \geq 0$ (follos from concavity of $S(\rho)$).
+    \item $\chi(\mathcal{E})\to S(\rho)$ when the $\rho_x$ are pure.
+    \item $\chi(\mathcal{E})=\sum p_x D(\rho_x ||\rho)$. This is true because
+    \begin{align*}
+        \sum p_x D(\rho_x || \rho)\\
+        &= \sum p_x \bkt{-S(\rho_x) - \Tr \rho_x \log \rho}\\
+        &= -\sum p_x S(\rho_x) +S(\sum p_x \rho_x).
+    \end{align*}
+    Notice that $D(\rho_x ||\rho)\geq 0$.
+    \item By the data processing inequality, the relative entropy is non-increasing under quantum operations,
+    \begin{equation}
+        D(\Lambda(\rho_x) || \Lambda(\rho)) \leq D(\rho_x ||\rho).
+    \end{equation}
+    Taking $\mathcal{E} =\set{p_x,\rho_x}, \mathcal{E}'=\set{p_x,\Lambda(\rho_x)}$, we find that
+    \begin{equation}
+        \chi(\mathcal{E}')\leq \chi(\mathcal{E}).
+    \end{equation}
+    \item For an ensemble $\set{p_x,\rho_x}$, we can embed the state in terms of the classical labels as
+    \begin{equation}
+        \rho_{XA} = \sum p_i \dyad{x} \otimes \rho_x,
+    \end{equation}
+    known as a classical-quantum (c-q) state.%
+        \footnote{We saw this on the examples sheet as well.}
+    Then the Holevo quantity of such an ensemble is
+    \begin{equation}
+        \chi(\set{p_x,\rho_x})=I(X;A)_\rho.
+    \end{equation}
+    Moreover, We could run the quantum part through a quantum channel $\Lambda:\cB(\cH_A) \to \cB(\cH_B)$ to get a new state
+    \begin{equation}
+         \tilde \rho_{XB}=\sum p_i \dyad{i} \otimes \Lambda(\rho_x),
+    \end{equation}
+    and then it follows that
+    \begin{equation}
+        I(X:B)_{\tilde \rho} \leq I(X:A)_\rho.
+    \end{equation}
+\end{enumerate}
+
+\subsection*{Noisy quantum channels}
+What happens if our noiseless quantum channel is replaced by a noisy quantum channel $\Lambda$? Clearly, Bob no longer receives $\rho_x$ but $\Lambda(\rho_x)$, and must decode this new state. The maximum information Bob can retrieve for a \emph{single use} of the channel is then bounded by
+\begin{equation}
+    \chi(\set{p_x,\Lambda(\rho_x)}),
+\end{equation}
+the Holevo $\chi$ quantity. In fact, we can do better by using the channel multiple times. Preskill has an argument that more uses of the channel always improves the outcome.
+
+Now what is the classical capacity of the channel $\Lambda$? Suppose we have a memoryless quantum channel, i.e.
+\begin{equation}
+    \Lambda^{(n)} \equiv \Lambda^{\otimes n}.
+\end{equation}
+That is, the noise is uncorrelated between uses.
+
+\begin{defn}
+    The \term{classical capacity} is the maximum rate of reliable transmission of classical information evaluated in the asymptotic limit, i.e. in the limit of channel uses $n\to \infty$.
+\end{defn}
+
+Here's something strange about quantum channels as opposed to classical channels. For a classical memoryless channel $\cN$, we model this channel by a set of conditional probabilities $\set{p(y|x)}$, where the capacity was
+\begin{equation}
+    C(\cN)=\max_{p(x)} I(X;Y).
+\end{equation}
+This was a unique value. On the other hand, consider a quantum channel $\Lambda$. We have some options which will affect the capacity.
+\begin{enumerate}
+    \item Information sent-- classical or quantum
+    \item The encoded state $\rho^{(n)}$ (input to $n$ uses of the channel)-- entangled or product state. Notice that if $\rho^{(n)} \equiv \rho_1 \otimes \ldots \otimes \rho_n$ is a product state, then the outcome state $\Lambda(\rho_1) \otimes \ldots \otimes \Lambda(\rho_n)$ is also a product state.
+    \item The measurement/decoding protocol could act on the $n$ uses individually or collectively.
+    \item Presence of auxiliary resources, e.g. Alice and Bob share an entangled state, and Alice uses her half in the encoding of her classical message.
+\end{enumerate}
+
+We'll restrict ourselves to the following scenario. Alice has a classical information source and she wants to send a message through a (noisy) memoryless quantum channel $\Lambda$. Thus Alice has some messages
+\begin{equation}
+    \cM = \set{1,2,\ldots, |\cM|}
+\end{equation}
+and these messages get encoded as
+\begin{equation}
+    M \in \cM \mapsto \rho_M^{(n)},
+\end{equation}
+a quantum state which is then transmitted through the channel as
+\begin{equation}
+     \sigma_M^{(n)}=\Lambda^{\otimes n}(\rho_M^{(n)}).
+\end{equation}
+Bob performs a POVM $\set{E_M^{(n)}}_{M\in \cM}$. Call our encoding scheme $\mathcal{E}^{(n)}$ and the decoding scheme $\cD^{(n)}$.
+
+If the message $M$ was sent, the probability of error is then
+\begin{equation}
+    p_\text{err} = 1-\Tr(E_M^{(n)} \sigma_M^{(n)}).
+\end{equation}
+The maximum probability of error of $\cC^{(n)}=(\mathcal{E}^{(n)},\cD^{(n)})$ is then
+\begin{equation}
+    p_\text{max}(\cC^{(n)}) = \max_{m\in \cM} \bkt{1-\Tr(E_M^{(n)} \sigma_M^{(n)}))}.
+\end{equation}
+We say the information transmssion is reliable if
+\begin{equation}
+    \lim_{n\to \infty} p_\text{max}^{(n)} =0.
+\end{equation}
+That is, the maximum probability of error tends to zero in the asymptotic limit.
+We then say that the rate of the channel is
+\begin{equation}
+    R= \frac{\log|\cM|}{n}.
+\end{equation}

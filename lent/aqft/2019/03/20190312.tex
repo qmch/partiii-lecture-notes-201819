@@ -1,0 +1,79 @@
+Last time, we discussed vacuum polarization in a general non-abelian gauge theory. The end result for one-loop corrections to the gluon propagator is
+\begin{equation}
+    (M_3 +M_4 + M_\text{gh})^{ab\mu\nu} = \frac{g^2 C_2(G) \delta^{ab}}{16\pi^2} (\delta^{\mu\nu}q^2 -q^\mu q^\nu) \bkt{\frac{5}{3} \paren{\frac{2}{\epsilon}+\log \frac{\mu^2}{\Delta^2}\text{term} + \text{finite}+O(\epsilon)}}.
+\end{equation}
+The fermion loop contributes a term
+\begin{equation}
+    M_F^{ab\mu\nu}= \frac{g^2 C(r) \delta^{ab}}{16\pi^2} (q^2 \delta^{\mu\nu} -q^\mu q^\nu) \bkt{-\frac{4}{3} \frac{2}{\epsilon} + \log + \text{finite}}.
+\end{equation}
+In order to deal with the $1/\epsilon$ divergences, we introduce counterterms as usual. That is, we add a 
+\begin{equation}
+    \delta_3 = \frac{g^2}{16\pi^2} \frac{2}{\epsilon} \bkt{\frac{5}{3} C_2(G) -\frac{4}{3} n_f C(r)},
+\end{equation}
+where $n_f$ accounts for the number of fermion flavors in the $M_F$ loop.
+
+The renormalized Lagrangian is therefore
+\begin{align*}
+    \cL ={}& \frac{1}{4} Z_3 (\p_\mu A_\nu^a - \p_\mu A_\mu^a)^2 + \frac{1}{2\xi} (\p^\mu A^a)^2\\
+    &+ Z_{3g} g f^{abc}(\p_\mu A_\nu^a) A_\mu^b A_\nu^c + \frac{1}{4} Z_{4g} g^2 f^{abe}f^{cde} A_\mu^a A_\nu^b A_\mu^c A_\nu^d\\
+    &+ Z_{2'} \bar c \p^2 c - Z_{1'} g f^{abc} (\p_\mu \bar c^a) A_\mu^b c^c\\
+    &+ Z_2 \bar \psi \slashed{\p} \psi +Z_m m \bar \psi \psi + Z_1 g \bar \psi \slashed{A}^a t^a \psi.
+\end{align*}
+Note that the $1/2\xi$ term is not renormalized. We've also fixed a gauge, so we don't expect this to be gauge-invariant, but we do expect BRST invariance. That is, there should still be a single coupling after renormalization.
+%this is a weird statement
+Thus
+\begin{equation}
+    g^2_\text{eff} =\frac{Z_1^2}{Z_2^2 Z_3} g^2 \mu^\epsilon =\frac{Z_{1'}^2}{Z_2'{}^2 Z_3} g^2 \mu^\epsilon = \frac{Z_{1'}^2}{Z_2'{}^2 Z_3} g^2 \mu^\epsilon  =\frac{Z_{3g}^2}{Z_3^3} g^2 \mu^\epsilon = \frac{Z_{4g}}{Z_3^2} g^2 \mu^\epsilon.
+\end{equation}
+Hence the coefficients are not all independent but related by this equation. The $\beta$-function comes from requiring that
+\begin{equation}
+    \mu \frac{d}{d\mu} g_\text{eff}=0.
+\end{equation}
+We found that $Z_3$ (the coefficient of the $F_{\mu\nu}^2$ term including the counterterm) was $Z_3=1+\delta_3$. From here it might be simplest to find $Z_2=1+\delta_2,Z_1=1+\delta_1$ using
+\begin{equation}
+    \mu \frac{d}{d\mu} \bkt{g\mu^{\epsilon/2} \frac{Z_1}{Z_2 Z_3^{1/2}}}=0.
+\end{equation}
+We find that
+\begin{equation}
+    \beta(g) = -\frac{\epsilon}{2} g -g\mu \frac{d}{d\mu} \paren{ \frac{Z_1}{Z_2 Z_3^{1/2}}} = g\bkt{-\frac{\epsilon}{2} +\mu \frac{d}{d\mu}(\delta_1 -\delta_2 -\frac{1}{2} \delta_3)+\ldots}.
+\end{equation}
+We can calculate the other counterterms, e.g. $\delta_2$ is the counterterm from the fermion self-energy in the $m\to 0$ limit,
+%diagram
+\begin{equation}
+    \delta_2 = -\frac{g^2}{8\pi^2} \frac{1}{\epsilon} C(r).
+\end{equation}
+Similarly, $\delta_1$ is the counterterm from the fermion-gauge boson interaction, where two diagrams
+%diagram
+give the counterterm
+\begin{equation}
+    \delta_1 = -\frac{g^2}{8\pi^2} \frac{1}{\epsilon}(C(r) C_2(G)).
+\end{equation}
+Thus there is $\mu$ dependence of $\delta_i$ through $g^2(\mu)$.
+
+We can use the leading-order $\beta$-function,
+\begin{equation}
+    \mu\frac{d}{d\mu}g = -\frac{\epsilon}{2} g
+\end{equation}
+to write
+\begin{align*}
+    \beta(g) &= -\frac{\epsilon}{2} g +\frac{\epsilon}{2} g^2 \P{}{g} \paren{\delta_1 -\delta_2 -\frac{1}{2} \delta_3}\\
+        &=-\frac{\epsilon}{2} g -\frac{g^3}{16\pi^2} \paren{\frac{11}{3} C_2(G) -\frac{4}{3}n_f C(r)}.
+\end{align*}
+For a theory with an $SU(3)$ gauge symmetry and fermions transforming in the fundamental representation, $C_2(G)=3,C(r)=1/2$. Thus the $\beta$-function for QCD in $d=4$ is
+\begin{equation}
+    \beta(g)=-\frac{g^3}{16\pi^2} (11-\frac{2}{3} n_f) \equiv -\frac{g^3}{16\pi^2} \beta_0.
+\end{equation}
+As long as $n_f <16$, $g$ is a marginally relevant coupling. However, notice that $g\to \infty$ in the IR, and $\to 0$ in the UV. This is the property of ``asymptotic freedom,'' that quarks in a proton are effectively free at short distance scales but confined by the strong nuclear force at longer distances. We can write the solution for the 1-loop $\beta$-function:
+\begin{equation}
+    g^2(\mu) = \frac{1}{\beta_0 \log \mu/\Lambda_{QCD}}.
+\end{equation}
+\subsection*{(Caswell-)Banks-Zaks fixed point}
+One can compute the two-loop $\beta$-function for an $SU(N_c)$ (i.e. $N_c$ colors in the theory) symmetry with $n_f$ fundamental fermions. It is
+\begin{equation}
+    \beta(g) = -\frac{\beta_0}{16\pi^2} g^3 - \frac{\beta_1}{(16\pi^2)^2}g^3 + O(g^7),
+\end{equation}
+where
+\begin{equation}
+    \beta_1 = \bkt{\frac{34}{3} N_c^3 -n_f \paren{\frac{N_c^2-1}{N_c} + \frac{1)}{3} N_c}}.
+\end{equation}
+Notice that there exist values of $N_c,n_f0$ such that $\beta(g_*)=0$ with $g_*\neq 0$. That is, there exist nontrivial fixed points for such a theory, though these must usually be probed with numerics. Moreover, the fixed point usually lies at large values of $g$ (which is dimensionless), so $g \gg 1$ means that perturbative expansions have little hope of working in this regime.

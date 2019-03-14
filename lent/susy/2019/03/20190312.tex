@@ -1,0 +1,97 @@
+A complex manifold admits a structure of $(p,q)$-forms $\Omega^{p,q}(M) = \bigwedge^p T^{*(1,0)}\cM \bigwedge^q T^{*(0,1)}M$. As we showed last time, the complex structure of the manifold and the nilpotency of the exterior derivative implies that $\p^2=\bar \p^2 = \p \bar p + \bar p \p =0$ as operators.
+
+A K\"ahler manifold has a symplectic form $\omega \in \Omega^2(\cM)$ that is compatible with $J$ in the sense that
+\begin{equation}
+     \omega(JX,JY) = \omega(X,Y) \quad \forall \text{ vector fields} X,Y.
+\end{equation}
+This implies that $\omega$ actually lies in $\Omega^{1,1}(\cM)$,%
+    \footnote{$\Omega^2$ decomposes into the direct sum $\Omega^{2,0}\oplus \Omega^{1,1} \oplus \Omega^{0,2}$.}
+so
+\begin{equation}
+    \omega = \omega_{a,\bar b} (z,\bar z) dz^a \wedge d\bar z^{\bar b}.
+\end{equation}
+Given any such $\omega$, we get a Hermitian metric for free, defined by
+\begin{equation}
+    g(X,Y)=\omega(X,JY)
+\end{equation}
+where $J:T\cM \to T\cM, J^2=-1$. (Recall that $J$ is like multiplying by $i$.)
+
+\begin{itemize}
+    \item We may check that this new metric $g$ really is symmetric:
+    \begin{equation}
+        g(Y,X)=\omega(Y,JX) = -\omega(YX,Y) = \omega(JX,J^2 Y) = \omega(X,JY)=g(X,Y)
+    \end{equation}
+    where we have used the antisymmetry of $\omega$, the property that $J^2=-1$, and the fact that $\omega$ and $J$ are compatible to explicitly show the symmetry of $g$.
+    \item Moreover,
+    \begin{equation}
+        g(JX,JY)=\omega(JX,J^2Y)=-\omega(JX,Y) = \omega(Y,JX) = g(Y,X) = g(X,Y).
+    \end{equation}
+    Therefore $g$ is compatible with $J$, which implies that $g$ is indeed Hermitian.
+    \item The metric $g$ is positive iff $\omega$ is positive, $\omega(X,JX) > 0$. 
+\end{itemize}
+
+Since $d\omega=0$, on a $\CC$ manifold we have $\p \omega +\bar \p \omega =0$, where $\p \omega \in \Omega^{2,1}$ and $\bar \p \omega \in \Omega^{1,2}$. Hence the derivatives individually vanish, $\p \omega = 0 =\bar \p \omega$.
+
+The complex form of the Poincar\'e lemma (i.e. if $d\alpha=0$, then $\alpha=d\beta$ on any open $U\subset \cM$) says that forms which are closed under $\p$ and $\bar \p$ locally must be exact, i.e. since $\p \omega = \bar \p \omega =0$, $\exists K$ a real function on $\cM$ (a $(0,0)$ form, if you like) such that
+\begin{equation}
+    \omega = i \p \bar \p K.
+\end{equation}
+Thus the metric is
+\begin{equation}
+    g_{a\bar b}=\p_a \bar \p_{\bar b} K
+\end{equation}
+on any coordinate patch $U$, and we call this function $K$ the \term{K\"ahler potential}. Notice it is defined up to transformations
+\begin{equation}
+    K(z,\bar z) \to K(z,\bar z) + f(z) +\bar f(\bar z),
+\end{equation}
+since the two derivatives will kill off the purely holomorphic and antiholomorphic contributions.
+\begin{exm}
+    The complex plane $\CC^n$ is K\"ahler, with $K=\sum_{a=1}^n |z^a|^2$, where
+    \begin{gather}
+        g=\sum_{a=1}^n dz^a d \bar z^{\bar a}\\
+        \omega = i \sum_{a=1}^n dz^a \wedge d\bar z^{\bar a}.
+    \end{gather}
+\end{exm}
+\begin{exm}
+    The complex projective plane $\CC P^n$ is also K\"ahler, where $K=\ln\paren{1+\sum_{a=1}^n |z^a|^2}$, with the $z^a$ defined on a $\CC^n$ coordinate patch. The associated metric is called the Fubini-Study metric on $\CC P^n$.
+\end{exm}
+Note that on a K\"ahler manifold, the only non-vanishing pieces of the connection are
+\begin{equation}
+    \Gamma^a_{bc}=\frac{1}{2} g^{ai}\paren{\p_b g_{ic} + \p_c g_{ib} - \p_i g_{bc}}
+\end{equation}
+where $i=1,\ldots,2n$ are real indices, $a=1,\ldots,n$ holomorphic indices. In fact, since the metric must have one holomorphic and one antiholomorphic index, we can WLOG replace $i$ by an antiholomorphic index $\bar d$. Hence
+\begin{align*}
+    \Gamma^a_{bc}&=\frac{1}{2} g^{a\bar d}\paren{\p_b g_{\bar dc} + \p_c g_{\bar db} - \p_{\bar d} g_{bc}}\\
+        &= \frac{1}{2} g^{a\bar d}(\p_b \p_{\bar d} \p_c K + \p_c \p_{\bar d} \p_b K)\\
+        &= g^{a\bar d}(\p_b g_{c\bar d})
+\end{align*}
+and
+\begin{equation}
+    \Gamma^{\bar a}_{\bar b \bar c} =g^{\bar a d} \p_{\bar b} g_{\bar c d}.
+\end{equation}
+One may check that all other components vanish by similar arguments. Hence the only non-vanishing pieces of the Levi-Civita connection are those components which have all holomorphic or all antiholomorphic indices.
+
+\subsection*{K\"ahler manifolds and supersymmetry}
+The general kinetic term in a supersymmetric nonlinear sigma model on $\RR^{2/4}$ is $\int_{\RR^{2/4}} K(\Phi,\bar \Phi) d^2x d^4 \theta$. Notice this is defined only up to transformations $K\to K(\Phi,\bar \Phi) + f(\Phi) + \bar f (\bar \Phi)$, as (up to total derivatives) such contributions will not survive $\int d^4 \theta$. Performing the integrals gives
+\begin{align*}
+    S_\text{kin}[\Phi,\bar \Phi]={}&\int_{\RR^2} -g_{a\bar b} \p^\mu \phi^a \p_\mu \bar \phi^{\bar b} + ig_{a\bar b} \bar \psi_+^{\bar b} \nabla_- \psi_+^a + ig_{a\bar b} \bar \psi_-^{\bar b} \nabla_+ \psi_-^a \\
+    &+ R_{a\bar b c \bar d} \psi_+^a \bar \psi_+^b \psi_-^c \bar \psi_-^{\bar d} + g_{a\bar b}(F^a- \Gamma^a_{cd} \psi_+^c \psi_-^d)(\bar F^{\bar b}-\Gamma^{\bar b}_{\bar e \bar f} \bar \psi_-^{\bar e}  \psi_+^{\bar f}),
+\end{align*}
+where $g_{a\bar b}(\phi,\bar \phi)=\p_a \p_{\bar b} K(\phi, \bar \phi)$ is the K\"ahler metric and $\nabla_\mu \psi^a= \p_\mu \psi_+^a + \gamma^a_{bc} \p_\mu \phi^b \psi_+^c$ where $\mu$ is a worldsheet index. One can explicitly compute all these terms, but we'll just make a plausibility argument. Recall that
+\begin{equation}
+    \Phi(y^\pm, \theta^\pm)=\phi + \theta^+ \psi_+ + \theta^- \psi_- + \theta^+ \theta^- F,
+\end{equation}
+with derivatives $\theta^+ \bar \theta^+ \p_+, \theta^- \bar \theta^- \p_-$ appearing as we expand $y^\pm  x^\pm + i \theta^\pm \bar \theta^\pm.$
+
+Eliminating the auxiliary fields $F,\bar F$ by their equations of motion $F^a = \Gamma^a_{bc} \psi_+^b \psi_-^c$, the remaining action is invariant under the following global symmetries:
+\begin{itemize}
+    \item $\CC$ coordinate transformations of the target space
+    \item K\"ahler transformations
+    \item SUSY transformations on the worldsheet (by construction)
+    \item $U_V(1)$ (vector) transformations $\psi_\pm \to e^{i\beta}\psi_\pm, \bar \psi_\pm \to e^{-i\beta} \bar \psi_\pm, \phi \to \phi$.
+    \item $U_A(1)$ (axial) transformations, $\psi_\pm \to e^{\pm i \alpha} \psi_\pm, \bar \psi_\pm \to e^{\mp i \alpha} \bar \psi_\pm, \phi \to \phi$
+    \item Dilations (scale transformations) on the worldsheet (recall that in $d=2, [\phi=0], [\psi_\pm] =1/2$). If we like, we can expand the metric about a point such that we have some leading order canonical kinetic term behavior, and then the higher-order corrections away from that point represent interactions.
+\end{itemize}
+Thus at the classical level, this defines a supersymmetric CFT. Turning on a superpotential $\int W(\Phi),d^2 \theta d^2x = \int \paren{F^a \p_a W - \frac{1}{2} \p_a \p_b W \psi_+^a \psi_-^b} d^2x$ breaks conformal invariance, since the couplings in $W(\Phi)$ can be dimensionful and therefore break conformal invariance.
+
+These symmetries may or may not survive at the quantum level-- we will see that symmetries of the action may not be present in the path integral, leading to anomalies. Closely related to that is the fact that in the quantum theory, we expect couplings to run. We'll try to show that these symmetries are anomaly-free if the manifold is not just K\"ahler but in fact Calabi-Yau.

@@ -1,0 +1,122 @@
+Today we'll resolve some lingering questions about string theory in curved spacetime, starting with remarks about $\alpha' \sim l_s^2$. We'll think about $\alpha'$ corrections to general relativity, for instance.
+
+Consider modifying the Minkowski metric to a general metric,
+\begin{equation}
+    \eta_{\mu\nu}\to g_{\mu\nu}(X).
+\end{equation}
+In general there could be some other fields in our theory like a B-field $B_{\mu\nu}(X)$ and a dilaton $\phi(X)$. Hence the action of our theory gets contributions from all of these,
+\begin{equation}
+    S[X,h]=S_p[X,h]+S_B[X,h]+S_d[X,h]
+\end{equation}
+where $p$ indicates the Polyakov action,
+\begin{equation}
+    S_p=-\frac{1}{4\pi \alpha'} \int_\Sigma d^2\sigma \sqrt{h} h^{ab} g_{\mu\nu}(X) \p_a X^\mu \p_b X^\nu.
+\end{equation}
+Since the components $g_{\mu\nu}$ now depend explicitly on $X$, this action and theory are in principle highly nonlinear.
+
+To have a chance at solving this, we expand $X^\mu=X_0^\mu+ \eta^\mu$, where $X_0^\mu$ is a classical solution and $\eta^\mu$ is a quantum correction. For instance,
+\begin{equation}
+    g_{\mu\nu}(X)=G_{\mu\nu}(X_0^\mu)+\frac{1}{3} R_{\mu\lambda\sigma\nu}(X_0) \eta^\lambda \eta^\sigma + \ldots
+\end{equation}
+where one could show this e.g. using Riemann normal coordinates. Hence the Polyakov action takes the form
+\begin{equation}
+    S_p[X+\eta] = S_p[X_0] -\frac{1}{4\pi \alpha'} \int_\Sigma d^2\sigma \sqrt{h} h^{ab} \delta_{ij} \nabla_a \eta^i \nabla_b \eta^j -\frac{1}{4\pi\alpha'} \int_\Sigma d^n \sigma \sqrt{h} h^{ab} R_{\mu i j \nu}(X_0) \p_a X^\mu_0 \p^a X^\nu_0 \eta^i \eta^j + \ldots
+\end{equation}
+with lots of other corrections to higher powers in $\eta$. This first term looks rather like a propagator, while the second is some sort of four-point vertex.
+%diagram
+
+Exact solutions are rare, unless we are lucky or clever.%
+    \footnote{``In this business, we're more often lucky than clever. Maybe that will be different in the future-- that's up to you lot.'' --R.A. Reid-Edwards}
+Hence we must resort to perturbation theory-- worldsheet perturbation theory.
+
+In flat spacetime, we had some nice properties of the stress tensor:
+\begin{equation}
+    T_{ab} = 0,\quad T_{++}=T_{--}=0,\quad T_{+-}=0 = \Tr(T_{ab}).
+\end{equation}
+Is it still true that $\avg{T_{+-}}=0$ when we do perturbation theory? Let us start with the conservation law,
+\begin{equation}
+    \nabla_a \avg{T_{ab}}=0,
+\end{equation}
+so that
+\begin{equation}
+    \nabla^+ \avg{T_{++}} + \nabla^- \avg{T_{-+}}=0.
+\end{equation}
+Switching to momentum space on $\Sigma$ with the momenta $q_-,q_+$, we have
+\begin{equation}
+    q_-\avg{T_{++}} + q_+ \avg{T_{-+}}=0.
+\end{equation}
+The computations are not too illuminating, but we'll outline the proof here. We're interested in
+\begin{equation}
+    \avg{T_{++}} = \int \cD \eta\, T_{++} e^{-S_p[\eta]}.
+\end{equation}
+To perform perturbation theory, we'll need to expand in something dimensionless, namely $\alpha'$ divided by some length scale squared. The relevant length scale will be given by the curvature of the background spacetime. That is, we expect these corrections to be valid when $\alpha'$ is small compared to the curvature of the background.
+
+Contributions to $\avg{T_{++}}$ include some loop diagrams like
+\begin{equation}
+    \avg{\p_+ \eta^i \p_+ \eta_i \int_\Sigma d^2 \sigma' R_{\mu i j\nu} \p_a X^\mu_0(\sigma') \p^a X^\nu_0 (\sigma') \eta^i(\sigma') \eta^j(\sigma')}.
+\end{equation}
+We can rewrite this as
+\begin{equation}
+    \avg{T_{++}}=-\frac{1}{4} \frac{q_+}{q_-} R_{\mu i j\nu} \p_a X^\mu_0 \p^a X^\nu_0 \eta^{ij}
+\end{equation}
+where $\eta^{ij}$ is just the Minkowski metric (unrelated to our perturbations).
+Similarly,
+\begin{equation}
+    \avg{T_{-+}} = \frac{1}{4} R_{\mu\nu} \p_a X_0^\mu \p_b X^\nu h^{ab}.
+\end{equation}
+Critically, this is perturbation theory on the worldsheet, not in terms of string scattering. According to this calculation, there's now no guarantee that the off-diagonal elements vanish, though this is okay if $R_{\mu\nu}(X_0)=0$.
+
+Moreover, we could get contributions from the B-field and the dilaton:
+\begin{gather}
+    S_B=-\frac{i}{4\pi \alpha'} \int_\Sigma d^2 \sigma \sqrt{h} \epsilon^{ab} \p_a X^\mu \p_b X^\nu B_{\mu\nu}(X)\\
+    S_\phi = -\frac{1}{4\pi} \int_\Sigma d^2 \sigma \sqrt{h} R_\Sigma \phi(X),
+\end{gather}
+where $\epsilon^{ab}$ is the totally antisymmetric rank two tensor. Taking the entire action to be the sum of a Polyakov action and the B-field and dilaton contributions, we get more Feynman rules and more corrections. If we calculate these corrections, we find that
+\begin{align*}
+    \avg{T_{-+}} ={}&\frac{1}{4} \paren{R_{\mu\nu}-\frac{1}{4} H_{\mu\nu}^2 + 2\nabla_\mu \nabla_nu \phi} \p_a X_0^\mu \p_b X_0^\nu h^{ab}\\
+    &+ \frac{1}{4} \paren{\nabla^\lambda H_{\lambda\ mu\nu}-2 \nabla^\lambda \phi H_{\lambda \mu\nu} } \p_a X_0^\mu \p_b X_0^\nu \epsilon^{ab}\\
+    &+ \frac{1}{\alpha'} \paren{\frac{D}{2} +\frac{\alpha'}{2} \paren{-R+\frac{H^2}{12} +4(\nabla \phi)^2 -4\nabla^2 \phi}} \p_a X^\mu_0 \p_b X_{0\mu}  h^{ab} +O(\alpha'{}^2).
+\end{align*}
+These lines represent contributions from the metric, the B-field, and the dilaton respectively. We haven't included the ghosts-- as it turns out, they are largely indifferent to whether we're working in flat or curved spacetime, and will just modify the $D/2$ term in the dilaton contribution (the third line) with a $D-26$. Also, note that we have to work to two-loop order in the dilaton because it does not come with a $1/\alpha'$ like the other actions.
+
+For these to be classically compatible, we may think of the vanishing of the trace of the stress tensor as giving us three equations of motion for $g_{\mu\nu}(X_0),B_{\mu\nu}(X_0),\phi(X_0)$. These can be derived from the action
+\begin{equation}
+    S=\int d^{26}x \sqrt{g} e^{-2\phi}\paren{R+ 4(\nabla \phi)^2 -\frac{1}{12} H^2}.
+\end{equation}
+In fact, the equations of motion which emerge are precisely the equations of general relativity. This is remarkable. From a quantum consistency condition, we have derived Einstein's equations.
+
+Can we go further? It takes more loop corrections, but it can be done. By performing the two-loop calculations for $S_p[X]$, we find that
+\begin{equation}
+    R_{\mu\nu}+\frac{\alpha'}{2} R_{\mu k \lambda \sigma} R_\nu{}^{k\lambda \sigma}+\ldots =0,
+\end{equation}
+which represent higher-order ``corrections'' to general relativity.
+
+The problem is then to find a background metric, B-field, and dilaton that solve the equations of motion to \emph{all orders} in loop calculations, and then do perturbation theory. This is really hard-- it requires us to perform high-order loop calculations just to write down the equations of motion. We don't have a general scheme for solving these equations, so we will have to be clever, lucky, or both.
+
+\subsection*{T-duality}
+There is however one trick we have to solve the equations. Consider a spacetime
+\begin{equation}
+    \cM_{26}=\RR_{1,24} \times S^1,
+\end{equation}
+exact to all orders in $\alpha'$ with $B,\phi$ constant. Let the 25th (i.e. the periodic $S^1$) coordinate satisfy
+\begin{equation}
+    X^{25}(\sigma+2\pi \tau)= X^{26}(\sigma,\tau)+2\pi Rm, m \in \ZZ.
+\end{equation}
+Thus
+\begin{equation}
+    X^{25}(\sigma,\tau)=x^{25}+\alpha' p^{25} \tau + mR \sigma +\sum_{n\neq 0}(\text{oscillations}).
+\end{equation}
+Also, we'll take $p^{25}=n/R, n\in \ZZ$, so that the momentum is quantized by periodicity. The mass spectrum of such a theory is
+\begin{equation}
+    \alpha' M^2 = \alpha'\frac{n^2}{R^2} +\frac{1}{\alpha'} m^2 R^2 +(N+\bar N-2).
+\end{equation}
+Hence there is energy in the oscillations (the last term, where $N,\bar N$ are oscillation number operators) and also the winding number $m$.
+
+We notice there's a symmetry of this spectrum. If we interchange
+\begin{gather*}
+    m\leftrightarrow n,\\
+    \frac{\alpha'}{R^2} \leftrightarrow \frac{R^2}{\alpha'},
+\end{gather*}
+we see that the spectrum is left unchanged. In fact, it goes further-- this is actually a symmetry of the entire theory. That is, by exchanging the momentum number and the winding number, and then inverting the radius, we get an equivalent description.
+
+These statements generalize to other spacetimes with interesting geometries and topologies-- not just tori and handlebodies but Calabi-Yau manifolds. This tells us that the string sees a structure not present in standard Riemannian geometry. In some sense, this is our first hint of a structure of spacetime beyond Einstein's geometric description, and it has led to much interesting research into what a (or the) theory of quantum gravity might look like.

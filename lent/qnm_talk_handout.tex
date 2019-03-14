@@ -1,0 +1,249 @@
+\documentclass{tufte-handout}
+\usepackage[utf8]{inputenc}
+ 
+\title{Quasinormal modes in the eikonal limit}
+\author{Ian T. Lim}
+\date{Thursday, March 14, 2019}
+
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+%\input{extra_math}
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\f}{\frac}
+\newcommand{\p}{\partial}
+%\renewcommand{\P}[3][]{\f{\partial^{#1} #2}{\partial #3 ^{#1}}}
+\renewcommand{\P}[2]{\frac{\partial #1}{\partial #2}}
+%\newcommand{\avg}[1]{\langle #1 \rangle}
+\newcommand{\avg}[1]{\left< #1 \right>}
+\newcommand{\?}{\overset{?}{=}}
+\newcommand{\Int}{\int_{-\infty}^\infty}
+
+\newcommand{\term}{\emph}
+
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lem}[equation]{Lemma}
+\newtheorem*{lem*}{Lemma}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{obs}[equation]{Observation}
+\theoremstyle{definition}
+\newtheorem{ex}{Exercise}
+\newtheorem{exm}[equation]{Example}
+\newtheorem{defn}{Definition}
+\newtheorem*{claim}{Claim}
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{fct}{Fact}
+\newtheorem*{note}{Note}
+
+\DeclarePairedDelimiter\paren{(}{)}
+%\DeclarePairedDelimiter\ang{\langle}{\rangle}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\bkt{[}{]}
+\DeclarePairedDelimiter\set{\{}{\}}
+% Swap paren* and paren, etc., so that the normal version resizes by default.
+% Meanwhile, one can use \paren*[\Big]{...} to customize the size easily.
+% It would be interesting to wrap this up into a custom \definedelimiter command...
+\makeatletter
+	\let\oldparen\paren
+	\def\paren{\@ifstar{\oldparen}{\oldparen*}}
+	\let\oldbkt\bkt
+	\def\bkt{\@ifstar{\oldbkt}{\oldbkt*}}
+\makeatother
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent This handout provides some key ideas behind the computation of quasinormal modes and their applications in the study of perturbations to black hole spacetimes.
+\end{abstract}
+
+\section{Overview}
+The structure of this talk will be as follows.
+\begin{itemize}
+    %\item The Poisson-Israel mass inflation singularity
+    \item Defining quasinormal modes
+    \item The geometric optics limit
+    \item The photon sphere
+    \item Consequences
+\end{itemize}
+\section{Motivation}
+% \subsection{Strong cosmic censorship, and a thought experiment}
+% One of the major outstanding questions in classical gravity is the strong cosmic censorship conjecture, which is a conjecture about the nature of the stability of Cauchy horizons. Can the Cauchy horizon be crossed by a physical observer? Or does some instability occur to produce a singularity that cuts off the Cauchy horizon?
+
+% For instance, one possible mechanism for creating a singularity at the Cauchy horizon can be illustrated in the following thought experiment. Consider the RN spacetime with two observers, Alice and Bob. They follow timelike trajectories in region I (the exterior) and region II (the BH interior) respectively. 
+
+% If Alice doesn't cross the event horizon, she will end up at $i^+$ after infinite proper time, as measured by her watch. Bob, on the other hand, is more adventurous. Not only has he entered the black hole, but he wants to cross the Cauchy horizon. And he can do so! By computing the geodesics of RN, we can show that Bob can cross the Cauchy horizon in finite proper time.
+
+% \subsection{Proper time compression}
+% Now, suppose Alice wants to stay in touch with Bob. So she turns on her flashlight and points it at the black hole, flashing it on and off once every second (according to her clock). What will Bob see?
+
+% Notice that it takes Alice infinite proper time to reach $i^+$, so she can send infinitely many flashes of light into the black hole, yet Bob must receive all of these flashes in \emph{finite} proper time. This is an infinite proper time compression effect. In other words, all the light from the external universe has been blueshifted infinitely, destroying our hapless observer with a tremendous amount of energy.
+
+% This scenario is known as the Poisson-Israel mass inflation singularity. In fact, the full story is more subtle-- what this analysis neglects is the backreaction of the spacetime, i.e. the effect of all that energy inside the black hole. It's unreasonable to think that the background spacetime would just be static under such a perturbation, and in fact a full analysis by Dafermos and others [arXiv:gr-qc/0307013, 1710.01722] shows that the formal consequences of this heuristic scenario are enough to destroy the differentiability of the metric but not enough to force discontinuity at the Cauchy horizon. That is, the metric can be extended continuously (albeit non-uniquely) across the Cauchy horizon, even accounting for backreaction.
+
+%\subsection*{Moral of the story}
+%In searching for heuristics like this, we're very interested in techniques to study perturbations to black hole spacetimes. We might want to use them for more formal questions like strong cosmic censorship, or we might have more practical aims like analyzing the ringdown of a black hole after a merger as seen by LIGO. Either way, a key concept in BH perturbation theory is the idea of \term{quasinormal modes.}
+Whether you're in astrophysics or mathematical relativity, you might be interested in techniques to study perturbations to black hole spacetimes. We might want to use them for more formal questions like strong cosmic censorship, studying perturbations near the Cauchy horizon, or we might have more experimentally practical aims like analyzing the ringdown of a black hole after a merger as seen by LIGO. Either way, an important concept in BH perturbation theory is the idea of \term{quasinormal modes,} a set of quasistationary solutions to a dissipative wave equation describing perturbations which decay with time. n.b. Much of this talk is based on [arXiv:0812.1806] and [arXiv:0905.2975].
+
+\section{Quasinormal modes}
+\subsection{The wave equation in curved spacetime}
+Consider a stationary, spherically symmetric ($3+1$D) black hole spacetime of the form
+\begin{equation*}
+    ds^2 = -F(r) dt^2 + \frac{dr^2}{F(r)} +r^2 d\Omega^2_2.
+\end{equation*}
+This could be Schwarzschild, for instance, or Reissner-Nordstr\"om. We won't assume asymptotic flatness here-- the techniques we'll describe actually work just as well for asymptotically de Sitter, though AdS is a little different. We will assume that there is an event horizon, i.e. there is some $r_+ > 0$ such that $F(r_+)=0$ and $F(r)$ changes sign, so that this really is a black hole.
+
+As we showed in Monday's \emph{Black Holes} lecture, one can set a massless real scalar field on a curved spacetime. It obeys the Klein-Gordon equation in curved space, and by decomposing those solutions into spherical harmonics and a simple time dependence, we find that a mode solution can be written as
+\begin{equation*}%\label{handout-modesolution}
+    \Phi = \sum_{lm} \frac{\psi_{\omega lm}(r)}{r} Y_{lm}(\theta,\phi) e^{-i\omega t},
+\end{equation*}
+where the $Y_{lm}$ are spherical harmonics.%
+    \footnote{The form of the solution is a little different in Kerr-Newman, where we lose spherical symmetry. Instead, we can write a decomposition $\Phi=e^{-i\omega t} e^{im \phi} S_{\omega l m}(\theta) R_{\omega l m}(r)$.}
+
+Unlike what we did in class, I will not assume $\omega$ is real. In general, $\omega$ is complex, so that instead of pure oscillating solutions, generically we will get oscillating and decaying solutions. The picture you should have in mind is a lump of field stuff sitting in space, which spreads out and disperses into two lumps. By substituting into Klein-Gordon, one can show that the radial part of $\Phi$ obeys the following Schr\"odinger-like equation:%
+    \footnote{Similar equations can be derived for higher spin fields.}
+\begin{equation}\label{handout-qnmschrodinger}\tag{$*$}
+    \frac{d^2 \psi}{dr^2_*} + (\omega^2- V_l)\psi =0
+\end{equation}
+where
+\begin{equation*}
+    V_l= F(r) \paren{\frac{l(l+1)}{r^2} - \frac{F'}{r}} \text{ and } dr_* =F dr.
+\end{equation*}
+
+\begin{defn}
+    A \term{quasinormal mode} is a mode solution $\Phi$ obeying the boundary conditions
+    \begin{equation}\label{handout-qnmbcs}
+        \Phi \sim \begin{cases}
+            e^{-i\omega (t+r_*)}& \text{for } r_* \to -\infty\\
+            e^{-i\omega (t-r_*)}& \text{for } r_* \to +\infty\\
+        \end{cases}
+    \end{equation}
+\end{defn}
+These conditions just say that since $V_l \to 0$ at $r\to r_+$ and at $r\to +\infty$, the solutions to Eqn. (\ref{handout-qnmschrodinger}) in these regions are free wave solutions, $\psi \sim e^{\pm i\omega r_*}$. Near the event horizon, solutions must be purely ingoing, and at spatial infinity, solutions must be purely outgoing.%
+    \footnote{This is true for asymptotically flat or de Sitter solutions, but it is different in AdS because AdS has a timelike boundary. What boundary conditions to impose there are a bit more subtle.}
+
+The QNMs form an infinite, discrete set of modes with some eigenfrequencies $\omega_{QNM}$. Unlike the normal modes of oscillation, they do not form a complete set, so we cannot describe generic initial data as a sum of quasinormal modes. Instead, we should think of quasinormal modes as transient, quasistationary states which can be dynamically excited and then decay.
+
+\section{The eikonal (geometric optics) limit}
+A few spacetimes admit exact QNM solutions, and many others are amenable to numerical techniques. However, there is a very useful approximation which gives the QNM frequencies almost immediately in a particular limit. Let me preview the final result:
+\begin{equation*}
+    \omega_{WKB} = l \Omega_0 - i(n+1/2) |\lambda|, \quad l \gg 1
+\end{equation*}
+where each of these terms has a nice physical interpretation I will explain over the course of this talk. Before we can see the nice physical interpretation, we will have to solve the wave equation.
+\subsection{WKB approximation}
+\begin{defn}
+    The \term{eikonal or geometric optics limit} is simply the limit as $l\to \infty$, i.e. as the angular momentum number describing our mode solution becomes very large.
+\end{defn}
+
+That is, we are interested in solutions which oscillate rapidly over a slowly changing background potential. In this limit, notice that our Schr\"odinger equation, Eqn. (\ref{handout-qnmschrodinger}), becomes
+\begin{equation}
+    \frac{d^2 \psi}{dr_*^2} +Q(r)\psi = 0 \text{ where } Q\equiv \omega^2 -F(r) \frac{l^2}{r^2}.
+\end{equation}
+
+If we sketch $Q$, we expect something that asymptotes to $\omega^2$ (plus a complex bit) at large $|r_*|$ and dips in the middle. We wrote down some free solutions in these asymptotic regions, and we'd like a way to patch them together in this critical region. The WKB approximation%
+    \footnote{Which you may remember from undergraduate quantum mechanics, and which we saw in Wednesday's lecture.}
+provides us a means of doing so.
+
+Suppose $Q(r)$ has an extremum at some $r_0$. That is, $\left.\frac{dQ}{dr_*}\right|_{r=r_0}=0.$
+The WKB approximation tells us that if we expand $Q$ about this extremum to order $r_*^2$, we can write down exact solutions for $\psi$ valid in this patching region (in terms of parabolic cylinder functions),%
+    \footnote{This works best when $\omega^2 \sim V_{l,\max}$, so that our solutions really have the interpretation of rapidly changing phase.}
+provided that $Q$ obeys a quantization condition
+\begin{equation*}
+    \frac{Q(r_0)}{\sqrt{2 \left.\frac{d^2Q}{dr_*^2}\right|_{r=r_0}}}=i(n+1/2), \quad n=0,1,2,\ldots
+\end{equation*}
+We can solve this for the quasinormal mode frequencies $\omega$ to find
+\begin{equation}\label{handout-omegaqnm}\tag{$**$}
+    \omega_{WKB} = l \sqrt{\frac{F_0}{r_0^2}} -\frac{i(n+1/2)}{\sqrt{2}} \sqrt{\frac{r_0^2}{F_0} \left.\frac{d^2}{dr_*^2} \bkt{\frac{F(r)}{r^2}}\right|_{r=r_0} }
+\end{equation}
+where $F_0=F(r_0)$. In principle, this now gives you all the quasinormal mode frequencies, their real and imaginary parts, in terms of $n,l,$ and black hole parameters like $M$ and $Q$, at least in the large $l$ limit. But this formula as written isn't very physically meaningful. In the next calculation, we will show that the quasinormal mode frequencies in the eikonal limit are simply related to the physical parameters governing unstable null circular orbits in the BH spacetime. 
+
+\subsection{The photon sphere}
+Here's where our physical picture comes back. In most BH spacetimes, there is an null circular orbit which we call the \term{photon sphere}. Generally, it is unstable. Given a metric like the one we wrote down at the beginning, we can use Euler-Lagrange to find some conserved quantities of the null orbits ($E=F \dot t$ and $L=r^2 \dot \theta$, the energy and angular momentum) and find an effective potential for the $r$ coordinate,
+\begin{equation}
+    \dot r^2 - V_r = 0 \text{ with } V_r \equiv E^2 -F(r)\frac{L^2}{r^2}.
+\end{equation}
+Null circular orbits satisfy
+\begin{equation*}
+    V_r(r_c) = 0, \quad V_r'(r_c) = 0,
+\end{equation*}
+where $r_c$ indicates the radius of the circular orbit.
+
+Now we notice something interesting. $V_r$ has the same form as the function $Q$ we wrote down earlier in the Schr\"odinger equation after taking the eikonal limit. In particular, it's easy to check that $Q$ and $V_r$ will have an extremum at the same value of $r$,%
+    \footnote{This is because $\frac{d}{dr}=F \frac{d}{dr*},$ so away from zeroes of $F$, if $\frac{dQ}{dr}=0$ then $F\frac{dQ}{dr_*}=0\implies \frac{dQ}{dr_*}=0$.}
+so the $r_0$ which extremizes $Q$ is actually the radius of the photon sphere, i.e. $r_c=r_0$.
+
+That's what the condition $V_r'(r_c)=0$ tells us. If we set $V_r(r_c)=0$, we get an expression relating $E$ and $L$,
+\begin{equation*}
+    \frac{E}{L}=\sqrt{\frac{F_0}{r_0^2}},
+\end{equation*}
+and if we now compute the coordinate angular velocity of the orbit, we find that
+\begin{equation*}
+    \Omega_0 \equiv \frac{\dot \theta}{\dot t} = \frac{L}{E} \frac{F_0}{r_0^2} =\sqrt{\frac{F_0}{r_0^2}}.
+\end{equation*}
+This looks familiar. It's exactly the coefficient of $l$ in Eqn. (\ref{handout-omegaqnm}). 
+
+The other coefficient also has a physical interpretation. We can perform a stability analysis by linearizing the geodesic equation $\dot r^2-V_r =0$, i.e. by substituting in a solution $r(t)=r_0+\delta r(t)$ and solving for $\delta r(t)$. One can show that perturbations about the unstable orbit grow exponentially, as
+\begin{equation*}
+    \delta r(t) \sim e^{\lambda t},
+\end{equation*}
+and remarkably,
+\begin{equation*}
+    \lambda =\sqrt{\frac{V_r''}{2\dot t^2}} =\frac{1}{\sqrt{2}}\sqrt{\frac{r_0^2}{F_0} \left.\frac{d^2}{dr_*^2} \bkt{\frac{F(r)}{r^2}}\right|_{r=r_0}},
+\end{equation*}
+where $\lambda$ is called the (principal) Lyapunov exponent. This is the other coefficient in Eqn. (\ref{handout-omegaqnm}). In terms of $\Omega_0$ and $\lambda$, we therefore find that
+\begin{equation*}
+    \omega_{WKB} = l \Omega_0 - i(n+1/2) |\lambda|.
+\end{equation*}
+
+To sum up, the algorithm for computing quasinormal modes in the eikonal limit is as follows.
+\begin{enumerate}
+    \item Pick your favorite metric $ds^2 = -F(r) dt^2 +\frac{dr^2}{F(r)} +r^2 d\Omega_2^2$.
+    \item Solve for the photon sphere radius $r_0$.
+    \item Compute coordinate angular velocity $\Omega_0=\sqrt{\frac{F_0}{r_0^2}}$.
+    \item Linearize the geodesic equation about $r=r_0$ and solve for $\delta r(t)\sim \exp(\lambda t)$ to find the Lyapunov exponent $\lambda$.
+    \item Write down the photon sphere mode frequencies,
+    \begin{equation*}
+        \omega_{PS}= l\Omega_0 -i(n+1/2)|\lambda|, \quad l \gg 1.
+    \end{equation*}
+\end{enumerate}
+
+\section{Final comments}
+This calculation assumed spherical symmetry, but even axisymmetric spacetimes like Kerr have photon sphere modes. Moreover, this sort of perturbative calculation is actually very powerful. The eikonal limit turns out to be largely independent of the spin of the perturbation, so that scalar, electromagnetic, and gravitational perturbations of static black holes in higher dimensions all have the same behavior in the eikonal limit (cf. Kodama-Ishibashi, [arXiv:hep-th/0305147]).
+
+It has also been shown by Hintz and Vasy [1512.08004] that the decay of the quasinormal modes of RNdS and Kerr-dS at large $t$ determines the regularity of perturbations near the Cauchy horizon. In fact, an analysis of the photon sphere modes of the Kerr-de Sitter spacetime is sufficient to prove that scalar field perturbations of any non-extremal Kerr-de Sitter black hole respect the strong cosmic censorship conjecture [1801.09694].
+
+These are just some examples of the versatility of quasinormal modes, and in particular illustrate the utility of the photon sphere modes in providing an analytical approximation for the QNM frequencies and characteristic decays.
+% \begin{ex}
+% Using the fact that the spherical harmonics are eigenfunctions of the angular part of the Laplacian, $r^2 \nabla^2 Y_{lm} = -l(l+1) Y_{lm},$ show by directly substituting Eqn. \ref{handout-modesolution} into the Klein-Gordon equation \ref{handout-kleingordon} that the radial part of $\Phi$ obeys the following equation:
+% \begin{equation}\label{handout-radialpart1}
+%     F^2 \psi'' + F F' \psi' + \paren{\omega^2 -F \paren{ \frac{l(l+1)}{r^2} -\frac{F'}{r}}}\psi=0
+% \end{equation}
+% where primes indicate derivatives with respect to $r$.
+% By introducing the tortoise coordinate $r_*$, defined by
+% \begin{equation}
+%     dr_* =F dr \implies \frac{d}{dr}= \frac{1}{F} \frac{d}{dr_*},
+% \end{equation}
+% show that Eqn. \ref{handout-radialpart1} can be written as%
+%     \footnote{Hint: Make sure to use the inverse metric $g^{\mu\nu}$! The angular derivatives are given to you, so the only somewhat nontrivial bit of this computation is the radial derivative.}
+% \begin{equation}
+%     \frac{d^2 \psi}{dr^2_*} + (\omega^2- V_l)\psi =0
+% \end{equation}
+% where
+% \begin{equation}
+%     V_l= F(r) \paren{\frac{l(l+1)}{r^2} - \frac{F'}{r}}.
+% \end{equation}
+% \end{ex}
+\end{document}
