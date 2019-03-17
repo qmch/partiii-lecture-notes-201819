@@ -1,0 +1,109 @@
+Consider the action
+\begin{equation}
+    S[\phi,\psi]=\int \bkt{
+        g_{a\bar b} h^{\mu\nu} \p_\mu \phi^a \p_\nu \bar \phi^{\bar b} + ig_{a\bar b} \bar \psi^{\bar b} \gamma^\mu \nabla_\mu \gamma^a + R_{a\bar b c \bar d} \psi_+^a \psi_-^c \bar \psi_-^{\bar b} \bar \psi_+^{\bar d}
+    }\sqrt{h}dx^2
+\end{equation}
+with $h$ a worldsheet metric. Classically, this is invariant under the scale transformations
+\begin{equation}
+    h_{\mu\nu} \to \lambda^2 h_{\mu\nu},\quad \gamma^\mu \to \lambda^{-1} \gamma^{\mu}, \quad \psi \to \lambda^{-1/2} \psi, \quad \lambda \in \RR_{>0}.
+\end{equation}
+However, quantum mechanically, there can be a non-zero $\beta$-function for the target space metric $g_{a\bar b}(\phi)$.
+
+To understand this, first consider a purely bosonic nonlinear sigma model with Riemanninan target space:
+\begin{equation}
+    S[\phi]=\frac{1}{2} \int g_{ij}(\phi) \p^\mu \phi^i \p_\mu \phi^j dx^2.
+\end{equation}
+Using Riemann normal coordiantes, $\phi^i=\phi_0^i + \xi^i$, we have a flat metric plus corrections of order $\xi^2$ in terms of the curvature:
+\begin{equation}
+    g_{ij}(\phi)= \delta_{ij} -\frac{1}{3} R{ikjl}(\phi_0) \xi^k \xi^l+O(\xi^3).
+\end{equation}
+Then the action becomes
+\begin{equation}
+    S[\xi]=\frac{1}{2} \int \delta_{ij} \p^\mu \xi^i \p_\mu \xi^j - \frac{1}{3} R_{ikjl} \xi^k \xi^l \p_\mu \xi^i \p^\mu \xi^j + \ldots
+\end{equation}
+
+The propagator in this theory from $\xi^i(x)$ to $\xi^j(y)$ is then
+\begin{equation}
+    \int \frac{d^2k}{(2\pi)^2} \frac{e^{ik\cdot(x-y)}}{k^2} \delta^{ij}.
+\end{equation}
+Note that this is logarithmically divergent as $k\to 0$ (which we'll deal with later by applying an IR cutoff).
+We also have a four-point vertex corresponding to
+\begin{equation}
+    \frac{1}{6} \int R_{ikjl}(\phi_0) \xi^k \xi^l \p_\mu \xi^i \p^\mu \xi^j d^2x.
+\end{equation}
+This vertex allows us to compute a one-loop correction to the propagator $\avg{\xi^i(x) \xi^j(y)}$. 
+%see diagram
+We get a contribution
+\begin{equation}
+    \int \frac{d^2k}{(2\pi)^2} \frac{e^{ik\cdot (x-y)}}{k^2} \bkt{\delta^{ij} +\frac{1}{3} \int \frac{d^2p}{(2\pi)^2} \frac{1}{p^2} R^{ij}(\phi_0)}
+\end{equation}
+Applying momenta cutoffs, we have
+\begin{equation}
+    \int_{\mu < |p| < \lambda} \frac{d^2p}{(2\pi)^2} \frac{1}{p^2} =\frac{1}{2\pi} \int_\mu^\Lambda \frac{dp}{p} =\frac{1}{2\pi} \ln \paren{\frac{\Lambda}{\mu}},
+\end{equation}
+so the metric is renormalized and picks up a contribution from $R^{ij}$ the Ricci tensor:
+\begin{equation}
+    g_{ij}(\mu) =\delta_{ij} +\frac{1}{6\pi} R_{ij} \ln \paren{\frac{\Lambda}{\mu}},
+\end{equation}
+giving a beta function
+\begin{equation}
+    \beta_{ij} =\frac{1}{6\pi} R_{ij}
+\end{equation}
+proportional to the Ricci curvature. 
+\begin{itemize}
+    \item For $R_{ij}>0$, we have $\beta_{ij}>0$, so the model is asymptotically free-- the curvature of the target space becomes less important at short distances on the worldsheet, so the theory makes sense in the UV.
+    \item For $R_{ij}<0$, the theory only makes sense as an effective theory (at least in this bosonic case), but becomes trivial in the IR.
+    \item The interesting case is $R_{ij}=0$, when the target space is Ricci flat/solves the vacuum Einstein equations. These are \emph{conformally invariant} to (at least) one-loop accuracy.
+\end{itemize}
+Exactly the same calculations also hold in supersymmetric models. In particular there is non-zero running of the (K\"ahler) metric $g_{a\bar b}\to g_{a\bar b} + \# R_{a\bar b}$. Ricci flat K\"ahler manifolds are called \term{Calabi-Yau}. There was an expectation that Calabi-Yau manifolds might also enjoy some sort of non-renormalization theorem for the target space, but in fact these still receive quantum corrections starting at four loops. This poses an apparent problem for string theory, where we integrate over all conformal structures on the worldsheet. This doesn't really make sense if we can't construct conformally invariant structures on the worldsheet (i.e. the conformal invariance becomes part of the gauge symmetry and then by definition cannot be broken).
+
+To address this problem, consider the correlation function $f(h,g)=\avg{(\psi_-)^k (\bar \psi_+)^k}$ for some $k\in \ZZ_{\geq 0}$. This vanishes unless there are exactly $k$ zero modes of $\psi_-$ and $\bar \psi_+$ since the $\psi_-$ and $\bar \psi_+$s do not mix-- $\not \exists$ any Feynman graphs that can absorb these fermion insertions. By a zero mode, we mean a solution $\psi_-$ such that $\nabla_+\psi_-=0$ or $\bar \nabla \psi_-=0$ on a Euclidean signature worldsheet. That is, there is a zero mode of $\psi_-$ iff
+\begin{equation}
+    H^0(\Sigma, \phi^* T^{(1,0)} \cM \otimes S_-),
+\end{equation}
+where $H^0$ indicates it is holomorphic on $\Sigma$, $T^{(1,0)}$ says it has a holomorphic target space index $\psi^a$, and $S_-$ indicates it transforms as a spinor on $\Sigma$.
+
+The index theorem (plus a vanishing theorem) says that if $\sigma =T^2$ the torus, then
+\begin{equation}
+    \#(\psi_-\text{ z.m.s.}) = \int_{T^2} \phi^*(c_1(T^{(1,0)}N)) = \frac{1}{2\pi} \int_{T^2} R_{a\bar b} d\phi^a \wedge d\bar \phi^{\bar b} \in \ZZ_{\geq 0}.
+\end{equation}
+Hence the number of zero modes sniffs out something topological about the target space.
+
+It's also true that $\bar \psi_+$ is related to $\psi_-$ by complex conjugation, so
+\begin{equation}
+     \#\psi_- \text{ z. m.} =\# \bar \psi_+ \text{ z.m}
+\end{equation}
+Now
+\begin{equation}
+    f(h,g)=\avg{\frac{(\psi_-)^k}{(\sqrt{\lambda})^k}\frac{(\bar \psi_+)^k}{(\sqrt{\lambda})^k}} \lambda^k = f(\lambda^2 h, g) \lambda^k.
+\end{equation}
+Also, $\psi_-,\bar \psi_+$ are invariant under the SUSY transformations $\bar Q_+,Q_-$, so we expect some form of localization. In fact, one can show that
+\begin{equation}
+    f(h,g) = n_h e^{-\text{Area}(\Sigma,\phi^*g)}
+\end{equation}
+related to the pullback of the target space metric, where $\text{Area}(T^2, \phi^*g) =\int_{T^2} g_{a\bar b} h^{\mu\nu} \p_\mu \phi^a \p_\nu \bar \phi^{\bar b} \sqrt{h} d^2 x$.
+
+Combining these, we see that
+\begin{equation}
+    f(h,g)=f(\lambda^2 h,g)\lambda^k = n_{\lambda^2 h} e^{-(\text{Area}(g)-k\ln \lambda)} = f(\lambda^2 h,g')
+\end{equation}
+where $g'$ is a target metric such that $\text{Area}(T^2,\phi^* g') = \text{Area}(T^2, \phi^* g) - k\ln \lambda.$
+
+However if $h_{\mu\nu}=\delta_{\mu\nu}$, then
+\begin{align*}
+    \text{Area}(T^2,\phi^* g) &= i \int_{T^2} g_{a\bar b}(\p_z \phi^a \p_{\bar z} \bar \phi^{\bar b}+\p_{\bar z} \phi^a \p_z \bar \phi^{\bar b})d^2z\\
+        &=2i \int_{T^2} g_{a\bar b} \p_{\bar z} \phi^a \p_z \bar \phi^{\bar b} d^2z+ i\int_{T^2} g_{a\bar b} (\p_z \phi^a \p_{\bar z} \bar \phi^{\bar z}-\p_{\bar z} \phi^a \p_z \bar \phi^{\bar b})d^2 z\\
+        &= 2i \int_{T^2} g_{a\bar b} \p_{\bar z} \phi^a \p_z \bar \phi^{\bar b} d^2 z +\int_{T^2} \phi^* \omega
+\end{align*}
+where $\omega_{a\bar b}=ig_{a\bar b} d\phi^a \wedge d\phi^{\bar b}$ is the K\"ahler form on $N$. In fact, the correlator localizes on holomorphic maps, so $\bar \p_{\bar z} \phi^a=0$ and $\text{Area}=\int_{T^2} \phi^* \omega$.
+
+Thus the effect of rescalng the worldsheet metric $h_{\mu\nu}\to\lambda^2 h_{\mu\nu}$ means that 
+\begin{equation}
+    \int \phi^* \omega \to \int \phi^* \omega - \frac{i\ln \lambda}{2\pi} \int_{T^2} R_{a\bar b} d\phi^a \wedge d\bar \phi^{\bar b}
+\end{equation}
+using the index theorem for $k$. That is, the K\"ahler class (up to exact pieces, i.e. the exterior derivative of something) is
+\begin{equation}
+    [\omega]\to [\omega]-\frac{\log \lambda}{2\pi}[R],
+\end{equation}
+and this result \emph{is} exact in the SUSY theory.

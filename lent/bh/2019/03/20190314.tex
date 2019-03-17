@@ -1,0 +1,129 @@
+\begin{quote}
+    \textit{``Look! This has G, $\hbar$, and c. That's all the fundamental constants. This is the one statement about quantum gravity we know is true.'' --Jorge Santos}
+\end{quote}
+
+Today, we conclude the calculation of Hawking radiation. Using WKB, we took our modes to have the form $\Phi=A(x)e^{i\lambda S(x)},\lambda \gg 1$, and applying $\Box \Phi=0$ we have $\nabla^a S \nabla_a S=0$ to leading order in $\lambda$. Surfaces of constant phase $S$ are null hypersurfaces.
+
+Now, we can introduce a null vector $N$ which is parallel propagated along the generators $U$
+\begin{equation}
+    U^b \nabla_b N^a =0,\quad N\cdot U=-1.
+\end{equation}
+We can import some of our results from Kruskal and take
+\begin{equation}
+    U^a = \paren{\P{}{V}}^a,\quad N = c \P{}{U}
+\end{equation}
+with some constant $c$. Hence any deviation vector for this congruence can be decomposed into the sum of a part orthogonal $U^a$ and a term $\beta N^a$ which is parallel transported along the geodesics.
+
+Choose $\beta = -\epsilon$ where $\epsilon>0$ and small. A nearby geodsic $\gamma'$ then has tangent
+\begin{equation}
+    U=-C\epsilon \implies u=-\frac{1}{\kappa_0} \log(-U) = -\frac{1}{\kappa_0} (C\epsilon).
+\end{equation}
+Let $F(u)$ denote the phase of our wavepacket $p_i$ on $\mathcal{I}^+$. Then the phase everywhere on $\gamma'$ must be
+\begin{equation}
+    S=F(-\frac{1}{\kappa_0} \log(C\epsilon)),
+\end{equation}
+so we know what the value of the phase is in the region $v<0$. We want to translate this into a statement in terms of $v$.
+
+In fact, we've already seen the technology to do this calculation and find $\epsilon$ in terms of $v$. This is because on $\mathcal{I}^-$, we have another null hypersurface and we can therefore apply the same reasoning as we did near $\mathcal{I}^+$. Recall that the metric on $\mathcal{I}^-$ is
+\begin{equation}
+    ds^2 =-du dv +\frac{1}{4}(u-v)^2 d\Omega_2^2,
+\end{equation}
+so we again introduce $N$ as before,
+\begin{equation}
+    N=D^{-1} \P{}{v}
+\end{equation}
+at $\mathcal{I}^-$. We cocnlude that
+\begin{equation}
+     v=-D^{-1}\epsilon \implies \epsilon = -Dv.
+\end{equation}
+Hence the phase on $\mathcal{I}^-$ in terms of $v$ is
+\begin{equation}
+    S=F\bkt{-\frac{1}{\kappa_0} \log(-CDv)}.
+\end{equation}
+We have
+\begin{equation}
+    p_i^{(2)} \approx \begin{cases}
+        0, & v>0\\
+        A_i(v) \exp \bkt{iF \paren{-\frac{1}{\kappa_0} \log(-D(v)}}, & v<0.
+    \end{cases}
+\end{equation}
+Notice that most of the wavepacket is very close to $v=0$, where the argument of the log becomes very large.
+%So now I am going to cheat very badly.
+
+We'll now cheat ``very badly'' by converting everything to plane waves.  This is not really valid-- some of the integrals we will write down diverge, breaking some of our original assumptions. For plane waves,
+\begin{equation}
+    F(u)=-\omega_i u.
+\end{equation}
+This leads to $p_i$ that are neither normalizable nor localized at late times. This is more of an illustrative calculation-- the integrals for e.g. the modulated cosine can be computed, but they are hard.
+\begin{equation}
+    p_\omega \simeq \begin{cases}
+        0, & v>0\\
+        A_\omega(v) \exp \bkt{i\frac{\omega}{\kappa_0} \log(-CDv)}, & v<0.
+    \end{cases}
+\end{equation}
+Similarly, we will use a basis of ``in'' modes $f_\sigma$ such that $v_\sigma$ has frequency $\sigma>0$. THus
+\begin{equation}
+    f_\sigma = \frac{1}{(2\pi N_\sigma)} e^{-i\sigma v}.
+\end{equation}
+These are just related by a Fourier transform:
+\begin{equation}
+    \tilde p_\omega^{(2)} (\sigma) = A\omega \int_{-\infty}^0 dv e^{i\sigma v} \exp \bkt{i\frac{\omega}{\kappa_0}\log(-CDv)}.
+\end{equation}
+with inverse transform
+\begin{align*}
+    p_\omega^{(2)} (v) &=\int_{-\infty}^\infty \frac{d\sigma}{2\pi} \tilde p^{(2)}_\omega (v) e^{-i\sigma v}\\
+    &= \int_0^{+\infty} d\sigma N_\sigma \tilde p_\omega^{(2)} f_\sigma(v) + \int_0^{+\infty} d\sigma \bar N_\sigma \tilde p_\omega^{(2)} (v) \bar f_{\sigma} (v).
+\end{align*}
+But we see that $A$ is just related to the positive frequency ($f(v)$) components and $B$ is related to the negative frequency components, hence
+\begin{equation}
+    A^{(2)} \omega_\sigma = N_\sigma \tilde p_\omega^{(2)} (\sigma), \quad B \omega_\sigma = \bar N_\sigma \tilde p_\omega^{(2)}(-\sigma), \quad \omega,v >0.
+\end{equation}
+
+We now have to choose where the branch cut lies for the log in the complex plane. Define
+\begin{equation}
+    \log z = \log|z| + i\text{ang} z,\quad \text{ang} \in (-\pi/2,3\pi/2).
+\end{equation}
+Here's the first integral that diverges. We're integrating over $-\infty$ to $0$ in $v$, and we close the contour by adding a contour over $0\to\infty$ and close the contour in the lower half-plane. The log is otherwise analytic, so we assume that $I_1$ the integral $-\infty \to 0$ is just $-I_2$ the integral from $0\to\infty$. Hence
+\begin{align*}
+    \tilde p_\omega^{(2)} (-\sigma) &=-A\omega \int_0^{+\infty} dv e^{-\sigma v} \exp \bkt{i\frac{\omega}{\kappa_0} \log (-CDv)}\\
+    &= -A\omega \int_0^{+\infty} dv e^{-i\sigma v} \exp \set*{i\frac{\omega}{\kappa_0} [\log(CDv)]} e^{2\omega \pi/\kappa_0} = -e^{-\omega \pi/\kappa_0} p_\omega^{(2)} (v).
+\end{align*}
+We find that the $B$s and $A$s are related:
+\begin{equation}
+    |B\omega \sigma| = e^{-\omega \pi/\kappa_0} |A_{\omega \sigma}^{(2)}|.
+\end{equation}
+If we were braver, we might have repeated this calculation with the actual wavepackets and found that
+\begin{equation}
+    |B_{ij}|=e^{-\omega_i \pi/\kappa_0} |A_{ij}^{(2)}|.
+\end{equation}
+Then
+\begin{equation}
+    T_i^2=(p_i^{(2)}, p_i^{(2)}) = \sum_j (|A_{ij}^{(2)}|^2 -|B_{ij}|^2) \implies (BB^\dagger)_{ii} =\frac{T_i^2}{e^{2\omega_i \pi/\kappa_0}-1}.
+\end{equation}
+This gives (almost) blackbody radiation at the \emph{Hawking temperature}
+\begin{equation}
+    T_H= \frac{\kappa_0}{2\pi}.
+\end{equation}
+
+For a solar mass black hole, we find that
+\begin{equation}
+    T_H = 6\times 10^{-8} \frac{M_{\cdot}}{M} \text{ Kelvin}.
+\end{equation}
+This can be generalized to the fermionic case, the massive case, and the gravitational case, amongst others. This is remarkable.
+
+\subsection*{Black hole thermodynamics}
+Now that we have a concept of temperature, we can define an entropy! Putting constants back in,
+\begin{equation}
+    S_{BH}=\frac{c^3 A}{4G \hbar}.
+\end{equation}
+%Look! This has G, \hbar, and c. That's all the fundamental constants. This is the one statement about quantum gravity we know is true.
+This is an incredible result. Any theory of quantum gravity must reproduce the entropy formula.
+
+Notice that for a solar mass black hole, $S_{BH}\sim 10^{77}$, whereas $S_\cdot \sim 10^{58}$. Why isn't everything in the universe just black holes? It's because the initial state of the universe was very special, as postulated by Roger Penrose.
+
+Moreover, if we calculate the energy change from Hawking radation, we find that
+\begin{equation}
+    \frac{dE}{dt} \approx -\alpha A T^4.
+\end{equation}
+This leads us to a generalized second law-- because of evaporation, it's not the black hole entropy alone which is nondecreasing but the entropy of the BH-universe system.
+%In fact, Stephen lost all bets he made in life.
