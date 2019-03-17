@@ -1,0 +1,109 @@
+Last time, we discussed the HSW theorem, stating that
+\begin{equation}
+    C^{(1)}(\Lambda)=\chi^*(\Lambda)=\max_{\set{p_x,\rho_x}} \chi(\set{p_x,\Lambda(\rho_x)}).
+\end{equation}
+\begin{lem}
+    Any quantum channel can transmit classical information as long as it is not a constant channel, i.e. $\Lambda(\rho)$ not identical for all $\rho$.
+\end{lem}
+\begin{proof}
+    If $\Lambda$ is not a constant channel, $\exists\ket{\psi},\ket{\phi}$ s.t. 
+    \begin{equation}
+        \Lambda(\dyad{\psi})\neq \Lambda(\dyad{\phi}).
+    \end{equation}
+    Hence for the ensemble $\mathcal{E}=\set{p_1=p_2=1/2, \rho_1= \dyad{\psi},\rho_2=\dyad{\phi}}$, we have a Holevo $\chi$ quantity
+    \begin{equation}
+        \chi(\mathcal{E})=S(\frac{1}{2}\Lambda(\psi) +\frac{1}{2} \Lambda(\phi)) -\bkt{\frac{1}{2}S(\Lambda(\psi))+\frac{1}{2} S(\Lambda(\phi))} >0
+    \end{equation}
+    since equality is achieved in concavity of $S$ only for $\Lambda(\psi)=\Lambda(\phi)$, which we required was false. Hence $\chi^*(\Lambda)>0$ since it is the maximum over all ensembles, so we can send classical information using product states.
+\end{proof}
+
+$\chi^*$ has the following property: \term{superadditivity of $\chi^*(\Lambda)$}.
+\begin{equation}
+    \chi^*(\Lambda_1 \otimes \Lambda_2) \geq \chi^*(\Lambda_1 +\chi^*(\Lambda_2).
+\end{equation}
+The proof is an exercise on Examples Sheet 4. It follows by iteration that
+\begin{align*}
+    \chi^*(\Lambda^{\otimes n}) &= \chi^*(\Lambda \otimes \Lambda^{\otimes n-1})\\
+        &\geq \chi^*(\Lambda) +\chi*(\Lambda^{\otimes n-1})\\
+        &\geq n \chi^* (\Lambda)
+\end{align*}
+
+Question: can one increase the classical capacity of a quantum channel by using entangled input states? To address this question, we have the \term{additivity conjecture of $\chi^*$} (since resolved):
+\begin{equation}
+    \chi^*(\Lambda_1 \otimes \Lambda_2)=\chi(\Lambda_1) +\chi^*(\Lambda_2).
+\end{equation}
+%proving it is mightily difficult
+We have a formal expression for the classical capacity:
+\begin{equation}
+    C_{cl}(\Lambda)=\lim_{n\to \infty} \frac{1}{n} \chi^*(\Lambda^{\otimes n}).
+\end{equation}
+Notice that applying superadditivity, we have
+\begin{equation}
+    C_{cl}(\Lambda) \geq \lim_{n\to \infty}\frac{n}{n} \chi^*(\Lambda),
+\end{equation}
+so that if \emph{additivity} holds,
+\begin{equation}
+    C_{cl}(\Lambda)=\chi^*(\Lambda).
+\end{equation}
+Therefore if additivity is true, then entangled inputs do not improve the capacity of the channel. However, an insightful proof by Matt Hastings established a counterexample to the additivity conjecture. Finding a counterexample is very difficult-- it's more like an existence proof. But many examples of additivity do exist, e.g.
+\begin{equation}
+    \chi^*(\Lambda) \text{ for }\Lambda(\rho)=(1-p) \rho+p\frac{I}{2}
+\end{equation}
+the depolarizing channel. Hastings used a powerful theorem by Peter Shor linking four different quantities, $\chi^*, S_{\min}(\Lambda)=\min_\rho S(\Lambda(\rho))$, and two others-- which says that if one is additive, then all are, and conversely if one is not additive, then all are not. What Hastings found was a counterexample to the additivity of $S_{\min}$. (This is non-examinable.)
+
+\subsection*{Quantum capacity}
+In transmitting a quantum state, we're not interested in the probability of error but rather the fidelity between the initial and final states, $F(\rho,\sigma)$.
+\begin{thm}[LSD]
+    Define
+    \begin{equation}
+        Q(\Lambda)=\lim_{n\to \infty} \frac{1}{n} \max_{\rho^{(n)} \in \cD(\cH^{\otimes n})} I_C(\Lambda^{\otimes n}, \rho^{(n)})
+    \end{equation}
+    where $I_C(\Lambda,\rho)$ is the coherent information with respect to input $\rho$.
+\end{thm}
+Let $\Lambda:Q\to Q'$. It has a Stinespring implementation $U_\Lambda:QE \to Q'E$, where $E$ is an ancilla we can take WLOG to be in a pure state $\ket{0_E}$. We can also purify $Q$ by introducing a reference system $R$. Hence the initial state is $\ket{\psi_{RQE}}=\ket{\psi_{RQ}^\rho}\otimes \ket{0_E}$. After the operation,
+\begin{align*}
+    I_C(\Lambda,\rho)&:= -S(R,Q')_{\rho'}\\
+        &=-\bkt{S(\rho_{RQ'}')-S(\rho'_{Q'}}\\
+        &= -\bkt{S(\rho'_E)-S(\rho'_{RE}}\\
+        &= S(R|E)_{\rho'}
+\end{align*}
+But now
+\begin{align*}
+    I_C(|Lambda,\rho) &= S(R|E)_{\rho'}\\
+        &= S(\rho'_{RE})-S(\rho_E')\\
+        &\leq S(\rho'_R)+S(\rho'_E) -S(\rho'_E)\\
+        &= S(\rho_R) = S(\rho_Q)
+\end{align*}
+since $RQ$ is a pure state, and we have used subadditivity to rewrite $S(\rho_{RE}')$. We conclude that
+\begin{equation}
+    I_C(\Lambda,\rho)\leq S(\rho).
+\end{equation}
+%useful fact: for a pure state, the entropies of the subsystems are equal by Schmidt
+
+\subsection*{DPI for quantum systems}
+Classically, we talked about the data processing inequality, by which a system $X\to Y\to Z$ obeyed $I(X:Y)\geq I(X:Z)$. That is, data processing cannot improve the mutual information between two systems.
+
+Here, the quantum analogue is
+\begin{equation}
+    S(\rho)\geq I_C(\Lambda_1,\rho) \geq I_C(\Lambda_2 \circ \Lambda_1,\rho).
+\end{equation}
+
+The proof is by strong subadditivity.
+\begin{proof}
+    We can describe applying the two maps $\Lambda_1,\Lambda_2$ with their Stinespring implementations. BY strong subadditivity, we know that for a tripartite system $ABC$, $S(A|BC)\leq S(A|B)$. Hence with the final state $\rho_{RE_1E_2}''$, we have
+    \begin{equation}
+        S(R|E_1E_2)_{\rho''}\leq S(R|E_1)_{\rho''},
+    \end{equation}
+    where the LHS is just $I_C(\Lambda_2 \circ \Lambda_1, \rho)$. What is the right side? IT is
+    \begin{align*}
+        S(R|E_1)_{\rho''} &= S(\rho_{RE_1}'') -S(\rho_{E_1}'')\\
+            &=S(\rho_{RE_1}')-S(\rho_{E_1}')\\
+            &=S(R|E_1)_{\rho'}\\
+            &= I_C(\Lambda_1,\rho).
+    \end{align*}
+    Hence the DPI holds:
+    \begin{equation}
+        S(\rho) \geq I_C(\Lambda_1,\rho) \geq I_C(\Lambda_2 \circ \Lambda_1,\rho).
+    \end{equation}
+\end{proof}
+The entanglement fidelity is non-examinable. The converse of the Schumacher compression theorem is non-examinable (the one with four inequalities). Justify manipulations like SSA

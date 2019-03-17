@@ -1,0 +1,129 @@
+Admin note-- examples sheet 4 will be available next week online.
+
+\subsection*{Symmetries and path integrals}
+Today we'll introduce the Schwinger-Dyson equations for scalars (cf. Schwartz). For a free scalar, $m=0$, we have an action
+\begin{equation}
+    S=\frac{1}{4} \int d^4 y\, \p_\mu \phi \p^\mu \phi = -\frac{1}{2} \int d^4y \, \phi \p^2 \phi
+\end{equation}
+after an integration by parts. Consider the 1-point function. After a transformation $\phi(x)\to \phi(x)+\epsilon(x)$ inside the path integral, we have
+\begin{equation}
+    \avg{\phi(x)}=\frac{1}{Z} \int \cD \phi\bkt{\phi(x)+\epsilon(x)} e^{\frac{1}{2} \int d^4 y (\phi+\epsilon)\p^2(\phi+\epsilon)}.
+\end{equation}
+
+For small $\epsilon(x)$, the exponential becomes 
+\begin{equation}
+    e^{\frac{1}{2}\int d^4y \phi \p^2 \phi} \paren{1+\frac{1}{2} \int d^4z \paren{\phi \p^2 \epsilon + \epsilon \p^2 \phi}}= e^{\frac{1}{2}\int d^4y \phi \p^2 \phi} \paren{1+\int d^4 z \, \epsilon \p^2 \phi}
+\end{equation}
+where we've integrated by parts twice to move the partial derivative. The 1-point function is then
+\begin{equation}
+    \avg{\phi(x)}=\frac{1}{Z} \int \cD \phi \, e^{-S}\bkt{\phi(x) +\epsilon(x) + \phi(x) \int d^4 z \epsilon(z) \p_z^2 \phi(z)}.
+\end{equation}
+Notice that this first term of order $\phi$ is just the original 1-point function, and $\epsilon(x)=\int d^4 z \epsilon(z) \delta^{(4)}(z-x)$, so we conclude that
+\begin{equation}
+    \int d^4 z \epsilon(z) \int \cD \phi e^{-S} \bkt{\phi(x) \p_z^2 \phi(z) + \delta^{(4)}(z-x)}=0.
+\end{equation}
+If this is true for all $\epsilon(z)$, then
+\begin{equation}
+    \p_z^2 \avg{\phi(z) \phi(x)} = -\delta^{(4)}(z-x),
+\end{equation}
+an example of a Schwinger-Dyson equation. These are the classical equations of motion, up to a contact term (the delta function on the RHS of the equality).
+
+This sort of result can also be generalized to $n$-point functions, e.g.
+\begin{equation}
+    \p_z^2 \avg{\phi(z) \phi(x) \phi(y)} =-\delta^{(4)}(z-x) \avg{\phi(y)} - \delta^{(4)} (z-y) \avg{\phi(x)}.
+\end{equation}
+
+Adding interactions, i.e. working with an action
+\begin{equation}
+    S=\int d^4 y\paren{-\frac{1}{2} \phi \p^2 \phi + \cL_{\text{int}}[\phi]}
+\end{equation}
+contributes a term
+\begin{equation}
+    -\int d^4 z \epsilon(z) \frac{\delta \cL_\text{int}}{\delta \phi(z)}
+\end{equation}
+to the expansion of $e^{-S[\phi+\epsilon]}$. Hence the Schwinger-Dyson equation is modified to
+\begin{equation}
+    \p_z^2 \avg{\phi(z) \phi(x)} =\avg{\frac{\delta \cL_\text{int}}{\delta \phi(z)} \phi(x)}-\delta^{(4)}(z-x)
+\end{equation}
+and hence $\avg{\frac{\delta S}{\delta \phi(z)} \phi(x)}=\delta^{(4)}(z-x)$.
+
+Generally under transformations $\phi \to \phi+\epsilon$, the Lagrangian transforms as $\cL\to \cL+\delta \cL$ with $\delta \cL =\frac{\delta \cL}{\delta \phi} \epsilon + \frac{\delta L}{\delta (\p_\mu \phi)} \p_\mu \epsilon$. Thus
+\begin{equation}
+    \frac{\delta S}{\delta \phi(z)} =\frac{\delta \cL}{\delta \phi(z)} -\p_\mu \frac{\delta \cL}{\delta(\p_\mu \phi)} \implies j^\mu(z) \equiv \frac{\delta \cL}{\delta (\p_\mu \phi)} \epsilon(z)
+\end{equation}
+satisfies $\p_\mu j^\mu(z)=\delta \cL -\frac{\delta S}{\delta \phi} \epsilon$.
+
+Suppose $\d \cL=0$, i.e. $\cL$ is invariant under the transformation. Then
+\begin{equation}
+    \P{}{z^\mu} \avg{j^\mu(z) \phi(x)} = -\delta^{(4)}(z-x) \avg{\epsilon(x)}.
+\end{equation}
+This is known as a Ward-Takahashi identity.
+
+We can derive Schwinger-Dyson equations for fermions, too. In the same way we have a Lagrangian $\cL=\bar \psi \slashed{\p} \psi+\ldots$ and under a transformation
+\begin{equation}
+    \psi(x) \to e^{i\alpha(x)}\psi(x), \quad \bar \psi(x)\to \bar \psi(x) e^{-i\alpha(x)},
+\end{equation}
+the kinetic term transforms as
+\begin{equation}
+    \bar \psi \slashed{\p} \psi \to \bar \psi \slashed{\p} \psi + i \bar \psi \gamma^\mu \psi \p_\mu \alpha,
+\end{equation}
+with a Noether current
+\begin{equation}
+    j^\mu(x) = \bar \psi(x) \gamma^\mu \psi(x).
+\end{equation}
+By examining the correlation function $\avg{\psi(x_1) \bar \psi(x_2)}$, we find that
+\begin{equation}
+    \p_\mu \avg{j^\mu(x) \psi(x_1) \bar \psi(x_2)} =-\delta^{(4)}(x-x_1)\avg{\psi(x_1) \bar \psi(x_2)} - \delta^{(4)}(x-x_2) \avg{\psi(x_1)\bar \psi(x_2)}.
+\end{equation}
+Taking the Fourier transform yields a 3-point function
+\begin{equation}
+     M^\mu(p,q_1,q_2) \equiv d^4x d^4 x_1 d^4 x_2 e^{ip\cdot x} e^{iq_1 \cdot x_i} e^{-iq_2 \cdot x_2} \avg{ j^\mu(x) \psi(x_1) \bar \psi(x_2)},
+\end{equation}
+and similarly there is a two-point function
+\begin{equation}
+    M_0(q_1,q_2) \equiv \int d^4 x_1 d^4 x_2 e^{iq_1 \cdot x_1} e^{-ip_2 \cdot x_2} \avg{\psi(x_1) \bar \psi(x_2)}.
+\end{equation}
+The identity then takes the form
+\begin{equation}
+    i p_\mu M^\mu(p,q_1,q_2) = M_0(q_1+p,q_2) -M_0(q,q_2-p).
+\end{equation}
+
+Some comments on the Schwinger-Dyson formalism.
+\begin{itemize}
+    \item This formalism is non-perturbative, since it comes directly from a variational principle.
+    \item It is ``off-shell'' since momentum is in general not conserved.
+    \item It can fail if the path integral measure is not invariant.
+    \item It can fail if the symmetry is broken by a regularization scheme, an ``anomalous symmetry.''
+\end{itemize}
+
+\subsection*{Ward-Takahashi and renormalization}
+In QED after renormalization, we have a Lagrangian
+\begin{equation}
+     \cL =\frac{1}{4} Z_3 F_{\mu\nu} F^{\mu\nu} + Z_2 \bar \psi \slashed{\p} \psi +Z_m m \bar \psi \psi +Z_1 e \bar \psi \slashed{A} \psi.
+\end{equation}
+We apply Ward-Takahashi using the renormalized propagator $G(q)$ and the vertex $\Gamma^\mu$. Let $M_0(q_1,q_2)=(2\pi)^4 \delta^{(4)}(q_1-q_2) G(q_1)$. In the $m=0$ limit,
+\begin{equation}
+    G(q) =\frac{1}{Z_2} \frac{1}{i\slashed{q}}.
+\end{equation}
+We get a vertex function $\Gamma^\mu$ by considering all 1PI graphs with two fermionic and one photon external legs. Amputating external propagators, we find that
+\begin{equation}
+    -e \Gamma^\mu = -e Z_1 \gamma^\mu.
+\end{equation}
+We can extend to off-shell momenta:
+\begin{align*}
+    \Gamma^\mu(p,q_1,q_2) (2\pi)^4 \delta^{(4)}(p+q_1 -q_2) \equiv{}& \int d^4x d^4 x_1 d^4 x_2 e^{ip\cdot x} e^{ip_1 \cdot x_1} e^{-iq_2 \cdot x_2} \\
+    &\times G^{-1}(q_1) \avg{j^\mu(x) \psi(x_1) \bar \psi(x_2)} G^{-1}(p+q_1)\\
+        ={}& G^{-1}(q_1) M^\mu(p,q_1,q_2) G^{-1}(p+q_1).
+\end{align*}
+The Ward-Takahashi identity is
+\begin{equation}
+    ip_\mu M^\mu(p,q_1,q_2) =(2\pi)^4 \delta^{(4)}(p+q_1-q_2) \times [G(p+q_1)-G(q_1)].
+\end{equation}
+Contracting both sides of our equation for $\Gamma^\mu$ with $ip_\mu$ and applying W-T, we have
+\begin{equation}
+    ip_\mu \Gamma^\mu = G^{-1}(p+q_1) -G^{-1}(q_1)
+\end{equation}
+and hence
+\begin{equation}
+    i\slashed{p} Z_1 = iZ_2 [\slashed{p} + \slashed{q}_1 - \slashed{q}_2] = i\slashed{p} Z_2 \implies Z_1=Z_2.
+\end{equation}

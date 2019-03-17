@@ -1,0 +1,124 @@
+\begin{quote}
+    \textit{``As soon as someone shows you this Penrose diagram, you should tell them, `Hey, you've never been to Cambridge. People there will yell at you for doing this.'{}'' --Jorge Santos
+    }
+\end{quote}
+
+Today we will discuss the Reissner-Nordstr\"om solution, the metric describing an electrically (or magnetically) charged black hole.%
+    \footnote{n.b. this lecture was transcribed from a handwritten set of notes I took after my laptop ran out of battery, so it may feature somewhat less commentary than usual. Whether or not this is an improvement is up to the reader to decide.}
+
+\subsection*{The Reissner-Nordstr\"om solution} Astrophysically speaking, we do not expect to observe black holes with large electrical charges in nature. So why should we study them?
+\begin{enumerate}
+    \item RN black holes provide a close analogue of the Kerr (rotating) solutions, since they have inner (Cauchy) horizons and very similar Penrose diagrams (i.e. causal structures).
+    \item RN black holes are also ubiquitous in string theory. In fact, string theory provides a correct counting of the microstates of the Reissner-Nordstr\"om solution (related to the entropy of the black hole).
+\end{enumerate}
+
+The Reissner-Nordstr\"om solution solves the equations of motion which come from varying the Einstein-Maxwell action
+\begin{equation}
+    S=\frac{1}{16\pi G}\int d^4 x \sqrt{-g} \paren{R-F_{ab} F^{ab}}
+\end{equation}
+which describes a massless vector field (photon) coupled to gravity. Here, $F=dA$, where $A$ is a 1-form. The corresponding equations of motion are
+\begin{gather}
+    R_{ab}-\frac{R}{2} g_{ab}= 2\paren{F_{ac} F_b{}^c -\frac{1}{4} g_{ab} F^{cd} F_{cd}},\\
+    \nabla^b F_{ab}=0.
+\end{gather}
+That is, the electromagnetic field has a corresponding stress-energy tensor, and $F_{ab}$ the electromagnetic field strength tensor obeys a conservation equation.
+
+\begin{thm}
+    The unique spherically symmetric solution to the Einstein-Maxwell equations with a non-constant radius function $r$ is the Reissner-Nordstr\"om solution
+    \begin{equation}
+        ds^2 = -\paren{1-\frac{2M}{r} +\frac{e^2}{r^2}}dt^2 +\frac{dr^2}{1-\frac{2M}{r} + \frac{e^2}{r^2}} + r^2 d\Omega_2^2
+    \end{equation}
+    and
+    \begin{equation}
+        A=-\frac{Q}{r}dt -P\cos \theta d\phi,\quad e\equiv{Q^2+P^2},
+    \end{equation}
+    where $Q$ and $P$ are electric and magnetic charges, respectively.
+\end{thm}
+Note that this solution is static, i.e. $\paren{\P{}{t}}^a = K^a$ is a Killing field for this metric. It is also asymptotically flat, since it reduces to the Minkowski metric in the limit $r\to \infty$.
+
+To discuss the properties of this solution, let us define
+\begin{equation}
+    \Delta(r) \equiv r^2-2Mr +e^2 =(r-r_-)(r-r_+),
+\end{equation}
+which is just a factorization of the $g_{tt}$ component of the metric. The zeroes of $\Delta(r)$ are then
+\begin{equation}
+    r_\pm = M\pm \sqrt{M^2 -e^2},
+\end{equation}
+which reduces to $r=2M$ (the Schwarzschild event horizon) in the $e\to 0$ limit. 
+
+Notice that if $e>M$, $r_\pm$ are both complex, so there are no real horizons. However, in Reissner-Nordstr\"om there is always a curvature singularity at $r=0$, which one can determine e.g. by calculating the Kretchmann scalar $R^{abcd}R_{abcd}$ at $r=0$. Therefore by weak cosmic censorship, we can neglect this case since it features a naked singularity. In fact, we can't even dynamically form such a solution since near extremality, throwing in more charge causes the field to disperse.
+
+Another interesting case is $M=e$, where the two horizons coincide (i.e. the extremal Reissner-Nordstr\"om black hole). We'll defer discussion of this case to the end of lecture, and focus our efforts on the $M > e$ case, where there are two real, positive roots of $\Delta$, i.e. $0 < r_- < r_+$. To understand the structure of this metric, we introduce Eddington-Finkelstein coordinates for our metric
+\begin{equation}
+    ds^2 =-\frac{\Delta}{r^2} dt^2 + \frac{r^2 dr^2}{\Delta} +r^2 d\Omega_2^2.
+\end{equation}
+That is, introduce a tortoise coordinate $r_*$ defined by
+\begin{equation}
+    dr_* =\frac{r^2}{\Delta} dr \implies r_*= r+ \frac{1}{2\kappa_+} \log \abs*{\frac{r-r_+}{r_+}}+\frac{1}{2\kappa_-} \log \abs*{\frac{r-r_-}{r_-}},
+\end{equation}
+where $\kappa_\pm =\frac{r_\pm - r_\mp}{2r_\pm^2}$ are constants which we will later identify as the surface gravities of the horizons.
+
+Now introduce the ingoing and outgoing coordinates
+\begin{equation}
+    u=t - r_*, v=t + r_*.
+\end{equation}
+In $(v,r,\theta,\phi)$ coordinates, the metric takes the form
+\begin{equation}
+    ds^2 = -\frac{\Delta}{r^2}dv^2 +2dvdr + r^2 d\Omega_2^2.
+\end{equation}
+In the original coordinates, this solution was non-singular up to $r_+$, but we can clearly extend this now to $r\in(0,r_+]$ (e.g. by noticing the metric determinant is non-singular at $r_+$, as with Schwarzschild).
+
+A surface of constant $r$ now defines a surface with normal $n=dr$. But notice that $n^2= g^{rr}=\frac{\Delta}{r^2}$, so the surfaces with $r=r_\pm$ are then null hypersurfaces. The proof that these represent horizons is then the same as for the Schwarzschild solution. Thus $r=r_+$ is the future event horizon of the Reissner-Nordstr\"om spacetime.
+
+\subsection*{The maximal extension of Reissner-Nordstr\"om} In Schwarzschild, a bit of careful work with coordinate ranges and redefinitions led us to the Kruskal extension, the maximally extended Schwarzschild solution. Can we do the same for Reissner-Nordstr\"om?
+
+The answer is yes, but the extended RN spacetime has a few surprises in store. Let us introduce Kruskal-like coordinates
+\begin{equation}
+    U^\pm = -e^{-\kappa_\pm u}, V^\pm = \pm e^{\kappa_\pm v}.
+\end{equation}
+Let us start in the exterior region, $r>r_+$. In $U^+,V^+,\theta,\phi)$ coordinates we find that the metric takes the form
+\begin{equation}
+    ds^2 = -\frac{r_+ r_-}{\kappa_+^2 r^2} e^{-2\kappa_+ r} \paren{\frac{r-r_-}{r_-}}dU^+ dV^+ + r^2 d\Omega_2^2,
+\end{equation}
+where $r$ should be considered as a function of $U$ and $V$, given implicitly by 
+\begin{equation}
+    -U^+ V^+= e^{2\kappa_+ r} \paren{\frac{r-r_+}{r_+}} \paren{\frac{r_-}{r-r_-}}^{\kappa_+/|\kappa_-|}.
+\end{equation}
+
+The RHS of our expression for $U^+V^+$ is a monotonically increasing function of $r^*$ for $r>r_-$. Note that in ingoing coordinates, we could hit the $r=0$ singularity, but in these Kruskal coordinates, we first have to stop at $r=r_-$. We can draw the Penrose diagram for this spacetime.
+%penrose diagram
+
+Something weird has happened-- If we continue to analytically extend this solution, we find that if we cross the Cauchy horizon, there is yet another $r=r_-$ horizon to our future, whereupon crossing this new horizon drops us in another asymptotically flat region, and we can continue this process indefinitely. However, there is also a timelike singularity at $r=0$ which we can see, but need not cross. This singularity still removes regions from the domain of dependence, creating a Cauchy horizon at $r=r_-$. Therefore strong cosmic censorship suggests that we shouldn't trust this diagram beyond the Cauchy horizon, since we generically expect a singularity to form at the Cauchy horizon, cutting off the new region.
+
+Let us now revisit the extremal case. For $M=e$, we have $r_+=r_-$, and the metric is then
+\begin{equation}
+    ds^2 = -\paren{1-\frac{M}{r}}^2 dt^2 + \frac{dr^2}{\paren{1-\frac{M}{r}}^2}+r^2 d\Omega_2^2.
+\end{equation}
+The Penrose diagram for this is a little different. We still get a single horizon, but there is an asymptotic region replacing $r=0$ in the asymptotically flat diamonds of the Penrose diagram.
+
+To make sense of this, we can study the near-horizon region by expanding $r=M(1+\lambda)$ to leading order in $\lambda$ for $\lambda \ll 1$. In that case, the metric takes the form
+\begin{equation}
+    ds^2 = \underbrace{-\lambda^2 dt^2 + M^2 \frac{d\lambda^2}{\lambda^2}}_{\text{AdS}_2} + \underbrace{M^2 d\Omega^2}_{S^2},
+\end{equation}
+which has the form of $\text{AdS}_2\times S^2$, i.e. a region with an AdS ``throat'' going to $r=0$. This is known as the Robinson-Bertotti metric.
+
+\subsection*{Majumdar-Papapetrou solutions}
+Consider the extremal RN solution under the coordinate transformation $\rho=r-M$. If we take $P=0$ (no magnetic charge) we get the metric
+\begin{equation}
+    ds^2 = -H^2 dt^2 +H^2 (d\rho^2 +\rho^2 d\Omega_2^2),
+\end{equation}
+where
+\begin{equation}
+    H\equiv 1+\frac{M}{\rho},\quad A= H^{-1}dt.
+\end{equation}
+However, suppose now we write down a metric
+\begin{equation}
+    ds^2 = -H(\vec x)^2 dt^2 + H(\vec x)^2 d\vec x^2,\quad A=H(\vec x)^{-1} dt.
+\end{equation}
+Plugging into the Einstein equations, we get a condition $\nabla_x^2 H=0$, whose solutions are harmonic functions of $\vec x$. Therefore take
+\begin{equation}
+    H(\vec x)= 1+ \sum_{i=1}^N \frac{M_i}{|\vec x - \vec x^{(i)}|},
+\end{equation}
+which is a solution by linearity. Now the $\vec x^{(i)}$s specify locations of black holes in our spacetime, and we can put them wherever we want.%
+    \footnote{``With the solutions I'm gonna tell you, you can write your name. Whatever sh*t you want, you can build it out of black holes.'' --Jorge Santos}
+A priori, there's no spherical symmetry in these solutions. The gravitational attraction is precisely balanced by the charge of these black holes-- in a sense, they are supersymmetric (albeit highly unstable).
