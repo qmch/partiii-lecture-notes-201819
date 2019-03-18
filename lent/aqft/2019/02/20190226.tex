@@ -67,9 +67,20 @@ in terms of some new coefficients $g_i$.
 Integrating may give a $Z_\Lambda \neq 1$ factor. LSZ therefore implies we want a canonically normalized kinetic term. Let $\phi^r=Z_\Lambda^{1/2}\phi$ be the renormalized field. The remaining variations describing the $\Lambda$ dependence are given by the $g_i(\Lambda)$.
 
 We can associate some $\beta$-functions to this theory by%
-    \footnote{I'm not sure this is correct-- compare Skinner's Eqn. 5.15 in \url{http://www.damtp.cam.ac.uk/user/dbs26/AQFT/Wilsonchap.pdf}. There, he gives $\beta_i^\text{cl}=(d_i-d)g(\Lambda)$ and he leaves $\beta_i^\text{q}$ undetermined, calling the overall beta-function $\beta_i = \Lambda\P{g_i}{\Lambda}.$}
+    \footnote{Note-- the original expression given in class is incorrect. There, we were told that
+    \begin{equation*}
+        \beta_i^\text{cl}=(d_i-d),\quad \beta_i^\text{q}=\Lambda \P{g_i}{\Lambda}.
+    \end{equation*}
+    To understand where the classical beta function comes from, recall that in terms of an energy scale $\Lambda$, we have a coupling $\lambda_i=\Lambda^{d-d_i}g_i$, where $g_i$ is dimensionless and $[\lambda_i]=d-d_i$.
+    
+    Classically, couplings do not run-- they just rescale. Thus
+    \begin{equation*}
+        0=\frac{d\lambda_i}{d\log \Lambda}=(d-d_i) \Lambda^{d-d_i} g_i +\Lambda^{d-d_i}\frac{dg_i}{d\log \Lambda} = (d-d_i) \Lambda^{d-d_i} g_i +\Lambda^{d-d_i} \beta_i^\text{cl}.
+    \end{equation*}
+    Hence $\beta_i^\text{cl}=(d_i-d)g_i$, representing the classical rescaling behavior before any loop corrections to the coupling $\lambda_i$.
+    }%I'm not sure this is correct-- compare Skinner's Eqn. 5.15 in \url{http://www.damtp.cam.ac.uk/user/dbs26/AQFT/Wilsonchap.pdf}. There, he gives $\beta_i^\text{cl}=(d_i-d)g(\Lambda)$ and he leaves $\beta_i^\text{q}$ undetermined, calling the overall beta-function $\beta_i = \Lambda\P{g_i}{\Lambda}.$}
 \begin{equation}
-    \beta_i^\text{cl}=(d_i-d),\quad \beta_i^\text{q}=\Lambda \P{g_i}{\Lambda},
+    \beta_i^\text{cl}=(d_i-d)g_i,\quad \beta_i=\Lambda \P{g_i}{\Lambda}=\beta_i^\text{cl}+\beta_i^\text{q},
 \end{equation}
 where the superscripts indicate classical and quantum contributions. For example, $\phi^4$ theory in 4 dimensions with a cutoff $\Lambda_0$ has an action of the form
 \begin{equation}
