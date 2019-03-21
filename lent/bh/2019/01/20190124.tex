@@ -7,7 +7,7 @@ Quick announcement-- office hours from this course will be held at 14:00 on Tues
 Last time, we started looking at the geodesics of Schwarzschild. We found two particularly simple ones: the ingoing and outgoing radial null geodesics, with equation
 \begin{equation}
     \frac{dt}{dr} = \pm \paren{1-\frac{2M}{r}
-    }^{-1}, r> 2M.
+    }^{-1}, \quad r> 2M.
 \end{equation}
 We also defined the tortoise (Regge-Wheeler) coordinate $r_*$ such that
 \begin{equation}
@@ -25,7 +25,9 @@ This seems kind of trivial. But now we introduce a new coordinate, the \term{ing
 \begin{equation}
     v \equiv t+ r_*.
 \end{equation}
-This is clearly constant on ingoing geodesics, just by looking at the previous equation. That is, $dv|_{\text{geodesic}}=dt+dr_*=0.$ Good. (We could have done the same for outgoing geodesics taking $u\equiv t-r_*.$) Now we eliminate the original coordinate time $t$ from the line element using $dt=dv-\frac{dr}{1-\frac{2M}{r}}.$ We get the new line element
+This is clearly constant on ingoing geodesics, just by looking at the previous equation. That is, $dv=dt+dr_*=0.$ Good.%
+    \footnote{We could have done the same for outgoing geodesics taking $u\equiv t-r_*,$ and indeed we will do so later.} 
+Now we eliminate the original coordinate time $t$ from the line element using $dt=dv-\frac{dr}{1-\frac{2M}{r}}.$ We get the new line element
 \begin{equation}
     ds^2 = -\paren{1-\frac{2M}{r}} dv^2 +2dv dr +r^2 d\Omega^2_2.
 \end{equation}
@@ -39,7 +41,9 @@ Let's write this in matrix notation. Nothing fancy.
         0 & 0 & 0 & r^2\sin^2\theta
     \end{pmatrix}.
 \end{equation}
-We haven't done anything too extreme-- just made a change of coordinates. But we see something very nice-- none of the metric components are singular at $r=2M$. In fact, the determinant of the metric is still perfectly nice at $r=2M$-- by an explicit computation, $\det g= -r^2 \sin^2 \theta$. This only vanishes at $\theta=0$ (the regular coordinate badness of spherical coordinates) and at $r=0$, which may (a priori, we don't know yet) be a real problem.
+We haven't done anything too extreme, just made a change of coordinates. But we see something very nice-- none of the metric components are singular at $r=2M$. In fact, the determinant of the metric is still perfectly nice at $r=2M$-- by an explicit computation, $\det g= -r^2 \sin^2 \theta$. This only vanishes at $\theta=0$, which is the regular coordinate badness%
+    \footnote{AKA degeneracy. Basically, what is the value of $\phi$ at the north pole? It's not well-defined, hence our coordinates do not define an invertible map from coordinates to manifold points.}
+of spherical coordinates near the poles, and at $r=0$, which may (a priori, we don't know yet) be a real problem.
 
 So we have found some coordinates which appear to extend $r$ not just from $r>2M$ but to all $r>0$. Our metric is real and analytic so it is a nice analytic continuation of the old (bad) Schwarzschild coordinates. This is related to the problem of extendibility-- are there other metrics which cover more of the spacetime manifold which are compatible with the solution that we've found?
 
@@ -52,9 +56,20 @@ Moreover, let us observe that $\P{}{t}=\P{}{v}$. Thus our Killing vector field b
 \end{equation}
 So our metric appears to be no longer static or stationary in these coordinates.
 
-We now introduce the Finkelstein diagram. Recall that for $r=2M$, on outgoing geodesics we have $t-r_*=$constant $\implies v= 2r+4 M \log \abs*{\frac{r}{2M}-1}+$constant. Let us draw a plot in the $t_* \equiv v-r$,$r$ plane. What we see is that the ingoing geodesics follow 45${}^\circ$ paths, while the outgoing geodesics follow some curved paths in these coordinates. %copy picture from Harvey Reall notes
+We now introduce the Finkelstein diagram, shown in Figure \ref{fig:reall_finkelsteindiagram}. Recall that for $r=2M$, on outgoing geodesics we have $t-r_*=$constant $\implies v= 2r+4 M \log \abs*{\frac{r}{2M}-1}+$constant. Let us draw a plot in the $t_* \equiv v-r$,$r$ plane. What we see is that the ingoing geodesics follow 45${}^\circ$ paths, while the outgoing geodesics follow some curved paths in these coordinates. %copy picture from Harvey Reall notes
 
-What we observe is that in these coordinates, the light cones ``tip over'' at $r=2M$-- even the ``outgoing'' null geodesics are forced to proceed towards $r=0$ for $r<2M$. Now, this does not yet prove that this is a black hole. We've only examined radial geodesic trajectories, and it's not clear that adding even a little bit of angular momentum can't save us from a spaghettified death by black hole-like object.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{2019/01/20190124_reall_finkelsteindiagram.png}
+    \caption{
+    The Finkelstein diagram for the Schwarzschild spacetime. The sides of the light cones are given by lines of constant $u$ and $v$. Notice the light cones ``tip over'' as we cross the event horizon at $r=2M$, so that even ``outgoing'' radial null trajectories must proceed towards the $r=0$ singularity.
+    \newline
+    Image credit to Prof. Reall's  \href{http://www.damtp.cam.ac.uk/user/hsr1000/black_holes_lectures_2016.pdf}{Black Holes notes}, \textsection 2.5.
+    }
+    \label{fig:reall_finkelsteindiagram}
+\end{figure}
+
+What we observe is that in these coordinates, the light cones ``tip over'' at $r=2M$-- even the ``outgoing'' null geodesics are forced to proceed towards $r=0$ for $r<2M$. Now, this does not yet prove that this is a black hole. We've only examined radial geodesic trajectories, and it's not clear that adding even a little bit of angular momentum can't save us from a spaghettified death by black hole(-like object).
 %
 
 Suppose that we%

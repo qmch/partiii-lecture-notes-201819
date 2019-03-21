@@ -8,7 +8,7 @@ The channel then outputs a transmitted (still encoded) message $y^{(n)}$ with pr
 \end{equation}
 and Bob then decodes this transmission to get a decoded message $m'$.
 
-We say that a code $(\mathcal{E}_n,\mathcal{D}_n)$ (i.e. an encoding-decoding scheme) has rate $R$ if $\ceil{M}\approx 2^{nR}$. Thus $R =\frac{\log |M|}{n}$. A rate is \term{achievable} if there exists a code with that rate such that 
+We say that a code $(\mathcal{E}_n,\mathcal{D}_n)$ (i.e. an encoding-decoding scheme) has rate $R$ if $\ceil{M}\approx 2^{nR}$. Thus $R =\frac{\log |M|}{n}$. A rate is \term{achievable} if there exists a code with that rate such that the probability of error after decryption goes to zero in the limit as $n\to \infty$.
 
 Shannon's theorem tells us that the capacity $C(\mathcal{N})$ (i.e. the supremum of all achievable rates) is precisely related to the mutual information between the inputs and outputs of the noisy channel:
 \begin{equation}

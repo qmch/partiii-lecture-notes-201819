@@ -6,12 +6,12 @@ Last time, we introduced the extrinsic curvature,
 \begin{equation}
     K_{ab} h_a{}^c h_b{}^d \nabla_c n_d,
 \end{equation}
-where $n^a n_a= \pm1$, with $n^a$ the unit normal to the hypersurface $\Sigma$. We also define the projection
+where $n^a n_a= \pm1$, with $n^a$ the unit normal to the hypersurface $\Sigma$. We also defined the projection (now with indices down)
 \begin{equation}
     h_{ab}=g_{ab} \mp n_a n_b.
 \end{equation}
 \begin{lem}
-    $K_{ab}=K_{ab}$, so $K$ is a symmetric $2$-tensor.
+    $K_{ab}=K_{ba}$, so $K$ is a symmetric $2$-tensor.
 \end{lem}
 \begin{proof}
     Let $f:\cM \to \RR$ be constant on $\Sigma$ with $df\neq 0$ on $\Sigma$. Let $X^a$ be tangent to $\Sigma$. Thus
@@ -41,14 +41,14 @@ As it turns out, the property that
 means that the extrinsic curvature has the right form for an initial condition in the initial value problem of general relativity.
 %I know that you all really hate my handwriting. And our equations have hundreds of indices. So today I will receive threatening emails by the end of the day.
 
-\subsection*{The Gauss-Coducci equation} A tensor at a point $p\in \Sigma$ is invarinat under projection $h_a{}^b$ if
+\subsection*{The Gauss-Coducci equation} A tensor at a point $p\in \Sigma$ is invariant under projection $h_a{}^b$ if
 \begin{equation}
     T^{a_1\ldots a_n}{}_{b_1 \ldots b_s}= h_{c_1}{}^{a_1}\ldots h_{c_n}{}^{a_n} h_{b_1}{}^{d_1}\ldots h_{b_s}{}^{d_s}T^{c_1\ldots c_n}{}_{d_1}\ldots {d_s}.
 \end{equation}
 \begin{prop}
 A covariant derivative $D$ on $\Sigma$ can be identified by projection of the covariant derivative on $\cM$. Thus
 \begin{equation}
-    D_a \Gamma^{b_1 \ldots b_n}{}_{c_1\ldots c_s}=h_a{}^d h_{e_1}{}^{b_1} \ldots h_{e_n}{}^{b_n} h_{c_1}{}^{f_1} \ldots h_{c_s}{}^{f_s} \nabla_d T^{e_1 \ldots e_n}{}_{f_1\ldots f_s}.
+    D_a T^{b_1 \ldots b_n}{}_{c_1\ldots c_s}=h_a{}^d h_{e_1}{}^{b_1} \ldots h_{e_n}{}^{b_n} h_{c_1}{}^{f_1} \ldots h_{c_s}{}^{f_s} \nabla_d T^{e_1 \ldots e_n}{}_{f_1\ldots f_s}.
     \end{equation}
 \end{prop}
 \begin{lem}

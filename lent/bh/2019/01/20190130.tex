@@ -46,12 +46,12 @@ Note that if $D(\Sigma)\neq \cM$, then the solution of hyperbolic equations will
 Remark: spacetimes which have singularities can still be globally hyperbolic. Consider the Kruskal spacetime-- we can set initial conditions on the Cauchy surface $U+V={}$constant.
 
 \subsection*{Extrinsic curvature}
-Let $\Sigma$ denote a spacelike or timelike hypersurface with unit normal $n_a$ (i.e. such that $n^a n_a=\pm 1$).
+Let $\Sigma$ denote a spacelike or timelike hypersurface with unit normal $n_a$ (i.e. such that $n^a n_a=\pm 1$). We can define a projector onto this hypersurface $h^a{}_b$, which has some nice properties.
 \begin{lem}
     For any $p\in \Sigma$, let $h^a{}_b = \delta^a{}_b \mp n^a n_b$ so that $h^a{}_b n^b =0$ (where upper/lower signs apply for spacelike/timelike respectively). Then
     \begin{enumerate}
-        \item $h^a{}_c h^c{}b=h^a{}b$
-        \item Any vector $x^a$ at $p$ can be written as $x^a_\parallel + x^a_\bot$, where $x^a_\parallel = h^a{}_b x^b$ and $x^a_\bot = \pm m_b x^b m^a$.
+        \item $h^a{}_c h^c{}_b=h^a{}_b$
+        \item Any vector $x^a$ at $p$ can be written as $x^a_\parallel + x^a_\bot$, where $x^a_\parallel = h^a{}_b x^b$ and $x^a_\bot = \pm n_b x^b n^a$.
         \item If $X^a,Y^a$ are tangent to $\Sigma$, then $h^{ab} X_a Y_b=g^{ab} X_a Y_b$. $h$ is sometimes called the first fundamental form. 
     \end{enumerate}
 \end{lem}
@@ -104,6 +104,6 @@ and conclude that
 \end{equation}
 At home, we should show that the extrinsic curvature is given by a Lie derivative,
 \begin{equation}
-    K_{ab}=\frac{1}{2} \cL_m (h_{ab})
+    K_{ab}=\frac{1}{2} \cL_n (h_{ab})
 \end{equation}
 where $h$ here is the first fundamental form.

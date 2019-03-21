@@ -3,7 +3,7 @@
 \end{quote}
 
 \begin{note}
-Some very important admininistrative details for this course! Lectures will be Monday, Wednesday, \emph{Thursday}, and Friday, with M/W/F lectures from 12:00-13:00 and Thursday lectures from 13:00-14:00. There will be no classes from 4th February to 15th February, due to Prof. Santos anticipating a baby.
+Some very important administrative details for this course! Lectures will be Monday, Wednesday, \emph{Thursday}, and Friday, with M/W/F lectures from 12:00-13:00 and Thursday lectures from 13:00-14:00. There will be no classes from 4th February to 15th February, due to Prof. Santos anticipating a baby.
 
 Some useful readings include
 \begin{itemize}
@@ -57,28 +57,26 @@ With these assumptions, our metric takes the form
 \end{equation*}
 where $g_{tt}(x^k)<0$ (stationarity).
 
-We shall also consider \term{static spacetimes}. Take $\Sigma$ to be a hypersurface defined by $f(x)=0$ for some function $f:M\to \RR, df\neq 0$. Then $df$ is orthogonal to $\Sigma$. Let's prove this.
-\begin{proof}
-Take $Z^a$ to be tangent to $\Sigma$. Thus
+We shall also consider \term{static spacetimes}. Take $\Sigma$ to be a hypersurface defined by $f(x)=0$ for some function $f:M\to \RR, df\neq 0$. Then $df$ is orthogonal to $\Sigma$. The proof is as follows: take $t^a$ to be tangent to $\Sigma$. Thus
 \begin{equation*}
-    (df)(Z)=Z(f)=Z^\mu \p_\mu f = 0
+    (df)(t)=t(f)=t^\mu \p_\mu f = 0
 \end{equation*}
-on $\Sigma$. A useful example might be to compute this for the two-sphere.
+on $\Sigma$ since $f$ is constant on $\Sigma.$ A useful example might be to compute this for the two-sphere.
 
 Now take a general $1$-form normal to $\Sigma$. This $1$-form can be written as
 \begin{equation}
-    m= gdf +f m'.
+    n= gdf +f n'.
 \end{equation}
-That is, on the surface $\Sigma$ the one-form $m$ is precisely normal to $\Sigma$, but if we go off $\Sigma$ a little bit then we can smoothly extend $m$ off by a bit. We require that $g$ is a smooth function and that $m'$ is smooth but otherwise arbitrary.
+That is, on the surface $\Sigma$ the one-form $n$ is precisely normal to $\Sigma$, but if we go off $\Sigma$ a little bit then we can smoothly extend $n$ off by a bit. We require that $g$ is a smooth function and that $n'$ is smooth but otherwise arbitrary.
 
-Then the differential of $m$ is
+Then the differential of $n$ is
 \begin{equation*}
-    dm=dg\wedge df + df \wedge m' + f \wedge dm' \implies dm|_\Sigma = (dg-m') \wedge df.
+    dn=dg\wedge df + df \wedge n' + f \wedge dn' \implies dn|_\Sigma = (dg-n') \wedge df.
 \end{equation*}
-We find that $m|_\Sigma= g\, df \implies (m\wedge dm)|_\Sigma =0$-- this follows since $df\wedge df$ is zero. So if $\Sigma$ is a hypersurface with $m$ orthogonal then $(m\wedge dm)_\Sigma =0$.
-\end{proof}
+We find that $n|_\Sigma= g\, df \implies (n\wedge dn)|_\Sigma = gdf \wedge (dg-n') \wedge df =0$. So if $n$ is orthogonal to a hypersurface $\Sigma$ then $(n\wedge dn)_\Sigma =0$.
 
-The converse is also true (a theorem due to Frobenius)-- if $m$ is a non-zero $1$-form such that $m\wedge dm=0$ everywhere, then there exists $f,g$ such that $m=g\, df$.
+
+The converse is also true (a theorem due to Frobenius)-- if $n$ is a non-zero $1$-form such that $n\wedge dn=0$ everywhere, then there exists $f,g$ such that $n=g\, df$ so $n$ is hypersurface-orthogonal.
 
 \begin{defn}
     A spacetime is \term{static} if it admits a hypersurface-orthogonal timelike Killing vector field. In particular, static $\implies$ stationary.

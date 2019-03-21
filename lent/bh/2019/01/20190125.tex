@@ -17,7 +17,7 @@ We've seen that
 \end{equation*}
 since we proved last time that $\frac{dv}{d\lambda}\geq 0$.
 
-Hence at least near $|lambda =\lambda_0$, we can use $v$ instead of $\lambda$ as a parameter along the curve with $r=2M$ at $v= v_0=v(\lambda_0)$. Dividing \ref{dvdlambdacondition} by $\paren{\frac{dv}{d\lambda}}^2$ gives
+Hence at least near $\lambda =\lambda_0$, we can use $v$ instead of $\lambda$ as a parameter along the curve with $r=2M$ at $v= v_0=v(\lambda_0)$. Dividing \ref{dvdlambdacondition} by $\paren{\frac{dv}{d\lambda}}^2$ gives
 \begin{equation}
     -2\frac{dr}{dv} \geq \frac{2M}{r}-1 \implies 2\frac{dr}{dv} \leq 1-\frac{2M}{r}.
 \end{equation}
@@ -84,31 +84,54 @@ So these can propagate from the curvature singularity at $r=0$ through the surfa
 \begin{equation}
     U= -e^{-u/4M}, \quad V= e^{v/4M}
 \end{equation}
-in terms of the EF coordinates from before. So for $r>2M, U<0$ and $V>0$.
+in terms of the EF coordinates from before. So for the exterior region $r>2M,$ $U<0$ and $V>0$.
 
-Now we can directly compute
+Now we can directly compute the product
 \begin{equation}
-    UV=-e^{\frac{+r}{2M}}\paren{
-        \frac{r}{2M}-1
-        }.
+    UV=-e^{r/2M}\paren{\frac{r}{2M}-1} = -e^{r/2M}\paren{\frac{r}{2M}}\paren{1-\frac{2M}{r}}.
 \end{equation}
 Let us observe that the RHS of this equation is a monotonic function of $r$, and hence determines $r(U,V)$ uniquely. We also have
 \begin{equation}
     \frac{V}{U}=-e^{t/2M},
 \end{equation}
-which determines $t(U,V)$.
+which implicitly determines $t(U,V)$.%
+    \footnote{Explicitly, $t= 2M \log (-V/U).$ This is sensible in the exterior region since $U<0, V>0$ and so $V/U <0$.}
 
-Computing the differentials, we find that
+Computing the differentials $dU,dV$ in terms of $du,dv$, we find that
 \begin{equation}
-    dU=\frac{1}{4M} e^{-u/4M}du,\quad dV =\frac{1}{4M}e^{v/4M} dv.
+    dU=-U \frac{du}{4M},\quad dV =V\frac{dv}{4M}.
 \end{equation}
 Therefore
 \begin{align*}
-    dU dV &=\frac{1}{16 M^2} \exp\paren{\frac{v-u}{4M}} dudv\\
-    &= \frac{1}{16M^2} \exp\paren{\frac{r_*}{2M}}(dt^2 -dr_*^2)\\
-    &= \frac{1}{16M^2} \exp\paren{\frac{r_*}{2M}}\bkt{dt^2 -\frac{dr^2}{\paren{1-\frac{2M}{r}}^2}}.
+    dU dV &=\frac{1}{16 M^2} (-UV) dudv\\
+    &= \frac{1}{16M^2} e^{r/2M} \frac{r}{2M} \paren{1-\frac{2M}{r}} dudv.
 \end{align*}
-This is almost what we want-- now we just multiply by the appropriate factors to find that our new line element is
+
+To get this in terms of the original $t,r$ coordinates, notice that since $u=t-r_*, v=t+r_*$, we have $du=dt-dr_*,dv=dt+dr_*$ and therefore
 \begin{equation}
-    ds^2=-32M^3 \frac{\exp\paren{-\frac{r(U,V)}{2M}}}{r(U,V)} dU dV + r^2 (U,V) d\Omega_2^2.
+    dudv = dt^2 - dr_*^2 = dt^2 - \frac{dr^2}{\paren{1-\frac{2M}{r}}^2}.
 \end{equation}
+It follows that $\paren{1-\frac{2M}{r}}dudv = \paren{1-\frac{2M}{r}} dt^2 - \frac{dr^2}{\paren{1-\frac{2M}{r}}}$, so our metric takes the form
+\begin{align}
+    ds^2 &= -\paren{1-\frac{2M}{r}} dt^2 + \frac{dr^2}{\paren{1-\frac{2M}{r}}} +r^2 d\Omega^2\\
+        &= -\paren{1-\frac{2M}{r}} dudv + r^2 d\Omega^2\\
+        &= \frac{32 M^3}{r(U,V)} e^{-r(U,V)/2M}dUdV + r^2(U,V) d\Omega^2,
+\end{align}
+which is exactly the metric in terms of the Kruskal-Szekeres coordinates (with $r$ given implicitly in terms of $U$ and $V$ as above).%
+    \footnote{I've cleaned up this derivation a bit from how we did it in class. Here is the original derivation, for reference.
+    
+    Computing the differentials, we find that
+    \begin{equation*}
+        dU=\frac{1}{4M} e^{-u/4M}du,\quad dV =\frac{1}{4M}e^{v/4M} dv.
+    \end{equation*}
+    Therefore
+    \begin{align*}
+        dU dV &=\frac{1}{16 M^2} \exp\paren{\frac{v-u}{4M}} dudv\\
+        &= \frac{1}{16M^2} \exp\paren{\frac{r_*}{2M}}(dt^2 -dr_*^2)\\
+        &= \frac{1}{16M^2} \exp\paren{\frac{r_*}{2M}}\bkt{dt^2 -\frac{dr^2}{\paren{1-\frac{2M}{r}}^2}}.
+    \end{align*}
+    This is almost what we want-- now we just multiply by the appropriate factors to find that our new line element is
+    \begin{equation*}
+        ds^2=-32M^3 \frac{\exp\paren{-\frac{r(U,V)}{2M}}}{r(U,V)} dU dV + r^2 (U,V) d\Omega_2^2.
+    \end{equation*}
+    }
