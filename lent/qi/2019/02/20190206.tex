@@ -38,14 +38,14 @@ equipped with a (fixed) onb for $\CC^d$ given by $\set{\ket{i}}_{i=1}^d$, a maxi
         %\end{gather*}
         %and computing explicitly.
     \end{itemize}
-    \item We can write down a purification $\rho$ of $\ket{\Omega}$: we claim it is
+    \item We can write down a purification of a state $\rho$ in terms of $\ket{\Omega}$: we claim it is
     \begin{equation}
-        \ket{\Psi}=\sqrt{d}(\sqrt{\rho}\otimes I) \ket{\Omega}.
+        \ket{\psi}=\sqrt{d}(\sqrt{\rho}\otimes I) \ket{\Omega}.
     \end{equation}
     Let us check:
     \begin{align*}
-        \ket{\psi}\bra{\psi}&=d\sqrt{\rho} \otimes I \ket{\Omega}\bra{\Omega} \sqrt{\rho}\otimes I\\
-            &= \sum_{i,j}\sqrt{\rho}\ket{i}\bra{j}\sqrt{\rho} \ket{i}\bra{j}.
+        \ket{\psi}\bra{\psi}&=d(\sqrt{\rho} \otimes I) \ket{\Omega}\bra{\Omega} (\sqrt{\rho}\otimes I)\\
+            &= \sum_{i,j}\sqrt{\rho}\ket{i}\bra{j}\sqrt{\rho} \otimes \ket{i}\bra{j}.
     \end{align*}
     Tracing over the second system, $\ket{i}\bra{j}=\delta_{ij}$, so the partial trace is then
     \begin{equation}

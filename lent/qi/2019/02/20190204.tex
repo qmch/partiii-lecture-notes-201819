@@ -1,7 +1,7 @@
 Today we shall discuss the Schmidt decomposition, purification, and the no-cloning theorem.
 
 \begin{thm}[Schmidt decomposition]
-    For any state $\ket{\psi_{AB}}\in \cH_A \otimes \cH_B$, then there exists an orthonormal basis
+    For any pure state $\ket{\psi_{AB}}\in \cH_A \otimes \cH_B$, there exists an orthonormal basis
     \begin{equation}
         \set{\ket{i_A}}_{i=1}^{d_A},\set{\ket{i_B}}_{i=1}^{d_B}
     \end{equation}
@@ -75,7 +75,8 @@ Today we shall discuss the Schmidt decomposition, purification, and the no-cloni
     which is exactly the Schmidt decomposition as claimed.
 \end{proof}
 
-Note that the Schmidt decomposition is unique if all the eigenvalues of $\rho_A$ and $\rho_B$ are nondegenerate. 
+Note that the Schmidt decomposition is unique if all the eigenvalues of $\rho_A$ and $\rho_B$ are nondegenerate. If so, we can construct the Schmidt decomposition by pairing eigenvectors of $\rho_A$ and $\rho_B$ which share the same eigenvalue.
+
 \begin{defn}
     We say that the \term{Schmidt rank} of $\ket{\psi_{AB}}$ is then $n(\psi_{AB})={}$ the number of positive Schmidt coefficients, where the $\lambda_i$s are the Schmidt coefficients.
 \end{defn}
@@ -138,7 +139,7 @@ We claim that this is always possible, and will explicitly construct the purifie
     Thus $\rho_{AB}$ is a purification of $\rho_A$.
 \end{proof}
 
-Let's also observe that if we have a system $AB$ in a state $\Omega_{AB}$ such that $\Tr_B \Omega_{AB}=\psi_A$ is a pure state, then $\Omega_{AB}$ must be itself a product state, $\Omega_{AB}=\psi_A \otimes \omega_B$, where $\psi_A=\ket{\psi_A}\bra{\psi_A}$.
+Let's also observe that if we have a system $AB$ in a state $\Omega_{AB}$ such that $\Tr_B \Omega_{AB}=\psi_A$ is a pure state, then $\Omega_{AB}$ must itself be a product state, $\Omega_{AB}=\psi_A \otimes \omega_B$, where $\psi_A=\ket{\psi_A}\bra{\psi_A}$.
 %There are some really beautiful YouTubes.
 
 This also tells us that correlations contains in a pure state are \term{monogamous}, i.e. for a bipartite state $A=A_1 A_2$, with $\ket{\psi}=\ket{\psi_{A_1A_2}},$ then the bigger system $AB=A_1 A_2 B$ will have a state of the form
@@ -184,7 +185,7 @@ This also tells us that correlations contains in a pure state are \term{monogamo
     We see that it's because of linearity and the tensor product structure of composite quantum systems that our unitary operator cannot copy a generic unknown state.
 \end{exm}
 
-Some concluding remarks: observe that if we have a single unknown state, we cannot make copies by the no-cloning theorem, but if we already have many copies, we could measure those copies in some bases and then prepare new copies of the state. In addition, the process of quantum teleportation does \emph{not} contradict no-cloning because the original state becomes inaccessible to us-- its information is all in the teleported state after the measurement procedure.
+Some concluding remarks: observe that if we have a single unknown state, we cannot make copies by the no-cloning theorem, but if we already have many copies, we could measure those copies in some bases and then prepare new copies of the state. In addition, the process of quantum teleportation (which we haven't discussed) does \emph{not} contradict no-cloning because the original state becomes inaccessible to us-- its information is all in the teleported state after the measurement procedure.
 
 We've now shown that the first postulate of QM in a closed system (states as rays in Hilbert space) is replaced by the density matrix formalism, with some important consequences. Soon we'll consider the second postulate, that the dynamics of a quantum system are determined by a unitary operator.
 
