@@ -4,7 +4,9 @@ Let us consider a single real scalar field $\phi:\set{\text{point}}\to \RR$. We 
 \begin{equation}
     S(\phi)=\frac{1}{2} m^2 \phi^2 +\frac{\lambda}{4!} \phi^4.
 \end{equation}
-We'll take $\lambda >0$ for stability and $m^2>0$ such that $\min(S)$ lies at $\phi=0$ so that we can easily expand around the minimum of $S$.
+We'll take $\lambda >0$ for stability%
+    \footnote{That is, we cannot make $S$ arbitrarily negative by going to large values of $\phi$. This is equivalent to requiring that our theory has a true vacuum at $\phi=0$.}
+and $m^2>0$ such that $\min(S)$ lies at $\phi=0$ so that we can easily expand around the minimum of $S$.
 
 The path integral is then
 \begin{equation}
@@ -21,9 +23,11 @@ We can obviously open up the exponential and rewrite as a series in $\phi$ and $
     }^n \cdot
     2^{2n} \int_0^\infty dx e^{-x} x^{2n+\frac{1}{2} -1},
 \end{align*}
-where we have performed a change of variables $x=\frac{m^2 \phi^2}{2\hbar}$. This integral is in fact just a gamma function,
+where we have performed a change of variables $x=\frac{m^2 \phi^2}{2\hbar}$. The integral in this expression is in fact just a gamma function,%
+    \footnote{The gamma function is defined by $\Gamma(z)=\int_0^\infty dx\, x^{z-1} e^{-x}.$}
+%
 \begin{equation*}
-    \Gamma(2n+\frac{1}{2})=\frac{(4n)! \sqrt{\pi}}{4^{2n}(2n)!}.
+    \Gamma\paren{2n+\frac{1}{2}}=\frac{(4n)! \sqrt{\pi}}{4^{2n}(2n)!}.
 \end{equation*}
 Thus our path integral computation using the gamma function is
 \begin{equation}\label{zerodpathintegralphi4}
@@ -35,7 +39,7 @@ Note that from Stirling's approximation, $n!\approx e^{n\log n}$, Thus these two
 
 In practice the ``true'' function can differ from the truncated series by some transcendental function which might be small. Cf. Skinner Ch. 2 for more discussion of asymptotic series.
 
-Note that term (1) in the path integral series expansion \ref{zerodpathintegralphi4} comes from expanding the $\frac{\lambda]{4!}\hbar}\phi^4$ term in the exponent, while term (2) is the number of ways of joining $4n$ elements in distinct pairs (compare our discussion at the end of the previous lecture). We can associate some Feynman diagrams to this-- a propagator and a four-point vertex.
+Note that term (1) in the path integral series expansion \ref{zerodpathintegralphi4} comes from expanding the $\frac{\lambda}{4! \hbar} \phi^4$ term in the exponent, while term (2) is the number of ways of joining $4n$ elements in distinct pairs (compare our discussion at the end of the previous lecture). We can associate some Feynman diagrams to this-- a propagator and a four-point vertex.
 \begin{center}
     \includegraphics[width=0.5\textwidth]{2019/01/20190124_fourpointfeynman.png}
 \end{center}

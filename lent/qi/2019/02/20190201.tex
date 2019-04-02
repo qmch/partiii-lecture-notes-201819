@@ -43,7 +43,7 @@ We conclude that the density matrix after taking the partial trace is
     \rho_A =\Tr_B \rho_{AB} &= \sum_{i\alpha j\beta} a_{i\alpha,j\beta}\ket{i_A}\bra{j_A}\delta_{\alpha\beta}\\
     &=\sum_{ij\alpha} a_{i\alpha,j\alpha} \ket{i_A}\bra{j_A} \in B(\cH_A).
 \end{align}
-One can then show that $\rho_A \geq 0$ (is positive semi-definite) and $\Tr \rho_A=0$, so $\rho_A$ is in fact a density matrix. We call $\rho_A$ the \term{reduced density matrix}, or a reduced state.
+One can then show that $\rho_A \geq 0$ (is positive semi-definite) and $\Tr \rho_A=1$, so $\rho_A$ is in fact a density matrix. We call $\rho_A$ the \term{reduced density matrix}, or a reduced state.
 
 Recall that the ordinary trace is cyclic, $\Tr(ABC)=\Tr(CAB)$. However, the partial trace $\Tr_A$ is \emph{not} in  general cyclic. It may be an interesting exercise to try to figure out when the partial trace is cyclic. It's also easy to prove that the complete trace is given by taking the partial traces,
 \begin{equation}
@@ -63,7 +63,7 @@ The expectation value of this observable is given by
 \end{align*}
 For this reason, the partial trace is often defined such that for any $M_{AB}$ of this form,
 \begin{equation}
-    \Tr_B(M_{AB}\rho_{AB}) \equiv \Tr(M_A \rho_A).
+    \Tr_B(M_{AB}\rho_{AB}) \equiv M_A \rho_A.
 \end{equation}
 
 \begin{exm}
@@ -78,7 +78,7 @@ where
 \end{exm}
 
 \begin{exm}
-    Consider the same Hilbert space as before, but consider the system in a pure state,
+    Consider the same Hilbert space as before, where the system is now in a pure state,
     \begin{equation}
         \ket{\phi_{AB}^+}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}).
     \end{equation}
@@ -100,7 +100,7 @@ where
                 }\\
                     &= \frac{1}{2} (\dyad{0_A} +\dyad{1_A}) = \frac{I_A}{2}.
             \end{align*}
-            A similar calculation holds for the trace over $A$.
+            The same is true for the trace over $A$ by symmetry.
         }
     that $\rho_A$ takes on a simple form--
     \begin{equation}
@@ -123,7 +123,7 @@ where
 
 In fact, there are four entangled states which are special:
 \begin{gather}
-    \ket{\phi^\pm_{AB}}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})\\
+    \ket{\phi^\pm_{AB}}=\frac{1}{\sqrt{2}}(\ket{00}\pm \ket{11})\\
     \ket{\psi^\pm_{AB}} = \frac{1}{\sqrt{2}}(\ket{01}\pm \ket{10}).
 \end{gather}
 These are the so-called \term{maximally entangled} states or ``Bell states,'' i.e. bipartite pure states such that when we take the partial traces, their reduced states are completely mixed:

@@ -57,7 +57,7 @@ Today we shall discuss the Schmidt decomposition, purification, and the no-cloni
     \begin{align*}
         \rho_A &= \Tr_B \ket{\psi_{AB}}\bra{\psi_{AB}}\\
             &= \Tr_B \sum_j \lambda_j \lambda_i (\ket{i_A} \ket{i_B})(\bra{j_A}\bra{j_B})\\
-            &= \sum_i \lambda_i \lambda_j \ket{i_A}\bra{j_A}\\
+            &= \sum_i \lambda_i \lambda_j \ket{i_A}\bra{j_A} \delta_{ij}\\
             &= \sum_{i=1}^{d_m} \lambda_i^2 \ket{i_A} \bra{i_A}
     \end{align*}
     since $\Tr(\ket{i_B}\bra{j_B})=\delta_{ij}.$
@@ -66,7 +66,7 @@ Today we shall discuss the Schmidt decomposition, purification, and the no-cloni
 
     Let $d_m=\min(d_A,d_B)$. It follows that we can write
     \begin{equation}
-        \rho_A = \sum_{i=1}^{d_m} \lambda_i^2 \ket{i_A}\bra{i_A} = \sum_{i=1}^{\text{rk}(\rho_A)}\lambda_i^2 \ket{i_a}\bra{i_A}.
+        \rho_A = \sum_{i=1}^{d_m} \lambda_i^2 \dyad{i_A} = \sum_{i=1}^{\text{rk}(\rho_A)}\lambda_i^2 \dyad{i_A}.
     \end{equation}
     The state itself can therefore be written as
     \begin{equation}

@@ -3,7 +3,7 @@ Admin note: there was no lecture (and hence no notes) for Friday, February 8, as
 \subsection*{Quantum operations and CPTP maps}
 To recap from last time, any allowed physical process on a quantum system is given by a quantum operation. The map must be completely positive (CP) in order to allow us to properly couple an ancilla (environment) to our system, and it must be linear and trace-preserving in order to take density matrices to other density matrices.
 
-Consider a map $\Lambda:B(\cH)\to B(\mathcal{K}),$ where $\cH\simeq \CC^m,\mathcal{K}\simeq \CC^n$. Let $\cM_m, \cM_m^+$ bu $m\times m$ complex positive semi-definite matrices. The set of density matrices on $\CC^n$ is given by
+Consider a map $\Lambda:B(\cH)\to B(\mathcal{K}),$ where $\cH\simeq \CC^m,\mathcal{K}\simeq \CC^n$. Let $\cM_m$ be the space of $m\times m$ complex semi-definite matrices, and $\cM_m^+$ the same but restricted to positive matrices. The set of density matrices on $\CC^n$ is given by
 \begin{equation}
     \cD(\CC^m)=\set{\rho \in \cM_m^+; \Tr \rho = 1}.
 \end{equation}
@@ -19,10 +19,10 @@ Consider a map $\Lambda:B(\cH)\to B(\mathcal{K}),$ where $\cH\simeq \CC^m,\mathc
     $(\Lambda \otimes \text{id}_k)$ is positive, where $\text{id}_k$ is the identity (super)operator, $\text{id}_k:\cM_k \to \cM_k$ such that $\text{id}_k(Q)=Q \forall Q\in \cM_k$.
 \end{defn}
 \begin{defn}
-    The map $\Lambda$ is completely positive (CP) if it is $k$-positive $\forall k\in \ZZ^+$, positive integers.
+    The map $\Lambda$ is \term{completely positive} (CP) if it is $k$-positive $\forall k\in \ZZ^+$.
 \end{defn}
 \begin{thm}[Necessary and sufficient condition for CP]
-    A linear map $\Lambda:\cB(\CC^d)\to \cB(\CC^{d'})$ is completely positive $\iff (\Lambda \otimes \text{id}_d)(\kb{\Omega}{\Omega})\geq 0$, where
+    A linear map $\Lambda:\cB(\CC^d)\to \cB(\CC^{d'})$ is completely positive $\iff (\Lambda \otimes \id_d)(\kb{\Omega}{\Omega})\geq 0$, where
     \begin{equation}
         \ket{\Omega}=\frac{1}{\sqrt{d}}\sum_{i=1}^d \ket{i}\ket{i} \in \CC^d \otimes \CC^d.
     \end{equation}
@@ -88,11 +88,11 @@ That is, to perform a quantum operation we can couple to an ancilla, perform the
 Stinespring's dilation theorem is a result from operator theory, but we'll see shortly that there are two more equivalent and relevant formulations, known as the Kraus Representation Theorem and the C-J isomorphism. We'll discuss this first one today.
 
 \begin{thm}[Kraus Rep'n Theorem]
-    A linear map $\Lambda:\cM(\cH)\to \cB(\mathcal{K})$ is CP if
+    A linear map $\Lambda:\cM(\cH)\to \cB(\mathcal{K})$ is CP if and only if
     \begin{equation}\label{krausdecomp}
         \Lambda(\rho)=\sum_{k=1}^r A_k \rho A_k^\dagger
     \end{equation}
-    where $\set{A_k}_{k=1}^r$ is a finite set of linear operators in $\cB(\cH,\mathcal{K}).$ Moreover it is TP if
+    where $\set{A_k}_{k=1}^r$ is a finite set of linear operators in $\cB(\cH,\mathcal{K}).$ Moreover it is TP if and only if
     \begin{equation}\label{krausunitaryish}
         \sum_{k=1}^r A_k^\dagger A_k = I_{\cH}.
     \end{equation}
@@ -110,7 +110,7 @@ Stinespring's dilation theorem is a result from operator theory, but we'll see s
     Here, we have done nothing other than use definitions and the linearity and cyclic property of the trace.
 \end{proof}
 \subsection*{Kraus Rep'n Thm $\equiv$ restatement of Stin. D. Thm.}
-WLOG assume $\phi\equiv \kb{\phi}{\phi} \in \cD(\cH')$. Let $\set{\ket{e_k}}_k$ be an onb for $\cH'$. By Kraus, we can write
+We can think of the Kraus Representation theorem as a local implementation of the Stinespring Dilation Theorem. WLOG assume $\phi\equiv \kb{\phi}{\phi} \in \cD(\cH')$. Let $\set{\ket{e_k}}_k$ be an onb for $\cH'$. By Kraus, we can write
 \begin{equation}
     \Lambda(\rho)=\sum_k \bra{e_k}U(\rho\otimes \phi) U^\dagger \ket{e_k}=\sum_k A_k \rho A_k^\dagger.
 \end{equation}
@@ -146,7 +146,7 @@ We call the $A_k$ Kraus operators. Some of the details are an exercise to fill i
     We'll first prove that \ref{cjforwards}$\to$\ref{cjbackwards}. The RHS of \ref{cjbackwards} is
     \begin{align*}
         \text{RHS}&=d\Tr (J(A\otimes B^T))\\
-        &= d\Tr((\Lambda\otimes \id)(\Omega)(A\otimes B^T)).
+        &= d\Tr\paren{(\Lambda\otimes \id_d)\dyad{\Omega}(A\otimes B^T)}.
     \end{align*}
     Note we will need the concept of the \term{adjoint} $\Lambda^*$ of a map $\Lambda$ w.r.t. the Hilbert-Schmidt inner product. That is, if $\Lambda:\cB(\cH)\to \cB(\mathcal{K}),$ then $\Lambda^*:\cB(\mathcal{K})\to \cB(\cH)$ where
     \begin{equation}
@@ -187,3 +187,8 @@ We call the $A_k$ Kraus operators. Some of the details are an exercise to fill i
     % \end{equation}
     % where we trace over the second system and use the adjoint to get back $\Lambda$.
 \end{proof}
+\begin{note}
+In the statement of the CJ isomorphism, the notation is a little sneaky. In Eqn. \ref{cjbackwards}, the trace on the LHS is a trace over the space $\cM_{d'}$, since this is where $A$ and $\Lambda(B)$ live. But on the RHS, the trace is over $\cM_{d'}\otimes \cM_d$, since $J$ is a superoperator taking maps $\cM_{d'}\otimes \cM_d \to \cM_{d'}\otimes \cM_d$.
+
+Note also that $J$ is \emph{not} a composition of linear maps. That is, it is not applying $\dyad{\Omega}$ and then some other map, because $\dyad{\Omega}$ is a map on operators in $\cM_d \otimes \cM_d$, whereas $J$ acts on operators in $\cM_{d'}\otimes \cM_d$.
+\end{note}
