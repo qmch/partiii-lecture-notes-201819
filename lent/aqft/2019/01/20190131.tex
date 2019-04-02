@@ -29,7 +29,7 @@ so we just need to define $\int d\theta$ and $\int d\theta \,\theta$. If we requ
 \begin{equation}
     \int d\theta(\theta+\eta)=\int d\theta \theta \implies \int d\theta =0.
 \end{equation}
-We can then choose the normalization so that $\int d\theta \, \theta = 1$. Note the similarity between differentiation and integration (i.e. an integral $\int d\theta\,\theta =\P{}{\theta}\theta=1$). This process is called \term{Berezin integration}. Using these rules, we also find that
+We can then choose the normalization so that $\int d\theta \, \theta = 1$. Note the similarity between differentiation and integration (i.e.  $\int d\theta\,\theta =1=\P{}{\theta}\theta$). This process is called \term{Berezin integration}. Using these rules, we also find that
 \begin{equation}
     \int d\theta \P{}{\theta} F(\theta)=0,
 \end{equation}
@@ -41,7 +41,7 @@ Suppose now we have $n$ Grassmann variables. Then the only nonvanishing integral
 \end{equation}
 In general we can just anticommute the Grassmann variables until they're in the right order, picking up a factor for the parity of the permutation. That is,
 \begin{equation}
-    \int d^n\theta \theta_{a_1}\theta_{a_2}\ldots \theta_{a_n} = \epsilon^{a_1 a_2 \ldots a_n},
+    \int d^n\theta \,\theta_{a_1}\theta_{a_2}\ldots \theta_{a_n} = \epsilon^{a_1 a_2 \ldots a_n},
 \end{equation}
 where $\epsilon$ is the totally antisymmetric symbol with value $+1$ for even permutations of $1,2,\ldots,n$, $-1$ for odd permutations, and $0$ if any indices are repeated.
 
@@ -68,7 +68,8 @@ Then the path integral is
 \begin{equation}
     Z_0 = \int d^2 \theta \, e^{-S(\theta)/\hbar}=\int d^2\theta \paren{ 1-\frac{A}{2\hbar}\theta_1\theta_2} = -\frac{A}{2\hbar},
 \end{equation}
-where the exponential has terminated thanks to our Grassmann variables.
+where the exponential has terminated thanks to our Grassmann variables.%
+    \footnote{That is, since any powers of $\theta_i$ greater than one are equal to zero, analytic functions of a finite number of Grassmann variables always terminate at some finite order.}
 
 Suppose now we have $n=2m$ fermion fields $\theta_a$. Then our action might be quadratic in the fields,
 \begin{equation}
@@ -96,7 +97,7 @@ we have
     Z_0=\sqrt{\frac{(2\pi \hbar)^n}{\det M}}.
 \end{equation}
 
-We can now introduce an external source function to our action, a Grassmann-values $\set{\eta_a}$, such that the new action is
+We can now introduce an external source function to our action, a Grassmann-valued $\set{\eta_a}$, such that the new action is
 \begin{equation}
     S(\theta,\eta)=\frac{1}{2} A_{ab} \theta_a \theta_b + \eta_a \theta_b.
 \end{equation}
@@ -106,7 +107,7 @@ Taking care to respect the anticommutation relations and completing the square a
 \end{equation}
 We can make a change of variables using the translational invariance of $\theta_a$ and pull out the constant factor to find
 \begin{equation}
-    Z_0(\eta)=\exp\paren{-\frac{1}{2\hbar}\eta^T( A^{-1}) \eta} Z_0(0).
+    Z_0(\eta)=\exp\paren{-\frac{1}{2\hbar}\eta^T( A^{-1}) \eta} Z_0(\eta=0).
 \end{equation}
 This allows us to get propagators by taking derivatives with respect to the source $\eta$, as we are wont to do:
 \begin{equation}

@@ -42,12 +42,13 @@ equipped with a (fixed) onb for $\CC^d$ given by $\set{\ket{i}}_{i=1}^d$, a maxi
     \begin{equation}
         \ket{\psi}=\sqrt{d}(\sqrt{\rho}\otimes I) \ket{\Omega}.
     \end{equation}
-    Let us check:
+    Let us check:%
+        \footnote{Note that $\sqrt{\rho}^\dagger$ is $\sqrt{\rho}$, since $\rho$ is positive and therefore Hermitian. Therefore $\bra{\psi}=\bra{\Omega} (\sqrt{\rho}\otimes I).$}
     \begin{align*}
         \ket{\psi}\bra{\psi}&=d(\sqrt{\rho} \otimes I) \ket{\Omega}\bra{\Omega} (\sqrt{\rho}\otimes I)\\
             &= \sum_{i,j}\sqrt{\rho}\ket{i}\bra{j}\sqrt{\rho} \otimes \ket{i}\bra{j}.
     \end{align*}
-    Tracing over the second system, $\ket{i}\bra{j}=\delta_{ij}$, so the partial trace is then
+    Tracing over the second system, $\Tr(\ket{i}\bra{j})=\delta_{ij}$, so the partial trace is then
     \begin{equation}
         \Tr_2 \ket{\psi}\bra{\psi} = \sqrt{\rho} \sum_i \ket{i}\bra{i} \sqrt{\rho} = \rho.
     \end{equation}
@@ -72,11 +73,13 @@ equipped with a (fixed) onb for $\CC^d$ given by $\set{\ket{i}}_{i=1}^d$, a maxi
             &=(I\otimes W)(I\otimes Q)(I\otimes V^T)\ket{\Omega}\\
             &=(I\otimes W)(I\otimes Q)(V\otimes I)\ket{\Omega}\\
             &= (V\otimes W)(I\otimes Q) \ket{\Omega}\\
-            &= (V\otimes W) \frac{1}{\sqrt{d}} \sum_i \ket{ i}\otimes Q\ket{i} \sum_j \sqrt{d} \lambda_j \ket{j}\bra{j}\bra{i}\\
+            &= (V\otimes W) \frac{1}{\sqrt{d}} \sum_i \ket{ i}\otimes Q\ket{i}\\
+            &= (V\otimes W) \frac{1}{\sqrt{d}} \sum_i \ket{ i}\otimes \paren{\sum_j \sqrt{d} \lambda_j \ket{j}\bra{j}}\ket{i}\\
             &=(V\otimes W) \sum_i \lambda_i \ket{i}\otimes \ket{i}\\
             &= \sum \lambda_i \ket{i_A} \ket{i_B}.\qedhere
         \end{align*}
-        Here, we have used the ``ricochet'' property to interchange $I\otimes V^T$ to $V\otimes I$, and moved $V\otimes I$ through $I\otimes Q$ since they act on independent parts of the composite system.
+        Here, we have used the ``ricochet'' property to interchange $I\otimes V^T$ to $V\otimes I$, and moved $V\otimes I$ through $I\otimes Q$ since they act on independent parts of the composite system.%
+            \footnote{Notice also that if $\ket{\psi}$ is a maximally entangled state, then $Q$ is just the identity matrix. $W$ and $V$ are isometries which rotate basis elements into the Schmidt basis, hence unitary. Thus $V^T$ is also unitary and $WV^T$ is unitary by closure. This proves the earlier claim that every maximally entangled state $\ket{\Phi}$ can be written as $\ket{\Phi}=(I \otimes U)\ket{\Omega}$ for $U$ a unitary.}
     \end{proof}
 \end{itemize}
 
@@ -86,13 +89,12 @@ Question: what is the most general description of the dynamics of an \emph{open}
 As all reasonable evolution operators should be linear, we will usually omit this from the description and just speak of a CPTP map. We can also reasonably call this a \term{quantum operator} or a \term{quantum channel}. That is, we have a map $\Lambda:\cD(\cH)\to \cD(\cH)$, e.g. it takes the density matrix $\rho$ from $\rho\mapsto \Lambda(\rho)=\rho'$. We call this a \term{superoperator} because it is a map from operators to operators.
 
 \begin{exm}
-    We've constructed a general description of open quantum systems, but it should include our previous description of closed quantum systems as a special case. Take $\Lambda$ to be a unitary transformation, such that
+    We've constructed a general description of open quantum systems, but it should include our previous description of closed quantum systems as a special case. We can do this by taking $\Lambda$ to be a unitary transformation, such that
     \begin{equation}
         \rho'=\Lambda(\rho)=U\rho U^\dagger.
     \end{equation}
-    
-    
 \end{exm}
+
 Let us now unpack some of the properties of CPTP maps.
 \begin{itemize}
     \item This map satisfies linearity:
@@ -120,7 +122,7 @@ These conditions are necessary, but not sufficient. In fact we, require $\Lambda
 \begin{defn}
     Let $\Lambda:\cD(\cH_A)\to \cD(\cH_A')$, where $\cH_A$ is the Hilbert space of this system. Consider an extension of $\cH_A$ to the bigger space $\cH_A \otimes \cH_B$. That is, we add another system $B,$ called the ancilla or (for obvious reasons) the environment. 
 
-    Note that $I_B$ is the identity operator on $B$, i.e. $I_B\in \cB(\cH_B)$, whereas $id_B$ is the superoperator $\cB(\cH_B)\to \cB(\cH_B)$ such that $id_B Q=Q \,\forall Q\in B(\cH_B).$ We then say that $\Lambda$ is \term{completely positive} if $\Lambda \otimes id_B$ is positive for all such extensions.
+    Note that $I_B$ is the identity operator on $B$, i.e. $I_B\in \cB(\cH_B)$, whereas $\id_B$ is the superoperator $\cB(\cH_B)\to \cB(\cH_B)$ such that $\id_B Q=Q \,\forall Q\in B(\cH_B).$ We then say that $\Lambda$ is \term{completely positive} if $\Lambda \otimes \id_B$ is positive for all such extensions.
 \end{defn}
 For instance, suppose the composite system $AB$ is initially in a state $\rho_A\otimes \omega_B$. Thus a completely positive map yields a state
 \begin{equation}

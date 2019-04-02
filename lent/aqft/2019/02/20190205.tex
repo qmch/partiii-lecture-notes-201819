@@ -1,16 +1,16 @@
 Today we will begin our discussion of scalar field theory in the path integral formalism. Let us begin with a preliminary note that we can trivially shift time variables from $i t\to \tau$ and thereby go from a Minkowski to Euclidean metric. Thus in Minkowski (with signature $+---$) we have a Lagrangian
 \begin{equation*}
-    \cL=\frac{1}{2} \p_\mu \phi \p^\mu \phi -V(\phi)
+    \cL_M=\frac{1}{2} \p_\mu \phi \p^\mu \phi -V(\phi)
 \end{equation*}
 (so the kinetic term has a $+$ sign) and in Euclidean signature ($++++$) we have
 \begin{equation*}
-    \cL=\frac{1}{2} \p_\mu \phi \p^\mu \phi+ V(\phi).
+    \cL_E=\frac{1}{2} \p_\mu \phi \p^\mu \phi+ V(\phi).
 \end{equation*}
-For instance, we might have some potential like $V(\phi)=\frac{1}{2} m^2 \phi^2 +sum_{n>2} \frac{1}{n!} V^{(n)} \phi^n$.
+For instance, we might have some potential like $V(\phi)=\frac{1}{2} m^2 \phi^2 +\sum_{n>2} \frac{1}{n!} V^{(n)} \phi^n$.
 
 Our path integral is then
 \begin{equation}
-    Z=\int \cD \phi e^{i\int dx^0 d^3x \cL}= \int \cD \phi e^{-\int dx_4 d^3x \cL},
+    Z=\int \cD \phi e^{i\int dx^0 d^3x \cL_M}= \int \cD \phi e^{-\int dx_4 d^3x \cL_E},
 \end{equation}
 where we have defined $ix^0=x_4$ and work in units with $\hbar =1$.
 
@@ -27,7 +27,7 @@ In Euclidean signature, we do not need to move the poles since they no longer li
 \subsection*{Generating functional}
 We have written down a free field action with a source (cf. Srednicki \textsection 8):
 \begin{equation}
-    S_0[\phi,J] = \int d^4x (\frac{1}{2} \p_\mu \phi \p^\mu \phi =\frac{1}{2} m^2 \phi^2 +J(x) \phi(x)).
+    S_0[\phi,J] = \int d^4x \paren{\frac{1}{2} \p_\mu \phi \p^\mu \phi +\frac{1}{2} m^2 \phi^2 +J(x) \phi(x)}.
 \end{equation}
 Taking the Fourier transform of the field we have
 \begin{equation}

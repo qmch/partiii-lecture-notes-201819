@@ -10,7 +10,7 @@ where the denominator is not squared, and in problem 2,
     }.
 \end{equation*}
 
-Today we shall return to the world of $3+1$ dimensions and set path integrals aside for a moment. Our main result today is the LSZ reduction formula, named for Lehmann-Symanzik-Zimmermann (cf. Srednicki \textsection 5). This result provides a direct relationship between scattering amplitudes. For example, consider the $2\to 2$ scattering of real scalar particles. For a free scalar, we have the field written in terms of creation and annihlation operators,
+Today we shall return to the world of $3+1$ dimensions and set path integrals aside for a moment. Our main result today is the \emph{LSZ reduction formula}, named for Lehmann-Symanzik-Zimmermann (cf. Srednicki \textsection 5). This result provides a direct relationship between scattering amplitudes. For example, consider the $2\to 2$ scattering of real scalar particles. For a free scalar, we have the field written in terms of creation and annihlation operators,
 \begin{equation}
     \phi(x)=\int \frac{d^3k}{(2\pi)^3 2E}\bkt{
         a(\vec k) e^{-ik\cdot x}+a^\dagger(\vec k)e^{ik\cdot x}
@@ -64,11 +64,11 @@ Note that
 \begin{align*}
     a_1^\dagger(\infty)-a_1^\dagger(-\infty)
         &=\int_{-\infty}^\infty dt \,\p_0 a_1^\dagger(t)\\
-        &= \int d^3k f_1(\vec k)\int d^4x \p_0 \bkt{e^{-ik\cdot x}(-i\p_0 \phi E \phi)}\\
+        &= \int d^3k f_1(\vec k)\int d^4x \p_0 \bkt{e^{-ik\cdot x}(-i\p_0 \phi + E \phi)}\\
         &= -i \int d^3 k f_1(\vec k) \int d^4x e^{-ik\cdot x} (\p_0^2 +E^2)\phi\\
         &= -i \int d^3 k f_1(\vec k)\int d^4 k e^{-ik\cdot x}(\p_0^2 + |\vec k|^2 +m^2)\phi.
 \end{align*}
-In going from the second to third line, the cross terms from the $\p_0$ derivative cancel. We also recognize that $|\vec k|^2 e^{-ik \cdot x} \phi(x) = -\nabla^2 (e^{-ik\cdot x}) \phi (x)= -e^{-ik\cdot x}\nabla^2 \phi(x)$ by integrating by parts. Therefore this last line becomes
+In going from the second to third line, we've canceled the cross terms from the $\p_0$ derivative and pulled the overall factor of $-i$ out front. In the fourth line, we are evidently still in Euclidean signature, rewriting $E^2$ in terms of $|\vec k|^2$ and $m^2$. We also recognize that $|\vec k|^2 e^{-ik \cdot x} \phi(x) = -\nabla^2 (e^{-ik\cdot x}) \phi (x)= -e^{-ik\cdot x}\nabla^2 \phi(x)$ by integrating by parts twice, where the wavepacket $f_1(\vec{k})$ has saved us from having to include a boundary term. Therefore this last line becomes
 \begin{equation}\label{adaggerfundamentalthm}
      a_1^\dagger(\infty)-a_1^\dagger(-\infty) = -i \int d^3k f_1(\vec k) \int d^4 x e^{-ik\cdot x}(\p^2 +m^2)\phi.
 \end{equation}
@@ -82,7 +82,7 @@ where $\mathcal{T}$ indicates time ordering. Of course, the expression is alread
 \begin{equation}
     a_j^\dagger(-\infty)=a_j^\dagger(\infty)+i\int d^3k\, f_j(\vec k)\int d^4 x\, e^{-ik\cdot x}(\p^2+m^2)\phi,
 \end{equation}
-and something similar for $a_{j'}(\infty)=a_{j'}(-\infty)+\ldots$.
+and we get a similar expression by taking the hermitian conjugate, $a_{j'}(\infty)=a_{j'}(-\infty)+\ldots$.
 Time ordering then moves $a_j^\dagger(\infty)$ to the left, annihilating $\bra{0}$ and $a_{j'}(-\infty)$ to the right, annihilating $\ket{0}$. What remains is the integral terms, which form the LSZ formula:
 \begin{align*}
     \braket{f}{i}={}&(i)^4 \int d^4 x_1 d^4 x_2 d^4x_{1'} d^4x_{2'} e^{-ik_1\cdot x_1} e^{-ik_2 \cdot x_2} e^{ik_{1'}\cdot x_{1'}} e^{ik_{2'} \cdot x_{2'}}\\
@@ -103,4 +103,5 @@ With these assumptions (and some careful thought about multi-particle states), t
     \cL &= \frac{1}{2} \p_\mu \phi \p^\mu \phi -\frac{1}{2} m^2 \phi^2 +\text{interactions}\\
     &\to \frac{1}{2} Z_\phi \p_\mu \phi \p^\mu \phi-\frac{1}{2} Z_m m^2 \phi^2 +\ldots
 \end{align*}
-after renormalization.
+after renormalization.%
+    \footnote{That is, we can always choose the kinetic term to be canonically normalized. We'll discuss more about these factors later when we start to consider loop corrections, divergences, and the full machinery of renormalization.}
