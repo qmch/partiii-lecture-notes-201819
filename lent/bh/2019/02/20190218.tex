@@ -21,11 +21,11 @@ That is, $B$ measures the failure of $S^a$ to be parallel propagated along $U^b$
 \begin{equation}
     B^a{}_b U^b =0, \quad U_a B^a{}_b = \frac{1}{2} \nabla_b(U^2)=0.
 \end{equation}
-The first follows from the geodesic equation and the latter from $U^2=$constant.%
+The first follows from the geodesic equation and the latter from $U^2={}$constant.%
     \footnote{Just one line of algebra. $U_a B^a{}_b=U_a \nabla_b U^a = \frac{1}{2} \nabla_b(U^2)=0$.}
 Consider the following expression:
 \begin{equation}
-     U\cdot \nabla(U\cdot S) = (U\cdot \nabla U^a) S_a + U^a U\cdot S_a,
+     U\cdot \nabla(U\cdot S) = (U\cdot \nabla U^a) S_a + U^a (U\cdot \nabla S_a),
 \end{equation}
 where $(\cdot)$ indicates contracted indices. But this first term is zero by the geodesic equation, and the second is zero by the property $U^a B_{ab}=0$ from above. Thus $U\cdot S$ is constant along the integral curves of $U$.
 
@@ -94,7 +94,7 @@ We can write
 \end{equation}
 under the projection
 \begin{equation}
-    P^a{}b = \delta^a{}_b + N^a U_b + U^a N_b,
+    P^a{}_b = \delta^a{}_b + N^a U_b + U^a N_b,
 \end{equation}
 where it's a quick exercise to check that $P^a{}_b P^b{}_e = P^a{}_e.$ This projection projects the tangent space at $p$ onto the spacelike $T_\perp$, the space perpendicular to both null vectors $N^a$ and $U^a$.
 One can also check that
@@ -118,9 +118,12 @@ so $P$ is parallel-propagated trivially along geodesics $U^a$.
         U\cdot \nabla \hat S^a &= U\cdot \nabla(P^a{}_c S^c)\\
             &= P^a{}c U\cdot \nabla S^c\\
             &= P^a{}_c B^c{}_d S^d\\
-            &= P^a{}c B^c_d P^d{}_e S^e,
+            &= P^a{}_c B^c_d P^d{}_e S^e,
     \end{align*}
-    where we used $U\cdot S=0$ and $B^c{}d U^d=0$. Finally, we can use the fact that $P$ is a projector so that $P^2=P$. So we replace $P^d{}e=P^d{}_f P^f{}_e$ and this gives us the projectors to write everything with hats.
+    where we used $U\cdot S=0$ and $B^c{}_d U^d=0$. Finally, we can use the fact that $P$ is a projector so that $P^2=P$. So we replace $P^d{}_e=P^d{}_f P^f{}_e$ and this gives us the projectors to write everything with hats as
+    \begin{equation*}
+        U\cdot \nabla \hat S^a = P^a{}_c B^c{}_d P^d{}_f P^f{}_e S^e = \hat B^a{}_f \hat S^f. \qedhere
+    \end{equation*}
 \end{proof}
 
 \subsection*{Expansion, rotation, and shear}
@@ -148,7 +151,7 @@ which does not depend on the choice of $N$. In fact, this is true for any scalar
 \begin{proof}
     The definition of $\hat B$ and the fact that $U\cdot U = B\cdot U=0$ implies htat
     \begin{equation}
-        \hat B^b{}_c = B^c{}_c + U^b N_d B^d{}_c + U_c B^b{}_d N^d + U^b U_c N_d B^d{}_e N^e.
+        \hat B^b{}_c = B^b{}_c + U^b N_d B^d{}_c + U_c B^b{}_d N^d + U^b U_c N_d B^d{}_e N^e.
     \end{equation}
     Using this we have
     \begin{equation}\label{nullgeneratorsformnotation}
@@ -156,9 +159,9 @@ which does not depend on the choice of $N$. In fact, this is true for any scalar
     \end{equation}
     where we have just rewritten the expression in form notation. If $U^a$ is normal to $\mathcal{N}$, then $U\wedge dU=0$ on $\mathcal{N}$, and hence on $\mathcal{N},$
     \begin{equation}
-        0=U_{[a}\hat \omega_{bc]}=\frac{1}{3} (U_a \hat \omega-{bc}+U_b \hat \omega-{ca}+ U_c \hat \omega_{ab}),
+        0=U_{[a}\hat \omega_{bc]}=\frac{1}{3} (U_a \hat \omega_{bc}+U_b \hat \omega_{ca}+ U_c \hat \omega_{ab}),
     \end{equation}
-    where we've just opened up the antisymmetrization and used the fact that $\hat \omega_{bc}$ is already antisymmetric to absorb factors of 2.
+    where we've just expanded out the antisymmetrization and used the fact that $\hat \omega_{bc}$ is already antisymmetric to absorb factors of 2.
     
     Contracting with $N^a$ gives
     \begin{equation}

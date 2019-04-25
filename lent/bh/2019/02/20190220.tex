@@ -6,8 +6,17 @@ We showed last time that we can characterize the behavior of null congruences by
 \subsection*{Gaussian null coordinates} For a null hypersurface $\mathcal{N}$, take a $2$D spacelike surface $S$ with coordinates $y_i$ on $\mathcal{N}(U)$. Take another null vector field $V$ on $\mathcal{N}$ satisfying \begin{equation}
     V\cdot \P{}{y^i}=0\text{ and } V\cdot U=1, V^2=0.
 \end{equation}
-Now we assign coordinates $(r,\lambda,y^i)$ to the point at affine parameter distance $r$ along the null geodesic which starts at the point on $\mathcal{N}$ with coordinate $(\lambda,y^i)$ and has tangent vector $V^a$. Thus we follow $U$ along $\mathcal{N}$ $(r=0)$ for distance $\lambda$ and then go off $\mathcal{N}$ by following $V$ for affine parameter $r$.
-%illustration here
+Now we assign coordinates $(r,\lambda,y^i)$ to the point at affine parameter distance $r$ along the null geodesic which starts at the point on $\mathcal{N}$ with coordinate $(\lambda,y^i)$ and has tangent vector $V^a$. Thus we follow $U$ along $\mathcal{N}$ $(r=0)$ for distance $\lambda$ and then go off $\mathcal{N}$ by following $V$ for affine parameter $r$. See Fig. \ref{fig:gaussiannullcoords} for an illustration.
+
+\begin{figure}
+    \centering
+    \includegraphics{2019/02/20190220_reall_gaussiannullcoords.png}
+    \caption{An illustration of Gaussian null coordinates. For a null hypersurface $\cN$, take a 2D spacelike surface $S\subset \cN$ with coordinates $y_i$. We construct the integral curves of $U$ (the generators of $\cN$) and from $S$, follow these curves for affine parameter distance $\lambda$. Finally, we take a null vector field $V$ and follow its integral curves off of $\cN$ for a distance $r$.\newline
+    %
+    Image credit to Prof. Reall's  \href{http://www.damtp.cam.ac.uk/user/hsr1000/black_holes_lectures_2016.pdf}{Black Holes notes}, \textsection 4.6.
+    }
+    \label{fig:gaussiannullcoords}
+\end{figure}
 
 This defines a coordinate chart in a neighborhood of $\mathcal{N}$ such that the $\mathcal{N}$ is at $r=0$, with $U=\P{}{\lambda}$ on $\mathcal{N}$ and $\P{}{r}$ tangent to affinely parametrized null geodesics.
 
@@ -57,6 +66,7 @@ where $h=\det h_{ij}$. To make the simplifications in the first and second lines
 \begin{equation}
     \frac{d\sqrt{h}}{d\lambda} = \theta \sqrt{h}.
 \end{equation}
+Borrowing a notation from Witten, if we denote $V\equiv \sqrt{h}$, then $\theta = \dot V/V$. Since $V$ represents the volume of a little area on $S$, $\theta$ represents the normalized expansion of that volume as we flow along the null geodesics in the congruence.
 
 \subsection*{Trapped surfaces}
 %We're warming up now, because the next class will be *the* most difficult class.
