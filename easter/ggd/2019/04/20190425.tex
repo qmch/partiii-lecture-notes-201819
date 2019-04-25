@@ -1,3 +1,45 @@
-\begin{note}
-Some very important administrative details for this course!
-\end{note}
+% \begin{note}
+% Some very important administrative details for this course!
+% \end{note}
+
+\subsection*{Size matters... not?}
+To motivate our course, let us start with a story from Galileo. The astronomer Galileo wrote a treatise entitled ``Two New Sciences.'' One of these was the heliocentric model of the solar system, and the other was an early version of the atomic theory. Galileo's work recognized that because of area-volume laws, the laws of physics seem to have a scale dependence. Building a scale model of a cathedral is very different than building a full-sized cathedral because mass scales with volume, whereas the strength of objects (based on local atomic interactions) scales with area.
+
+On the other hand, there are a class of theories which follow the precepts of another great philosopher, Yoda, who stated in The Empire Strikes Back that ``Size matters not.'' These are the so-called \term{conformal field theories}. We could have some object and then scale it up, and it would behave exactly the same. In fact, we might go so far as to posit that size is an extra \emph{dimension} of our system! We shall call it $z$.
+
+But maybe we object to this idea on a few grounds.
+\begin{itemize}
+    \item \emph{Objection \#1.} Real dimensions should have conjugate momenta. In fact, Noether's theorem tells us that under the symmetry $\ln z \to \ln z + C$, we get a conserved quantity $p_z$ corresponding to the dilation symmetry.
+    \item \emph{Objection \#2.} We can rotate objects. This would require the group of Poincar\'e symmetries and dilations to be augmented to some bigger group with $d$ extra generators. Indeed, this happens and we get the special conformal group.
+    \item \emph{Objection \#3.} The speed of light is constant. This seems to tell us that we could measure distances by measuring the time that light takes to travel over the same scaled-up object. But by taking a cue from Einstein, we can answer this objection by saying that clocks run slower for bigger objects. That is, there is a redshift factor $ds\sim ds/z$. Our metric would look like
+    \begin{equation}
+        ds^2 = \frac{dz^2 + {}^{(d)} \eta_{ij} dx_i dx_j}{z^2},
+    \end{equation}
+    and in fact this is the unique metric which satisfies the conformal symmetries. This is precisely the metric of Anti-de Sitter space (AdS).
+    \item \emph{Objection \#4.} We can't put objects on top of each other without them interfering (e.g. if we scale some things up). Fermions are the obvious case, where we expect to run into trouble with the Pauli exclusion principle. However, there is a loophole. The objects won't interact much \emph{if} there are a large number $N$ of particle species, especially if objects are required to be in singlets (e.g. a gauge theory $SU(N_c),$ with $N\sim N_c^2$).
+    \item \emph{Objection \#5.} If $N$ is finite, there will still be a small interaction over large $\Delta z$, which implies the existence of a long-range universal force. But this looks like gravity! So things are going pretty well.
+    \item \emph{Objection \#6.} When the gauge theory is heated up (e.g. we cram a lot of energy into a small space), we get ``deconfinement,'' leading to a hyperentropic object with huge $O(N)$ entropy. What we've got is none other than a black hole.
+\end{itemize}
+
+This is the motivation for the AdS/CFT duality (originally posited by Maldacena and elaborated by Witten and others).
+\begin{equation}
+    \text{CFT}_d \leftrightarrow \text{AdS}_{d+1} \times F
+\end{equation}
+where $F$ is a compact fiber. On the left lives an ordinary quantum field theory without gravity, and on the right lives a full theory of quantum gravity (typically a string theory). The large $N$ limit of the QFT corresponds to the classical limit (where the Planck length is much smaller than the curvature scale, $l_p \ll R_\text{AdS}$). Moreover, the QFT must be strongly coupled in order to produce local (pointlike) fields on scales below the AdS scale ($l_s \ll R_\text{Ads}$, with $l_s$ the string length). Finally, QFT has a set of known axioms (although they are hard to study at strong coupling), whereas we don't know how to treat quantum gravity nonperturbatively. Hence we can either use this to learn about strongly coupled field theories by studying general relativity, or we can try to learn about quantum gravity from the axioms of QFT.
+%If you work on this, it will triple your citations.
+
+Let's try to elaborate this idea a little more. In a 4d Maxwell theory, we have an action
+\begin{equation}
+    I=\frac{1}{4} \int d^4x \sqrt{-g} F_{ab} F_{cd} g^{ac} g^{bd},
+\end{equation}
+which is invariant under the Weyl transformations $g_{ab} \to \Omega^2(x) g_{ab}$. This is because the two factors of the inverse metric each scale as $\Omega^{-2}$, and the determinant of the metric is like a volume. Since $g$ is like a length squared, $\sqrt{-g} \sim \Omega^d$, so these factors will cancel when $d=4$. If the conformal symmetry holds in a QFT, we call it a CFT.
+\begin{equation}
+    \frac{\delta \ln Z}{\delta \Omega(x)} \sim \avg{T} \sim \text{curvature},
+\end{equation}
+i.e. variations of the partition function with respect to the factor $\Omega$ are proportional to the trace of the stress tensor, which scales with the curvature. For $d=2, T\sim cR$, while for $d=4, T\sim a(GB)+ cC^2$ where GB is the Gauss-Bonnet term and $C$ is the Weyl tensor.
+
+Conformal symmetry requires that the beta functions of the theory vanish. That is, if our couplings generically depend on scale, $\lambda(z)$, we require that
+\begin{equation}
+    \frac{d\lambda_i}{d\ln z} =\beta_i =0.
+\end{equation}
+These usually represent some special isolated points in the space of theories, except in situations where there is enough supersymmetry to produce e.g. a 1-parameter family of CFTs. Hence many of the theories of interest in AdS/CFT are supersymmetric.
