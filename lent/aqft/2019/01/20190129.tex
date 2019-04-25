@@ -3,7 +3,7 @@ Last time, we saw our first QFT example of an effective action. We introduced th
     e^{-W(\phi)/\hbar}=\int d\chi e^{-S(\phi,\chi)/\hbar}.
 \end{equation*}
 
-Today, we'll show that we can take this further and construct a quantum effective action $\Gamma(\Phi)$ and average over all quantum fluctuations. This will lead us to defined an effective potential $V(\Phi)$. Effective actions of this form help us to determine the true vacuum of a theory and answer questions like ``Do quantum effects induce spontaneous symmetry breaking?''
+Today, we'll show that we can take this further and construct a quantum effective action $\Gamma(\Phi)$ and average over all quantum fluctuations. This will lead us to define an effective potential $V(\Phi)$. Effective actions of this form help us to determine the true vacuum of a theory and answer questions like ``Do quantum effects induce spontaneous symmetry breaking?''
 
 Let us define an average field in the presence of some source $J$,
 \begin{align}
@@ -51,7 +51,7 @@ and under a Legendre transform we have the Gibbs free energy
 \begin{equation}
     G=F+hM,\quad \P{G}{M}=h.
 \end{equation}
-When $h\to 0$, the equilibrium magnetization is given by the minimum of $G$.
+When we turn off the external field, $h\to 0$, the equilibrium magnetization is given by the value of $M$ which minimizes $G$.
 
 Returning to QFT, let us try to perturbatively calculate $\Gamma(\Phi)$. We will treat $\Phi$ as we did $\phi,$ i.e. as a proper field. A quantum path integral over $\Phi$ then takes the form
 \begin{equation}\label{gammapathintegral}
@@ -76,7 +76,7 @@ as $g\to 0$. In addition, as $g\to 0$, our path integral \ref{gammapathintegral}
 
 We learn that
 \begin{equation}
-    W_\Gamma(J)=W_\Gamma^{(0)}(J) = \Gamma(\Phi)+J\Phi =W(J),
+    W_\Gamma(J)\approx W_\Gamma^{(0)}(J) = \Gamma(\Phi)+J\Phi =W(J),
 \end{equation}
 where the last equality follows from our earlier definition \ref{wjlegendre}. Therefore the sum of connected diagrams $W(J)$ (with action $S(\phi)+J\phi$) can be obtained as the sum of tree diagrams $W_\Gamma^{(0)}(J)$ (with action $\Gamma(\Phi)+J\Phi$).
 
