@@ -50,16 +50,22 @@ mv qi-notes-partiii.pdf ../../pdfs
 #mv sm-notes-partiii.pdf ../../pdfs
 
 #supersymmetry
-cd ../susy
-latexmk -pdf susy-notes-partiii.tex
-latexmk -c
-mv susy-notes-partiii.pdf ../../pdfs
+#cd ../susy
+#latexmk -pdf susy-notes-partiii.tex
+#latexmk -c
+#mv susy-notes-partiii.pdf ../../pdfs
 
 #and string theory
-cd ../str
-latexmk -pdf str-notes-partiii.tex
+#cd ../str
+#latexmk -pdf str-notes-partiii.tex
+#latexmk -c
+#mv str-notes-partiii.pdf ../../pdfs
+
+#and gauge/gravity for easter
+cd ../../easter/ggd
+latexmk -pdf ggd-notes-partiii.tex
 latexmk -c
-mv str-notes-partiii.pdf ../../pdfs
+mv ggd-notes-partiii.pdf ../../pdfs
 
 echo "PDFs made. Pushing to the remote."
 #finally, return to the home directory, git add, and git commit.
