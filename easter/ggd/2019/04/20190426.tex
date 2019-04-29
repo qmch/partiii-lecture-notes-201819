@@ -1,0 +1,68 @@
+Recall from e.g. \emph{General Relativity} or \emph{String Theory} that a Weyl transformation is a rescaling of the metric
+\begin{equation}
+    g_{ab} \to \Omega^2(x) g_{ab}.
+\end{equation}
+Note that this is slightly different from a conformal symmetry. A \emph{conformal symmetry} is a diffeomorphism $\xi^a$ that preserves $g_{ab}$ up to a Weyl factor $\Omega$.
+
+To describe symmetries we shall need a Killing vector $\xi^a$, which by definition satisfies $\nabla_a \xi_b + \xi_b \xi_a=0$. (That is, $\cL_\xi g=0$.) Transformations corresponding to Killing vectors are isometries leaving the metric unchanged. More generally, we might like a \emph{conformal Killing vector}, which satisfies
+\begin{equation}
+     \nabla_a \xi_b + \nabla_b \xi_a -\frac{2}{d} g_{ab}(\nabla \cdot \xi)=0.
+\end{equation}
+The factor of $2/d$ comes from the fact that the trace of the metric is $g_{ab} g^{ab}=d$, so that when we take the trace of this, we will get something that is always zero.
+
+In Minkowski, $g_{ab}=\eta_{ab}$. Notice that we can rescale the null coordinates (e.g. the EF coordinates $u,v$ go to $f(u),g(v)$ for some monotonic functions $f,g$). In $d=1,2$, there are infinitely many generators for Minkowski. But for $d>2$, there are precisely $\frac{1}{2} (d+1)(d+2)$ generators.
+
+For a general $d$ dimensions we have $d$ translations, $\frac{d(d-1)}{2}$ Lorentz transformations, $1$ scaling/dilation transformation, and $d$ ``special'' conformal transformations, as seen in Table \ref{tab:conformalsymmetries}.
+\begin{table}[]
+    \centering
+    \begin{tabular}{c|c |c}
+        &  \\\hline
+        $d$ translations & $x^a \to x^a +c^a$ & $p_a \equiv -i \P{}{x^a} = -i \p_a$ \\
+        $\frac{d(d-1)}{2}$ Lorentz & $x^a \to \Lambda^a{}_b x^b (\Lambda^\dagger \Lambda=1)$ & $M_{ab}=i(x_a \p_b -x_b \p_a)$ \\
+        $1$ scaling/dilation & $x^a \to \Omega x^a$ & $D=-i(x\cdot \p)$ \\
+        $d$ special & $x^a \to \frac{x^a-x^2 b^a}{(x-x^2 b)^2}, \Omega =\frac{x^2}{(x-x^2 b)^2}$ & $K_a = i(x^2 \p_a - 2 x_a( x\cdot \p)).$
+    \end{tabular}
+    \caption{A list of the conformal transformations, how points $x^a$ transform, and their generators written in differential operator form.}
+    \label{tab:conformalsymmetries}
+\end{table}
+Here, we've used an adjoint notation, $\Lambda^\dagger \Lambda^c{}_d g_{ca} g^{db}$. Notice that an inversion is a transformation $x^a \to \frac{x^a}{x^2}, \Omega = 1/x^2$ (since $1/x^a= x^a/x^2$. Hence the special conformal transformations are equivalent to a translation, an inversion, and another translation.
+
+Recall that translation symmetry gives us a conserved stress tensor, $\nabla_a T^{ab}=0$. We claim the current
+\begin{equation}
+    J^a = T^{ab} \xi_b
+\end{equation}
+is conserved. This follows since
+\begin{align}
+    \nabla_a J^a &= (\nabla_a T{ab})\xi_b + T^{ab} \nabla_a \xi_b\\
+        &=T^{ab} \nabla_{(a}\xi_{b)},
+\end{align}
+where the first term was zero because of the regular stress-energy conservation. We've symmetrized the second term by the symmetry of the stress tensor, so the second term is just zero for a Killing vector. As the stress tensor is traceless, we can certainly subtract off its trace for free so that
+\begin{equation}
+    T^{ab}\nabla_{(a}\xi_{b)} - \frac{1}{d} T(\nabla \cdot \xi) = 0
+\end{equation}
+for a conformal killing vector. We may compute some commutators to get all the relations between the generators:
+\begin{itemize}
+    \item Usual Poincar\'e commutators
+    \item $[D,P_a]=iP_a$
+    \item $[D,K_a] = -iK_a$
+    \item $[K_a,P_b] = 2i (\eta_{ab} D - M_{ab})$
+    \item $[K_a,M_{bc}]=i(\eta_{ab} K_c - \eta-{ac} K_b)$
+\end{itemize}
+with all others zero. This is equivalent to the symmetries of $SO(d,2)$.
+
+We've got to be a little careful about our inversion transformations, since an inversion brings infinity in to the origin and vice versa. So this may not be a real symmetry of Minkowski since it ``pushes infinity around.'' Instead, we should look at the \term{maximal conformal extension}. For the Euclidean plane $\RR^2$, this is a 2-sphere with a ``point at infinity.'' We can see the isomorphism by putting the 2-sphere on the plane and stereographically projecting from the ``point at infinity'' on the north pole. 
+
+On the other hand, the Lorentzian case is more subtle. In Lorentz signature, $|x|=0$ on the light cone. What happens is we must go to the maximal conformal extension of Minkowski, which is $S_{d-1}\times \RR$. It is a cylinder. Our conformal transformations have the effect of flipping or shifting which patch of the cylinder we are looking at.
+
+We might additionally be interested in representations of the conformal group-- how do conformal transformations act on fields? We shall focus on unitary, positive-energy irreps, which come from fields (i.e. local operators). In QFT, we construct states by acting on the vacuum with some operator smeared out in spacetime by a suitable test function,
+\begin{equation}
+    \ket{\psi}=\int d^dx \, f(x) \cO(x) \ket{0}.
+\end{equation}
+The operators $\cO$ are classified by $SO(d)$ spin and weight of a ``primary field'' $\cO$. By primary field (as we saw in \emph{String Theory}), we mean a field which transforms as $\phi \to \Omega^\Delta \phi$ under conformal transformations, where $\Delta$ is called the weight. The derivatives $\p^n \phi$ are called descendants, and they transform with derivatives of $\Omega$. (This is slightly different from the $2D$ version of primary, where we are additionally interested in Virasoro). A gauge-invariant operator $\cO$ must also satisfy ``unitarity bounds.'' The details depend on the dimension $d$, and some concrete examples are as follows:
+\begin{align}
+    \Delta_\phi &\geq \frac{d-2}{2}\text{ (scalar) except identity},\\
+    \Delta_\psi &\geq \frac{d-1}{2} \text{ (spinor)}\\
+    \Delta_J &\geq d-1 \text{ (vector)}\\
+    \Delta_T &\geq d \text{ (symmetric traceless tensor)}.
+\end{align}
+These bounds are saturated for $\Box \phi=0, \slashed{\p} \psi=0, \nabla_a J^a =0, \nabla_a T^{ab}=0$. Notice once things start interacting, we get anomalous dimensions.

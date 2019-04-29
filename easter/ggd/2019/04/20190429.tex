@@ -1,0 +1,57 @@
+Today we shall continue our discussion of conformal symmetry. Note that if you were in \emph{Black Holes}, you might recall that when doing QFT in curved spacetime, the vacuum depends on our choice of reference frame. However, when we do the maximal conformal extension of Minkowski, no such ambiguity is present. The vacuum on the cylinder is the same as the vacuum in the original Minkowski space.
+
+The picture of the cylinder is also the origin of the ``operator-state correspondence,'' in which we may rewrite the time coordinate with Euclidean signature by a Wick rotation $\tau = it$. Hence the cylinder is isomorphic to a punctured plane (e.g. $S_1 \times \RR \cong \RR^2 \setminus \set{0}$) and we can set up a correspondence between states on the cylinder and operators inserted as boundary conditions on the punctured plane, with time ordering corresponding to radial ordering on the plane.
+
+Recall that last time, we said that scalars have weights obeying 
+\begin{equation}
+    \Delta_\phi \geq \frac{d-2}{2}\text{ (scalar)}
+\end{equation}
+except the identity, which clearly has weight zero. This discussion of weight also requires that we set $\hbar=c=1$, as is conventional, so that there is only one scale in the game. A free scalar field theory has terms in the action like $\int \p_\mu \phi \p^\mu \phi d^dx$. Since $\p_\mu$ has mass dimension $+1$ and $d^dx$ has dimension $-d$, our scalars must have (naive) dimension $\frac{d-2}{2}$.
+
+One may then write down the $2$-point (correlation) function, which by dimensional analysis can only look like
+\begin{equation}
+    \bra{0} \phi(y) \phi(x) \ket{0} =\frac{1}{|x-y|^{2\Delta}}.
+\end{equation}
+That is, it must have dimensions of $d-2$, and it can only depend on the separation between $x$ and $y$ (under translation symmetry). In fact, this needs to be slightly modified to
+\begin{equation}
+    \bra{0} \phi(y) \phi(x) \ket{0} =\frac{1}{|x-y+i\epsilon \hat t|^{2\Delta}},
+\end{equation}
+where $\hat t$ allows us to slightly shift a pole to imaginary time. We haven't fully explained this correction yet, but we'll see why this is the correct correlation function later. The upshot is that the form of the correlation function is scaled by the scaling symmetry.
+
+The three-point function is also fixed by the full conformal symmetry. Note that the fields in the three point function could a priori have different weights $\Delta_1,\Delta_2,\Delta_3$:
+\begin{equation}
+    \bra{0} \phi_3(z) \phi_2(y) \phi_1(x) \ket{0} = \frac{C}{|x-y|^{\Delta_1 +\Delta_2 -\Delta_3}|x-z|^{\Delta_1+\Delta_3 -\Delta_2} |y-z|^{\Delta_2+\Delta_3 - \Delta_1}}.
+\end{equation}
+n.b. the four-point and higher functions cannot be derived directly from the conformal symmetry. Specifying the three-point function is sufficient to completely define the CFT. However, note that in general the problem is overdetermined-- if we pick a three-point function at random, it probably won't correspond to a meaningful CFT. The program of trying to determine which three-point functions will give valid CFTs based on self-consistency conditions is known as the \term{conformal bootstrap}.
+
+%We'll discuss the spectral decomposition, which played an important role in the Avengers: Endgame movie.
+\subsection*{Spectral decomposition} The spectral decomposition is a Fourier transform which allows us to work in a nicer basis. For a state
+\begin{equation}
+    \ket{\psi}=\int f(x) \phi(x) d^dx,
+\end{equation}
+we can define the momentum-space wavefunction $\phi(p)$ as
+\begin{equation}
+    \phi(p)=\int e^{ip \cdot x} \phi(x) d^dx.
+\end{equation}
+Suppose we want to evaluate
+\begin{equation}
+    \bra{0} \phi(-q) \phi(p)\ket{0}
+\end{equation}
+up to overall normalization. We can do this with dimensional analysis:
+\begin{equation}
+    \bra{0} \phi(-q) \phi(p)\ket{0} \propto \delta^d(p-q) \theta(E) |p|^{2\Delta -d},
+\end{equation}
+with $\Delta > \frac{d-2}{2}$. This is because the Fourier transform takes us to a wavefunction which lives in inverse momentum space. Hence we get two contributions of $d$ from the $d^dx$ integrals, one of which is absorbed by the momentum-conserving delta function.
+
+Note that for $\Delta = \frac{d-2}{2}$, we might naively assume that the $|p|^{2\Delta-d}$ dependence turns into $|p|^{-2}$. However, this is wrong. In fact, we get a delta function instead, $\delta(p^2)$. We can think of this as coming from the fact that free fields (which saturate this bound) satisfy $\Box \phi=0$, which in momentum space corresponds to the constraint $p^2=0$. States with $\Delta<\frac{d-2}{2}$ will not satisfy unitarity consistent with some positivity constraint.
+
+Hence for the special case $\Delta =\frac{d-2}{2}$, we only get states on the light cone. Taking a metric
+\begin{equation}
+    ds^2 = -dudv + dy_i^2
+\end{equation}
+with $d-2$ coordinates $y_i$ and two null coordinates $v,u$, we have $\frac{1}{p^2} =\frac{1}{p_{y_i}^2 -2p_u p_v}$. For states which satisfy and do not saturate the unitarity bound, $\Delta > \frac{d-2}{2}$, our states fill the interior of the future light cone. There are no normalizable states $\ket{\psi}$ with $E^2=\vec p^2$ exactly, though states may come arbitrarily close to being null. Thus all the physical states do not obey a wave equation \emph{unless it is in one higher dimension}.
+
+\subsection*{AdS spacetimes}
+Before focusing on AdS, we'll start more generally with maximally symmetric spacetimes in $D$ dimensions (where eventually we shall set $D=d+1$). In Minkowski, we have at most $\frac{D(D+1)}{2}$ Killing vectors in a $D$-dimensional spacetime. However, we can also set this many constraints on our spacetime by specifying the curvature, $R_{ab} = g_{ab}\Lambda$ for $\Lambda$ some cosmological constant. (The counting works out since $R_{ab}$ is symmetric.)
+
+There are two interesting cases. For $\Lambda >0$, we get de Sitter space, which can be thought of as the unit hyperboloid in $D+1$ Minkowski space. However, if we take anti-de Sitter space, we instead have the unit hyperboloid in a signature $(D-1,2)$ spacetime with two time coordinates.
