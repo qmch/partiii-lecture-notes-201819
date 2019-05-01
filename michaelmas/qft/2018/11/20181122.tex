@@ -47,10 +47,10 @@ Now let's quantize the field. Our Lagrangian has no mass term, which is as we ex
     \item There is a large symmetry group of transformations of the form
     $$A_\mu(x)\to A_\mu(x)+\p_\mu \lambda(x)$$
     with $\lambda$ such that $\lim_{|\vec x|\to \infty }\lambda(x)=0$. Under such a transformation, we find that
-    $$F_{\mu\nu}\to \p_\mu(A_\nu+\p_nu \lambda)-\p_\nu(A_\mu+\p_\mu\lambda)=\p_mu A_\nu -\p_nu A_\mu$$
+    $$F_{\mu\nu}\to \p_\mu(A_\nu+\p_\nu \lambda)-\p_\nu(A_\mu+\p_\mu\lambda)=\p_\mu A_\nu -\p_\nu A_\mu$$
     since partial derivatives commute, so $F_{\mu\nu}$ and therefore $\cL$ is invariant under these transformations. Equivalently, we may write the equations of motion as $\eta_{\mu\nu}\p_\rho F^{\rho\nu}=0$ or
     $$(\eta_{\mu\nu}\p_\rho \p^\rho -\p_\mu \p_\nu)A^\nu =0.$$
-    Note that the operator in parentheses is not invertible-- it annihilates functions of the form $\p^\nu \lambda(x).$ Therefore there is a redundancy in our description of the vector field $A^\nu$, which we call a \term{gauge symmetry}. The existence of a gauge symmetry is equivalent to the statement that there is no unique solution for $A_\mu$; it is only determined up to adding $\p_\mu \lambda(x)$.
+    Note that the operator in parentheses is not invertible-- it annihilates functions of the form $\p^\nu \lambda(x).$ Therefore there is a redundancy in our description of the vector field $A^\nu$, which we call a \term{gauge symmetry}. The existence of a gauge symmetry is equivalent to the statement that there is no unique solution for $A_\mu$; it is only determined up to adding functions of the form $\p_\mu \lambda(x)$.
 \end{itemize}
 
 We say that the configuration space for $A_\mu$ is then \term{foliated}\footnote{separated into hypersurfaces} by \term{gauge orbits}\footnote{everywhere the gauge freedom takes you from a given starting point, i.e. for a particular choice of $A_\mu$, the corresponding orbit $O$ is $O=\set{A_\mu+\p_\mu \lambda(x): \lim_{|\vec x|\to \infty }\lambda(x)=0}$}. We can draw these as lines in configuration space, such that all states on a given line represent the same physical state. To actually compute things, we usually take a representative from a gauge orbit (``fix the gauge''), and in general we should choose a gauge that any $A_\mu$ can be put into. Here are some examples.

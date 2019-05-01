@@ -1,0 +1,51 @@
+Last time, we promised to explain the $i\epsilon\hat t$ prescription in the two-point function. Notice that $|x-y|^{2\Delta}$ can vanish when the separation between $x$ and $y$ is null. Hence we need some $i\epsilon$ prescription to push one of the operator insertions slightly into an imaginary direction.
+
+%shift figure
+
+Recall that in momentum space, we have $\bra{0}\phi(-q) \phi(p)\ket{0}\propto \delta^d(p-q) \theta(E) |p|^{2\Delta-d}$. The step function here fixes $E>0$. Consider now the following integral where WLOG we set $y=0$:
+\begin{equation}
+    \Int |x|^{-2\Delta} e^{-iEt} dt,
+\end{equation}
+where $|x|^{2\Delta}=(\vec x^2 - t^2)^\Delta$. This is just the $t$ part of the Fourier transform for the two-point function (up to normalization). For $E<0$, the exponential is suppressed as $t\to i\infty$ (the upper half-plane), so adding $+i\epsilon \hat t$ pushes the poles at $t=\pm |\vec x|$ down by a little imaginary part. Note also that these are only honest poles if $\Delta \in \ZZ$. Otherwise, we have branch cuts which stretch to $-i\infty$ in the $\hat t$ direction. Either way, this tells us that we want to focus on the future light cone, and that $[\phi(y),\phi(x)]\neq 0$ when $y,x$ are timelike separated.
+%figure
+
+\subsection*{Back to AdS}
+As we stated, a maximally symmetric spacetime is one such that
+\begin{equation}
+    R_{ab} = (8\pi G) \frac{2}{D-2} g_{ab} \Lambda,
+\end{equation}
+where we've restored proportionality constants.
+
+For the de Sitter case, $\Lambda>0$, we have the unit hyperboloid with one time dimension (Minkowski $D+1$), with metric
+\begin{equation}
+    ds^2 = R_{\text{dS}}^2 \bkt{-d\tau^2 + \cosh^2(\tau) d\Omega_{D-1}^2}.
+\end{equation}
+This just says that spacetime looks like a $D-1$ sphere of radius $R_\text{dS} \cosh(\tau)$ with a proper time coordinate $\tau$. The conformal boundary is $S_{D-1}\times S_0$, where by $S_0$ we just mean two points (one at future timelike infinity and one at past timelike infinity). 
+
+On the other hand, for $\Lambda <0$, we have AdS, which is a unit hyperboloid in a spacetime with two time dimensions, $\text{sig}(D-1,2)$, with symmetry group $SO(D-1,2)$. We can describe our hyperboloid in de Sitter by $x^2+y^2 +z^2+ \ldots - t^2 R_\text{dS}^2$, so we should make an equivalent construction for AdS. That is,
+\begin{equation}
+    x^2+y^2 +z^2+\ldots -t^2 -u^2 = -R_\text{AdS}^2
+\end{equation}
+where $u$ is our second time coordinate. We may therefore define a metric
+\begin{equation}
+    ds^2 = R_\text{AdS}^2 \bkt{d\rho^2 - \cosh^2(\rho)d\tau^2 + \sinh^2(\rho) d\Omega_{D-2}^2}.
+\end{equation}
+This looks like hyperbolic space with a redshift factor. The conformal boundary of AdS is then $S_{D-2}\times S_1$. However, the fact that our time coordinate has a boundary $S_1$ means that our spacetime has closed timelike curves. Strictly, we can remedy this by instead taking the universal cover of this spacetime and cover the spacetime with many sheets so that each time we go around, we are on a new sheet.%
+    \footnote{This is a bit like how the universal cover of $S_1$ is an upward spiral. As we spiral up, we come back to a point which would be projected down to the same point on the circle, but is distinguished by being on a different coil of the spiral.}
+%I just have to wait a while and then I can kill my own grandfather and other paradoxical things.
+
+If we now compactify our $\rho$ coordinate, $\rho=\infty \to \theta=\pi/2$, then our metric takes the form
+\begin{equation}
+    ds^2 = \frac{R_\text{AdS}^2}{(\cos\theta)^2} \bkt{-d\tau^2 +d\theta^2 +\theta^2 d\Omega^2_{d-1}}.
+\end{equation}
+In these coordinates, we see that AdS is conformal to a half-sphere. However, note that our metric blows up as $\theta \to \pm \pi/2$. We can draw this as a ``tin can'' diagram. 
+%diagram
+In addition, the group center of AdS has the structure of $\ZZ$, i.e. there are infinitely many discrete antipodal points in AdS. These antipodal points have the property that the represent points where timelike geodesics reconverge. That is, no matter how fast we shoot out an object from the origin, its trajectory eventually reconverges at the next antipodal point. Timelike geodesics are attracted to $\rho=0$. Moreover, light rays (null geodesics) can actually make it out to $\rho=\infty$, and (with reflecting boundary conditions) can in fact return to $\rho=0$ after finite time.
+
+The conformal boundary of AdS has the structure of $S_{D-2}\times \RR = S_{d-1}\times \RR$. Let us also remark that the half-sphere model allows us to make a very simple consistency check-- it is not possible to send light faster through the bulk than through the boundary. There are no bulk shortcuts. We can see this since the boundary is an equator of the half-sphere, so trajectories on the boundary are length-minimizing.
+
+It is often convenient to restrict to a patch of the bulk isometric to $\text{Mink}_d$ on the CFT side. We call this the Poincar\'e patch since it has the Poincar\'e group of symmetries, and it has metric
+\begin{equation}
+    ds^2 = R_\text{AdS}^2 \bkt{\frac{dz^2 +(-dt^2 +d\vec x^2)}{z^2}}.
+\end{equation}
+Hence $t\to \Omega t, \vec x \to \Omega x, z \to \Omega z$ is  a symmetry of this metric and $z$ represents a scale ``dimension.'' The future horizon is the $z\to +\infty$ limit, and in this limit the redshift grows arbitrarily large. This tells us the CFT has arbitrarily low energy.

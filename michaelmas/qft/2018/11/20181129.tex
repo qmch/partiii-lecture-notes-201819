@@ -13,11 +13,13 @@ where $D_\mu$ is the \emph{covariant} derivative given by
 This sort of construction should look really familiar from the last few \emph{Symmetries} lectures-- we can reasonably hope that our new covariant derivative $D_\mu$ will live up to its name and transform correctly under gauge transformations.
 
 In fact, it turns out that $\cL_{QED}$ is invariant under gauge transformations, but both the gauge field $A_\mu$ \emph{and} the spinor field $\psi$ have to transform:
-\begin{align}
-    A_\mu(x) &\to A_\mu(x)+\p_\mu \lambda(x)\\
-    \psi(x) &\to e^{-ie \lambda(x)}\psi(x)\\
-    \bar\psi(x) &\to e^{+ie \lambda(x)}\bar\psi(x).
-\end{align}
+\begin{subequations}
+    \begin{align}
+        A_\mu(x) &\to A_\mu(x)+\p_\mu \lambda(x)\\
+        \psi(x) &\to e^{-ie \lambda(x)}\psi(x)\\
+        \bar\psi(x) &\to e^{+ie \lambda(x)}\bar\psi(x).
+    \end{align}
+\end{subequations}
 Note that these are local symmetries, i.e. $\lambda(x)$ depends explicitly on the spacetime point $x$! This is different from the global symmetry, where the field is transformed everywhere in the same way (e.g. by a factor $e^{ie\tilde \lambda}$, with $\tilde \lambda$ a constant). Let us now show that the covariant derivative transforms like the spinor field under gauge transformations.
 
 \begin{proof}
@@ -31,7 +33,10 @@ By direct computation, the covariant derivative transforms as follows:
 Therefore the covariant derivative $D_\mu \psi$ transforms like the spinor field $\psi$. Moreover $\slashed{D}$ is the same thing up to contraction with the gamma matrices $\gamma^\mu$, and the gamma matrices are independent of the gauge (they are just some representation of the Clifford algebra), so $\slashed{D}$ also transforms like $\psi$.
 \end{proof}
 
-We already checked that the Maxwell term was invariant since it only involves $A_\mu$, so now we see that $$\bar \psi (i(\slashed{D}-m)\psi \to (e^{ie\lambda}\bar \psi)(e^{-ie\lambda} (i\slashed{D}-m)\psi)=\bar \psi (i(\slashed{D}-m)\psi$$
+We already checked that the Maxwell term was invariant since it only involves $A_\mu$, so now we see that 
+\begin{equation}
+    \bar \psi (i\slashed{D}-m)\psi \to (e^{ie\lambda}\bar \psi)(e^{-ie\lambda} (i\slashed{D}-m)\psi)=\bar \psi (i(\slashed{D}-m)\psi
+\end{equation}
 is also invariant under gauge transformations and therefore the entire QED Lagrangian is invariant, as we claimed.
 
 From the QED Lagrangian, we see that the coupling constant $e$ has the interpretation of electric charge since the equations of motion are
@@ -52,7 +57,7 @@ Now, a question-- where did this value come from? It's dimensionless, so it is i
 
 We can now discuss a similar problem, a theory with a gauge field $A_\mu$ coupling to a complex scalar $\phi$. For a real scalar field, there is no suitable current to couple to, but for the complex scalar, introducing a coupling turns out to be doable. The appropriate covariant derivative is
 \begin{equation}
-    D_\mu \phi \equiv \p_\mu \phi - ieq A_\mu \phi,
+    D_\mu \phi \equiv (\p_\mu - ieq A_\mu) \phi,
 \end{equation}
 where $q$ is the charge of the scalar $\phi$ in units of $e$. For instance, the sup squark (supersymmetric partner of the up quark) has $q=+2/3$. Here, if the scalar field $\phi$ transforms as
 \begin{equation}
