@@ -1,0 +1,100 @@
+Last time, we studied a massive vector field (Proca field) in the bulk, with action
+\begin{equation}
+    I=\int d^Dx \paren{\frac{1}{4} F_{ab} F^{ab} + \frac{1}{2} m^2 A_a A_b g^{ab}} \sqrt{-g}.
+\end{equation}
+Let's notice that the equations of motion for this field can be written out as
+\begin{equation}
+    \p_i F^{ib} + \p_z F^{zb} + (4-D) z^{-1} F^{zb} = z^{-2} m^2 A^b,
+\end{equation}
+where indices are raised and lowered with $\eta$. Hence under the ansatz that the vector potential $A^i$ scales as $z^\nu J^i$ plus order $z^{\nu+2}$ corrections, 
+\begin{equation}
+    A^i = z^\nu J^i + \cO(z^{\nu+2}),
+\end{equation}
+we found that
+\begin{equation}
+    (\Delta -1 )(\Delta -D + 1) =m^2,
+\end{equation}
+where in the massless case, $m^2=0$, we have two solutions. $\Delta=d-1$ gives us a conserved (global) boundary current and $\Delta =1$ gives a boundary gauge potential. Of course, we haven't studied the $z$ component yet. Let us do that now.
+
+For $A^z$, if $m^2=0$ then we have a gauge symmetry $\delta A_a = \nabla_a \alpha$ which suggests to us that we can impose a gauge condition. We shall choose a sort of holographic interpretation of the axial gauge, namely
+\begin{equation}
+    A_z = 0.
+\end{equation}
+This tells us that on lines of constant $x_i$ ($i\neq z$), the field is constant. Our equations of motion then reduce to
+\begin{equation}
+    \p_i F^{iz} =0,
+\end{equation}
+which we may by the antisymmetry of $F$ rewrite as $\p_z(\p_i A^i)=0$. Given that this field should be normalizable in the bulk (i.e. falls off at large $z$), we can actually conclude that
+\begin{equation}
+    \p_i J^i = 0 = \nabla_i J^i = 0.
+\end{equation}
+Note that while we like to think of our conserved currents as vectors, we should actually think of them like tensor densities. This is because the natural thing to integrate over is a $d-1$-dimensional Cauchy slice so that $\sqrt{-g} J^i_\text{tensor}$. Moreover, note that we can promote to a covariant derivative in our conservation equation because $m^2=0,$ so there is no characteristic mass scale in the theory and we therefore do not get $\p\Omega$ terms when we take the covariant derivative. %not totally sure if this is right
+
+What happens if we turn on the mass, $m^2>0$? Since we had the gauge symmetry $\delta A_a = \nabla_a \alpha$, we can try varying the action with respect to $\alpha$. This variation should vanish to first order. We find that
+\begin{equation}
+    \delta_\alpha I = m^2 \int \nabla \alpha \cdot A = -m^2 \int \alpha (\nabla \cdot A).
+\end{equation}
+Since $\alpha$ is arbitrary, we get a Lorentz gauge-like condition,
+\begin{equation}
+    \nabla \cdot A = 0.
+\end{equation}
+The difference is that instead of this being a gauge choice, we get it for free by the variation of the action in the Proca action. Thus
+\begin{equation}
+    \nabla_a (A_b g^{ab} \sqrt{g}) = \p_a (A_b z^{D-2} \eta^{ab} \sqrt{-\eta})=0
+\end{equation}
+for AdS. We find that
+\begin{equation}
+    A_z = \frac{z^{\Delta_J} (\p \cdot J)}{\Delta_J - (d-1)},
+\end{equation}
+where we've argued that the numerator does not in general vanish once we turn the mass on.
+
+What we learn is that a \emph{boundary global current} $J^i(x)$ corresponds to a \emph{bulk gauge field} $A^a(x,z)$. This is generally true for an abelian theory like $U(1)$-- in the case of a non-abelian theory, we would need some gauge index $I$ for a theory like $SU(2)$,
+\begin{equation}
+    J^i_I(x) \leftrightarrow A_I^a (x,z).
+\end{equation}
+Moreover, every \emph{decent} CFT should have a (traceless) stress-energy tensor. Hence
+\begin{equation}
+     T^{ij}(x) \leftrightarrow g^{ab}(x,z),
+\end{equation}
+which we recognize as a dynamical graviton, giving us Einstein gravity. Hence the bulk isn't precisely AdS but rather asymptotically AdS, so that our dynamical gravity theory corresponds to an excited state of the CFT. We won't focus on supersymmetry here, but let us just note that
+\begin{equation}
+    \text{SUSY current} \leftrightarrow \text{gravitino},
+\end{equation}
+which suggests that in general we would get some sort of supergravity theory in the bulk.
+
+For a conformal irrep $T_{ij}(x)\ket{0}$, a linear spin-2 equation is
+\begin{equation}
+    \nabla^2 h_{ab} - \nabla_{(a}\nabla_{c)} h_a^c + \nabla_a \nabla_c h^c_c + g_{ab}^\text{AdS} (\nabla^c \nabla^d h_{cd} -\nabla^2 h^c_c) = m^2(h_{ab} -g_{ab}^\text{AdS}h_c^c),
+\end{equation}
+where this last term is known as the Fierz-Pauli mass. This is how we (self-consistently) turn on the graviton mass. This field equation restricts us to transverse tracefree modes and implies $\nabla^2 h_{ab} =m^2h_{ab}$. 
+
+How many degrees of freedom are left? We have $\frac{(D-2)(D-1)}{2}-1$ in the $m^2=0$ case (the $-1$ comes from imposing the traceless condition), and $\frac{(D-1)D}{2}$ for $m^2>0$. We can also add on a term to an Einstein-Hilbert action (the quadratic piece of GR/Fierz-Pauli) as%
+    \footnote{We sometimes call $h$ a reference metric.}
+\begin{equation}
+    \int d^D x \sqrt{-g} (R[g]+2\Lambda) +\frac{1}{2} m^2( h_{ab} h^{ab} -g_{ab}^{\text{AdS}}h^a_a h^b_b).
+\end{equation}
+We ought to think of this as studying linearized perturbations in massive gravity,
+\begin{equation}
+    g_{ab} =g_{ab}^\text{AdS} + h_{ab}.
+\end{equation}
+To linear order we get the equation on $h_{ab}$ vanishing in pure Einstein gravity (i.e. $m^2=0$).
+
+To a perturbation $h_{ij}$ we can associate a boundary term which has the interpretation of a stress-energy tensor,
+\begin{equation}
+    h_{ij}(x,z)= z^{\Delta-2} T_{ij} +\cO(z^\Delta),%T_{ij} \sim z^{\Delta -2} h_{ij} + \cO(z^\Delta),
+\end{equation}
+or equivalently
+\begin{equation}
+    T_{ij} = \lim_{z\to 0} z^{2-\Delta} h_{ij},
+\end{equation}
+and we have a scaling dimension relation
+\begin{equation}
+    \Delta(\Delta-d) = m^2.
+\end{equation}
+As before, the $m^2=0$ case gives two solutions, $\Delta=d$ corresponding to a conserved stress-energy tensor and $\Delta=0$ giving a boundary \emph{metric}, $g_{ab}$.
+
+Let's reflect on this calculation. Why are we studying linearized equations when GR is generally non-linear? Quantum mechanics is linear, so irreps of the conformal group $\cH_\text{irrep} \subset \cH_\text{CFT}$ and thus $T_{ij}\ket{0} =\text{1-graviton state}$. Hence we get a linear wave equation $D\phi=0$ (for some differential operator $D$. In fact, this does not mean that the (linear) CFT is only dual to a linearized version of gravity in the bulk. It is dual to the full non-linear GR, provided that we study $n$-point functions using something called Witten diagrams (like Feynman diagrams), describing scattering and interactions of gravitons in the bulk. The external edges are given on the boundary of AdS. We have then a correspondence between propagators from the bulk to boundary and from bulk-to-bulk:
+\begin{equation}
+    G_{\text{bulk}\to\text{bdy}} = \lim_{z'\to 0} (z'x')^-\Delta G_{\text{bulk}\to\text{bulk}}(z,x,z',x').
+\end{equation}
+We're being a bit schematic here, but the idea is that we get a Green's function solving $D\phi=0$ and more generally we could introduce a boundary source.

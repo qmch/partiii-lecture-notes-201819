@@ -79,7 +79,7 @@ where $L$ is the number of loops, $I$ is the number of internal lines, and $V$ i
 \end{equation}
 where $\ldots$ indicates some integrand. We can therefore factor out the momentum-conserving delta function and do $V-1$ integrals over the rest of the $\delta$ functions, so we are left with $L$ nontrivial integrals. The factors of $2\pi$ work out too: $\paren{\frac{1}{(2\pi)^4}}^I (2\pi)^{4V} = \frac{1}{(2\pi)^{4(L-1)}}.$
 
-We get the following simplified rules:
+We get the following simplified rules for computing amplitudes in Euclidean signature:
 \begin{itemize}
     \item External lines get $\frac{1}{p^2+m^2}$ factors
     \item Internal lines get $\frac{1}{k^2+m^2}$ factors
@@ -93,7 +93,7 @@ For example, if $\cL_{int}$ contains a $\frac{\lambda}{4!}\phi^4$ term, then we 
 \begin{equation}
     \frac{1}{2} \frac{1}{(p_1^2+m^2)(p_2^2 +m^2)} (2\pi)^4 \delta^{(4)}(p_1-p_2)(-\lambda) \int \frac{d^4k}{(2\pi)^4} \frac{1}{k^2+m^2}.
 \end{equation}
-Unfortunately, this is infinity. We'll see what to do with this a little later. If $\cL_{int}$ instead contains $\frac{g}{3!}\phi^3$, we get a matrix element
+Unfortunately, this is infinity. (This is because $d^4k / k^2$ scales as $k^2$, which diverges for large $k$.) We'll see what to do with this a little later. If $\cL_{int}$ instead contains $\frac{g}{3!}\phi^3$, we get a matrix element at order $g^2$,
 \begin{equation}
     \frac{1}{2} \frac{1}{(p_1^2+m^2)(p_2^2+m^2)} (2\pi)^4 \delta^{(4)}(p_1-p_2)(-g)^2 \int \frac{d^4k}{(2\pi)^4} \frac{1}{k^2+m^2} \frac{1}{(k-p_1)^2 +m^2}
 \end{equation}

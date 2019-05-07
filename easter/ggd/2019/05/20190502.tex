@@ -1,0 +1,78 @@
+\subsection*{Scalar fields in AdS-Poincar\'e}
+
+Last time, we observed that part of the AdS spacetime is described by the AdS-Poincar\'e patch, i.e. a region of the bulk whose boundary is conformal (related by a Weyl transformation) to half of a $D$-dimensional Minkowski space. Thus
+\begin{equation}
+    ds^2= \frac{dz^2 + {}^{(d)}\eta_{ij} dx^i dx^j}{z^2} \xrightarrow{\text{Weyl}} {}^{(D)}\eta_{ij} dx^i dx^j
+\end{equation}
+
+We shall try to solve the scalar wave equation,
+\begin{equation}
+    \overbrace{\Box}^{\nabla_x^2 - \nabla_t^2} \phi = m^2 \phi.
+\end{equation}
+Notice that our current signature, the time derivative comes with a minus sign, and the time eigenvalues (frequencies) are imaginary so that larger mass corresponds to larger oscillations.
+
+The naive scaling dimension of our free field is $\Delta_\phi = \frac{D-2}{2}$, so the normalized  field is then
+\begin{equation}
+    \tilde \phi = z^{(D-2)/2} \phi.
+\end{equation}
+However, note that $\Box \phi$ is not a conformal wave equation. That is, since $\phi \to \Omega^\Delta \phi$, $\Box\phi$ will include not only $\Omega^{\Delta+2} \Box \phi$ terms but also $\nabla \Omega, \nabla^2 \Omega$. The derivatives will hit our conformal factors, so this operator does not transform as a primary operator.
+
+However, note that $R_{ab}$ is also not a conformal primary. In fact,
+\begin{equation}
+    \paren{\Box -\frac{D-2}{4(D-1)}R} \phi =0
+\end{equation}
+is conformal. The transformation of $R$ cancels the transformation of $\Box$. In AdS, $R=-D(D-1)$, which we interpret as a mass shift,
+\begin{equation}
+     \tilde m^2 = m^2 -\frac{D(D-2)}{4}.
+\end{equation}
+
+Maybe we're worried that $m^2\phi$ is dimensionful, and so it seems like we might not be able to make this transform in a nice conformal way. However, we can promote this to a position-dependent mass, $m^2(z) \propto 1/z^2$. Adding back in $z$ dependence, we end up with the following differential equation:
+\begin{equation}
+    \paren{\p_z^2 - \frac{\tilde m^2}{z^2} + {}^{(d)}\Box} \tilde \phi =0.
+\end{equation}
+This might be hard to solve exactly (in terms of some hypergeometric function). But something nice happens when we take the $z\to 0$ limit. The ${}^{(d)}\Box$ term becomes subleading-- think of taking the Fourier transform of $\phi$. Then $\Box$ becomes a constant $-p^2$, while the other two terms scale like $1/z^2$.
+
+We might therefore guess that $\tilde \phi$ has some power law dependence on $z$,
+\begin{equation}
+    \tilde \phi \sim z^\nu + O(Z^{\nu+2}).
+\end{equation}
+Plugging in, we get
+\begin{equation}
+    \nu(\nu-1)z^{\nu-2} - \tilde m^2 z^{\nu-2} =0.
+\end{equation}
+Collecting coefficients, we get
+\begin{equation}
+    \nu(\nu-1) = \tilde m^2.
+\end{equation}
+In general there are two solutions since this equation is quadratic in $\nu$. This is what we should have expected-- it corresponds to a choice of boundary conditions. In the $m=0$ case, we would have had a ``potential'' which was zero everywhere, and which we could define in the $z=0$ limit with either Dirichlet or Neumann boundary conditions. It's therefore not too surprising that we get the same choice in the massive case.
+
+Note that if we take the other limit, $z\to \infty$, the normalizability requires that $p^i p_i <0$ (timelike normalization). If we tried to put in a tachyonic solution (wrong-sign momentum), the eigenvalue of ${}^{d}\Box$ has the wrong sign and we get solutions which grow exponentially in time rather than oscillating.
+
+\subsection*{The dictionary}
+Here is our first entry in the ``dictionary'' of AdS/CFT.
+\begin{equation}
+    \cO(x^i) = \lim_{z\to 0} z^{-\nu} \tilde \phi(z,x^i)= \lim_{z\to 0} z^{-\Delta_\cO}\phi(z,x^i).
+\end{equation}
+That is, an operator on the boundary is equivalent to a field in the bulk in the $z\to 0$ limit. By dimensional analysis, we see that 
+\begin{equation}
+    \Delta_{\cO}=\Delta_\phi +\nu =\frac{D-2}{2} \nu = \frac{d-2}{2} + \nu + 1/2.
+\end{equation}
+Hence the unitarity bound is saturated for $\nu=-1/2$, and we have the second equality by the dimensional analysis and the definition of the normalized field.
+
+Let us also observe that our condition $\nu(\nu-1)=\tilde m^2$ corresponds to
+\begin{align}
+    m^2 &= \Delta(\Delta-d)\\
+        &= \paren{\nu +\frac{d-1}{2}}\paren{\nu -\frac{d-1}{2}}\\
+        &= \nu^2 -\nu +\frac{(d-1)(d+1)}{4}.
+\end{align}
+This is the conformal mass shift. 
+%figure
+If we plot this $\tilde m^2$ versus $\Delta$, we see that between the zeros at $\nu=0,\nu=1$, there is actually a regime with extremum at where $\tilde m^2$ goes a bit negative. So our field is actually permitted to be a little bit tachyonic, provided that it is not \emph{too} tachyonic. The minimum which lies at $\nu=1/2$ is known as the Breitenlohnen-Freedman bound. There is also another bound, the unitary bound at $\nu=-1/2$. For if $\nu=-1/2$, then $\phi^2$ scales as $z^{-1}$, the Klein-Gordon norm of our field goes as $\int \phi^* \p_t \phi$, which is logarithmically divergent or worse. %revisit this?
+Hence the unitarity bound at $\nu=-1/2$ is actually strict as a cutoff on \emph{operators}.
+
+Interestingly, we can actually construct different fields on the boundary consistent with the same bulk description by imposing different boundary conditions. We'll see this idea more later. That is, by drawing the figure we see that there are two values of $\Delta$ which give the same mass $\tilde m$. By convention, we pick the one with larger $\Delta$ to be the operator and the one with lower $\Delta$ to be the source.
+
+That is, the other solution is a source term in the QFT:
+\begin{equation}
+     \cZ_\text{QFT}= \int \cD x \, e^{-(I[x]+\int J \cdot \cO d^d x)}
+\end{equation}

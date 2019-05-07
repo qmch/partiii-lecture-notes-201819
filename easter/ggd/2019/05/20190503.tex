@@ -1,0 +1,78 @@
+Last time, we discussed how the scaling dimension of an operator satisfies $\Delta_\cO (\Delta_\cO -d) = m_\phi^2$, i.e. how the mass squared represents a shift in the scaling dimension. Only operators with $\Delta$ above the unitarity bound of $\frac{d-2}{2}$ are admissible as operators; the other solutions (to a generally quadratic equation) are considered as sources.
+
+By writing as a path integral for the quantum field theory on the boundary, we have the partition function
+\begin{align}
+    \cZ_\text{QFT}^{[J]} &= \int \cD x \, e^{i(I[x] + \int J \cdot \cO \, d^dx)}\\
+        &= \cZ_{\text{CFT}} \avg{\cT [e^{-\int J\cdot \cO d^dx}]}\\
+        &= \cZ_\text{bulk}[J].
+\end{align}
+Here, $\cZ_\text{CFT}$ is the source-free CFT, $J=0$, and $\cT$ indicates time-ordering. Note also that we've written this as $\cZ_\text{QFT}$, since the sources will generically break conformal invariance. By our duality, the existence of sources corresponds to some boundary conditions for physics in the bulk.
+
+By dimensional analysis, $\Delta_J = d-\Delta_\cO$, so this explains why smaller values of $\Delta_\cO < \frac{d-2}{2}$ can still correspond to meaningful source terms. In fact, in $m^2=0$, an abvious solution is $\phi={}$constant (under the $\phi\to \phi+c$ symmetry, since the action depends only on derivatives). Hence there is a marginal source $\Delta_J=0$, corresponding to an operator with $\Delta_\cO=d$.
+
+Now our operators and sources can be written as
+\begin{align}
+    \cO(x^i) &= \lim_{z\to 0} (z^{-\Delta_\cO} \phi(x^i,z) - J\text{ profile})\\
+    J(x^i) &= \lim_{z\to 0} (z^{-\Delta_J} \phi(x^i,z) - \cO\text{ profile}),
+\end{align}
+where the $J$ profile term is necessary if $\Delta_\cO > \Delta_J$ and the $\cO$ profile term is needed if $\Delta_J > \Delta_\cO$. Sometimes we may need subleading terms since $\phi \sim z^\nu+\cO(z^{\nu+2})$. If it turns out that $\Delta_J -\Delta_\cO \in 2\ZZ$, then there may be some coincidences where e.g. $\Box J \sim \cO$ are of the same order, leading to log terms.
+
+Let's focus in on sources for a second. There are three cases of sources we might be interested in.
+\begin{itemize}
+    \item $\Delta_J>0$: relevant, i.e. important in the IR of the CFT. These operators matter most in the interior of the bulk, where length scales are large. The QFT makes sense.
+    \item $\Delta_J=0$: marginal (still a CFT to leading order). Usually, these operators turn out to be marginally relevant or marginally irrelevant at higher order. They are often only exactly marginal in theories with large amounts of SUSY.
+    \item $\Delta_J < 0$: irrelevant. These operators become important in the UV limit of the CFT, i.e. the IR of the AdS. Thus we may have to worry about the UV completion of the theory being potentially ill-defined.
+\end{itemize}
+
+\subsection*{Holographic RG}
+In a nonlinear $\phi$ theory, note that the $z$ ODE (equations of motion in the bulk) corresponds to an RG flow on the boundary. Hence even though there may be different boundary theories compatible with the one bulk theory, we can still describe those boundary theories looking at how $\phi$ scales with $\ln z$. These boundary theories are related by an RG flow.
+
+There are some aspects which are scheme-dependent, i.e. they depend on how we do the renormalization. So e.g. the exact beta functions will generically depend on whether we do dim-reg, set our theory on a lattice, add a momentum cutoff, etc. to get $\beta_\alpha=f(\alpha)$. However, there are still universal aspects, e.g. anomalous dimension in CFTs, existence of fixed points, and certain log divergences.
+
+\subsection*{Bulk vector field}
+We can write down an action for a vector field. It takes the form
+\begin{equation}
+    I=\int d^Dx \paren{\frac{1}{4} F_{ab} F_{cd} g^{ac} g^{bd} \sqrt{-g} + \frac{1}{2} m^2 A_a A_b g^{ab} \sqrt{-g}},
+\end{equation}
+where we have added a Proca mass term. Notice that by the $\Omega$ scaling, the first term is conformally invariant only in $D=4$. However, while the second term is not gauge invariant, adding a mass to the photon gives us an extra degree of freedom (the longitudinal mode). Thus there are $D-2$ degrees of freedom for $m^2=0$ and $D-1$ for $m^2 >0$. There is also a longitudinal ghost for $m^2<0$, which is bad news for our theory (so we'd better not set $m^2<0$).
+
+Let us specialize to the case of $g_{ab}=\Omega^2 \eta_{ab}$ with $\sqrt{-\eta}=1$. Hence
+\begin{equation}
+    I=\int d^Dx \sqrt{-\eta} \bkt{\frac{1}{4} \Omega^{D-4} F_{ab} F^{ab} +\frac{1}{2} \Omega^{D-2} m^2 A_a A^a},
+\end{equation}
+where indices have been raised with the Minkowski metric $\eta$. The equations of motion are
+\begin{equation}
+    \p_a(z^{4-D} F^{ab}) = z^{2-D} m^2 A^b.
+\end{equation}
+Note that in Poincar\'e-AdS, $\Omega=1/2$ and hence
+\begin{equation}
+    \p_i F^{ib} +\p_z F^{zb} + (4-D) z^{-1} F^{zb} = z^2 m^2 A^b.
+\end{equation}
+If we try the ansatz $A^i(x^j) =z^\nu J^i(x^j) + \cO(z^{\nu+2})$, where $i,j$ are $d$-indices, we find that $\p_i F^{ib}$ is subleading,
+\begin{align}
+    \p_z F^{zb} &\to \p_z^2 A^i +\ldots =\nu(\nu-1) z^{\nu-2} J^i,\\
+    (4-D) z^{-1} F^{zb} &\to (3-d)z^{-1} \p_z A^i \to (3-d)\nu z^{\nu-2} J^1,\\
+    z^2 m^2 A^b &\to m^2 z^{\nu-2} J^i.
+\end{align}
+
+Matching orders, we arrive at the relation
+\begin{equation}
+    \nu(\nu-1)+(3-d)\nu = m^2
+\end{equation}
+and hence
+\begin{equation}
+     A^i = A_j \eta^{ij} = \pm A_i.
+\end{equation}
+Undoing the rescaling with $x^i \to \Omega x^i, z \to \Omega z$, we find that
+\begin{equation}
+    \Delta_J = 1+\nu.
+\end{equation}
+Hence in terms of $\Delta$, our relation on $\nu$ gives
+\begin{equation}
+    (\Delta-1)(\Delta -d+1)=m^2
+\end{equation}
+and so
+\begin{equation}
+    m^2= 0 \iff \Delta = d-1 \text{ or } \Delta =1.
+\end{equation}
+The $d-1$ case corresponds to a global conserved current in the boundary theory, while $\Delta=1$ corresponds to a boundary potential. To reiterate, \emph{we started with a $U(1)$ gauge field in the bulk, and it ended up corresponding to a global $U(1)$ symmetry current in the boundary}. In general, gauge fields in the bulk correspond to global symmetries in the boundary.

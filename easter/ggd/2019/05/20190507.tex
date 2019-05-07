@@ -1,0 +1,76 @@
+Having treated massive perturbations, let us consider the spin-2 massless case, which is none other than general relativity. For the massive vector field we chose the gauge condition
+\begin{equation}
+    A_z=0.
+\end{equation}
+Can we do something similar for the metric? For asymptotically locally AdS spacetimes, we may introduce \emph{Fefferman-Graham coordinates}. In these coordinates, we take
+\begin{equation}
+    g_{zz} = \frac{1}{z^2},\quad g_{zi}=0.
+\end{equation}
+Notice that this gives $D$ conditions on the metric leaving the residual gauge symmetry of diffeomorphisms and $\Omega$ (conformal transformations) on the boundary.
+
+We can't do this precisely on $z=0$, but if we go to a hypersurface of constant $z=\epsilon$ and follow normal geodesics to this surface (i.e. by $\ln z = \ln \epsilon + \text{proper distance} \in \sqrt{g_{nn} dn}$ and $z^i=\text{const}$ along the normal geodesics). However, such a coordinate system may not work globally, because the geodesics normal to $z=0$ might converge (cf. conjugate points in \emph{Black Holes}). This is a local construction near the boundary, but it will nevertheless let us find some interesting results.
+
+In these coordinates, we can do an FG (Fefferman-Graham) expansion. THat is, we solve the nonlinear bulk equations of GR in a.l.%
+    \footnote{asymptotically local}
+AdS. Thus
+\begin{equation}
+    {}^{(D)}g_{ij} =\frac{1}{z^2} \bkt{
+        g_{ij}^{(0)}+z^2 g^{(2)}_{ij} +z^4 g_{ij}^{(4)}+\ldots)
+    }
+\end{equation}
+where e.g.
+\begin{align}
+    g_{ij}^{(0)}&={}^{(d)}g_{ij},\\
+    g_{ij}^{(2)} &= \frac{1}{D-2} (^{(d)}R_{ij} -\frac{1}{2(D-1)} {}^{(d)} R^{(d)}g_{ij}),
+\end{align}
+and $g_{ij}^{(4)}$ will include two powers of curvature.
+
+The $\ldots$ in the expression for the bulk metric depends on whether we are in odd $d$ or even $d$. For odd $d$, we have even powers of $z$ up to
+\begin{equation}
+    +z^d T_{ij} +\cO(z^{d+2}),
+\end{equation}
+whereas in even $d$, we have
+\begin{equation}
+    +z^d T_{ij} + \ln(z) z^d h_{ij}^{(d)}
+\end{equation}
+because the powers coincide. This last term gives us relations
+\begin{equation}
+    -\frac{2}{d} T_{ij}^\text{trace} \propto ^{(d)}g_{ij},
+\end{equation}
+such that in $d=2$, this is proportional to $cR$ with $c$ the same central charge of the Virasoro algebra, and in $d=4$ we have $\propto aGB + cW^2$ (the Gauss-Bonnet term and the Weyl tensor).
+
+Suppose the bulk is weakly coupled, i.e. approximately free when $N_\text{quanta}\sim 1$, a theory which is classical at the nonlinear regime. For an operator $\phi_i \sim z^{\Delta_i}$ it must be that powers of this operator scale as $\phi^n \sim z^{\sum_i \Delta_i}$, i.e. an operator whose weight is the sum of the weights of its factors.
+\begin{enumerate}
+    \item $\exists$ a collection of operators $\set{\cO_s}$ whose spectrum is $\text{Fock}(\set{\cO_s})$.
+    \item The expectation value of these operators are approximately Gaussian: $\avg{\cO_s \cO_S \ldots \cO_s \cO_S} \approx{}$Gaussian. In a free field, we only get pairwise couplings in our Witten diagrams which live in the bulk (i.e. Wick contractions when you only have free propagators). This is called a ``generalized free field.''
+    \item However, the CFT itself is not actually free-- there is no $\Delta=\frac{d-2}{2}$ field.
+\end{enumerate}
+Hence we have a theory which is free in the bulk but not in the boundary. It turns out this is actually typical of ``single trace'' operators in large-$N$ gauge theory. For instance, take a Yang-Mills Lagrangian,
+\begin{equation}
+    \cL_\text{YM} = \text{tr}\paren{F_{\mu\nu}F^{\mu\nu}}.
+\end{equation}
+Here, $F_{\mu\nu}=\p_\mu A_\nu - \p_\nu A_\mu + g[A_\mu,A_\nu]$. This could be $SU(N)$ transforming in the adjoint representation, for example. We take the trace to get a colorless object (something that will be gauge invariant). Now let us take the $N\to \infty$ limit holding $\lambda = g^2 N$ fixed, where $\lambda$ is called an t'Hooft coupling. This keeps the leading-order loop calculations (which scale as $g^2 N$) constant even as we take the number of colors $N$ to be large.
+
+When we treat something like a gluon, we should think of it as really having two arrows-- a color and an anti-color arrow. Hence gluon diagrams will be a set of directed loops.
+
+We can play some Euler characteristic games with our gluon diagramms, associating ``half'' of an edge to each of the two vertices it connects. With a factor of $N$ for each facte, we have
+\begin{equation}
+    g\sim N^{-1/2} \text{ for 3-vertex}
+\end{equation}
+and
+\begin{equation}
+    g^2\sim N^{-1} \text{ for 4-vertex}.
+\end{equation}
+One may conclude that the amplitude scales as
+\begin{equation}
+    \text{Amp}\sim N^{F-E+V} \sim N^\chi.
+\end{equation}
+This tells us precisely that the low-genus diagrams dominate, e.g. spheres, torii, $n=2$ handlebodies, etc. And we can introduce interactions/sources by adding e.g. punctures into our sphere, torus, etc. And this starts to look a lot like we're doing string theory! This is because in string theory, we also added punctures, which increase the Euler characteristic of the surface.
+
+Now, just trying to start with a string theory doesn't exactly work-- we must have conformal invariance on the boundary, and our basic Yang-Mills theory we've written down won't be conformally invariant until we add in some matter fields. But once we have a proper CFT we get something that looks like weakly coupled strings. There are some special operators $\cO_s$ which are the single-trace operators of the form
+\begin{equation}
+    \text{tr}(FFFF\ldots),
+\end{equation}
+as opposed to double trace $\text{tr}(\ldots)\text{tr}(\ldots)$ or higher trace operators $\text{tr}()^n$, which create (or annihilate) $n$ strings more generally. 
+
+Note that for a derivative term, $\text{tr}(F D_\mu^n F)$, we get a tower of higher spin fields such that in the $\lambda \ll 1$ limit, $\Delta \approx$ the naive (``engineering'') dimension plus small corrections. On the other hand, in the strong coupling $\lambda \gg 1$ limit, we have $\Delta$s which may get big, meaning that we remove $\Delta$ to high energies except a small number of operators which are \emph{protected}. In the next lecture, we will start to present examples of this duality and discuss how they were derived originally.
