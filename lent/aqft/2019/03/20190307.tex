@@ -17,9 +17,16 @@ such that the variation is%
 \begin{equation}
     \frac{\delta G[A^\mu]}{\delta \alpha}=\frac{1}{g} \p^\mu D_\mu.
 \end{equation}
-The Faddeev-Popov method tells us to express the functional determinant as a path integral over new Grassmann fields $c,\bar c$ which transform in the adjoint representation of the gauge group. These new fields anticommute, but are otherwise Lorentz scalars (spin zero). These $c,\bar c$ fields do not represent physical particles (i.e. valid in/out states) and should be thought of as constraints. They are called \term{Faddeev-Popov ghosts.} One can then write a ``ghost Lagrangian,''
+The Faddeev-Popov method tells us to express the functional determinant as a path integral over new Grassmann fields $c,\bar c$ which transform in the adjoint representation of the gauge group. These new fields anticommute, but are otherwise Lorentz scalars (spin zero). These $c,\bar c$ fields do not represent physical particles (i.e. valid in/out states) and should be thought of as constraints. They are called \term{Faddeev-Popov ghosts.}%
+    \footnote{You might be concerned about spin-statistics here. Shouldn't anticommuting variables be half-integer spin? Normally, yes, but this is only true when our variables represent physical observables. The ghosts are really constraints in our theory and cannot be observed. Probably why we call them ghosts!}
+One can then write a ``ghost Lagrangian,''
+\begin{align}
+    \cL_\text{gh}&=\bar c^a( \p^2 \delta^{ac} +g f^{abc} \p^\mu A_\mu^b) c^c\\
+        &= \bar c^a \p^\mu D_\mu^{ac} c^c,
+\end{align}
+in terms of a covariant derivative
 \begin{equation}
-    \cL_\text{gh}=\bar c^a( \p^2 \delta^{ac} +g f^{abc} \p^\mu A_\mu^b) c^c.
+    D_\mu^{ac}\equiv \p_\mu \delta^{ac} +g f^{abc} \p^\mu A_\mu^b.
 \end{equation}
 We arrive at a ghost propagator,
 \begin{equation}
@@ -43,16 +50,20 @@ If these ghost fields do not represent physical particles, why do we need them i
 \end{itemize}
 
 \subsection*{BRST symmetry}
-This symmetry is a constraint on physical states, named for Becchi-Rouet-Storz-Tyutin. We have a Lagrangian in Euclidean space,
+This symmetry is a constraint on physical states, named for Becchi-Rouet-Storz-Tyutin. In our general gauge theory, we have a Lagrangian in Euclidean space which takes the form
 \begin{equation}
-    \cL=\frac{1}{4}(F^a_{\mu\nu})^2)^2 +\bar \psi(\slashed{D}+m)\psi +\frac{1}{2\xi}(\p^\mu A^a_\mu)^2 + \bar c \p^\mu D_\mu c.
+    \cL=\frac{1}{4}(F^a_{\mu\nu})^2 +\bar \psi(\slashed{D}+m)\psi +\frac{1}{2\xi}(\p^\mu A^a_\mu)^2 + \bar c \p^\mu D_\mu c.
 \end{equation}
-This is just a theory with a term that looks like the $F_{\mu\nu}$ of QED, a fermion coupling, a kinetic term for the gauge field, and the ghost constraint.
+This theory has a term that looks like the $F_{\mu\nu}$ field strength tensor of QED, a fermion coupling, an extra kinetic term for the gauge field (useful in gauge fixing), and the ghost constraint.
 We may then introduce an auxiliary (i.e. non-dynamical) field $B^a$, modifying our Lagrangian to
 \begin{equation}
-    \cL = \frac{1}{4}(F_{\mu\nu}^a)^2 + \bar \psi(\slashed{D} + m) \psi +\frac{1}{2\xi} (B^a)^2 -B^a \p^\mu A_\mu^a  +\bar c \p^\mu D_\mu c,
+    \cL = \frac{1}{4}(F_{\mu\nu}^a)^2 + \bar \psi(\slashed{D} + m) \psi +\frac{1}{2\xi} (B^a)^2 -B^a \p^\mu A_\mu^a  +\bar c^a \p^\mu D_\mu^{ac} c^c,
 \end{equation}
+% \begin{equation}
+%     \cL = \frac{1}{4}(F_{\mu\nu}^a)^2 + \bar \psi(\slashed{D} + m) \psi +\frac{1}{2\xi} (B^a)^2 -B^a \p^\mu A_\mu^a  +\bar c \p^\mu D_\mu c,
+% \end{equation}
 where completing the square and integrating out $B^a$ yields the original Lagrangian.
+%this didn't have the indices on the covariant derivative term-- I have added them
 
 This new Lagrangian is then invariant under the global BRST transformation, written in infinitesimal form as
 \begin{align}
@@ -60,22 +71,23 @@ This new Lagrangian is then invariant under the global BRST transformation, writ
     \delta \psi &= ig \epsilon c^a t^a \psi\\
     \delta c^a &= -\frac{1}{2} g\epsilon f^{abc} c^b c^c\\
     \delta \bar c^a &= \epsilon B^a\\
-    \delta B^a &= 0.
+    \delta B^a &= 0,
 \end{align}
 where $\epsilon$ must be an infinitesimal Grassmann (anticommuting) quantity. Here, the $t^a$s are the generators of the gauge group as before and $f^{abc}$ are the corresponding structure constants.
 
 This transformation may seem a bit ad hoc, but in fact it will help us to make sense of the ghosts. Notice that the transformation of $\bar c^a$ is related to the auxiliary field $B^a$.
-
-The transformation of the fields $\psi,A_\mu$ is a local gauge transformation with $\alpha^a(x)=g\epsilon c^a(x)$, so invariance of $(F_{\mu\nu}^a)^2,\bar \psi(\slashed{D}+m)\psi$ is clear. The $B^a$ term is also trivially invariant.
+The transformations of the fermion field $\psi$ and the gauge field $A_\mu^a$ are just local gauge transformations with $\alpha^a(x)=g\epsilon c^a(x)$, so the invariance of $(F_{\mu\nu}^a)^2$ and $\bar \psi(\slashed{D}+m)\psi$ is clear. The $B^a$ term is also trivially invariant.
 
 The transformation of $\bar c$ cancels the transformation of $A_\mu$ when combining the last two terms of $\cL$, so what remains is the covariant derivative term.
 \begin{align*}
-    \delta(D_\mu^{ac} c^c) &= D_\mu^{ac} \delta c^c + g f^{abc} \delta A_\mu^b c^c\\
-    &= -\frac{1}{2} g\epsilon \p_\mu (f^{abc} c^b c^c) -\frac{1}{2} g^2 \epsilon f^{abc} f^{cde} A_\mu^b c^d c^e +g \epsilon f^{abc} (\p_\mu c^b) c^c + g^2 \epsilon f^{abc} f^{bde} A_\mu^d c^c c^e.
+    \delta(D_\mu^{ac} c^c) &= \delta(\p_\mu c^a + gf^{abc} A_\mu^b c^c)\\
+        &=\p_\mu (\delta c^a) + g f^{abc} (\delta A_\mu^b) c^c +g f^{abc} A_\mu^b \delta(c^c)\\
+        &= -\frac{1}{2} g\epsilon \p_\mu (f^{abc} c^b c^c) +gf^{abc} (\epsilon D^{bd}_\mu c^d)c^c -\frac{1}{2}g^2 \epsilon f^{abc} A^b_\mu f^{cde} c^d c^e\\
+        &= -\frac{1}{2} g\epsilon \p_\mu (f^{abc} c^b c^c) +gf^{abc} \epsilon (\p_\mu c^b) c^c + g^2 \epsilon f^{abc} f^{bde} A_\mu^d c^e c^c -\frac{1}{2} g^2 \epsilon f^{abc} f^{bde} A_\mu^b c^d c^e.
 \end{align*}
 Looking at the $O(g)$ terms, we have
 \begin{equation}
-     -\frac{f^{abc}}{2}\p_\mu (c^b c^c) +f^{abc}(\p_\mu c^b) c^c =-\frac{f^{abc}}{2} \bkt{(\p_\mu c^b) c^c +c^b(\p_\mu c^c)} +f^{abc}(\p_-\mu c^b)c^c.
+     -\frac{f^{abc}}{2}\p_\mu (c^b c^c) +f^{abc}(\p_\mu c^b) c^c =-\frac{f^{abc}}{2} \bkt{(\p_\mu c^b) c^c +c^b(\p_\mu c^c)} +f^{abc}(\p_\mu c^b)c^c.
 \end{equation}
 Using
 \begin{equation}
@@ -85,4 +97,4 @@ we see that the whole $O(g)$ term is zero. Similar manipulations show that the $
 \begin{equation}
     f^{ade}f^{bcd} + f^{bde} f^{cad} +f^{cde} f^{abd}=0.
 \end{equation}
-We conclude that $\cL$ is BRST-invariant.
+We conclude that the entire Lagrangian $\cL$ is BRST-invariant.

@@ -1,0 +1,96 @@
+Erratum: in writing $\text{tr}(\phi_I \phi^J)$, we should have had $\Delta^2 \sim m^2 L^2 \sim L^2/l_s^2$, where $L$ was the AdS radius. See also the relation $\Delta(\Delta-4)=m^2$.
+
+\subsection*{Black holes}
+We have seen that the Hilbert spaces of the theories on either side of the duality are equal,
+\begin{equation}
+    \cH_{\text{AdS}} = \cH_\text{CFT}.
+\end{equation}
+However, there is another way to phrase this correspondence, in terms of partition functions:
+\begin{equation}
+    \cZ^{[J_{bdy}]}_\text{AdS} = \cZ^{[J_{CFT}]}_\text{CFT}.
+\end{equation}
+Since the partition functions agree, this means that the $n$-point correlation functions will also agree, e.g.
+\begin{equation}
+    \frac{\delta}{\delta J_1(x)}\frac{\delta}{\delta J_2(y)}\ldots \cdot \ln \cZ = \avg{\cO_1(x) \cO_2(y)\ldots}_\text{connected}.
+\end{equation}
+We can do this for the partition function on either side of the duality (initially proposed by Ed Witten), and we'll find that the correlation functions do work out.
+
+Moreover, there's a simplification in the large $N$ (and possibly strong coupling $\lambda$) limit-- the bulk becomes \emph{classical gravity}. In this case, we can do a saddle point approximation and expand the metric as
+\begin{equation}
+    g_{ab}=g_{ab}^\text{class}+h_{ab},
+\end{equation}
+where $g_{ab}^\text{class}$ solves the Einstein equations (possibly coupled to matter) and $h_{ab}$ is some small quantum correction. This is known as a semi-classical approximation.
+
+In this case, our saddle point approximation says that we get
+\begin{equation}
+    \cZ_\text{AdS}=\det(\ldots)e^{i I_\text{grav}[g_{ab}}
+\end{equation}
+in Lorentzian signature, where $I$ is the action evaluated at the original classical metric and the determinant factor depends on the quantum corrections. We might have e.g. $\det^{-1/2}(D)$ for $D$ a wave equation operator. However, when we take the log, we get
+\begin{equation}
+    \log \cZ_\text{AdS} = I_\text{grav} + \text{subleading in }1/N\text{ loop corrections}.
+\end{equation}
+Sometimes we work in Euclidean signature and write $-I_\text{grav}$ instead to avoid issues of convergence in our saddle point approximation.
+
+This gives us a new entry in the AdS/CFT dictionary. Suppose we have a Euclidean signature QFT. Then the log of the partition function is equal to the gravitational action with a least-action ``instanton'' solution to the equations of motion with a specified boundary metric $\gamma_{ab}$.
+
+There are some caveats to this, though. For one, the Euclidean action of GR is not bounded below (i.e. if we go off-shell). In addition, we're making a saddle point approximation, and so we should check that we really can deform the contour.%
+    \footnote{``Morally, we should do this. Practically, no one ever does this before it's too hard. You're allowed to [assume the calculation works], you just have to feel guilty for it.'' --Aron Wall}
+    
+Let's see this in action. In Euclidean signature, we have an action
+\begin{equation}
+    I_\text{(grav)}^\text{Euc.}=-\frac{1}{16\pi G} \int_M \sqrt{g}(R-2\Lambda) d^Dx.
+\end{equation}
+Now we find a solution to the Einstein equation of motion in vacuum,
+\begin{equation}
+    R_{ab}-\frac{1}{2} g_{ab} R + g_{ab} \Lambda = 0.
+\end{equation}
+Tracing over, we have
+\begin{equation}
+    \frac{D-2}{2}R = D\Lambda,
+\end{equation}
+which we can substitute back into the action to get
+\begin{equation}
+    I_\text{grav} \sim \int d^Dx \, \sqrt{g} = \text{Vol}(M)=+\infty
+\end{equation}
+since our space is asymptotically AdS.
+
+What's gone wrong? We neglected to treat the boundary conditions carefully. What we should really do is to impose a UV cutoff such that our integration is only over $z>\epsilon$. When we vary the action to compute the equations of motion, we usually discard boundary terms-- we can't do that here. Generically, varying $R$ gives us a term like $\delta K_{ij} \gamma^{ij}$, where we want $\gamma^{ij}\neq 0$. More specifically, we should have included
+\begin{enumerate}
+    \item $I_\text{GH}=\frac{1}{8\pi G} \int_{\p M} \sqrt{\gamma} K_{ij} \gamma^{ij}$ with $K_{ij}=\frac{1}{2} g_{ij,\hat n}$. This \term{Gibbons-Hawking} term tells us how to treat the boundary term in terms of the metric $\gamma$ on the boundary and the corresponding extrinsic curvature.
+    \item $I_\text{ct}=\int_{\p M} \sqrt{\gamma} H[\gamma_{ij}]$, local counterterms where $H$ depends on up to $d/2$ derivatives of $\gamma_{ij}$. This is the usual sort of thing that happens in QFTs-- we write down 
+    \begin{equation}
+        \ln \cZ_\text{phys} =\ln \cZ_\text{reg}(\epsilon) - \text{local divergences, e.g. }\epsilon^{-n},\ln \epsilon.
+    \end{equation}
+    That is, we introduce a regulating parameter $\epsilon$ of a naively divergent partition function and subtract off divergences to get the physical behavior. Interestingly, the coefficients of the log divergences seem to represent universal quantities which do agree between the AdS and CFT sides.
+\end{enumerate}
+Consider now the thermal partition function in terms of $\beta=1/T$. That is,
+\begin{equation}
+     \cZ[\beta] =\text{tr}_\cH(e^{-\beta E}).
+\end{equation}
+This is analogous to evolving through $\beta = i\Delta t$ imaginary time ($e^{-i\Delta t E}$, and it gives us a geometry $S_1 \times S_{d-1}$. Hence
+\begin{equation}
+    \ln Z= -\beta F = S-\beta E
+\end{equation}
+in terms of the free energy, and $S$ is now the von Neumann entropy
+\begin{equation}
+    S=-\text{tr}(\rho\ln \rho)=(1-\beta \p_\beta)\ln \cZ
+\end{equation}
+with the energy $E=-\p_\beta \ln \cZ$.
+
+We get what's called a thermofield double state (TFD), which is
+\begin{equation}
+    \ket{TFD}=\sum_i e^{-\beta E_i/2} \ket{i}_L \ket{\bar E_i}_R
+\end{equation}
+corresponding to a pure state in $\cH\otimes \bar \cH$. If we restrict to one system, we get a thermal state.
+
+There are two types of solution.
+\begin{enumerate}
+    \item If we pinch the $S_{d-1}$ to a point, we get two copies of the CFT at $t=0$. This gives thermal AdS.
+    \item We could instead pinch off the $S_1$ to a point. This instead corresponds to a connected wormhole geometry. More precisely, if we continue to Lorentz signature, we find the geometry of an eternal black hole, AdS-Schwarzschild.
+\end{enumerate}
+This second point is still somewhat mysterious. It seems that entanglement on the CFT side is equivalent to a wormhole on the gravity side. In our semi-classical approximation, the entropy of thermal AdS is $S=0$ (there may be subleading in $1/N$ corrections, which have the interpretation of thermal matter entropy). On the other hand, for the BH solution, we find that the entropy of the CFT is
+\begin{equation}
+    S_\text{CFT}=\frac{\text{Area}[H]}{4G\hbar} = S_\text{BH}.
+\end{equation}
+This is none other than the famous Bekenstein-Hawking formula for the black hole entropy. Again, there may be subleading corrections from quantum fluctuations.
+This result tells us that the microstates being counted by the Bekenstein-Hawking entropy are (in AdS/CFT) just the microstates of the dual CFT.

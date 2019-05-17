@@ -1,0 +1,68 @@
+Today we'll discuss how people found actual examples of AdS/CFT using string theory. Now, there are many versions of the duality known, but we'll start with the classic version. As a quick convention note, from now on $D$ is the \emph{total} bulk dimension including Kaluza-Klein (compactified) dimensions, so it will not be generally true that $D=d+1$. Now, if you took the \emph{String Theory} course, you might recall that string theories are filled with \term{$p$-form fields}, i.e. generalizations of the Maxwell equations with extra indices. 
+
+Instead on just a vector field $A_a$, we might start with a $p$-form $A_{abcd}$, where there are $p$ indices, and such that taking the exterior derivative $dA^{(p)}=F^{(p+1)}$ yields a $p+1$-form representing an associated curvature. Note also that the Hodge star (dual) operation takes us from a $p$-form to a $D-p$-form. Hence $F^{(p+1)}\xleftrightarrow{*}F^{(D-p-1)}$, so that
+\begin{equation}
+    dA^{(p)}=F^{(p+1)}\xleftrightarrow{*}d\tilde A^{(D-p-2)} = F^{(D-p-1)}.
+\end{equation}
+We don't usually work with both $A$ and $\tilde A$ at the same time, but we have some freedom in how to choose which is e.g. our electric and magnetic field.
+
+The form $dA^{(p)}$ is identified with a $p-1$-brane (where the number associated to the brane counts the spatial dimensions only, for historical reasons) and similarly $d\tilde A^{(D-p-2)}$ is assoicated to a $(D-p-3)$-brane. Perhaps the best-known case is in $D-4$, where the electric and magnetic fields both couple to $0$-branes since $A_a$ is a one-form.
+
+\begin{center}
+    \begin{tabular}{c|c|c}
+        & NS & RR \\\hline
+        IIA (10D) & $B^{(2)} \to F1,NS5$ & $C^{(1)}\to D0,D6$ and $C^{(3)} \to D2,D4$\\
+        IIB (10D) & $B^{(2)} \to F1,NS5$ & $C^{(0)} \to D(-1),D7$ and $C^{(2)}\to D1,D5$ and $C{(4)}\to D3$, $F^{(5)}= * F^{(5)}$
+    \end{tabular}
+\end{center}
+
+These $B$ and $C$ fields are gauge fields of the corresponding degree, and the objects $F1,D0,$ etc. are the branes to which they couple. The classic example takes the D3 brane, which involves the geometry $\text{AdS}_5\times S_5$. Another key example comes from $M$-theory in 11 dimensions, where $A^{(3)}$ couples to $M2,M5$ branes corresponding to $\text{AdS}_3\times S_7$ and $\text{AdS}_7\times S_3$ respectively.
+
+It's worth noting that when $T=0$ (in conformal symmetry), we get $R=0$ and hence the dilaton coupling $e^{-2\phi}R$ in the action becomes trivial. In general, we have to take multiple branes to construct the duality, e.g. by taking D1 and D5 to get $\text{AdS}_3 \times S_3\times T_4$.
+
+Suppose we have a \emph{stack} of $N$ coincident D3 branes. At weak coupling, $g_S N \ll 1$, we can have some open strings which start on one brane and connect back to another brane in the stack. We ought to assign the endpoints some color indices $i,j$. In particular we may describe adjoints with a $U(N)=SU(N) \times U(1)$ symmetry. The $U(1)$ symmetry is abelian and just describes the center of mass. But something interesting happens in the low energy limit.
+
+In this limit, the closed strings decouple-- the theory we get is $d=4,\cN=4$ super Yang-Mills with a coupling $g^2=4\pi g_s$. This is the maximal number of supersymmetries we can have without taking us past spin 1. In such a theory, we can define helicities:
+\begin{center}
+    \begin{tabular}{c|c c c c c}
+        spin & $-1$ & $-1/2$ & $0$ & $1/2$ & $-1$\\
+         helicities & $1$ & $4$ & $6$ & $4$ & $1$ \\
+         field & $A^-$ & $\psi^*$ & $\phi$ & $\psi$ & $A^+$.
+    \end{tabular}
+\end{center}
+
+Our action takes the form
+\begin{equation}
+    I=\int d^4x \,\text{tr} \paren{\frac{1}{4} F_{ab}^2 + \psi_{\bar \alpha}^* \slashed{D} \psi_\alpha + \frac{1}{2} (D\phi_I)^2 + \frac{g^2}{4}[\phi_I,\phi_J]^2 +\frac{g}{2}\psi[\phi,\psi] +\frac{g}{2}\psi^*[\phi,\psi^*]
+    }.
+\end{equation}
+What's interesting about such a theory is that it actually has so much supersymmetry that all the beta functions vanish: $\beta=0$, which implies this is in fact a super-conformal field theory (SCFT) for all $g$.
+
+At \emph{strong coupling} ($g_sN \gg 1$), we have instead
+\begin{equation}
+    I\sim \frac{1}{l_p^8} \int d^{10}x \,\sqrt{-g} \paren{R-F_{(s)}^2},
+\end{equation}
+which as an extremal geometry with AdS in the near-horizon region, i.e.
+\begin{equation}
+    ds^2 =\frac{1}{\sqrt{1+\frac{L^4}{r^4}}}(-dt^2 +dx_162+dx_2^2+dx_3^2) +\sqrt{1+\frac{L^4}{r^4}}(dr^2+r^2 d\Omega_5^2),
+\end{equation}
+where $L^4= 4\pi l_p^4N$.
+
+In the low-energy limit ($r\ll L$), the exterior and the deep throat region decouple, and hence the netric reduces to
+\begin{equation}
+    ds^2= \frac{r^2}{L^2}(-dt+dx_i^2) +\frac{L^2}{r^2} dr^2+L^2 d\Omega_5^2.
+\end{equation}
+If we define $z=L^2/r, L=R_\text{AdS}=R_S$, then we simply get the geometry of $\text{AdS}_5\text{-Poincar\'e}\times S_5$, and we have type IIB supergravity in the limit $L\gg l_s$ (where $l_p= g_s^{1/4}l_s$).
+
+Adjusting $g$ from weak coupling to strong coupling, we should be able to translate between the Super Yang Mills with $SU(N)$ symmetry (from the weak coupling limit) and the $\text{AdS}_5\text{-Poincar\'e}\times S_5$ with IIB SUGRA (from the strong coupling limit). This is Maldacena's derivation of the AdS/CFT correspondence.
+
+There are some units which will help us translate between the two:
+\begin{itemize}
+    \item $N_\text{colors}=N_\text{branes}=N_\text{flux}$
+    \item $\frac{l_p}{L}=(4\pi N)^{-1/4}$
+    \item $\frac{l_s}{L}=(4\pi g_s N)^{-1/4} = (g_{YM}^2 N)^{-1/4}=\lambda^{-1/4}$.
+\end{itemize}
+Both these length ratios must be small in order for us to recover classical supergravity.
+There are two expansion parameters we can use to go further-- there's $1/N^2 \sim \hbar G\sim{}$quantum corrections, and $1/\lambda^2 \sim \alpha' \sim{}$stringy corrrections. At finite $N$, we can probe nonperturbative quantum gravity, and at finite $\lambda$ we study the full string worldsheet.
+
+There is an S-duality on both sides-- on the string side, we can take $g_s\to 1/g_s$ (which switches around the branes), and this is actually equivalent to $g_{YM} \to 4\pi/g_{YM}$. If $\lambda$ is too big, we just recover the original S-duality on the SUGRA side. Note that this tells us we must have large $N$ in order to have an interesting limit of the duality, or else we just get the old S-duality back.

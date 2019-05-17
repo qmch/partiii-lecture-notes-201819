@@ -29,6 +29,8 @@ Hence the coefficients are not all independent but related by this equation. The
 \begin{equation}
     \mu \frac{d}{d\mu} g_\text{eff}=0.
 \end{equation}
+This just says that once we have added the counterterms, our effective coupling should not depend on the mass scale $\mu$.
+
 We found that $Z_3$ (the coefficient of the $F_{\mu\nu}^2$ term including the counterterm) was $Z_3=1+\delta_3$. From here it might be simplest to find $Z_2=1+\delta_2,Z_1=1+\delta_1$ using
 \begin{equation}
     \mu \frac{d}{d\mu} \bkt{g\mu^{\epsilon/2} \frac{Z_1}{Z_2 Z_3^{1/2}}}=0.
@@ -63,7 +65,11 @@ For a theory with an $SU(3)$ gauge symmetry and fermions transforming in the fun
 \begin{equation}
     \beta(g)=-\frac{g^3}{16\pi^2} (11-\frac{2}{3} n_f) \equiv -\frac{g^3}{16\pi^2} \beta_0.
 \end{equation}
-As long as $n_f <16$, $g$ is a marginally relevant coupling. However, notice that $g\to \infty$ in the IR, and $\to 0$ in the UV. This is the property of ``asymptotic freedom,'' that quarks in a proton are effectively free at short distance scales but confined by the strong nuclear force at longer distances. We can write the solution for the 1-loop $\beta$-function:
+As long as $n_f <16$, $g$ is a marginally relevant coupling.%
+    \footnote{
+        To see this, consider the sign of $\beta_0 = 11-\frac{2}{3}n_f$. $\beta_0$ has a zero for $n_f=33/2=16.5$, so for $n_f \leq 16, \beta_0 > 0$ and $\beta>0$.
+    }
+However, notice that $g\to \infty$ in the IR, and $\to 0$ in the UV. This is the property of ``asymptotic freedom,'' that quarks in a proton are effectively free at short distance scales but confined by the strong nuclear force at longer distances. We can write the solution for the 1-loop $\beta$-function:
 \begin{equation}
     g^2(\mu) = \frac{1}{\beta_0 \log \mu/\Lambda_{QCD}}.
 \end{equation}

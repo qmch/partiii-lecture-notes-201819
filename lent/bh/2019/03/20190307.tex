@@ -67,7 +67,7 @@ Hawking thought that perhaps we could prove that in general, the surface gravity
 In fact, one can relax the energy condition from the DEC a bit, but it requires other details about the spacetime (asymptotic flatness and others).
 
 \subsection*{First law of black hole mechanics}
-Consider the Kerr spacetime. The horizon area $A$ is the area of the intersection of $\cH^+$ with a partial Cauchy surface of $t={}$constant. It is also the area of the bifurcating Killing horizon. $A$ will be a function of $J$ and $M$, and we can consider the quantity $\frac{\kappa_0}{8\pi}$. This turns out to be
+Consider the Kerr spacetime. The horizon area $A$ is the area of the intersection of $\cH^+$ with a partial Cauchy surface of $t={}$constant. It is also the area of the bifurcating Killing horizon. $A$ will be a function of $J$ and $M$, and we can consider the quantity $\frac{\kappa_0}{8\pi}$. This turns out to be related to $J,M,$ and $A$ by
 \begin{equation}
     \frac{\kappa_0}{8\pi}\delta A = \delta M -\Omega_H \delta J.
 \end{equation}
@@ -105,11 +105,11 @@ The orientation of $\cN$ used in defining $\delta M, \delta J$ is the one used i
 \begin{equation}
     (*J)_{\lambda 12} = \sqrt{h} J^r = \sqrt{h} J_\lambda = \sqrt{h} U\cdot J
 \end{equation}
-where $U=\P{}{\lambda}$.
+where $U=\P{}{\lambda}$ is tangent to the generators of $\cN$ and we've lowered the index on $J$ using the metric since $g_{r\lambda}=1$.
 
-We can now evaluate everything on Kerr, since the deviation is $O(\epsilon^2)$. Hence $\cN$ is Killing with a killing vector $\xi=K+\Omega m$ on $\cN$, and we also have $\xi=f U$ for a function $f$. Using $\xi^a \nabla_a \xi^b|_{\cH^+}=\kappa_0 \xi^b$, we find that
+We can now evaluate everything on Kerr, since the deviation is $O(\epsilon^2)$. Hence $\cN$ is Killing with a Killing vector $\xi=K+\Omega m$ on $\cN$, and we also have $\xi=f U$ for a function $f$. Using $\xi^a \nabla_a \xi^b|_{\cH^+}=\kappa_0 \xi^b$, we find that
 \begin{equation}
-    \xi \cdot \nabla( \log|f|)=\kappa_0 \implies f= \kappa_0 \lambda + f_0(y)
+    \xi \cdot \nabla( \log|f|)=\kappa_0 \implies \P{f}{\lambda}=\kappa_0 \implies f= \kappa_0 \lambda + f_0(y)
 \end{equation}
 (where we can integrate knowing $\kappa_0=0$).
 
@@ -129,25 +129,29 @@ From the definition of $\delta M$, we have (substituting)
 \end{align*}
 where this second term is precisely $-\delta J$. However, we have not yet used the Einstein equation-- we can turn $T_{ab}$ into a curvature condition,
 \begin{equation}
-    8\pi T_{ab} U^a U^b = R_{ab} U^a U^b,
+    8\pi T_{ab} U^a U^b = R_{ab} U^a U^b
 \end{equation}
-so that
+using the fact that since $U$ is null, the $\frac{1}{2}g_{ab}R$ term is zero. Then our expression can be written in terms of $R_{ab}$, so that we can use Raychaudhuri to evaluate this explicitly. Thus
 \begin{align*}
     \delta M -\Omega_H \delta J &= \frac{\kappa_0}{8\pi} \int_\cN d\lambda d^2 y \sqrt{h} \lambda R_{ab} U^a U^b\\
     \implies \delta M -\Omega_H \delta J &= -\frac{\kappa_0}{8\pi} \int d^2y \int_0^{+\infty} \sqrt{h} \lambda \frac{d\theta}{d\lambda} d\lambda\\
     &= -\frac{\kappa_0}{8\pi} \int d^2y \set*{ [\sqrt{h}\lambda\theta]_0^{+\infty} -\int_0^{+\infty}(\sqrt{h}+ \underbrace{\lambda \frac{d\sqrt{h}}{d\lambda}}_{O(\epsilon^2)})\theta d\lambda},
 \end{align*}
-where we applied Raychaudhuri and integrated by parts.
+where we have applied Raychaudhuri and integrated by parts.
 
-Now recall that
+Now recall that by the definition of the expansion $\theta$,
 \begin{equation}
     \frac{d\sqrt{h}}{d\lambda}=\theta\sqrt{h}=O(\epsilon).
 \end{equation}
-We will assume the final states exist in a $\lambda\to +\infty$ limit, $\sqrt{h}$ is finite. Hence
+By assumption, the final state is stationary, so that in the $\lambda\to +\infty$ limit, $\sqrt{h}$ is finite and thus $\delta(\sqrt{h})$ is also finite. Hence
 \begin{equation}
-    \int_0^{+\infty} \sqrt{h}\theta d\lambda = \int_0^{+\infty} \frac{d\sqrt{h}}{\lambda} d\lambda = \delta(\sqrt{h}).
+    \int_0^{+\infty} \sqrt{h}\theta d\lambda = \int_0^{+\infty} \frac{d\sqrt{h}}{d\lambda} d\lambda = \delta(\sqrt{h}).
 \end{equation}
-Finiteness gives $\theta = o(1/\lambda)$ (decays at least as fast as $1/\lambda$), and hence the boundary terms go away. We learn that
+Finiteness of the RHS tells us that $\theta = o(1/\lambda)$, i.e. decays at least as fast as $1/\lambda$, and hence the boundary term vanishes. The only remaining term is
+\begin{equation}
+    \int d^2y \,\delta(\sqrt{h}) = \delta \int d^2y \, \sqrt{h} = \delta A,
+\end{equation}
+so we learn that
 \begin{equation}
     \delta M-\Omega_H \delta J = \frac{\kappa_0}{8\pi} \delta A. \qed
 \end{equation}

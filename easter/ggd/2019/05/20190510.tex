@@ -1,0 +1,42 @@
+A brief follow-up from last time. We claimed that in $\text{AdS}_5\times S_5$, we had $T=0\implies R=0$ by the conformal symmetry. However, one might worry about the possibility of a trace anomaly in curved space. Normally, the trace of the stress tensor is proportional to $aE+\sum_i c_i C_i$, where $E$ is some Euler number term and the $C_i$s are constructed from many copies of the Riemannn tensor contracted with some $\epsilon$s. However, because $\text{AdS}_5\times S_5$ is conformally flat, all the $c_i$s vanish and moreover $E=0$ for odd-$D$ manifolds without boundary. Note also that $E(A\times B)=E(A)\times E(B)$. Hence $E=0$ for $\text{AdS}_5\times S_5$, so indeed there is no trace anomaly.
+
+Note that the Newton constant of our spacetime depends on the compact Kaluza-Klein dimensions. Hence for instance (up to order unity factors)
+\begin{equation}
+    G_t \sim \frac{G_{10}}{\text{Area}[S_5]/l_{p,10}^5}.
+\end{equation}
+Hence gravity gets diluted in the presence of extra dimensions. In general $G\sim l_p^{D-2}$.
+
+What evidence do we have that the AdS/CFT correspondence is true? In Maldacena's original derivation, he posited that the theory could be interpolated between weak and strong couplings so that the commuting square diagram really works.
+\begin{itemize}
+    \item The symmetries match up. Hence the $SO(2,4)\times SO(6)+32$ real supersymmetries line up. In $\cN=4$ SYM, we get Weyl spinors with 2 complex components. In the CFT, there are 16 supercharges $Q_A^\alpha$ and 16 superconformal $S_{\bar A}^\alpha = X_{A\bar A} Q_B^\alpha \epsilon^{AB}$.%superconformal what? charges?
+    There are some anticommutation relations which allow us to construct the representations of the symmetries,
+    \begin{align*}
+        \set{Q_A,\bar Q_{\bar A}} &\sim P_{A\bar A}\\
+        \set{S,\bar S} &\sim K\\
+        \set{Q,\bar S} &\sim M+R+D,
+    \end{align*}
+    where $P$ are the $+1$ spin representations, $Q$ the $+1/2$, $R,M,D$ the $0$ reps, $S$ the $-1/2$ reps, and $K$ the $-1$ reps.
+    \item S-duality. $SL(2,\ZZ)$: in SYM, we have $\tilde g=g + i\theta, \theta F \wedge F$ and on SUGRA, $g_5:\Phi,C_0$
+    \item Trace anomalies match (protected from weak$\to$strong coupling)
+    \item BH entropy/holographic entanglement entropy (to be discussed more alter)
+    \item ``chiral'' primaries of supergroup-- irrep that has null states, $Q\ket{\psi}=0$ for some $Q,\psi$, with $S\ket{\psi}=0$ and $\set{Q,S}\ket{\psi}=0$. $\Delta$ is determined by spin ($M$) and $R$-charge ($R$), hence the charge $Q$ is protected in going to strong coupling.
+\end{itemize}
+
+In fact, all type IIB supermultiplets (KKK reduced to AdS${}_5$ in regime of validity of SUGRA) is equivalent to the single trace chiral irreps which are built $\text{tr}(\underbrace{\phi_{\{I}\phi_J \phi_{K\ldots\}}}_{n})$ where $\set{}$ indicates symmetric traceless. This single trace expression corresponds to the $n$th spherical harmonic on $S_5$. We then have the relations
+\begin{align*}
+    [Q_A,\phi]&\sim \psi_A,\\
+    \set{Q_A,\psi_B} &\sim F_{AB} + [\phi^I,\phi^J]\epsilon_{AB}\\
+    \set{Q_A,\psi_{\bar B}^*} & \sim D_{A\bar A} \phi\\
+    [Q_A,A_{B\bar B}]&\sim \epsilon_{AB}\psi_{\bar B}^*.
+\end{align*}
+
+We can have traces of $2\leq n \leq N$ $\phi$s-- note that traces of more than $N$ commuting $N\times N$ matrices are not independent (of traces of fewer than $N$ matrices). This relation suggests that there is a shortest scale on the $S_5$, such that no new degrees of freedom emerge if we try to probe length scales smaller than the Planck scale.
+
+Now, IIB has no additional fields, so it seems that the non-chiral irreps have $\Delta \to$large ($\Delta^2 \sim 1/l_s$) as $\lambda\to$large. In $n=2$ we have $\text{tr}(\phi_{\{I}\phi_{J\}})$ with $2\leq \Delta \leq 4$ which includes all conserved CFT currents. $\Delta=3=d-1$ is the $R$-charge $J$, $\Delta=3+1/2$ gives $J_\text{super}$, and $\Delta=4=d$ gives $\Phi$ dual to the dilaton. %??
+
+There are other versions of the duality which are useful.
+\begin{itemize}
+    \item $N$ M2's: $\text{AdS}_4\times S_6^{(m)}\longleftrightarrow d=5, \cN=8$ ABJM model. $U(N)\times U(N)$ Chern-Simons gauge theory $\cL= F\wedge A +\frac{2}{3} A \wedge A \wedge A$, also IR limit of $d=3, \cN = 8$ SYM ($g=$relevant) (D2)
+    \item $N$ M5s: $\text{AdS}_2 \times S_4 \longleftrightarrow d=6, \cN=(2,0)$ max dimensional superconformal theory. Does not come from a Lagrangian but is known to exist from stringy arguments. Compactify on $S_1$, flows to $d=5,\cN=4$ SYM ($g=$irrelevant) (D4)
+    \item $Q_1$ D1 $Q_5$: $\text{AdS}_3 \times S_3 \times T_4$ (IIB) (K3) $\longleftrightarrow$ nonlinear $\sigma$-model $d=2$.
+\end{itemize}

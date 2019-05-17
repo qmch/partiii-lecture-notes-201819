@@ -1,0 +1,50 @@
+Today we'll continue our discussion of entanglement entropy, specifically the holographic entanglement entropy. The central result in this area is the \emph{Ryu-Takayanagi formula}.
+
+Last time, we said that by picking a Cauchy slice and some bounded region $R$ with a boundary $E=\p R$, we wanted to define the von Neumann entropy of the region $R$ such that $S=-\tr (\rho_R \log \rho_R)$. The Ryu-Takayanagi formula gives us a way to compute the leading-order piece of the entanglement entropy $S$. The formula also applies to static geometries or $t\to -t$ Cauchy surfaces. Some of the scalings are given in Table \ref{tab:cft_entropyscaling}.
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{c c | c | c c}
+         $d$ & CFT & bulk & strong $\lambda$ & weak $\lambda$ \\\hline
+         2 & D1-D5 & $\text{AdS}_3 \times S_3 \times T_4$ & $c$ & $c$ \\
+         3 & ABTM & $\text{AdS}_4\times S_2$ & $N^{3/2}$ (IR) & $N^2$ (UV) \\
+         4 & $\cN=4$ SYM & $\text{AdS}_5 \times S_5$ & $\sim N^2$ & $\sim N^2$\\
+         6 & $(2,0)$ model & $\text{AdS}_7\times S_4$ & $N^3$ (UV) & $N^2$ (IR)\\
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:cft_entropyscaling}
+\end{table}
+
+The prescription is actually very simple. Given $E=\p R$ on the boundary, we need only to construct the surface $\gamma$ in the bulk with boundary corresponding to $E$ which minimizes the area. That is,
+\begin{equation}
+    S=-\tr(\rho \log \rho) = \min_\gamma \frac{\text{Area}[\gamma]}{4 G \hbar}.
+\end{equation}
+It's no coincidence this looks like the Bekenstein-Hawking entropy formula. There are some additional constraints-- the surface $\gamma$ must be anchored to $\p R$, and it must be homologous (can be smoothly deformed through the bulk) to $R$.
+
+For instance, in the eternal AdS-Schwarzschild black hole, the correct minimal area surface lies at the throat of the wormhole. If we take $R$ to be the CFT on one side, then all of space at an instant is $S_{d-1}$, which is closed and has no boundary ($\p R = \set{}$). Hence the anchoring condition is trivial and the throat of the wormhole satisfies the homology condition.
+
+If we try to do the bulk area calculation naively, we get infinity, since there is a redshift factor $1/z^2$ in our metric ($ds^2 =\frac{1}{z^2} (\eta_{ij})dx^i dx^j$). This isn't too surprising since we also had to impose a cutoff in directly computing the entanglement entropy of the boundary CFT. Here, we will also introduce a cutoff and simply integrate the area of the minimizing surface starting at some $z=\epsilon$. In fact, if we are careful, we can use theories with large amounts of supersymmetry to check e.g. in $d=4$ and $d=2$ that the log divergences from the CFT calculation agree with the log divergences in the bulk calculation.
+
+If there is a black hole in our space, as we tune the boundary region we will get a phase transition depending on which side of the black hole our minimizing surface wraps around. But in fact we need not have a black hole to see a phase transition. If we take a sphere and two caps $A,B$, then we can use RT to compute the entropy $S(AB)$. For small caps (small $\theta$) we get
+\begin{equation}
+    S(AB)=S(A)+S(B),
+\end{equation}
+where the mutual information ($I_{A,B}=S_A+S_B-S_{AB}\geq 0$) is $I_{A,B}=\cO(1)$. But for large $\theta$, %see figure
+we instead have $S_{AB} < S_A + S_B$, with $I_{A,B} = \cO(N^2)$. By sketching this, we see that the entropy itself is continuous but its derivative $\P{}{\theta} S$ is discontinuous.
+
+It's a remarkable fact that although strong subadditivity is really hard to prove in quantum information theory, there is a very nice proof from holography. Diagram to be added. We can prove other sorts of quantum information inequalities, e.g. the monogamy of mutual information:
+\begin{equation}
+    S(AB)+S(BC) +S(AC) \geq S(A) +S(B) +S(C) +S(ABC).
+\end{equation}
+It is not satisfied by general $\rho_{ABC}$ in QM, but it does hold holographically (cf. Hayden-Headrick-Maloney).
+
+There is also a covariant generalization of the RT formula, the Hubeny-Rangamani-Takayanagi (HRT) prescription. This formula kicks in when the spacetime $\cM$ is dynamical or if the boundary $E$ is time-dependent. Notice that in a metric with Lorentzian signature, our old notion of a minimal area surface breaks down because we can generally increase the area of such a surface by introducing ``wiggles'' in the time direction. Instead, we should try to extremize the area, like in Euler-Lagrange. Instead of seeking a global minimum, the best we can do is to find a saddle point.%
+    \footnote{Both mathematicians and physicists somewhat abuse the terminology here. Mathematicians will say that solutions of the E-L equations are minimal surfaces, whereas physicists call these extremal surfaces. Technically, the surfaces need not be minima or maxima (as is implied by extremal), but saddle points of the thing we're varying.
+    }
+Hence
+\begin{equation}
+    S=\min \text{ext}_\gamma \frac{\text{Area}[\gamma]}{4G\hbar}
+\end{equation}
+for surfaces $\gamma$ that are still homologous to the region in the boundary theory.
+
+There is another way about this, the ``max-min'' procedure. For each Cauchy slice $\Sigma$ passing through $E$, identify the minimal surface $\min(\text{Area}[\gamma],\Sigma)$. Then vary $\Sigma$ to maximize, $\max_\Sigma \min_{\gamma\subset \sigma} \frac{\text{Area}[\gamma]}{4G\hbar}$. This is equivalent to HRT if $T_{ab} k^a k^b \geq 0$ for $k^a$ null (i.e. the null energy condition) and the spacetime is AdS-hyperbolic. This max-min proceedure is good for proofs (establishing properties of the HRT surface) and bad for calculations (since we have to extremize over an infinite-dimensional space of Cauchy slices).

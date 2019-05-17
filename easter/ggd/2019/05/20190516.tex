@@ -1,0 +1,94 @@
+Today we'll introduce the idea of holographic entanglement entropy. We'll begin with a discussion of entanglement entropy in the context of field theory, and next lecture we'll discuss its holographic description with respect to the bulk theory.
+
+If we have a Hilbert space which can be decomposed into a tensor product as
+\begin{equation}
+    \cH=\cH_1 \otimes \cH_2,
+\end{equation}
+then for a pure state which lives in the bipartite Hilbert space $\ket{\psi}_{12}\in \cH$, we can write down reduced density matrices by tracing over the degrees of freedom corresponding to the subsystems,
+\begin{equation}
+    \rho_1 = \Tr_2(\dyad{\psi})
+\end{equation}
+where $\tr(\rho)=1$ is normalized. The von Neumann entropy (perhaps familiar from \emph{Quantum Information Theory}) is a measure of how mixed a state is. It is given by
+\begin{equation}
+    S(\rho) = -\tr(\rho \ln \rho),
+\end{equation}
+and it is zero for a pure state and $\ln \dim \cH$ for a maximally mixed state. The von Neumann entropy has some nice properties.
+\begin{enumerate}
+    \item It is positive, $S(\rho)\geq 0$.
+    \item Invariant under unitaries, $S(U\rho U^\dagger)=S(\rho)$ and invariant under adding extra $p=0$ states.
+    \item Additive under tensor products, $S(\rho_A \otimes \rho_B) = S(\rho_A) + S(\rho_B)$
+    \item Triangle inequality: $S(A)+S(B) \geq S(AB) \geq |S(A)-S(B)|$ (Araki-Lieb)
+    \item Continuous for finite-dimensional $\cH$ (lower semicontinous for infinite-dimension)
+    \item Concavity, $S(\sum_i \lambda_i \rho_i) \geq \sum_i \lambda_i S(\rho_i)$ where $\sum \lambda_i =1$.
+    \item For $\rho=\oplus \lambda_i \rho_i$ (i.e. a block diagonal density matrix), $S(\rho)=\avg{S(\rho_i)}_\lambda - \sum_i \lambda_i\ln \lambda_i$ (the last term is the Shannon entropy of $\set{\lambda_i}$).
+    \item Strong subadditivity, $S(AB) + S(BC) \geq S(ABC)+ S(B)$.
+\end{enumerate}
+These many properties of the von Neumann entropy will lead to some nontrivial checks of the duality.
+
+\subsection*{Entanglement entropy in field theory}
+Now, the notion of entropy is a little different for quantum field theories because our space does not factorize into clean Hilbert spaces as in quantum mechanics. Let us take a $d-1$-dimensional Cauchy surface $\Sigma$ and further define a region $R$ on $\Sigma$ bounded by a surface $E$ of codimension 2. There should be some density matrix $\rho_R$ describing the state of the fields in $R$.
+
+Naively, we would say that the entanglement entropy of $R$ is then
+\begin{equation}
+    S(\rho_R)=-\tr(\rho_R \ln \rho_R).
+\end{equation}
+But there's a difficulty. The value of this depends on
+\begin{enumerate}
+    \item the QFT itself
+    \item the region $R$
+    \item the state $\psi$
+    \item the short-distance cutoff $\epsilon$, i.e. how we regulate the theory
+\end{enumerate}
+Strictly speaking, one says that $\rho$ is a state in a type III von Neumann algebra, but as is usual these constructions are harder to work with. It doesn't really make sense to take the trace over $\rho\ln\rho$ because individual entries in the density matrix correspond to pure states which may have arbitrarily high energy and large entanglement with the exterior region. We can then define $\rho$ by the expectation values of operators for all $\cO\subset \mathcal{A}$ in some algebra.
+
+We should expect that for an entire system that is in a pure state, the entropy of our region $R$ is equal to the entropy of its complement,
+\begin{equation}
+    S(R) = S(\bar R),
+\end{equation}
+given that we apply the same cutoff on both sides of the boundary. For a spacetime foliated by some Cauchy slices $R_1,R_2$, we can also say that $S(R_1)=S(R_2)$ if $D[R_1]=D[R_2]$ (their domains of dependence are the same).
+
+\subsection*{Divergences}
+For a $d=2$ CFT, we get an entropy of
+\begin{equation}
+    S=\frac{c}{3} \ln \paren{\frac{r}{\epsilon}} + \text{finite},
+\end{equation}
+where the finite bit is scheme-dependent but the $c/3$ scaling of the log divergence is universal, with $c$ the central charge. For $d>2$, we instead get an area law,
+\begin{equation}
+    S=\# \frac{\text{Area}[E]}{\epsilon^{d-2}}+\text{subleading}
+\end{equation}
+where the constant in the first term depends on $\epsilon$. In even dimension, we get a log divergence $\#\ln (\epsilon) \int[R]^{d/2}$ with $R$ the curvature, and where the multiplicative factor is related to the central charge in the CFT. In odd dimensions, we just get a finite contribution without the log divergence. That is, the subleading terms will end with $1/\epsilon+\text{finite}.$
+
+\subsection*{Geometric entropy}
+The method we'll discuss now is valid when $\rho$ comes from a path integral with a $U(1)$ rotational symmetry. One may for instance discuss the Rindler wedge of Minkowski. In Minkowski, a moving observer sees thermal radiation with boost energy due to the Unruh effect,
+\begin{equation}
+    K=\int_0^\infty T_{tt} x dx dy dz.
+\end{equation}
+That is,
+\begin{equation}
+    \rho=\frac{e^{-2\pi K}}{Z}
+\end{equation}
+with $Z=\tr(e^{-2\pi K})$.
+
+Since we have
+\begin{equation}
+    S(\beta')=(1-\beta \p_\beta) \ln Z|_{\beta = \rho'},
+\end{equation}
+for $\beta' \neq 2\pi$ we get a conical singularity. Interestingly, if we take
+\begin{equation}
+    \ln Z = -I_\text{grav} = \frac{1}{16\pi G} \int R\sqrt{g}d^d x,
+\end{equation}
+the Einstein-Hilbert action, one in fact recovers
+\begin{equation}
+    S=\frac{A}{4G \hbar},
+\end{equation}
+the Bekenstein-Hawking formula for the black hole entropy.
+
+What if we do not have the $U(1)$ symmetry? We use the ``replica trick,'' where we calculate a modified partition function
+\begin{equation}
+    Z_n = \tr(\rho^n),
+\end{equation}
+with $n$ an integer. That is, we take $n$ copies of $\rho$ and glue them together along some surface, and attempt to analytically continue to non-integer $n$. Then our entropy is given by
+\begin{align}
+    S &= (1-n \p_n Z_n)|_{n=1}\\
+        &= \lim_{n\to 1} \underbrace{\frac{1}{n} \ln \tr(\rho^n)}_{S_n,\text{ R\'enyi entropy}}.
+\end{align}

@@ -18,36 +18,57 @@ Suppose this particle carries a bomb and breaks apart so that
 \begin{equation}
     P^a = P_1^a + P_2^a\implies E=E_1+E_2, E_i=-K\cdot P_i.
 \end{equation}
-Since $K$ is spacelike, $E_1<0$. This is possible since $K$ is spacelike in the ergoregion. But we see that
+Since $K$ is spacelike in the ergoregion, $E_1<0$. But we see that
 \begin{equation}
-    E_2 = E_+|E_1| >E,
+    E_2 = E +|E_1| >E,
 \end{equation}
 so the particle with energy $E_2$ leaves with more energy that went in.
 %Imagine that you surround this black hole by a really big mirror. This is the black hole bomb. Believe it or not, no one knows what the endpoint of this process is. Some people have conjectured that in AdS, this leads to a violation of weak cosmic censorship.
-This is known as the \term{Penrose process}. How much energy can we steal from the black hole? A particle that crosses $\cH^+$ must have $-P\cdot \xi \geq 0$, which tells us that
+This is known as the \term{Penrose process}. How much energy can we steal from the black hole? A particle that crosses $\cH^+$ must have $-P\cdot \xi \geq 0$,%
+    \footnote{This just says that the horizon generator $\xi$ and the particle momentum $P$ lie in the same light cone.}
+which tells us that
 \begin{equation}
-    E-\Omega_H L \geq 0 , L= m \cdot P.
+    E-\Omega_H L \geq 0
 \end{equation}
-After the system settles,
+with $L= m \cdot P$ the angular momentum of the particle that fell in. After the system settles, it must be that
 \begin{equation}
     \delta M = E_1, \quad \delta J=L.
 \end{equation}
 Comparing to our inequality, we find that
 \begin{equation}
-    \delta J \leq \frac{\delta M}{\Omega} =\frac{2M(M^2+\sqrt{M^4 - J^2}}{J} \delta M,
+    \delta J \leq \frac{\delta M}{\Omega_H} =\frac{2M(M^2+\sqrt{M^4 - J^2})}{J} \delta M,
 \end{equation}
 or with a bit of manipulation,
 \begin{equation}
-    \delta M_{irr} \geq 0,\quad M_{irr}=\bkt{\frac{1}{2}(M^2+\sqrt{M^4-J^2})}^{1/2}.
+    \delta M_\text{irr} \geq 0,\quad M_\text{irr}\equiv \bkt{\frac{1}{2}(M^2+\sqrt{M^4-J^2})}^{1/2},
 \end{equation}
-Solving for $M^2$, we find that
+where we have defined the irreducible mass $M_\text{irr}$. Solving for $M^2$, we find that
 \begin{equation}
-    M^2 = M_{irr}^2 +\frac{J^2}{4M_{irr}^2} \geq M_{irr}^2
+    M^2 = M_\text{irr}^2 +\frac{J^2}{4M_\text{irr}^2} \geq M_\text{irr}^2
 \end{equation}
+Thus the irreducible mass places a bound on how much mass and angular momentum we can extract from the black hole.
 %What is the area of the black hole? Zero? No, it's the other guy. Infinity.
-The area of the intersection of a partial Cauchy surface $t={}$constant with $\cH^+$ is
+The area of the intersection of a partial Cauchy surface $t={}$constant with $\cH^+$ is%
+    \footnote{To see this, notice that the induced metric on the horizon $r=r_+, dt=0,dr=0$ is
+    \begin{equation*}
+        \gamma_{ij}dx^i dx^j =(r_+^2+a^2 \cos^2\theta) d\theta^2 + \bkt{\frac{(r_+^2+a^2)^2 \sin^2\theta}{r_+^2 + a^2 \cos^2\theta}}d\phi^2.
+    \end{equation*}
+    The horizon area is
+    \begin{equation*}
+        A=\int \sqrt{|\gamma_{ij}|} d\theta d\phi
+    \end{equation*}
+    and the determinant of the induced metric is just $(r_+^2+a^2)^2 \sin^2\theta$ so
+    \begin{equation*}
+        A= \int (r_+^2+a^2) \sin\theta d\theta d\phi = 4\pi (r_+^2+a^2).
+    \end{equation*}
+    Substituting in the definition of $r_+$, we find that
+    \begin{equation*}
+        A=4\pi (2(M^2+\sqrt{M^4-J^2}) = 16\pi M_\text{irr}^2.
+    \end{equation*}
+    This quick derivation comes from Carroll, pg. 270.
+    }
 \begin{equation}
-    A=16\pi M_{irr}^2 \implies \delta A\geq 0.
+    A=16\pi M_\text{irr}^2 \implies \delta A\geq 0.
 \end{equation}
 
 \subsection*{Mass, charge, and angular momentum}
@@ -71,15 +92,16 @@ defines a charge. The key thing about a charge is that it should be conserved, i
 \begin{equation}
     Q = -\int_\Sigma * j = \frac{1}{4\pi} \int_\Sigma d* F =\frac{1}{4\pi} \int_{\p \Sigma} *F,
 \end{equation}
-where we have applied Stokes's theorem.
+where we have applied Stokes's theorem. This tells us that the value of the charge indeed depends only on the value of $*F$ on the boundary $\p \Sigma$.
 \begin{defn}
     Let $(\Sigma,h,K)$ be an asymptotically flat end. Then the electric and magnetic charges associated with this end are
     \begin{equation}
-        Q=\frac{1}{4\pi} \lim_{r\to +\infty} \int_{S^2_r} *F,\quad P= \frac{1}{4\pi} \lim_{r\to + \infty}\int S^2_r F.
+        Q=\frac{1}{4\pi} \lim_{r\to +\infty} \int_{S^2_r} *F,\quad P= \frac{1}{4\pi} \lim_{r\to + \infty}\int_{S^2_r} F,
     \end{equation}
+    where $S_r^2$ is an $S^2$ of radius $r$.
 \end{defn}
 
-\subsection*{Korman integrals}
+\subsection*{Komar integrals}
 If a spacetime $(\cM,g)$ is stationary, then there exists a conserved energy momentum current
 \begin{equation}
     J_a = -T_{ab} K^b \implies \nabla_a J^a = 0.
@@ -110,12 +132,12 @@ where we have used the fact that $K$ is Killing to rewrite the final line.
         \nabla_a \nabla_b K^c = R^c{}_{bad} K^d.
     \end{equation}
 \end{lem}
-Hence we have $(*d*d K)_a = -2R_{ab}K^b \equiv 8\pi J')a$,
-where $J'a = -2(T_{ab}-\frac{1}{2}T g_{ab})K^b$ by the Einstein equations. Hence
+Hence we have $(*d*d K)_a = -2R_{ab}K^b \equiv 8\pi J'_a$,
+where $J'_a = -2(T_{ab}-\frac{1}{2}T g_{ab})K^b$ by the Einstein equations. It follows that
 \begin{equation}
     d*dK=8\pi * J'.
 \end{equation}
-We know $*J'$ is exact and conserved, hence
+We know $*J'$ is exact and conserved, so
 \begin{equation}
     -\int_\Sigma * J' = -\frac{1}{8\pi} \int_\Sigma d* dK = -\frac{1}{8\pi}\int_{\p \Sigma} *dK.
 \end{equation}

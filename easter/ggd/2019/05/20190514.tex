@@ -1,0 +1,51 @@
+There was a question last time about what we meant by ``pinching off'' the geometry. The boundary of our space is $S_1\times S_{d-2}$. The idea is that we could either replace the $S_{d-1}$ with a ball $B_d$ to get $S_1\times B_d$, or we could replace the $S_1$ with a disc $B_2$ to get a $B_2\times S_{d-1}$. The former case gives two copies of thermal AdS, while the second gives the eternal black hole.
+
+In the latter case, we get the AdS-Schwarzschild geometry. In AdS${}_5$, we have a metric
+\begin{equation}
+    ds^2 = -f dt + \frac{dr^2}{f} + r^2 d\Omega^2
+\end{equation}
+where
+\begin{equation}
+    f=1+\frac{r^2}{L}-\frac{\mu}{r^2}
+\end{equation}
+where the cosmological constant is related to the AdS radius by $\Lambda=-6/L^2$. The proportionality constant depends on how many dimensions we're working in. Now the horizon radius is given by
+\begin{equation}
+    r_H=\frac{L^2}{2}(\sqrt{1+\frac{4\mu}{L^2}}-)
+\end{equation}
+where the inverse (Hawking) temperature is then
+\begin{equation}
+    \beta = \frac{2\pi L^2 r_H}{2r_H^2+L^2}.
+\end{equation}
+If we plot $T$ as a function of $r_H$, we find that in the small $r_H$ regime (a small black hole), we get $T\sim 1/r_H$, which is just like the Schwarzchild black hole in asymptotically flat space. It has negative specific heat. On the other hand, at large $r_H$, we get $T\sim r_H$ and in this limit of a large black hole, we get a positive specific heat. Thus such a black hole is permitted in the canonical ensemble.
+
+This tells us there is a minimum temperature corresponding to a maximized inverse temperature. For
+\begin{equation}
+    \beta > \beta_{HP} = \frac{2\pi L}{3},
+\end{equation}
+we have $I^\text{AdS} < I^\text{large BH}$. Conversely for $\beta < \beta_{HP}$ we instead have $I^\text{large BH} < I^\text{AdS}$.
+
+Equivalently, at low energies there exists a ``confining'' phase with $S\sim O(1)$ at low temperature (where the particles form color singlets), whereas at high temperatures, we have $S\sim O(N^2)$ which gives a (super) gluon plasma. This is kind of a special confinement because we made space a sphere-- since our theory was conformal, a priori there's no special length scale to confine to (unlike in QCD). If we put our theory on a plane ($\RR^4$ instead of $S_3\times \RR$) this is like taking the high-$T$ limit. We find that
+\begin{equation}
+    S_{BH}=\frac{\text{Area}}{4G\hbar} =\frac{3}{4} S_\text{free} \sim VT^3,
+\end{equation}
+which is another qualitative check of the duality since this gives the entropy of a free thermal gas. One might worry about the $3/4$ factor, but in fact perturbative calculations suggest that we might be able to interpolate smoothly between the $\lambda=0$ weak coupling limit (with the constant${}=1$) and the $\lambda={}$large strong coupling limit (with the factor $3/4$).
+
+In the microcanonical ensemble, small black holes in 5d are in fact permitted, even though their temperature tends to decrease-- this is allowed if we keep track of the thermal radiation as the black hole evaporates. Below this temperature there are 10d black holes, stringy behavior, and at the lowest energy scales some field theory limit. The CFT duals to the large black holes are better understood.
+
+\subsection*{BH from collapse}
+Let us suppose we send in a spherically symmetrical pulse of massless $\phi$ field (AdS-Vaidya). As this pulse compresses, a horizon forms.
+
+We can actually predict physics outside the horizon based on the data specified on the boundary, but in general it's harder to predict what happens inside the horizon. In the tin-can picture, we send in some radiation and form a black hole, and this black hole then evaporates. At some point, the black hole reaches the Planck scale and quantum gravity kicks in. We don't really understand what happens here. It's expected that quantum gravitational effects will change the topology and allow the black hole to evaporate entirely. It shouldn't leave any remnant, since this would be hard to reconcile with the CFT description.
+
+However, this leads to the ``information paradox.'' For semiclassical bulk physics, the Hawking radiation should be thermal radiation, i.e. in a mixed state. One can study the Hawking radiation as related to some modes inside the horizon by suggesting that near the horizon, an infalling observer should simply see the vacuum. This allows us to treat Hawking radiation as a special case of the Unruh effect. But it seems that the mixed state of the thermal radiation is not correlated with what fell in.
+
+On the other hand, on the CFT side, we observe thermalization. There's some Hamiltonian describing time evolution, so time evolution is in particular unitary-- pure states remain pure under unitary operations, though it may look effectively thermal. Information should be preserved.
+
+Most of the community now believes that the CFT side (unitary evolution) is correct and that information is not lost in black hole evaporation. Hence the question becomes: what goes wrong with the Hawking calculation?
+
+Work by Mathur and later AMPS (Polchinski et al) suggested that if we want the Hawking radiation to also be pure, then the black hole interior is actually nonphysical for late time black holes. This is the ``firewall paradox.'' Schematically, the argument suggests that the late-time radiation is strongly entangled with both the early-time radiation and the infalling radiation beyond the horizon. This violates the monogamy of entanglement, a consequence of strong subadditivity.
+We have
+\begin{equation}
+    S(AB)+ S(BC) \geq S(A)+ S(C)
+\end{equation}
+as bounds on the von Neumann entropies. Suppose $A$ is the early time radiation, $B$ the late time radiation, and $C$ the internal radation. Then $S(AB)\sim 0, S(BC)\sim 0$ since these states are entangled (and nearly pure states), but $S(A)\sim \ln 2, S(C)\sim \ln 2$. This is very strange and there's no clear resolution.
