@@ -1,0 +1,72 @@
+\subsection*{HKLL reconstruction formula}
+Recall that our correspondence says that fields in the bulk can be written as the limit of operators near the boundary,
+\begin{equation}
+    \phi \to \lim_{z\to 0} z^{-\Delta} \cO.
+\end{equation}
+We would like to define $\phi_\text{bulk}(z,x)$ near the boundary but for some finite $z$. That is, we wish to reconstruct the bulk from the boundary.
+To do this, we can write
+\begin{equation}\label{bulkformula}
+    \phi_\text{bulk}(z,x)=\int d^d x' \, K(x'|z,x)\cO(x')
+\end{equation}
+in terms of some Green's function (kernel) $K(x'|z,x)$. We wish to construct the $\tilde \phi = z^{(d-1)/2}\phi$ which solves
+\begin{equation}
+    [\p_z^2 -\frac{\tilde m^2}{z^2} + \Box^{(d)}]\tilde \phi =0.
+\end{equation}
+Notice this is a \emph{nonstandard} Cauchy problem. We have a hyperbolic wave equation but instead of solving based on initial data on a Cauchy (hyper)surface, we are given data on a timelike $z=0$ surface. 
+
+We want $\phi_\text{bulk}$ to be uniquely determined by the $z=0$ data, but while our equation looks hyperbolic in the $t$-$z$ plane, it looks elliptical in the $t$-$\vec{x}$ plane. To solve this, we can use the $x$-translation symmetry of the problem. That is, we expand $\phi,\cO$ in plane waves in $x$ so that
+\begin{equation}
+    \phi_p(z,t)= \int d\vec x \, e^{i\vec p \cdot \vec x}\phi(z,t,\vec{x}).
+\end{equation}
+The question reduces to a $1+1$ Lorentzian problem, where it is now not so hard to switch the roles of space and time. We can evolve in the $z$-direction at the cost of flipping the effective sign of $m^2$, i.e. yielding a tachyonic mass.
+
+Note that it is not generally true that in a Lagrangian with a tachyon, our theory loses predictability (i.e. information can travel faster than light). Instead, what happens is that instead of a nice harmonic oscillator $+\phi^2$ potential, we get a $-\phi^2$ potential which makes our theory unstable. That is, small perturbations from the vacuum state grow exponentially.
+
+From our plane wave expansion, switching time and space allows us to write
+\begin{equation}
+    \phi_p(z,t)=\int dt' \, K_p(t'|z,t) \cO_p(t')
+\end{equation}
+in terms of a kernel, as promised. However, note that $K_p$ blows up at large values of $\vec{p}$. That's because the $\Box$ term grows bigger at large values of the spacelike momentum. Taking the inverse Fourier transform would then in principle allow us to reconstruct the bulk from \ref{bulkformula}.
+
+We can, if we wish, evolve the operator $\cO$ back to a 1-bdy Cauchy slice,
+\begin{equation}
+    \cO(t,x)=e^{iHt}(\cO(0,x) e^{-iHt}.
+\end{equation}
+That is, we can evolve the operator back to some preferred moment in time corresponding to a single Cauchy slice on the boundary. Having behavior in the bulk determined by a codimension 1 surface is standard field theory. Having behavior in the bulk determined by a codimension 2 surface is surprising. That's the holographic principle. Initial data on the boundary not only predicts time evolution on the boundary but the entire interior of the bulk.
+
+In the complete AdS (tin can) picture, in order to reconstruct the bulk field at some point, we need data from a cylindrical chunk of AdS corresponding to how long it takes for null rays to reach the boundary. We can do this, provided that we sum over spherical harmonics (it suffices to add over $s$-waves).
+%diagram
+
+We could also look at the Rindler patch of AdS, in which case we could determine a bulk field just from the intersection of its ``light cone'' with the boundary in one direction.
+%diagram
+
+If we were feeling ambitious, we could include perturbative interactions in a $1/N$ expansion using Witten diagrams. We could use Green's functions in the spacelike directions to describe propagation from a bulk point to the boundary, provided that we're a little careful about gauge symmetries in the bulk. For instance, diffeo symmetry in the bulk is allowed so long as they vanish on the boundary $\p M_\text{bulk}$.
+
+One way to do the gauge fixing is to use Fefferman-Graham coordinates, i.e. trace geodesics from bulk points to near-boundary ($z=\epsilon$) points. What we'd find if we did this was that conditions on the boundary lead to nonlocal behavior, e.g. an electron on the boundary induces a nonlocal gravitational and electric field in the bulk. This is related to the notion of Wilson lines.
+%diagram
+
+Now what if our theory loses translation symmetry? We wish to reconstruct (part of) the bulk from a general CFT region. To do this, take a slice $R$ on the boundary and find its domain of dependence $D[R]$. Then determine the intersection of its causal future and past \emph{within the bulk}, i.e
+\begin{equation}
+    C_W= I^-(D[R])\cap I^+(D[R]).
+\end{equation}
+%diagram
+This is known as the causal wedge. The property of \term{bulk causality} then says that using the local equations of motion in the bulk (like HKLL), we can reconstruct at most the causal wedge $C_W$. The future and past boundaries of the causal wedge then define the future and past causal boundaries $\cH^+,\cH^-$, which as the notation suggests are similar to black hole event horizons.
+
+So we can reconstruct at most the causal wedge, but can we ever get the entire causal wedge? The answer is contained in \term{Holmgrem's uniqueness theorem}, which implies that if bulk ``sources'' are analytic, we can indeed reconstruct all of $C_W$. In practice it is often assumed that the causal wedge can always be reconstructed in its entirety regardless of the analyticity of sources in the bulk. There are a few known counterexamples where e.g. one could construct an artificial field obeying $\Box \phi=f(x,z)\phi$ which decays sufficiently quickly near the boundary, in which case a geometric optics approach shows that the causal wedge cannot be completely reconstructed. But this is thought to be nonphysical in the sense that this field behavior could not have come from an action principle. So whether the causal wedge can always be reconstructed is an open question in bulk reconstruction.
+
+However, if we have nonlocal operators, this leads us to a bigger version of the bulk, the \emph{entanglement wedge}. That is,
+\begin{equation}
+    E_W=D[\Sigma_{R\to m(R)}],
+\end{equation}
+where one considers the HRT surface.
+Bulk reconstruction leads us to an interesting paradox known as the \term{ADH paradox}. Suppose we divide the boundary into three regions, $A,B,C$. Let $\phi_\text{bulk}$ lie in the very center. 
+%diagram
+Hence $\phi_\text{bulk}$
+\begin{itemize}
+    \item is in $\mathcal{A}[\cH_{AB}]$
+    \item is in $\mathcal{A}[\cH_{BC}]$
+    \item is not in $\mathcal{A}[\cH_{B}]$.
+\end{itemize}
+These first two implications suggests that in terms of $\cH_A \otimes \cH_B \otimes \cH_C$, this operator must be $I\otimes \cO_B \otimes I$. But we said that it couldn't lie in $\cH_B$ alone.
+
+Fortunately, there is a nice resolution, to do with the phenomenon of quantum error correction. One version requires a three-qutrit system (a 27D Hilbert space). These three qutrits lead to one logical qutrit (a 3D Hilbert space), such that if we encode a state as one of the three computational basis states, if we then lose one of the qutrits, we can still reconstruct the state of the logical qutrit state from the other two. That is, we can reconstruct the full state if we restrict to the ``code subspace.'' This suggests that only a subspace of states in the bulk will have a nice semi-classical limit like this ``code subspace,'' so whenever this is true, there is no paradox.
