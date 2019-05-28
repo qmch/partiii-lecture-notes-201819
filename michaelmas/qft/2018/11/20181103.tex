@@ -33,7 +33,7 @@ $$\frac{d^3q_2}{2E_{q_2}}=d^4 q_2 \delta((q_2^0)^2-\vec q_2^2 -{m_2'}^2)|_{q_2^0
 But this is clearly equivalent-- just turn the $q_2^0$ condition into a step function and rewrite $(q_2^0)^2-\vec q_2^2$ in terms of the four-momentum $q_2^2$.
 We then rewrite the $d^3q_1$ integral in spherical coordinates for $q_1$:
 $$\frac{d^3q_1}{2E_{q_1}}=\frac{|\vec q_1|^2 d|\vec q_1|}{2E_{q_1}} d\cos\theta d\phi.$$
-Since $E_{q_1}^2+m_1^2={m_1'}^2 +|\vec q_1|^2 \implies 2E_{q_1}dE_{q_1}=|\vec q_1|d|\vec q_1|$ allows us to rewrite our expression for $\frac{d^3q_1}{2E_{q_1}}$ (using the $dt/d\cos\theta$ expression) as
+Since $E_{q_1}^2={m_1'}^2 +|\vec q_1|^2 \implies E_{q_1}dE_{q_1}=\abs{\vec q_1}d\abs{\vec q_1}$ allows us to rewrite our expression for $\frac{d^3q_1}{2E_{q_1}}$ (using the $dt/d\cos\theta$ expression) as
 $$\frac{d^3q_1}{2E_{q_1}}=\frac{1}{4|\vec p_1|} dE_{q_1}d\phi dt.$$
 If we explicitly substitute our expressions for $d^3q_1/2E_{q_1}$ and $d^3q_2/2E_{q_2}$ into the expression for $\sigma,$
 we get
@@ -53,12 +53,12 @@ $$\mathcal{F}=2\lambda^{1/2}(s,m_1^2,m_2^2).$$ With our expressions for $|\vec p
 $$\frac{d\sigma}{dt}=\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)(1/2\sqrt{s})}\int dE_{q_1} \delta(s-{m_2'}^2+{m_1'}^2-2q_1\cdot(p_1+p_2)).$$
 Since we are in the center-of-mass frame, $p_1+p_2=(m_1+m_2,0,0,0)=(\sqrt{s},0,0,0)$, and so 
 \begin{align*}
-\frac{d\sigma}{dt}&=\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)(1/2\sqrt{s})}\int dE_{q_1} \delta(s-{m_2'}^2+{m_1'}^2-2E_{q_1}\sqrt{s})\\
-&=\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)(1/2\sqrt{s})} \int d\tilde E_{q_1} \frac{1}{2\sqrt{s}} \delta(s-{m_2'}^2+{m_1'}^2-\tilde E_{q_1})\\
-&=\frac{|M|^2}{16\pi\lambda(s,m_1^2,m_2^2)}.
+    \frac{d\sigma}{dt}&=\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)(1/2\sqrt{s})}\int dE_{q_1} \delta(s-{m_2'}^2+{m_1'}^2-2E_{q_1}\sqrt{s})\\
+    &=\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)(1/2\sqrt{s})} \int d\tilde E_{q_1} \frac{1}{2\sqrt{s}} \delta(s-{m_2'}^2+{m_1'}^2-\tilde E_{q_1})\\
+    &=\frac{|M|^2}{16\pi\lambda(s,m_1^2,m_2^2)}.
 \end{align*}
 %$$\frac{d\sigma}{dt}=\frac{|M|^2}{16\pi \lambda(s,m_1^2,m_2^2)}.$$
-In the massless limit (a common approximation) we have $t=(p_1-q_1)^2-2p_1\cdot q_1 =-2|\vec p_1||\vec q_1|(1-\cos\theta),$ and the total cross section is
+In the massless limit (a common approximation) we have $t=(p_1-q_1)^2=-2p_1\cdot q_1 =-2|\vec p_1||\vec q_1|(1-\cos\theta),$ and the total cross section is
 $$\sigma_{tot}=\int_{-4|\vec p_1||\vec q_1|}^0 dt \frac{d\sigma}{dt}.$$
 
 In the center-of-mass frame $|\vec p_1|=|\vec q_1|=\sqrt{s}/2$ so $\frac{dt}{d\cos\theta}=\frac{s}{2}$. Defining the differential solid angle element $d\Omega$ by

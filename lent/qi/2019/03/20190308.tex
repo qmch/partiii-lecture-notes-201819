@@ -1,18 +1,18 @@
-Last time, we discussed the qubit depolarizing channel. On e can show as an exercise that it has two equivalent forms, where $q=4p/3, q\leq 1 \implies p \leq 3/4$.
+Last time, we discussed the qubit depolarizing channel. One can show as an exercise that it has two equivalent forms, where $q=4p/3, q\leq 1 \implies p \leq 3/4$.
 
 \subsection*{Amplitude-damping channel}
-Suppose we have a two-level atom where there is a ground state $\ket{0_A}$ and an excited state $\ket{1_A}$. By releasing a photon $\gamma$, for instance, this system can transition from the excited state to the ground state. This photon goes into the environment, i.e. the electromagnetic field, which is initially in a vacuum state $\ket{0_E}$
+Suppose we have a two-level atom where there is a ground state $\ket{0_A}$ and an excited state $\ket{1_A}$. By releasing a photon $\gamma$, for instance, this system can transition from the excited state to the ground state. This photon goes into the environment, i.e. the electromagnetic field, which is initially in a vacuum state $\ket{0_E}$.
 
-Hence the evolution of this system is described by both the atom (A) and the environment (E) and hence either
+Hence the evolution of this system is described by both the atom (A) and the environment (E) and so that either the electron decays with probability $p$ and emits a photon,
 \begin{equation}
-    \ket{1_A} \to_p \ket{0_A} + \gamma
+    \ket{1_A} \xrightarrow{p} \ket{0_A} + \gamma,
 \end{equation}
-or
+or it remains as is with probability $1-p$,
 \begin{equation}
-    \ket{1_A} \to_{1-p} \ket{1_A}.
+    \ket{1_A} \xrightarrow{1-p} \ket{1_A}.
 \end{equation}
 
-By Stinespring, we can implement this as some unitaries:
+By Stinespring, we can implement this as a unitary operation on the $AE$ system:
 \begin{equation}
     \Lambda(\rho)=\Tr_E \bkt{U(\rho \otimes \dyad{0}_E)U^\dagger},
 \end{equation}
@@ -55,7 +55,7 @@ we have
     0 &0
     \end{pmatrix}.
 \end{equation}
-One can see explciilty that
+One can see explicitly that
 \begin{gather}
     A_1\ket{0}= \ket{0}, A_1\ket{1} =\sqrt{1-p}\ket{1}\\
     A_1 \ket{0} = 0, A_2 \ket{1}=\sqrt{p}\ket{0}.
@@ -124,7 +124,7 @@ in the $n\to\infty$ limit. Thus our final state in the continuous limit is
 \subsection*{Accessible information and the Holevo bound}
 We shall define a quantity $\chi$ known as the Holevo $\chi$ quantity. It arises as an upper bound in a quantum information theoretic task: suppose we have a message-sender Alice who has a classical source producing signals $X \sim p(x),x\in J$. But she only has a quantum channel, so she has instead an encoder $x\mapsto \rho_x$. For now, suppose Alice has a noiseless quantum channel. She therefore sends $\rho_x$ through the channel, where Bob receives $\rho_x$ and decodes with a measurement (WLOG a POVM) $\set{E_y}_{y\in J}$ to get an inference $Y$.
 
-\textbf{Q:} How much information can Bob gain about $X$ through his measurement? It is simply the mutual information $I(X:Y)$. To get the maximum possible information, we ought to maximize
+\textbf{Q:} How much information can Bob gain about $X$ through his measurement? It is simply the (classical) mutual information $I(X:Y)$. To get the maximum possible information, we ought to maximize
 \begin{equation}
     I_\text{acc}(\underbrace{\set{p_x,\rho_x}}_\epsilon) = \max I(X:Y),
 \end{equation}

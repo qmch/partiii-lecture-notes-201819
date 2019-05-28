@@ -21,7 +21,7 @@ since $B$ is uncorrelated initially.
 \end{equation}
 by (2) above, and 
 \begin{equation}
-    I(A':Q'B") \geq I(A': B')
+    I(A':Q'B') \geq I(A': B')
 \end{equation}
 by (1). Hence
 \begin{equation}
@@ -45,22 +45,23 @@ Thus for the state $\rho_{AQ}=\sum p_x \omega_x$ wth $\omega_x=\dyad{x} \otimes 
 \begin{equation}
     S(\rho_{AQ})=H(\set{p_x}) +\sum p_x S(\rho_x)
 \end{equation}
-since $S(\dyad{x}{x})=0$.
+since $S(\dyad{x}\otimes \rho_x)=S(\dyad{x})+S(\rho_x)$ and $S(\dyad{x})=0$.
 
-Thus the mutual information $I(A:Q)$ is
+It follows that the mutual information $I(A:Q)$ is
 \begin{align*}
     I(A:Q) &= S(A) + S(Q) -S(AQ)\\
     &= H(\set{p_x}) + S(\sum p_x \rho_x) - H(\set{p_x}) -\sum p_x S(\rho_x)\\
     &= \chi(\set{p_x,\rho_x}).
 \end{align*}
-We're nearly done. All that remains to to evaluate the LHS,
+That is, $I(A:Q)$ is the Holevo $\chi$ quantity. We're nearly done. All that remains to to evaluate the LHS,
 \begin{equation}
     I(A':B')=S(A')+S(B')-S(A'B').
 \end{equation}
-Returning to our expression for the statement after measurement, we have
-\begin{equation}
-    \rho_{A'B'}=\sum p_x \dyad{x} \Tr(E_y \rho_x) \otimes \dyad{y_B}
-\end{equation}
+Returning to our expression for the post-measurement state $A'Q'B'$, we can trace out the $Q'$ system to get
+\begin{align}
+    \rho_{A'B'}&=\sum_{x,y} p_x \Tr(\sqrt{E_y} \rho_x\sqrt{E_y}) \dyad{x} \otimes \dyad{y_B}\\
+        &=\sum_{x,y} p_x \Tr(E_y \rho_x) \dyad{x} \otimes \dyad{y_B}
+\end{align}
 by the cyclicity of the trace. Notice that $\Tr(E_y \rho_x) = p(y|x)$, the probability of measuring outcome $y$ given that the state was $\rho_x$, so we have
 \begin{equation}
     \rho_{A'B'}= \sum_{x,y} p(x) p(y|x) \dyad{xy}_{A'B'} = \sum_{x,y} p(x,y) \dyad{xy}_{A'B'}.
@@ -81,20 +82,20 @@ Thus we find that
 \begin{equation}
     I(A':B')=H(X)+H(Y)-H(XY)\equiv I(X:Y),
 \end{equation}
-and therefore we conclude that
+i.e. the mutual information between $A'$ and $B'$ is the classical mutual information between the sources $X$ and $Y$. We conclude that
 \begin{equation}
-    I(X;Y) \leq \chi(\set{p_x,\rho_x}). 
+    I(X:Y) \leq \chi(\set{p_x,\rho_x}). 
 \end{equation}
 This is the Holevo bound. \qed
 
 \subsection*{Properties of the Holevo $\chi$ quantity}
 Let us denote the average state $\rho=\sum p_x \rho_x$.
 \begin{enumerate}
-    \item $\chi(\set{p_x,\rho_x}) \geq 0$ (follos from concavity of $S(\rho)$).
+    \item $\chi(\set{p_x,\rho_x}) \geq 0$ (follows from concavity of $S(\rho)$).
     \item $\chi(\mathcal{E})\to S(\rho)$ when the $\rho_x$ are pure.
-    \item $\chi(\mathcal{E})=\sum p_x D(\rho_x ||\rho)$. This is true because
+    \item $\chi(\mathcal{E})=\sum p_x D(\rho_x ||\rho)$. This follows from explicit evaluation:
     \begin{align*}
-        \sum p_x D(\rho_x || \rho)\\
+        \sum p_x D(\rho_x || \rho)
         &= \sum p_x \bkt{-S(\rho_x) - \Tr \rho_x \log \rho}\\
         &= -\sum p_x S(\rho_x) +S(\sum p_x \rho_x).
     \end{align*}
@@ -109,22 +110,23 @@ Let us denote the average state $\rho=\sum p_x \rho_x$.
     \end{equation}
     \item For an ensemble $\set{p_x,\rho_x}$, we can embed the state in terms of the classical labels as
     \begin{equation}
-        \rho_{XA} = \sum p_i \dyad{x} \otimes \rho_x,
+        \rho_{XA} = \sum p_x \dyad{x} \otimes \rho_x,
     \end{equation}
     known as a classical-quantum (c-q) state.%
         \footnote{We saw this on the examples sheet as well.}
     Then the Holevo quantity of such an ensemble is
     \begin{equation}
-        \chi(\set{p_x,\rho_x})=I(X;A)_\rho.
+        \chi(\set{p_x,\rho_x})=I(X:A)_\rho.
     \end{equation}
-    Moreover, We could run the quantum part through a quantum channel $\Lambda:\cB(\cH_A) \to \cB(\cH_B)$ to get a new state
+    Moreover, we could run the quantum part $A$ through a quantum channel $\Lambda:\cB(\cH_A) \to \cB(\cH_B)$ to get a new state
     \begin{equation}
-         \tilde \rho_{XB}=\sum p_i \dyad{i} \otimes \Lambda(\rho_x),
+         \tilde \rho_{XB}=\sum p_x \dyad{x} \otimes \Lambda(\rho_x),
     \end{equation}
-    and then it follows that
+    and then it follows from (d) that
     \begin{equation}
         I(X:B)_{\tilde \rho} \leq I(X:A)_\rho.
     \end{equation}
+    This shows that the mutual information is non-increasing under a quantum operation which acts only on one subsystem.
 \end{enumerate}
 
 \subsection*{Noisy quantum channels}

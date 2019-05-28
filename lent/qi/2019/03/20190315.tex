@@ -17,14 +17,14 @@ Last time, we discussed the HSW theorem, stating that
     since equality is achieved in concavity of $S$ only for $\Lambda(\psi)=\Lambda(\phi)$, which we required was false. Hence $\chi^*(\Lambda)>0$ since it is the maximum over all ensembles, so we can send classical information using product states.
 \end{proof}
 
-$\chi^*$ has the following property: \term{superadditivity of $\chi^*(\Lambda)$}.
+$\chi^*(\Lambda)$ has the following property, known as  \term{superadditivity}:
 \begin{equation}
-    \chi^*(\Lambda_1 \otimes \Lambda_2) \geq \chi^*(\Lambda_1 +\chi^*(\Lambda_2).
+    \chi^*(\Lambda_1 \otimes \Lambda_2) \geq \chi^*(\Lambda_1) +\chi^*(\Lambda_2).
 \end{equation}
 The proof is an exercise on Examples Sheet 4. It follows by iteration that
 \begin{align*}
     \chi^*(\Lambda^{\otimes n}) &= \chi^*(\Lambda \otimes \Lambda^{\otimes n-1})\\
-        &\geq \chi^*(\Lambda) +\chi*(\Lambda^{\otimes n-1})\\
+        &\geq \chi^*(\Lambda) +\chi^*(\Lambda^{\otimes n-1})\\
         &\geq n \chi^* (\Lambda)
 \end{align*}
 
@@ -33,7 +33,7 @@ Question: can one increase the classical capacity of a quantum channel by using 
     \chi^*(\Lambda_1 \otimes \Lambda_2)=\chi(\Lambda_1) +\chi^*(\Lambda_2).
 \end{equation}
 %proving it is mightily difficult
-We have a formal expression for the classical capacity:
+We have a formal expression for the classical capacity for product state inputs:
 \begin{equation}
     C_{cl}(\Lambda)=\lim_{n\to \infty} \frac{1}{n} \chi^*(\Lambda^{\otimes n}).
 \end{equation}
@@ -52,32 +52,75 @@ Therefore if additivity is true, then entangled inputs do not improve the capaci
 the depolarizing channel. Hastings used a powerful theorem by Peter Shor linking four different quantities, $\chi^*, S_{\min}(\Lambda)=\min_\rho S(\Lambda(\rho))$, and two others-- which says that if one is additive, then all are, and conversely if one is not additive, then all are not. What Hastings found was a counterexample to the additivity of $S_{\min}$. (This is non-examinable.)
 
 \subsection*{Quantum capacity}
-In transmitting a quantum state, we're not interested in the probability of error but rather the fidelity between the initial and final states, $F(\rho,\sigma)$.
-\begin{thm}[LSD]
-    Define
-    \begin{equation}
-        Q(\Lambda)=\lim_{n\to \infty} \frac{1}{n} \max_{\rho^{(n)} \in \cD(\cH^{\otimes n})} I_C(\Lambda^{\otimes n}, \rho^{(n)})
-    \end{equation}
-    where $I_C(\Lambda,\rho)$ is the coherent information with respect to input $\rho$.
-\end{thm}
-Let $\Lambda:Q\to Q'$. It has a Stinespring implementation $U_\Lambda:QE \to Q'E$, where $E$ is an ancilla we can take WLOG to be in a pure state $\ket{0_E}$. We can also purify $Q$ by introducing a reference system $R$. Hence the initial state is $\ket{\psi_{RQE}}=\ket{\psi_{RQ}^\rho}\otimes \ket{0_E}$. After the operation,
-\begin{align*}
-    I_C(\Lambda,\rho)&:= -S(R,Q')_{\rho'}\\
-        &=-\bkt{S(\rho_{RQ'}')-S(\rho'_{Q'}}\\
-        &= -\bkt{S(\rho'_E)-S(\rho'_{RE}}\\
-        &= S(R|E)_{\rho'}
-\end{align*}
-But now
-\begin{align*}
-    I_C(|Lambda,\rho) &= S(R|E)_{\rho'}\\
-        &= S(\rho'_{RE})-S(\rho_E')\\
-        &\leq S(\rho'_R)+S(\rho'_E) -S(\rho'_E)\\
-        &= S(\rho_R) = S(\rho_Q)
-\end{align*}
-since $RQ$ is a pure state, and we have used subadditivity to rewrite $S(\rho_{RE}')$. We conclude that
+In transmitting a quantum state, we're not interested in the probability of error but rather the fidelity between the initial and final states, $F(\rho,\sigma)$. Let us first define the \term{coherent information}. 
+
+Suppose we start with an arbitrary (possibly mixed) state
 \begin{equation}
-    I_C(\Lambda,\rho)\leq S(\rho).
+    \rho_Q \in \cD(\cH_Q).
 \end{equation}
+We can purify $\rho_Q$ by coupling to a reference system $R$ to get a pure state
+\begin{equation}
+    \ket{\psi^\rho_{RQ}}\in \cH_Q\otimes \cH_R.
+\end{equation}
+Suppose we now want to send $\rho_Q$ through a quantum channel $\Lambda:Q\to Q'$. Stinespring says we can implement this quantum channel by coupling an environment $E$ and acting on the $QE$ part of the system with a unitary $U_\Lambda$, so we have a tripartite initial state
+\begin{equation}
+    \ket{\psi_{RQE}}=\ket{\psi^\rho_{RQ}}\otimes \ket{0_E} \in \cH_R \otimes \cH_Q \otimes \cH_E,
+\end{equation}
+where we may choose $\ket{0_E}$ to be a pure state of the environment $E$. By Stinespring, we run our quantum channel on the $QE$ part to get an output state
+\begin{equation}
+    \ket{\psi_{RQE}'}=(I_R \otimes U_\Lambda)\ket{\psi_{RQE}}.
+\end{equation}
+Notice that because $U_\Lambda$ is unitary, this output state is also pure.
+\begin{defn}
+    The \term{coherent information} of a tripartite pure state $\ket{\psi}_{ABE}$ is defined to be
+    \begin{equation}
+        I_c^{A>B}(\psi)=-S(A|B)_\psi.
+    \end{equation}
+    For a state $\rho_Q$, a channel $\Lambda$, and the output state $\ket{\psi_{RQE}'}$ as defined above, the coherent information of a quantum channel is defined to be
+    \begin{equation}
+        I_c(\Lambda,\rho_Q)=I_c^{R>Q'}(\psi_{RQE}')=-S(R|Q').
+    \end{equation}
+\end{defn}
+
+\begin{lem}
+    The coherent information is bounded above by the von Neumann entropy of the input state,
+    \begin{equation}
+        I_c(\Lambda,\rho) \leq S(Q).
+    \end{equation}
+\end{lem}
+\begin{proof}
+    Note that
+    \begin{align*}
+        I_c(\Lambda,\rho)&:= -S(R|Q')_{\rho'}\\
+            &=-\bkt{S(\rho_{RQ'}')-S(\rho'_{Q'})}\\
+            &= -\bkt{S(\rho'_E)-S(\rho'_{RE})}\\
+            &= S(R|E)_{\rho'},
+    \end{align*}
+    where we have used the fact that $\rho'_{RQ'E}$ is pure to swap out subsystem entropies. Now we can write
+    \begin{align*}
+        I_c(\Lambda,\rho) &= S(R|E)_{\rho'}\\
+            &= S(\rho'_{RE})-S(\rho_E')\\
+            &\leq S(\rho'_R)+S(\rho'_E) -S(\rho'_E) \quad \text{by subadditivity}\\
+                &= S(\rho_R) = S(\rho_Q) \qquad \text{ since $R'=R$ and $\rho_{RQ}$ is pure}.
+    \end{align*}
+    We conclude that
+    \begin{equation}
+        I_c(\Lambda,\rho)\leq S(\rho).\qedhere
+    \end{equation}
+\end{proof}
+
+The coherent information is an interesting quantity because of its relationship to the quantum capacity of a channel, i.e. the maximum rate at which \emph{quantum information} can be reliably transmitted using that channel. This relationship is summarized in the following theorem, which we will not prove.
+\begin{thm}[LSD]
+    Let $\Lambda$ be a memoryless quantum channel. Then
+    \begin{equation}
+        Q(\Lambda)=\lim_{n\to \infty} \frac{1}{n} \max_{\rho^{(n)} \in \cD(\cH^{\otimes n})} I_c(\Lambda^{\otimes n}, \rho^{(n)})
+    \end{equation}
+    where $I_c(\Lambda,\rho)$ is the coherent information with respect to input $\rho$, and $Q$ is the quantum capacity of the channel $\Lambda$.
+\end{thm}
+%Let $\Lambda:Q\to Q'$. It has a Stinespring implementation $U_\Lambda:QE \to Q'E$, where $E$ is an ancilla we can take WLOG to be in a pure state $\ket{0_E}$. We can also purify $Q$ by introducing a reference system $R$. Hence the initial state is $\ket{\psi_{RQE}}=\ket{\psi_{RQ}^\rho}\otimes \ket{0_E}$. After the operation,
+
+%But now
+
 %useful fact: for a pure state, the entropies of the subsystems are equal by Schmidt
 
 \subsection*{DPI for quantum systems}
@@ -85,25 +128,26 @@ Classically, we talked about the data processing inequality, by which a system $
 
 Here, the quantum analogue is
 \begin{equation}
-    S(\rho)\geq I_C(\Lambda_1,\rho) \geq I_C(\Lambda_2 \circ \Lambda_1,\rho).
+    S(\rho)\geq I_c(\Lambda_1,\rho) \geq I_c(\Lambda_2 \circ \Lambda_1,\rho).
 \end{equation}
-
 The proof is by strong subadditivity.
 \begin{proof}
-    We can describe applying the two maps $\Lambda_1,\Lambda_2$ with their Stinespring implementations. BY strong subadditivity, we know that for a tripartite system $ABC$, $S(A|BC)\leq S(A|B)$. Hence with the final state $\rho_{RE_1E_2}''$, we have
+    We have already proved the upper bound on $I_c(\Lambda_1,\rho)$. To show the seocond inequality, we can describe applying the two maps $\Lambda_1,\Lambda_2$ with their Stinespring implementations. By strong subadditivity, we know that for a tripartite system $ABC$, $S(A|BC)\leq S(A|B)$. Hence with the final state $\rho_{RE_1E_2}''$, we have
     \begin{equation}
         S(R|E_1E_2)_{\rho''}\leq S(R|E_1)_{\rho''},
     \end{equation}
-    where the LHS is just $I_C(\Lambda_2 \circ \Lambda_1, \rho)$. What is the right side? IT is
+    where the LHS is just $I_c(\Lambda_2 \circ \Lambda_1, \rho)$. What is the right side? It is
     \begin{align*}
         S(R|E_1)_{\rho''} &= S(\rho_{RE_1}'') -S(\rho_{E_1}'')\\
             &=S(\rho_{RE_1}')-S(\rho_{E_1}')\\
             &=S(R|E_1)_{\rho'}\\
-            &= I_C(\Lambda_1,\rho).
+            &= I_c(\Lambda_1,\rho).
     \end{align*}
     Hence the DPI holds:
     \begin{equation}
-        S(\rho) \geq I_C(\Lambda_1,\rho) \geq I_C(\Lambda_2 \circ \Lambda_1,\rho).
+        S(\rho) \geq I_c(\Lambda_1,\rho) \geq I_c(\Lambda_2 \circ \Lambda_1,\rho).\qedhere
     \end{equation}
 \end{proof}
-The entanglement fidelity is non-examinable. The converse of the Schumacher compression theorem is non-examinable (the one with four inequalities). Justify manipulations like SSA
+\begin{note}
+Some quick notes on (non-)examinable material: the entanglement fidelity is non-examinable. The converse of the Schumacher compression theorem is non-examinable (the one with four inequalities). Justify manipulations when using e.g. SSA.
+\end{note}
