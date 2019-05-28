@@ -88,14 +88,14 @@ so the only term in the Hamiltonian we need to worry about is the $\pi^2$ term.
 \end{align*}
 We can also compute the time evolution for $\pi$. Here, we do have to worry about the $\grad\phi$ terms as well as the $\phi$ terms.
 \begin{align*}
-\dot \pi = i[H,\pi] &=\frac{i}{2} \int d^3 y \left[\pi^2(y)+(\nabla \phi(y))^2 + m^2\phi(y)^2, \pi(x)\right]\\
-&=\frac{i}{2} \int d^3 y \nabla \phi(y) \nabla_y (\phi(y) \pi(x))- \nabla_y (\pi(x) \phi(y)) \nabla \phi(y)+2i m^2 \delta^3(x-y) \phi(y)\\
-&= \frac{i}{2} \int d^3 y \nabla \phi(y) \nabla_y([ \phi(y),\pi(x)]) - \nabla_y(-[\phi(y),\pi(x)]) \nabla \phi(y)+2i m^2 \delta^3(x-y) \phi(y)\\
-&=\frac{i}{2} \int d^3 y \nabla \phi(y) \nabla_y(i\delta^3(y-x)) + \nabla_y(i\delta^3(y-x)) \nabla \phi(y)+2i m^2 \delta^3(x-y) \phi(y)\\
-&= \frac{i}{2} \int d^3 y \left(-2i \delta^3(x-y) \nabla^2 \phi(y) + 2i m^2 \delta^3(x-y) \phi(y) \right)\\
-&= \nabla^2 \phi-m^2 \phi.
+    \dot \pi(x) = i[H,\pi(x)] &=\frac{i}{2} \int d^3 y \left[\pi^2(y)+(\nabla \phi(y))^2 + m^2\phi(y)^2, \pi(x)\right]\\
+    &=\frac{i}{2} \int d^3 y \bkt{\nabla \phi(y) \nabla_y (\phi(y) \pi(x))- \nabla_y (\pi(x) \phi(y)) \nabla \phi(y)+2i m^2 \delta^3(x-y) \phi(y)}\\
+    &= \frac{i}{2} \int d^3 y \bkt{\nabla \phi(y) \nabla_y\paren{[ \phi(y),\pi(x)]} - \nabla_y\paren{-[\phi(y),\pi(x)]} \nabla \phi(y)+2i m^2 \delta^3(x-y) \phi(y)}\\
+    &=\frac{i}{2} \int d^3 y \bkt{\nabla \phi(y) \nabla_y(i\delta^3(y-x)) + \nabla_y(i\delta^3(y-x)) \nabla \phi(y)+2i m^2 \delta^3(x-y) \phi(y)}\\
+    &= \frac{i}{2} \int d^3 y \left(-2i \delta^3(x-y) \nabla^2_y \phi(y) + 2i m^2 \delta^3(x-y) \phi(y) \right)\\
+    &= \nabla^2 \phi(x)-m^2 \phi(x),
 \end{align*}
-(where we have integrated by parts to move the $\nabla$ from the delta function to $\phi$). Thus $\phi$ obeys the equation
+where we have integrated by parts to move the $\nabla$ from the delta function to $\phi$, picking up a minus sign along the way. Thus $\phi$ obeys the equation
 $$\ddot \phi = \dot \pi = \nabla^2 \phi - m^2 \phi$$
 or equivalently
 $$\ddot \phi - \nabla^2 \phi + m^2 = \p_\mu \p^\mu \phi +m^2=0.$$

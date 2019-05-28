@@ -1,0 +1,97 @@
+Admin note: next year, this course will be turned into an examinable course.
+
+Today we'll conclude the course with a discussion of the path integral derivation of the Ryu-Takayanagi formula, as originally shown by Lewkowycz and Maldacena.
+
+Recall that the replica trick begins with taking the boundary and a region of interest with a density matrix $\rho$. %picture
+It's not normalized; instead, its trace is the partition function. The replica trick tells us to take $n$ copies of the slice and stitch them together to get $\rho^n$, such that
+\begin{equation}
+    S=(1-n \p_n) \ln Z_n
+\end{equation}
+where $Z_n$ is the partition function for $\rho^n$. Hence by analogy to the Renyi entropy, we can say that
+\begin{align}
+    S&=\lim_{n\to 1} S_n, S_n = \frac{1}{1-n} \ln \tr(\rho^n)\\
+        &= \p_n (\ln Z_n - n \ln Z_1)|_{n=1}.
+\end{align}
+
+Now we'd like to analytically extend to non-integer $n$. But what does it mean to perform the replica trick a non-integer number of times? What we must do is find the \emph{smooth} ``instanton'' interior bulk gas. Notice that for the $n$-copied boundary, we have a $\ZZ_n$ ``replica symmetry'' which cycles through the $n$ copies of the boundary. Let us further \emph{assume} that this $\ZZ_n$ symmetry is not spontaneously broken in the bulk, $M_n$.
+%figure
+We also take $\p R$ (the boundary of the CFT region of interest) to be fixed points (in particular, they are points where there exists a conical singularity) and this implies that there is actually a codimension 2 locus of fixed points in the \emph{bulk}. We shall take
+\begin{equation}
+    \ln Z_n = -I_\text{grav}[M_n]
+\end{equation}
+for a gravitational action in the bulk.
+
+Here is the clever step that will let us extend to non-integer $n$. We construct the orbifold solution by identifying points related by the $\ZZ_n$ symmetry. That is, within the bulk, we look at a ``fictitious manifold'' $O_n$ defined by
+\begin{equation}
+    O_n=M_n/\ZZ_n.
+\end{equation}
+The fixed points in the bulk (call them $L$) now have a conical singularity, such that $\beta_{(k)}=2\pi/n$, i.e. one can go around the fixed points in the bulk by traveling an angle less than $2\pi$.
+
+Now we define a modified action on the orbifold,
+\begin{equation}
+    \tilde I[O_n]=\frac{I_\text{grav}[M_n]}{n}.
+\end{equation}
+There's a caveat, which is that there is no contribution from the singular tips (near the boundary) in $\tilde I$. Hence $O_n$ solves a (gravitational) action
+\begin{equation}
+    I=\underbrace{\tilde I+I_\text{tip}}_{I_\text{grav}[O_n]}+ I_\text{brane},
+\end{equation}
+where this final term is
+\begin{equation}
+    I_\text{brane}=(1-n)\frac{\text{Area}[L]}{4G},
+\end{equation}
+i.e. the area of the fixed point surface in the bulk, and with $I_\text{brane}=-I_\text{tip}$. That is, the membrane tends to minimize its surface area in the bulk.
+
+Finally, we shall take the limit as $n\to 1$. Thus $O_n$ as a manifold can be analytically continued in $n$ to non-integer $n$. Note that $n=1\implies M_1=O_1$ is a solution to the equations of motion coming from the action $I_\text{grav}$, the real physical action of our theory. We know that for solutions of the equations of motion, the action is constant up to first-order variations, so that $O_{1+\epsilon}$ has the same action $I_\text{grav}$ as $O_1$ up to order $\epsilon^2$ corrections,
+\begin{equation}
+    I_\text{grav}[O_{1+\epsilon}]=I_\text{grav}[O_1]+\cO(\epsilon^2).
+\end{equation}
+In particular this says that as we vary $n$ as a smooth parameter,
+\begin{equation}
+    0=\p_n I_\text{grav}=\p_n \tilde I + \p_n I_\text{tip},
+\end{equation}
+where this last term is $-\p_n I_\text{brane}$. Hence a bit of algebra shows
+\begin{equation}
+    S=\frac{\text{Area}[X]}{4G},
+\end{equation}
+i.e. the entanglement entropy is proportional to the area of the minimal (extremal) surface in the bulk. In the $n\to 1$ limit, $L$ becomes a ``test brane'' so that we can neglect backreaction, and then $L=X$ is an extremal surface on $M_1$. This is just the Ryu-Takayanagi formula.
+
+Moreover, one can generalize further and compute the quantum corrections to the entanglement entropy. This was done by Faulkner-Lewkowycz-Maldacena. RT gives the leading order term of $S_{CFT}$ in the $1/N$ expansion, e.g. $O(N^2)$ in $d=4,\cN=4$ SYM. In fact, there are also $O(1)\sim \hbar$ loop corrections in the bulk.
+
+There seems to be a problem: $\ln Z_\text{bulk}^\text{1 loop}$ is inherently nonlocal. For instance, a QFT is sensitive to topological features, e.g. a QFT on a cylinder picks up a Casimir from the nontrivial topology, whereas a classical field theory (when lifted to the universal cover) cannot know about the topology. The solution is then related to the Renyi entropies $S_n[O_n]$ so that
+\begin{align}
+    S &=\p_n (\ln Z_n[O_n] -n\ln Z_1[O_1])|_{n=1}\\
+        &= \underbrace{\p_n(\ln Z_n[M_1]- n \ln Z_1[M_1])}_{S_\text{bulk}[X]} - \p_n \ln Z_1[O_n]|_{n=1}.
+\end{align}
+That is, if this last term is non-vanishing, this tells us that our classical bulk solution is no longer a stationary point of the action when we turn on quantum fields. Our quantum fields come with a stress tensor $\avg{T_{ab}}=\frac{\delta \ln Z}{\delta g^{ab}} \neq 0$. Hence
+\begin{equation}
+    S=\frac{\avg{\text{Area}[X]}}{4G\hbar}+S_\text{bulk}[X]+\int\text{local counterterms},
+\end{equation}
+where we should not extremize with respect to the original geometry but the modified geometry after quantum effects are taken into account. One may equivalently absorb the area law divergence into a shift of Newton's constant as $1/G$.
+
+This whole quantity is called the generalized entropy $S_\text{gen}$, and it is this entropy which is the focus of the generalized second law, i.e. when quantum effects are accounted for, black holes can radiate and evaporate away (reducing their area and therefore their entropy), but the total entropy is non-decreasing.
+
+Finally, let us note that there is a result from JLMS which says that says there is a modular Hamiltonian of a (mixed) state $\sigma$ such that
+\begin{equation}
+    K^{(\sigma)}=-\ln \sigma.
+\end{equation}
+This modular Hamiltonian has the property that for any variation (first-order),
+\begin{equation}
+    \delta S(\rho)= \delta \avg{K^{(\sigma)}}_\rho
+\end{equation}
+where $\rho=\sigma +\Delta \rho$. This is sometimes known as the first law of entanglement entropy; it is like the Clausius relation in thermodynamics.
+
+If we now vary the FLM relation for the generalized entropy, we fin that
+\begin{equation}
+    K_\text{CFT}^{(\sigma)}= \frac{\text{Area}[X]}{4G\hbar} + K_\text{bulk}^{(\sigma)} +\text{local c.t.}
+\end{equation}
+for any $\rho$ with the same classical background geometry at $O(1)$. Here, $K_\text{bulk}^{(\sigma)}$ corresponds to the state on the entanglement wedge. Hence $\rho,\sigma$ might be quite different as quantum states, but their modular Hamiltonian will be the same. This holds not only on expectation values but as an \emph{operator equation}.
+
+If we recall the relative entropy from quantum information theory, there is
+\begin{equation}
+    S(\rho||\sigma)=\tr(\rho\ln\rho)-\tr(\rho\ln\sigma)= \avg{K^{(\sigma)}}_\rho -S(\rho) \geq 0
+\end{equation}
+with equality iff $\rho=\sigma$. hence
+\begin{equation}
+    S(\rho||\sigma)_\text{CFT}^R = S(\rho||\sigma)_\text{bulk}^\text{EW[R]},
+\end{equation}
+which tells us that we can reconstruct the entanglement wedge from information in the CFT.

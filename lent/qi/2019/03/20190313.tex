@@ -31,7 +31,7 @@ or
     
     If the message $M$ is sent, the probability of error is then
     \begin{equation}
-        P(\hat M \neq M) = 1-\Tr(E_M^{(n)} \sigma_M^{(n)},
+        P(\hat M \neq M) = 1-\Tr(E_M^{(n)} \sigma_M^{(n)}),
     \end{equation}
     i.e. $1-{}$the probability of a successful decoding. Now $nR$ is the number of bits of classical information sent on $n$ uses. The maximum number of qubits Alice can send is $\log d_B^n=n\log d_B$ where $\d_B^n = \dim \cH_B^{\otimes n}$. That is, in each use Alice sends at most $\log d_B$ qubits corresponding to a $\sigma_M^i \in \cH_B$. Hence
     \begin{equation}
@@ -62,7 +62,7 @@ or
     
     Recalling the definition of the Holevo $\chi$ quantity, we can write
     \begin{equation}
-        I(M:\hat M) \leq S\paren{\underbrace{\frac{1}{|\cM|} \sum_{m\in \cM} \sigma_M^{(n)}}_{\bar \sigma_j}} -\frac{1}{|\cM|} \sum_{m\in \cM} S(\sigma_M^{(n)}).
+        I(M:\hat M) \leq S\Big(\underbrace{ \frac{1}{|\cM|} \sum_{m\in \cM} \sigma_M^{(n)}}_{\bar \sigma_j}\Big) -\frac{1}{|\cM|} \sum_{m\in \cM} S(\sigma_M^{(n)}).
     \end{equation}
     Notice that $\sigma_M^{(n)}\in \cH_B^{\otimes n}$. If we write the state
     \begin{equation}

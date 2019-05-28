@@ -88,7 +88,7 @@ $$\p_\mu \phi^a \to D_\mu \phi^a \equiv \p_mu \phi^a -ie q_{(a)} \lambda \phi^a,
 where $\lambda$ comes from the gauge transformation $A_\mu \to A_\mu + \p_\mu \lambda$.
 
 We may also consider Feynman diagrams with some external photons in them (picture later).%add picture!
-These diagrams end up giving ups polarization vectors in the final scattering amplitudes, $\epsilon_\mu^{(\lambda)}(k)$ for ingoing photons and $\epsilon_{\mu}^{(\lambda)*}(k)$ for outgoing photons. Typically we don't bother to resolve the polarization states (e.g. in the detectors of colliders), so we simply average over the initial polarizations and sum over the final polarizations. Here, $\lambda$ indexes over the polarization modes, though we should keep in mind that only two are physical (the two transverse modes).
+These diagrams end up giving us polarization vectors in the final scattering amplitudes, $\epsilon_\mu^{(\lambda)}(k)$ for ingoing photons and $\epsilon_{\mu}^{(\lambda)*}(k)$ for outgoing photons. Typically we don't bother to resolve the polarization states (e.g. in the detectors of colliders), so we simply average over the initial polarizations and sum over the final polarizations. Here, $\lambda$ indexes over the polarization modes, though we should keep in mind that only two are physical (the two transverse modes).
 
 Moreover, when we perform the sum over polarizations, we sometimes need to compute sums of the form 
 $$\sum_\lambda \epsilon_{\mu}^{(\lambda)}(k) \epsilon_{\nu}^{(\lambda)}(k).$$ For instance, consider a matrix element corresponding to a diagram with one external outgoing photon with a momentum $k$,
@@ -112,3 +112,26 @@ Then our sum over polarizations becomes
     &= \eta_{\mu\nu} M^\mu(k) M^{\nu*}(k),
 \end{align*}
 since the timelike and longitudinal polarizations cancel.%check this argument
+
+% From conservation of energy, we have
+% \begin{equation}
+%     |\vec{k}| + E_k = |\vec{p}|+E_p,
+% \end{equation}
+% where
+% \begin{equation}
+%     E_k= \sqrt{|\vec{k}|^2+m^2}.
+% \end{equation}
+% To get the $k$ out of the square root, we write
+% \begin{equation}
+%     E_k=|\vec p|+E_p - |\vec k|
+% \end{equation}
+% and square to get
+% \begin{equation}
+%     |\vec{k}|^2+m^2 = E_k^2 = (|\vec{p}|+E_p)^2-2(|\vec p|+E_p)|\vec k|+|\vec{k}|^2.
+% \end{equation}
+% The $|\vec{k}|^2$s cancel, so solving for $|\vec k|$ we have
+% \begin{align}
+%     |\vec k| &= -\frac{m^2}{2(|\vec p|+E_p)}+\frac{|\vec p|+E_p}{2}\\ 
+%     &= -\frac{m^2 (|\vec p|-E_p)}{2(|\vec p|^2 - E_p^2)} +\frac{|\vec p|+E_p}{2}\\
+%     &= \frac{|\vec p|- E_p}{2} +\frac{|\vec p|+E_p}{2} = |\vec p|.
+% \end{align}
