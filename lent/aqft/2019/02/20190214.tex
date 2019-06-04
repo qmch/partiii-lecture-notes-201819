@@ -8,9 +8,9 @@ We take the action of $\phi^4$ theory,
 \begin{equation}
     S=\int d^dx \bkt{ \frac{1}{2}(\p \phi)^2 + \frac{1}{2} m^2 \phi^2 + \frac{\lambda}{4!} \phi^4}.
 \end{equation}
-Working in $\hbar=c=1$ units, let's analyze the mass dimension of the different quantities and couplings in this action. Given that the action must be dimensionless, $[S]=0$, we get $[\p]=[m]=[x^{-1}]=1$. Recall that in 4 dimensions, $\lambda$ was a dimensionless coupling and therefore ``marginal.'' From the mass term we have 
+Working in $\hbar=c=1$ units, let's analyze the mass dimension of the different quantities and couplings in this action. We know that in these units the action must be dimensionless, $[S]=0$, and moreover $[\p]=[m]=[x^{-1}]=1$. Recall that in 4 dimensions, $\lambda$ was a dimensionless coupling and therefore marginal. From the mass term we have 
 \begin{equation}
-    [m^2\phi^2]=2[m]+2[\phi]=d \implies [\phi]\frac{d}{2}-1,
+    [m^2\phi^2]=2[m]+2[\phi]=d \implies [\phi]=\frac{d-2}{2},
 \end{equation} 
 which means our $\lambda$ term now has dimensions given by
 \begin{equation}
@@ -86,7 +86,7 @@ Using these last two expressions, we have
     \Pi^{\text{1-loop}}=-\frac{g(\mu)m^2}{32\pi^2} \bkt{\frac{2}{\epsilon} -\gamma+1 +\log \paren{\frac{4\pi\mu^2}{m^2}}}+O(\epsilon).
 \end{equation}
 
-We see that the old $\Lambda\to\infty$ divergence appears here as a $1/\epsilon$ pole. In order to make this contribution converge, we must add a counterterm $\frac{\delta m^2}{2} \phi^2$. The first thing we might think to do is the \term{minimal subtraction} (MS) scheme,
+We see that the old $\Lambda\to\infty$ divergence appears here as a $1/\epsilon$ pole in the self-energy. In order to make this contribution converge, we must add a counterterm $\frac{\delta m^2}{2} \phi^2$. The first thing we might think to do is the \term{minimal subtraction} (MS) scheme,
 \begin{equation}
     \delta m^2 =-\frac{g(\mu)m^2}{16\pi^2 \epsilon},
 \end{equation}
@@ -101,7 +101,7 @@ After this regularization, we have
 \begin{equation}
     \Pi^{\text{1-loop},\overline{MS}}=\frac{g(\mu)m^2}{32\pi^2} \paren{\log \frac{\mu^2}{m^2}-1}.
 \end{equation}
-We can also renormalize the quartic term $\frac{\lambda}{4!}\phi^4$ in an equivalent way by writing out the Feynman loop diagrams and calculating the self-energy from these guys. We'll get amplitudes like
+We can also renormalize the quartic term $\frac{\lambda}{4!}\phi^4$ in an equivalent way by writing out the Feynman loop diagrams and calculating the corresponding corrections. We'll get amplitudes like
 \begin{equation}
     \frac{\lambda^2}{2}\int \frac{d^4k}{(2\pi)^4} \frac{1}{k^2+m^2} \frac{1}{(p_1+p_2+k)^2 +m^2}+\text{ two similar terms}.
 \end{equation}

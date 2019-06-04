@@ -24,12 +24,12 @@ Equivalently we can Fourier transform the field to find expressions for $a,a^\da
     \int d^3x \,e^{ik\cdot x} \p_0 \phi(x) = -\frac{i}{2} a(\vec k) + \frac{i}{2} e^{2i Et} a^\dagger (-\vec k),
 \end{gather*}
 which tells us that
-\begin{align}
-    a(\vec k)&=\int d^3 x e^{ik\cdot x}(i\p_0 \phi(x)+E \phi(x))\\
-    a^\dagger(\vec k)&= \int d^3 x e^{-ik\cdot x}(-i\p_0 \phi(x)+E \phi(x)).
-\end{align}
+\begin{gather}
+    a(\vec k)=\int d^3 x\, e^{ik\cdot x}(i\p_0 \phi(x)+E \phi(x)),\\
+    a^\dagger(\vec k)= \int d^3 x \, e^{-ik\cdot x}(-i\p_0 \phi(x)+E \phi(x)).
+\end{gather}
 
-Now for the free theory, a one-particle state is given by
+Now for the free theory, a one-particle momentum eigenstate is given by
 \begin{equation}
     \ket{k}= a^\dagger(\vec k)\ket{0},
 \end{equation}
@@ -37,9 +37,9 @@ with $\ket{0}$ the normalized vacuum state such that $\braket{0}{0}=1$ and $a(\v
 \begin{equation}
     \braket{k'}{k}=(2\pi)^3(2E)\delta^{(3)}(\vec k - \vec k'),
 \end{equation}
-with $E=\sqrt{|\vec k|^2 +m^2}$. We can now introduce a Gaussian wavepacket in momentum space by
+with $E=\sqrt{|\vec k|^2 +m^2}$. We can now describe a Gaussian wavepacket in momentum space by defining the operator
 \begin{equation}
-    a_1^\dagger \equiv \int d^3 k f_1(\vec k)a^\dagger (k)
+    a_1^\dagger \equiv \int d^3 k\, f_1(\vec k)a^\dagger (\vec k)
 \end{equation}
 where
 \begin{equation}
@@ -47,11 +47,11 @@ where
         -\frac{(\vec k -\vec k_1)^2}{4\sigma^2}
     }
 \end{equation}
-for some $\vec k_1,\sigma$. We can define a second particle with $a_2^\dagger$ for some $f_2,\vec k_2$ such that $\vec k_2 \neq \vec k_1$.
+for some $\vec k_1,\sigma$. We can define a second particle with $a_2^\dagger$ for some $f_2,\vec k_2$ such that $\vec k_2 \neq \vec k_1$. That is, $a_1^\dagger\ket{0}$ is a one-particle state with a Gaussian momentum distribution centered around $\vec{k_1}$.
 
 Now if we evolve Gaussian wavepackets from the far distant past (or future), the overlap between the Gaussians in coordinate space should be small (the particles are far apart in the past and future). Thus their interaction is effectively limited in both space and time to some bounded interaction region. 
 
-We shall assume this works even when interactions are present. However, there is a complication-- $a^\dagger(\vec k)$ becomes time-dependent, e.g. their energies depend on their proximity to other particles, and therefore $a_1^\dagger(t),a_2^\dagger(t)$ are now functions of time. We therefore assume that as $t\to\pm\infty$, the wavepacket operators $a_1^\dagger,a_2^\dagger$ coincide with the free theory expressions.
+We shall assume this works even when interactions are present. However, there is a complication-- in principle, $a^\dagger(\vec k)$ becomes time-dependent, e.g. their energies depend on their proximity to other particles, and therefore $a_1^\dagger(t),a_2^\dagger(t)$ are now functions of time. We therefore assume that as $t\to\pm\infty$, the wavepacket operators $a_1^\dagger,a_2^\dagger$ coincide with the free theory expressions.
 
 Our initial and final (in/out) states are therefore
 \begin{align}
@@ -68,24 +68,32 @@ Note that
         &= -i \int d^3 k f_1(\vec k) \int d^4x e^{-ik\cdot x} (\p_0^2 +E^2)\phi\\
         &= -i \int d^3 k f_1(\vec k)\int d^4 k e^{-ik\cdot x}(\p_0^2 + |\vec k|^2 +m^2)\phi.
 \end{align*}
-In going from the second to third line, we've canceled the cross terms from the $\p_0$ derivative and pulled the overall factor of $-i$ out front. In the fourth line, we are evidently still in Euclidean signature, rewriting $E^2$ in terms of $|\vec k|^2$ and $m^2$. We also recognize that $|\vec k|^2 e^{-ik \cdot x} \phi(x) = -\nabla^2 (e^{-ik\cdot x}) \phi (x)= -e^{-ik\cdot x}\nabla^2 \phi(x)$ by integrating by parts twice, where the wavepacket $f_1(\vec{k})$ has saved us from having to include a boundary term. Therefore this last line becomes
-\begin{equation}\label{adaggerfundamentalthm}
-     a_1^\dagger(\infty)-a_1^\dagger(-\infty) = -i \int d^3k f_1(\vec k) \int d^4 x e^{-ik\cdot x}(\p^2 +m^2)\phi.
+In going from the second to third line, we've canceled the cross terms from the $\p_0$ derivative and pulled the overall factor of $-i$ out front. In the fourth line, we just rewrote $E^2$ in terms of $|\vec k|^2$ and $m^2$. 
+
+However, we also recognize that 
+\begin{equation}
+    |\vec k|^2 e^{-ik \cdot x} \phi(x) = -\nabla^2 (e^{-ik\cdot x}) \phi (x)= -e^{-ik\cdot x}\nabla^2 \phi(x),
 \end{equation}
+where the second equality follows from integrating by parts twice, and the wavepacket $f_1(\vec{k})$ has saved us from having to include a boundary term. Therefore this last line becomes
+\begin{align}
+     a_1^\dagger(\infty)-a_1^\dagger(-\infty) &= -i \int d^3k f_1(\vec k) \int d^4 x e^{-ik\cdot x}(\p_0^2 - \nabla^2 +m^2)\phi\\
+        &=-i \int d^3k f_1(\vec k) \int d^4 x e^{-ik\cdot x}(\p^2 +m^2)\phi. \label{adaggerfundamentalthm}
+\end{align}
 Note that in a free theory, the Klein-Gordon equation tells us that $(\p^2+m^2)\phi=0$, so that $a_1^\dagger(\infty)=a_1^\dagger(-\infty).$
 
 Now
-\begin{equation}
+\begin{equation}\label{lsz-timeordered}
     \braket{f}{i}=\bra{0}\mathcal{T}a_{1'}(\infty)a_{2'}(\infty) a_1^\dagger(-\infty) a_2^\dagger(-\infty)\ket{0},
 \end{equation}
-where $\mathcal{T}$ indicates time ordering. Of course, the expression is already time ordered, so we can insert it for free. We can then use equations like \ref{adaggerfundamentalthm} to substitute
+where $\mathcal{T}$ indicates time ordering. Of course, the expression is already time ordered, so we can insert it for free. We can then rewrite the result \ref{adaggerfundamentalthm} as
 \begin{equation}
     a_j^\dagger(-\infty)=a_j^\dagger(\infty)+i\int d^3k\, f_j(\vec k)\int d^4 x\, e^{-ik\cdot x}(\p^2+m^2)\phi,
 \end{equation}
 and we get a similar expression by taking the hermitian conjugate, $a_{j'}(\infty)=a_{j'}(-\infty)+\ldots$.
-Time ordering then moves $a_j^\dagger(\infty)$ to the left, annihilating $\bra{0}$ and $a_{j'}(-\infty)$ to the right, annihilating $\ket{0}$. What remains is the integral terms, which form the LSZ formula:
+
+We can now substitute into our time-ordered equation \ref{lsz-timeordered}. Time ordering then moves $a_j^\dagger(\infty)$ to the left, annihilating $\bra{0}$ and $a_{j'}(-\infty)$ to the right, annihilating $\ket{0}$. What remains is the integral terms, which form the LSZ formula:
 \begin{align*}
-    \braket{f}{i}={}&(i)^4 \int d^4 x_1 d^4 x_2 d^4x_{1'} d^4x_{2'} e^{-ik_1\cdot x_1} e^{-ik_2 \cdot x_2} e^{ik_{1'}\cdot x_{1'}} e^{ik_{2'} \cdot x_{2'}}\\
+    \braket{f}{i}={}&(i)^4 \int d^4 x_1 d^4 x_2 d^4x_{1'} d^4x_{2'}\,  e^{-ik_1\cdot x_1} e^{-ik_2 \cdot x_2} e^{ik_{1'}\cdot x_{1'}} e^{ik_{2'} \cdot x_{2'}}\\
         &\times (\p_1^2 +m^2)(\p_{1'}^2+m^2)(\p_2^2+m^2)(\p_{2'}^2 +m^2)
         \bra{0}\mathcal{T} \phi(x_1)\phi(x_2)\phi(x_{1'})\phi(x_{2'})\ket{0},
 \end{align*}

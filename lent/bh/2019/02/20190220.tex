@@ -18,13 +18,21 @@ Now we assign coordinates $(r,\lambda,y^i)$ to the point at affine parameter dis
     \label{fig:gaussiannullcoords}
 \end{figure}
 
-This defines a coordinate chart in a neighborhood of $\mathcal{N}$ such that the $\mathcal{N}$ is at $r=0$, with $U=\P{}{\lambda}$ on $\mathcal{N}$ and $\P{}{r}$ tangent to affinely parametrized null geodesics.
+This defines a coordinate chart in a neighborhood of $\mathcal{N}$ such that the hypersurface $\mathcal{N}$ is at $r=0$, with $U=\P{}{\lambda}$ on $\mathcal{N}$ and $\P{}{r}$ tangent to affinely parametrized null geodesics.
 
-The latter condition implies that $g_{rr}=0$ everywhere. It also follows from the geodesic equation for $\P{}{r}$ that
+The latter condition implies that $g_{rr}=0$ everywhere (that is, $g_{\mu\nu}(\P{}{r})^\mu (\P{}{r})^\nu = g_{rr}=0$). It also follows from the geodesic equation for $\P{}{r}$ that
 \begin{equation}
     g_{r\mu,r}=0,
 \end{equation}
-where $\mu$ is now a free index that runs over $r,\lambda,y^i$.
+where $\mu$ is now a free index that runs over $r,\lambda,y^i$.%
+    \footnote{The proof is left as an exercise in Harvey Reall's notes. It's two lines: let $U^\mu=(1,0,0,0)$ in $(r,\lambda,y^1,y^2)$ coordinates. Then the geodesic equation says that
+    \begin{align*}
+        0&=\frac{d U^\mu}{d\tau} + \Gamma^\mu_{\alpha\beta} U^\alpha U^\beta\\
+            &=\Gamma^\mu_{rr} = g^{\mu\sigma}(g_{r\sigma,r}+ g_{\sigma r,r} - g_{rr,\sigma}) = 2g^{\mu\sigma}g_{r\sigma,r}
+    \end{align*}
+    since $g_{rr}=0$ and $g$ is symmetric. We conclude that $g_{r\sigma,r}=0$ for any index $\sigma$.
+    }
+%
 But at $r=0$, we have $g_{r\lambda}=U\cdot V = 1$, and $g_{ri}=V\cdot \P{}{y^i}=0$.
 So these are the first indications these are good coordinates. We also know that $g_{\lambda\lambda}=0$ at $r=0$, as $U^a$ is null, and $g_{\lambda i}=0$ at $r=0$, as $\P{}{y^i}$ is tangent to $\mathcal{N}$ and hence orthogonal to $U^a$. Thus the metric components take the form
 \begin{equation}
@@ -59,10 +67,11 @@ Thus $U^\mu=(0,1,0,0)$ on $\mathcal{N}$, which implies $U_\mu=(1,0,0,0)$ (where 
 We also know that $\theta=B^\mu{}_\mu$, but we've just shown that two of the trace components vanish, $B^r{}_r=B^\lambda{}_\lambda=0$, so it must be the $y^i$ components which contribute to the expansion. On $\mathcal{N},$
 \begin{align}
     \theta = B^i{}_i &=\nabla_i U^i = \p_i U^i +\Gamma^i_{i\mu} U^\mu\\
-    &= \Gamma^i_{i \lambda} =\frac{1}{2} h^{ij}(g_{ji,\lambda} + g_{j\lambda,i}-g_{i\lambda,j}\\
+    &= \Gamma^i_{i \lambda} =\frac{1}{2} h^{ij}(g_{ji,\lambda} + g_{j\lambda,i}-g_{i\lambda,j})\\
+    &=\frac{1}{2} h^{ij}h_{ji,\lambda}\\
     &= \frac{\p_\lambda\sqrt{h}}{\sqrt{h}}
 \end{align}
-where $h=\det h_{ij}$. To make the simplifications in the first and second lines, we notice that $\p_i U^i=0$ and $g_{i\lambda,j}=0$. Hence we have
+where $h=\det h_{ij}$. To make the simplifications in the first and second lines, we notice that $\p_i U^i=0$ and $g_{i\lambda}=0$ on $\cN$ (remark: $\lambda$ is a component, not a free index!). Hence we have
 \begin{equation}
     \frac{d\sqrt{h}}{d\lambda} = \theta \sqrt{h}.
 \end{equation}

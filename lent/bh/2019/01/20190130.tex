@@ -55,7 +55,7 @@ Let $\Sigma$ denote a spacelike or timelike hypersurface with unit normal $n_a$ 
         \item If $X^a,Y^a$ are tangent to $\Sigma$, then $h^{ab} X_a Y_b=g^{ab} X_a Y_b$. $h$ is sometimes called the first fundamental form. 
     \end{enumerate}
 \end{lem}
-That is, let $N^a$ be a normal to $\Sigma$ at $p$. If we parallel transport $N^a$ on $\Sigma$ along $X^a$ (that is, $X^b \nabla_b N_a=0$), will the parallel-transported $N^a$ still be normal? Take $Y$ tangent to $\Sigma$, so that $Y^a N_a=0$ at the point $p$. Then
+That is, let $N^a$ be normal to $\Sigma$ at a point $p$. If we parallel transport $N^a$ on $\Sigma$ along $X^a$ (i.e., obeying the equation $X^b \nabla_b N^a=0$), will the parallel-transported $N^a$ still be normal? Take $Y$ tangent to $\Sigma$, so that $Y^a N_a=0$ at the point $p$. Then
 \begin{equation}
     \nabla_X (Y^a N_a)=X^b \nabla_b(Y^a N_a)=N_a X^b \nabla_b Y^a.
 \end{equation}
@@ -64,8 +64,8 @@ That is, let $N^a$ be a normal to $\Sigma$ at $p$. If we parallel transport $N^a
     \begin{equation}
         K(X,Y)=-n_a(\nabla_{X_\parallel} Y_{\parallel})^a.
     \end{equation}
-    Here, $X$ and $Y$ need not be tangent to $\Sigma$, but we are interested in their projections parallel to $\Sigma$.
 \end{defn}
+Here, $X$ and $Y$ need not be tangent to $\Sigma$, but we are interested in their projections onto $\Sigma$. $K$ therefore represents the extent to which normal vectors on $\Sigma$ parallel-transported by vectors tangent to $\Sigma$ fail to be normal after parallel transport. In addition, $K$ does not look manifestly symmetric in $X$ and $Y$ written in this form, but in fact it is.
 
 \begin{lem}
     $K_{ab}$ is independent of how $n_a$ is extended off $\Sigma$, and in particular
@@ -107,3 +107,33 @@ At home, we should show that the extrinsic curvature is given by a Lie derivativ
     K_{ab}=\frac{1}{2} \cL_n (h_{ab})
 \end{equation}
 where $h$ here is the first fundamental form.
+
+\subsection*{Non-lectured aside: extrinsic curvature is Lie derivative}
+
+We want to show that
+\begin{equation}
+    K_{ab}=\frac{1}{2} \cL_n (h_{ab}).
+\end{equation}
+Let us compute the left side of this expression first:
+\begin{equation}
+    K_{ab}= h_a{}^c \nabla_c n_b = (\delta_a^c + n_a n^c) \delta_c n_d = n_a n_b + n_a n^c \nabla_c n_b.
+\end{equation}
+Note that by a lemma we'll prove in the next lecture, $K_{ab}$ is symmetric, so
+\begin{equation}\label{expandedkab}
+    K_{ab}= K_{(ab)}= \frac{1}{2}\paren{\nabla_a n_b + \nabla_b n_a + n_a n^c \nabla_c n_b + n_b n^c \nabla_c n_a}.
+\end{equation}
+Now the right side of the equality is
+\begin{equation}
+    (\cL_n h)_{\mu\nu} = n^\rho \p_\rho h_{\mu\nu} + h_{\mu\rho} \p_\nu n^\rho +h_{\rho \nu} \p_\mu n^\rho
+\end{equation}
+and promoting to covariant derivatives, we have
+\begin{align}
+    (\cL_n h)_{ab} &= n^c \nabla_c h_{ab} + h_{ac} \nabla_b n^c +h_{c b} \nabla_a n^c \nonumber\\
+        &= n^c \nabla_c (g_{ab} + n_a n_b) + (g_{ac} +n_a n_c) \nabla_b n^c +(g_{cb}+n_c n_b) \nabla_a n^c \nonumber\\
+        &= n_a n^c \nabla_c n_b + n_b n^c \nabla_c n_a + \nabla_b n_a + \nabla_a n_b,
+\end{align}
+where we have used metric compatibility and the property that $n_c \nabla_b n^c=0$. By comparison to Eqn. \ref{expandedkab}, we see that
+\begin{equation*}
+    K_{ab}=\frac{1}{2} (\cL_n h)_{ab}.
+\end{equation*}
+\qed

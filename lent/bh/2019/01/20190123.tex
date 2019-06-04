@@ -22,16 +22,16 @@ Last time, we assumed our solutions were both spherically symmetric and stationa
         ds^2 = -f(t,r)\bkt{dt+\chi dr}^2 + \frac{dr^2}{g} + r^2 d\Omega^2_2.
     \end{equation}
     Here, $\chi, f,$ and $g$ can all depend on $t,r.$ Let us begin by rescaling time $t$ to set the factor $\chi=0$. If you like, $dt+\chi dr= dt'$. We can still send $t\to p(t)$ a function of $t$. Now our line element reduces to
-    \begin{equation}
+    \begin{equation}\label{genericsphericalmetric}
         ds^2 = -f(t,r)dt^2 + \frac{dr^2}{g(t,r)} + r^2 d\Omega^2_2.
     \end{equation}
-    From the $tr$ component of the vacuum Einstein equations, we find that
+    Let us now require that this metric solves the vacuum Einstein equations. Computing the Ricci tensor for the generic metric \ref{genericsphericalmetric} is a bit of a pain (it is done in Carroll, for instance) but the upshot is this. From the $tr$ component of the vacuum Einstein equations, we find that
     \begin{equation}
-        0=R_{tr}-g_{tr}\frac{R}{2} \implies \P{}{t}g = 0 \implies g(r),
+        0=R_{tr}-g_{tr}\frac{R}{2} \implies \P{}{t}g(t,r) = 0 \implies g(t,r)=g(r),
     \end{equation}
-    $g$ does not depend on time. Looking at the $tt$ component we get
+    i.e. $g(r)$ does not depend on time. Looking at the $tt$ component we get
     \begin{equation}
-        1-g -rg'=0 \implies g(r)=1-\frac{2M}{r},
+        1-g(r) -rg'(r)=0 \implies g(r)=1-\frac{2M}{r},
     \end{equation}
     where $M$ is an integration parameter. From the $rr$ component we get instead
     \begin{equation}
@@ -74,7 +74,7 @@ Note that $U^a\nabla_a U_b=0$ defines an affinely parametrized geodesic, and Kil
 \end{equation}
 But this first term vanishes by the definition of an affinely parametrized geodesic, and the second can be symmetrized since $U^c$ and $U^a$ commute, so the second term vanishes by Killing's equation.%
     \footnote{Explicitly, $U^a U^c \nabla_c K_a = \frac{1}{2} (U^a U^c \nabla_c K_a + U^c U^a \nabla_c K_a)=\frac{1}{2} U^a U^c (\nabla_c K_a + \nabla_a K_c)=0,$ where we've just relabeled the dummy indices on the second term.}
-Thus $\nabla_U (U^a K_a)=0.$
+Thus $\nabla_U (U^a K_a)=0,$ so $U^a K_a$ is conserved along geodesics.
 
 For timelike particles, if $\tau$ is the proper time, then $E$ has the interpretation of energy per unit mass, and $h$ is the angular momentum per unit mass. For null geodesics, the quantity
 \begin{equation*}
@@ -82,13 +82,13 @@ For timelike particles, if $\tau$ is the proper time, then $E$ has the interpret
 \end{equation*}
 is the physical impact factor.
 
-Note that there is a third conserved charge-- it is the value $U^a U_a = +1,0,$ or $-1$ depending on if the geodesic is spacelike, null, or timelike.
+Note that there is a third conserved charge along geodesics-- it is the value $\sigma=-U^a U_a = +1,0,$ or $-1$ depending on if the geodesic is timelike, null, or spacelike.
 
 We can write an action
 \begin{equation}
-    S=\int d\tau \dot x^a \dot x^b g_{ab}.
+    S=\int d\tau \,\dot x^a \dot x^b g_{ab}.
 \end{equation}
-which naturally gives us a Lagrangian that we can apply our conserved charges to and calculate Euler-Lagrange equations for.
+which naturally gives us a Lagrangian that we can apply our conserved charges to and calculate Euler-Lagrange equations for. Here, dots indicate derivatives with respect to the proper time $\tau$.
 %If anyone starts calculating geodesics from here [the geodesic equation], I will give you a zero! You should pay for your own stupidity.
 In Schwarzschild, the action takes the form
 \begin{equation}
@@ -111,12 +111,16 @@ we have
     \dot r^2/2 + V(r)=E^2/2,\text{ with } V(r)=\frac{1}{2}\paren{\sigma+\frac{h^2}{r^2}}\paren{1-\frac{2M}{r}}.
 \end{equation}
 
-What are the radial free-fall paths of Schwarzschild? For radial trajectories, $h=0$, so that 
+What are the null radial free-fall paths of Schwarzschild? For radial trajectories, $h=0$, and for null geodesics $\sigma=0$, so the radial equation becomes
 \begin{equation}
-    E=1 \implies \dot t=\frac{1}{1-\frac{2M}{r}}, \quad \dot r= \pm 1.
+    \dot r = \pm 1.
 \end{equation}
-For the upper sign, $\dot r=+1,$ we have $\dot t/\dot r >0, r> 2M$, which represents outgoing trajectories. For the lower sign, $\dot t/\dot r < 0, r> 2M$ (ingoing). In any case, from $\dot r=-1$ we see that we can reach $r=2M$ without a problem.%
-    \footnote{At least from a pure gravity perspective. Once we introduce quantum mechanical effects, we have to worry about firewalls and such, and all bets are off.}
+We can also rescale the affine parameter to normalize $E=1$ so that 
+\begin{equation}
+    \dot t=\frac{1}{1-\frac{2M}{r}}.
+\end{equation}
+For the upper sign, $\dot r=+1,$ we have $\dot t/\dot r >0, r> 2M$, which represents outgoing trajectories. For the lower sign, $\dot t/\dot r < 0, r> 2M$ (ingoing). In any case, when $\dot r=-1$, we see that we can reach $r=2M$ without a problem.%
+    \footnote{At least from a pure gravity perspective. Once we introduce quantum mechanical effects, we have to worry about firewalls and such, and all bets are off. More on this later.}
     
 In Schwarzschild, we can then write
 \begin{equation}

@@ -3,7 +3,7 @@
 \end{quote}
 We continue our discussion of focusing of geodesics. Last time, we wrote down Raychaudhuri's equation,
 \begin{equation*}
-    \frac{d\theta}{d\lambda}=-\frac{1}{2} \theta^2 +\hat\sigma^{ab} \hat\sigma_{ab}+\hat \omega^{ab} \hat \omega_{ab} - R_{ab} U^a U^b,
+    \frac{d\theta}{d\lambda}=-\frac{1}{2} \theta^2 -\hat\sigma^{ab} \hat\sigma_{ab}+\hat \omega^{ab} \hat \omega_{ab} - R_{ab} U^a U^b,
 \end{equation*}
 where $U^a U_a=0$ (i.e. we consider null geodesics). Today, we will set up the proof that singularities are generic in general relativity.
 
@@ -40,7 +40,7 @@ In a spacetime satisfying Einstein's equation with matter satisfying the null en
 \end{equation}
 %There will be nontrivial statements, but this is not one of them.
 \end{lem}
-This follows since the NEC fixes the sign of the the $R_{ab}$ term in Raychaudhuri, and the $\hat \sigma$ term is projected onto a null hypersurface, so has only spacelike indices. The $\hat \omega$ contribution is zero, as argued before. Thus the lemma follows.
+Consider the Raychaudhuri equation. The NEC fixes the sign of the the $R_{ab}$ term so that $-R_{ab}U^a U^b < 0$, and the $\hat \sigma$ comes from projecting onto a null hypersurface, so $\hat\sigma$ has only spacelike indices (hence $\hat\sigma^{ab} \hat \sigma_{ab})$ is manifestly non-negative). The $\hat \omega$ contribution is zero, as argued previously. Thus all the terms on the RHS apart from $-\frac{1}{2}\theta^2$ are non-positive, so the lemma follows. \qed
 \begin{cor}
     If $\theta=\theta_0 <0$ at a point $p$ on a generator $\gamma$ of a null hypersurface, then $\theta \to -\infty$ along $\gamma$ within finite parameter distance $2/|\theta_0|$  provided that $\gamma$ extends this far.
 \end{cor}

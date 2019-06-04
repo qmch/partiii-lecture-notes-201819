@@ -4,7 +4,7 @@
 
 Last time, we introduced the extrinsic curvature,
 \begin{equation}
-    K_{ab} h_a{}^c h_b{}^d \nabla_c n_d,
+    K_{ab} = h_a{}^c h_b{}^d \nabla_c n_d,
 \end{equation}
 where $n^a n_a= \pm1$, with $n^a$ the unit normal to the hypersurface $\Sigma$. We also defined the projection (now with indices down)
 \begin{equation}
@@ -24,21 +24,24 @@ where $n^a n_a= \pm1$, with $n^a$ the unit normal to the hypersurface $\Sigma$. 
         n_a = \alpha(df)_{a},
     \end{equation}
     where $\alpha$ is chosen such that $n_a n^a = \pm 1$. It follows that
-    \begin{equation}
-        \nabla_c n_d = \alpha \nabla_c \nabla_d f +\frac{(\nabla_c \alpha)}{\alpha} n_d.
-    \end{equation}
+    \begin{align}
+        \nabla_c n_d &= \alpha \nabla_c \nabla_d f + (\nabla_c \alpha) (df)_d\\
+        &= \alpha \nabla_c \nabla_d f +\frac{(\nabla_c \alpha)}{\alpha} n_d.
+    \end{align}
     But this tells us that
-    \begin{equation}
-        K_{ab}=h_a{}^c h_b{}^d \nabla_c n_d = \alpha h_a{}^c h_b{}^d \nabla_c \nabla_d f,
-    \end{equation}
-    and for all torsion-free spacetimes, covariant derivatives commute on scalars, so $K_{ab}$ is symmetric.
+    \begin{align}
+        K_{ab}&=h_a{}^c h_b{}^d \nabla_c n_d \\
+            &=h_a{}^c h_b{}^d (\alpha \nabla_c \nabla_d f + \frac{\nabla_c \alpha}{\alpha} n_d)\\
+            &= \alpha h_a{}^c h_b{}^d \nabla_c \nabla_d f
+    \end{align}
+    since $h_b{}^d n_d =0$, and for all torsion-free spacetimes, covariant derivatives commute on scalars, so $K_{ab}$ is symmetric.
 \end{proof}
 
 As it turns out, the property that
 \begin{equation}
-    K_{ab}=\frac{1}{2}(\cL_m h)_{ab}
+    K_{ab}=\frac{1}{2}(\cL_n h)_{ab}
 \end{equation}
-means that the extrinsic curvature has the right form for an initial condition in the initial value problem of general relativity.
+means that the extrinsic curvature has the right form for an initial condition in the initial value problem of general relativity.m
 %I know that you all really hate my handwriting. And our equations have hundreds of indices. So today I will receive threatening emails by the end of the day.
 
 \subsection*{The Gauss-Coducci equation} A tensor at a point $p\in \Sigma$ is invariant under projection $h_a{}^b$ if
@@ -78,7 +81,7 @@ A covariant derivative $D$ on $\Sigma$ can be identified by projection of the co
     \begin{align*}
         D_a D_b f &= D_a h_b{}^e \nabla_e f\\
         &= h_a{}^c h_b{}^d \nabla_c(h_d{}^e \nabla_e f)\\
-        &= h_a{}^c h_b{}^e \nabla_c \nabla_e f + h_a{}^c h_b{}^d (\nabla_c h^e{}_d) (\nabla_e f).
+        &= h_a{}^c h_b{}^e \nabla_c \nabla_e f + h_a{}^c h_b{}^d (\nabla_c h_d{}^e) (\nabla_e f).
     \end{align*}
     This first term is already manifestly symmetric in $a$ and $b$ since the original connection was torsion free (i.e. covariant derivatives $\nabla_c\nabla_e$ commute on scalars), so let us rewrite the second term (neglecting the $\nabla_e f$ part) as follows:
     \begin{align*}
@@ -144,7 +147,7 @@ We'd like to relate the extrinsic curvature to our old-fashioned Riemann curvatu
     where $K=g^{ab}K_{ab}$, the trace of $K_{ab}$.
 \end{lem}
 \begin{prop}[Codacci's equation]
-    $D_aK_{bc}-D_b K_{ac}=h_a{}^d h_b{}^e h_c{}^f n^a R_{defg}.$
+    $D_aK_{bc}-D_b K_{ac}=h_a{}^d h_b{}^e h_c{}^f n^g R_{defg}.$
 \end{prop}
 The proof of Codacci's equation is homework but simple compared to Gauss's equation.
 \begin{lem}
@@ -190,3 +193,18 @@ But if we take any $t=0$ surface, it is impossible for us to avoid the $r=0$ sin
     \frac{dt}{dr}=\frac{1}{1+\frac{2|M|}{r}} \implies t\simeq t_0 +\frac{r^2}{4|M|}.
 \end{equation}
 This tells us that a Cauchy horizon has appeared, and this one we cannot avoid by picking a different Cauchy surface.
+
+\subsection*{Non-lectured aside: Codacci's equation}
+Let us show that Codacci's equation holds by explicit computation.
+\begin{align*}
+    D_a K_{bc} &= h_a{}^d h_b{}^e h_c{}^f \nabla_d K_{ef}\\
+        &= h_a{}^d h_b{}^e h_c{}^f \nabla_d ( h_e{}^g h_f{}^h \nabla_g n_h)\\
+        &= h_a{}^d h_b{}^e h_c{}^f \bkt{(\nabla_d h_e{}^g)\nabla_g n_f + h_e{}^g \nabla_d \nabla_g n_f}\\
+        &= \mp n^g h_c{}^f K_{ab} \nabla_g n_f + h_a{}^d h_b{}^e h_c{}^f \nabla_d \nabla_e n_f,
+\end{align*}
+where in going from the third to fourth lines, we have used our previous computation from the proof that $D$ is torsion-free and rewritten the second term using the fact that $h_b{}^e h_e{}^g =h_b^e \delta_e^g$. We see that this first term is symmetric in $ab$ since $K_{ab}$ is symmetric, while exchanging $a\leftrightarrow b$ in the second term is equivalent to exchanging $d$ and $e$. It follows that
+\begin{align}
+    D_a K_{bc} - D_b K_{ac} &= h_a{}^d h_b{}^e h_c{}^f (\nabla_d \nabla_e n_f - \nabla_e \nabla_d n_f)\\
+        &= h_a{}^d h_b{}^e h_c{}^f n^g R_{defg}
+\end{align}
+by the Ricci identity. \qed

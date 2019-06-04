@@ -9,15 +9,15 @@ Note also that for (complex) scalars $\phi_b\in \CC$,
 \begin{equation}
     \theta_a \phi_b = \phi_b \theta_a,
 \end{equation}
-i.e. scalars commute with Grassmann variables. In addition, $\theta^2_a =0$ by the anticommutation relations, which implies that any function of $n$ Grassmann variables can be written in finite form. That is, polynomials in Grassmann variables are forced to terminate since at some point we run out of distinct Grassmann variables to multiply. A general function $F(\theta)$ can be written
+i.e. scalars commute with Grassmann variables. In addition, $\theta^2_a =0$ by the anticommutation relations, which implies that the Taylor expansion of any (analytic) function of $n$ Grassmann variables can be written in a finite number of terms. That is, polynomials in Grassmann variables are forced to terminate since at some point we run out of distinct Grassmann variables to multiply. A general function $F(\theta)$ can be written
 \begin{equation}
     F(\theta)=f+\rho_a \theta_a +\frac{1}{2!} g_{ab} \theta_a \theta_b + \ldots + \frac{1}{n!} h_{a_1\ldots a_n} \theta_{a_1}\ldots \theta_{a_n}.
 \end{equation}
 Note that the coefficients $\rho,g,\ldots,h$ are totally antisymmetric under interchange of indices.
 
-We also want to define differentiation and integration of these guys. Differentiation anticommutes with the Grassmann variables, i.e.
+We also want to define differentiation and integration of these guys. Derivatives $\P{}{\theta_a}$ anticommute with Grassmann variables, i.e.
 \begin{equation}
-    \paren{\P{}{\theta_a}\theta_b + \theta_b \P{}{\theta_a}} * = (\delta_{ab})*
+    \paren{\P{}{\theta_a}\theta_b + \theta_b \P{}{\theta_a}} (*) = (\delta_{ab})(*)
 \end{equation}
 where the derivative in the first term acts on everything coming after. This leads us to a modified Leibniz rule.
 
@@ -27,23 +27,29 @@ To define integration, note that for a single Grassmann variable $\theta$, a fun
 \end{equation}
 so we just need to define $\int d\theta$ and $\int d\theta \,\theta$. If we require translational invariance, i.e.
 \begin{equation}
-    \int d\theta(\theta+\eta)=\int d\theta \,\theta \implies \int d\theta =0.
+    \int d\theta(\theta+\eta)=\int d\theta \,\theta,
+\end{equation}
+then
+\begin{equation}
+    \eta \int d\theta = 0 \implies \int d\theta =0.
 \end{equation}
 We can then choose the normalization so that $\int d\theta \, \theta = 1$. Note the similarity between differentiation and integration (i.e.  $\int d\theta\,\theta =1=\P{}{\theta}\theta$). This process is called \term{Berezin integration}. Using these rules, we also find that
 \begin{equation}
     \int d\theta \P{}{\theta} F(\theta)=0,
 \end{equation}
-since the term linear in $\theta$ will go to a constant by the derivative and be killed by the integral, and any constant terms will be killed by the derivative. Either way the result is zero.
+since the term linear in $\theta$ will go to a constant by the derivative and be killed by the integral, and any constant terms will be killed by the derivative. Either way the result is zero.%
+    \footnote{This is like the worst version of the fundamental theorem of calculus.}
 
 Suppose now we have $n$ Grassmann variables. Then the only nonvanishing integrals involve exactly one power of each integration variable, e.g.
 \begin{equation}
     \int d^n \theta\, \theta_1 \theta_2 \ldots \theta_n = \int d\theta_n d\theta_{n-1}\ldots d\theta_1 \, \theta_1 \theta_2 \ldots \theta_n = 1.
 \end{equation}
-In general we can just anticommute the Grassmann variables until they're in the right order, picking up a factor for the parity of the permutation. That is,
+In general we can just anticommute the Grassmann variables until they're in the right order, possibly picking up an overall minus sign for the parity of the permutation. That is,
 \begin{equation}
     \int d^n\theta \,\theta_{a_1}\theta_{a_2}\ldots \theta_{a_n} = \epsilon^{a_1 a_2 \ldots a_n},
 \end{equation}
-where $\epsilon$ is the totally antisymmetric symbol with value $+1$ for even permutations of $1,2,\ldots,n$, $-1$ for odd permutations, and $0$ if any indices are repeated.
+where $\epsilon$ is the totally antisymmetric symbol with value $+1$ for even permutations of $1,2,\ldots,n$, $-1$ for odd permutations, and $0$ if any indices are repeated.%
+    \footnote{If you've worked with differential forms, this sort of anticommuting construction should seem very familiar.}
 
 What if we now make a change of variables $\theta_a' = A_{ab} \theta_b$? Then
 \begin{align}
@@ -62,7 +68,7 @@ Note that this is the opposite of the convention for scalars, where
 
 \subsection*{Free fermion field theory} Consider $d=0$, with two fermion fields $\theta_1,\theta_2$. The action must be bosonic (scalar), so the only possible nonconstant action is
 \begin{equation}
-    S(\theta)=\frac{1}{2}A \theta_1 \theta_2, A\in \RR
+    S(\theta)=\frac{1}{2}A \theta_1 \theta_2,\quad A\in \RR.
 \end{equation}
 Then the path integral is
 \begin{equation}
@@ -78,7 +84,7 @@ Suppose now we have $n=2m$ fermion fields $\theta_a$. Then our action might be q
 with $A$ an antisymmetric matrix, and the path integral is then
 \begin{align*}
     Z_0 &= \int d^{2m}\theta\, e^{-S(\theta)/\hbar} = \int d^{2m} \theta \sum_{j=0}^{m} \frac{(-1)^j}{(2\hbar)^j j!} (A_{ab}\theta_a \theta_b)^j\\
-    &= \frac{(-1)^m}{(2\hbar)^m m!} \int d^{2m}\theta A_{a_1 a_2} A_{a_3 a_4} \ldots A_{a_{2m-1} a_{2m}} \theta_{a_1} \theta_{a_2} \ldots \theta_{2m}\\
+    &= \frac{(-1)^m}{(2\hbar)^m m!} \int d^{2m}\theta A_{a_1 a_2} A_{a_3 a_4} \ldots A_{a_{2m-1} a_{2m}} \theta_{a_1} \theta_{a_2} \ldots \theta_{a_{2m}}\\
     &= \frac{(-1)^m}{(2\hbar)^m m!} \epsilon^{a_1 a_2 \ldots a_{2m}} A_{a_1 a_2} A_{a_3 a_4} \ldots A_{a_{2m-1} a_{2m}}\\
     &= \frac{(-1)^m}{\hbar^m} \text{Pf}(A),
 \end{align*}
@@ -86,7 +92,9 @@ where $\text{Pf}(A)$ is the \term{Pfaffian} of the matrix $A$, defined by
 \begin{equation}
     \text{Pf}(A)\equiv \frac{1}{2^m} \epsilon^{a_1 a_2 \ldots a_{2m}} A_{a_1 a_2} A_{a_3 a_4} \ldots A_{a_{2m-1} a_{2m}},
 \end{equation}
-which we will show on the examples sheet is in fact $\pm \sqrt{\det A}.$ Thus $\text{Pf}\begin{pmatrix}0 & -1 \\ a & 0 \end{pmatrix} = a$. Using this property, we find that for fermionic fields,
+which we will show on the examples sheet is in fact $\pm \sqrt{\det A}.$ For example, $\text{Pf}\begin{pmatrix}0 & -a \\ a & 0 \end{pmatrix} = a$. In the computation of $Z_0$, the sum over $j$ terminates at $m$ since we run out of Grassmann variables, and the only term in the integral that is nonzero is the one which contains all the $2m$ Grassmann variables.
+
+Using this property, we find that for fermionic fields,
 \begin{equation}
     Z_0 = \pm \sqrt{\frac{\det A}{\hbar^n}}
 \end{equation}
@@ -103,7 +111,7 @@ We can now introduce an external source function to our action, a Grassmann-valu
 \end{equation}
 Taking care to respect the anticommutation relations and completing the square as before, we can rewrite the action as
 \begin{equation}
-    S(\theta,\eta)=\frac{1}{2}(\theta_a +\eta_c(A^{-1})_{ca}) A_{ab}(\theta_b +\theta_d(A^{-1})_{db}) +\frac{1}{2} \eta_a (A^{-1})_{ab} \eta_b.
+    S(\theta,\eta)=\frac{1}{2}(\theta_a +\eta_c(A^{-1})_{ca}) A_{ab}(\theta_b +\eta_d(A^{-1})_{db}) +\frac{1}{2} \eta_a (A^{-1})_{ab} \eta_b.
 \end{equation}
 We can make a change of variables using the translational invariance of $\theta_a$ and pull out the constant factor to find
 \begin{equation}
@@ -115,4 +123,4 @@ This allows us to get propagators by taking derivatives with respect to the sour
     = \frac{\hbar^2}{Z_0(0)}\frac{\p^2 Z_0(\eta)}{\p \eta_a \p \eta_b}|_{\eta=0} 
     = \hbar(A^{-1})_{ab}.
 \end{equation}
-We see that the propagator is proportional to the inverse of the bilinear part of the action for Grassmann variables.
+We see that the propagator is proportional to the inverse of the bilinear part of the action for Grassmann variables. This is just like the bosonic case.

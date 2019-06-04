@@ -42,22 +42,24 @@ where $A(p)$ is the area of the $S^2$ orbit from a point $p$. This only makes go
     \end{equation*}
 \end{defn}
 
-Using the assumptions of time independence and spherical symmetry, we'll show some constraints on the resulting spacetime. Let us pick a hypersurface $\Sigma$ which is nowhere tangent to the Killing vector $K$. We assign coordinates $t,x^i$ where $x^i$ is defined on the hypersurface, and $t$ then describes a distance along the integral curves of $K^a$ through each point on $\Sigma$. That is, we follow the curves such that $\frac{dx^a}{dt}=K^a$.
+Using the assumptions of time independence and spherical symmetry, we'll show some constraints on the resulting spacetime. What could the metric look like in such a spacetime? Let us pick a hypersurface $\Sigma$ which is nowhere tangent to the Killing vector $K$. We assign coordinates $t,x^i$ where $x^i$ is defined on the hypersurface, and $t$ then describes a distance along the integral curves of $K^a$ through each point on $\Sigma$. That is, we follow the curves such that $\frac{dx^a}{dt}=K^a$.
 
 But in this coordinate system, $K^a$ now takes the wonderfully simple form \begin{equation*}
     K^a= \left(\P{}{t}\right)^a
 \end{equation*}
 %or else you could go back in time and kill your own grandmother... which would make you a weirdo.
 Since $K^a$ is a Killing vector, the Lie derivative of the metric with respect to $K$ vanishes,
-$\cL_K g=0$. (See Harvey Reall's notes for the definition of a Lie derivative-- it's just a derivative, ``covariant-ized.'') In this case, $K^c \p_c g_{ab}+K^c{}_{,a} g_{cb}+K^c{}_{,b}g_{ac}=0.$
+$\cL_K g=0$.%
+    \footnote{See Harvey Reall's notes for the definition of a Lie derivative-- it's just a derivative, ``covariant-ized.'') In this case, $K^c \p_c g_{ab}+K^c{}_{,a} g_{cb}+K^c{}_{,b}g_{ac}=0.$ For the Lie derivative of a metric, we get a particularly nice equation in coordinate notation: $(\cL_K g)_{ab}=\nabla_a K_b + \nabla_b K_a$. Setting this equal to zero yields the coordinate form of Killing's equation.
+    }
 
 With these assumptions, our metric takes the form
 \begin{equation*}
     ds^2 = g_{tt}(x^k)dt^2 +2g_{ti}(x^k) dt dx^i+ g_{ij}(x^k)dx^i dx^j,
 \end{equation*}
-where $g_{tt}(x^k)<0$ (stationarity).
+where $K^a K^b g_{ab}=g_{tt}(x^k)<0$.
 
-We shall also consider \term{static spacetimes}. Take $\Sigma$ to be a hypersurface defined by $f(x)=0$ for some function $f:M\to \RR, df\neq 0$. Then $df$ is orthogonal to $\Sigma$. The proof is as follows: take $t^a$ to be tangent to $\Sigma$. Thus
+We can also consider \term{static spacetimes}. Take $\Sigma$ to be a hypersurface defined by $f(x)=0$ for some function $f:M\to \RR, df\neq 0$. Then $df$ is orthogonal to $\Sigma$. The proof is as follows: take $t^a$ to be tangent to $\Sigma$. Thus
 \begin{equation*}
     (df)(t)=t(f)=t^\mu \p_\mu f = 0
 \end{equation*}
@@ -82,9 +84,11 @@ The converse is also true (a theorem due to Frobenius)-- if $n$ is a non-zero $1
     A spacetime is \term{static} if it admits a hypersurface-orthogonal timelike Killing vector field. In particular, static $\implies$ stationary.
 \end{defn}
 
-In practice, for a static spacetime, we know that $K^a$ is hypersurface orthogonal, so when defining coordinates we shall choose $\Sigma$ to be orthogonal to $K^a$. Equivalently, this means that we can choose a hypersurface $\Sigma$ to be the surface $t=0,$ which implies that $K_\mu \propto (1,0,0,0)$. Of course, this means that $K_i=0$. But recall that
+In practice, for a static spacetime, we know that $K^a$ is hypersurface orthogonal, so when defining coordinates we shall choose $\Sigma$ to be orthogonal to $K^a$. Equivalently, this means that we can choose a hypersurface $\Sigma$ to be the surface $t=0,$ which implies that $K_\mu \propto (1,0,0,0)$.%
+    \footnote{Note the index is down! These are the components of $K$ with the lowered index, i.e. considered as a one-form $K_\mu=(dt)_\mu$.}
+Of course, this means that $K_i=0$. But recall that
 \begin{equation*}
-    K^a= \left(\P{}{t}\right)^a \implies g_{ti}=K_i=0.
+    K^a= \left(\P{}{t}\right)^a \implies K^a g_{ai}=g_{ti}=K_i=0.
 \end{equation*}
 
 So our generic metric simplifies considerably-- the cross-terms $g_{ti}$ go away and spherical symmetry will further constrain the spatial $g_{ij}$ terms.

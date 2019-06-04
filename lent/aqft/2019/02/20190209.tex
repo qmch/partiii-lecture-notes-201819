@@ -6,8 +6,9 @@ Today we'll begin our discussion of renormalization and why infinities might not
 \end{equation}
 In momentum space, the full propagator $\tilde{\gv \Delta}(p^2)$ takes the form
 \begin{equation}
-    \tilde{\gv \Delta}(p^2)=\int d^4x e^{-ip\cdot x}\avg{\phi(x) \phi(0)}_{\text{connected}}.
+    \tilde{\gv \Delta}(p^2)=\int d^4x\, e^{-ip\cdot x}\avg{\phi(x) \phi(0)}_{\text{connected}}.
 \end{equation}
+That is, our full propagator is the amplitude to go from one point to another via any connected diagram. There's of course the tree-level way to do it, corresponding to $\Delta = \frac{1}{p^2+m^2}$. But once we introduce interactions, there will be infinitely many diagrams that contribute to this amplitude. However, the idea of 1PI diagrams will allow us to organize this infinite sum in a sensible way.
 
 Schematically, we can represent the propagator as the following sum of diagrams:
 \begin{center}
@@ -19,13 +20,17 @@ or equivalently the following geometric series:
         \frac{1}{p^2+m^2}+\frac{1}{p^2+m^2} \Pi(p^2) \frac{1}{p^2+m^2} + \frac{1}{p^2+m^2} \Pi(p^2) \frac{1}{p^2+m^2} \Pi(p^2) \frac{1}{p^2+m^2}+\ldots \\
         &=\frac{1}{p^2+m^2-\Pi(p^2)}
 \end{align*}
-where $\Pi(p^2)$ is called the self-energy. Note that $\Pi$ contributes to the quantum effective action $\Gamma$. Perturbatively, we get contributions from diagrams like the following:
+where $\Pi(p^2)$ is called the self-energy. 
+
+Note that $\Pi$ contributes to the quantum effective action $\Gamma$. As can be seen from the form of $\tilde{\gv \Delta}(p^2)$, it has the effect of shifting the parameter $m$, which we previously called the mass-- what this sum tells us is that the ``mass'' $m$ from the Lagrangian is not the same effective mass we would actually measure in the full propagator. It was naive to think we could propagate from one point to another with tree-level diagrams only-- we must account for quantum corrections along the way.
+
+Perturbatively, we get contributions from diagrams like the following:
 \begin{center}
     \includegraphics[width=0.75\textwidth]{2019/02/20190209_1pidiagrams.png}
 \end{center}
-Note that dashed lines are omitted from the computation of the 1PI factor $\Pi(p^2)$ since they are external propagators and already accounted for in our expansion.
+That is, $\Pi$ represents the sum of contributions from all 1PI diagrams with two external legs. Note that the dashed lines are omitted from the computation of the 1PI factor $\Pi(p^2)$ since they are external propagators and already accounted for in our expansion.
 
-One of the simplest diagrams we can draw is the one-loop diagram, and it corresponds to the amplitude
+One of the simplest propagator corrections we can draw in $\phi^4$ theory is the one-loop diagram, and it corresponds to the amplitude
 \begin{equation}
     -\frac{\lambda}{2}\int \frac{d^4k}{(2\pi)^4} \frac{1}{k^2+m^2}.
 \end{equation}
@@ -38,7 +43,8 @@ where $d^dk= S_d |k|^{d-1} d|k|$ with $S_d=\frac{2\pi^{d/2}}{\Gamma(d/2)}$ and w
     }
 After performing the integral, we arrive at an amplitude that indeed diverges as $\Lambda\to\infty$.
 
-Suppose we allow the coupling to depend on $\Lambda$ by adding ``counterterms'' to the action. That is,
+\subsection*{Counterterms} 
+Obviously, physical propagators are not infinite, yet our Feynman rules seem to have given us a divergent amplitude for a simple one-loop correction. How can we make our theory sensible again? Instead of working with the original Lagrangian (sometimes called the ``bare Lagrangian''), suppose we allow the coupling to depend on $\Lambda$ by adding ``counterterms'' to the action. That is, we modify the action to include terms which depend explicitly on the cutoff $\Lambda$:
 \begin{equation}
     S[\phi] \to S[\phi]+(\hbar)S^{CT}[\phi,\Lambda].
 \end{equation}
@@ -48,16 +54,16 @@ For instance, we might define a set of counterterms as
         \frac{\delta Z(\Lambda)}{2} \p_\mu \phi \p^\mu \phi +\frac{1}{2} \delta m^2(\Lambda) \phi^2 +\frac{\delta \lambda(\Lambda)}{4!} \phi^4
     }.
 \end{equation}
-Note that these correspond to some new vertices and thus new contributions to $\Pi(p^2)$. The $\delta Z$ coupling will contribute to a new two-point vertex, as will the $\delta m^2$ coupling:
+These counterterms correspond to some new vertices and thus new contributions to $\Pi(p^2)$. The $\delta Z$ coupling will contribute to a new (momentum-dependent) two-point vertex, as will the $\delta m^2$ coupling:
 \begin{center}
     \includegraphics[width=0.5\textwidth]{2019/02/20190209_1loopcorrections.png}
 \end{center}
 
-At 1 loop, the 1PI contribution becomes
+At 1 loop, the sum of 1PI diagrams with two external legs becomes
 \begin{equation}\label{phi4selfenergy}
     \Pi^{\text{1-loop}}(p^2)=-p^2 \delta Z -\delta m^2 -\frac{\lambda}{32\pi^2}\bkt{\Lambda^2-m^2\log \paren{1+\frac{\Lambda^2}{m^2}}}.
 \end{equation}
-At two loops, the counterterm diagrams
+At two loops, the three counterterm diagrams
 \begin{center}
     \includegraphics[width=0.75\textwidth]{2019/02/20190209_2loopcorrections.png}
 \end{center}
@@ -67,14 +73,14 @@ must also be included.%
         
         Put more simply (as Skinner says), each counterterm vertex counts as a loop.
     }
-Now we can tune the parameters $\delta Z, \delta m^2, \delta \lambda$ in our counterterms to cancel the divergences. In other words, we \term{renormalize} $\phi,m^2,\lambda$.
+Now we can tune the parameters $\delta Z, \delta m^2, \delta \lambda$ in our counterterms to cancel the divergences to some loop order. In other words, we \term{renormalize} $\phi,m^2,\lambda$.
 
 \subsection*{On-shell renormalization scheme}
 The need to ``regulate'' the theory by cancelling divergences does not uniquely determine the counterterms, so we impose additional renormalization conditions, which we call a \term{scheme}. It will turn out that physical observables do not depend on our choice of scheme.
 
 The on-shell scheme is as follows. We fix $\delta Z, \delta m^2, \delta \lambda$ by requiring that
 \begin{enumerate}
-    \item[1.] $\tilde {\gv \Delta}(p^2)$ has a simple pole at some experimentally observable mass, i.e. $-p^2=m^2_{\text{phys}}$ (in Euclidean signature), and
+    \item[1.] $\tilde {\gv \Delta}(p^2)$ has a simple pole at some experimentally observable mass, i.e. for $p^2=-m^2_{\text{phys}}$, and
     \item[2.] The residue of this pole is equal to $1$.
 \end{enumerate}
 Therefore since
@@ -83,16 +89,16 @@ Therefore since
 \end{equation}
 our first condition says that
 \begin{equation}
-    \Pi(-m^2_{\text{phys}})=m^2-m^2_{\text{phys}},
+    \Pi(p^2=-m^2_{\text{phys}})=m^2-m^2_{\text{phys}}.
 \end{equation}
-and $m^2-m^2_{\text{phys}}=0$ if we want the mass in $\cL$ to equal $m_{\text{phys}}$ at this order of counterterm.
-Imposing the second condition tells us that
+We can additionally set $m^2-m^2_{\text{phys}}=0$ if we want the mass in $\cL$ to equal $m_{\text{phys}}$ at this order of counterterm.
+Imposing the second condition then tells us that
 \begin{equation}
     \P{\Pi}{p^2}|_{p^2=-m_{\text{phys}}^2}=0,
 \end{equation}
 by L'H\^opital's rule.%
     \footnote{
-        This is a little quick. Recall that for a function $f(z)$ with a simple pole at $z_0$, the residue is the value $\lim_{z\to\z_0} f(z)(z-z_0).$ Here, we want $\frac{1}{p^2+m^2+\Pi(p^2)}$ to have unit residue at the pole $p^2=-m_\text{phys}^2$. So the residue is
+        This is a little quick. Recall that for a function $f(z)$ with a simple pole at $z_0$, the residue is the value $\lim_{z\to z_0} f(z)(z-z_0).$ Here, we want $\frac{1}{p^2+m^2+\Pi(p^2)}$ to have unit residue at the pole $p^2=-m_\text{phys}^2$. So the residue is
         \begin{equation*}
             \lim_{p^2\to -m_\text{phys}^2} \frac{p^2+m_\text{phys}^2}{p^2+m^2+\Pi(p^2)} = \lim_{p^2\to -m_\text{phys}^2}\frac{1}{1+\P{\Pi}{p^2}}= \frac{1}{1+\left.\P{\Pi}{p^2}\right\rvert_{p^2=-m_\text{phys}^2}}.
         \end{equation*}
@@ -101,15 +107,20 @@ by L'H\^opital's rule.%
             \P{\Pi}{p^2}|_{p^2=-m_{\text{phys}}^2}=0.
         \end{equation*}
     }
-If we now compare to the expression for the self-energy at one loop, Eqn. \ref{phi4selfenergy}, we see that
-\begin{gather}
-    2. \implies \delta Z=0,\\
-    1. \implies \delta m^2= -\frac{\lambda}{32\pi^2} \bkt{\Lambda^2-m^2\log \paren{1+\frac{\Lambda^2}{m^2}}}.
-\end{gather}
-Note that $\delta Z=0$ and $\Pi(p^2)=0 \,\forall p^2$ is due to the one-loop diagram not depending on $p^2$. If we instead tried to construct the counterterms to the two-loop diagram we would get $\delta Z\neq 0$ since the integral depends on $p$, i.e. the integral corresponding to
+If we now compare to the expression for the self-energy at one loop, Eqn. \ref{phi4selfenergy}, we see that the second condition gives
+\begin{equation}
+    \P{\Pi}{p^2}|_{p^2=-m_{\text{phys}}^2}=0 \implies \delta Z=0,
+\end{equation}
+and the first condition gives
+\begin{equation}
+    \Pi(-m^2_{\text{phys}})=m^2-m^2_{\text{phys}} \implies \delta m^2= -\frac{\lambda}{32\pi^2} \bkt{\Lambda^2-m^2\log \paren{1+\frac{\Lambda^2}{m^2}}}.
+\end{equation}
+
+Note that $\delta Z$ turned out to be zero and we were able to set $\Pi(p^2)=0 \,\forall p^2$ because the one-loop correction to the propagator in $\phi^4$ theory does not depend on the external momentum $p^2$. If we instead tried to construct the counterterms to account for the two-loop diagram (order $\lambda^2$), we would get $\delta Z\neq 0$ since the integral depends on $p$, i.e. the integral corresponding to the diagram
 \begin{center}
     \includegraphics[width=0.3\textwidth]{2019/02/20190209_twolooprenorm.png}
 \end{center}
+It's worth noting that the counterterm $\delta Z$ is related to the concept of ``wavefunction renormalization.'' That is, it corresponds to a correction to the kinetic term of the original Lagrangian, $\frac{1}{2}\p_\mu \phi \p^\mu\phi$. The kinetic term is special in renormalization because it comes with a canonical normalization of $1/2$, unlike the other couplings which have arbitrary starting values. When we perform the procedure of renormalization group flow to study how couplings change after scaling, it is the kinetic term which will lead to the so-called ``anomalous dimension'' of the field. We'll discuss this more in future lectures.
 
 In general, UV divergences are not too hard to spot-- we saw that
 \begin{equation}
@@ -119,8 +130,8 @@ and generically
 \begin{equation}
     \int^\Lambda \frac{d^nk}{k^m}\sim \begin{cases}
         \Lambda^{n-m}, & n\neq m\\
-        \log \Lambda, & n = m
-    \end{cases}.
+        \log \Lambda, & n = m.
+    \end{cases}
 \end{equation}
 
 \subsection*{Non-lectured aside: renormalization}

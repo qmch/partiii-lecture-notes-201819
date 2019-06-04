@@ -41,13 +41,13 @@ As in statistical field theory, we are interested in correlation functions and e
 For this to have a chance of convergence, $f$ should not grow too rapidly as $|\phi| \to \infty$. Usually the functions we are interested in are polynomial in $\phi$.
 
 \subsection*{Free field theory}
-Suppose we have $N$ real scalar fields $\phi_a, a=1,\ldots, N$. We can compactly write this as a single field
+Suppose we have $N$ real scalar fields $\phi_a, a=1,\ldots, N$. We can compactly write this as a single $N$-component field
 \begin{equation}
     \phi: \set{p}\to \RR^N,
 \end{equation}
 and we'd like to compute the integral
 \begin{equation}
-    Z_0 = \int d^N\, \phi e^{-S[\phi]/\hbar}.
+    Z_0 = \int d^N \phi\, e^{-S[\phi]/\hbar}.
 \end{equation}
 Now, a free theory simply means that the action is quadratic in our fields. A priori it could have included kinetic terms, but since we are in zero dimensions, there are no derivatives to take and therefore no kinetic terms in this model. Then we can write our action as
 \begin{equation}
@@ -57,7 +57,7 @@ where $\cM$ is an $N\times N$ symmetric matrix with $\det M > 0$. So our action 
 \begin{equation*}
     \cM=P\Lambda P^T
 \end{equation*}
-for some orthogonal matrix $P$. But equivalently we could just redefine our fields to some new fields $\phi'= P^T  \phi$ so that 
+for some orthogonal matrix $P$ and the diagonal matrix of the eigenvalues $\Lambda$. But since we are integrating over all field configurations in $d^N\phi$, equivalently we could just redefine our fields to some new fields $\phi'= P^T  \phi$ so that 
 \begin{equation*}
     S(\phi)= \frac{1}{2} \phi'{}^T \Lambda \phi'= \frac{1}{2} \sum_{i=1}^N \lambda_i (\phi'_i)^2,
 \end{equation*}
@@ -70,18 +70,18 @@ Thus
     Z_0 = \int d^N \phi \, e^{-\frac{1}{2\hbar}\phi^T \cM \phi}= \prod_{i=1}^N d \phi_i \, e^{-\frac{1}{2\hbar} \lambda_i (\phi_i)^2} = \frac{(2\pi \hbar)^{N/2}}{\sqrt{\det \cM}}.
 \end{equation}
 
-We can now  introduce a source term $J$, modifying our action to
+We can now introduce a source term $J$, modifying our action to
 \begin{equation}
-    S(\phi)=\frac{1}{2} \phi^T \cM \phi + J\cdot \phi.
+    S(\phi)=\frac{1}{2} \phi^T \cM \phi + J\cdot \phi,
 \end{equation}
 If we complete the square and make a change of variables $\tilde \phi= \phi+ \cM^{-1} J,$
 we find that the new path integral with a source is
-\begin{align*}
+\begin{align}
     Z_0[J] &= \int d^N \phi \, \exp \bkt{-\frac{1}{2\hbar} \phi^T \cM \phi -\frac{1}{\hbar} J \cdot \phi}\\
         &= \exp\paren{\frac{1}{2\hbar}J^T \cM^{-1} J} \int d^N \tilde \phi\, e^{-\frac{1}{2\hbar} \tilde \phi^T \cM \tilde \phi}\\
         &= Z_0 \exp\paren{\frac{1}{2\hbar} J^T \cM^{-1} J}.
-\end{align*}
-We see that $\P{}{J}$ derivatives will bring down $\phi$s, which will allow us to compute correlation functions just like we did in statistical physics with the partition function.
+\end{align}
+Notice in the first line, the only $J$ dependence is in the $J\cdot \phi$ term, so we see that $\P{}{J}$ derivatives will bring down $\phi$s, which will allow us to compute correlation functions just like we did in statistical physics with the partition function.
 
 \begin{exm}
     What is the value of the correlation function $\avg{\phi_a \phi_b}$ in this theory? We can compute it directly:

@@ -80,11 +80,15 @@ Let us switch to the Heisenberg picture and see what becomes of this polarizatio
 By the linearity of \ref{gbcondition}, we see that the physical states $\set{\ket{\psi}}$ span a Hilbert space. Moreover, we can decompose a generic state into its transverse components $\ket{\psi_T}$ and its timelike and longitudinal components $\ket{\phi}$:
 $$\ket{\psi}=\ket{\psi_T}\ket{\phi}.$$
 Then the Gupta-Bleuler condition requires that%
-    \footnote{This is quick to check. Schematically, $A_\mu^+$ is an integral over $\sum_\lambda a_{\vec p}^\lambda$. Consider a state with only timelike and longitudinal components, i.e. $\ket{\phi}\sim a_{\vec q}^{0\dagger} a_{\vec q}^{3\dagger} \ket{0}$. When we hit such a state with $\p_\mu A^{+\mu}$, we get
+    \footnote{Taking $\epsilon_0$ to be the timelike polarization and $\epsilon_3$ to be the longitudinal one, when we take the inner product $p_\mu \epsilon^\mu$, we will only pick up the timelike and longitudinal components,
     \begin{equation*}
-        \p_\mu A^{+\mu} \ket{\phi}\sim \sum_\lambda a_{\vec p}^\lambda a_{\vec q}^{0\dagger} a_{\vec q}^{3\dagger} \ket{0}.
+        \p_\mu A^\mu{}^+\ket{\psi} = \int \frac{d^3p}{((2\pi)^3} \frac{1}{\sqrt{2|\vec{p}|}} \sum_{\lambda=0}^3 p_\mu \epsilon^\mu{}^{(\lambda)}(\vec p) a_{\vec p}^\lambda e^{i\vec p \cdot \vec x}\ket{\psi}.
     \end{equation*}
-    The $a_{\vec p}^{1,2}$ operators will commute through and annihilate the vacuum. The $a^3_{\vec p}$ operator commutes through $a_{\vec q}^{3\dagger}$, picking up a $(2\pi)^3 \delta^{(3)}(\vec p-\vec r)$, while the $a^0_{\vec p}$ picks up a relative minus sign, $-(2\pi)^3 \delta^{(3)}(\vec p-\vec q)$, thanks to the relations $[a_{\vec p}^\lambda, a_{\vec q}^{\lambda' \dagger}]=-\eta^{\lambda \lambda'} (2\pi)^3 \delta^3(\vec p-\vec q)$.
+    % This is quick to check. Schematically, $A_\mu^+$ is an integral over $\sum_\lambda a_{\vec p}^\lambda$. Consider a state with only timelike and longitudinal components, i.e. $\ket{\phi}\sim a_{\vec q}^{0\dagger} a_{\vec q}^{3\dagger} \ket{0}$. When we hit such a state with $\p_\mu A^{+\mu}$, we get
+    % \begin{equation*}
+    %     \p_\mu A^{+\mu} \ket{\phi}\sim \sum_\lambda a_{\vec p}^\lambda a_{\vec q}^{0\dagger} a_{\vec q}^{3\dagger} \ket{0}.
+    % \end{equation*}
+    %The $a_{\vec p}^{1,2}$ operators will commute through and annihilate the vacuum. The $a^3_{\vec p}$ operator commutes through $a_{\vec q}^{3\dagger}$, picking up a $(2\pi)^3 \delta^{(3)}(\vec p-\vec r)$, while the $a^0_{\vec p}$ picks up a relative minus sign, $-(2\pi)^3 \delta^{(3)}(\vec p-\vec q)$, thanks to the relations $[a_{\vec p}^\lambda, a_{\vec q}^{\lambda' \dagger}]=-\eta^{\lambda \lambda'} (2\pi)^3 \delta^3(\vec p-\vec q)$.
     }
 $$\p_\mu A^{+\mu}\ket{\psi}=0 \iff (a_{\vec k}^3- a_{\vec k}^0)\ket{\phi}=0.$$
 This means that physical states contain timelike/longitudinal pairs only. That is,

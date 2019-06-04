@@ -10,12 +10,12 @@ Let's introduce now the \term{Wilsonian effective action} (named for Ken Wilson 
     \begin{equation}
         Z=e^{-W/\hbar}.
     \end{equation}
-    Schematically,
-    \begin{equation}
-        \sum(\text{all vacuum diagrams})=\exp\paren{-\frac{1}{\hbar} \sum(\text{connected diagrams})}.
-    \end{equation}
 \end{defn}
-
+That is, the Wilsonian effective action relates the partition function (which sums over all field configurations as $Z=\int \cD \phi \exp(-S[\phi]/\hbar)$) to a single effective action, equivalent to the thermodynamic free energy we saw in \emph{Statistical Field Theory}.
+Schematically,
+\begin{equation}
+    \sum(\text{all vacuum diagrams})=\exp\paren{-\frac{1}{\hbar} \sum(\text{connected diagrams})}.
+\end{equation}
 To understand this, note that any diagram $D$ is a product of connected diagrams $C_I$, such that
 \begin{equation}
     D=\frac{1}{S_D} \prod_I (C_I)^{n_I},
@@ -36,7 +36,7 @@ Therefore we have
 where $W=W_0-\hbar \sum_I C_I$ is a sum over connected diagrams.
 
 Why is $W$ an ``effective'' action? Consider a theory with two real scalar fields $\phi,\chi$. Our theory has an action
-\begin{equation}
+\begin{equation}\label{twoscalaraction}
     S(\phi,\chi)=\frac{m^2}{2}\phi^2 + \frac{M^2}{2}\chi^2 +\frac{\lambda}{4}\phi^2 \chi^2.
 \end{equation}
 Note there's no factorial in the $\lambda$ term because the fields are distinguishable.
@@ -53,21 +53,21 @@ Similarly for the connected loop diagrams, we have
 
 This is well and good. We can write down the Feynman rules for the full theory, draw the diagrams, and in principle compute any cross section we like. But now say we want to remove the explicit $\chi$ dependence from our theory. That is, maybe the $\chi$ particle is very massive, $M\gg m$, and so we are unlikely to see it in our collider. We say that we ``integrate out'' the heavy field.
 
-For this toy theory, let us define an effective action $W(\phi)$ which depends only on the light field, such that
+For this toy theory, let us define an effective action $W(\phi)$ which depends only on the lighter field, such that
 \begin{equation}
-    e^{-W(\phi)/\hbar} =\int d\chi e^{-S(\phi,\chi)/\hbar}.
+    e^{-W(\phi)/\hbar} =\int d\chi\, e^{-S(\phi,\chi)/\hbar}.
 \end{equation}
-Returning to our action, we see that the $\phi^2 \chi^2$ term acts like a source term for $\chi^2$.
+Returning to our action \ref{twoscalaraction}, we see that the $\phi^2 \chi^2$ term acts like a source term for $\chi^2$ when we perform the integral over $d\chi$.
 
 Correlation functions can then be expressed as
 \begin{equation}
-    \avg{f(\phi)}=\frac{1}{Z} \int d\phi d\chi f(\phi) e^{-S(\phi,\chi)/\hbar}=\frac{1}{Z} \int d\phi f(\phi)e^{-W(\phi)/\hbar},
+    \avg{f(\phi)}=\frac{1}{Z} \int d\phi d\chi \,f(\phi) e^{-S(\phi,\chi)/\hbar}=\frac{1}{Z} \int d\phi\, f(\phi)e^{-W(\phi)/\hbar},
 \end{equation}
 with $W$ our new effective action.
 
-In our example, the integral can be done exactly.
+In our example, the $d\chi$ integral can be done exactly:
 \begin{equation}
-    \int d\chi e^{-S(\phi,\chi)/\hbar}= e^{-m^2 \phi^2/2} \sqrt{\frac{2\pi\hbar}{M^2+\frac{\lambda\phi^2}{2}}},
+    \int d\chi e^{-S(\phi,\chi)/\hbar}= e^{-m^2 \phi^2/2\hbar} \sqrt{\frac{2\pi\hbar}{M^2+\frac{\lambda\phi^2}{2}}},
 \end{equation}%maybe an hbar missing from the phi term
 and taking the log we find that
 \begin{equation}
@@ -81,11 +81,13 @@ Now in our effective action we can expand the logarithm to get
     &= \frac{m_{\text{eff}}^2}{2}\phi^2 + \frac{\lambda_4}{4!} \phi^4 + \frac{\lambda_6}{6!} \phi^6+ \ldots + \frac{\lambda_{2k}}{(2k)!}\phi^{2k}+\ldots
 \end{align}
 where
-\begin{gather*}
+\begin{gather}
     m_{\text{eff}}^2 = m^2 +\frac{\hbar \lambda}{2M^2}\\
     \lambda_{2k}=(-1)^{k+1} \hbar \frac{(2k)!}{2^{k+1}k} \frac{\lambda^k}{M^{2k}},
-\end{gather*}
-This tells us that all new terms are $\propto \hbar$, so these are quantum corrections, and they are also suppressed by $1/M^{2p}$. In a sense, this is very good for our ability to make predictions about the low-energy theory. We can treat these higher order corrections as small and do calculations in our effective theory. But conversely, it will be hard to probe the high energy theory because the corrections are suppressed.
+\end{gather}
+Notice that in our original theory, we only had $\phi^2,\chi^2$, and $\phi^2\chi^2$ terms, but when we integrate out the effect of the heavy $\chi$ field, our effective action $W$ contains \emph{effective} interactions to all orders in $\phi$.
+
+From the expression for $\lambda_{2k}$, we see that that all new terms are $\propto \hbar$, so these are quantum corrections, and they are also suppressed by an energy scale $1/M^{2k}$. In a sense, this is very good for our ability to make predictions about the low-energy theory. We can treat these higher order corrections as small and do calculations in our effective theory. But conversely, it will be hard to probe the high energy theory because the corrections are suppressed.
 
 Our toy model was very nice because it had an exact solution, but usually we must find $W(\phi)$ perturbatively. That is, we construct Feynman rules with $\frac{\lambda}{4}\phi^2 \chi^2$ as a source term, so that our effective action goes as
 \begin{equation}

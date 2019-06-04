@@ -7,9 +7,9 @@ and in particular since $g_{\text{eff}}$ is the coefficient of $\frac{1}{4!}\phi
     0&=\frac{dg_{\text{eff}}}{d\log \mu}\\
         &= \mu\frac{dg_{\text{eff}}}{d\mu}\\
         &=\mu \frac{d}{d\mu} \bkt{g(\mu)-\frac{3g^2(\mu)}{32\pi^2} \log \frac{\mu^2}{m^2}
-        }.
+        }
 \end{align}
-This tells us the ``running'' of the renormalized coupling $g(\mu)$, which we refer to as the \term{beta function},%
+to one-loop order. This tells us the ``running'' of the coupling $g(\mu)$, which we refer to as the \term{beta function},%
     \footnote{
         It takes a little algebra to get here. Explicitly, we have
         \begin{align*}
@@ -36,7 +36,7 @@ Integrating the ODE \ref{phi4betafunction} for $\frac{dg}{d\mu}$ between $\mu,\m
     \frac{1}{g(\mu')}={}&\frac{1}{g(\mu)}+\frac{3\hbar}{16\pi^2} \log\frac{\mu}{\mu'}\\
     &\implies g(\mu')=\frac{g(\mu)}{1+\frac{3\hbar g(\mu)}{16 \pi^2} \log \frac{\mu}{\mu'}} = g(\mu)-\frac{3\hbar g^2(\mu)}{16\pi^2} \log\frac{\mu}{\mu'}+O(\hbar^2).
 \end{align}
-For $\mu'>\mu,$ we see that $g(\mu')>g(\mu)$. Note that there is a special scheme-dependent mass scale $\Lambda_{\phi^4}$ such that when $\mu'\to \Lambda_{\phi^4}, g(\mu')\to \infty$. For our scheme, this happens when
+For $\mu'>\mu,$ we see that $g(\mu')>g(\mu)$-- we already knew this, since the beta function was positive. Note that there is a special scheme-dependent mass scale $\Lambda_{\phi^4}$ such that when $\mu'\to \Lambda_{\phi^4}, g(\mu')\to \infty$. For our scheme, this happens when
 \begin{equation}
     \frac{3\hbar g(\mu)}{16\pi^2} \log \frac{\mu}{\Lambda_{\phi^4}} = -1
 \end{equation}
