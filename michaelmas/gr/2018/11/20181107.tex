@@ -1,15 +1,25 @@
 We can write down the action for the Schwarzschild metric: it reads
-$$I=\int ds (-V\dot t^2 +\dot r^2/V + r^2(\dot\theta^2 +\sin^2\theta \dot\phi^2).$$ 
+\begin{equation}
+    I=\int ds (-V\dot t^2 +\dot r^2/V + r^2(\dot\theta^2 +\sin^2\theta \dot\phi^2).
+\end{equation}
 Last time, we found two constants of the motion, the angular momentum and energy given by
-\begin{align*}
+\begin{subequations}
+\begin{align}
     L&= r^2\sin^2\theta \dot \phi,\\
     E&= \dot t V
-\end{align*}
-where\footnote{In my definition of $V$, I write $M$ rather than $m$ as Malcolm Perry does to make it clear that $M$ is always the mass of the large gravitating body, e.g. the sun. We are only considering the trajectories of light and test particles, so both are effectively massless and there is no backreaction from the test particle. This has the natural benefit that the acceleration of a test particle should depend only on $M$, as in Newtonian mechanics. If the test particle instead had a mass $m\sim M$, we would have to account for the particle's effect on the spacetime as well (e.g. in a black hole merger) and these equations would fail.} $$V\equiv 1-2M/r.$$
+\end{align}
+\end{subequations}
+where%
+    \footnote{In my definition of $V$, I write $M$ rather than $m$ as Malcolm Perry does to make it clear that $M$ is always the mass of the large gravitating body, e.g. the sun. We are only considering the trajectories of light and test particles, so both are effectively massless and there is no backreaction from the test particle. This has the natural benefit that the acceleration of a test particle should depend only on $M$, as in Newtonian mechanics. If the test particle instead had a mass $m\sim M$, we would have to account for the particle's effect on the spacetime as well (e.g. in a black hole merger) and these equations would fail.}
+\begin{equation}
+    V\equiv 1-2M/r.
+\end{equation}
 We also showed that for orbits with initial position and velocity in the equatorial plane, $\theta(0)=\pi/2$ and $\dot \theta(0)=0$, such orbits will always stay in the equatorial plane, $\theta(t)=\pi/2$ and $\dot \theta(t)=0$. Therefore by a suitable choice of coordinates, we can always set this initial condition to be true, and it suffices to analyze motion in the equatorial plane (so that the $\dot \theta$ dependence drops out of the action and $L$ simplifies to $L=r^2 \dot \phi$). 
 
 Since the Lagrangian itself is a constant of the motion (because it has no explicit time dependence), we also have
-$$-\epsilon= g_{ab}\dot x^a \dot x^b =-V\dot t^2 +\dot r^2/V + r^2\dot\theta^2 +r^2\sin^2\theta \dot\phi^2,$$
+\begin{equation}
+    -\epsilon= g_{ab}\dot x^a \dot x^b =-V\dot t^2 +\dot r^2/V + r^2\dot\theta^2 +r^2\sin^2\theta \dot\phi^2,
+\end{equation}
 where we have defined $\epsilon$ such that
 $$\epsilon=\begin{cases}
 0 & \text{ for light rays}\\
@@ -17,7 +27,7 @@ $$\epsilon=\begin{cases}
 \end{cases}$$
 Using the constants of motion and setting $\theta=\pi/2,\dot \theta=0$, we can rewrite this as a radial equation,
 \begin{equation}\label{radial1}
--\epsilon = -E^2+ \frac{\dot r^2}{V}+L^2/r^2.
+    -\epsilon = -\frac{E^2}{V}+ \frac{\dot r^2}{V}+L^2/r^2.
 \end{equation}
 This can be solved in terms of elliptic functions, but for those of us who aren't specialists in elliptic functions we have three options:
 \begin{itemize}
@@ -26,11 +36,12 @@ This can be solved in terms of elliptic functions, but for those of us who aren'
     \item Numerical solutions.
 \end{itemize}
 %
-We'll consider the first two of these. Equation \ref{radial1} can be written in a suggestive form:
+We'll consider the first two of these. Equation \eqref{radial1} can be written in a suggestive form:
 \begin{equation}\label{radial2}
-\underbrace{\frac{1}{2}\dot r^2}_{\text{``kinetic energy''}} +\frac{1}{2}\underbrace{\left(1-\frac{2M}{r}\right)\left(\frac{L^2}{r^2}+\epsilon\right)}_{\text{effective ``potential energy''}}=\underbrace{\frac{1}{2}E^2}_{\text{total energy}}.
+    \underbrace{\frac{1}{2}\dot r^2}_{\mathclap{\text{``kinetic energy''}}} 
+    +\frac{1}{2}\underbrace{\left(1-\frac{2M}{r}\right)\left(\frac{L^2}{r^2}+\epsilon\right)}_{\text{effective ``potential energy''}}=\underbrace{\frac{1}{2}E^2}_{\mathclap{\text{total energy}}}.
 \end{equation}
-If we now differentiate the rewritten radial equation \ref{radial2} with respect to $s$ and divide by $\dot r$ (i.e. we assume a non-circular orbit\footnote{If the orbit is circular, then we have $\dot r=0$ and this just becomes an equation for the orbit radius $r$ in terms of $M,E,$ and $L$. It also depends on $\epsilon,$ i.e. whether we are looking at a massive test particle or a photon. As a fun consequence, it turns out that light can have a stable circular orbit around a black hole, and the radius at which it does so is called the photon sphere. Rotating (Kerr) black holes have more complicated equations of motion and this leads to multiple photon spheres!}), we get a second-order equation in $r$:
+If we now differentiate the rewritten radial equation \eqref{radial2} with respect to $s$ and divide by $\dot r$ (i.e. we assume a non-circular orbit\footnote{If the orbit is circular, then we have $\dot r=0$ and this just becomes an equation for the orbit radius $r$ in terms of $M,E,$ and $L$. It also depends on $\epsilon,$ i.e. whether we are looking at a massive test particle or a photon. As a fun consequence, it turns out that light can have a stable circular orbit around a black hole, and the radius at which it does so is called the photon sphere. Rotating (Kerr) black holes have more complicated equations of motion and this leads to multiple photon spheres!}), we get a second-order equation in $r$:
 \begin{equation}\label{radial2ndorder}
 \ddot r +\frac{\epsilon M}{r^2}-\frac{L^2}{r^3}+\frac{3ML^2}{r^4}=0.
 \end{equation}
@@ -46,7 +57,7 @@ By the chain rule, we can compute a derivative of $u$ with respect to $\phi$:
 &= -\frac{1}{r^2} \dot r\frac{r^2}{L}\\
 &= -\frac{\dot r}{L}.
 \end{align*}
-If we now rewrite Eqn. \ref{radial2} in terms of $u$ and $du/d\phi$ as
+If we now rewrite Eqn. \eqref{radial2} in terms of $u$ and $du/d\phi$ as
 $$L^2\left(\frac{du}{d\phi}\right)^2-E^2+(1-2Mu)(\epsilon+L^2u^2)=0,$$
 we can divide through by $L^2$ and differentiate with respect to $\phi$\footnote{We must also divide by $du/d\phi$, but this is okay since $du/d\phi=-\dot r/L\neq 0$ for non-circular orbits.} to get
 $$\frac{d^2u}{d\phi^2}+u-3Mu^2-M\epsilon/L^2=0.$$
@@ -69,11 +80,11 @@ To solve the perturbed equation, we make the ansatz that $u=u_0+u_1$ where $u_0$
     \frac{d^2u_1}{d\phi^2}+u_1=\frac{3M\sin^2\phi}{b^2}
 \end{equation}
 where we have put back in the explicit solution for $u_0$.
-We've therefore simplified our problem to a linear equation for $u_1$, and the quickest way to solve this is the method of variation of parameters. That is, we take the solution to the homogeneous equation and assume that the solution to the inhomogeneous equation \ref{perturbedu1} is the homogenous solution multiplied by some function. More concretely, we make the ansatz that $$u_1=f(\phi)\sin\phi,$$ where $u_1=\sin\phi$ solves the homogenous equation $\frac{d^2u_1}{d\phi^2}+u_1=0$.\footnote{Strictly, we should also include the $\cos$ solution when we do variation of parameters. I haven't yet worked out the consequences of including this in our analysis.} Then
+We've therefore simplified our problem to a linear equation for $u_1$, and the quickest way to solve this is the method of variation of parameters. That is, we take the solution to the homogeneous equation and assume that the solution to the inhomogeneous equation \eqref{perturbedu1} is the homogenous solution multiplied by some function. More concretely, we make the ansatz that $$u_1=f(\phi)\sin\phi,$$ where $u_1=\sin\phi$ solves the homogenous equation $\frac{d^2u_1}{d\phi^2}+u_1=0$.\footnote{Strictly, we should also include the $\cos$ solution when we do variation of parameters. I haven't yet worked out the consequences of including this in our analysis.} Then
 $$\frac{du_1}{d\phi}=f\cos\phi+f' \sin\phi$$
 and
 $$\frac{d^2u_1}{d\phi^2}=-f\sin\phi+2f' \cos\phi+f''\sin\phi.$$
-If we substitute this back into Eqn. \ref{perturbedu1}, we find that
+If we substitute this back into Eqn. \eqref{perturbedu1}, we find that
 $$-f\sin\phi+2f'\cos\phi+f''\sin\phi+f\sin\phi=\frac{3M\sin^2\phi}{b^2}.$$
 The order $f$ terms cancel, so we're left with what is effectively a first-order equation in $f'$. Rewriting in terms of an integration factor (read: a big thing we're taking the derivative of), we get
 $$\frac{1}{\sin\phi}\frac{d}{d\phi}(f'\sin^2\phi)=\frac{3M\sin^2\phi}{b^2},$$

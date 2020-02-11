@@ -1,12 +1,12 @@
 Admin note: Example Sheet 3 is online, albeit with just three questions for now.
 
-Let's finish up our discussion of RG today. Near a fixed point, we can linearize the RG equations. Let
+Let's finish up our discussion of RG today. Near a fixed point, we can linearize the RG equations. Let us consider small perturbations around the fixed point values,
 \begin{equation}
-    \delta g_j = g_j - g_j^*
+    g_j= g_j^* +\delta g_j,
 \end{equation}
 so that
 \begin{equation}
-    \Lambda \left.\P{g_i}{\Lambda}\right|_{g_j^*+\delta g_j} = B_{ij} \delta g_j + O(\delta g^2).
+    \Lambda \P{(g_i^*+\delta g_i)}{\Lambda} = B_{ij} \delta g_j + O(\delta g^2).
 \end{equation}
 Then this matrix $B_{ij}$ has some eigenvectors $\sigma_i$, which are $\Lambda$-dependent vectors in coupling constant space. Its eigenvalues are $\Delta_i-d$ with $\Delta_i={}$the scaling dimension of $\sigma_i.$
 
@@ -15,14 +15,14 @@ For instance, in the simplest case, the coupling constants all decouple and $B_{
     \Lambda \P{\sigma_i}{\Lambda}=(\Delta_i -d) \sigma_i 
     \implies \sigma_i(\Lambda) = \paren{\frac{\Lambda}{\Lambda_0}}^{\Delta_i-d} \sigma_i(\Lambda_0),
 \end{equation}
-for an overall cutoff $\Lambda_0$. There are some cases to consider here:
+for an overall cutoff $\Lambda_0$. This tells us how the eigenvectors $\sigma_i$ change when we perform RG. There are a few cases to consider here:
 \begin{itemize}
     \item $\Delta_i > d \implies \sigma_i(\Lambda) < \sigma_i (\Lambda_0)$, so we flow back to the fixed point (an \term{irrelevant} direction in coupling constant space)
     \item $\Delta_i <d \implies \sigma_i(\Lambda) > \sigma_i (\Lambda_0)$, so we flow away from the fixed point (a \term{relevant} direction)
     \item $\Delta_i=d\implies$ the coupling is \term{marginal}, i.e. we can't tell (to this order) which way the coupling will flow.
 \end{itemize}
 The subspace of irrelevant couplings is called the \term{critical surface} $C$. Strictly, it is infinite-dimensional.%
-    \footnote{See also Skinner's \href{http://www.damtp.cam.ac.uk/user/dbs26/AQFT/Wilsonchap.pdf}{nice diagram} on page 24 of the PDF. Or David Tong's for that matter.}
+    \footnote{That is, we could imagine a theory with some crazy $\phi^{137}$ coupling. This has very high mass dimension, so in e.g. $d=4$ it will probably turn itself off when we flow to the IR. See also Skinner's \href{http://www.damtp.cam.ac.uk/user/dbs26/AQFT/Wilsonchap.pdf}{nice diagram} on page 24 of the PDF. Or David Tong's for that matter.}
 However, the codimension (i.e. the dimension of the perpendicular space) of $C$ is finite and represents relevant directions. There is also a special trajectory off the critical surface, known as the ``renormalized trajectory'' (RT).
 
 \subsection*{Continuum limit}
@@ -30,7 +30,7 @@ We used the RG to give us an effective action,
 \begin{equation}
     S_\Lambda^\text{eff}[\phi^-]=\log \int_\Lambda^{\Lambda_0} \cD \phi^+ \exp\paren{- S_{\Lambda_0}[\phi^- + \phi^+]},
 \end{equation}
-which gave $\Lambda$-independent physics. What if we take $\Lambda_0\to \infty$ (the continuum limit)? This is of course equivalent to taking a lattice spacing to zero in our theory.
+which gave $\Lambda$-independent physics. What if we take $\Lambda_0\to \infty$ (the continuum limit)? This is of course equivalent to taking the lattice spacing to zero in our theory (i.e. arbitrarily small length scales correspond to arbitrarily high momenta).
 
 Suppose we start at some point in theory space with a set of initial coupling constants $\set{g_{i0}}$ and a cutoff $\Lambda_0$. Now we flow to a new set of couplings $\set{g_i^\text{ref}}.$ The distance we move along our trajectory in RG space then depends on the ratio $\mu/\Lambda_0$, where $\mu$ is the scale at which $g_i(\mu)=g_i^\text{ref}.$
 
@@ -44,13 +44,17 @@ Now let us consider the continuum limit with relevant couplings (e.g. mass coupl
 But we want $\mu$ finite, so we must change the initial action.
 
 \subsection*{Counterterms, revisited}
-We can change the initial action by adding counterterms:
+We can change the initial action (and hence our starting point in theory space) by adding counterterms:
 \begin{equation}
     S_{\Lambda_0}[\phi] = S_{\Lambda_0}[\phi] +S^{CT}[\phi,\Lambda_0].
 \end{equation}
-This modifies the couplings as $g_{i0}\mapsto \tilde g_{i0}$ so that the trajectory under RG flow is closer to $C$ and the renormalization trajectory from the fixed point. Since the ``flow'' is ``slower'' nearer to the fixed point, the ratio of scales $\tilde \mu/\tilde \Lambda_0$ can be made smaller than the original $\mu/\Lambda_0$.
+This modifies the couplings as $g_{i0}\mapsto \tilde g_{i0}$ so that the trajectory under RG flow is closer to the critical surface and the renormalization trajectory from the fixed point. Since the ``flow'' is ``slower'' nearer to the fixed point, the ratio of scales $\tilde \mu/\tilde \Lambda_0$ can be made smaller than the original $\mu/\Lambda_0$. 
 
-Note the limit is taken after integrating out the high-momentum modes $(\Lambda,\Lambda_0)$, i.e. $\lim_{\Lambda_0\to\infty} S_\Lambda^\text{eff}[\phi]$.
+In this way, we can make contact with our previous idea of cancelling divergences with counterterms. In our original description, we computed loop corrections which diverged with the momentum cutoff $\Lambda$, and introduced counterterms in order to cancel these divergences at some order so that we could trust our theory as a perturbative expansion at higher energy scales. In the Wilsonian picture, what these counterterms do is move us closer to the critical surface so that under RG flow, our theory stays close to the critical surface for longer. This allows us to trust the expansion at higher energy scales since at the fixed point, our expansions are not just perturbative; they are exact to all orders.%
+    \footnote{This is also part of the reason why supersymmetric theories are so nice. While fixed points in standard statistical and quantum field theories are hard to come by, in supersymmetry they are a dime a dozen. Whether or not one finds SUSY phenomenologically compelling, there is an argument to be made that supersymmmetric theories are useful because of what they teach us about the structure of quantum field theories which have not just perturbative but \emph{exact} solutions.}
 
-Note also that if the irrelevant operators are important for describing some physics, e.g. the 4-fermion operators describing low-energy $\beta$ decay in the theory of the weak interaction, we cannot take the continuum limit. Such couplings will be suppressed under RG flow, so there is no way to keep these couplings nonzero as $\Lambda_0\to \infty$. The theory is said to be nonrenormalizable.
-This usually indicates something new is going on-- in the case of the weak interaction, this was the unification into the electroweak interaction at higher energies. 
+Note that the continuum limit is taken after integrating out the high-momentum modes $(\Lambda,\Lambda_0)$, i.e. $\lim_{\Lambda_0\to\infty} S_\Lambda^\text{eff}[\phi]$. That is, $S_\Lambda^\text{eff}$ still retains some memory of the original cutoff $\Lambda_0$ (usually in integrals of the form $\int_\Lambda^{\Lambda_0} \frac{d^dp}{(2\pi)^d}(\ldots)$), so it is sensible to ask what happens if we try to push the original cutoff of the theory to infinity.
+
+Note also that if the irrelevant operators are important for describing some physics, e.g. the 4-fermion operators describing low-energy $\beta$ decay in the theory of the weak interaction, we cannot take the continuum limit. Such couplings will be suppressed under RG flow, so there is no way to keep these couplings nonzero as $\Lambda_0\to \infty$. The theory is said to be \term{nonrenormalizable}.
+This usually indicates something new is going on-- in the case of the weak interaction, this was the unification into the electroweak interaction at higher energies.%
+    \footnote{The other famous case of a nonrenormalizable interaction is of course gravity. What new physics might lie at the energy scales of quantum gravity? No one knows for sure.}

@@ -76,11 +76,17 @@ For our next trick, we'll show that the quantities we have been calling $M,Q,$ a
 \begin{equation}
     \nabla^a F_{ab}=-4\pi J_b, \quad \nabla_{[a}F_{bc]}=0.
 \end{equation}
-This is just Maxwell's equations and the Bianchi identity on the field strength tensor. The \term{Hodge dual} (Hodge star) of a $p$-form $\omega_p$ is a $d-p$ form defined by
+This is just Maxwell's equations and the Bianchi identity on the field strength tensor. The \term{Hodge dual} (Hodge star) of a $p$-form $\omega_p$ is a $d-p$ form with components defined by
 \begin{equation}
     (* \omega_p)^{a_1 \ldots a_{d-p}} \equiv \frac{1}{p!} \frac{\epsilon^{a_1 \ldots a_{d-p} b_1 \ldots b_p}}{\sqrt{-g}} \omega_{b_1\ldots b_p},
 \end{equation}
-where $\epsilon$ is the totally antisymmetric rank-$p$ tensor (fixing some orientation for the spacetime). Using differential forms, we can write Maxwell's equations compactly as
+where $\epsilon$ is the totally antisymmetric rank-$p$ tensor (fixing some orientation for the spacetime). Using differential forms, we can write Maxwell's equations compactly as%
+    \footnote{To do this, we need to observe that for a $p$-form $F$, $\nabla^a F_{b_1\ldots b_{p-1}a}=-(-1)^{p(n-p)}(*d* F)_{b_1\ldots b_{p-1}}.$ This follows from the definition of $*$ and the exterior derivative. Then we can rewrite the first of Maxwell's equations as
+    \begin{equation*}
+        *d*F = 4\pi j \implies d* F = 4\pi *j,
+    \end{equation*}
+    potentially up to some signs I'm not keeping track of. Fortunately, when we use the identity for $*d*F$ and star the whole thing, the signs from $*d*F$ and taking $**$ cancel out, so the final expression is true as written. The second equation is just the definition of the exterior derivative on a 2-form.
+    }
 \begin{equation}
     d*F = -4\pi * j, \quad dF=0.
 \end{equation}
@@ -106,7 +112,7 @@ If a spacetime $(\cM,g)$ is stationary, then there exists a conserved energy mom
 \begin{equation}
     J_a = -T_{ab} K^b \implies \nabla_a J^a = 0.
 \end{equation}
-One can show this since $T_{ab}$ is conserved and $K^b$ is Killing. In the language of differential forms,
+One can show this since $T_{ab}$ is conserved and $K^b$ is Killing. If we treat $J$ as a one-form, then in the language of differential forms,
 \begin{equation}
     d*J=0.
 \end{equation}

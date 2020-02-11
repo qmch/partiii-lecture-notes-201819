@@ -1,3 +1,4 @@
+\subsection*{Introducing beta functions} 
 Last time, we computed an effective coupling $g_{\text{eff}}$ to be
 \begin{equation*}
     g_{\text{eff}}(\mu)=g(\mu)-\frac{3g^2(\mu)}{32\pi^2} \log \frac{\mu^2}{m^2}+\ldots,
@@ -62,21 +63,38 @@ Let us consider the first novel feature of our theory, the electromagnetic field
     A_\mu(x)=\int \frac{d^4k}{(2\pi)^4} e^{ik\cdot x}\tilde A_\mu(k).
 \end{equation}
 A few steps of algebra%
-    \footnote{}
+    \footnote{First, we Fourier transform $F_{\mu\nu}$:
+    \begin{align*}
+        F_{\mu\nu}(x)&=\p_\mu A_\nu(x) -\p_\nu A_\mu(x)\\
+            &= \int \frac{d^4k}{(2\pi)^4}(ik_\mu A_\nu(k) - i k_\nu A_\mu(k)).
+    \end{align*}
+    Now we plug in:
+    \begin{align*}
+        \frac{1}{4}\int d^4x \, F_{\mu\nu} F^{\mu\nu} &= -\frac{1}{4}\int \frac{d^4k_1}{(2\pi)^4} \int \frac{d^4k_2}{(2\pi)^4}
+            (k_{1\mu} A_\nu(k_1)-k_{1\nu} A_\mu(k_1))(k_2^\mu A_\nu(k_2)-k_2^\nu A_\mu(k_2)) e^{i(k_1+k_2)\cdot x}\\
+            &= -\frac{1}{4}\int \frac{d^4k}{(2\pi)^4} ((-k_\mu) A_\nu(-k)-(-k_\nu) A_\mu(-k))(k^\mu A^\nu(k) -k^\nu A^\mu(k))\\
+            &= \frac{1}{2} \int \frac{d^4k}{(2\pi)^4} (k^2 A_\mu(-k) A^\mu(k) - A_\nu(-k) k^\nu k^\mu A_\mu(k))\\
+            &= \frac{1}{2}\int\frac{d^4k}{(2\pi)^4} \tilde A_\mu(-k)(k^2\delta^{\mu\nu}-k^\mu k^\nu)\tilde A_\nu(k),
+    \end{align*}
+    the desired result.
+    }
 reveals that
 \begin{equation}
     \frac{1}{4}\int d^4x F_{\mu\nu}F^{\mu\nu} = \frac{1}{2}\int\frac{d^4k}{(2\pi)^4} \tilde A_\mu(-k)(k^2\delta^{\mu\nu}-k^\mu k^\nu)\tilde A_\nu(k),
 \end{equation}
 where derivatives have brought down $k$s and the integral over $d^4x$ has related the momenta in $\tilde A_\mu,\tilde A_\nu$.
 
-Note that for a field $\tilde A_\mu(k)=k_\mu \tilde \alpha(k)$ with $\tilde \alpha$ a scalar function, this integral vanishes. This is bad-- since $\int d^4x F_{\mu\nu} F^{\mu\nu}$ is in the action $S$, any path integral configuration of this form will pick up a weight of $1$ from $e^{-S[\psi,\bar\psi,A]}=e^0=1$, and there are infinitely many such configurations to integrate over in $\cD A$, so $Z$ diverges. In position space, this choice of $\tilde A_\mu$ corresponds to $A_\mu(x)=\p_\mu\alpha(x)$.
+Note that for a field $\tilde A_\mu(k)=k_\mu \tilde \alpha(k)$ with $\tilde \alpha$ a scalar function, this integral vanishes. This should concern us-- since $\int d^4x \,F_{\mu\nu} F^{\mu\nu}$ is in the action $S$, any path integral configuration of this form will pick up a weight of $1$ from $e^{-S[\psi,\bar\psi,A]}=e^0=1$, and there are infinitely many such configurations to integrate over in $\cD A$, so $Z$ diverges. 
+
+We can fix this. In position space, this choice of $\tilde A_\mu$ corresponds to $A_\mu(x)=\p_\mu\alpha(x)$.
 Recall that under gauge transformations,
 \begin{equation}
     A_\mu(x)\mapsto A_\mu(x) +\frac{1}{e} \p_\mu \alpha(x).
 \end{equation}
-Therefore these troublesome modes are all gauge-equivalent to $A_\mu(x)=0$, and so the solution will come from a gauge fixing procedure.
+Therefore these troublesome modes are all gauge-equivalent to $A_\mu(x)=0$, i.e. they are ``pure gauge.'' The solution to our divergent path integral will therefore come from applying a gauge fixing procedure.
 
-\subsection*{Faddeev-Popov method for gauge-fixing} Before we do the whole procedure, let's take a simple example. Consider a function $f:\RR^2\to \RR$ that is rotationally invariant,
+\subsection*{Faddeev-Popov method for gauge-fixing} 
+Before we do the whole procedure, let's take a simple example. Consider a function $f:\RR^2\to \RR$ that is rotationally invariant,
 \begin{equation}
     f(r;\rho)\text{ with }r^2=x^2+y^2,\rho\text{ another parameter}.
 \end{equation}
@@ -142,7 +160,7 @@ If we had $N$ variables and $N-1$ rotations with angles $\theta_{1i},i=2,\ldots,
     1=\int d\theta_{1i} \delta(x_{\theta i}^i) \abs*{\frac{dx_{\theta_{1i}}^i}{d\theta_{1i}}}.
 \end{equation}
 
-This approach generalizes-- in our gauge theory, we fix the gauge with some functional of $A_\mu(x)$, i.e. $G[A]=0$. For example, $G[A]=\p_\mu A^\mu$ in Lorenz [sic] gauge. Consider now gauge transformations
+This approach generalizes-- in our gauge theory, we fix the gauge with some functional of $A_\mu(x)$, i.e. setting $G[A]=0$. For example, $G[A]=\p_\mu A^\mu$ in Lorenz [sic] gauge. Consider now gauge transformations
 \begin{equation}
     A_\mu^\alpha(x)=A_\mu (x) +\frac{1}{e} \p_\mu \alpha(x).
 \end{equation}
@@ -154,7 +172,7 @@ where this last factor is a functional determinant. We'll see how the gauge-fixi
 
 \subsection*{Non-lectured aside: on Fadeev-Popov determinants}
 
-Let us briefly remark on what we've done. We had a theory over some potentially complicated space, but we recognized that there was a redundancy in our description. In the case of our rotationally invariant integral, we saw that on $r={}$constant orbits, the integrand was also constant. This led us to take a gauge slice, i.e. to fix a path through the space which only intersects each gauge orbit once, and then multiply by the ``size'' of a gauge orbit. More generally, the ``size'' of a gauge orbit will be infinite, but we can still use this method to choose a gauge slice in our configuration space, and we include the Faddeev-Popov determinant to ensure that the integral is independent of our choice of path.
+Let us briefly remark on what we've done. We had a theory over some potentially complicated space, but we recognized that there was a redundancy in our description. In the case of our rotationally invariant integral, we saw that on $r={}$constant orbits, the integrand was also constant. This led us to take a gauge slice, i.e. to fix a path through the space which only intersects each gauge orbit once, and then multiply by the ``size'' of a gauge orbit. More generally, the ``size'' of a gauge orbit will be infinite, but we can still use this method to choose a gauge slice in our configuration space, and we include the Faddeev-Popov determinant to ensure that the integral is independent of our choice of path. Remember that gauge freedoms are not physical degrees of freedom but redundancies in our description of physical systems. In the string theory context, the integral after gauge fixing (i.e. in moduli space) is really the one we're interested in, so the ``volume'' of a gauge orbit is usually of little physical relevance when we do calculations.
 
 The way it was presented in lecture is a bit backwards from how we use this method. Here is a quick recap of how we will use this.
 \begin{enumerate}

@@ -92,25 +92,25 @@ By definition,
 \end{equation}
 Let us define a set $A$ such that
 \begin{equation*}
-    A=\set{x\in J \text{ s.t. } p(x) > )}.
+    A=\set{x\in J \text{ s.t. } p(x) > 0}.
 \end{equation*}
 Thus $A$ is the support of $J$.
 We can compute
 \begin{align}
-    -D(p||q) &= \sum p(x) \log \frac{q(x)}{p(x)}\\
-    &= \mathbb{E}_p \paren{\log \frac{q(X)}{p(X)}}.
+    -D(p||q) &= \sum_{x\in A} p(x) \log \frac{q(x)}{p(x)}\\
+    &= \mathbb{E}_p \paren{\log \frac{q(X)}{p(X)}},
 \end{align}
-Note that $X$s denote random variables, while $x$s indicate the values they take.
+where this is always well-defined since $p$ is nonzero by assumption. Note that $X$s denote random variables, while $x$s indicate the values they take.
 
 Jensen's inequality from probability theory tells us that for convave functions $f$, $\mathbb{E}(f(X)) \leq f(\mathbb{E}(X)).$
 
 We conclude that 
 \begin{align*}
-    -D(p||Q)&\leq \log (\mathbb{E}_p \frac{q(X)}{p(X)})\\
+    -D(p||q)&\leq \log (\mathbb{E}_p \frac{q(X)}{p(X)})\\
     &= \log \sum_{x\in A} p(x) \frac{q(x)}{p(x)}\\
     &\leq \log \sum_{x\in J} q(x)\\
     &= \log 1 =0\\
-    &\implies D(p||Q)\geq 0.
+    &\implies D(p||q)\geq 0.\qedhere
 \end{align*}
 \end{proof}
 

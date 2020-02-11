@@ -42,10 +42,28 @@ with $a,b\in \CC$. We shall require that our states are normalized under this in
 \end{equation}
 which means that $|a|^2$ and $|b|^2$ have the interpretation of probabilities.
 
-We also have some important operators on Hilbert space. These are the Pauli matrices%fill in the pauli matrices
-$\sigma_0,\sigma_x,\sigma_y,\sigma_z$. As it turns out, these operators form a basis. Note that we have a set of self-adjoint $2\times 2$ complex matrices
+We also have some important operators on Hilbert space. These are the Pauli matrices
+\begin{gather*}
+    \sigma_0 = \begin{pmatrix}
+        1 & 0\\
+        0 & 1
+    \end{pmatrix},\quad
+    \sigma_x = \begin{pmatrix}
+        0 & 1\\
+        1 & 0
+    \end{pmatrix},\\
+    \sigma_y = \begin{pmatrix}
+        0 & i\\
+        -i & 0
+    \end{pmatrix},\quad
+    \sigma_z = \begin{pmatrix}
+        1 & 0\\
+        0 & -1
+    \end{pmatrix}.
+\end{gather*}
+As it turns out, these operators form a basis for hermitian operators on $\cH$. Note that we have a set of self-adjoint $2\times 2$ complex matrices
 \begin{equation}
-    B_{SA}(\CC^2)=\set{A\in B(\cH): A=A^\dagger},
+    \cB_{SA}(\CC^2)=\set{A\in \cB(\cH): A=A^\dagger},
 \end{equation}
 and we can write a general matrix $M\in M_2 /M_{sa}$ in terms of the Pauli matrices,
 \begin{equation}
@@ -54,15 +72,15 @@ and we can write a general matrix $M\in M_2 /M_{sa}$ in terms of the Pauli matri
 where $\vec x=(x_1,x_2,x_3)\in \RR^3$.
 
 \subsection*{Spectral decomposition}
-The spectral decomposition says that we can write a matrix in terms of its eigenvalues,
+The spectral decomposition says that we can write a matrix in terms of its eigenvalues $\lambda_i$ and eigenvectors $\ket{e_i}$,
 \begin{equation}
-    A=\sum_{i=1}^d \lambda_i \ket{e_I}\bra{e_i},
+    A=\sum_{i=1}^d \lambda_i \ket{e_i}\bra{e_i},
 \end{equation}
-such that $A\ket{e_i}=\lambda_i \ket{e_i}$. Sometimes, we say that the eigenvalue decomposition is written in terms of projectors instead,
+such that $A\ket{e_i}=\lambda_i \ket{e_i}$. Sometimes we say that the eigenvalue decomposition is written in terms of projectors instead,
 \begin{equation}
     A=\sum_{i=1}^m \lambda_i \Pi_i
 \end{equation}
-where $\Pi_i$ projects onto some basis.
+where $\Pi_i=\dyad{e_i}$ projects onto the basis of eigenvectors.
 
 Given a self-adjoint operator $A=A^\dagger$ and a nice function $f$, what is the value $f(A)$? Note that $A$, being self-adjoint, can be diagonalized by a unitary. Thus
 \begin{equation}
@@ -94,7 +112,7 @@ Note that these $\ket{\psi_i}$s need not be mutually orthogonal,
 \begin{equation}
     \braket{\psi_i}{\psi_j}\neq \delta_{ij},
 \end{equation}
-and moreover this is \emph{not} a superposition but a statistical mixture. A superposition is a pure state where the state is normalized and can be written as 
+and moreover this is \emph{not} a superposition but a statistical mixture. A superposition is a \emph{pure state} where the state is normalized and can be written as 
 \begin{equation}
     \ket{\Psi}=\sum_{i=1}^d a_i \ket{\phi_i}.
 \end{equation}

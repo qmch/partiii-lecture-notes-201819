@@ -47,21 +47,32 @@ The Kerr-Newman solution enjoys two Killing vectors,
 \begin{equation}
     K^a = \paren{\P{}{t}}^a,\quad m^a = \paren{\P{}{\phi}}^a,
 \end{equation}
-and there is also a nice symmetry where the line element is invariant under the symmetry
+corresponding to time translation and rotational symmetry, and there is also a nice symmetry where the line element is invariant under the transformation
 \begin{equation}
     (t,\phi) \to (-t,-\phi).
 \end{equation}
 The parameter $a=J/M$ is simply a normalized version of the old angular momentum.
 
-The \term{Kerr solution} is the Kerr-Newman solution with no charge, $Q=P=0$. Define $\Delta \equiv (r-r_+)(r-r_-), r_\pm = M\pm\sqrt{M^2-a^2}$. Notice the analogy to Reissner-Nordstr\"om-- if $M^2 <a^2$ we have a naked singularity (ruled out by WCC conjecture). If $M^2 >a^2$, we have a black hole. If $M^2=a^2$, we have the extremal Kerr solution.
+\begin{defn}
+    The \term{Kerr solution} is the Kerr-Newman solution with no charge, $Q=P=0$. We can further define 
+    \begin{equation}
+        \Delta \equiv (r-r_+)(r-r_-),
+    \end{equation}
+    where 
+    \begin{equation}
+        r_\pm = M\pm\sqrt{M^2-a^2}
+    \end{equation}
+    are the radii of the outer and inner horizons.
+\end{defn}
+Notice the analogy between Kerr and Reissner-Nordstr\"om-- if $M^2 <a^2$ we have a naked singularity (ruled out by WCC conjecture). If $M^2 >a^2$, we have a black hole. If $M^2=a^2$, we have the extremal Kerr solution.
 
-From the form of Kerr-Newman, it looks like the metric becomes singular when $\Delta = 0$ (at $r=r_\pm$) or when $\Sigma=0$ (at $r=0,\theta=\pi/2$). The first two are coordinate singularities, whereas the $r=0$ singularity is a proper curvature singularity.
+From the form of Kerr-Newman, it looks like the metric becomes singular when $\Delta = 0$ (at $r=r_\pm$) or when $\Sigma=0$ (at $r=0,\theta=\pi/2$). The first two are coordinate singularities representing horizons, whereas the $r=0$ singularity is a proper curvature singularity.
 
 We introduce now the equivalent of EF coordinates, which here are called Kerr coordinates:
 \begin{equation}
     dv = dt +\frac{r^2+a^2}{\Delta}dr,\quad d\chi = d\phi +\frac{a}{\Delta } dr.
 \end{equation}
-In thse coordinates, the Killing vectors become $K=\P{}{v}$ and $m=\P{}{\chi}$, where $\chi$ is periodic with $\chi \sim \chi+2\pi$. In these coordinates, we can extend our solution to $0< r< r_+$.
+In thse coordinates, the Killing vectors become $K=\P{}{v}$ and $m=\P{}{\chi}$, where $\chi$ is periodic with $\chi \sim \chi+2\pi$, and we can now extend our solution to $0< r< r_+$.
 
 \begin{prop}
     The surface $r=r_+$ is a null hypersurface with normal $\xi^a = K^a + \Omega_H m^a$, where $\Omega_H=\frac{a}{r_+^2 + a^2}$.
@@ -92,7 +103,7 @@ For what values of $r$ is $K^2$ timelike? Taking $K^2 <0$, we find that
 \begin{equation}
     r > M +\sqrt{M^2-a^2 \cos^2\theta} \geq r_+.
 \end{equation}
-There is a boundary known as the \term{ergosphere} bounding a region known as the \term{ergoregion}, some of which lies outside the black hole. Notice that the sign of $g_{tt}$ flips sign within the ergoregion, even though this region lies outside the event horizon.%
+This calculation tells us there's a boundary known as the \term{ergosphere} defined by $r=M+\sqrt{M^2-a^2 \cos^2 \theta}$ bounding a region known as the \term{ergoregion}, some of which lies outside the black hole. Notice that the sign of $g_{tt}$ flips sign within the ergoregion, even though this region lies outside the event horizon.%
     \footnote{This is because the spacetime is stationary but not static. In a stationary spacetime like Schwarzschild, the Killing horizon coincides with the event horizon. So the sign flip of $g_{tt}$ is associated with the fact that the event horizon is a point of no return, since the $r$ component also changes sign. In Kerr, the $r$ component changes sign at the event horizon but not at the ergosurface, so one can still escape the ergoregion in the radial direction.}
 
 Suppose now we have a stationary observer on a timelike trajectory that follows the integral curves of $K$. Such an observer is dragged along with the co-rotating frame, and we'll moreover show that we can use this phenomenon to extract energy from the black hole.

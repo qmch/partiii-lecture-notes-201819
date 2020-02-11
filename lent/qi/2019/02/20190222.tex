@@ -155,7 +155,7 @@ We also have notions of a ``finer'' entanglement witness, e.g. for two EWs, the 
 \subsection*{Teleportation in 3 minutes}
 Suppose Alice and Bob share $\ket{\phi^+}$, and Alice also has a qubit in state $\ket{\psi_C}$. Thus the whole system is in state
 \begin{equation}
-    \ket{\psi_C}\otimes \ket{\psi^+_{AB}}.
+    \ket{\psi_C}\otimes \ket{\phi^+_{AB}}.
 \end{equation}
 WLOG we can write $\ket{\psi_C}=a\ket{0}+b\ket{1}$. Expanding out the tensor product state, we have
 \begin{align}
@@ -165,4 +165,4 @@ WLOG we can write $\ket{\psi_C}=a\ket{0}+b\ket{1}$. Expanding out the tensor pro
     &= \frac{1}{2}\bkt{\ket{\phi_{CA}^+}(\ket{\psi_B})+ \ket{\phi^-}(\sigma_z \ket{\psi}) + \ket{\psi^+} (\sigma_x \ket{\psi}) +\ket{\psi^-} (-i\sigma_y \ket{\psi})
     }.
 \end{align}
-Alice makes a Bell measurement on her two qubits, measuring $00,01,10,11$ and communicates the result to Bob, who can recover the state by a local unitary.
+Alice makes a Bell measurement on her two qubits, measuring $00,01,10,$ or $11$ and communicates the result to Bob, who can recover the state by a local unitary on his qubit $B$.

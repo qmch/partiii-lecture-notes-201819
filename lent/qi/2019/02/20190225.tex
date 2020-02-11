@@ -16,7 +16,7 @@ Thus define $A:=\rho-\sigma$. We take $A$ to be self-adjoint, $A^\dagger =A$. Th
 where $Q,R$ are now positive semi-definite. Thus by the linearity of the trace,
 \begin{align*}
     D(\rho,\sigma)&= \frac{1}{2}\Tr\abs{A}\\
-        &= \frac{1}{2} \bkt{\sum_{a_i \geq 0} -\sum_{a_i \geq 0} a_i -\sum_{a_i <0} a_i}\\
+        &= \frac{1}{2} \bkt{\sum_{a_i \geq 0} a_i -\sum_{a_i <0} a_i}\\
         &=\frac{1}{2}(\Tr Q + \Tr R),.
 \end{align*}
 However, note that $A=\rho-\sigma =Q-R$. Since $A$ is traceless,%
@@ -86,7 +86,7 @@ The second property follows from $D(\rho,\sigma)=\Tr Q =\Tr R=0\implies a_i=0\fo
     where equality is reached for some $P$.
     We saw that $\Tr Q = \Tr R\implies \Tr (\Lambda(Q)) =\Tr (\Lambda(R))$ since $\Lambda$ is CPTP. Now
     \begin{align*}
-        D(\rho,\sigma) = \Tr Q = \Tr \lambda(Q) &\geq \Tr(P \Lambda (Q))\\
+        D(\rho,\sigma) = \Tr Q = \Tr \Lambda(Q) &\geq \Tr(P \Lambda (Q))\\
         &\geq \Tr (P(\Lambda(Q)-\Lambda(R)))\\
         &= D(\Lambda(\rho, \Lambda(\sigma)),
     \end{align*}
