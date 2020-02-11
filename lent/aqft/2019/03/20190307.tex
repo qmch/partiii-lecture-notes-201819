@@ -5,7 +5,7 @@ We had a general gauge-fixing expression
 \end{equation*}
 and we can choose a particular gauge-fixing function $G[A]=\p^\mu A_\mu^a(x) -\omega^a(x)$, just as in QED. We then integrate over an extra parameter $\omega^a(x)$ with Gaussian weight $1/2\xi$,
 \begin{equation}
-    \int \cD A e^{-S[A]}\det \paren{\frac{\delta G[A^\alpha]}{\alpha}} \exp \bkt{\int d^4x \frac{1}{2\xi} (\p^\mu A_\mu)^2}
+    \int \cD A e^{-S[A]}\det \paren{\frac{\delta G[A^\alpha]}{\delta \alpha}} \exp \bkt{\int d^4x \frac{1}{2\xi} (\p^\mu A_\mu)^2}
 \end{equation}
 The gauge-transformed field
 is then
@@ -17,22 +17,22 @@ such that the variation is%
 \begin{equation}
     \frac{\delta G[A^\mu]}{\delta \alpha}=\frac{1}{g} \p^\mu D_\mu.
 \end{equation}
-The Faddeev-Popov method tells us to express the functional determinant as a path integral over new Grassmann fields $c,\bar c$ which transform in the adjoint representation of the gauge group. These new fields anticommute, but are otherwise Lorentz scalars (spin zero). These $c,\bar c$ fields do not represent physical particles (i.e. valid in/out states) and should be thought of as constraints. They are called \term{Faddeev-Popov ghosts.}%
+The Faddeev-Popov method tells us to express the functional determinant as a path integral over new Grassmann fields $c,\bar c$ which transform in the adjoint representation of the gauge group. These new fields anticommute, but otherwise transform as Lorentz scalars (spin zero). These $c,\bar c$ fields do not represent physical particles (i.e. valid in/out states) and should be thought of as constraints. They are called \term{Faddeev-Popov ghosts.}%
     \footnote{You might be concerned about spin-statistics here. Shouldn't anticommuting variables be half-integer spin? Normally, yes, but this is only true when our variables represent physical observables. The ghosts are really constraints in our theory and cannot be observed. Probably why we call them ghosts!}
 One can then write a ``ghost Lagrangian,''
 \begin{align}
     \cL_\text{gh}&=\bar c^a( \p^2 \delta^{ac} +g f^{abc} \p^\mu A_\mu^b) c^c\\
         &= \bar c^a \p^\mu D_\mu^{ac} c^c,
 \end{align}
-in terms of a covariant derivative
+in terms of a new covariant derivative
 \begin{equation}
     D_\mu^{ac}\equiv \p_\mu \delta^{ac} +g f^{abc} \p^\mu A_\mu^b.
 \end{equation}
-We arrive at a ghost propagator,
+Note that this one has upper (generator) indices, like the ghosts themselves. From the ghost Lagrangian, we can write down a ghost propagator,
 \begin{equation}
     \avg{c^a(x) \bar c^b(y)} =\int \frac{d^4k}{(2\pi)^4} \frac{\delta^{ab}}{k^2} e^{-ik\cdot (x-y)}
 \end{equation}
-so that a ghost propagator is associated with a $\delta^{ab}/k^2$ and we also get a three-point vertex with amplitude $-g f^{abc}p^\mu$.
+so that a ghost propagator is associated with a $\delta^{ab}/k^2$ and we also get a three-point vertex (involving $c,\bar c$, and a gauge field) with amplitude $-g f^{abc}p^\mu$.
 
 If these ghost fields do not represent physical particles, why do we need them in our theory?
 \begin{itemize}
@@ -52,10 +52,10 @@ If these ghost fields do not represent physical particles, why do we need them i
 \subsection*{BRST symmetry}
 This symmetry is a constraint on physical states, named for Becchi-Rouet-Storz-Tyutin. In our general gauge theory, we have a Lagrangian in Euclidean space which takes the form
 \begin{equation}
-    \cL=\frac{1}{4}(F^a_{\mu\nu})^2 +\bar \psi(\slashed{D}+m)\psi +\frac{1}{2\xi}(\p^\mu A^a_\mu)^2 + \bar c \p^\mu D_\mu c.
+    \cL=\frac{1}{4}(F^a_{\mu\nu})^2 +\bar \psi(\slashed{D}+m)\psi +\frac{1}{2\xi}(\p^\mu A^a_\mu)^2 + \bar c \p^\mu D_\mu c,
 \end{equation}
-This theory has a term that looks like the $F_{\mu\nu}$ field strength tensor of QED, a fermion coupling, an extra kinetic term for the gauge field (useful in gauge fixing), and the ghost constraint.
-We may then introduce an auxiliary (i.e. non-dynamical) field $B^a$, modifying our Lagrangian to
+now including the ghosts. This theory has a term that looks like the $F_{\mu\nu}$ field strength tensor of QED, a fermion coupling, an extra kinetic term for the gauge field (useful in gauge fixing), and the ghost term.
+Without loss of generality, we may then introduce an auxiliary (i.e. non-dynamical) field $B^a$, modifying our Lagrangian to
 \begin{equation}
     \cL = \frac{1}{4}(F_{\mu\nu}^a)^2 + \bar \psi(\slashed{D} + m) \psi +\frac{1}{2\xi} (B^a)^2 -B^a \p^\mu A_\mu^a  +\bar c^a \p^\mu D_\mu^{ac} c^c,
 \end{equation}
@@ -89,11 +89,11 @@ Looking at the $O(g)$ terms, we have
 \begin{equation}
      -\frac{f^{abc}}{2}\p_\mu (c^b c^c) +f^{abc}(\p_\mu c^b) c^c =-\frac{f^{abc}}{2} \bkt{(\p_\mu c^b) c^c +c^b(\p_\mu c^c)} +f^{abc}(\p_\mu c^b)c^c.
 \end{equation}
-Using
+Using the fact that the ghosts anticommute and $f^{abc}$ is totally antisymmetric,
 \begin{equation}
-    f^{abc} c^b(\p_\mu c^c) = -f^{abc} (\p_\mu c^c) c^b = -f^{abc}(\p_\mu c^b) c^c = + f^{abc}(\p_\mu c^b)c^c,
+    f^{abc} c^b(\p_\mu c^c) = -f^{abc} (\p_\mu c^c) c^b = + f^{abc}(\p_\mu c^b)c^c,
 \end{equation}
-we see that the whole $O(g)$ term is zero. Similar manipulations show that the $O(g^2)$ term is also zero, using the Jacobi identity:
+the first two terms double up and we see that the whole $O(g)$ term is zero. Similar manipulations show that the $O(g^2)$ term is also zero, using the Jacobi identity:
 \begin{equation}
     f^{ade}f^{bcd} + f^{bde} f^{cad} +f^{cde} f^{abd}=0.
 \end{equation}

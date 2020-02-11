@@ -67,7 +67,7 @@ Consider the region of a constant $t$ surface contained within a sphere of const
 \end{equation}
 where $dA$ is the area element of $S^2_r$ and $n^j$ is the outward unit normal of $S^2_r$. Now, $dA=O(r^2)$, but $\delta \pi^{ij}=O(1/r^2)$ so this boundary term goes to zero.
 
-Note also that the Ricci scalar is made of second derivatives of $h$, which means that varying with respect to $h_{ij}$ gives two boundary terms. THus
+Note also that the Ricci scalar is made of second derivatives of $h$, which means that varying with respect to $h_{ij}$ gives two boundary terms. Thus
 \begin{equation}
     \delta^{(3)}R = -R^{ij} \delta h_{ij} + D^i D^j h_{ij} -D^k D_k(h^{ij} \delta h_{ij})
 \end{equation}
@@ -114,7 +114,14 @@ Since $\xi^a\xi_a=0$ on $\cN$, it follows that the gradient of $\xi^a\xi_a$ is n
 \begin{equation}
     \nabla_a(\xi^b \xi_b)|_\cN = -2 \kappa_0 \xi_a
 \end{equation}
-A priori, $\kappa_0$ is a function. We call it the \term{surface gravity}. Since $\xi$ is Killing we can write
+A priori, $\kappa_0$ is a function. We call it the \term{surface gravity}.
+Note that in form notation, we can equivalently write
+\begin{equation}
+    d(\xi^2)|_{\cN}= - 2\kappa_0 \xi.
+\end{equation}
+This version will be useful when we actually calculate the surface gravity shortly.
+
+Since $\xi$ is Killing we can write
 \begin{equation}
     \nabla(\xi^b \xi_b) = 2 \xi^b \nabla_a \xi_b = -2 \xi^b \nabla_b \xi_a,
 \end{equation}
@@ -134,7 +141,7 @@ The surface gravity therefore tells us how much the integral curves of $\xi^a$ f
     \begin{equation}
         (K)_a =(dr)_a
     \end{equation}
-    at $r=r\pm$ is null. Then
+    at $r=r_\pm$ is null, and moreover proportional to $dr$, the normal to $r=r_\pm$. Then
     \begin{equation}
         d(K^a K_a)=d(-\frac{\Delta}{r^2}) =-\paren{-\frac{\Delta'}{r^2}+\frac{2 \Delta}{r^3}}dr,
     \end{equation}

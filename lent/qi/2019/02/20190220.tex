@@ -123,13 +123,13 @@ so then $\log\rho=\sum(\log\lambda_i) \dyad{e_i} \implies S(\rho)=-\sum \lambda_
 the Shannon entropy of the vector of eigenvalues. In particular, we see that a pure state has $S(\rho_A)=0$ and $S(\rho_A)=\log d$ when $\set{\lambda_1}=(1/d,\ldots,1/d)$.
 
 \begin{proof}
-    $S(\rho_A)=0 \iff \rho_A$ is pure $\iff$ the Schmidt number of $\ket{\psi_{AB}}=0$. But then our state is
+    $S(\rho_A)=0 \iff \rho_A$ is pure $\iff$ the Schmidt number of $\ket{\psi_{AB}}=1$. But then our state is
     \begin{equation}
         \ket{\psi_{AB}}=\ket{\chi_A}\otimes \ket{\omega_B}
     \end{equation}
     is a separable (product) state.
 \end{proof}
-We can also see that if $\ket{\psi}\to_{LOCC}\ket{\phi}$ then $n_\psi \geq n_\phi.$ In addition, the entropy is non-increasing: $S(\rho_\psi)\geq S(\rho_\phi)$.
+We can also see that if $\ket{\psi}\xrightarrow{LOCC}\ket{\phi}$ then $n_\psi \geq n_\phi.$ In addition, the entropy is non-increasing: $S(\rho_\psi)\geq S(\rho_\phi)$.
 
 There is a property known as Schur concavity: for $\rho \prec \sigma$, we have
 \begin{equation}

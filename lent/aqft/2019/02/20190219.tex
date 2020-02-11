@@ -7,9 +7,13 @@ We introduced the Faddeev-Popov method for fixing the gauge. We write the identi
     1= \int \cD \alpha(x) \delta (G[A]) \det \paren{\frac{\delta G[A]}{\delta \alpha}}.
 \end{equation*}
 
-For the $G[A]$ we will use, the determinant (Jacobian factor) will be independent of $A$, though this will not be true more generally in non-Abelian gauge theories. If we choose to work in Lorenz gauge, then
+For the $G[A]$ we will use, the determinant (Jacobian factor) will be independent of $A$, though this will not be true more generally in non-Abelian gauge theories. We can denote the gauge-transformed $A$ as
 \begin{equation}
-    G[A^\alpha]=\p_\mu A^\mu +\frac{1}{e} \p^2 \alpha,
+    A_\mu^\alpha(x)=A_\mu (x) +\frac{1}{e} \p_\mu \alpha(x).
+\end{equation}
+If we choose to work in Lorenz gauge, for example, then
+\begin{equation}
+    G[A]=\p_\mu A^\mu \implies G[A^\alpha]=\p_\mu A^\mu +\frac{1}{e} \p^2 \alpha,
 \end{equation}
 so
 \begin{equation}
@@ -18,10 +22,11 @@ so
 %what does this mean, notationally?
 Thus we rewrite the path integral with our delta function as
 \begin{align}
-    \int \cD A e^{-S_g[A]} &= \det \paren{\frac{\delta G{A^\alpha}}{\delta \alpha}} \int \cD \alpha \int \cD A e^{-S_g[A]} \delta(G[A])\\
-    &=\det \paren{\frac{\delta G{A^\alpha}}{\delta \alpha}} \paren{\int \cD \alpha} \int \cD A e^{-S_g[A]} \delta(G[A]),
+    \int \cD A e^{-S_g[A]} &= \det \paren{\frac{\delta G[A^\alpha]}{\delta \alpha}} \int \cD \alpha \int \cD A e^{-S_g[A]} \delta(G[A])\\
+    &=\det \paren{\frac{\delta G[A^\alpha]}{\delta \alpha}} \paren{\int \cD \alpha} \int \cD A e^{-S_g[A]} \delta(G[A]),
 \end{align}
-where we have changed variable $A\mapsto A^\alpha$ and $S_g$ is invariant since this is a gauge transformation.
+where we have changed variables $A\mapsto A^\alpha$, and $S_g$ is invariant since this is a gauge transformation.%
+    \footnote{n.b. this path integral over gauge transformations $\int \cD \alpha$ is infinite. It is the same infinity that cropped up when we tried to naively compute the full path integral before gauge fixing, but here we have isolated it with our gauge fixing procedure so it can be readily discarded.}
 
 To fix the gauge, let's choose the functional
 \begin{equation}
@@ -33,7 +38,7 @@ We now integrate over $\omega$ with a Gaussian weight factor of mean $0$ and var
 \end{equation}
 which becomes (similar to before)
 \begin{equation}
-    \det \paren{\frac{\p^2}{e}} \paren{\int \cD \alpha} \int \cD A e^{-S_g[A]}-\underbrace{\int d^4x \frac{1}{2\xi}(\p_\mu A^\mu)^2}_{S_{gf}[A]},
+    \det \paren{\frac{\p^2}{e}} \paren{\int \cD \alpha} \int \cD A e^{-S_g[A]}\exp \bigg(-\underbrace{\int d^4x \frac{1}{2\xi}(\p_\mu A^\mu)^2}_{S_{gf}[A]}\bigg),
 \end{equation}
 where $S_{gf}$ indicates a gauge-fixing action. Thus
 \begin{equation}
@@ -54,7 +59,11 @@ Let us consider an action in terms of fermions,
 \begin{equation}
     S[\psi,\bar \psi]=\int d^4x (-\bar \psi(\slashed{\p}+m)\psi),
 \end{equation}
-where we work in Euclidean signature, $\slashed{\p}=\gamma_\mu \p^\mu$, and the anticommutation relations hold, $\set{\gamma_\mu,\gamma_\nu}=2\delta_{\mu\nu}$. Our gamma matrices are hermitian, $\gamma_\mu^\dagger =\gamma_\mu$, and our $\gamma_5$ is taken to be $\gamma_5=\gamma_1 \gamma_2 \gamma_3 \gamma_4$. For example,
+where we work in Euclidean signature, $\slashed{\p}=\gamma_\mu \p^\mu$, and the anticommutation relations hold,
+\begin{equation}
+    \set{\gamma_\mu,\gamma_\nu}=2\delta_{\mu\nu}.
+\end{equation}
+Our gamma matrices are hermitian, $\gamma_\mu^\dagger =\gamma_\mu$, and our $\gamma_5$ is taken to be $\gamma_5=\gamma_1 \gamma_2 \gamma_3 \gamma_4$. For example,
 \begin{equation}
     \gamma_j=\begin{pmatrix}
         0& -i\sigma_j\\
@@ -76,14 +85,14 @@ where $\int_p = \int \frac{d^4p}{(2\pi)^4}$. Thus in Fourier space our action ta
 \end{equation}
 Adding sources $\tilde \eta, \tilde{\bar \eta}$, the generating functional is then
 \begin{align}
-    Z[\tilde \eta,\tilde{\bar \eta}]&=\int \cD \tilde \psi \cD \tilde{\bar \psi} \exp -\int_p \bkt{ \tilde{\bar \psi}(i\slashed{p}+m)\tilde \psi - \tilde{\bar \eta} \tilde \psi +\tilde {\bar \psi}\tilde \eta}\\
-    &= Z[0,0] e^{-\int_p \tilde{\bar \eta}(i\slashed{p}+m)^{-1} \tilde \eta},
+    Z[\tilde \eta,\tilde{\bar \eta}]&=\int \cD \tilde \psi \cD \tilde{\bar \psi} \exp \paren{-\int_p \bkt{ \tilde{\bar \psi}(i\slashed{p}+m)\tilde \psi - \tilde{\bar \eta} \tilde \psi +\tilde {\bar \psi}\tilde \eta}}\\
+    &= Z[0,0] \exp\paren{-\int_p \tilde{\bar \eta}(i\slashed{p}+m)^{-1} \tilde \eta},
 \end{align}
 where we have completed the square as usual.
 
 \subsection*{Feynman rules} In addition to the propagators and vertices, fermion loops pick up minus signs. For instance, the position space propagator takes the form
 \begin{equation}
-    S_F^{\alpha\beta}(x-y)=\avg{\psi^\alpha(x) \bar \psi^\beta(y)}=\int_p e^{ip \cdot(x-y)} \paren{\frac{1}{1 \slashed{p}+m}}^{\alpha\beta},
+    S_F^{\alpha\beta}(x-y)=\avg{\psi^\alpha(x) \bar \psi^\beta(y)}=\int_p e^{ip \cdot(x-y)} \paren{\frac{1}{i \slashed{p}+m}}^{\alpha\beta},
 \end{equation}
 where $\alpha,\beta$ are spin indices $1,\ldots,4$. If we expand the action $e^{-S_{QED}}$ to second order in the electron-photon coupling, we find terms
 \begin{align*}

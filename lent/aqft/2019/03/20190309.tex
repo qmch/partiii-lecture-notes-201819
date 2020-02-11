@@ -14,9 +14,9 @@ In fact, the BRST transformation is nilpotent-- that is, the operator performed 
 \end{align}
 and so on. One can show that $S^2\phi=0\implies S^2=0$.
 
-Noether's theorem tells us that the symmetry of $\cL$ under $S$ implies the existence of a conserved current $j^\mu_{BRST}$ and an associated charge $Q_B$:
+Noether's theorem tells us that the symmetry of $\cL$ under $S$ implies the existence of a conserved current $j^\mu_\text{BRST}$ and an associated charge $Q_B$:
 \begin{equation}
-    Q_B =\int d^{d-1}x \,j^0_{BRST}(x)\text{ with }[Q_B,H]=0.
+    Q_B =\int d^{d-1}x \,j^0_\text{BRST}(x)\text{ with }[Q_B,H]=0.
 \end{equation}
 Thus $S^2=0 \implies Q_B^2=0$.
 %why?
@@ -43,16 +43,19 @@ We can write down Feynman rules for such a theory:
 \begin{itemize}
     \item Fermions are a solid directed line with propagator
     \begin{equation}
-        \frac{1}{i\slashed{p}+m}\delta^{ij}=-\frac{i\slashed{p}-m}{p^2+m^2}\delta^{ij}
+        \frac{1}{i\slashed{p}+m}\delta^{ij}=-\frac{i\slashed{p}-m}{p^2+m^2}\delta^{ij},
     \end{equation}
+    where $ij$ are spinor indices.
     \item Gauge bosons are a curly line with propagator
     \begin{equation}
-        \frac{1}{k^2} \paren{\delta^{\mu\nu} -(1-\xi) \frac{k^\mu k^\nu}{k^2}} \delta^{ab}
+        \frac{1}{k^2} \paren{\delta^{\mu\nu} -(1-\xi) \frac{k^\mu k^\nu}{k^2}} \delta^{ab}.
     \end{equation}
+    Note that gauge bosons have both generator indices (i.e. color indices) $ab$ as well as Lorentz indices $\mu\nu$.
     \item Ghosts get a dashed line with
     \begin{equation}
         \frac{\delta^{ab}}{q^2}.
     \end{equation}
+    These have only generator indices $ab$.
 \end{itemize}
 We have interactions from the covariant derivative term and the field tensors,
 \begin{align}
@@ -86,7 +89,7 @@ with an amplitude
 \begin{equation}
     -ig \gamma^\mu t_{ij}^a
 \end{equation}
-and a three-point interaction with two ghosts
+and a three-point interaction between a gauge boson and two ghosts
 %diagram
 with an amplitude
 \begin{equation}
@@ -98,7 +101,7 @@ There are five diagrams we must consider in computing the vacuum polarization, i
 \begin{figure}
     \centering
     \includegraphics{2019/03/20190309_vacuumpolarization.PNG}
-    \caption{Four of the diagrams which contribute to vacuum polarization. Clockwise from upper left: the fermion loop, the gluon loop with two 3-point vertices, the gluon loop with one 4-point vertex, and the ghost loop. We will determine what the counterterm contribution must be based on the sum of these four.}
+    \caption{Four of the diagrams which contribute to vacuum polarization. Clockwise from upper left: the fermion loop, the gluon loop with two 3-point vertices, the gluon loop with one 4-point vertex, and the ghost loop. The counterterm diagram is not shown-- we will determine what the value of the counterterm must be based on the sum of these four.}
     \label{fig:vacuumpolarization}
 \end{figure}
 We can calculate the amplitude of the fermion loop diagram as in QED. Applying the Feynman rules, it is

@@ -2,7 +2,7 @@ Last time, we discussed the trace distance and the fidelity, two measures of dis
 
 Some properties follow from the theorem.
 \begin{enumerate}
-    \item $0\leq F(\rho,\sigma \leq 1$ and $F(\rho,\sigma)=1$ iff $\rho=\sigma$. The first follows since
+    \item $0\leq F(\rho,\sigma) \leq 1$ and $F(\rho,\sigma)=1$ iff $\rho=\sigma$. The first follows since
     \begin{equation*}
         0\leq \abs{\braket{\psi_\rho^{AR}}
         {\psi_\sigma^{AR}}} \leq 1,
@@ -124,7 +124,7 @@ A useful property is the \term{Klein's inequality},
 We can also prove the upper bound on $S(\rho)\leq \log d$. Take $\sigma=I/d$, and then
 \begin{align*}
     0 \leq D(\rho||\sigma) &=\Tr(\rho \log \rho - \rho \log I/d)\\
-        &= -S(\rho)-\rho \text{diag}(\log 1/d,\ldots,\log 1/d)\\
+        &= -S(\rho)-\Tr \rho \text{diag}(\log 1/d,\ldots,\log 1/d)\\
         &= -S(\rho)-\log 1/d \Tr \rho\\
         &= -S(\rho) +\log d \Tr \rho.
 \end{align*}

@@ -107,12 +107,12 @@ The Cauchy-Schwarz inequality also holds, i.e.
 
 \subsection*{Linear maps/operators on $\cH$}
 \begin{itemize}
-    \item We call a map $A:\cH \to \cH'$ a homomorphism, with the set $A\in B(\cH, \cH')=\text{Homo}(\cH, \cH').$
-    \item When $\cH = \cH$, we call such a map an endomorphism and denote the set of such maps $\text{End}(\cH)$.
-    \item The simplest operator we can define is the identity map, $1\in B(\cH)$ such that $1v = v \forall v\in \cH$.
-    \item We may also define the adjoint of a homomorphism, $A^\dagger: \cH' \to \cH$. Thus if $A\in B(\cH, \cH'),$ then $A^\dagger \in B(\cH',\cH).$ Thus $A^\dagger$ is defined to be the unique operator satisfying
+    \item We call a map $A:\cH \to \cH'$ a homomorphism, with the set $A\in \cB(\cH, \cH')=\text{Homo}(\cH, \cH').$
+    \item When $\cH' = \cH$, we call such a map an endomorphism and denote the set of such maps $\text{End}(\cH)$.
+    \item The simplest operator we can define is the identity map, $1\in \cB(\cH)$ such that $1v = v \forall v\in \cH$.
+    \item We may also define the adjoint of a homomorphism, $A^\dagger: \cH' \to \cH$. Thus if $A\in \cB(\cH, \cH'),$ then $A^\dagger \in \cB(\cH',\cH).$ Thus $A^\dagger$ is defined to be the unique operator satisfying
     \begin{equation}
-        (v',AAv) = (A^\dagger v',v)
+        (v',Av) = (A^\dagger v',v)
     \end{equation}
     with $(A^\dagger)^\dagger = A$, where $v\in \cH, v' \in \cH'.$ Note that the set of homomorphisms and endomorphisms can be promoted to Hilbert spaces by defining an inner product, the \term{Hilbert-Schmidt inner product}, defined as
     \begin{equation}
@@ -120,11 +120,11 @@ The Cauchy-Schwarz inequality also holds, i.e.
     \end{equation}
 \end{itemize}
 
-\subsection*{Matrix representation} Since $\cH$ is finite-dimensional by assumption, it can be given a basis $\set{v_i}^d_{i=1}$ where $d=\dim \cH$ Thus an element $A\in B(\cH)$ can be represented by a matrix $A$ with elements
+\subsection*{Matrix representation} Since $\cH$ is finite-dimensional by assumption, it can be given a basis $\set{v_i}^d_{i=1}$ where $d=\dim \cH$. Thus an element $A\in B(\cH)$ can be represented by a $d\times d$ matrix $A_{ij}$ with elements
 \begin{equation}
     A_{ij}=(v_i,A v_j).
 \end{equation}
-If $\cH=\CC^d$, for instance, then $B(\cH)=B(\CC^d) \equiv \cM_d$, the set of $d\times d$ complex matrices. In $d=2,$ we would have
+If $\cH=\CC^d$, for instance, then $\cB(\cH)=\cB(\CC^d) \equiv \cM_d$, the set of $d\times d$ complex matrices. This is the space of linear maps on length-$d$ complex vectors. In $d=2,$ we would have
 \begin{equation}
     A=\begin{pmatrix}
         a & b\\
@@ -135,4 +135,4 @@ If $\cH=\CC^d$, for instance, then $B(\cH)=B(\CC^d) \equiv \cM_d$, the set of $d
     \end{pmatrix}.
 \end{equation}
 
-Now maps $A$ have the property that if $A=A^\dagger$, then $A\geq 0$, i.e. $A$ is positive semidefinite, so that $\forall v\in \cH, (v,Av)\geq 0.$ If $A\geq 0, A^2=A$.
+Now maps $A$ have the property that if $A=A^\dagger$, then $A\geq 0$, i.e. $A$ is positive semidefinite, so that $\forall v\in \cH, (v,Av)\geq 0.$ %If $A\geq 0, A^2=A$.

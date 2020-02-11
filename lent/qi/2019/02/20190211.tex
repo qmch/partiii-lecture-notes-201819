@@ -109,21 +109,25 @@ Stinespring's dilation theorem is a result from operator theory, but we'll see s
     \end{align*}
     Here, we have done nothing other than use definitions and the linearity and cyclic property of the trace.
 \end{proof}
-\subsection*{Kraus Rep'n Thm $\equiv$ restatement of Stin. D. Thm.}
-We can think of the Kraus Representation theorem as a local implementation of the Stinespring Dilation Theorem. WLOG assume $\phi\equiv \kb{\phi}{\phi} \in \cD(\cH')$. Let $\set{\ket{e_k}}_k$ be an onb for $\cH'$. By Kraus, we can write
+\subsection*{Stinespring $\implies$ Kraus}
+We can think of the Kraus Representation theorem as a local implementation of the Stinespring Dilation Theorem. WLOG, let $\phi\equiv \kb{\phi}{\phi} \in \cD(\cH')$ be some pure state in the reference system $\cH'$. In order to take the trace explicitly, let $\set{\ket{e_k}}_k$ be an onb for $\cH'$. Stinespring says that for some unitary $U\in \cB(\cH \otimes \cH')$,
+\begin{align*}
+    \Lambda(\rho)&= \Tr_{\cH'}(U(\rho\otimes \phi) U^\dagger)\\
+        &=\sum_k \bra{e_k}U(\rho\otimes \phi) U^\dagger \ket{e_k}\\
+        &=\sum_k A_k \rho A_k^\dagger,
+\end{align*}
+where we have defined
 \begin{equation}
-    \Lambda(\rho)=\sum_k \bra{e_k}U(\rho\otimes \phi) U^\dagger \ket{e_k}=\sum_k A_k \rho A_k^\dagger.
+    A_k:= \bra{e_k}U \ket{\phi}.
 \end{equation}
-with $\phi$ defined as above. That is, $\Lambda(\rho)=\Tr_{\cH'}(U(\rho \otimes \phi)U^\dagger)$. We define
-\begin{equation}
-    A_k:= \bra{e_k}U \ket{\phi}
-\end{equation}
-where $U\in \cB(\cH \otimes \cH')$ and it follows that
+Note that this sum has only finitely many terms since we can take the reference system to be of the same dimension as the original Hilbert space $\cH$.
+%That is, $\Lambda(\rho)=\Tr_{\cH'}(U(\rho \otimes \phi)U^\dagger)$. 
+Moreover, it follows that
 \begin{align*}
     \sum_k A_k^\dagger A_k &= \sum_k \bra{\phi}U^\dagger \kb{e_k}{e_k} U \ket{\phi}\\
     &= \braket{\phi}{\phi}I_{\cH} = I_{\cH}.
 \end{align*}
-We call the $A_k$ Kraus operators. Some of the details are an exercise to fill in later.
+We call the $A_k$ Kraus operators.% Some of the details are an exercise to fill in later.
 
 \subsection*{Choi-Jamilkowski (C-J) isomorphism} We saw that $\Lambda:\cB(\cH)\to \cB(\mathcal{K})$ where $\cH\simeq \CC^d, \mathcal{K}\simeq \CC^{d'}$ is CP iff $J(\Lambda)=(\Lambda \otimes \id_d)\kb{\Omega}{\Omega} \geq 0$. In fact, it turns out that $\exists$ an isomorphism between linear maps and positive operators. This is a great result, since positive operators are much nicer to work with.
 \begin{thm}

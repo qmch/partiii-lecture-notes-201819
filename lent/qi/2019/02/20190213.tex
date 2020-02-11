@@ -37,21 +37,25 @@ We proved last time that $\Lambda$ is CP $\iff J\geq 0$. Next, we will show that
 We now claim that \ref{cjdef} and \ref{cjdef2} define an isomorphism, i.e. a map that is both injective and surjective.
 
 \subsection*{CJ$\to$ Kraus}
-Suppose we have $\Lambda$ a linear CP map. Thus CJ tells us that
+Suppose we have $\Lambda$ a linear CPTP map. Thus CJ tells us that
 \begin{equation*}
-    J(\Lambda)=(\Lambda\otimes \id)\kb{\Omega}{\Omega} \geq 0.
+    J(\Lambda)=(\Lambda\otimes \id)\kb{\Omega}{\Omega} \geq 0
 \end{equation*}
-We know that $\Tr J(\Lambda)=1$, and we also know that we can decompose a state $\ket{\psi_i}$ as
+because $\Lambda$ is CP, and moreover $\Tr J(\Lambda)=1$ because $\Lambda$ is TP. Hence $J$ is a density matrix, so it has a pure state decomposition
+\begin{equation}
+    J=\sum p_i \kb{\psi_i}{\psi_i}.
+\end{equation}
+Moreover, we can rewrite bipartite pure states $\ket{\psi_i}$ as
 \begin{equation}
     \ket{\psi_i}=(R_i\otimes I)\ket{\Omega}
 \end{equation}
-for some $R_i$.%
+for some operators $R_i\in \cB(\CC^d,\CC^{d'})$,%
     \footnote{Previously, this was $\ket{\psi}=(I\otimes R)\ket{\Omega}$. But by ricochet, we can just move this over to some $(R^T \otimes I)\ket{\Omega}$ and relabel $R^T=R_i.$}
-These operators are $R_i\in \cB(\CC^d,\CC^{d'})$, and thus we get a decomposition
+so that 
 \begin{equation}
-    J=\sum p_i \kb{\psi_i}{\psi_i} = \sum_i p_i (R_i\otimes I)\kb{\Omega}{\Omega} (R_i^\dagger \otimes I).
+    J=\sum_i p_i (R_i\otimes I)\kb{\Omega}{\Omega} (R_i^\dagger \otimes I).
 \end{equation}
-Thus with $A_i := \sqrt{p_i}R_{i'}$, we get
+Defining $A_i := \sqrt{p_i}R_{i'}$, we get
 \begin{equation}
     J(\Lambda) = \sum_{i'} (A_i \otimes I)\kb{\Omega}{\Omega} (A^\dagger_i \otimes I).
 \end{equation}
@@ -66,20 +70,27 @@ We want to show that we can get Stinespring (a linear map $\Lambda$ written in t
     \ket{\Psi} \equiv U(\ket{\psi}\otimes \ket{\phi}) = \sum_{k=1}^r A_k \ket{\psi}\otimes \ket{k}
 \end{equation}
 where $\set{\ket{k}}$ is an onb in $\cH'$. One may check that $U$ is indeed an isometry, i.e.
-\begin{equation}
-    \braket{\Psi}{\Psi}=\braket{\psi}{\psi}
-\end{equation}
-using $\set{\ket{k}}$ an onb and $\sum A_k^\dagger A_k=I$.
+\begin{align*}
+    \braket{\Psi}{\Psi}&= \sum_{k,l} \bra{\psi} A_k^\dagger A_l \ket{\psi} \otimes \braket{k}{l}\\
+        &= \sum_{k} \bra{\psi} A_k^\dagger A_k \ket{\psi}\\
+        &=\braket{\psi}{\psi}
+\end{align*}
+using the facts that $\set{\ket{k}}$ an onb and $\sum A_k^\dagger A_k=I$.
 
-We see that
-\begin{equation}
-    U(\rho\otimes \kb{\phi}{\phi})U^\dagger =\sum p_i (U\ket{\psi_i}\otimes \ket{\phi})(\ldots)^\dagger.
-\end{equation}
-Taking the partial trace over $H'$ we see that 
-
-\begin{equation}
-    \sum A_k \rho A_k^\dagger =\Lambda(\rho)=\Tr_{\cH'}(U(\rho\otimes \phi)U^\dagger).
-\end{equation}
+Let $\rho$ be some state in $\cD(\cH)$ with a pure state decomposition $\rho=\sum_i p_i \dyad{\psi_i}$. Then we can compute
+\begin{align*}
+    U(\rho \otimes \dyad{\phi})U^\dagger &= \sum_i p_i U(\dyad{\psi_i} \otimes \dyad{\phi})U^\dagger\\
+        &= \sum_i p_i U_i (\ket{\psi_i}\otimes \ket{\phi}) (\bra{\psi_i} \otimes \bra{\phi}) U^\dagger\\
+        &= \sum_i p_i \sum_{k,l} \paren{A_k \ket{\psi_i} \otimes \ket{k}} \paren{\bra{\psi_i} A_l^\dagger \otimes \bra{k}}.
+\end{align*}
+%\begin{equation}
+    %U(\rho\otimes \kb{\phi}{\phi})U^\dagger =\sum p_i (U\ket{\psi_i}\otimes \ket{\phi})(\ldots)^\dagger.
+%\end{equation}
+Taking the partial trace over $H'$ we see that
+\begin{align}
+    \Tr_{\cH'}(U(\rho\otimes \phi)U^\dagger) &= \sum_i p_i \sum_k A_k \dyad{\psi_i} A_k^\dagger\\
+        &= \sum_k A_k \rho A_k^\dagger=\Lambda(\rho).\qed
+\end{align}
 
 \subsection*{Measurement}
 Here is the third postulate of quantum mechanics, the ``von Neumann/projective'' measurement formalism. In a closed system, we have:

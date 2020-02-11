@@ -25,7 +25,7 @@ Note the branch cut in this integral for $m^2+x(1-x)q^2 \leq 0,$ when the argume
 \begin{equation}
     m^2 \leq x(1-x) (E^2-\vec q^2) \leq \frac{1}{4} (E^2-\vec q^2)
 \end{equation}
-so the smallest $E$ that satisfies this is simply $E^2=(2m)^2$. This is precisely the minimum energy required to create a real (on-shell) electron-positron pair.
+so the smallest $E$ that satisfies this condition (taking $\vec q=0$) is simply $E^2=(2m)^2$. This is precisely the minimum energy required to create a real (on-shell) electron-positron pair.
 
 \subsection*{QED $\beta$ function}
 %revisit this
@@ -54,9 +54,9 @@ Let $\Lambda_{QED}$ be the scale at which the coupling diverges,
 Given that $m_e=\SI{0.511}{\mega\eV}$, we have a coupling constant $\alpha=\frac{g^2(m_e)}{4\pi}\approx \frac{1}{137}$ (the fine structure constant), which tells us that $\Lambda_{QED}\sim \SI{e286}{\giga\eV}$. Note that at scales $\mu=\SI{100}{\giga\eV},$ the EM and weak forces merge into the electroweak force.
 
 \subsection*{Renormalization group}
-Let's begin our discussion of renormalization by remarking that a QFT is not fully defined by its Lagrangian $\cL$ (or equivalently an action $S$). A full definition requires that we regularize the theory in order to tame its divergences, which introduces an associated (unphysical) mass scale. Thus we impose some renormalization conditions in order to uniquely set the parameters of our theory, which requires empirical input (i.e. experiments to set the effective couplings). Once this is done, we can use a QFT to make predictions.
+Let's begin our discussion of the renormalization group by remarking that a QFT is not fully defined by its Lagrangian $\cL$ (or equivalently an action $S$). A full definition requires that we regularize the theory in order to tame its divergences, which introduces an associated (unphysical) mass scale. Thus we impose some renormalization conditions in order to uniquely set the parameters of our theory, which requires empirical input (i.e. experiments to set the effective couplings). Once this is done, we can use a QFT to make predictions.
 
-However, the physical predictions of our theory should be independent of arbitrary choices made in defining the theory. That is, the predictions must be the same at low energies independent of regularization scheme. This leads us to a sense of \term{universality}, just as we saw in \emph{Statistical Field Theory}. That is, no matter what is going on in the UV, our effective theory describes the same IR physics emerging from families of theories with different regularization schemes or scales.
+However, the physical predictions of our theory should be independent of arbitrary choices made in defining the theory. That is, the predictions must be the same at low energies independent of regularization scheme. This leads us to a notion of \term{universality}, just as we saw in \emph{Statistical Field Theory}. That is, no matter what is going on in the UV, our effective theory describes the same IR physics emerging from families of theories with different regularization schemes or scales.
 
 The renormalization group is therefore the natural structure to study how theories with different short-distance (UV) details can give rise to the same long-distance (IR) physics.
 
@@ -70,10 +70,10 @@ where $O_i$ are local operators of mass dimension $d_i >0$ made up of fields and
 \begin{equation}
     O_i=(\p\phi)^{r_i} \phi^{s_i}.
 \end{equation}
-We can count the total number of fields in $O_i$-- call it $n_i$, where in this example $n_i=r_i+s_i$.
+We can count the total number of $\phi$s in an operator $O_i$-- call it $n_i$, where in this example $n_i=r_i+s_i$.
 
 The partition function with a cutoff, denoted $\cZ$, is now
 \begin{equation}
     \cZ(g_{i0})=\int^{\Lambda_0} \cD \phi e^{-S_{\Lambda_0}[\phi]}.
 \end{equation}
-This tells us to integrate over fields with $\abs{p} \leq \Lambda_0$.
+This tells us to integrate over fields with $\abs{p} \leq \Lambda_0$, i.e. with momentum up to the cutoff.

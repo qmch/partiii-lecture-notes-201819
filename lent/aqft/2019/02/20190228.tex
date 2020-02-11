@@ -12,20 +12,22 @@ and we derived the generalized Callan-Symanzik equation,
 \begin{equation}
     0=\Lambda \frac{d}{d\Lambda} \Gamma_\Lambda^{(n)}(x_1,\ldots,x_n; g(\Lambda))=\paren{\Lambda\P{}{\Lambda}+\beta_i \P{}{g_i}+n\gamma_\phi}\Gamma_\Lambda^{(n)}(x_1,\ldots,x_n; g_i(\Lambda)).
 \end{equation}
-Thus if we let $\Lambda'=s\Lambda$, the differentiating with respect to $s$ we have
+Thus if we let $\Lambda'=s\Lambda$, then differentiating with respect to $s$ we have
 \begin{equation}
-    s \P{}{s} Z_{s\Lambda}^{-n/2}=-\frac{n}{2} Z_{s\Lambda}^{-n/2} s\P{}{s} \log Z_{s\Lambda}=n \gamma
+    s \P{}{s} Z_{s\Lambda}^{-n/2}=s \paren{-\frac{n}{2}}Z_{s\Lambda}^{-n/2} \frac{1}{Z_{s\Lambda}} \P{Z_{s\Lambda}}{s}=n Z_{s\Lambda}^{-n/2} \paren{-\frac{s}{2} \P{}{s} \log Z_{s\Lambda}}=nZ_{s\Lambda}^{-n/2}\gamma_\phi
 \end{equation}
 using $s\P{}{s} = \Lambda' \P{}{\Lambda'}$.
 
 Our RG process is then as follows.
 \begin{enumerate}
     \item Integrate out modes with momenta in $(s\Lambda,\Lambda)$.
-    \item Rescale coordinates $x^\mu \mapsto x'{}^\mu = sx^\mu$ in order to keep the kinetic term canonically normalized, $\frac{1}{2} \int d^dx \frac{1}{2} \p_\mu \phi \p^\mu \phi$, so that
+    \item Rescale coordinates $x^\mu \mapsto x'{}^\mu = sx^\mu$ in order to restore the upper momentum cutoff.
+    \item Rescale the fields as %in order to keep the kinetic term canonically normalized, $\frac{1}{2} \int d^dx \frac{1}{2} \p_\mu \phi \p^\mu \phi$, so that
     \begin{equation}
-        \phi^r(sx) = s^{1-d/2} \phi^r(x).
+        \phi^r(sx) = s^{1-d/2} \phi^r(x)
     \end{equation}
-    The rest of the action is invariant if $\Lambda \to \Lambda/s$.
+    in order to keep the kinetic term canonically normalized.
+    %The rest of the action is invariant if $\Lambda \to \Lambda/s$.
 \end{enumerate}
 Then
 \begin{align*}
@@ -44,12 +46,12 @@ For infinitesimal $\delta s= 1-s$ we can expand to linear order,
 \end{equation}
 and we see that the fields scale with mass dimension
 \begin{equation}
-    \frac{d-2}{2} +\gamma_\phi \equiv \Delta \phi,
+    \frac{d-2}{2} +\gamma_\phi \equiv \Delta_\phi,
 \end{equation}
-where there is an ``engineering dimension'' that we always get (and could have read off from the kinetic term), plus an ``anomalous dimension.'' These add up to make an overall scaling dimension $\Delta \phi$ which in general is not the engineering dimension.
+where there is an ``engineering dimension'' that we always get (and indeed could have read off from the original kinetic term), plus an ``anomalous dimension.'' These add up to make an overall scaling dimension $\Delta \phi$ which in general is not the same as the engineering dimension.
 
 \subsection*{RG flow}
-The renormalization group process tells us how couplings run as we integrate out high momentum modes and flow to the IR. These trace out trajectories, lines in the space of coupling constants which are governed by $\beta$-functions. Remarkably, some theories flow to the same endpoints, and therefore share the same IR physics. This is known as universality.
+The renormalization group process tells us how couplings run as we integrate out high momentum modes and flow to the IR. These trace out trajectories, lines in the space of coupling constants which are governed by $\beta$-functions. Remarkably, some theories flow to the same endpoints, and therefore share the same IR physics. This is known as \term{universality}.
 
 Where do such theories end up? If they end somewhere, they must end at fixed points (critical points), i.e. points in the space of coupling constants $g_i=g_i^*$ such that
 \begin{equation}
