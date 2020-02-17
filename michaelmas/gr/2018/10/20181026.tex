@@ -1,8 +1,10 @@
 Today we'll discuss the action principle for general relativity. Last time, we wrote the Einstein equations,
 $$R_{ab}-\frac{1}{2}Rg_{ab}+\Lambda g_{ab}=8\pi GT_{ab}.$$
 %
-However, their definition was basically by fiat-- here are some quantities that we can equate nicely so the appropriate conservation laws hold. It would be nice to see these equations emerge from some sort of Lagrangian formalism, so that it is easier to introduce arbitrary fields other than gravity into a curved spacetime. In fact, we can write down an action for our theory: it is
-$$I=\underbrace{\frac{1}{16\pi G}\int_M (R-2\Lambda)g^{1/2}d^4x}_{\text{Einstein-Hilbert action}} + \underbrace{\int L_{matter} g^{1/2}d^4x}_{\text{arbitrary matter contribution}}.$$
+However, their definition was basically by fiat---here are some quantities that we can equate nicely so the appropriate conservation laws hold. It would be nice to see these equations emerge from some sort of Lagrangian formalism, so that it is easier to introduce arbitrary fields other than gravity into a curved spacetime. In fact, we can write down an action for our theory: it is
+\begin{equation}
+    I=\underbrace{\frac{1}{16\pi G}\int_M (R-2\Lambda)g^{1/2}d^4x}_{\text{Einstein-Hilbert action}} + \underbrace{\int L_\text{matter} g^{1/2}d^4x}_{\mathclap{\text{arbitrary matter contribution}}}.
+\end{equation}
 
 For this to give us the Einstein equations when the action is stationary, we'll need the condition that $\delta I=0$ as we vary the metric,
 $$g_{ab}\mapsto g_{ab}+h_{ab}$$ for $h_{ab}$ a small perturbation. Since $h_{ab}$ is small, we need only keep terms linear in $h_{ab}$. 
@@ -30,7 +32,9 @@ g^{1/2}&\to \exp \left(\frac{1}{2}\text{tr}\ln (g_{ab}+h_{ab})\right)\\
 &\approx g^{1/2} \left(1+\frac{1}{2}h\right)
 \end{align*}
 where we have defined $h\equiv h^c{}_c$ as the trace of our perturbation $h_{ab}$ and discarded all terms of order $h^2$. We conclude that the variation of $g^{1/2}$ is then
-$$\delta g^{1/2}=g^{1/2}\frac{1}{2}h.$$
+\begin{equation}
+    \delta g^{1/2}=g^{1/2}\frac{1}{2}h.
+\end{equation}
 
 Now what is the variation of the Ricci scalar? By the Leibniz rule, we can write it in terms of the variation of the inverse metric and the variation of the Ricci tensor:
 $$\delta R = \delta(R_{ab} g^{ab})=\delta R_{ab} g^{ab} +R_{ab} \delta g^{ab}= \delta R_{ab} g^{ab}-R_{ab} h^{ab}.$$
@@ -68,21 +72,36 @@ We arrive at the variation of the Ricci scalar,
 \end{align*}
 
 Putting it all together we have the variation of the action,
-$$
-\delta I_{grav}=\frac{1}{16\pi G} \int_M g^{1/2} g^4 x \left[-\nabla_d (\nabla^d h) +\nabla_d (\nabla_e h^{de}) - R_{ab} h^{ab} +\frac{1}{2} h R - \Lambda h\right]$$
+\begin{equation}
+    \delta I_\text{grav}=\frac{1}{16\pi G} \int_M g^{1/2} d^4 x \left[-\nabla_d (\nabla^d h) +\nabla_d (\nabla_e h^{de}) - R_{ab} h^{ab} +\frac{1}{2} h R - \Lambda h\right]
+\end{equation}
 Using Gauss's theorem as proved last time, we rewrite the first two terms as
 $$\int_{\p M}d \Sigma (-\nabla^d h + \nabla_e h^{de})n_d.$$
-That is, the first two terms in our integral over all spacetime are total derivatives $\nabla_d$ evaluated on the ``boundary'' of our spacetime. Therefore we assume they are irrelevant and vanish as we take the space to be infinitely large.\footnote{This won't always be valid, but it is here.} Thus if we rewrite the traces as $h=h^{ab}g_{ab}$ and require that the variation of the action vanishes for all $h^{ab}$, we recover
-$$R_{ab}-\frac{1}{2}R g_{ab}+\Lambda g_{ab}=0,$$
-the Einstein equations in the absence of matter. Taking the variation of the matter term is much simpler:
-$$I_{matter}=\int L_{matter} g^{1/2}d^4x \implies \delta I_{matter}= \int \frac{1}{2} T_{ab} h^{ab} g^{1/2} d^4x,$$
-so we get a stress-energy term $T_{ab}$. This expression defines the energy-momentum tensor of any matter-- note that $T_{ab}$ is always symmetric since $h^{ab}$ is symmetric and the indices are fully contracted. In QFT, we defined the energy-momentum tensor a little differently using Noether's theorem for translations in time and space, but that energy-momentum tensor is not guaranteed to be symmetric. If $T_{ab}$ is symmetric, then taking the covariant derivative of the Einstein equations gives
-$$8\pi G \nabla_a T^a{}_b= \nabla^a(R_{ab}-\frac{1}{2} R g_{ab})+\nabla_b \Lambda = 0$$
-by the Bianchi identity and the fact that $\Lambda$ is a constant.
+That is, the first two terms in our integral over all spacetime are total derivatives $\nabla_d$ evaluated on the ``boundary'' of our spacetime. Therefore we assume they are irrelevant and vanish as we take the space to be infinitely large.\footnote{This won't always be valid, but it is here.} Thus if we rewrite the traces as $h=h^{ab}g_{ab}$, then
+\begin{align*}
+    \delta I_\text{grav} &=\frac{1}{16\pi G} \int_M g^{1/2} d^4 x \bkt{- R_{ab} h^{ab} +\frac{1}{2} R h^{ab} g_{ab} - \Lambda  h^{ab} g_{ab}}\\
+        &= \frac{1}{16\pi G} \int_M g^{1/2} h^{ab} d^4x\bkt{- R_{ab} +\frac{1}{2} R g_{ab} - \Lambda g_{ab}}.
+\end{align*}
+Since the variation of the action vanishes for all $h^{ab}$, when $L_\text{matter}=0$ we recover
+\begin{equation}
+    R_{ab}-\frac{1}{2}R g_{ab}+\Lambda g_{ab}=0,
+\end{equation}
+the Einstein equations in the absence of matter. Moreover, taking the variation of the matter term is much simpler. Varying the metric produces some correction to $I_\text{matter}$ which is first-order in $h$, so we denote it as follows:
+\begin{equation}
+    I_\text{matter}=\int L_\text{matter} g^{1/2}d^4x \implies \delta I_\text{matter}= \int \frac{1}{2} T_{ab} h^{ab} g^{1/2} d^4x,
+\end{equation}
+which defines a stress-energy term $T_{ab}$ satisfying the full Einstein equations, i.e.
+\begin{equation}
+    \delta I_\text{grav} + \delta I_\text{matter} = 0 \implies R_{ab} -\frac{1}{2}Rg_{ab} + \Lambda g_{ab} = 8\pi G T_{ab}.
+\end{equation}
+This expression defines the energy-momentum tensor of any matter-- note that $T_{ab}$ is always symmetric since $h^{ab}$ is symmetric and the indices are fully contracted. In QFT, we defined the energy-momentum tensor a little differently using Noether's theorem for translations in time and space, but that energy-momentum tensor is not guaranteed to be symmetric. If $T_{ab}$ is symmetric, then taking the covariant derivative of the Einstein equations gives
+$$8\pi G \nabla^a T_{ab}= \nabla^a(R_{ab}-\frac{1}{2} R g_{ab})+\nabla_b \Lambda = 0$$
+by the Bianchi identity and the fact that $\Lambda$ is a constant. It follows that $T_{ab}$ is conserved.
 
 \begin{exm}
-One can write a specific action for the matter term. Consider
-$$I_{matter}=\int \left[-\frac{1}{2} g^{ab}\p_a \phi \p_b \phi-\frac{1}{2} m^2 \phi^2 -\frac{1}{4!} \lambda \phi^4 \right] g^{1/2} d^4x.$$
-Note we've chosen the signs here so that in Minkowski space ($g^{ab}=\eta^{ab}$), the kinetic term is positive, $\frac{1}{2} \dot \phi^2 >0.$ One can then derive the corresponding energy-momentum tensor,
-$$T_{ab}=\p_a \phi \p_b \phi -\frac{1}{2} g_{ab} \left[(\p\phi)^2+m^2\phi^2+\frac{\lambda}{4!}\phi^4\right],$$
+    One can write a specific action for the matter term. Consider
+    $$I_\text{matter}=\int \left[-\frac{1}{2} g^{ab}\p_a \phi \p_b \phi-\frac{1}{2} m^2 \phi^2 -\frac{1}{4!} \lambda \phi^4 \right] g^{1/2} d^4x.$$
+    Note we've chosen the signs here so that in Minkowski space ($g^{ab}=\eta^{ab}$), the kinetic term is positive, $\frac{1}{2} \dot \phi^2 >0.$ One can then derive the corresponding energy-momentum tensor,
+    $$T_{ab}=\p_a \phi \p_b \phi -\frac{1}{2} g_{ab} \left[(\p\phi)^2+m^2\phi^2+\frac{\lambda}{4!}\phi^4\right],$$
+    as we'll see next time.
 \end{exm}

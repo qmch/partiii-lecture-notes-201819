@@ -1,10 +1,15 @@
 Last time, we mentioned in passing that there is an action associated to the matter in our space,
-$$I_{matter}=\int g^{1/2} d^4x L_{matter}.$$
-For instance, for a scalar field $\phi$ in $\phi^4$ theory we might have the action\footnote{I think in lecture there was a minus sign in front of the kinetic term. But this means there's a minus sign in the kinetic term of the stress-energy tensor, which would be no good. So I've changed the action here to be consistent with the usual definition of $\phi^4$ theory.}
-$$I_{matter}=\int g^{1/2} d^4x \left[\frac{1}{2}g^{ab}\p_a \phi \p_b \phi -\frac{1}{2}m^2\phi^2-\frac{1}{4} \lambda \phi^4\right].$$
-To get these action terms, we can simply import Lagrangians for various field directly from quantum field theory and integrate over spacetime using our invariant volume measure, $g^{1/2}d^4x$. Now the field $\phi$ itself is invariant under variation of the metric, so recalling from last time that $\delta g^{1/2}=g^{1/2}\frac{1}{2}h,$ we find that the action for the matter becomes
+\begin{equation}
+    I_\text{matter}=\int g^{1/2} d^4x L_\text{matter}.
+\end{equation}
+For instance, for a scalar field $\phi$ in $\phi^4$ theory we might have the action%
+    \footnote{I think in lecture there was a minus sign in front of the kinetic term. But this means there's a minus sign in the kinetic term of the stress-energy tensor, which would be no good. So I've changed the action here to be consistent with the usual definition of $\phi^4$ theory.}
+\begin{equation}
+    I_\text{matter}=\int g^{1/2} d^4x \left[\frac{1}{2}g^{ab}\p_a \phi \p_b \phi -\frac{1}{2}m^2\phi^2-\frac{1}{4} \lambda \phi^4\right].
+\end{equation}
+To get these action terms, we can simply import Lagrangians for various fields directly from quantum field theory and integrate over spacetime using our invariant volume measure, $g^{1/2}d^4x$. Now the field $\phi$ itself is invariant under variation of the metric, so recalling from last time that $\delta g^{1/2}=g^{1/2}\frac{1}{2}h,$ we find that the action for the matter becomes
 \begin{align*}
-    I_{matter}(g^{ab}+h^{ab})&= \int g^{1/2}(1+\frac{1}{2}h) d^4x \left[\frac{1}{2}(g^{ab}+h^{ab})\p_a \phi \p_b \phi -\frac{1}{2}m^2\phi^2-\frac{1}{4} \lambda \phi^4\right]\\
+    I_\text{matter}(g^{ab}+h^{ab})&= \int g^{1/2}(1+\frac{1}{2}h) d^4x \left[\frac{1}{2}(g^{ab}+h^{ab})\p_a \phi \p_b \phi -\frac{1}{2}m^2\phi^2-\frac{1}{4} \lambda \phi^4\right]\\
     &=I(g^{ab})+\int g^{1/2} d^4x \left[\frac{1}{2} h^{ab} \p_a \phi\p_b \phi+\frac{1}{2}h\left(\frac{1}{2}g^{ab}\p_a \phi \p_b \phi -\frac{1}{2}m^2\phi^2-\frac{1}{4} \lambda \phi^4\right)\right]+O(h^2)\\
     &=I(g^{ab})+\int g^{1/2} d^4x \left[\frac{1}{2} h^{ab} \p_a \phi\p_b \phi+\frac{1}{2}h^{ab}g_{ab}\left(\frac{1}{2}g^{cd}\p_c \phi \p_d \phi -\frac{1}{2}m^2\phi^2-\frac{1}{4} \lambda \phi^4\right)\right]\\
     \implies \delta I &=\int g^{1/2} d^4x \left[\frac{1}{2} h^{ab}\p_a \phi \p_b \phi +\frac{1}{2} h^{ab}g_{ab}\left(\frac{1}{2} g^{cd} \p_c \phi \p_d \phi -\frac{1}{2} m^2 \phi^2 -\frac{1}{4} \lambda \phi^4\right)\right]
@@ -14,7 +19,7 @@ Since $\delta I= \int \frac{1}{2} T_{ab} h^{ab} g^{1/2} d^4x$, we see that the c
 $$T_{ab}=\p_a \phi \p_b \phi +\frac{1}{2} g_{ab}(\p_c \phi \p_d \phi g^{cd} -m^2\phi^2 -\frac{1}{2} \lambda \phi^4).$$
 The equation for motion for $\phi$ (from the regular Euler-Lagrange equations w.r.t. variations of the fields, i.e. $\frac{\delta \cL}{\delta \phi}=\p_a \frac{\delta \cL}{\delta \p_a \phi}$) is
 $$-\Box \phi+ m^2\phi +\lambda \phi^3 =0,$$
-where the $\Box$ operator is $\nabla_a \nabla^a$, the Laplacian in curved space, and we have promoted partial derivatives to covariant derivatives.\footnote{In Minkowski space, this is sometimes called the d'Alembertian.}
+where the $\Box$ operator is $\nabla_a \nabla^a$, the Laplacian in curved spacetime, and we have promoted partial derivatives to covariant derivatives.\footnote{In Minkowski space, this is sometimes called the d'Alembertian.}
 
 We can calculate $\nabla_a T^{ab}$ to get%\footnote{There's really only one term here that might give us trouble: $\nabla_a g^{ab}(\nabla_c \phi \nabla_d \phi g^{cd})= g^{ab} g^{cd}(\nabla_a \nabla_c \phi \nabla_d \phi + \nabla_c \phi \nabla_a \nabla_d \phi)= \nabla^b \nabla_c \phi \nabla^c \phi + \nabla_c \phi \nabla^b \nabla^c \phi=\nabla^b \nabla_c \phi \nabla^c \phi - \nabla^b \nabla_c \phi  \nabla^c \phi=0$ after an integration by parts.}
 %$$\Box \phi \p_b \phi + \nabla_a \phi \nabla^a \nabla_b \phi - \nabla_b \phi \nabla^b \nabla_c \phi - m^2 \phi \nabla_b \phi - \lambda \phi^3 \nabla_b \phi,$$

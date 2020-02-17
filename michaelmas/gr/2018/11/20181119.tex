@@ -84,7 +84,9 @@ $$e_{ab}=\begin{pmatrix}
 Now, we might be concerned that since this construction was based on the linearized Einstein equations, there's no guarantee that our plane waves will also be solutions to the full (nonlinear) Einstein equations. In Maxwell there was no problem, since the original equations were linear. What about for gravity?
 
 It turns out things are okay (our plane wave solutions still make sense), but the approach is slightly different. Let us start as usual in flat space, $R_{ab}=0$,\footnote{Equivalently, we are solving the vacuum Einstein equations for $\Lambda=0$.} and write down a line element
-$$ds^2=2dudv + dx^2+dy^2.$$
+\begin{equation}
+    ds^2=2dudv + dx^2+dy^2.
+\end{equation}
 Here, $u,v$ are the advanced and retarded coordinates defined as
 \begin{align*}
     u&= t-z\\
@@ -124,10 +126,14 @@ Consider the $+$ polarization of a gravitational wave. If we begin with a circul
 Suppose we're sitting at the origin $O$, and we set up our experiment in the $xy$ plane ($z=0$). It sends one light beam down the $x$ direction, and another in the $y$ direction. They travel for some distance $L$ (as measured in plain old Minkowski space), and then are reflected back to $O$ by some mirrors at the end. We prepare these light beams to be perfectly in phase when we emit them at $O$, so that if they travel the same distance $2L$ (going out and coming back), they will still be perfectly in phase when they arrive.
 
 Now suppose a gravitational wave in the $+$ polarization passes through. Remember that $+$ will stretch and squeeze the ring in $x$ and $y$, which are exactly the axes our detector is set up along. You might guess the effect it will have on the two arms of our experiment, but let's write it down. To leading order, the metric is
-$$g_{\mu\nu}=\eta_{\mu\nu}+A e_{\mu\nu}\cos(k(-t+z)).$$
-Since we are in the $+$ polarization and sitting at $z=0$, we can now write this as
-$$ds^2=dt^2+dz^2+(1+A\cos(kt))dx^2
-+(1-A\cos(k t))dy^2.$$
+\begin{equation}
+    g_{ab}=\eta_{ab}+A e_{ab}\cos(k(-t+z)),
+\end{equation}
+where $e_{ab}$ is the perturbation as discussed earlier.
+We are in the $+$ polarization, $e_{ab}=\text{diag}(0,1,-1,0)$, and because we are sitting at $z=0$, we can now write the line element as
+\begin{equation}
+    ds^2=-dt^2+dz^2+(1+A\cos(kt))dx^2 + (1-A\cos(k t))dy^2.
+\end{equation}
 Therefore the length of the arm in the $x$ direction will be
 $$L_x\approx L\left(1+\frac{1}{2}A\cos(kt)\right)$$
 and the length of the arm in the $y$ direction becomes

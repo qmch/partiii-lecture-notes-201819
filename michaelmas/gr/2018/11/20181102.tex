@@ -52,28 +52,31 @@ d(x^a+\zeta^a)&=dx^a+ \frac{\p \zeta^a}{\p x^c} dx^c\\
 \end{align*}
 Putting it all together, we find that
 \begin{align*}
-    ds^2 &= g_{ab}+(x) dx^a dx^b\\
-        &=(g_{ab}(x)+\zeta^e \p_e g_{ab}(x)) (\delta^a_c + \p_c \zeta^a)dx^c (\delta^b_d+\p_d \zeta^b) dx^d\\
+    ds^2 &= g_{ab}(x) dx^a dx^b\\
+        &=\paren{g_{ab}(x)+\zeta^e \p_e g_{ab}(x)} (\delta^a_c + \p_c \zeta^a)dx^c (\delta^b_d+\p_d \zeta^b) dx^d\\
         &= g_{ab} \delta^a_c \delta^b_d dx^c dx^d + (\zeta^e \p_e g_{ab} \delta^a_c \delta^b_d + g_{ab} \p_c \zeta^a \delta^b_d + g_{ab} \p_d \zeta^b \delta^a_c)dx^c dx^d,
 \end{align*}
-
-% \begin{align*}
-% ds^2&= g_{ab}+(x) dx^a dx^b\\
-% &=(g_{ab}(x)+\zeta^e \p_e g_{ab}(x)) (\delta^a_c + \p_c \zeta^a)dx^c (\delta^b_d+\p_d \zeta^b) dx^d\\
-% &= g_{ab} \delta^a_c \delta^b_d dx^c dx^d + (\zeta^e \p_e g_{ab} \delta^a_c \delta^b_d + g_{ab} \p_c \zeta^a \delta^b_d + g_{ab} \p_d \zeta^b \delta^a_c)dx^c dx^d,
-% \end{align*}
-where we have collected terms linear in $\zeta$. But now we see that the first term is just $g_{ab} dx^a dx^b,$ so if the line element is invariant, then the $dx^c dx^d$ term must vanish. Invariance therefore requires that
-$$(\zeta^e \p_e g_{cd} + g_{ad} \p_c \zeta^a +g_{cb} \p_d \zeta^b)dx^c dx^d=0.$$
+where we have collected terms linear in $\zeta$. But now we see that the first term is just $g_{ab} dx^a dx^b=ds^2,$ so if the line element is to be invariant, then the $dx^c dx^d$ term must vanish. Invariance of $ds^2$ therefore requires that
+\begin{equation}
+    (\zeta^e \p_e g_{cd} + g_{ad} \p_c \zeta^a +g_{cb} \p_d \zeta^b)dx^c dx^d=0.
+\end{equation}
 Since this is true for arbitrary $dx^c$, we conclude that the expression in the parentheses is identically zero. That is,
-$$\zeta^e \p_e g_{cd} + g_{ad} \p_c \zeta^a +g_{cb} \p_d \zeta^b=0.$$
-This does not look like a tensor a priori, but in fact it is. If we want to replace the derivatives $\p_c \zeta^a$ and $\p_d \zeta^b$ with covariant derivatives, we'll have to pay the small price of subtracting off the corresponding Christoffels. Thus
-$$\zeta^e \p_e g_{cd} + g_{ad} \nabla_c \zeta^a - g_{ad}\Gamma^a_{ce} \zeta^e+g_{cb} \nabla_d \zeta^b - g_{cb} \Gamma^b_{de}\zeta^e=0.$$
+
+\begin{equation}
+    \zeta^e \p_e g_{cd} + g_{ad} \p_c \zeta^a +g_{cb} \p_d \zeta^b=0.
+\end{equation}
+This does not look like a tensor a priori, but in fact it is. If we want to replace the partial derivatives $\p_c \zeta^a$ and $\p_d \zeta^b$ with covariant derivatives, we'll have to pay the small price of subtracting off the corresponding Christoffels. Thus
+\begin{equation}
+    \zeta^e \p_e g_{cd} + g_{ad} \nabla_c \zeta^a - g_{ad}\Gamma^a_{ce} \zeta^e+g_{cb} \nabla_d \zeta^b - g_{cb} \Gamma^b_{de}\zeta^e=0.
+\end{equation}
 
 If we now write out the Christoffel symbols in terms of derivatives of the metric, we get something that looks kind of messy:
 $$\nabla_c \zeta_d +\nabla_d \zeta_c +\zeta^e \p_e g_{cd} -g_{ad} \frac{1}{2} g^{af}(-\p_f g_{ce}+\p_c g_{ef} +\p_e g_{cf})\zeta^e - g_{cb}\frac{1}{2} g^{bf}(-\p_f g_{de}+\p_d g_{ef}+\p_e g_{df})\zeta^e=0$$
 But things are better than they seem. Using the metrics to raise and lower indices appropriately, we get a very nice set of cancellations-- all the derivatives of the metric turn out to cancel (including the $\zeta^e \p_e g_{cd}$ out front), and we are left with the simple expression
 $$\nabla_c \zeta_d +\nabla_d \zeta_c=0$$
-We call the solutions $\zeta$ \term{Killing vectors}.\footnote{``Killing here is not some bizarre ritual but Wilhelm Killing.'' --Malcolm Perry} Killing was a German group theorist, and there is in fact a connection to group theory here. Suppose there are two independent Killing vectors $k^a,l^a$. Consider the commutator of two Killing vectors (i.e. a bracket) defined
+We call the solutions $\zeta$ \term{Killing vectors}.%
+    \footnote{``Killing here is not some bizarre ritual but Wilhelm Killing.'' --Malcolm Perry}
+Killing was a German group theorist, and there is in fact a connection to group theory here. Suppose there are two independent Killing vectors $k^a,l^a$. Consider the commutator of two Killing vectors (i.e. a bracket) defined by
 $$m^b\equiv k^a\nabla_a l^b - l^a \nabla_a k^b.$$
 Expanding out, we see that
 $m^b=k^a\p_a l^b+ k^a\Gamma^b_{ac} l^c - l^a \p_a k^b - l^a \Gamma^b_{ac} k^c,$
