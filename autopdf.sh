@@ -5,25 +5,25 @@ git pull
 
 echo "Beginning PDF-making!"
 #TeX the GR notes and copy them to the PDFs folder
-#cd ./michaelmas/gr
-#latexmk -pdf gr-notes-partiii.tex
-#latexmk -c
-#mv gr-notes-partiii.pdf ../../pdfs
+cd ./michaelmas/gr
+latexmk -pdf gr-notes-partiii.tex
+latexmk -c
+mv gr-notes-partiii.pdf ../../pdfs
 
 #same thing for QFT
-#cd ../qft
-#latexmk -pdf qft-notes-partiii.tex
-#latexmk -c
-#mv qft-notes-partiii.pdf ../../pdfs
+cd ../qft
+latexmk -pdf qft-notes-partiii.tex
+latexmk -c
+mv qft-notes-partiii.pdf ../../pdfs
 
 #and for Symmetries!
-#cd ../sfp
-#latexmk -pdf sfp-notes-partiii.tex
-#latexmk -c
-#mv sfp-notes-partiii.pdf ../../pdfs
+cd ../sfp
+latexmk -pdf sfp-notes-partiii.tex
+latexmk -c
+mv sfp-notes-partiii.pdf ../../pdfs
 
 #return to home directory
-#cd ../..
+cd ../..
 
 #move to lent term and TeX the AQFT notes
 cd ./lent/aqft
@@ -44,22 +44,22 @@ latexmk -c
 mv qi-notes-partiii.pdf ../../pdfs
 
 #standard model
-#cd ../sm
-#latexmk -pdf sm-notes-partiii.tex
-#latexmk -c
-#mv sm-notes-partiii.pdf ../../pdfs
+cd ../sm
+latexmk -pdf sm-notes-partiii.tex
+latexmk -c
+mv sm-notes-partiii.pdf ../../pdfs
 
 #supersymmetry
-#cd ../susy
-#latexmk -pdf susy-notes-partiii.tex
-#latexmk -c
-#mv susy-notes-partiii.pdf ../../pdfs
+cd ../susy
+latexmk -pdf susy-notes-partiii.tex
+latexmk -c
+mv susy-notes-partiii.pdf ../../pdfs
 
 #and string theory
-#cd ../str
-#latexmk -pdf str-notes-partiii.tex
-#latexmk -c
-#mv str-notes-partiii.pdf ../../pdfs
+cd ../str
+latexmk -pdf str-notes-partiii.tex
+latexmk -c
+mv str-notes-partiii.pdf ../../pdfs
 
 #and gauge/gravity for easter
 cd ../../easter/ggd
