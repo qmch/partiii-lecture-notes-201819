@@ -1,15 +1,15 @@
 Today, we'll take our first look at interacting theories in detail! Let's first complete our description of the interaction picture. Operators in the interaction picture evolve in time by the free Hamiltonian:
-%
-$$O_I(t) \equiv e^{iH_0t}O_S e^{-iH_0t},$$
-%
-with $O_S$ the Schr\"odinger picture operator, while states evolve by
-\begin{equation*}
-    \ket{\psi(t)}_I=e^{iH_0t}\ket{\psi(t)}_S
-        =e^{-iH_{int}t}\ket{\psi(0)}_S.
-\end{equation*}
-Note that the interacting Hamiltonian also has an interaction picture counterpart,
 \begin{equation}
-    H_I\equiv (H_{int})_I=e^{iH_0t} H_{int} e^{-iH_0t}.
+    O_I(t) \equiv e^{iH_0t}O_S e^{-iH_0t},
+\end{equation}
+with $O_S$ the Schr\"odinger picture operator, while states evolve by the interacting Hamiltonian:
+\begin{equation}
+    \ket{\psi(t)}_I \equiv e^{iH_0t}\ket{\psi(t)}_S
+        =e^{-iH_{\mathrm{int}}t}\ket{\psi(0)}_S.
+\end{equation}
+As an operator, the interacting Hamiltonian $H_{\mathrm{int}}$ also has an interaction picture counterpart,
+\begin{equation}
+    H_I\equiv (H_{\mathrm{int}})_I=e^{iH_0t} H_{\mathrm{int}} e^{-iH_0t}.
 \end{equation}
 In the context of our quantum fields,
 $$\phi_I(x)=e^{iH_0t}\phi(\vec x)e^{-iH_0t}$$
@@ -60,12 +60,12 @@ By differentiating our expression for $U$ with respect to time, we see that
     i\frac{dU(t,0)}{dt} &= 
         i\left[iH_0 e^{iH_0 t}e^{-iHt}+e^{iH_0t}(-iH) e^{-iHt}\right]\\
     &= e^{iH_0t} (H-H_0)e^{-iHt}\\
-    &= e^{iH_0t} (H_{int})_S e^{-iH_0t} e^{iH_0t} e^{-iHt}\\
+    &= e^{iH_0t} (H_{\mathrm{int}})_S e^{-iH_0t} e^{iH_0t} e^{-iHt}\\
     &= H_I(t) U(t,0),
 \end{align*}
 which tells us that the operator $U$ obeys the equivalent of the Schr\"odinger equation.
 
-If $(H_{int})_I=H_I$ were just a function, we could solve this by $U=\exp[-i \int_{t_0}^t H_I(t')dt'].$ However, because $H_i$ is an operator, life is not so simple, as we have ordering ambiguities. The issue becomes clear when we write out the first few terms in the exponential:
+If $(H_{\mathrm{int}})_I=H_I$ were just a function, we could solve this by $U=\exp[-i \int_{t_0}^t H_I(t')dt'].$ However, because $H_i$ is an operator, life is not so simple, as we have ordering ambiguities. The issue becomes clear when we write out the first few terms in the exponential:
 \begin{equation}
     \exp[-i \int_{t_0}^t H_I(t')dt']=1-i \int_{t_0}^t H_I(t')dt'+\frac{(-i)^2}{2!}\left(\int_{t_0}^t H_I(t')dt'\right)^2.
 \end{equation}
@@ -105,8 +105,12 @@ which we call \term{Dyson's formula.} (Note that $U(t,t_0)=T \exp \set{+i\int_{t
 This is the last bit of machinery we need to start computing scattering amplitudes in quantum field theory!
 
 \begin{defn}
-The time evolution used in scattering theory is called the \term{$S$-matrix} (S for scattering). The $S$ matrix is defined to be
-$$S=\lim_{t\to \infty,t_0\to -\infty}U(t,t_0).$$
+The time evolution used in scattering theory is called the \term{$S$-matrix} (S for scattering).%
+    \footnote{It's an operator, of course, so it doesn't presently look much like a matrix, but once we sandwich it between some initial and final states to extract real numbers, we can think of this manipulation as writing down the components of a matrix in some basis, with $S_{if} = \bra{f}S\ket{i}$ the transition from an initial state $\ket{i}$ to a final state $\bra{f}$.}
+The $S$ matrix is defined to be
+\begin{equation}
+    S\equiv\lim_{t\to \infty,t_0\to -\infty}U(t,t_0).
+\end{equation}
 \end{defn}
 We will consider interactions where the final state $\ket{f}$ and the initial state $\ket{i}$ are well-separated from each other and are far away from the interaction. Therefore, the initial and final states $\ket{i},\ket{f}$ behave like free particles, i.e. they are eigenstates of $H_0$.\footnote{This is a heuristically useful description but a little slippery in the details. A  priori, there's no reason that eigenstates of the free Hamiltonian should be eigenstates of the interacting Hamiltonian. If you prefer, you can think of the scattering amplitude as the overlap (as measured by the inner product) between initial free particle states and final free particle states, with the possibility for some interaction in between. Even if we started with free particle eigenstates, our interaction is sure to evolve these states to some new ones, but we can look at the overlap between the time evolved versions of the free particle states $U(t,t_0)\ket{i}$ and the final free particle states we're interested in, $\bra{f}.$}
 
@@ -115,7 +119,7 @@ $$\lim_{t\to\infty, t_0\to -\infty}\bra{f}U(t,t_0)\ket{i}=\bra{f}S \ket{i}.$$
 
 Note that there are some cases that need to be treated differently, like bound states. For instance, a proton and an electron at low energies could interact to form a hydrogen atom, $p+e^-\to$ the bound state $(H)$. Here, the assumption that the particles end up well-separated is violated. It turns out that such solutions appear as poles in the $S$-matrix, but this is a more advanced topic and we won't discuss it further here.
 
-Let's return to scalar Yukawa theory. Now, we'll drop the $I$ subscripts and assume uniformly that we are in the interaction picture. Discarding the kinetic and mass terms from the free theory, we are left with the interaction Hamiltonian
+Let's return to scalar Yukawa theory. Recall that this theory describes one real scalar field $\phi$ (corresponding to a single species of particle) coupled to a complex scalar field $\psi$ (which has both particle and antiparticle excitations). We'll drop the $I$ subscripts and assume uniformly that we are in the interaction picture, since this is the most useful picture for analyzing scattering processes. Setting aside the kinetic and mass terms from the free theory, we are left with the interaction Hamiltonian
 $$\cH = g \psi^* \psi \phi,$$
 where $\psi$ and $\psi^*$ are (anti-)nucleons (e.g. a proton or neutron), and $\phi$ is a meson. What do each of these fields do?
 \begin{itemize}
@@ -124,7 +128,7 @@ where $\psi$ and $\psi^*$ are (anti-)nucleons (e.g. a proton or neutron), and $\
     \item $\psi^*$ has $b^\dagger$ and $c$ terms, where $b^\dagger$ creates a nucleon and $c$ destroys an anti-nucleon.
 \end{itemize}
 Looking at the possible terms in the Hamiltonian, we can already see interesting behavior-- we'll have terms where nucleon-anti-nucleon pairs are created and destroyed, e.g. $b^\dagger c^\dagger a$ which destroys a meson and produces a nucleon-anti-nucleon pair. This contributes to meson decay, $\phi\to \psi\bar \psi$.%
-    \footnote{When we talk about the fields, we use $*$, but when we denote antiparticles, we usually use the bar notation, e.g. an anti-$\psi$ is a $\bar \psi$.} 
+    \footnote{When we talk about the fields, we use $*$, but when we denote antiparticles, we usually use the bar notation, e.g. an anti-$\psi$ is a $\bar \psi$. Once we deal with particles with spin, there will be additional subtleties of notation, but we defer this discussion to later.} 
 What we recover is the leading order in $g$ term in the $S$-matrix, and an interaction that schematically looks like Fig. \ref{fig:mesondecay1}.
 
 \begin{figure}

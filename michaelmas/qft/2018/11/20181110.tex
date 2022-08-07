@@ -26,14 +26,17 @@ For instance, neutrinos are left-handed spinors, while the right-handed up quark
 Handedness can be more physically defined in terms of whether a particle's spin is parallel or antiparallel to its velocity. Note that \emph{massive} left-handed and right-handed spinors can be transformed into one another by a Lorentz boost, since we can boost into the rest frame of a massive particle (for instance) or boost past it into a frame where it appears to be moving in the opposite direction. This is not the case for the massless Weyl spinors we defined before-- you can never catch up with or overtake a massless particle, so its handedness is invariant under Lorentz transformations.
 \end{defn}
 One can now construct new tensors using $\gamma^5$, e.g.
-$$\bar \psi(x) \gamma^t \psi(x)\to_{LT} \bar \psi(\Lambda^{-1}x)S[\Lambda]^{-1}\gamma^5 S[\Lambda] \psi(\Lambda^{-1}x).$$
-We call such a quantity a \term{pseudoscalar,} and one can check that $[S_{\mu\nu},\gamma^t]=0$, so our pseudoscalar under a Lorentz transformation transforms to 
+$$\bar \psi(x) \gamma^5 \psi(x)\to_{LT} \bar \psi(\Lambda^{-1}x)S[\Lambda]^{-1}\gamma^5 S[\Lambda] \psi(\Lambda^{-1}x).$$
+We call such a quantity a \term{pseudoscalar,} and one can check that $[S_{\mu\nu},\gamma^5]=0$, so our pseudoscalar under a Lorentz transformation transforms to 
 $$\bar\psi(\Lambda^{-1}x)\gamma^5 \psi(\Lambda^{-1}x).$$
 However, it's not quite a scalar because of a subtle point we'll come to shortly. Similarly we can define
 $$\bar \psi(x) \gamma^5 \gamma^\mu \psi(x),$$
 which we call an \term{axial vector}. These are distinguished from regular scalars and vectors by their behavior under a parity transformation.
 
-We say that $\psi_L,\psi_R$ are related by \term{parity}, i.e. a flip in handedness. So far, all the Lorentz transformations we've looked at were continuously connected to the identity (i.e. they are in the connected component of $O(3,1)$). In fact, there are also two discrete symmetries we can consider which leave four-vector inner products fixed.\footnote{The connected components of the Lorentz group have the structure of $V_4$, the Klein four-group. All these transformations do is switch around regions between parts of the light cone, if you like.}
+We say that $\psi_L,\psi_R$ are related by \term{parity}, i.e. a flip in handedness. So far, all the Lorentz transformations we've looked at were continuously connected to the identity (i.e. they are in the connected component of $O(3,1)$).%
+    \footnote{This was implicit in our derivation where we wrote $\Lambda^\mu{}_\nu=\delta^\mu_\nu + \epsilon \omega^\mu{}_\nu$ as a perturbation around the identity.}
+In fact, there are also two discrete symmetries we can consider which leave four-vector inner products fixed.%
+    \footnote{The connected components of the Lorentz group have the structure of $V_4$, the Klein four-group. All these transformations do is switch around regions between parts of the light cone, if you like.}
 \begin{itemize}
     \item Time reversal $T: x^0\to -x^0, x^i \to x^i$
     \item Parity $P: x^0\to x^0, x^i\to -x^i$.
@@ -68,7 +71,7 @@ so the minus sign here leads us to call this a pseudoscalar, while $\bar \psi \g
     +\bar\psi \gamma^5 \gamma^i \psi(-\vec x,t) & \mu=i.
     \end{cases}
 \end{align*}
-The different sorts of bi-linears (combos of a $\bar \psi$ and $\psi$) we can cook up is summarized in Table \ref{tab:bilinears}. We can add extra terms to the Lagrangian using $\gamma^5$, but such terms break $P$ symmetry. Nature in fact uses thes, e.g. terms in the Lagrangian like
+The different sorts of bi-linears (combos of a $\bar \psi$ and $\psi$) we can cook up is summarized in Table \ref{tab:bilinears}. We can add extra terms to the Lagrangian using $\gamma^5$, but such terms break $P$ symmetry. Nature in fact uses these \emph{chiral} terms, e.g. terms in the Lagrangian like
 $$\cL=\frac{g}{2}W_\mu \bar\psi \gamma^\mu(1-\gamma^5)\psi.$$
 
 \begin{table}[]

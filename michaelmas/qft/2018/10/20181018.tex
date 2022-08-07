@@ -45,7 +45,11 @@ What we discover is that there are three important cases here:
     \item $[\lambda_4]=0$. Here, $\lambda_4 \phi^4/4!$ is small if $\lambda_4 \ll 1$. We call these \term{marginal} couplings, and these are also renormalizable.
     \item $[\lambda_n]=4-n$ for $n\geq 5$. These are called \term{irrelevant} couplings. The dimensionless parameter is $\lambda_n E^{n-4},$ and they are small at low energies but large at higher energies. These lead to non-renormalizable theories, where the infinities are bigger and scarier and we cannot sweep them under the rug by just subtracting off infinity.
 \end{enumerate}
-On the one hand, the nature of irrelevant couplings means that we can describe (relatively) low-energy physics well by only looking at the first few terms in the perturbative expansion, but it also makes it very difficult to probe very high-energy physics (for instance, on the scale of quantum gravity).
+On the one hand, the nature of irrelevant couplings means that we can describe (relatively) low-energy physics well by only looking at the first few terms in the perturbative expansion, but it also makes it very difficult to probe very high-energy physics (for instance, on the scale of quantum gravity).%
+    \footnote{ There's another physical way to think about the ``dimensionless parameter'' mentioned above. A key quantity related to measurements in real experiments is the \term{scattering amplitude}, which measures the relative probability of a particular process, e.g. an electron and positron scatter to produce a muon-antimuon pair ($e^+ e^- \to \mu^+ \mu^-$). It turns out that scattering amplitudes are dimensionless, and we must build them out of dimensionful quantities like the coupling constants in the Lagrangian and the energy scale $E$ of the process (this could be a center-of-mass energy in the accelerator, for example).
+    
+    If the coupling constant $\lambda$ has positive mass dimension, then the scattering amplitude must scale like $\lambda/E^n$ for $n=[\lambda]$, so the contribution from $\lambda$ is suppressed at high energy. The opposite is true for negative mass dimension. In this case, positive powers of the energy are needed, and contributions from $\lambda$ become \emph{more important} to the scattering at high energy. A more careful discussion can be found in treatments of the renormalization group, where couplings are actually not constant and instead depend on the energy scale of the process. But that's a story for later (see Tong's \emph{Statistical Field Theory} notes and the \emph{Advanced QFT} notes for the details).}
+
 \begin{exm}
 Let's consider $\phi^4$ theory, with the Lagrangian
 $$\cL = \frac{1}{2}\p_\mu \phi \p^\mu \phi -\frac{1}{2}m^2\phi^2-\frac{\lambda\phi^4}{4!}; \lambda \ll 1.$$
@@ -68,9 +72,9 @@ We then introduced the Heisenberg picture, where we moved the explicit time depe
 $$\ket{\psi}_H = e^{iHt}\ket{\psi}_S, O_H(t)=e^{iHt} O_S e^{-iHt}.$$
 The interaction picture is a hybrid of the Heisenberg and Schr\"odinger pictures. It splits the Hamiltonian into a free theory part and an interaction part:
 $$H=H_0+H_{\text{int}}.$$
-In the interaction picture, states evolve with the interacting Hamiltonian $H_{int}$ and operators evolve by the free Hamiltonian $H_0$.
+In the interaction picture, states evolve with the interacting Hamiltonian $H_{\mathrm{int}}$ and operators evolve by the free Hamiltonian $H_0$.
 \begin{exm}
-In $\phi^4$ theory, we have $\cL_{int}=-\lambda \phi^4/4!$ with $$H_{int}=-\int d^3x \cL_{int}=+\lambda \int \phi^4/4!$$
+In $\phi^4$ theory, we have $\cL_{\mathrm{int}}=-\lambda \phi^4/4!$ with $$H_{\mathrm{int}}=-\int d^3x \cL_{\mathrm{int}}=+\lambda \int \phi^4/4!$$
 and $H_0$ the standard free theory Hamiltonian
 $H_0=\int d^3x \frac{1}{2}\pi^2+\frac{1}{2}(\grad \phi)^2.$
 \end{exm}
@@ -84,7 +88,7 @@ for $z=a$ a point inside $C$.
 
 Mathematicians usually write this as a formula for the value of $f(a)$ in terms of the contour integral, but for our purposes it is more useful as a formula for the integral. The proof is not complicated and fits on a page or two (see for instance Boas Mathematical Methods 585-586 or \url{http://mathworld.wolfram.com/CauchyIntegralFormula.html}) but I will not repeat it here.
 
-What's the practical use of this formula? Essentially, we can use it to compute real integrals which might have poles (singular points) along the integration path. Consider our expression for the propagator, and suppose $\e=0$. Then the denominator becomes $$k^2-m^2=(k^0)^2-\vec{k}^2-m^2=(k^0)^2- \omega_k^2$$
+What's the practical use of this formula? One relevant application is that we can use it to compute real integrals which might have poles (singular points) along the integration path. Consider our expression for the propagator, and suppose $\e=0$. Then the denominator becomes $$k^2-m^2=(k^0)^2-\vec{k}^2-m^2=(k^0)^2- \omega_k^2$$
 and written this way, it is clear that the integrand is going to become singular at $k^0=\pm \omega_k$. Therefore, we make an ''$i\e$ prescription,'' meaning that we add $i\e$ ($\e>0$ and small) to push the poles off the real line into the complex plane so we can do the integral, and hope nothing bad happens as we let $\e$ go to zero.
 
 We'll need one more trick to compute this integral. You might have noticed that our integral isn't a closed curve yet (as required by the Cauchy formula)-- it is an integral $\Int dk^0$. Therefore, we must close the contour by adding a curve whose final contribution to the overall integral will be zero. To warm up, suppose we want to compute
@@ -96,19 +100,33 @@ for $z_0$ possibly complex. We can close the contour by adding a curve in the up
 \caption{An illustration of closing the contour for a real integral (in red) so we can use the Cauchy integral formula to perform the integral. The integral along the light blue curve $\int_\gamma dz$ contributes nothing to the overall integration, so we can use it to close the contour out at $+i\infty$. Note the curve runs counterclockwise. If it ran clockwise, we would pick up a minus sign.}
 \end{figure}
 
-How do we decide whether to close the contour in the upper or lower half-plane? Notice that in the upper half-plane, $z=x+iy$ for $y>0$, so $e^{iz}=e^{i(x+iy)}=e^{-y}e^{ix}$ with $y>0$. Therefore, $e^{iz}$ is exponentially damped in the upper half-plane and contributes basically zero to the overall integral. So we can close the curve ''for free'' and write
+How do we decide whether to close the contour in the upper or lower half-plane? Notice that in the upper half-plane, $z=x+iy$ for $y>0$, so $e^{iz}=e^{i(x+iy)}=e^{-y}e^{ix}$ with $y>0$. Therefore, $e^{iz}$ is exponentially damped in the upper half-plane and contributes basically zero to the overall integral.%
+    \footnote{Thanks to J. Gleeson for pointing out this is a little too quick, since there are points near the real axis which we might worry are not exponentially suppressed. What we should really do is take the integral from $-R$ to $R$ on the real axis and then a semicircular of radius $R$, and then take the limit as $R->\infty$. Here's a more careful argument (from Arfken Mathematical Methods, section 11.8). \emph{Claim}: if $\lim_{R\to \infty} zf(z) =0$ for all $z=Re^{i\theta}$ with $\theta_1\leq \theta\leq \theta_2$, then $\lim_{R\to \infty} \int_C f(z)dz=0,$ where $C$ is the arc over the angular range $\theta_1$ to $\theta_2$ on a circle of radius $R$ centered at the origin. We prove this by writing the integral in polar form:
+    \begin{equation*}
+        \lim_{R\to\infty} \abs*{\int_C f(z) dz} \leq \int_{\theta_1}^{\theta_2} \lim_{R\to \infty} \abs*{f(Re^{i\theta})iRe^{i\theta}}d\theta \leq (\theta_2-\theta_1) \lim_{R\to\infty}\abs*{f(Re^{i\theta})Re^{i\theta}}=0.
+    \end{equation*}
+    The first inequality comes from writing $z=Re^{i\theta}$ and $dz=iRe^{i\theta}d\theta$ for fixed $R$, the second inequality comes from performing the $\theta$ integral, and the last equality is our assumption that $\lim_{R\to \infty} zf(z)=0$.
+    
+    You can then check that an integrand like $e^{iz}/(z-z_0)$ has the desired property-- $ze^{iz}/(z-z_0) \to e^{i Re^{i\theta}}= \exp(iR (\cos\theta + i \sin\theta)),$ and for $0<\theta<\pi$, we see that the $\exp(-R\sin\theta)$ part goes to zero as $R\to\infty$. So our physics level of rigor turned out to be right, even though the formal mathematical argument was a little more subtle.
+    }
+So we can close the curve ''for free'' and write
 $$\Int dz \frac{e^{iz}}{z-z_0}=\oint dz \frac{e^{iz}}{z-z_0}=2\pi i e^{iz_0}$$
 if $z_0$ has imaginary part $>0$ (is inside the contour) and $0$ otherwise. Thanks, Cauchy integral formula.
 
-In fact, the formula lends itself to an even better generalization, the \term{Cauchy residue theorem}. It states that $$\oint_C f(z)dz = 2\pi i\cdot \text{sum of the residues of }f(z) \text{ inside } C,$$ where the integral around $C$ is in the counterclockwise direction, and a \term{residue} is basically the value at the function at the pole if it didn't have that pole. Quick example: for the function $f(z)=\frac{z}{(1+z)(3-z)}$, $f(z)$ has a pole at $z=3$. The residue $R(3)$ of $f(z)$ at $z=3$ is simply $R(5)=\frac{z}{1+z}|_{z=3}=\frac{3}{4}.$
+In fact, the formula lends itself to an even better generalization, the \term{Cauchy residue theorem}. It states that $$\oint_C f(z)dz = 2\pi i\cdot \text{sum of the residues of }f(z) \text{ inside } C,$$ where the integral around $C$ is in the counterclockwise direction, and a \term{residue} is basically the value at the function at the pole if it didn't have that pole.%
+    \footnote{Formally, if $f(z)$ has a pole at $z_0$, then its residue at $z_0$ is the value $\lim_{z\to z_0}(z-z_0) f(z)$. This does what you'd expect.}
+Quick example: for the function $f(z)=\frac{z}{(1+z)(3-z)}$, $f(z)$ has a pole at $z=3$. The residue $R(3)$ of $f(z)$ at $z=3$ is simply $R(5)=\frac{z}{1+z}|_{z=3}=\frac{3}{4}.$
 
 So to summarize, close the contour based on what the integrand is doing at $\pm i\infty$. Check which poles are inside your contour, and plug up the singularities one at a time to compute the residues. Sum up the residues, multiply by $2\pi i$, and you've got the value of your integral.
 
 Returning to the problem at hand, we wish to compute the integral
-$$\int dk^0 \frac{e^{i k^0 x^0}}{(k^0)^2-(\omega_k^2-i\e)}.$$ We have two poles at $\pm\sqrt{\omega_k^2-i\e}$, which in the $\e\to 0$ limit become $+\omega_k-i\e$ and $-\omega_k+i\e$. Therefore, we rewrite as
-$$\Int dk^0 \frac{e^{i k^0 x^0}}{(k_0-(\omega_k-i\e))(k_0-(-\omega_k+i\e))}.$$
-Since $e^{ik^0x^0}$ is exponentially damped in the upper half-plane, we close the contour at $+i\infty$, enclosing the pole at $-\omega_k+i\e$ (recall $\omega_k$ is real and $\e$ is positive). Therefore, calculating the residue, this integral comes out to
+$$\int dk^0 \frac{e^{i k^0 x^0}}{(k^0)^2-(\omega_k^2-i\e)}.$$ We have two poles at $\pm\sqrt{\omega_k^2-i\e}$, which in the $\e\to 0$ limit become $+\omega_k-i\e$ and $-\omega_k+i\e$. Therefore, we can rewrite the integral as
+\begin{equation*}
+    \Int dk^0 \frac{e^{i k^0 x^0}}{(k_0-(\omega_k-i\e))(k_0-(-\omega_k+i\e))}.
+\end{equation*}
+Since $e^{ik^0x^0}$ is exponentially damped in the upper half-plane, we close the contour at $+i\infty$, enclosing the pole at $-\omega_k+i\e$ (recall $\omega_k$ is real and $\e$ is positive). Therefore, calculating the residue and applying the Cauchy integral formula, this integral comes out to
 $$2\pi i \frac{e^{-i\omega_k x^0}}{-2\omega_k}$$
 (letting $\e\to 0$) and we conclude that for $x^0>0$,
 $$\Delta_F(x)=-i \int \frac{d^3 k}{(2\pi)^3 2\omega_k}e^{-i(\omega_k t- \vec{k}\cdot \vec{x})}.$$
-A similar calculation holds for $x^0 < 0$, so we recover our friend the Feynman propagator, which correctly accounts for the sign of $x^0$.
+A similar calculation holds for $x^0 < 0$, so we recover our friend the Feynman propagator, which correctly accounts for the sign of $x^0$.%
+    \footnote{Notice also that the sign of the $i\epsilon$ prescription allowed us to recover a time-ordered propagator. Using $-i\epsilon$ would have given a reverse-time-ordered propagator (this probably isn't the real terminology, but you understand what I mean), corresponding to influences propagating from future to past rather than the other way around. If we use a different sign convention for Minkowski, then the sign we use for the $i\epsilon$ will also flip to maintain time-ordering. For the most part, we will cheerfully ignore such subtleties of pole prescriptions and work with propagators directly in momentum space taking $\epsilon\to 0$ rather than using these integral representations.}

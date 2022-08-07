@@ -1,17 +1,23 @@
-Today we will construct a LI action of spinor fields. Suppose we have a complex field $\psi$, with
-$$\psi^\dagger(x)=(\psi^*)^T(x).$$
+Today we will construct a Lorentz-invariant action out of spinor fields. Suppose we have a complex spinor field $\psi$, with
+$$\psi^\dagger(x)\equiv(\psi^*)^T(x).$$
 Is $\psi^\dagger(x) \psi(x)$ a Lorentz scalar? We'll check how it transforms. In general we have
 \begin{equation}
     \psi^\dagger(x)\psi(x) \to \psi^\dagger(\Lambda^{-1}x)\underbrace{S[\Lambda]^\dagger S[\Lambda]}_{\neq 1}\psi(\Lambda^{-1}x),
 \end{equation}
-which is not quite what we want, since $S$ is not unitary. Since $\gamma^0=(\gamma^0)^\dagger$ is hermitian and $\gamma^i=-(\gamma^i)^\dagger$ is antihermitian in our representation, we have
+which is not quite what we want, since $S$ is not unitary. However, there is a different combination we can build from spinor fields once we remember the gamma matrices.
+
+Since $\gamma^0=(\gamma^0)^\dagger$ is hermitian and $\gamma^i=-(\gamma^i)^\dagger$ is antihermitian in our representation,%
+    \footnote{Note that Greek indices run from $0$ to $3$ here, while Latin indices are $1,2,3$. As they should.}
+we can prove from the Clifford algebra that
 \begin{equation}
     \gamma^0 \gamma^\mu \gamma^0=(\gamma^\mu)^\dagger\implies (S^{\mu\nu})^\dagger =-\frac{1}{4}[{\gamma^\mu}^\dagger,{\gamma^\nu}^\dagger]=-\gamma^0 S^{\mu\nu}\gamma^0.
 \end{equation}
-(Note that Greek indices run from $0$ to $3$ here, while Latin indices are $1,2,3$. As they should.)
+%(Note that Greek indices run from $0$ to $3$ here, while Latin indices are $1,2,3$. As they should.)
 
 Thus
-$$S[\Lambda]^\dagger=\exp(\frac{1}{2} \Omega_{\mu\nu}(S^{\mu\nu})^\dagger)=\gamma^0 S[\Lambda]^{-1}\gamma^0,$$
+\begin{equation}\label{eq:s-dagger}
+    S[\Lambda]^\dagger=\exp(\frac{1}{2} \Omega_{\mu\nu}(S^{\mu\nu})^\dagger)=\gamma^0 S[\Lambda]^{-1}\gamma^0,
+\end{equation}
 which we get by using $(\gamma^0)^2=1$ repeatedly. 
 \begin{defn}
 With this in mind, we define a \term{Dirac adjoint} of $\psi$:
@@ -22,26 +28,49 @@ We now claim that $\bar \psi(x)\psi(x)$ \emph{is} a Lorentz scalar. Writing expl
     \bar \psi(x)\psi(x) &= \psi^\dagger(x) \gamma^0 \psi(x)\\
     &\to \psi^\dagger(\Lambda^{-1}x)S[\Lambda]^\dagger \gamma^0 S[\Lambda]\psi(\Lambda^{-1}(x)\\
     &=\psi^\dagger(\Lambda^{-1}x) \gamma^0 \psi(\Lambda^{-1}(x)\\
-    &= \bar \psi(\Lambda^{-1}x)\psi(\Lambda^{-1}x). \qed
+    &= \bar \psi(\Lambda^{-1}x)\psi(\Lambda^{-1}x),
 \end{align*}
+where in the third line we have used the property Eq.~\eqref{eq:s-dagger} and simplified the resulting expression. \qed
 
-Moreover, we claim that $\bar\psi(x)\gamma^\mu \psi(x)$ is a Lorentz vector. Under a Lorentz transformation, it transforms as
-$$\bar\psi(\Lambda^{-1}x)S[\Lambda]^\dagger \gamma^\mu S[\Lambda]\psi(\Lambda^{-1}(x).$$
-If this is to be a Lorentz vector, we must have
-$$S[\Lambda]^{-1} \gamma^\mu S[\Lambda]=\Lambda^\mu_\nu \gamma^\nu.$$
-Now we know that
-$$\Lambda^\mu_\nu = \exp\left(\frac{1}{2}\Omega_{\rho\sigma}M^{\rho\sigma}\right)^\mu_\nu$$
+Moreover, we claim that $\bar\psi(x)\gamma^\mu \psi(x)$ is a Lorentz \emph{vector}. Under a Lorentz transformation, it transforms as
+\begin{equation}
+    \bar\psi(\Lambda^{-1}x)S[\Lambda]^\dagger \gamma^\mu S[\Lambda]\psi(\Lambda^{-1}(x).
+\end{equation}
+If this is to be a Lorentz vector, we must have%
+    \footnote{Don't get lost in the indices! To keep things straight, remember what kind of objects we're working with here. The $\gamma$ matrices naturally act on spinors; so do the $S[\Lambda]$s. The $\Lambda^\mu{}_\nu$ on the RHS appears to act on a four-vector, but really it's just contracting with the index on the $\gamma^\nu$. This suggests that the Greek indices on the gamma matrices should be taken seriously as Lorentz indices, as we'll prove here.}
+\begin{equation}\label{eq:lorentz-vector-constraint}
+    S[\Lambda]^{-1} \gamma^\mu S[\Lambda]=\Lambda^\mu{}_\nu \gamma^\nu.
+\end{equation}
+Can this be arranged? We know that
+\begin{equation}
+    \Lambda = \exp\left(\frac{1}{2}\Omega_{\rho\sigma}M^{\rho\sigma}\right)
+\end{equation}
 and
-$$S[\Lambda]=\exp\left(\frac{1}{2}\Omega_{\rho\sigma}S^{\rho\sigma}\right),$$
+\begin{equation}
+    S[\Lambda]=\exp\left(\frac{1}{2}\Omega_{\rho\sigma}S^{\rho\sigma}\right),
+\end{equation}
 so infinitesimally we have
-%%%%rewrite this!
-$$(M^{\rho\sigma})^\mu_\nu \gamma^\nu = -[S^{\rho\sigma},\gamma^\mu].$$ But from the definition of $M$, we have on the LHS
+\begin{align}
+    \Lambda &\approx 1 + \frac{1}{2} \Omega_{\rho\sigma} M^{\rho\sigma} + \dots,\\
+    S[\Lambda] &\approx 1 + \frac{1}{2} \Omega_{\rho\sigma} S^{\rho\sigma} + \dots,
+\end{align}
+which means that the constraint~\eqref{eq:lorentz-vector-constraint} becomes
+\begin{equation}
+    (M^{\rho\sigma})^\mu_\nu \gamma^\nu = -[S^{\rho\sigma},\gamma^\mu].
+\end{equation}
+But from the definition of $M$, we have on the LHS
 $$(\eta^{\rho\mu}\delta^\sigma_\nu-\eta^{\sigma\mu}\delta^\rho_\nu)\gamma^\nu =\eta^{\rho\mu}\gamma^\sigma - \gamma^\rho \eta^{\sigma\mu}=-[S^{\rho\sigma},\gamma^\mu],$$
-which we proved previously.
+which we proved previously. We conclude that $\bar \psi \gamma^\mu \psi$ transforms like a vector under Lorentz transformations. \qed
 
-Now we'll claim that
-$$S=\int d^4x \underbrace{\bar \psi(x)(i \gamma^\mu \p_\mu -m)\psi(x)}_{\cL_D}$$
-is a LI action, where $\cL_D$ is the \term{Dirac Lagrangian}. This action describes a free spinor field, and it has some strange properties. If we look at the mass dimension of the field with $[m]=1$, we find that $[\psi]=[\bar\psi]=\frac{3}{2}$. We can now vary $\psi,\bar\psi$ independently to get the equations of motion. Varying $\psi$, we find that
+We now define an important action in the theory of spinor fields.
+\begin{claim}
+    The action
+    \begin{equation}
+        S=\int d^4x \underbrace{\bar \psi(x)(i \gamma^\mu \p_\mu -m)\psi(x)}_{\cL_D}
+    \end{equation}
+    is Lorentz-invariant. We call $\cL_D$ the \term{Dirac Lagrangian}.
+\end{claim}
+This action describes a free spinor field, and it has some strange properties. If we look at the mass dimension of the field with $[m]=1$, we find that $[\psi]=[\bar\psi]=\frac{3}{2}$. We can now vary $\psi,\bar\psi$ independently to get the equations of motion. Varying $\psi$, we find that
 $$(i\gamma^\mu \p_\mu -m)\psi=0,$$
 which is known as the \term{Dirac equation.} Note that this equation is only first-order in $\p_\mu$, whereas the scalar field yielded a second-order equation in $\p_\mu$. One arrives at a similar equation of $\bar \psi$ after an integration by parts:
 $$i\p_\mu \gamma^\mu \bar \psi + m \bar \psi=0.$$
