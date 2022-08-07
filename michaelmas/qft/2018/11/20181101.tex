@@ -98,11 +98,11 @@ $$\ket{p_1p_2}_{in}=\int \frac{d^3 \tilde p_1}{(2\pi)^3 2E_{\tilde p_1}}\frac{d^
 where $\ket{\tilde p_1 \tilde p_2}$ are the real four-momentum eigenstates.
 
 If we suppose that the outgoing particles are also pure momentum eigenstates, then then our delta functions are soaked up by integrals when we try to compute the transition probability $W$. We then have
-\begin{align*}
-    W &= (2\pi)^8\int \frac{d^3 \tilde p_1}{(2\pi)^3 2E_{\tilde p_1}} 
+\begin{multline*}
+    W = (2\pi)^8\int \frac{d^3 \tilde p_1}{(2\pi)^3 2E_{\tilde p_1}} 
         \frac{d^3 \tilde p_2}{(2\pi)^3 2E_{\tilde p_2}} \frac{d^3 p_1'}{(2\pi)^3 2E_{p_1'}} \frac{d^3 p_2'}{(2\pi)^3 2E_{p_2'}}\\ 
-        &{}\qquad \times\left\{|M|^2 f_1(\tilde p_1)f_1^* (p_1')f_2(\tilde p_2)f_2^*(p_2')\delta^4(\sum_i q_i -\tilde p_1 -\tilde p_2)\delta^4(\sum q_i-p_1' -p_2')\right\}.
-\end{align*}
+            \times\left\{|M|^2 f_1(\tilde p_1)f_1^* (p_1')f_2(\tilde p_2)f_2^*(p_2')\delta^4(\sum_i q_i -\tilde p_1 -\tilde p_2)\delta^4(\sum q_i-p_1' -p_2')\right\}.
+\end{multline*}
 Note that what we have written as the square of the matrix element here is really $$|M|^2=\braket{q_1\ldots q_n}{\tilde p_1 \tilde p_2}\braket{p_1'p_2'}{q_1\ldots q_n}.$$ We'll clean this up later to write everything in terms of the physical values $p$ and $q$ rather than dummy variables $p', \tilde p.$
 
 This expression for $W$ is the transition probability for $2\to n$ scattering to states of definite momentum $q_1\ldots q_n$.

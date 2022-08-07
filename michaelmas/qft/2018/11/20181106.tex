@@ -5,23 +5,53 @@ Now, so far we've only considered scalar fields $\phi$. Under a Lorentz transfor
     x^\mu & \to {x'}^\mu = {\Lambda^\mu}_\nu x^\nu\\
     \phi(x) & \to \phi'(x)=\phi(\Lambda^{-1}x).
 \end{align*}
-Most particles have an intrinsic angular momentum, which we call \term{spin}, and fields with spin have a non-trivial Lorentz transformation. For instance, spin $1$ particles (i.e. \term{vector fields}) come with an index $\mu$ and transform as
-$$A^\mu(x)\to {A^\mu}'(x)={\Lambda^\mu}_\nu A^\nu(\Lambda^{-1} x).$$
-In general fields can transform as $\phi^a \to {D^a}_b(\Lambda) \phi^b(\Lambda^{-1}x),$
-where we say the ${D^a}_b$ form a representation of the Lorentz group. These might be familiar from \emph{Symmetries, Fields and Particles}, but to give a quick overview, a representation $D$ of a group $g$ is a map from that group to a space of linear transformations (usually taken to be matrices) which preserves the group multiplication. That is, it satisfies
+This says that a Lorentz transformation on scalar fields is just a relabeling of coordinates---to find the new field value at $x'$ we simply look at the corresponding value of the original field $\phi$ at $x=\Lambda^{-1}x'$.
+
+Most particles have an intrinsic angular momentum, which we call \term{spin}, and fields with spin have a non-trivial Lorentz transformation. For instance, spin $1$ particles (i.e. \term{vector fields}) come with a Lorentz index $\mu$ and transform as
+\begin{equation}\label{eq:four-vector_lorentz}
+    A^\mu(x)\to {A^\mu}'(x)={\Lambda^\mu}_\nu A^\nu(\Lambda^{-1} x).
+\end{equation}
+That is, both the coordinates \emph{and the field} transform under a Lorentz transformation.
+
+In general, fields can transform as $\phi^a \to {D^a}_b(\Lambda) \phi^b(\Lambda^{-1}x),$ where we say the ${D^a}_b$ form a \term{representation} of the Lorentz group. These might be familiar from \emph{Symmetries, Fields and Particles}, but to give a quick overview, a representation $D$ of a group $g$ is a map from that group to a space of linear transformations (usually taken to be matrices) which preserves the group multiplication. That is, it satisfies
 \begin{gather*}
     D(\Lambda_1\Lambda_2)=D(\Lambda_1)D(\Lambda_2)\\
     D(\Lambda^{-1})=(D(\Lambda))^{-1}\\
     D(I)= I.
 \end{gather*}
-To find the representations, we look at the Lorentz algebra by considering infinitesimal Lorentz transformations. If we write
-$${\Lambda^\mu}_\nu=\delta^\mu_\nu+\epsilon {\omega^\mu}_\nu+O(\epsilon^2),$$
-then the property that $\Lambda$ preserves the inner product on four-vectors implies that $\omega_{\mu\nu}$ is a $4\times 4$ antisymmetric matrix. In particular this means it has $\frac{4\times 3}{2}=6$ independent components, corresponding to the three rotations and three Lorentz boosts.
+To find the representations, we look at the Lorentz algebra by considering infinitesimal Lorentz transformations. Let us write the infinitesimal Lorentz transformation as the sum of an identity piece $\delta^\mu_\nu$ and a small perturbation:
+\begin{equation}
+    {\Lambda^\mu}_\nu = \delta^\mu_\nu+\epsilon {\omega^\mu}_\nu + O(\epsilon^2).
+\end{equation}
+Then the property that $\Lambda$ preserves the (Minkowski) inner product on four-vectors implies that $\omega_{\mu\nu}$ is a $4\times 4$ antisymmetric matrix.%
+    \footnote{This follows from an explicit computation. We want $u\cdot v = u' \cdot v'$, where $u\cdot v = u^\mu v^\nu \eta_{\mu\nu}$ and $u'^\mu := \Lambda^\mu{}_\nu u^\nu$. Applying the Lorentz transformation, we have
+    \begin{equation*}
+        u^\mu v^\nu \eta_{\mu\nu} = (u^\alpha \Lambda^\beta{}_\alpha) (v^\gamma \Lambda^\delta{}_\gamma) \eta_{\beta\delta},
+    \end{equation*}
+    and expanding to leading order in $\epsilon$ we have
+    \begin{equation*}
+        u^\mu v^\nu \eta_{\mu\nu} = u^\beta v^\delta \eta_{\beta\delta} + \epsilon (u^\alpha \omega^\beta{}_\alpha v^\delta + u^\beta v^\gamma \omega^\delta{}_\gamma)\eta_{\beta \delta} + O(\epsilon^2).
+    \end{equation*}
+    After simplifying, using the metric to lower the index of $\omega$, and relabeling dummy indices, we find that
+    \begin{equation*}
+        u^\alpha v^\beta \omega_{\alpha\beta} = - u^\alpha v^\beta \omega_{\beta \alpha},
+    \end{equation*}
+    and since this is true for any $u$ and $v$, we conclude that $\omega_{\alpha\beta} = -\omega_{\beta\alpha}$.
+    }
+In particular this means that $\omega_{\mu\nu}$ has $\frac{4\times 3}{2}=6$ independent components, corresponding to the three rotations and three Lorentz boosts.
 
-We may introduce a basis of six $4\times 4$ matrices, which we will label by four indices
-$$(M^{\rho\sigma})^{\mu\nu}=\eta^{\rho\mu}\eta^{\sigma\nu}-\eta^{\sigma\mu}\eta^{\rho\nu},$$
-where these matrices are antisymmetric in $\rho,\sigma$ and in $\mu,\nu$. We take $\rho,\sigma$ to specify which matrix we are looking at. Lowering the index $\nu$, we take $\mu,\nu$ to specify the row and column respectively. Therefore
-$$(M^{\rho\sigma})^\mu{}_\nu=\eta^{\rho\mu}\delta^\sigma{}_\nu-\eta^{\sigma\mu}\delta^\rho{}_\nu.$$
+Let us therefore construct a six-element basis for the off-diagonal piece $\omega_{\mu\nu}$. Consider the six $4\times 4$ matrices $(M^{\rho\sigma})^{\mu\nu}$ with components defined as follows:
+\begin{equation}
+    (M^{\rho\sigma})^{\mu\nu} \equiv \eta^{\rho\mu}\eta^{\sigma\nu} - \eta^{\sigma\mu}\eta^{\rho\nu},
+\end{equation}
+where $\rho,\sigma,\mu,\nu$ range from $0$ to $3$.
+
+The indices $\rho,\sigma$ label which matrix we are looking at, e.g. $M^{01}$ is a particular $4\times 4$ matrix in our basis. We can then take $\mu,\nu$ to specify the row and column respectively within a particular basis element.
+Notice this construction is antisymmetric in $\rho,\sigma$ (so there are six elements in the basis, as desired) and in $\mu,\nu$ (so that each of the matrices specified by $\rho$ and $\sigma$ is antisymmetric when written with both indices up). 
+If we like, we can also lower one of the matrix component indices using the metric and write
+\begin{equation}
+    (M^{\rho\sigma})^\mu{}_\nu=\eta^{\rho\mu}\delta^\sigma{}_\nu-\eta^{\sigma\mu}\delta^\rho{}_\nu.
+\end{equation}
 \begin{exm}
 The basis vector ${(M^{01})^\mu}_\nu$ is given by
 $${(M^{01})^\mu}_\nu=
@@ -44,21 +74,27 @@ $${(M^{12})^\mu}_\nu=
 This generates rotations in the $(x^1-x^2)$ plane.
 \end{exm}
 Note that when we lower $\nu$ in order to write the generators as matrices, the matrix may not explicitly look antisymmetric! We can now write
-$$\omega^{\mu\nu}=\frac{1}{2}(\Omega_{\rho\sigma}M^{\rho\sigma})^\mu{}_\nu$$
-where these $M$s are the generators of the group of Lorentz transformations and $\Omega$ is some set of antisymmetric parameters.
+\begin{equation}
+    \omega^\mu{}_\nu=\frac{1}{2}(\Omega_{\rho\sigma}M^{\rho\sigma})^\mu{}_\nu
+\end{equation}
+where these $M$s are the \emph{generators} of the group of Lorentz transformations and $\Omega$ is some set of (antisymmetric) parameters. That is, a particular choice of $\Omega_{\rho\sigma}$ defines a particular infinitesimal Lorentz transformation, and the most general (infinitesimal) Lorentz transformation is some linear combination of (infinitesimal) rotations and boosts.
 \begin{defn}
-The \term{Lorentz algebra} is a set of relations between matrices $M$ defined by the bracket
-$$[M^{\rho\sigma},M^{\tau\nu}]=\eta^{\sigma\tau}M^{\rho\nu}-\eta^{\rho\tau}M^{\sigma\nu}+\eta^{\rho\nu}M^{\sigma\tau}-\eta^{\sigma\nu}M^{\rho\tau}.$$
+The \term{Lorentz algebra} is a set of relations between matrices $M$ defined by the bracket%
+    \footnote{Where did this algebra come from? Well, it's not hard to check (if a bit tedious) that the six matrices $M^{\rho\sigma}$ satisfy the Lorentz algebra. We wish to generalize this property to other sets of matrices. In other words, we look for other sets of matrices $\set{M^{\rho\sigma}}$ that have the same algebra as the generators of Lorentz transformations. In this way, these other matrices will \emph{represent} the Lorentz group, allowing us to apply Lorentz transformations to more abstract vectors.}
+\begin{equation}
+    [M^{\rho\sigma},M^{\tau\nu}]=\eta^{\sigma\tau}M^{\rho\nu}-\eta^{\rho\tau}M^{\sigma\nu}+\eta^{\rho\nu}M^{\sigma\tau}-\eta^{\sigma\nu}M^{\rho\tau}.
+\end{equation}
 \end{defn}
 
-The spinor representation means that we search for other matrices satisfying the Lorentz algebra. 
+Our job will be to search for other matrices satisfying the Lorentz algebra and thus ``representing'' infinitesimal Lorentz transformations---the \term{spinor representation} corresponds to one such set of matrices. Once we have a representation of the algebra, we can map this to a representation of the group using the exponential map from Lie algebras to Lie groups.
 \begin{defn}
-We define the Clifford algebra (in any number of dimensions we like, though four is the most useful for our purposes) as a set of matrices $\gamma^\mu$ such that
+We define the \term{Clifford algebra} (in any number of dimensions we like, though four is the most useful for our purposes) as a set of matrices $\gamma^\mu$ such that
 $$\set{\gamma^\mu,\gamma^\nu}=2\eta^{\mu\nu} I,$$
-where we have defined the anticommutator $\set{\gamma^\mu,\gamma^\nu}\equiv\gamma^\mu \gamma^\nu+\gamma^\nu\gamma^\mu$. In four dimensions, the $\gamma^\mu$ are a set of $4\times 4$ matrices with $\mu=0,1,2,3$.
+where we have defined the anticommutator $\set{\gamma^\mu,\gamma^\nu}\equiv\gamma^\mu \gamma^\nu+\gamma^\nu\gamma^\mu$. In four dimensions, the $\gamma^\mu$ are a set of $4\times 4$ matrices with $\mu=0,1,2,3$.%
+    \footnote{And where did \emph{this} algebra come from? It's usually motivated in the context of ``factoring'' the Klein-Gordon equation into the Dirac equation, which we will see later. Where a scalar field could satisfy the (second-order) Klein-Gordon equation, it turns out that we need matrices and vectors rather than numbers (scalars) to satisfy a first-order equation like the Dirac equation. For now we'll take this as a formal definition and explore the consequences.}
 \end{defn}
 
-We need to find $4$ matrices which anticommute, and such that $(\gamma^i)^2=-I \forall i\in \set{1,2,3}$ and $(\gamma^0)^2=I$. The simplest representation is in terms of $4\times 4$ matrices. A common choice is the \term{chiral} or \term{Weyl representaion}, where we take
+We need to find four matrices which anticommute, and such that $(\gamma^i)^2=-I \forall i\in \set{1,2,3}$ and $(\gamma^0)^2=I$. The simplest representation is in terms of $4\times 4$ matrices. A common choice is the \term{chiral} or \term{Weyl representaion}, where we take
 $$\gamma^0=\begin{pmatrix}
 0&I_2\\
 I_2 & 0
@@ -81,21 +117,35 @@ They satisfy the commutation and anticommutation relations
 $$[\sigma^i,\sigma^j]=2i e^{ijk}\sigma^k\text{ and }\set{\sigma^i,\sigma^j}=2\delta^{ij}I_2.$$
 Note that the $\gamma$ matrices under any similarity transformation $U\gamma^\mu U^{-1}$ (where $U$ is an invertible constant matrix) also forms an equally good basis.
 
-We now define
-$$S^{\rho\sigma}\equiv \frac{1}{4}[\gamma^\rho,\gamma^\sigma]=\frac{1}{2}\gamma^\rho \gamma^\sigma -\frac{1}{2} \eta^{\rho\sigma}$$
-by the Clifford algebra. We'll make the following claims: first,
+\begin{defn}
+    The \term{spinor representation} is the set of matrices $S^{\rho\sigma}$ defined by
+    \begin{equation}
+        S^{\rho\sigma}\equiv \frac{1}{4}[\gamma^\rho,\gamma^\sigma]=\frac{1}{2}\gamma^\rho \gamma^\sigma -\frac{1}{2} \eta^{\rho\sigma},
+    \end{equation}
+    where the second equality follows from the Clifford algebra.
+\end{defn}
+We now make the following claims: first,
 $$[S^{\mu\nu},\gamma^\rho]=\gamma^\mu \eta^{\nu\rho}-\gamma^\nu \eta^{\rho\mu}.$$
 Second, using the previous claim and the definition of $S$, we can prove (e.g. on the example sheet) that $S$ satisfies the commutation relation
 $$[S^{\rho\sigma},S^{\tau\nu}]=\eta^{\sigma\tau}S^{\rho\nu}-\eta^{\rho\tau}S^{\sigma\nu}+\eta^{\rho\nu}S^{\sigma\tau}-\eta^{\sigma\nu}S^{\rho\tau}.$$
 But this is precisely the relations that the Lorentz group generators satisfy, and so $S$ provides a representation of the Lorentz algebra.\footnote{At this point, Professor Allanach made a slight digression to read from an interview with Dirac conducted by an USAmerican journalist. It's entertaining reading and can be found here: \url{http://sites.math.rutgers.edu/~greenfie/mill_courses/math421/int.html}}
 
-We now introduce a four-component \term{Dirac spinor} $\psi_\alpha(x),\alpha\in\set{1,2,3,4}.$ The spinor then transforms under Lorentz transformations as
-$$\psi^\alpha(x) \to {S[\Lambda]^\alpha}_\beta \psi^\beta(\Lambda^{-1}x).$$
-Here,
-$$S[\Lambda]=\exp \left(\frac{1}{2}\Omega_{\rho\sigma}S^{\rho\sigma}\right)\text{ and }\Lambda=\exp\left(\frac{1}{2}\Omega_{\rho\sigma} M^{\rho\sigma}\right)$$
-are both $4\times 4$ matrices.
+Using our spinor representation, we now define a new kind of field.
+\begin{defn}
+    A \term{Dirac spinor} is a four-component object $\psi_\alpha(x), \alpha \in \set{1,2,3,4}$ which transforms under Lorentz transformations as
+    \begin{equation}
+        \psi^\alpha(x) \to {S[\Lambda]^\alpha}_\beta \psi^\beta(\Lambda^{-1}x).
+    \end{equation}
+    Here,
+    \begin{equation}
+        S[\Lambda]=\exp \left(\frac{1}{2}\Omega_{\rho\sigma}S^{\rho\sigma}\right)\text{ and }\Lambda=\exp\left(\frac{1}{2}\Omega_{\rho\sigma} M^{\rho\sigma}\right)
+    \end{equation}
+    are both $4\times 4$ matrices acting on spinors and four-vectors, respectively.%
+        \footnote{Remember, the parameters $\Omega_{\rho\sigma}$ define a particular Lorentz transformation (e.g. a boost in the $x$ direction or a rotation about the $y$-axis). Multiplying by the sets of generators $S^{\rho\sigma}$ and $M^{\rho\sigma}$ gives the corresponding infinitesimal Lorentz transformation that acts on spinors or four-vectors, respectively, and the exponential map takes us from generators (infinitesimal transformations) to elements of the group (general transformations).}
+\end{defn}
+On its face, this looks very similar to a four-vector, but don't get it mixed up---$\alpha$ is a spinor index ranging from $1$ to $4$ and \emph{not} a Lorentz index. This means our spinor transforms under Lorentz transformations according to the spinor representation $S[\Lambda]^\alpha{}_\beta$ (a different $4\times 4$ matrix) and not the usual Lorentz transformation $\Lambda^\mu{}_\nu$ on four-vectors. Compare this to Eq.~\eqref{eq:four-vector_lorentz}, where the vector field $A^\mu$ was labeled by an honest four-vector Lorentz index and so transformed according to $\Lambda^\mu{}_\nu$.
 
-Is the spinor representation equivalent to the usual vector representation? No-- one can look at specific Lorentz transformations to see this. For instance, the rotations $i,j\in\set{1,2,3}$ give
+Is the spinor representation equivalent to the usual vector representation? No-- one can look at specific Lorentz transformations to see this. For example, let us consider a rotation in the spinor representation. Using the chiral representation for the $\gamma$ matrices, the rotations $i,j\in\set{1,2,3}$ give
 \begin{align*}
     S^{ij}&= \frac{1}{4}\left[\gamma^i,\gamma^j\right]\\
     &=\left[\begin{pmatrix}
@@ -111,7 +161,7 @@ Is the spinor representation equivalent to the usual vector representation? No--
         0&\sigma^k
     \end{pmatrix}.
 \end{align*}
-If we write $\Omega_{ij}=-\epsilon_{ijk}\phi^k,$ where $\phi^k$ is a vector specifying a rotation axis, e.g. $\Omega_{12}=-\phi^3$.
+For a rotation, one way to write the parameters $\Omega_{\rho\sigma}$ is to take $\Omega_{ij}=-\epsilon_{ijk}\phi^k,$ where $\phi^k$ is a (three-)vector specifying a rotation axis, and all other components zero. For example, if $\phi^k=(0,0,\phi_z)$, then the only nontrivial components of $\Omega_{ij}$ would be $\Omega_{12}=-\Omega_{21} = - \phi_z$. %$\Omega_{12}=-\phi^3$.
 Then
 $$S[\Lambda]=\exp\left(\frac{1}{2}\Omega_{\rho\sigma}S^{\rho\sigma}\right)=\begin{pmatrix}
 e^{i\gv\phi \cdot \gv \sigma/2}& 0\\
@@ -121,14 +171,19 @@ Therefore a rotation about the $x^3$ axis can be written as $\phi=(0,0,2\pi)$, a
 $$S[\Lambda]=\begin{pmatrix}
 e^{i \sigma^3 \pi}& 0\\
 0&e^{i\sigma^3 \pi}
-\end{pmatrix}.=-I_4.$$
-Therefore a rotation of $2\pi$ takes $\psi_\alpha(x)\to -\psi_\alpha(x).$ This is different from the vector representation, where 
-$$\Lambda=\exp\left(\frac{1}{2}\Omega_{\rho\sigma}M^{\rho\sigma}\right)=\exp \begin{pmatrix}
-0&0&0&0\\0&0&2\pi&0\\
-0&-2\pi&0&0\\
-0&0&0&0
-\end{pmatrix}=I_4,$$
-as expected. So indeed spinors see the full $SU(2)$ rotational symmetry, and not just the $SO(3)$ symmetry of the ordinary Lorentz group.
+\end{pmatrix}=-I_4.$$
+Therefore a rotation of $2\pi$ takes $\psi_\alpha(x)\to -\psi_\alpha(x).$ This is different from the vector representation, where the same choice of $\Omega_{ij}=-\epsilon_{ijk} \phi^k$ and $\phi^k=(0,0,2\pi)$ gives
+\begin{equation}
+    \Lambda = \exp\left(\frac{1}{2}\Omega_{\rho\sigma}M^{\rho\sigma}\right) = 
+    \exp \begin{pmatrix}
+        0&0&0&0\\
+        0&0&2\pi&0\\
+        0&-2\pi&0&0\\
+        0&0&0&0
+    \end{pmatrix}
+    = I_4,
+\end{equation}
+as expected---a $2\pi$ rotation of a four-vector is just the identity. So indeed spinors see the full $SU(2)$ rotational symmetry, and not just the $SO(3)$ symmetry of the ordinary Lorentz group.
 
 What about boosts? Let us take
 $$S^{0i}=\frac{1}{2}\begin{pmatrix}
@@ -137,13 +192,15 @@ $$S^{0i}=\frac{1}{2}\begin{pmatrix}
 \end{pmatrix}$$
 and write our boost parameter $\Omega_{0i}=-\Omega_{i0}\equiv \chi_i.$ Then
 $$S[\Lambda]=\begin{pmatrix}
-e^{-\gv \chi \cdot \gv\sigma/2} & 0\\
-0&e^{-\gv \chi \cdot \gv\sigma/2}
+    e^{+\gv \chi \cdot \gv\sigma/2} & 0\\
+    0&e^{-\gv \chi \cdot \gv\sigma/2}
 \end{pmatrix}.$$
-For rotations, $S[\Lambda]$ is unitary since $S[\Lambda]S[\Lambda]^\dagger =I,$ but for boosts this is \emph{not} the case.
+For rotations, $S[\Lambda]$ is unitary since $S[\Lambda]S[\Lambda]^\dagger =I,$ but for boosts this is \emph{not} the case.%
+    \footnote{We also see that the spinor representation of a boost (which is a $4\times 4$ matrix) has a block diagonal form. In particular, it treats the upper two spinor components differently from the lower two. This turns out to be deeply connected to the idea of spin $1/2$ and the two spin states of a spin $1/2$ particle.}
 
 It turns out there are no finite-dimensional unitary representations of the Lorentz group: this is because the matrices
-$$S[\Lambda]=\exp\left[\frac{1}{2}\Omega_{\rho\sigma} S^{\rho\sigma}\right]$$ are only unitary if the $S^{\mu\nu}$ are anti-hermitian, $(S^{\mu\nu})^\dagger=-S^{\mu\nu}.$ But
-$$(S^{\mu\nu})^\dagger=-\frac{1}{4}[{\gamma^\mu}^\dagger,{\gamma^\nu}^\dagger]$$
-can be anti-hermitian if all the $\gamma^\mu$s are either all hermitian or all anti-hermitian. However, this can't be arranged, since
-$\gamma^0)^2=I\implies \gamma^0$ has real eigenvalues (and cannot be anti-hermitian), whereas $(\gamma^i)^2=-I\implies \gamma^i$ has purely imaginary eigenvalues, and therefore cannot be hermitian.
+$$S[\Lambda]=\exp\left[\frac{1}{2}\Omega_{\rho\sigma} S^{\rho\sigma}\right]$$ are only unitary if the $S^{\mu\nu}$ are anti-hermitian, $(S^{\mu\nu})^\dagger=-S^{\mu\nu}.$ But if we want
+\begin{equation}
+    (S^{\mu\nu})^\dagger=-\frac{1}{4}[{\gamma^\mu}^\dagger,{\gamma^\nu}^\dagger] = -S^{\mu\nu},
+\end{equation}
+then either the $\gamma^\mu$s are all hermitian or all anti-hermitian. However, this can't be arranged, since the Clifford algebra says that $(\gamma^0)^2=I$ and $(\gamma^i)^2 = -I$, which implies that $\gamma^0$ has real eigenvalues (and cannot be anti-hermitian), whereas $ \gamma^i$ has purely imaginary eigenvalues, and therefore cannot be hermitian.

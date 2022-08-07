@@ -79,12 +79,12 @@ $$
 \grad \phi(\vec y)\phi(\vec x) = \grad_y (\phi(\vec y) \phi (\vec x)) = \grad_y (\phi(\vec x) \phi(\vec y)) = \phi (\vec x) \grad \phi (\vec y)$$
 so the only term in the Hamiltonian we need to worry about is the $\pi^2$ term.
 \begin{align*}
-\dot \phi = i[H,\phi] &=\frac{i}{2} \int d^3 y \left[\pi^2(y)+(\nabla \phi(y))^2 + m^2\phi(y)^2, \phi(x)\right]\\
-&=\frac{i}{2} \int d^3 y (\pi^2(y) \phi(x) - \phi(x) \pi^2(y))\\
-&=\frac{i}{2} \int d^3 y (\pi(y) (-[\phi(x),\pi(y)]+\phi(x) \pi(y))-\phi(x) \pi^2(y))\\
-&=\frac{i}{2} \int d^3 y (-i\delta^3(x-y) \pi(y)+ \pi(y) \phi(x) \pi(y) - \phi(x) \pi^2(y)\\
-&=\frac{i}{2} \int d^3 y (-2i \delta^3(x-y) \pi(y))\\
-&= \pi(x).
+    \dot \phi = i[H,\phi] &=\frac{i}{2} \int d^3 y \left[\pi^2(y)+(\nabla \phi(y))^2 + m^2\phi(y)^2, \phi(x)\right]\\
+    &=\frac{i}{2} \int d^3 y (\pi^2(y) \phi(x) - \phi(x) \pi^2(y))\\
+    &=\frac{i}{2} \int d^3 y (\pi(y) (-[\phi(x),\pi(y)]+\phi(x) \pi(y))-\phi(x) \pi^2(y))\\
+    &=\frac{i}{2} \int d^3 y (-i\delta^3(x-y) \pi(y)+ \pi(y) \phi(x) \pi(y) - \phi(x) \pi^2(y)\\
+    &=\frac{i}{2} \int d^3 y (-2i \delta^3(x-y) \pi(y))\\
+    &= \pi(x).
 \end{align*}
 We can also compute the time evolution for $\pi$. Here, we do have to worry about the $\grad\phi$ terms as well as the $\phi$ terms.
 \begin{align*}
