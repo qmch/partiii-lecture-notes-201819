@@ -1,10 +1,10 @@
 Last time, we proved the first half of Schumacher's theorem. That is, for an iid memoryless ource $\set{\pi,\cH},$ our signals are $\rho^{\otimes n}=\pi^{\otimes n}$, where the signals take the form $\ket{\Psi_k^{(n)}}$ with probability $p_k^{(n)}$. A single use of the source produces
 \begin{equation}
-    \pi=\sum q_i \ket{\phi_i},
+    \pi=\sum_i q_i \ket{\phi_i},
 \end{equation}
 while the full output is
 \begin{equation}
-    \rho^{\otimes n}=\sum \lambda_{\vec i}^{(n)} \dyad{\chi_{\vec i}^{(n)}}
+    \rho^{\otimes n}=\sum_{\vec i} \lambda_{\vec i}^{(n)} \dyad{\chi_{\vec i}^{(n)}}
 \end{equation}
 with $\ket{\chi_{\vec i}^{(n)}}=\ket{\phi_{i_1}}\otimes \ldots \otimes \ket{\phi_{i_n}}.$
 
@@ -20,7 +20,7 @@ Last time, we proved by construction that for any rate $R>S(\pi), \exists$ a rel
     \begin{equation}
         \dim \tilde \cH_n \approx 2^{nR}.
     \end{equation}
-    Let us denote a single compressed input as $\cC^{(n)}(\dyad{\Psi_k^{(n)}})=\tilde \rho_k^{(n)}$ and the decompressed output as $\cD^{(n)}(\tilde \rho_k^{(n)} \equiv \sigma_k^{(n)} \in \cD(\cH^{\otimes n}).$
+    Let us denote a single compressed input as $\cC^{(n)}\left(\dyad{\Psi_k^{(n)}}\right)=\tilde \rho_k^{(n)}$ and the decompressed output as $\cD^{(n)}(\tilde \rho_k^{(n)}) \equiv \sigma_k^{(n)} \in \cD(\cH^{\otimes n}).$
     We also denote by $\tilde P_n$ the orthogonal projection operator onto $\tilde \cH_n$.
     
     Now the ensemble average fidelity is
@@ -32,7 +32,6 @@ Last time, we proved by construction that for any rate $R>S(\pi), \exists$ a rel
     The first term looks like
     \begin{align*}
         (I) &= \sum_k p_k^{(n)} \bra{\Psi_k^{(n)}}P_\epsilon^{(n)} \sigma_k^{(n)} P_\epsilon^{(n)} \ket{\Psi_k^{(n)}}\\
-            &\leq \sum_k p_k^{(n)} \bra{\Psi_k^{(n)}}P_\epsilon^{(n)} \sigma_k^{(n)} P_\epsilon^{(n)} \ket{\Psi_k^{(n)}}\\
             &\leq\Tr(\rho^{(n)} P_\epsilon^{(n)} \cD^{n}(\tilde P_n) P_\epsilon^{(n)})\\
             &= \sum_{\vec i \in \cT_{\epsilon}^{(n)}} \lambda_i^{(n)} \bra{\chi_{\vec i}^{(n)}} \cD^{n}(\tilde P_n) \ket{\chi_{\vec i}^{(n)}}\\
             &= 2^{-n(S(\pi-\epsilon)} \sum_i \bra{\chi_{\vec i}^{(n)}}D^{(n)}(\tilde P_n)\ket{\chi_{\vec i}^{(n)}}\\
